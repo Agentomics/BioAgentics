@@ -152,8 +152,8 @@ def check_stale_blocked_tasks():
 
 
 def _project_is_idle(name: str) -> bool:
-    """True if project has no active tasks but at least one done task."""
-    for status in ("pending", "in_progress"):
+    """True if project has no active/blocked tasks but at least one done task."""
+    for status in ("pending", "in_progress", "blocked"):
         task_resp = api("GET", f"/tasks?project={name}&status={status}&limit=1")
         if task_resp and task_resp.ok and task_resp.json().get("total", 0) > 0:
             return False
@@ -532,6 +532,11 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
     # Phase 3: Execute work queue in parallel (respecting project locks)
     print(f"  dispatching {len(work_queue)} agent/project pair(s)...")
 
+    # Track projects claimed this cycle to prevent TOCTOU races — the
+    # API-level project_locked() check can't see agents that were submitted
+    # to the thread pool but haven't called set_presence() yet.
+    claimed_projects: set[str] = set()
+
     with concurrent.futures.ThreadPoolExecutor(max_workers=_dispatch.max_workers) as executor:
         futures: dict[concurrent.futures.Future, str] = {}
 
@@ -540,11 +545,13 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
                 break
             label = f"{config.role}" + (f"/{proj}" if proj else "")
 
-            if proj and project_locked(proj):
+            if proj and (proj in claimed_projects or project_locked(proj)):
                 print(f"  SKIP: {label} (project locked)")
                 journal(f"skipped {label} — project locked by another agent", proj)
                 continue
 
+            if proj:
+                claimed_projects.add(proj)
             future = executor.submit(run_agent, config, proj)
             futures[future] = label
 
