@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "bioagentics": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "python", "-m", "bioagentics.mcp_server"]
+    }
+  }
+}

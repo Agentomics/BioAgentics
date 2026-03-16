@@ -1,0 +1,51 @@
+# Agent configuration — defaults apply to all agents unless overridden per-agent.
+
+[api]
+prefix = "/api"                 # API path prefix (e.g. "/api" for /api/tasks, /api/journal, etc.)
+
+[dispatch]
+short_break = 30            # seconds between normal iterations
+long_break =  7200          # seconds for extended breaks
+long_break_every = 4        # take a long break every N iterations
+max_workers = 4             # parallel agent slots
+retry_delays = [60, 300, 600, 1000]
+retry_max_attempts = 6
+oom_delays = [300, 600]
+oom_max_attempts = 4
+
+[defaults]
+backend = "claude"
+model = "claude-opus-4-6"
+effort = "high"
+
+# --- Generators (always run, create work for others) ---
+
+[[agents]]
+role = "RESEARCH_DIRECTOR"
+effort = "max"
+
+[[agents]]
+role = "LITERATURE_REVIEWER"
+
+[[agents]]
+role = "DATA_CURATOR"
+
+# --- Task-driven agents (run when they have tasks) ---
+
+[[agents]]
+role = "PROJECT_MANAGER"
+
+[[agents]]
+role = "DEVELOPER"
+effort = "max"
+
+[[agents]]
+role = "ANALYST"
+effort = "max"
+
+[[agents]]
+role = "VALIDATION_SCIENTIST"
+effort = "max"
+
+[[agents]]
+role = "RESEARCH_WRITER"

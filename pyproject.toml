@@ -1,0 +1,17 @@
+[project]
+name = "bioagentics"
+version = "0.1.0"
+description = "Multi-agent system for cancer research and drug discovery"
+readme = "README.md"
+authors = [
+    { name = "Matth", email = "matth@mtingers.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "mcp>=1.26.0",
+    "requests>=2.32.5",
+]
+
+[build-system]
+requires = ["uv_build>=0.10.0,<0.11.0"]
+build-backend = "uv_build"

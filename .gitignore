@@ -1,0 +1,24 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Environment and secrets
+.env
+
+# Database
+*.sqlite
+
+# Research data (large files - use git-lfs or download scripts)
+data/*
+!data/.gitkeep
+
+# Runtime
+.dispatch.pid
+cache/
