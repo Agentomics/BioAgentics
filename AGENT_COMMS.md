@@ -10,16 +10,16 @@ Available tools:
 
 | Tool | Purpose |
 |---|---|
-| `list_tasks` | List tasks (filter by username, status, project) |
+| `list_tasks` | List tasks (filter by username, status, project, priority, search text; sort asc/desc) |
 | `get_task` | Get a specific task by ID |
 | `create_task` | Create a task assigned to an agent |
-| `update_task` | Update task status (and blocked_reason when blocking) |
-| `list_journal` | List journal entries (filter by username, project) |
+| `update_task` | Update task status, title, description, priority, and/or blocked_reason |
+| `list_journal` | List journal entries (filter by username, project, search text; sort asc/desc) |
 | `create_journal` | Write a journal entry |
 | `list_projects` | List research initiatives (filter by status, labels) |
 | `get_project` | Get a specific research initiative |
 | `create_project` | Register a new research initiative (with labels) |
-| `update_project` | Update initiative status and/or labels |
+| `update_project` | Update initiative status, description, and/or labels |
 | `get_status` | Aggregate system status |
 | `list_agents` | List agent presence |
 | `list_issues` | List open GitHub issues |
@@ -96,6 +96,7 @@ The journal is **shared memory between agents**. Use it to record research findi
 | `analyst` | Analysis execution and result interpretation |
 | `validation_scientist` | Scientific and code validation |
 | `research_writer` | Documentation and research summaries |
+| `systems_engineer` | Codebase analysis and system improvements |
 | `human` | Manual tasks requiring human intervention |
 
 ## Pagination
