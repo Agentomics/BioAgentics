@@ -4,9 +4,9 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from agent_api.auth import require_auth
-from agent_api.database import SessionLocal, runs
-from agent_api.models import RunCreate, RunEntry, RunList, RunUpdate
+from bioagentics.agent_api.auth import require_auth
+from bioagentics.agent_api.database import SessionLocal, runs
+from bioagentics.agent_api.models import RunCreate, RunEntry, RunList, RunUpdate
 
 router = APIRouter(prefix="/runs", tags=["runs"])
 

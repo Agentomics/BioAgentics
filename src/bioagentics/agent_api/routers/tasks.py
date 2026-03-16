@@ -7,9 +7,9 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from agent_api.auth import require_auth
-from agent_api.database import SessionLocal, tasks
-from agent_api.models import TaskCreate, TaskEntry, TaskList, TaskUpdate
+from bioagentics.agent_api.auth import require_auth
+from bioagentics.agent_api.database import SessionLocal, tasks
+from bioagentics.agent_api.models import TaskCreate, TaskEntry, TaskList, TaskUpdate
 
 
 def _parse_duration(value: str) -> timedelta:

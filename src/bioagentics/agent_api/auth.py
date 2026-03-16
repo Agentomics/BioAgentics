@@ -5,7 +5,7 @@ from fastapi import Depends, Header, HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from agent_api.database import SessionLocal, api_keys
+from bioagentics.agent_api.database import SessionLocal, api_keys
 
 
 def get_db():

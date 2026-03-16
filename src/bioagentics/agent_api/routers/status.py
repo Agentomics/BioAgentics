@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from agent_api.database import SessionLocal, agents, tasks
+from bioagentics.agent_api.database import SessionLocal, agents, tasks
 
 router = APIRouter(prefix="/status", tags=["status"])
 

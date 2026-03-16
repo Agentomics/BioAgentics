@@ -7,7 +7,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy import func, select, union
 from sqlalchemy.orm import Session
 
-from agent_api.database import (
+from bioagentics.agent_api.database import (
     SessionLocal,
     agents,
     api_keys,
@@ -652,7 +652,7 @@ def render_dashboard_tab(db: Session) -> str:
 </div>"""
 
     # Recent runs widget
-    from agent_api.database import runs as runs_table
+    from bioagentics.agent_api.database import runs as runs_table
     recent_runs = db.execute(
         select(runs_table).order_by(runs_table.c.started_at.desc()).limit(5)
     ).fetchall()
@@ -1066,7 +1066,7 @@ def render_runs_tab(
     sort: str,
     offset: int,
 ) -> str:
-    from agent_api.database import runs
+    from bioagentics.agent_api.database import runs
 
     query = select(runs)
     count_query = select(func.count()).select_from(runs)
@@ -1764,7 +1764,7 @@ LANDING_PAGE = f"""\
     </a>
     <a href="/ui/projects"
        class="bg-[#0c0c0e] border border-[#27272a] rounded-lg p-6 no-underline text-[#fafafa] hover:border-[#3f3f46] transition-colors shadow-lg min-h-[44px]">
-      <div class="text-2xl mb-2 flex justify-center text-[#a1a1aa]">{ICONS["projects"]}</div>
+      <div class="text-2xl mb-2 flex justify-center text-[#a1a1aa]">{ICONS["folder"]}</div>
       <div class="font-semibold mb-1">Research</div>
       <div class="text-sm text-[#a1a1aa]">Cancer research projects</div>
     </a>

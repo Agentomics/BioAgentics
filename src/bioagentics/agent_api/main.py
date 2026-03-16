@@ -7,9 +7,9 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import Response
 
-from agent_api.auth import seed_api_key
-from agent_api.database import SessionLocal, init_db
-from agent_api.routers import agents, journal, keys, projects, runs, status, tasks, ui
+from bioagentics.agent_api.auth import seed_api_key
+from bioagentics.agent_api.database import SessionLocal, init_db
+from bioagentics.agent_api.routers import agents, journal, keys, projects, runs, status, tasks, ui
 
 
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
@@ -63,7 +63,7 @@ if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run(
-        "agent_api.main:app",
+        "bioagentics.agent_api.main:app",
         host=os.getenv("HOST", "0.0.0.0"),
         port=int(os.getenv("PORT", "8000")),
         log_level=os.getenv("LOG_LEVEL", "info"),

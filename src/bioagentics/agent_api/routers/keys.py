@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from agent_api.auth import generate_key, require_auth
-from agent_api.database import SessionLocal, api_keys
-from agent_api.models import ApiKeyCreate, ApiKeyEntry, ApiKeyList
+from bioagentics.agent_api.auth import generate_key, require_auth
+from bioagentics.agent_api.database import SessionLocal, api_keys
+from bioagentics.agent_api.models import ApiKeyCreate, ApiKeyEntry, ApiKeyList
 
 router = APIRouter(prefix="/keys", tags=["keys"])
 
