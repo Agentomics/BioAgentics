@@ -35,6 +35,7 @@ _dispatch: DispatchConfig = DispatchConfig()
 _stop_event = threading.Event()
 _children: list[subprocess.Popen] = []
 _children_lock = threading.Lock()
+_git_lock = threading.Lock()
 
 
 @dataclass
@@ -433,21 +434,22 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
             journal(f"completed {label} in {duration}s", project)
             # Validate summary format
             validate_summary(config.role, project)
-            # Commit cache summary
-            subprocess.run(
-                ["git", "add"] + [str(p) for p in Path("cache").glob("*summary")],
-                capture_output=True,
-            )
-            subprocess.run(
-                [
-                    "git",
-                    "commit",
-                    "-m",
-                    f"run_agent: commit {config.role} summary cache",
-                ],
-                capture_output=True,
-            )
-            subprocess.run(["git", "push"], capture_output=True)
+            # Commit cache summary (lock prevents races between parallel agents)
+            with _git_lock:
+                subprocess.run(
+                    ["git", "add"] + [str(p) for p in Path("cache").glob("*summary")],
+                    capture_output=True,
+                )
+                subprocess.run(
+                    [
+                        "git",
+                        "commit",
+                        "-m",
+                        f"run_agent: commit {config.role} summary cache",
+                    ],
+                    capture_output=True,
+                )
+                subprocess.run(["git", "push"], capture_output=True)
             return 0
 
         # Determine retry strategy
