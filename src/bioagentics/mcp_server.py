@@ -389,7 +389,9 @@ def list_ci_runs(limit: int = 10) -> str:
 @mcp.tool()
 def list_data(subdir: str = "") -> str:
     """List files in the data directory. Optionally specify a subdirectory."""
-    target = DATA_DIR / subdir if subdir else DATA_DIR
+    target = (DATA_DIR / subdir).resolve() if subdir else DATA_DIR.resolve()
+    if not target.is_relative_to(DATA_DIR.resolve()):
+        return "Error: path must be within data directory"
     if not target.is_dir():
         return f"Directory not found: {target}"
     entries = []
@@ -406,7 +408,9 @@ def ensure_data_dir(subdir: str) -> str:
 
     Example: ensure_data_dir("tcga/brca") creates data/tcga/brca/
     """
-    target = DATA_DIR / subdir
+    target = (DATA_DIR / subdir).resolve()
+    if not target.is_relative_to(DATA_DIR.resolve()):
+        return "Error: path must be within data directory"
     target.mkdir(parents=True, exist_ok=True)
     return f"Directory ready: {target}"
 
