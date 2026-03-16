@@ -82,8 +82,7 @@ def list_tasks(
         query = query.where(tasks.c.priority == priority)
         count_query = count_query.where(tasks.c.priority == priority)
     if search is not None:
-        term = f"%{search}%"
-        cond = tasks.c.title.like(term) | tasks.c.description.like(term)
+        cond = tasks.c.title.contains(search) | tasks.c.description.contains(search)
         query = query.where(cond)
         count_query = count_query.where(cond)
     if older_than is not None and status == "blocked":

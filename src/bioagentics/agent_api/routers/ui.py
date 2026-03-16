@@ -145,13 +145,6 @@ def agent_display_name(username: str) -> str:
     return AGENT_DISPLAY_NAMES.get(username, username.replace("_", " ").title())
 
 
-_UNUSED_LANG_COLORS = {
-    "python": ("bg-[#052e16]", "text-[#4ade80]"),
-    "node": ("bg-[#422006]", "text-[#fbbf24]"),
-    "javascript": ("bg-[#422006]", "text-[#fbbf24]"),
-    "go": ("bg-[#172554]", "text-[#60a5fa]"),
-}
-
 PRIORITY_COLORS = {
     1: "text-[#71717a]",
     2: "text-[#a1a1aa]",
@@ -869,8 +862,7 @@ def render_projects_tab(db: Session, search: str, status: str, labels: str, offs
         query = query.where(projects_table.c.labels.contains(labels))
         count_query = count_query.where(projects_table.c.labels.contains(labels))
     if search:
-        term = f"%{search}%"
-        cond = projects_table.c.name.like(term) | projects_table.c.description.like(term)
+        cond = projects_table.c.name.contains(search) | projects_table.c.description.contains(search)
         query = query.where(cond)
         count_query = count_query.where(cond)
 
@@ -1019,8 +1011,7 @@ def render_tasks_tab(
             query = query.where(tasks.c.priority == int(priority))
             count_query = count_query.where(tasks.c.priority == int(priority))
         if search:
-            term = f"%{search}%"
-            cond = tasks.c.title.like(term) | tasks.c.description.like(term)
+            cond = tasks.c.title.contains(search) | tasks.c.description.contains(search)
             query = query.where(cond)
             count_query = count_query.where(cond)
 
@@ -1115,9 +1106,8 @@ def render_journal_tab(
         query = query.where(journal.c.project == project)
         count_query = count_query.where(journal.c.project == project)
     if search:
-        term = f"%{search}%"
-        query = query.where(journal.c.content.like(term))
-        count_query = count_query.where(journal.c.content.like(term))
+        query = query.where(journal.c.content.contains(search))
+        count_query = count_query.where(journal.c.content.contains(search))
 
     order = journal.c.created_at.asc() if sort == "asc" else journal.c.created_at.desc()
     total = db.execute(count_query).scalar() or 0

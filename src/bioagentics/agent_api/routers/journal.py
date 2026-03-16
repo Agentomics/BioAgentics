@@ -55,8 +55,7 @@ def list_journal_entries(
         query = query.where(journal.c.project == project)
         count_query = count_query.where(journal.c.project == project)
     if search is not None:
-        term = f"%{search}%"
-        cond = journal.c.content.like(term)
+        cond = journal.c.content.contains(search)
         query = query.where(cond)
         count_query = count_query.where(cond)
 
