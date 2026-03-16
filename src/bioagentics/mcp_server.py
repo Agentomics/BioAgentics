@@ -53,13 +53,6 @@ def _gh(*args: str, cwd: str | Path | None = None) -> str:
     return output
 
 
-def _git(*args: str, cwd: str | Path | None = None) -> subprocess.CompletedProcess:
-    """Run a git command."""
-    return subprocess.run(
-        ["git", *args], capture_output=True, text=True, cwd=cwd or REPO_ROOT, timeout=60
-    )
-
-
 # ── Task Tools ──
 
 
@@ -124,11 +117,10 @@ def update_task(
     task_id: int,
     status: str = "",
     blocked_reason: str = "",
-    blocked_at: str = "",
 ) -> str:
     """Update a task's status.
 
-    When blocking, include blocked_reason and blocked_at (ISO 8601 timestamp).
+    When blocking, include blocked_reason. The API auto-sets blocked_at timestamps.
     Lifecycle: pending -> in_progress -> done (or in_progress -> blocked -> in_progress -> done).
     """
     payload: dict = {}
@@ -136,8 +128,6 @@ def update_task(
         payload["status"] = status
     if blocked_reason:
         payload["blocked_reason"] = blocked_reason
-    if blocked_at:
-        payload["blocked_at"] = blocked_at
     if not payload:
         return json.dumps({"error": "no fields to update"})
     return json.dumps(_api("PATCH", f"/tasks/{task_id}", json=payload), indent=2)
