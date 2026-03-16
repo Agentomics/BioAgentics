@@ -26,9 +26,9 @@ DEFAULT_PRISM_RELEASE = "PRISM Primary Repurposing DepMap Public 24Q2"
 DEFAULT_FILES = [
     "CRISPRGeneDependency.csv",
     "CRISPRGeneEffect.csv",
-    "OmicsExpressionProteinCodingGenesTPMLogp1.csv",
+    "OmicsExpressionTPMLogp1HumanProteinCodingGenes.csv",
     "OmicsSomaticMutations.csv",
-    "OmicsCNGene.csv",
+    "PortalOmicsCNGeneLog2.csv",
     "Model.csv",
 ]
 
