@@ -20,6 +20,7 @@ from tqdm import tqdm
 
 API_BASE = "https://depmap.org/portal/download/api"
 DEFAULT_RELEASE = "DepMap Public 25Q3"
+DEFAULT_PRISM_RELEASE = "PRISM Primary Repurposing DepMap Public 24Q2"
 
 # Key datasets for cancer research pipeline (from data_curator assessment)
 DEFAULT_FILES = [
@@ -32,7 +33,9 @@ DEFAULT_FILES = [
 ]
 
 PRISM_FILES = [
-    "PRISMRepurposingPrimaryScreenData.csv",
+    "Repurposing_Public_24Q2_Extended_Primary_Data_Matrix.csv",
+    "Repurposing_Public_24Q2_Treatment_Meta_Data.csv",
+    "Repurposing_Public_24Q2_Cell_Line_Meta_Data.csv",
 ]
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -43,14 +46,33 @@ CHUNK_SIZE = 1024 * 64  # 64 KB
 
 
 def list_release_files(release: str) -> list[dict]:
-    """List available files for a DepMap release."""
+    """List available files for a DepMap release.
+
+    The API returns {"table": [...], ...}. We filter the table entries
+    to those matching the requested release name.
+    """
     resp = requests.get(
         f"{API_BASE}/downloads",
         params={"release": release},
         timeout=TIMEOUT,
     )
     resp.raise_for_status()
-    return resp.json()
+    data = resp.json()
+
+    # API returns a dict with a "table" key containing file entries
+    table = data.get("table", [])
+    return [entry for entry in table if entry.get("releaseName") == release]
+
+
+def resolve_download_url(entry: dict) -> str:
+    """Resolve the download URL from a table entry.
+
+    DepMap portal files use relative URLs; PRISM/Figshare files use absolute URLs.
+    """
+    url = entry.get("downloadUrl", "")
+    if url.startswith("/"):
+        return f"https://depmap.org{url}"
+    return url
 
 
 def sha256_file(path: Path) -> str:
@@ -63,6 +85,32 @@ def sha256_file(path: Path) -> str:
                 break
             h.update(chunk)
     return h.hexdigest()
+
+
+def download_from_url(
+    url: str,
+    file_name: str,
+    dest_dir: Path,
+    *,
+    force: bool = False,
+) -> Path:
+    """Download a file from a direct URL (e.g. Figshare)."""
+    dest = dest_dir / file_name
+    if dest.exists() and not force:
+        print(f"  Skipping {file_name} (already exists)")
+        return dest
+
+    with requests.get(url, stream=True, timeout=TIMEOUT) as resp:
+        resp.raise_for_status()
+        total = int(resp.headers.get("content-length", 0))
+        with (
+            open(dest, "wb") as f,
+            tqdm(total=total or None, unit="B", unit_scale=True, desc=file_name) as pbar,
+        ):
+            for chunk in resp.iter_content(chunk_size=CHUNK_SIZE):
+                f.write(chunk)
+                pbar.update(len(chunk))
+    return dest
 
 
 def download_file(
@@ -137,7 +185,7 @@ def fetch_checksums(release: str) -> dict[str, str]:
 
     checksums: dict[str, str] = {}
     for entry in files:
-        name = entry.get("fileName", entry.get("file_name", ""))
+        name = entry.get("fileName", "")
         sha = entry.get("sha256", entry.get("checksum", ""))
         if name and sha:
             checksums[name] = sha
@@ -170,6 +218,11 @@ def main(argv: list[str] | None = None) -> None:
         help="Also download PRISM drug response data",
     )
     parser.add_argument(
+        "--prism-release",
+        default=DEFAULT_PRISM_RELEASE,
+        help=f"PRISM release name (default: {DEFAULT_PRISM_RELEASE})",
+    )
+    parser.add_argument(
         "--force",
         action="store_true",
         help="Re-download even if files already exist",
@@ -195,18 +248,16 @@ def main(argv: list[str] | None = None) -> None:
             print(f"Error fetching file list: {e}", file=sys.stderr)
             sys.exit(1)
         for entry in files:
-            name = entry.get("fileName", entry.get("file_name", "unknown"))
+            name = entry.get("fileName", "unknown")
             size = entry.get("fileSize", entry.get("size", "?"))
             print(f"  {name}  ({size})")
         return
 
-    files_to_download = args.files or DEFAULT_FILES[:]
-    if args.include_prism and not args.files:
-        files_to_download.extend(PRISM_FILES)
-
     args.dest.mkdir(parents=True, exist_ok=True)
 
-    # Fetch checksums if available
+    # --- Download core DepMap files ---
+    files_to_download = args.files or DEFAULT_FILES[:]
+
     checksums: dict[str, str] = {}
     if not args.no_checksum:
         print("Fetching checksums...")
@@ -239,12 +290,49 @@ def main(argv: list[str] | None = None) -> None:
             print(f"  CONNECTION ERROR {file_name}: {e}", file=sys.stderr)
             failed.append(file_name)
 
+    # --- Download PRISM files from separate release ---
+    if args.include_prism and not args.files:
+        print(f"\nDownloading {len(PRISM_FILES)} PRISM files from {args.prism_release}")
+        print(f"Destination: {args.dest}\n")
+
+        # Resolve download URLs from the PRISM release metadata
+        try:
+            prism_table = list_release_files(args.prism_release)
+        except requests.HTTPError as e:
+            print(f"Error fetching PRISM release metadata: {e}", file=sys.stderr)
+            failed.extend(PRISM_FILES)
+            prism_table = []
+
+        prism_url_map = {
+            entry["fileName"]: resolve_download_url(entry)
+            for entry in prism_table
+            if entry.get("fileName") in PRISM_FILES
+        }
+
+        for file_name in PRISM_FILES:
+            url = prism_url_map.get(file_name)
+            if not url:
+                print(f"  FAILED {file_name}: not found in {args.prism_release}", file=sys.stderr)
+                failed.append(file_name)
+                continue
+            try:
+                download_from_url(url, file_name, args.dest, force=args.force)
+            except requests.HTTPError as e:
+                print(f"  FAILED {file_name}: {e}", file=sys.stderr)
+                failed.append(file_name)
+            except requests.ConnectionError as e:
+                print(f"  CONNECTION ERROR {file_name}: {e}", file=sys.stderr)
+                failed.append(file_name)
+
     print()
     if failed:
         print(f"{len(failed)} file(s) failed: {', '.join(failed)}")
         sys.exit(1)
     else:
-        print(f"All {len(files_to_download)} files downloaded successfully.")
+        total = len(files_to_download)
+        if args.include_prism and not args.files:
+            total += len(PRISM_FILES)
+        print(f"All {total} files downloaded successfully.")
 
 
 if __name__ == "__main__":
