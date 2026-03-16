@@ -22,6 +22,7 @@ GENERATORS = {
     "RESEARCH_DIRECTOR",
     "LITERATURE_REVIEWER",
     "DATA_CURATOR",
+    "SYSTEMS_ENGINEER",
 }
 
 # Retry strategies by exit code (None = don't retry)

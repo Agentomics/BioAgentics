@@ -30,6 +30,10 @@ role = "LITERATURE_REVIEWER"
 [[agents]]
 role = "DATA_CURATOR"
 
+[[agents]]
+role = "SYSTEMS_ENGINEER"
+effort = "max"
+
 # --- Task-driven agents (run when they have tasks) ---
 
 [[agents]]
