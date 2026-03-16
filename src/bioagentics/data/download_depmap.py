@@ -75,6 +75,16 @@ def resolve_download_url(entry: dict) -> str:
     return url
 
 
+def build_url_map(release_files: list[dict]) -> dict[str, str]:
+    """Build a mapping of fileName -> resolved download URL from release metadata."""
+    url_map: dict[str, str] = {}
+    for entry in release_files:
+        name = entry.get("fileName", "")
+        if name:
+            url_map[name] = resolve_download_url(entry)
+    return url_map
+
+
 def sha256_file(path: Path) -> str:
     """Compute SHA-256 hex digest of a file."""
     h = hashlib.sha256()
@@ -94,7 +104,7 @@ def download_from_url(
     *,
     force: bool = False,
 ) -> Path:
-    """Download a file from a direct URL (e.g. Figshare)."""
+    """Download a file from a resolved URL."""
     dest = dest_dir / file_name
     if dest.exists() and not force:
         print(f"  Skipping {file_name} (already exists)")
@@ -111,85 +121,6 @@ def download_from_url(
                 f.write(chunk)
                 pbar.update(len(chunk))
     return dest
-
-
-def download_file(
-    file_name: str,
-    release: str,
-    dest_dir: Path,
-    *,
-    force: bool = False,
-    expected_sha256: str | None = None,
-) -> Path:
-    """Download a single file from the DepMap download API.
-
-    Skips files that already exist on disk unless force=True.
-    Verifies SHA-256 checksum if expected_sha256 is provided.
-    """
-    dest = dest_dir / file_name
-
-    if dest.exists() and not force:
-        if expected_sha256:
-            actual = sha256_file(dest)
-            if actual == expected_sha256:
-                print(f"  Skipping {file_name} (exists, checksum OK)")
-                return dest
-            print(f"  Checksum mismatch for {file_name}, re-downloading")
-        else:
-            print(f"  Skipping {file_name} (already exists)")
-            return dest
-
-    url = f"{API_BASE}/download"
-    params = {"file_name": file_name, "release": release}
-
-    with requests.get(url, params=params, stream=True, timeout=TIMEOUT) as resp:
-        resp.raise_for_status()
-        total = int(resp.headers.get("content-length", 0))
-
-        with (
-            open(dest, "wb") as f,
-            tqdm(
-                total=total or None,
-                unit="B",
-                unit_scale=True,
-                desc=file_name,
-            ) as pbar,
-        ):
-            for chunk in resp.iter_content(chunk_size=CHUNK_SIZE):
-                f.write(chunk)
-                pbar.update(len(chunk))
-
-    if expected_sha256:
-        actual = sha256_file(dest)
-        if actual != expected_sha256:
-            dest.unlink()
-            raise ValueError(
-                f"Checksum verification failed for {file_name}: "
-                f"expected {expected_sha256}, got {actual}"
-            )
-        print(f"  Checksum verified: {file_name}")
-
-    return dest
-
-
-def fetch_checksums(release: str) -> dict[str, str]:
-    """Try to fetch SHA-256 checksums from the release metadata.
-
-    Returns a mapping of file_name -> sha256 hex digest.
-    Returns an empty dict if checksums are not available.
-    """
-    try:
-        files = list_release_files(release)
-    except Exception:
-        return {}
-
-    checksums: dict[str, str] = {}
-    for entry in files:
-        name = entry.get("fileName", "")
-        sha = entry.get("sha256", entry.get("checksum", ""))
-        if name and sha:
-            checksums[name] = sha
-    return checksums
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -228,11 +159,6 @@ def main(argv: list[str] | None = None) -> None:
         help="Re-download even if files already exist",
     )
     parser.add_argument(
-        "--no-checksum",
-        action="store_true",
-        help="Skip checksum verification",
-    )
-    parser.add_argument(
         "--dest",
         type=Path,
         default=DEFAULT_DEST,
@@ -255,36 +181,32 @@ def main(argv: list[str] | None = None) -> None:
 
     args.dest.mkdir(parents=True, exist_ok=True)
 
-    # --- Download core DepMap files ---
+    # --- Resolve download URLs from release metadata ---
     files_to_download = args.files or DEFAULT_FILES[:]
 
-    checksums: dict[str, str] = {}
-    if not args.no_checksum:
-        print("Fetching checksums...")
-        checksums = fetch_checksums(args.release)
-        if checksums:
-            print(f"  Found checksums for {len(checksums)} files")
-        else:
-            print("  No checksums available, skipping verification")
+    print(f"Fetching release metadata for {args.release}...")
+    try:
+        release_table = list_release_files(args.release)
+    except requests.HTTPError as e:
+        print(f"Error fetching release metadata: {e}", file=sys.stderr)
+        sys.exit(1)
+    url_map = build_url_map(release_table)
+    print(f"  Found {len(url_map)} files in release")
 
     print(f"\nDownloading {len(files_to_download)} files from {args.release}")
     print(f"Destination: {args.dest}\n")
 
     failed = []
     for file_name in files_to_download:
+        url = url_map.get(file_name)
+        if not url:
+            print(f"  FAILED {file_name}: not found in {args.release}", file=sys.stderr)
+            failed.append(file_name)
+            continue
         try:
-            download_file(
-                file_name,
-                args.release,
-                args.dest,
-                force=args.force,
-                expected_sha256=checksums.get(file_name),
-            )
+            download_from_url(url, file_name, args.dest, force=args.force)
         except requests.HTTPError as e:
             print(f"  FAILED {file_name}: {e}", file=sys.stderr)
-            failed.append(file_name)
-        except ValueError as e:
-            print(f"  CHECKSUM FAILED {file_name}: {e}", file=sys.stderr)
             failed.append(file_name)
         except requests.ConnectionError as e:
             print(f"  CONNECTION ERROR {file_name}: {e}", file=sys.stderr)
@@ -292,10 +214,7 @@ def main(argv: list[str] | None = None) -> None:
 
     # --- Download PRISM files from separate release ---
     if args.include_prism and not args.files:
-        print(f"\nDownloading {len(PRISM_FILES)} PRISM files from {args.prism_release}")
-        print(f"Destination: {args.dest}\n")
-
-        # Resolve download URLs from the PRISM release metadata
+        print(f"\nFetching release metadata for {args.prism_release}...")
         try:
             prism_table = list_release_files(args.prism_release)
         except requests.HTTPError as e:
@@ -303,11 +222,10 @@ def main(argv: list[str] | None = None) -> None:
             failed.extend(PRISM_FILES)
             prism_table = []
 
-        prism_url_map = {
-            entry["fileName"]: resolve_download_url(entry)
-            for entry in prism_table
-            if entry.get("fileName") in PRISM_FILES
-        }
+        prism_url_map = build_url_map(prism_table)
+
+        print(f"\nDownloading {len(PRISM_FILES)} PRISM files from {args.prism_release}")
+        print(f"Destination: {args.dest}\n")
 
         for file_name in PRISM_FILES:
             url = prism_url_map.get(file_name)
