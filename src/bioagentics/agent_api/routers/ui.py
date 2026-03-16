@@ -777,7 +777,7 @@ def render_dashboard_tab(db: Session) -> str:
             if m["exit_code"] is not None and m["exit_code"] != 0:
                 dot = '<span class="w-2 h-2 rounded-full bg-[#ef4444] shrink-0"></span>'
             proj = f'<span class="text-[#52525b]">{esc(m["project"])}</span>' if m["project"] else ""
-            cost = f'<span class="text-[#4ade80] text-xs">${esc(m["cost_usd"])}</span>' if m["cost_usd"] else ""
+            cost = f'<span class="text-[#4ade80] text-xs">${float(m["cost_usd"]):.4f}</span>' if m["cost_usd"] else ""
             dur = _format_duration(m["duration_seconds"])
             run_items.append(
                 f'<div class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0">'
@@ -1152,7 +1152,7 @@ def render_run_row(row) -> str:
 
     cost_html = ""
     if m["cost_usd"]:
-        cost_html = f'<span class="text-[#4ade80]">${esc(m["cost_usd"])}</span>'
+        cost_html = f'<span class="text-[#4ade80]">${float(m["cost_usd"]):.4f}</span>'
 
     return f"""<tr class="hover:bg-[#18181b] transition-colors">
   <td class="px-3 py-2.5 border-b border-[#27272a] text-xs font-mono text-[#71717a]">#{m['id']}</td>

@@ -242,7 +242,7 @@ def log_run(
     if stats:
         payload["input_tokens"] = stats.input_tokens
         payload["output_tokens"] = stats.output_tokens
-        payload["cost_usd"] = f"{stats.cost_usd:.6f}"
+        payload["cost_usd"] = stats.cost_usd
     api("POST", "/runs", json=payload)
 
 

@@ -2,6 +2,7 @@ import os
 
 from sqlalchemy import (
     Column,
+    Float,
     Integer,
     MetaData,
     String,
@@ -116,7 +117,7 @@ runs = Table(
     Column("duration_seconds", Integer, nullable=True),
     Column("input_tokens", Integer, nullable=True),
     Column("output_tokens", Integer, nullable=True),
-    Column("cost_usd", String, nullable=True),
+    Column("cost_usd", Float, nullable=True),
 )
 
 
