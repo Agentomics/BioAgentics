@@ -16,46 +16,14 @@ from pathlib import Path
 import pandas as pd
 
 from bioagentics.data.gene_ids import load_depmap_model_metadata, load_depmap_mutations
+from bioagentics.data.nsclc_common import (
+    DRIVER_GENES,
+    classify_kras_allele,
+    classify_molecular_subtype,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DEPMAP_DIR = REPO_ROOT / "data" / "depmap" / "25q3"
-
-# Oncogenic driver genes to annotate
-DRIVER_GENES = ["KRAS", "TP53", "STK11", "KEAP1", "EGFR", "ALK", "MET", "BRAF", "ROS1", "ERBB2", "NF1", "RB1"]
-
-# KRAS hotspot codon groupings
-KRAS_ALLELE_MAP = {
-    "p.G12C": "G12C",
-    "p.G12D": "G12D",
-    "p.G12V": "G12V",
-    "p.G12A": "G12_other",
-    "p.G12F": "G12_other",
-    "p.G12R": "G12_other",
-    "p.G12S": "G12_other",
-    "p.G13C": "G13",
-    "p.G13D": "G13",
-    "p.Q61H": "Q61",
-    "p.Q61K": "Q61",
-    "p.Q61L": "Q61",
-}
-
-
-def classify_kras_allele(protein_changes: list[str]) -> str:
-    """Classify KRAS allele type from a list of protein changes for one cell line."""
-    hotspot_alleles = []
-    for pc in protein_changes:
-        allele = KRAS_ALLELE_MAP.get(pc)
-        if allele:
-            hotspot_alleles.append(allele)
-
-    if not hotspot_alleles:
-        return "other" if protein_changes else "WT"
-
-    # If multiple hotspot mutations, take the most common canonical one
-    for preferred in ["G12C", "G12D", "G12V"]:
-        if preferred in hotspot_alleles:
-            return preferred
-    return hotspot_alleles[0]
 
 
 def annotate_nsclc_lines(depmap_dir: str | Path) -> pd.DataFrame:
@@ -106,18 +74,7 @@ def annotate_nsclc_lines(depmap_dir: str | Path) -> pd.DataFrame:
     nsclc["KRAS_allele"] = [get_kras_allele(mid) for mid in nsclc.index]
 
     # Classify molecular subtypes
-    def classify_subtype(row: pd.Series) -> str:
-        if not row["KRAS_mutated"]:
-            return "KRAS-WT"
-        if row["TP53_mutated"] and row["STK11_mutated"]:
-            return "KPL"  # rare: both co-mutations
-        if row["TP53_mutated"]:
-            return "KP"
-        if row["STK11_mutated"]:
-            return "KL"
-        return "KOnly"
-
-    nsclc["molecular_subtype"] = nsclc.apply(classify_subtype, axis=1)
+    nsclc["molecular_subtype"] = nsclc.apply(classify_molecular_subtype, axis=1)
 
     # Select output columns
     keep_cols = [

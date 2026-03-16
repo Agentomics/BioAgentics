@@ -18,27 +18,15 @@ from pathlib import Path
 
 import pandas as pd
 
+from bioagentics.data.nsclc_common import (
+    DAMAGING_CLASSIFICATIONS,
+    DRIVER_GENES,
+    classify_kras_allele,
+    classify_molecular_subtype,
+)
+
 REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_TCGA_DIR = REPO_ROOT / "data" / "tcga"
-
-# Driver genes to annotate
-DRIVER_GENES = ["KRAS", "TP53", "STK11", "KEAP1", "EGFR", "ALK", "MET", "BRAF", "ROS1", "ERBB2", "NF1", "RB1"]
-
-# Variant classifications considered functionally damaging
-DAMAGING_CLASSIFICATIONS = {
-    "Missense_Mutation", "Nonsense_Mutation", "Frame_Shift_Del",
-    "Frame_Shift_Ins", "Splice_Site", "In_Frame_Del", "In_Frame_Ins",
-    "Translation_Start_Site", "Nonstop_Mutation",
-}
-
-# KRAS hotspot allele groupings (same as DepMap annotation)
-KRAS_ALLELE_MAP = {
-    "p.G12C": "G12C", "p.G12D": "G12D", "p.G12V": "G12V",
-    "p.G12A": "G12_other", "p.G12F": "G12_other",
-    "p.G12R": "G12_other", "p.G12S": "G12_other",
-    "p.G13C": "G13", "p.G13D": "G13",
-    "p.Q61H": "Q61", "p.Q61K": "Q61", "p.Q61L": "Q61",
-}
 
 
 def extract_patient_id(barcode: str) -> str:
@@ -121,29 +109,12 @@ def classify_patients(
     def get_allele(pid: str) -> str:
         if pid not in kras_alleles.index:
             return "WT"
-        changes = kras_alleles[pid]
-        for pc in changes:
-            if pd.notna(pc):
-                allele = KRAS_ALLELE_MAP.get(pc)
-                if allele:
-                    return allele
-        return "other" if changes else "WT"
+        return classify_kras_allele(kras_alleles[pid])
 
     patient_info["KRAS_allele"] = [get_allele(p) for p in patient_info["patient_id"]]
 
     # Molecular subtype classification
-    def classify(row: pd.Series) -> str:
-        if not row["KRAS_mutated"]:
-            return "KRAS-WT"
-        if row["TP53_mutated"] and row["STK11_mutated"]:
-            return "KPL"
-        if row["TP53_mutated"]:
-            return "KP"
-        if row["STK11_mutated"]:
-            return "KL"
-        return "KOnly"
-
-    patient_info["molecular_subtype"] = patient_info.apply(classify, axis=1)
+    patient_info["molecular_subtype"] = patient_info.apply(classify_molecular_subtype, axis=1)
 
     return patient_info
 
