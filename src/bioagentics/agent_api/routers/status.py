@@ -19,15 +19,25 @@ def get_db():
 
 @router.get("")
 def get_status(db: Session = Depends(get_db)):
-    # Agents
+    # Agents — composite PK is (username, project), so pick the most
+    # relevant entry per username: prefer "running" over "idle".
     agent_rows = db.execute(select(agents)).fetchall()
-    agents_map = {}
+    agents_map: dict[str, dict] = {}
     for row in agent_rows:
         m = row._mapping
-        agents_map[m["username"]] = {
+        username = m["username"]
+        project = m["project"] or None
+        entry: dict = {
             "status": m["status"],
             "last_heartbeat": m["updated_at"],
         }
+        if project:
+            entry["project"] = project
+
+        if username not in agents_map:
+            agents_map[username] = entry
+        elif m["status"] == "running" and agents_map[username]["status"] != "running":
+            agents_map[username] = entry
 
     # Task counts by status
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
