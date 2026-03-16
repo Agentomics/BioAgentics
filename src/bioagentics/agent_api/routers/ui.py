@@ -1,6 +1,5 @@
 from datetime import datetime, timezone
 from html import escape as _esc
-from pathlib import Path
 from urllib.parse import quote, urlencode
 
 from fastapi import APIRouter, Depends, Header, Query, Request
@@ -2032,16 +2031,22 @@ def ui_project_detail_page(
     ).fetchall()
 
     # Read research artifacts from filesystem
+    # Guard against path traversal via crafted project names
     plan_content = None
-    plan_path = REPO_ROOT / f"PLAN-{name}.md"
-    if plan_path.is_file():
+    plan_path = (REPO_ROOT / f"PLAN-{name}.md").resolve()
+    if not plan_path.is_relative_to(REPO_ROOT.resolve()):
+        plan_path = None
+    if plan_path and plan_path.is_file():
         try:
             plan_content = plan_path.read_text()
         except OSError:
             pass
 
     findings_content = None
+    _repo_resolved = REPO_ROOT.resolve()
     for findings_dir in [REPO_ROOT / "docs" / "findings" / name, REPO_ROOT / "docs" / "findings"]:
+        if not findings_dir.resolve().is_relative_to(_repo_resolved):
+            continue
         if not findings_dir.is_dir():
             continue
         for md in sorted(findings_dir.glob("*.md")):
@@ -2055,8 +2060,10 @@ def ui_project_detail_page(
             break
 
     result_files = None
-    results_dir = REPO_ROOT / "data" / "results" / name
-    if results_dir.is_dir():
+    results_dir = (REPO_ROOT / "data" / "results" / name).resolve()
+    if not results_dir.is_relative_to(_repo_resolved):
+        results_dir = None
+    if results_dir and results_dir.is_dir():
         result_files = sorted(
             str(p.relative_to(results_dir)) for p in results_dir.rglob("*") if p.is_file()
         )
