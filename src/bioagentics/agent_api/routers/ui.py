@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from html import escape as _esc
+from pathlib import Path
 from urllib.parse import quote, urlencode
 
 from fastapi import APIRouter, Depends, Header, Query, Request
@@ -15,6 +16,7 @@ from bioagentics.agent_api.database import (
     projects_table,
     tasks,
 )
+from bioagentics.config import REPO_ROOT
 
 router = APIRouter(tags=["ui"])
 
@@ -381,6 +383,8 @@ def render_journal_detail(row) -> str:
 
 def render_project_detail(
     row, task_counts: dict, journal_count: int, recent_tasks, recent_journal,
+    *, plan_content: str | None = None, findings_content: str | None = None,
+    result_files: list[str] | None = None,
 ) -> str:
     """Full detail view for a single project."""
     m = row._mapping
@@ -466,6 +470,47 @@ def render_project_detail(
   <div>{journal_rows}</div>
 </div>"""
 
+    # Research artifacts
+    artifacts_html = ""
+    artifact_sections = []
+
+    if plan_content:
+        artifact_sections.append(f"""<details class="group">
+  <summary class="text-xs text-[#71717a] font-medium cursor-pointer hover:text-[#3b82f6] transition-colors select-none list-none flex items-center gap-1">
+    <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    Research Plan
+  </summary>
+  <div class="text-sm whitespace-pre-wrap break-words text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a] mt-2 max-h-[500px] overflow-y-auto">{esc(plan_content)}</div>
+</details>""")
+
+    if findings_content:
+        artifact_sections.append(f"""<details open class="group">
+  <summary class="text-xs text-[#71717a] font-medium cursor-pointer hover:text-[#3b82f6] transition-colors select-none list-none flex items-center gap-1">
+    <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    Findings &amp; Summary
+  </summary>
+  <div class="text-sm whitespace-pre-wrap break-words text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a] mt-2 max-h-[500px] overflow-y-auto">{esc(findings_content)}</div>
+</details>""")
+
+    if result_files:
+        file_items = "".join(
+            f'<div class="text-sm text-[#a1a1aa] py-1 font-mono text-xs">{esc(f)}</div>'
+            for f in result_files
+        )
+        artifact_sections.append(f"""<details class="group">
+  <summary class="text-xs text-[#71717a] font-medium cursor-pointer hover:text-[#3b82f6] transition-colors select-none list-none flex items-center gap-1">
+    <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    Result Files ({len(result_files)})
+  </summary>
+  <div class="bg-[#09090b] rounded-lg p-4 border border-[#27272a] mt-2 max-h-[300px] overflow-y-auto">{file_items}</div>
+</details>""")
+
+    if artifact_sections:
+        artifacts_html = f"""<div class="mt-6">
+  <div class="text-xs text-[#71717a] font-medium mb-2">Research Artifacts</div>
+  <div class="flex flex-col gap-3">{"".join(artifact_sections)}</div>
+</div>"""
+
     return f"""<div class="mb-4">
   <a class="text-xs text-[#71717a] hover:text-[#3b82f6] cursor-pointer no-underline transition-colors"
      hx-get="/ui/projects" hx-target="#tab-content" hx-push-url="true">&larr; Back to projects</a>
@@ -477,6 +522,7 @@ def render_project_detail(
   </div>
   <h2 class="text-lg font-semibold mb-3">{esc(name)}</h2>
   {desc_html}
+  {artifacts_html}
   <div class="mt-4">
     <div class="text-xs text-[#71717a] font-medium mb-1.5">Tasks ({total})</div>
     {task_summary}
@@ -1133,6 +1179,15 @@ def _format_tokens(n) -> str:
     return str(n)
 
 
+def _cache_badge(m) -> str:
+    cache_read = m.get("cache_read_tokens") or 0
+    input_tok = m.get("input_tokens") or 0
+    if not cache_read or not input_tok:
+        return ""
+    pct = cache_read / input_tok * 100
+    return f'<div class="text-[10px] text-[#52525b]">cache {pct:.0f}%</div>'
+
+
 def render_run_row(row) -> str:
     m = row._mapping
     is_running = m["finished_at"] is None
@@ -1163,7 +1218,7 @@ def render_run_row(row) -> str:
   <td class="px-3 py-2.5 border-b border-[#27272a]">{status_html}</td>
   <td class="px-3 py-2.5 border-b border-[#27272a] text-xs text-[#a1a1aa]">{esc(m['backend'])}<span class="text-[#52525b]"> / </span>{esc(m['model'])}</td>
   <td class="px-3 py-2.5 border-b border-[#27272a] text-xs tabular-nums text-[#a1a1aa]">{_format_duration(m['duration_seconds'])}</td>
-  <td class="px-3 py-2.5 border-b border-[#27272a] text-xs tabular-nums text-[#a1a1aa]">{_format_tokens(m['input_tokens'])}<span class="text-[#52525b]"> / </span>{_format_tokens(m['output_tokens'])}</td>
+  <td class="px-3 py-2.5 border-b border-[#27272a] text-xs tabular-nums text-[#a1a1aa]">{_format_tokens(m['input_tokens'])}<span class="text-[#52525b]"> / </span>{_format_tokens(m['output_tokens'])}{_cache_badge(m)}</td>
   <td class="px-3 py-2.5 border-b border-[#27272a] text-xs tabular-nums">{cost_html}</td>
   <td class="px-3 py-2.5 border-b border-[#27272a] text-xs tabular-nums text-[#a1a1aa]">{m['tasks_completed']}</td>
   <td class="px-3 py-2.5 border-b border-[#27272a] whitespace-nowrap">{time_tag(m['started_at'])}</td>
@@ -1972,7 +2027,41 @@ def ui_project_detail_page(
         .limit(10)
     ).fetchall()
 
-    content = render_project_detail(row, task_counts, journal_count, recent_tasks, recent_journal)
+    # Read research artifacts from filesystem
+    plan_content = None
+    plan_path = REPO_ROOT / f"PLAN-{name}.md"
+    if plan_path.is_file():
+        try:
+            plan_content = plan_path.read_text()
+        except OSError:
+            pass
+
+    findings_content = None
+    for findings_dir in [REPO_ROOT / "docs" / "findings" / name, REPO_ROOT / "docs" / "findings"]:
+        if not findings_dir.is_dir():
+            continue
+        for md in sorted(findings_dir.glob("*.md")):
+            if name in md.stem:
+                try:
+                    findings_content = md.read_text()
+                except OSError:
+                    pass
+                break
+        if findings_content:
+            break
+
+    result_files = None
+    results_dir = REPO_ROOT / "data" / "results" / name
+    if results_dir.is_dir():
+        result_files = sorted(
+            str(p.relative_to(results_dir)) for p in results_dir.rglob("*") if p.is_file()
+        )
+
+    content = render_project_detail(
+        row, task_counts, journal_count, recent_tasks, recent_journal,
+        plan_content=plan_content, findings_content=findings_content,
+        result_files=result_files,
+    )
     if is_htmx(request):
         return HTMLResponse(content + render_sidebar_nav_oob("projects", db))
     stats_html = render_stats_html(db)
