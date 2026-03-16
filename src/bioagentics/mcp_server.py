@@ -5,6 +5,7 @@ import json
 import os
 import subprocess
 from pathlib import Path
+from urllib.parse import quote, urlencode
 
 import requests
 from mcp.server.fastmcp import FastMCP
@@ -74,18 +75,18 @@ def list_tasks(
     Sort: desc (newest first, default) or asc.
     Returns highest priority first within sort order.
     """
-    params = f"limit={limit}&offset={offset}&sort={sort}"
+    qp: dict[str, str | int] = {"limit": limit, "offset": offset, "sort": sort}
     if username:
-        params += f"&username={username}"
+        qp["username"] = username
     if status:
-        params += f"&status={status}"
+        qp["status"] = status
     if project:
-        params += f"&project={project}"
+        qp["project"] = project
     if priority:
-        params += f"&priority={priority}"
+        qp["priority"] = priority
     if search:
-        params += f"&search={search}"
-    return json.dumps(_api("GET", f"/tasks?{params}"), indent=2)
+        qp["search"] = search
+    return json.dumps(_api("GET", f"/tasks?{urlencode(qp)}"), indent=2)
 
 
 @mcp.tool()
@@ -169,14 +170,14 @@ def list_journal(
     Filter by username, project, or search text (matches content).
     Sort: desc (newest first, default) or asc.
     """
-    params = f"limit={limit}&offset={offset}&sort={sort}"
+    qp: dict[str, str | int] = {"limit": limit, "offset": offset, "sort": sort}
     if username:
-        params += f"&username={username}"
+        qp["username"] = username
     if project:
-        params += f"&project={project}"
+        qp["project"] = project
     if search:
-        params += f"&search={search}"
-    return json.dumps(_api("GET", f"/journal?{params}"), indent=2)
+        qp["search"] = search
+    return json.dumps(_api("GET", f"/journal?{urlencode(qp)}"), indent=2)
 
 
 @mcp.tool()
@@ -198,18 +199,18 @@ def list_projects(status: str = "", labels: str = "", limit: int = 100) -> str:
     Filter by status: proposed, planning, development, analysis, validation, documentation, published, cancelled.
     Filter by labels (partial match): drug-candidate, novel-finding, biomarker, genomic, clinical, high-priority, etc.
     """
-    params = f"limit={limit}"
+    qp: dict[str, str | int] = {"limit": limit}
     if status:
-        params += f"&status={status}"
+        qp["status"] = status
     if labels:
-        params += f"&labels={labels}"
-    return json.dumps(_api("GET", f"/projects?{params}"), indent=2)
+        qp["labels"] = labels
+    return json.dumps(_api("GET", f"/projects?{urlencode(qp)}"), indent=2)
 
 
 @mcp.tool()
 def get_project(name: str) -> str:
     """Get a specific research initiative by name."""
-    return json.dumps(_api("GET", f"/projects/{name}"), indent=2)
+    return json.dumps(_api("GET", f"/projects/{quote(name, safe='')}"), indent=2)
 
 
 @mcp.tool()
@@ -253,7 +254,7 @@ def update_project(
     if not payload:
         return json.dumps({"error": "no fields to update"})
     return json.dumps(
-        _api("PATCH", f"/projects/{name}", json=payload), indent=2
+        _api("PATCH", f"/projects/{quote(name, safe='')}", json=payload), indent=2
     )
 
 
@@ -271,7 +272,7 @@ def list_agents(status: str = "") -> str:
     """List agent presence. Filter by status: running, idle."""
     path = "/agents"
     if status:
-        path += f"?status={status}"
+        path += f"?{urlencode({'status': status})}"
     return json.dumps(_api("GET", path), indent=2)
 
 
