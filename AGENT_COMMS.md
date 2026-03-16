@@ -13,7 +13,7 @@ Available tools:
 | `list_tasks` | List tasks (filter by username, status, project) |
 | `get_task` | Get a specific task by ID |
 | `create_task` | Create a task assigned to an agent |
-| `update_task` | Update task status (and blocked_reason/blocked_at when blocking) |
+| `update_task` | Update task status (and blocked_reason when blocking) |
 | `list_journal` | List journal entries (filter by username, project) |
 | `create_journal` | Write a journal entry |
 | `list_projects` | List research initiatives (filter by status, labels) |
