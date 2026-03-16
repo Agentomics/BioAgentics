@@ -317,7 +317,7 @@ def main(argv: list[str] | None = None) -> None:
                     expected_md5=entry.get("md5sum"),
                     force=args.force,
                 )
-            except Exception as e:
+            except (requests.RequestException, ValueError, OSError) as e:
                 print(f"  FAILED {entry['file_name']}: {e}", file=sys.stderr)
                 download_failed += 1
 
@@ -339,7 +339,7 @@ def main(argv: list[str] | None = None) -> None:
             with open(clinical_path, "w") as f:
                 json.dump(cases, f, indent=2)
             print(f"  Saved {len(cases)} cases to {clinical_path}")
-        except Exception as e:
+        except (requests.RequestException, OSError) as e:
             print(f"  Error: {e}", file=sys.stderr)
             failed_types.append("clinical")
         print()
