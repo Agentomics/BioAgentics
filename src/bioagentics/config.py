@@ -40,12 +40,11 @@ HEADERS = {"X-API-Key": API_KEY, "Content-Type": "application/json"}
 API_PREFIX = os.environ.get("API_PREFIX", "")
 _toml_path = REPO_ROOT / "agents.toml"
 if _toml_path.exists():
-    import tomllib as _tomllib_init
     with open(_toml_path, "rb") as _f:
-        _toml_data = _tomllib_init.load(_f)
+        _toml_data = tomllib.load(_f)
     if "api" in _toml_data and "prefix" in _toml_data["api"]:
         API_PREFIX = _toml_data["api"]["prefix"].rstrip("/")
-    del _tomllib_init, _f, _toml_data
+    del _f, _toml_data
 del _toml_path
 
 
