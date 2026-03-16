@@ -1735,10 +1735,14 @@ setInterval(function() {
   if (document.querySelector('#action-modal, #new-task-modal, #new-key-modal')) return;
   var tc = document.getElementById('tab-content');
   if (tc) {
+    // Remember which <details> elements are open so we can restore after swap
+    var openDetails = [];
+    tc.querySelectorAll('details').forEach(function(d, i) { if (d.open) openDetails.push(i); });
     _autoRefreshing = true;
     var url = window.location.pathname + window.location.search;
     htmx.ajax('GET', url, {target: '#tab-content', swap: 'innerHTML'}).then(function() {
       _autoRefreshing = false;
+      openDetails.forEach(function(i) { var d = tc.querySelectorAll('details')[i]; if (d) d.open = true; });
     }).catch(function() {
       _autoRefreshing = false;
     });
