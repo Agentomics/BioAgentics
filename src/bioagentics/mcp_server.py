@@ -61,21 +61,30 @@ def list_tasks(
     username: str = "",
     status: str = "",
     project: str = "",
+    priority: int = 0,
+    search: str = "",
+    sort: str = "desc",
     limit: int = 50,
     offset: int = 0,
 ) -> str:
     """List tasks from the agent coordination API.
 
     Filter by username, status (pending/in_progress/blocked/done/cancelled),
-    and/or project. Returns highest priority first.
+    project, priority (1-5), or search text (matches title/description).
+    Sort: desc (newest first, default) or asc.
+    Returns highest priority first within sort order.
     """
-    params = f"limit={limit}&offset={offset}"
+    params = f"limit={limit}&offset={offset}&sort={sort}"
     if username:
         params += f"&username={username}"
     if status:
         params += f"&status={status}"
     if project:
         params += f"&project={project}"
+    if priority:
+        params += f"&priority={priority}"
+    if search:
+        params += f"&search={search}"
     return json.dumps(_api("GET", f"/tasks?{params}"), indent=2)
 
 
@@ -116,16 +125,26 @@ def create_task(
 def update_task(
     task_id: int,
     status: str = "",
+    title: str = "",
+    description: str = "",
+    priority: int = 0,
     blocked_reason: str = "",
 ) -> str:
-    """Update a task's status.
+    """Update a task's status and/or details.
 
+    Status lifecycle: pending -> in_progress -> done (or in_progress -> blocked -> in_progress -> done).
     When blocking, include blocked_reason. The API auto-sets blocked_at timestamps.
-    Lifecycle: pending -> in_progress -> done (or in_progress -> blocked -> in_progress -> done).
+    Priority: 1 (lowest) to 5 (highest). Pass 0 to leave unchanged.
     """
     payload: dict = {}
     if status:
         payload["status"] = status
+    if title:
+        payload["title"] = title
+    if description:
+        payload["description"] = description
+    if priority:
+        payload["priority"] = priority
     if blocked_reason:
         payload["blocked_reason"] = blocked_reason
     if not payload:
@@ -140,15 +159,23 @@ def update_task(
 def list_journal(
     username: str = "",
     project: str = "",
+    search: str = "",
+    sort: str = "desc",
     limit: int = 50,
     offset: int = 0,
 ) -> str:
-    """List journal entries (shared memory between agents). Returns newest first."""
-    params = f"limit={limit}&offset={offset}"
+    """List journal entries (shared memory between agents).
+
+    Filter by username, project, or search text (matches content).
+    Sort: desc (newest first, default) or asc.
+    """
+    params = f"limit={limit}&offset={offset}&sort={sort}"
     if username:
         params += f"&username={username}"
     if project:
         params += f"&project={project}"
+    if search:
+        params += f"&search={search}"
     return json.dumps(_api("GET", f"/journal?{params}"), indent=2)
 
 
@@ -207,8 +234,10 @@ def create_project(
 
 
 @mcp.tool()
-def update_project(name: str, status: str = "", labels: str = "") -> str:
-    """Update a research initiative's status and/or labels.
+def update_project(
+    name: str, status: str = "", description: str = "", labels: str = "",
+) -> str:
+    """Update a research initiative's status, description, and/or labels.
 
     Labels are comma-separated tags: drug-candidate, novel-finding, biomarker,
     genomic, transcriptomic, clinical, drug-screening, resistance, protein,
@@ -217,6 +246,8 @@ def update_project(name: str, status: str = "", labels: str = "") -> str:
     payload: dict = {}
     if status:
         payload["status"] = status
+    if description:
+        payload["description"] = description
     if labels:
         payload["labels"] = labels
     if not payload:
