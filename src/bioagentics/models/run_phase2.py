@@ -20,6 +20,7 @@ import logging
 import sys
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 from bioagentics.data.gene_ids import load_tcga_expression_matrix
@@ -160,8 +161,7 @@ def main(argv: list[str] | None = None) -> None:
         tcga_expr = pd.concat(tcga_frames)
 
         # Log-transform if needed (DepMap is log2(TPM+1), TCGA TPM needs same)
-        tcga_expr_log = tcga_expr.apply(lambda x: x.clip(lower=0) + 1).apply(lambda x: x.map(
-            lambda v: __import__("math").log2(v)))
+        tcga_expr_log = np.log2(tcga_expr.clip(lower=0) + 1)
 
         dep_matrix = predict_tcga_dependencies(models, feat.feature_genes, tcga_expr_log)
 
