@@ -379,6 +379,117 @@ def render_journal_detail(row) -> str:
 </div>"""
 
 
+def render_project_detail(
+    row, task_counts: dict, journal_count: int, recent_tasks, recent_journal,
+) -> str:
+    """Full detail view for a single project."""
+    m = row._mapping
+    name = m["name"]
+    tc = task_counts
+    pend = tc.get("pending", 0)
+    act = tc.get("in_progress", 0)
+    blk = tc.get("blocked", 0)
+    done = tc.get("done", 0)
+    cancelled = tc.get("cancelled", 0)
+    total = pend + act + blk + done + cancelled
+
+    desc_html = ""
+    if m.get("description"):
+        desc_html = f"""<div class="mt-4">
+    <div class="text-xs text-[#71717a] font-medium mb-1.5">Description</div>
+    <div class="text-sm whitespace-pre-wrap break-words text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a]">{esc(m['description'])}</div>
+  </div>"""
+
+    # Task summary bar
+    task_summary = '<span class="text-[#a1a1aa] text-sm">No tasks yet</span>'
+    if total > 0:
+        parts = []
+        for count, label, bg, fg in [
+            (pend, "pending", "bg-[#27272a]", "text-[#a1a1aa]"),
+            (act, "in progress", "bg-[#052e16]", "text-[#4ade80]"),
+            (blk, "blocked", "bg-[#3d2a1a]", "text-[#fbbf24]"),
+            (done, "done", "bg-[#172554]", "text-[#3b82f6]"),
+            (cancelled, "cancelled", "bg-[#27272a]", "text-[#71717a]"),
+        ]:
+            if count:
+                parts.append(f'<span class="{bg} {fg} px-2 py-0.5 rounded-full text-xs font-medium">{count} {label}</span>')
+        task_summary = f'<div class="flex gap-2 flex-wrap">{"".join(parts)}</div>'
+
+    # Recent tasks list
+    tasks_html = ""
+    if recent_tasks:
+        task_rows = ""
+        for t in recent_tasks:
+            tm = t._mapping
+            task_rows += f"""<a class="flex items-center gap-2 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
+   hx-get="/ui/tasks/{tm['id']}" hx-target="#tab-content" hx-push-url="true">
+  <span class="text-[#71717a] text-xs font-mono shrink-0">#{tm['id']}</span>
+  {priority_label(tm['priority'])}
+  {status_badge(tm['status'])}
+  <span class="text-sm truncate flex-1 min-w-0">{esc(tm['title'])}</span>
+  <span class="text-[#a78bfa] text-xs shrink-0">{esc(agent_display_name(tm['username']))}</span>
+</a>"""
+        tq = build_qs(project=name)
+        tasks_html = f"""<div class="mt-6">
+  <div class="flex items-center justify-between mb-2">
+    <div class="text-xs text-[#71717a] font-medium">Recent Tasks</div>
+    <a class="text-xs text-[#3b82f6] no-underline hover:underline cursor-pointer"
+       hx-get="/ui/tasks?{tq}" hx-target="#tab-content" hx-push-url="true">View all &rarr;</a>
+  </div>
+  <div>{task_rows}</div>
+</div>"""
+
+    # Recent journal entries
+    journal_html = ""
+    if recent_journal:
+        journal_rows = ""
+        for j in recent_journal:
+            jm = j._mapping
+            content = str(jm["content"] or "")
+            first_line = content.split("\n")[0][:120]
+            if len(first_line) < len(content):
+                first_line += "..."
+            journal_rows += f"""<a class="flex items-center gap-2 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
+   hx-get="/ui/journal/{jm['id']}" hx-target="#tab-content" hx-push-url="true">
+  <span class="text-[#71717a] text-xs font-mono shrink-0">#{jm['id']}</span>
+  <span class="text-[#a78bfa] text-xs font-semibold shrink-0">{esc(agent_display_name(jm['username']))}</span>
+  <span class="text-sm text-[#a1a1aa] truncate flex-1 min-w-0">{esc(first_line)}</span>
+  <span class="text-xs text-[#a1a1aa] shrink-0">{time_ago(jm['created_at'])}</span>
+</a>"""
+        jq = build_qs(project=name)
+        journal_html = f"""<div class="mt-6">
+  <div class="flex items-center justify-between mb-2">
+    <div class="text-xs text-[#71717a] font-medium">Recent Journal Entries</div>
+    <a class="text-xs text-[#3b82f6] no-underline hover:underline cursor-pointer"
+       hx-get="/ui/journal?{jq}" hx-target="#tab-content" hx-push-url="true">View all &rarr;</a>
+  </div>
+  <div>{journal_rows}</div>
+</div>"""
+
+    return f"""<div class="mb-4">
+  <a class="text-xs text-[#71717a] hover:text-[#3b82f6] cursor-pointer no-underline transition-colors"
+     hx-get="/ui/projects" hx-target="#tab-content" hx-push-url="true">&larr; Back to projects</a>
+</div>
+<div class="bg-[#0c0c0e] border border-[#27272a] rounded-lg p-6 max-w-3xl">
+  <div class="flex items-center gap-2 mb-3 flex-wrap">
+    {project_status_badge(m['status'])}
+    {labels_tags(m.get('labels', ''))}
+  </div>
+  <h2 class="text-lg font-semibold mb-3">{esc(name)}</h2>
+  {desc_html}
+  <div class="mt-4">
+    <div class="text-xs text-[#71717a] font-medium mb-1.5">Tasks ({total})</div>
+    {task_summary}
+  </div>
+  {tasks_html}
+  {journal_html}
+  <div class="mt-6 pt-4 border-t border-[#27272a] flex items-center gap-4 text-xs text-[#71717a]">
+    <span>Created {time_tag(m['created_at'])}</span>
+    <span>Updated {time_tag(m['updated_at'])}</span>
+  </div>
+</div>"""
+
+
 def render_project_row(p, task_counts: dict, journal_count: int) -> str:
     m = p._mapping
     tc = task_counts
@@ -432,8 +543,8 @@ def render_project_row(p, task_counts: dict, journal_count: int) -> str:
 
     return f"""<tr class="hover:bg-[#18181b]">
   <td class="px-2.5 py-2 border-b border-[#27272a] align-middle">
-    <a class="font-semibold text-[#3b82f6] text-sm no-underline hover:underline"
-       href="/ui/projects?name={quote(name)}" >{esc(name)}</a>
+    <a class="font-semibold text-[#3b82f6] text-sm no-underline hover:underline cursor-pointer"
+       hx-get="/ui/projects/{quote(name)}" hx-target="#tab-content" hx-push-url="true">{esc(name)}</a>
     {desc_html}
   </td>
   <td class="px-2.5 py-2 border-b border-[#27272a] align-middle">{labels_tags(m.get('labels', ''))}</td>
@@ -1810,6 +1921,58 @@ def ui_projects_page(
     db: Session = Depends(get_db),
 ):
     content = render_projects_tab(db, search, status, labels, offset)
+    if is_htmx(request):
+        return HTMLResponse(content + render_sidebar_nav_oob("projects", db))
+    stats_html = render_stats_html(db)
+    presence_html = render_presence_html(db)
+    return HTMLResponse(render_shell("projects", content, stats_html, presence_html, _human_task_count(db)))
+
+
+@router.get("/ui/projects/{name:path}", response_class=HTMLResponse)
+def ui_project_detail_page(
+    request: Request,
+    name: str,
+    db: Session = Depends(get_db),
+):
+    row = db.execute(select(projects_table).where(projects_table.c.name == name)).first()
+    if not row:
+        not_found = f'<div class="mb-4"><a class="text-xs text-[#71717a] hover:text-[#3b82f6] cursor-pointer no-underline transition-colors" hx-get="/ui/projects" hx-target="#tab-content" hx-push-url="true">&larr; Back to projects</a></div><div class="flex flex-col items-center justify-center py-16 text-[#a1a1aa]">{ICONS["inbox"]}<div class="mt-3 text-sm font-medium">Project &ldquo;{esc(name)}&rdquo; not found</div></div>'
+        if is_htmx(request):
+            return HTMLResponse(not_found + render_sidebar_nav_oob("projects", db))
+        stats_html = render_stats_html(db)
+        presence_html = render_presence_html(db)
+        return HTMLResponse(render_shell("projects", not_found, stats_html, presence_html, _human_task_count(db)))
+
+    # Gather task counts
+    tc_rows = db.execute(
+        select(tasks.c.status, func.count())
+        .where(tasks.c.project == name)
+        .group_by(tasks.c.status)
+    ).all()
+    task_counts = {st: cnt for st, cnt in tc_rows}
+
+    # Journal count
+    journal_count = db.execute(
+        select(func.count()).select_from(journal).where(journal.c.project == name)
+    ).scalar() or 0
+
+    # Recent tasks (10 most recent)
+    recent_tasks = db.execute(
+        select(tasks)
+        .where(tasks.c.project == name)
+        .order_by(tasks.c.updated_at.desc())
+        .limit(10)
+    ).fetchall()
+
+    # Recent journal entries (10 most recent)
+    recent_journal = db.execute(
+        select(journal)
+        .where(journal.c.project == name)
+        .order_by(journal.c.created_at.desc())
+        .limit(10)
+    ).fetchall()
+
+    content = render_project_detail(row, task_counts, journal_count, recent_tasks, recent_journal)
     if is_htmx(request):
         return HTMLResponse(content + render_sidebar_nav_oob("projects", db))
     stats_html = render_stats_html(db)
