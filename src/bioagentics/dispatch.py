@@ -126,14 +126,14 @@ def get_pending_projects(username: str) -> list[str]:
     return sorted(found)
 
 
-def project_locked(project: str) -> bool:
-    """Check if any agent is already running on this project."""
+def project_locked_by(project: str) -> str | None:
+    """Return the role running on this project, or None if unlocked."""
     resp = api("GET", "/agents?status=running")
     if resp and resp.ok:
         for agent in resp.json().get("items", []):
             if agent.get("project") == project:
-                return True
-    return False
+                return agent["username"]
+    return None
 
 
 def check_stale_blocked_tasks():
@@ -536,10 +536,11 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
     # Phase 3: Execute work queue in parallel (respecting project locks)
     print(f"  dispatching {len(work_queue)} agent/project pair(s)...")
 
-    # Track projects claimed this cycle to prevent TOCTOU races — the
-    # API-level project_locked() check can't see agents that were submitted
-    # to the thread pool but haven't called set_presence() yet.
-    claimed_projects: set[str] = set()
+    # Track (role, project) pairs claimed this cycle to prevent the same
+    # agent from running twice on the same project.  Different agents CAN
+    # work on the same project concurrently — they operate on separate tasks
+    # and coordinate through the API.
+    claimed: set[tuple[str, str]] = set()
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=_dispatch.max_workers) as executor:
         futures: dict[concurrent.futures.Future, str] = {}
@@ -548,14 +549,21 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
             if _is_stopping():
                 break
             label = f"{config.role}" + (f"/{proj}" if proj else "")
-
-            if proj and (proj in claimed_projects or project_locked(proj)):
-                print(f"  SKIP: {label} (project locked)")
-                journal(f"skipped {label} — project locked by another agent", proj)
-                continue
+            role = config.role.lower()
 
             if proj:
-                claimed_projects.add(proj)
+                # Same role already claimed this project this cycle
+                if (role, proj) in claimed:
+                    print(f"  SKIP: {label} (already dispatched)")
+                    continue
+                # Same role already running on this project from a prior cycle
+                locked_by = project_locked_by(proj)
+                if locked_by == role:
+                    print(f"  SKIP: {label} (already running)")
+                    journal(f"skipped {label} — already running on this project", proj)
+                    continue
+                claimed.add((role, proj))
+
             future = executor.submit(run_agent, config, proj)
             futures[future] = label
 
