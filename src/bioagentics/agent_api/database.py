@@ -117,6 +117,8 @@ runs = Table(
     Column("duration_seconds", Integer, nullable=True),
     Column("input_tokens", Integer, nullable=True),
     Column("output_tokens", Integer, nullable=True),
+    Column("cache_read_tokens", Integer, nullable=True),
+    Column("cache_creation_tokens", Integer, nullable=True),
     Column("cost_usd", Float, nullable=True),
 )
 
@@ -154,6 +156,16 @@ def init_db():
             if col_names and (len(cols) < 2 or cols[1][1] != "project" or cols[1][5] == 0):
                 # Old schema detected — recreate table (presence data is ephemeral)
                 conn.execute(text("DROP TABLE IF EXISTS agents"))
+                conn.commit()
+        except Exception:
+            pass
+        # Migrate runs table: add cache token columns if missing
+        try:
+            cols = conn.execute(text("PRAGMA table_info(runs)")).fetchall()
+            col_names = [c[1] for c in cols]
+            if "cache_read_tokens" not in col_names:
+                conn.execute(text("ALTER TABLE runs ADD COLUMN cache_read_tokens INTEGER"))
+                conn.execute(text("ALTER TABLE runs ADD COLUMN cache_creation_tokens INTEGER"))
                 conn.commit()
         except Exception:
             pass

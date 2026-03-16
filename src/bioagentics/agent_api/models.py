@@ -111,6 +111,8 @@ class RunCreate(BaseModel):
     duration_seconds: int | None = Field(default=None, ge=0)
     input_tokens: int | None = Field(default=None, ge=0)
     output_tokens: int | None = Field(default=None, ge=0)
+    cache_read_tokens: int | None = Field(default=None, ge=0)
+    cache_creation_tokens: int | None = Field(default=None, ge=0)
     cost_usd: float | None = Field(default=None, ge=0)
 
 
@@ -121,6 +123,8 @@ class RunUpdate(BaseModel):
     duration_seconds: int | None = Field(default=None, ge=0)
     input_tokens: int | None = Field(default=None, ge=0)
     output_tokens: int | None = Field(default=None, ge=0)
+    cache_read_tokens: int | None = Field(default=None, ge=0)
+    cache_creation_tokens: int | None = Field(default=None, ge=0)
     cost_usd: float | None = Field(default=None, ge=0)
 
 
@@ -137,6 +141,8 @@ class RunEntry(BaseModel):
     duration_seconds: int | None
     input_tokens: int | None
     output_tokens: int | None
+    cache_read_tokens: int | None
+    cache_creation_tokens: int | None
     cost_usd: float | None
 
 

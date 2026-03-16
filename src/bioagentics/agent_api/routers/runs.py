@@ -39,6 +39,10 @@ def create_run(body: RunCreate, db: Session = Depends(get_db)):
         values["input_tokens"] = body.input_tokens
     if body.output_tokens is not None:
         values["output_tokens"] = body.output_tokens
+    if body.cache_read_tokens is not None:
+        values["cache_read_tokens"] = body.cache_read_tokens
+    if body.cache_creation_tokens is not None:
+        values["cache_creation_tokens"] = body.cache_creation_tokens
     if body.cost_usd is not None:
         values["cost_usd"] = body.cost_usd
 
