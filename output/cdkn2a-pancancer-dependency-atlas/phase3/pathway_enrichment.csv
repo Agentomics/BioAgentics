@@ -1,0 +1,5 @@
+pathway,observed,expected,fold_enrichment,fisher_p,n_hits,n_pathway_in_universe,genes_in_overlap
+Cell_cycle,3,0.05,55.86,1.9864373813625936e-05,55,18,CCND1;CCND3;CDK6
+RB_E2F_signaling,1,0.04,25.78,0.0381103642156711,55,13,RBL2
+MDM2_p53_axis,0,0.03,0.0,1.0,55,10,
+CDK_signaling,2,0.04,44.69,0.0008950832420242827,55,15,CCND1;CDK6

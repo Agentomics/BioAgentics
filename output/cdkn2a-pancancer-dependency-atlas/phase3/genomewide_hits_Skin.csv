@@ -1,0 +1,2 @@
+cancer_type,gene,cohens_d,p_value,n_del,n_intact,median_dep_del,median_dep_intact,fdr
+Skin,EIF4A1,-1.7722,1.5028183843875993e-06,29,20,-2.0134,-1.2196,0.02673063060310223

@@ -1,0 +1,48 @@
+============================================================
+CDKN2A Pan-Cancer Dependency Atlas - Phase 3: Genome-Wide Screen
+============================================================
+
+Analysis: CDKN2A-del/RB1-intact vs CDKN2A-intact (primary stratum)
+Total tests: 250530
+Gained dependencies (FDR<0.05, |d|>0.3): 57
+Lost dependencies (FDR<0.05, |d|>0.3): 69
+
+TOP GAINED DEPENDENCIES IN CDKN2A-DELETED
+--------------------------------------------------
+  Skin / EIF4A1: d=-1.772 FDR=2.673e-02
+  Lung / ARF4: d=-1.126 FDR=3.401e-02
+  Pan-cancer (pooled) / WDR77: d=-0.581 FDR=3.232e-08
+  Pan-cancer (pooled) / KIF2C: d=-0.498 FDR=2.084e-06
+  Pan-cancer (pooled) / PRMT5: d=-0.486 FDR=2.084e-06 [known SL]
+  Pan-cancer (pooled) / WWTR1: d=-0.472 FDR=8.057e-07
+  Pan-cancer (pooled) / CDK6: d=-0.453 FDR=3.637e-11 [known SL]
+  Pan-cancer (pooled) / KIF18B: d=-0.426 FDR=5.952e-04
+  Pan-cancer (pooled) / C3orf38: d=-0.422 FDR=3.573e-04
+  Pan-cancer (pooled) / TLN1: d=-0.421 FDR=1.451e-05
+  Pan-cancer (pooled) / ACTR3: d=-0.404 FDR=1.620e-04
+  Pan-cancer (pooled) / ZFP36L1: d=-0.400 FDR=4.759e-04
+  Pan-cancer (pooled) / CRK: d=-0.383 FDR=2.977e-03
+  Pan-cancer (pooled) / MSI2: d=-0.378 FDR=1.451e-05
+  Pan-cancer (pooled) / CCND1: d=-0.374 FDR=1.552e-05 [pathway]
+  Pan-cancer (pooled) / AK6: d=-0.369 FDR=5.036e-04
+  Pan-cancer (pooled) / NFE2L2: d=-0.366 FDR=1.286e-02
+  Pan-cancer (pooled) / PTK2: d=-0.363 FDR=1.283e-04
+  Pan-cancer (pooled) / PLEKHB2: d=-0.363 FDR=5.656e-03
+  Pan-cancer (pooled) / PFDN1: d=-0.359 FDR=1.650e-04
+  Pan-cancer (pooled) / RPS25: d=-0.355 FDR=7.551e-04
+  Pan-cancer (pooled) / VBP1: d=-0.353 FDR=5.036e-04
+  Pan-cancer (pooled) / CCND3: d=-0.351 FDR=1.742e-07 [pathway]
+  Pan-cancer (pooled) / TRIO: d=-0.346 FDR=5.014e-03
+  Pan-cancer (pooled) / ARVCF: d=-0.345 FDR=3.444e-03
+  Pan-cancer (pooled) / RBBP7: d=-0.345 FDR=6.342e-04
+  Pan-cancer (pooled) / VCL: d=-0.343 FDR=3.102e-03
+  Pan-cancer (pooled) / RAC1: d=-0.339 FDR=2.062e-03
+  Pan-cancer (pooled) / JUN: d=-0.338 FDR=3.199e-03
+  Pan-cancer (pooled) / C19orf53: d=-0.338 FDR=1.360e-03
+
+PATHWAY ENRICHMENT
+--------------------------------------------------
+  Cell_cycle: obs=3, fold=55.86x, p=1.986e-05
+  RB_E2F_signaling: obs=1, fold=25.78x, p=3.811e-02
+  MDM2_p53_axis: obs=0, fold=0.0x, p=1.000e+00
+  CDK_signaling: obs=2, fold=44.69x, p=8.951e-04

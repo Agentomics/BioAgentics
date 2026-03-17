@@ -1,0 +1,2 @@
+pathway,observed,expected,fold_enrichment,fisher_p,n_hits,n_pathway_in_universe,genes_in_overlap
+CDKN2A_known_SL,2,0.02,95.77,0.00018178092023463368,55,7,CDK6;PRMT5

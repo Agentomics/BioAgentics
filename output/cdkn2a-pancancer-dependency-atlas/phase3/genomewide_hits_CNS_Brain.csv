@@ -1,0 +1,2 @@
+cancer_type,gene,cohens_d,p_value,n_del,n_intact,median_dep_del,median_dep_intact,fdr
+CNS/Brain,CDKN2B,2.0205,2.655399669546657e-08,41,21,0.2121,-0.0918,0.000476139714746411

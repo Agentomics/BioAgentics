@@ -1,0 +1,2 @@
+cancer_type,gene,cohens_d,p_value,n_del,n_intact,median_dep_del,median_dep_intact,fdr
+Myeloid,CDKN2B,2.4206,1.1260484206572393e-06,17,18,0.2576,-0.0234,0.020029023258230316
