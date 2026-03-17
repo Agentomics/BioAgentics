@@ -15,7 +15,7 @@ The molecular mimicry hypothesis — that GAS surface proteins share structural 
 - **Literature:** Published autoantibody targets in PANDAS/PANS and rheumatic fever
 
 ## Methodology
-1. **Proteome Assembly:** Download complete GAS proteomes for 5+ serotypes from UniProt. Curate human target set: basal ganglia-enriched proteins (caudate, putamen, globus pallidus) from Human Protein Atlas + known PANDAS autoantibody targets.
+1. **Proteome Assembly:** Download complete GAS proteomes for 6+ serotypes from UniProt (M1, M3, M5, M12, M18, M49). Include emm49.8 — newly dominant in England 2025-26, may carry distinct mimicry epitopes. Curate human target set: basal ganglia-enriched proteins (caudate, putamen, globus pallidus) from Human Protein Atlas + known PANDAS autoantibody targets.
 2. **Sequence Mimicry Screen:** Run all-vs-all BLAST/DIAMOND of GAS proteins against human neuronal proteome. Filter hits by E-value, alignment length (≥8 amino acids for epitope relevance), and identity (≥40% over aligned region).
 3. **Epitope Prediction:** For top mimicry hits, predict B-cell epitopes (BepiPred-3.0) and MHC-II binding (NetMHCIIpan) on both GAS and human sequences. Identify shared/cross-reactive epitope regions.
 4. **Structural Mimicry Analysis:** For GAS-human pairs with available structures (PDB/AlphaFold), perform structural alignment (TM-align/FATCAT). Identify surface-exposed mimicry regions relevant to antibody binding.
