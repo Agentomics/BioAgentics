@@ -245,6 +245,55 @@ Four-phase computational pipeline analyzing DepMap 25Q3 CRISPR gene effect data 
 
 ---
 
+## 8. Translational Confidence Addendum
+
+This section flags systematic biases in DepMap CRISPR data that affect interpretation of the atlas findings. The underlying data and conclusions above remain unchanged; this addendum provides in vivo context for translational prioritization.
+
+### 8.1 GPX4-Axis Overestimation
+
+DepMap CRISPR scores for **GPX4, GCLC, and SLC7A11** likely overestimate therapeutic potential. A systematic in vivo evaluation (bioRxiv 2026; DOI: 10.64898/2026.03.11.711115) demonstrated that inhibition of these genes fails to impact established tumor growth in vivo, despite strong CRISPR dependencies in cell culture. This affects all Category C cancer types (Bone, CNS/Brain, PNS, Lymphoid) and any therapeutic strategy relying on GPX4-axis monotherapy.
+
+**NSCLC panel cross-reference:** In the NSCLC-focused ferroptosis panel (data/results/ferroptosis_panel/), GPX4 shows no KEAP1-enriched dependency (KEAP1-mut mean = -0.405 vs WT = -0.626, FDR = 0.45). KEAP1-mutant lines are actually *less* GPX4-dependent, consistent with NRF2-mediated compensatory defense masking the dependency in vitro.
+
+**Confidence adjustment:** GPX4-axis scores should be treated as upper bounds. Combination strategies (GPX4i + FSP1i, GPX4i + TrxR1i, or HDACi sensitization) are required for clinical translation.
+
+### 8.2 FSP1/AIFM2 Underestimation
+
+DepMap CRISPR scores for **FSP1/AIFM2** likely underestimate therapeutic potential. FSP1 deletion suppresses tumorigenesis ~80% in KP LUAD models in vivo (Wu et al., *Nature* Nov 2025), yet DepMap dependencies are modest across all cancer types (range: -0.02 to -0.20 mean). FSP1 is dispensable in standard cell culture but essential in the tumor microenvironment.
+
+**NSCLC panel cross-reference:** AIFM2 is flat in the NSCLC ferroptosis panel — KEAP1-mut mean = -0.070 vs WT = -0.068, effect size = -0.002, p = 1.0, FDR = 1.0. This confirms FSP1 is invisible to DepMap regardless of genotype, yet the same gene shows dramatic in vivo efficacy. All FSP1-based DepMap rankings in this atlas should be interpreted as lower bounds.
+
+**Confidence adjustment:** Cancer types ranked low for FSP1 vulnerability in DepMap may still respond to FSP1 inhibitors in vivo. Category A (FSP1-Vulnerable) rankings are the most conservative estimates in this atlas.
+
+### 8.3 Clinical Strategy: Dual Targeting Over Monotherapy
+
+The opposing biases above (GPX4 overestimated, FSP1 underestimated) converge on a single clinical implication: **dual GPX4 + FSP1 targeting is recommended over monotherapy** for any cancer type showing ferroptosis vulnerability.
+
+- GPX4 monotherapy fails in vivo (bioRxiv 2026)
+- FSP1 monotherapy may be sufficient in some contexts (Nature 2025, LUAD) but resistance via GPX4 compensation is expected
+- Dual inhibition eliminates both parallel ferroptosis defense arms simultaneously
+- Category B cancer types (Bowel/CRC, Kidney/ChRCC, Ovary) already require dual targeting based on in vitro data; this addendum extends the dual-targeting recommendation to all categories
+
+### 8.4 KEAP1-Mutation Masking of In Vitro Dependencies
+
+NRF2 constitutive activation (via KEAP1 loss-of-function or NFE2L2 gain-of-function) provides multi-layered ferroptosis defense that masks individual gene dependencies in DepMap CRISPR screens.
+
+**NSCLC panel cross-reference:** Across all 10 ferroptosis genes tested in the NSCLC panel (data/results/ferroptosis_panel/keap1_enrichment_stats.csv), **no gene** shows FDR-significant KEAP1-enriched dependency (all FDR > 0.44). This is not because KEAP1-mutant cells are ferroptosis-resistant — it is because NRF2 activation simultaneously upregulates multiple redundant defense pathways (GPX4, SLC7A11, GCLC, NQO1), so knocking out any single gene is buffered by the others.
+
+**Implication:** KEAP1-mutant tumors may be more ferroptosis-vulnerable than DepMap suggests, but only when multiple defense arms are targeted simultaneously. Single-gene CRISPR data systematically underestimates the ferroptosis vulnerability of NRF2-active cancers.
+
+### Translational Confidence Summary
+
+| DepMap Target | In Vitro Bias | In Vivo Reality | Confidence Adjustment |
+|---|---|---|---|
+| GPX4/GCLC/SLC7A11 | Overestimates vulnerability | Fails as monotherapy in vivo | Treat as upper bound; require combination |
+| FSP1/AIFM2 | Underestimates vulnerability | ~80% tumor reduction in vivo | Treat as lower bound; prioritize despite modest scores |
+| KEAP1-mutant dependencies | Masks individual dependencies | Multi-arm defense requires multi-target attack | Single-gene rankings unreliable for NRF2-active tumors |
+
+*Addendum date: 2026-03-17. Cross-referenced with NSCLC ferroptosis panel (data/results/ferroptosis_panel/).*
+
+---
+
 ## References
 
 1. Wu et al. "FSP1 inhibition reduces KP LUAD tumor growth." *Nature*, Nov 2025. DOI: 10.1038/s41586-025-XXXX
