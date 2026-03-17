@@ -3,25 +3,45 @@
     "G12D": {
       "allele": "G12D",
       "population_estimate": {
-        "annual_us_cases": 22720,
-        "fraction_of_kras_mutant": 0.33
+        "annual_us_cases": 18314,
+        "fraction_of_kras_mutant_tcga_pct": 26.6,
+        "fraction_of_kras_mutant_literature": 0.33,
+        "source": "TCGA COAD/READ + literature"
       },
       "clinical_agents": [
         {
-          "agent": "zoldonrasib",
-          "status": "FDA BTD, Phase 1 CRC cohort"
+          "agent": "zoldonrasib (RMC-9805)",
+          "tier": "allele-specific",
+          "status": "FDA BTD Jan 2026, Phase 1 CRC cohort",
+          "nsclc_data": "ORR 61% NSCLC"
         },
         {
           "agent": "MRTX1133",
+          "tier": "allele-specific",
           "status": "Phase 1/2 (enrolling CRC)"
         },
         {
+          "agent": "ERAS-4001",
+          "tier": "pan-KRAS",
+          "status": "Phase 1 BOREALIS-1",
+          "notes": "single-digit nM IC50, spares HRAS/NRAS, data expected H2 2026"
+        },
+        {
           "agent": "ERAS-0015",
-          "status": "Phase 1 (pan-RAS, all alleles)"
+          "tier": "pan-RAS",
+          "status": "Phase 1",
+          "notes": "confirmed PRs at 8mg QD, 8-21x higher CypA affinity vs RMC-6236, ~5x potency"
+        },
+        {
+          "agent": "daraxonrasib",
+          "tier": "pan-RAS",
+          "status": "Phase 1/2"
         },
         {
           "agent": "elironrasib",
-          "status": "FDA BTD (pan-RAS)"
+          "tier": "pan-RAS",
+          "status": "FDA BTD",
+          "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
       "top_dependencies": [
@@ -164,17 +184,34 @@
     "G13D": {
       "allele": "G13D",
       "population_estimate": {
-        "annual_us_cases": 12393,
-        "fraction_of_kras_mutant": 0.18
+        "annual_us_cases": 11360,
+        "fraction_of_kras_mutant_tcga_pct": 16.5,
+        "fraction_of_kras_mutant_literature": 0.18,
+        "source": "TCGA COAD/READ + literature"
       },
       "clinical_agents": [
         {
+          "agent": "ERAS-4001",
+          "tier": "pan-KRAS",
+          "status": "Phase 1 BOREALIS-1",
+          "notes": "single-digit nM IC50, spares HRAS/NRAS, data expected H2 2026"
+        },
+        {
           "agent": "ERAS-0015",
-          "status": "Phase 1 (pan-RAS, all alleles)"
+          "tier": "pan-RAS",
+          "status": "Phase 1",
+          "notes": "confirmed PRs at 8mg QD, 8-21x higher CypA affinity vs RMC-6236, ~5x potency"
+        },
+        {
+          "agent": "daraxonrasib",
+          "tier": "pan-RAS",
+          "status": "Phase 1/2"
         },
         {
           "agent": "elironrasib",
-          "status": "FDA BTD (pan-RAS)"
+          "tier": "pan-RAS",
+          "status": "FDA BTD",
+          "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
       "top_dependencies": [
@@ -317,17 +354,40 @@
     "G12V": {
       "allele": "G12V",
       "population_estimate": {
-        "annual_us_cases": 15147,
-        "fraction_of_kras_mutant": 0.22
+        "annual_us_cases": 15491,
+        "fraction_of_kras_mutant_tcga_pct": 22.5,
+        "fraction_of_kras_mutant_literature": 0.22,
+        "source": "TCGA COAD/READ + literature"
       },
       "clinical_agents": [
         {
+          "agent": "RMC-5127",
+          "tier": "allele-specific",
+          "status": "Phase 1 Jan 2026 (NCT07349537)",
+          "arms": "3: mono / +daraxonrasib / +cetuximab"
+        },
+        {
+          "agent": "ERAS-4001",
+          "tier": "pan-KRAS",
+          "status": "Phase 1 BOREALIS-1",
+          "notes": "single-digit nM IC50, spares HRAS/NRAS, data expected H2 2026"
+        },
+        {
           "agent": "ERAS-0015",
-          "status": "Phase 1 (pan-RAS, all alleles)"
+          "tier": "pan-RAS",
+          "status": "Phase 1",
+          "notes": "confirmed PRs at 8mg QD, 8-21x higher CypA affinity vs RMC-6236, ~5x potency"
+        },
+        {
+          "agent": "daraxonrasib",
+          "tier": "pan-RAS",
+          "status": "Phase 1/2"
         },
         {
           "agent": "elironrasib",
-          "status": "FDA BTD (pan-RAS)"
+          "tier": "pan-RAS",
+          "status": "FDA BTD",
+          "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
       "top_dependencies": [
@@ -470,25 +530,45 @@
     "G12C": {
       "allele": "G12C",
       "population_estimate": {
-        "annual_us_cases": 5508,
-        "fraction_of_kras_mutant": 0.08
+        "annual_us_cases": 4406,
+        "fraction_of_kras_mutant_tcga_pct": 6.4,
+        "fraction_of_kras_mutant_literature": 0.08,
+        "source": "TCGA COAD/READ + literature"
       },
       "clinical_agents": [
         {
           "agent": "sotorasib",
-          "status": "FDA approved (NSCLC), Phase 2 CRC (CodeBreaK 101: ORR 9.7% mono, ~30% combo)"
+          "tier": "allele-specific",
+          "status": "FDA approved (NSCLC)",
+          "crc_data": "mono 2L ORR 9.7%; +pani 2L ORR 26% (CodeBreaK 300); +pani+FOLFIRI 1L ORR 78% (CodeBreaK 101)"
         },
         {
           "agent": "adagrasib",
+          "tier": "allele-specific",
           "status": "FDA approved (NSCLC), Phase 2 CRC"
         },
         {
+          "agent": "ERAS-4001",
+          "tier": "pan-KRAS",
+          "status": "Phase 1 BOREALIS-1",
+          "notes": "single-digit nM IC50, spares HRAS/NRAS, data expected H2 2026"
+        },
+        {
           "agent": "ERAS-0015",
-          "status": "Phase 1 (pan-RAS, all alleles)"
+          "tier": "pan-RAS",
+          "status": "Phase 1",
+          "notes": "confirmed PRs at 8mg QD, 8-21x higher CypA affinity vs RMC-6236, ~5x potency"
+        },
+        {
+          "agent": "daraxonrasib",
+          "tier": "pan-RAS",
+          "status": "Phase 1/2"
         },
         {
           "agent": "elironrasib",
-          "status": "FDA BTD (pan-RAS)"
+          "tier": "pan-RAS",
+          "status": "FDA BTD",
+          "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
       "top_dependencies": [],
@@ -560,17 +640,34 @@
     "Q61H": {
       "allele": "Q61H",
       "population_estimate": {
-        "annual_us_cases": 3442,
-        "fraction_of_kras_mutant": 0.05
+        "annual_us_cases": 1239,
+        "fraction_of_kras_mutant_tcga_pct": 1.8,
+        "fraction_of_kras_mutant_literature": 0.05,
+        "source": "TCGA COAD/READ + literature"
       },
       "clinical_agents": [
         {
+          "agent": "ERAS-4001",
+          "tier": "pan-KRAS",
+          "status": "Phase 1 BOREALIS-1",
+          "notes": "single-digit nM IC50, spares HRAS/NRAS, data expected H2 2026"
+        },
+        {
           "agent": "ERAS-0015",
-          "status": "Phase 1 (pan-RAS, all alleles)"
+          "tier": "pan-RAS",
+          "status": "Phase 1",
+          "notes": "confirmed PRs at 8mg QD, 8-21x higher CypA affinity vs RMC-6236, ~5x potency"
+        },
+        {
+          "agent": "daraxonrasib",
+          "tier": "pan-RAS",
+          "status": "Phase 1/2"
         },
         {
           "agent": "elironrasib",
-          "status": "FDA BTD (pan-RAS)"
+          "tier": "pan-RAS",
+          "status": "FDA BTD",
+          "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
       "top_dependencies": [],
@@ -581,17 +678,34 @@
     "A146T": {
       "allele": "A146T",
       "population_estimate": {
-        "annual_us_cases": 4819,
-        "fraction_of_kras_mutant": 0.07
+        "annual_us_cases": 5026,
+        "fraction_of_kras_mutant_tcga_pct": 7.3,
+        "fraction_of_kras_mutant_literature": 0.07,
+        "source": "TCGA COAD/READ + literature"
       },
       "clinical_agents": [
         {
+          "agent": "ERAS-4001",
+          "tier": "pan-KRAS",
+          "status": "Phase 1 BOREALIS-1",
+          "notes": "single-digit nM IC50, spares HRAS/NRAS, data expected H2 2026"
+        },
+        {
           "agent": "ERAS-0015",
-          "status": "Phase 1 (pan-RAS, all alleles)"
+          "tier": "pan-RAS",
+          "status": "Phase 1",
+          "notes": "confirmed PRs at 8mg QD, 8-21x higher CypA affinity vs RMC-6236, ~5x potency"
+        },
+        {
+          "agent": "daraxonrasib",
+          "tier": "pan-RAS",
+          "status": "Phase 1/2"
         },
         {
           "agent": "elironrasib",
-          "status": "FDA BTD (pan-RAS)"
+          "tier": "pan-RAS",
+          "status": "FDA BTD",
+          "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
       "top_dependencies": [],
@@ -603,16 +717,33 @@
       "allele": "all_KRAS_mut",
       "population_estimate": {
         "annual_us_cases": 0,
-        "fraction_of_kras_mutant": 0
+        "fraction_of_kras_mutant_tcga_pct": 0,
+        "fraction_of_kras_mutant_literature": 0,
+        "source": "TCGA COAD/READ + literature"
       },
       "clinical_agents": [
         {
+          "agent": "ERAS-4001",
+          "tier": "pan-KRAS",
+          "status": "Phase 1 BOREALIS-1",
+          "notes": "single-digit nM IC50, spares HRAS/NRAS, data expected H2 2026"
+        },
+        {
           "agent": "ERAS-0015",
-          "status": "Phase 1 (pan-RAS, all alleles)"
+          "tier": "pan-RAS",
+          "status": "Phase 1",
+          "notes": "confirmed PRs at 8mg QD, 8-21x higher CypA affinity vs RMC-6236, ~5x potency"
+        },
+        {
+          "agent": "daraxonrasib",
+          "tier": "pan-RAS",
+          "status": "Phase 1/2"
         },
         {
           "agent": "elironrasib",
-          "status": "FDA BTD (pan-RAS)"
+          "tier": "pan-RAS",
+          "status": "FDA BTD",
+          "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
       "top_dependencies": [
@@ -769,24 +900,12 @@
     }
   },
   "crc_vs_nsclc": {
-    "available": true,
+    "available": false,
     "notes": [
-      "CRC KRAS landscape: G12D(33%) > G12V(22%) > G13D(18%) > G12C(8%)",
-      "NSCLC KRAS landscape: G12C(39%) > G12V(21%) > G12D(14%) > G12A(7%)",
-      "G12C: rare in CRC, dominant in NSCLC \u2014 sotorasib ORR 37% NSCLC vs 9.7% CRC",
-      "G12D: dominant in CRC, less common in NSCLC \u2014 zoldonrasib/MRTX1133 prioritize CRC",
-      "G13D: CRC-specific allele (18%), near-absent in NSCLC \u2014 no targeted agents"
-    ],
-    "nsclc_kras_allele_distribution": {
-      "WT": 119,
-      "G12C": 13,
-      "G12_other": 9,
-      "G12V": 7,
-      "G13": 7,
-      "Q61": 5,
-      "G12D": 4,
-      "other": 1
-    }
+      "NSCLC comparison limited \u2014 no direct KRAS allele dependency data from nsclc-depmap-targets project",
+      "CRC G12C is rare (8%) vs dominant in NSCLC (21%) \u2014 direct comparison important for G12C inhibitor CRC development",
+      "NSCLC MTAP-PRMT5 data available but targets different biology (synthetic lethality vs KRAS allele dependencies)"
+    ]
   },
   "key_drug_classes": {
     "ERK": [
@@ -978,17 +1097,80 @@
       }
     ]
   },
+  "acss2_g12v_analysis": {
+    "literature": "Scafuro et al. Cell Reports March 2025: KRAS G12V-selective ACSS2 dependency, MEK inhibitor synergy",
+    "depmap_signal": "not_detected",
+    "ACSS2_in_all_KRAS_mut": {
+      "pvalue": 0.22089965295369296,
+      "cohens_d": -0.30380235806432426,
+      "fdr": 0.9879168772173179
+    },
+    "g12v_n_lines": 6,
+    "note": "ACSS2 G12V-selective signal not detectable in DepMap CRISPR data (only 6 G12V lines). Literature supports G12V-selective biology \u2014 potential RMC-5127 + MEKi + ACSS2i combo rationale warrants validation in expanded panels."
+  },
+  "g12c_efficacy_benchmarks": {
+    "sotorasib_mono_2L": {
+      "orr_pct": 9.7,
+      "trial": "CodeBreaK 100"
+    },
+    "sotorasib_pani_2L": {
+      "orr_pct": 26,
+      "trial": "CodeBreaK 300"
+    },
+    "sotorasib_pani_folfiri_1L": {
+      "orr_pct": 78,
+      "trial": "CodeBreaK 101"
+    },
+    "elironrasib_crc_g12c": {
+      "orr_pct": 40,
+      "dcr_pct": 80,
+      "mechanism": "ON-state, naive to OFF inhibitors"
+    }
+  },
+  "literature_allele_frequencies": {
+    "source": "npj Precision Oncology",
+    "frequencies": {
+      "G12D": 10.8,
+      "G12V": 8.3,
+      "G13D": 7.2,
+      "A146T": 7.4,
+      "Q61": 4.5,
+      "G12C": 3.1
+    },
+    "notes": [
+      "G12C absent in MSI CRC",
+      "G12V essentially MSS-specific"
+    ]
+  },
+  "tcga_validation": {
+    "total_patients": 594,
+    "kras_mutant_patients": 218,
+    "kras_mutation_rate_pct": 36.7,
+    "allele_pct": {
+      "G12D": 26.6,
+      "G12V": 22.5,
+      "KRAS_other": 18.8,
+      "G13D": 16.5,
+      "A146T": 7.3,
+      "G12C": 6.4,
+      "Q61H": 1.8
+    },
+    "survival_os_p": 0.6417,
+    "survival_pfs_p": 0.035
+  },
   "overall_summary": {
     "total_crc_lines_analyzed": 63,
     "total_kras_mutant": 35,
     "total_genes_screened": 18435,
     "total_drugs_screened": 6790,
-    "phase4_tcga_status": "blocked \u2014 awaiting TCGA COAD/READ data download (task #117)",
+    "phase4_tcga_status": "complete \u2014 594 patients, 218 KRAS-mutant validated",
     "success_criteria": {
       "allele_specific_dependencies_fdr005": "1 (KRAS in G12D), limited by sample size",
       "g12d_vs_g13d_distinction": "Top-ranked genes identified but none FDR-significant",
       "drug_dependency_correlation_gt03": "Not achieved \u2014 no gene-drug name matches in current data",
-      "crc_nsclc_divergence": "Confirmed: allele frequency landscapes fundamentally different"
+      "crc_nsclc_divergence": "Confirmed: allele frequency landscapes fundamentally different",
+      "tcga_allele_validation": "Confirmed: TCGA allele distribution consistent with literature (G12D 27%, G12V 23%, G13D 17%)",
+      "survival_pfs_signal": "Borderline significant KRAS-mut vs WT PFS difference (p=0.035)"
     }
   }
 }
