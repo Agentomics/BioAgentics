@@ -1,0 +1,54 @@
+======================================================================
+PTEN Loss Pan-Cancer Dependency Atlas - Phase 1 Classifier Summary
+======================================================================
+
+Total cell lines with lineage annotation: 2119
+PTEN-lost:    209
+PTEN-intact:  1885
+Excluded (missense VUS): 25
+
+Loss mechanism breakdown:
+  Deletion only:      34
+  Mutation only:      175
+  Both (del+mut):     0
+
+Co-alteration frequencies (among PTEN-lost):
+  PIK3CA hotspot: 15/209 (7.2%)
+  TP53 mutated:   144/209 (68.9%)
+  RB1 altered:    44/209 (21.1%)
+
+Expression cross-validation:
+  Median expression (lost):   4.40
+  Median expression (intact): 5.00
+  Mann-Whitney p-value:       9.55e-13
+  % lost below intact Q25:    54.6%
+  Discordant (lost w/ high expr): 36
+
+Qualifying cancer types (9 of 34):
+  (threshold: >= 5 PTEN-lost + >= 10 PTEN-intact with CRISPR)
+
+  Uterus                         lost= 23 intact= 20 freq=53.5% CRISPR: 19/14
+  CNS/Brain                      lost= 47 intact= 75 freq=38.5% CRISPR: 34/50
+  Skin                           lost= 22 intact=128 freq=14.7% CRISPR: 14/61
+  Breast                         lost= 13 intact= 82 freq=13.7% CRISPR: 10/42
+  Bowel                          lost= 10 intact= 86 freq=10.4% CRISPR: 8/53
+  Ovary/Fallopian Tube           lost=  7 intact= 67 freq=9.5% CRISPR: 6/52
+  Lymphoid                       lost= 23 intact=233 freq=9.0% CRISPR: 13/78
+  Lung                           lost= 21 intact=237 freq=8.1% CRISPR: 8/117
+  Esophagus/Stomach              lost=  7 intact= 97 freq=6.7% CRISPR: 5/64
+
+Non-qualifying types with PTEN loss (14):
+  Prostate                       lost=  3 intact= 12 CRISPR: 2/8
+  Thyroid                        lost=  4 intact= 21 CRISPR: 2/9
+  Bladder/Urinary Tract          lost=  4 intact= 35 CRISPR: 4/30
+  Testis                         lost=  1 intact= 11 CRISPR: 1/4
+  Liver                          lost=  2 intact= 26 CRISPR: 2/21
+  Biliary Tract                  lost=  3 intact= 42 CRISPR: 3/31
+  Myeloid                        lost=  5 intact= 82 CRISPR: 4/38
+  Pleura                         lost=  2 intact= 34 CRISPR: 1/20
+  Kidney                         lost=  4 intact= 70 CRISPR: 4/31
+  Cervix                         lost=  1 intact= 25 CRISPR: 1/17
+  Peripheral Nervous System      lost=  2 intact= 58 CRISPR: 0/45
+  Head and Neck                  lost=  3 intact= 90 CRISPR: 3/73
+  Pancreas                       lost=  1 intact= 67 CRISPR: 1/47
+  Bone                           lost=  1 intact= 91 CRISPR: 1/48
