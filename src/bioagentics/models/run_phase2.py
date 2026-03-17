@@ -24,7 +24,7 @@ import numpy as np
 import pandas as pd
 
 from bioagentics.config import REPO_ROOT
-from bioagentics.data.gene_ids import load_tcga_expression_matrix
+from bioagentics.data.gene_ids import build_uuid_to_patient_map, load_tcga_expression_matrix
 from bioagentics.data.nsclc_tcga import classify_patients
 
 from bioagentics.models.dependency_model import (
@@ -182,6 +182,21 @@ def main(argv: list[str] | None = None) -> None:
         logger.info("  Predicted: %d patients x %d genes", *dep_matrix.shape)
 
     summary["n_patients_predicted"] = dep_matrix.shape[0]
+
+    # Map GDC file UUIDs to TCGA patient barcodes
+    logger.info("=== Mapping file UUIDs to TCGA patient barcodes ===")
+    tcga_expr_dirs = [tcga_dir / ct / "expression" for ct in ("luad", "lusc")
+                      if (tcga_dir / ct / "expression").exists()]
+    uuid_map = build_uuid_to_patient_map(*tcga_expr_dirs)
+    if uuid_map:
+        mapped_index = dep_matrix.index.map(lambda x: uuid_map.get(x, x))
+        # Drop duplicates (multiple samples per patient) — keep first
+        dep_matrix.index = mapped_index
+        dep_matrix = dep_matrix[~dep_matrix.index.duplicated(keep="first")]
+        logger.info("  Mapped %d UUIDs -> %d unique patients",
+                    len(uuid_map), dep_matrix.shape[0])
+    else:
+        logger.warning("  No UUID mapping available — patient IDs remain as file UUIDs")
 
     # Step 5: Subtype-specific analysis
     if args.skip_analysis:
