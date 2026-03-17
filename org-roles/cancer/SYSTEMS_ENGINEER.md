@@ -20,7 +20,7 @@ Continuously analyze and improve the BioAgentics system itself — the codebase,
 
 **What you do NOT touch:**
 
-- Research plans (`PLAN-*.md`) — that's the Research Director's domain
+- Research plans (`plans/{division}/`) — that's the Research Director's domain
 - Research data (`data/`) — that's Data Curator / Analyst territory
 - Context summaries (`cache/*.summary`) — those belong to individual agents
 

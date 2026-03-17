@@ -745,9 +745,10 @@ def render_dashboard_tab(db: Session, division: str = "") -> str:
     ).fetchall()
 
     # Active agents
-    active_agents = db.execute(
-        select(agents).order_by(agents.c.updated_at.desc())
-    ).fetchall()
+    agents_q = select(agents).order_by(agents.c.updated_at.desc())
+    if division:
+        agents_q = agents_q.where(agents.c.division == division)
+    active_agents = db.execute(agents_q).fetchall()
 
     # Human action needed
     human_tasks = db.execute(
@@ -792,13 +793,17 @@ def render_dashboard_tab(db: Session, division: str = "") -> str:
         for row in active_agents:
             m = row._mapping
             dot_cls = "bg-[#22c55e] shadow-[0_0_4px_#22c55e]" if m["status"] == "running" else "bg-[#71717a]"
+            div_val = m["division"] or ""
+            div_colors = {"cancer": ("bg-[#172554]", "text-[#3b82f6]"), "crohns": ("bg-[#1a2e05]", "text-[#84cc16]")}
+            div_bg, div_fg = div_colors.get(div_val, ("bg-[#27272a]", "text-[#a1a1aa]"))
+            div_pill = f'<span class="{div_bg} {div_fg} text-[10px] font-medium px-1.5 py-0.5 rounded-full shrink-0">{esc(div_val)}</span>' if div_val else ""
             proj = f'<span class="text-[#52525b]">{esc(m["project"])}</span>' if m["project"] else ""
             agent_items.append(
                 f'<div class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0">'
                 f'<span class="w-2 h-2 rounded-full {dot_cls} shrink-0"></span>'
                 f'<div class="flex-1 min-w-0">'
                 f'<span class="text-sm font-medium">{esc(agent_display_name(m["username"]))}</span>'
-                f' {proj}</div>'
+                f' {div_pill} {proj}</div>'
                 f'<div class="text-xs text-[#52525b] shrink-0">{time_ago(m["updated_at"])}</div>'
                 f'</div>'
             )
