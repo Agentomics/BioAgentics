@@ -23,6 +23,21 @@ router = APIRouter(tags=["ui"])
 
 PER_PAGE = 30
 
+DIV_COLORS = {
+    "cancer": ("bg-[#172554]", "text-[#3b82f6]"),
+    "crohns": ("bg-[#1a2e05]", "text-[#84cc16]"),
+    "tourettes": ("bg-[#2e1065]", "text-[#a78bfa]"),
+    "pandas_pans": ("bg-[#431407]", "text-[#fb923c]"),
+}
+
+
+def division_pill(div_val: str | None) -> str:
+    """Render a small colored pill for a division value."""
+    if not div_val:
+        return ""
+    bg, fg = DIV_COLORS.get(div_val, ("bg-[#27272a]", "text-[#a1a1aa]"))
+    return f'<span class="{bg} {fg} text-[10px] font-medium px-1.5 py-0.5 rounded-full shrink-0">{esc(div_val)}</span>'
+
 
 def get_db():
     db = SessionLocal()
@@ -215,6 +230,7 @@ def render_task_card(row) -> str:
   <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
     <span class="text-[#71717a] text-xs font-mono cursor-pointer hover:text-[#3b82f6] transition-colors"
           onclick="navigator.clipboard.writeText('#{m['id']}')">#{m['id']}</span>
+    {division_pill(m.get('division'))}
     {priority_label(m['priority'])}
     {status_badge(m['status'])}
   </div>
@@ -241,6 +257,7 @@ def render_task_compact(row) -> str:
     return f"""<a class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
    hx-get="/ui/tasks/{m['id']}" hx-target="#tab-content" hx-push-url="true">
   <span class="text-[#a1a1aa] text-xs font-mono shrink-0">#{m['id']}</span>
+  {division_pill(m.get('division'))}
   {priority_label(m['priority'])}
   {status_badge(m['status'])}
   <span class="text-sm truncate flex-1 min-w-0">{esc(m['title'])}</span>
@@ -262,6 +279,7 @@ def render_journal_card(row) -> str:
                     hx-get="/ui/journal/{m['id']}" hx-target="#tab-content" hx-push-url="true">
   <div class="flex items-center gap-2 mb-1.5 text-xs text-[#71717a] flex-wrap">
     <span class="font-mono">#{m['id']}</span>
+    {division_pill(m.get('division'))}
     <span class="text-[#a78bfa] font-medium">{esc(agent_display_name(m['username']))}</span>
     {project_html}
     <span class="ml-auto shrink-0">{time_tag(m['created_at'])}</span>
@@ -284,6 +302,7 @@ def render_journal_compact(row) -> str:
     return f"""<a class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
    hx-get="/ui/journal/{m['id']}" hx-target="#tab-content" hx-push-url="true">
   <span class="text-[#a1a1aa] text-xs font-mono shrink-0">#{m['id']}</span>
+  {division_pill(m.get('division'))}
   <span class="text-[#a78bfa] text-xs font-semibold shrink-0">{esc(agent_display_name(m['username']))}</span>
   {project_html}
   <span class="text-sm text-[#a1a1aa] truncate flex-1 min-w-0">{esc(first_line)}</span>
@@ -606,10 +625,15 @@ def render_project_row(p, task_counts: dict, journal_count: int) -> str:
     if m.get("description"):
         desc_html = f'<div class="text-[#a1a1aa] text-xs max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap" title="{esc(m["description"])}">{esc(m["description"])}</div>'
 
+    div_html = division_pill(m.get("division"))
+
     return f"""<tr class="hover:bg-[#18181b]">
   <td class="px-2.5 py-2 border-b border-[#27272a] align-middle">
-    <a class="font-semibold text-[#3b82f6] text-sm no-underline hover:underline cursor-pointer"
-       hx-get="/ui/projects/{quote(name)}" hx-target="#tab-content" hx-push-url="true">{esc(name)}</a>
+    <div class="flex items-center gap-2">
+      <a class="font-semibold text-[#3b82f6] text-sm no-underline hover:underline cursor-pointer"
+         hx-get="/ui/projects/{quote(name)}" hx-target="#tab-content" hx-push-url="true">{esc(name)}</a>
+      {div_html}
+    </div>
     {desc_html}
   </td>
   <td class="px-2.5 py-2 border-b border-[#27272a] align-middle">{labels_tags(m.get('labels', ''))}</td>
@@ -799,10 +823,7 @@ def render_dashboard_tab(db: Session, division: str = "") -> str:
         for row in active_agents:
             m = row._mapping
             dot_cls = "bg-[#22c55e] shadow-[0_0_4px_#22c55e]" if m["status"] == "running" else "bg-[#71717a]"
-            div_val = m["division"] or ""
-            div_colors = {"cancer": ("bg-[#172554]", "text-[#3b82f6]"), "crohns": ("bg-[#1a2e05]", "text-[#84cc16]")}
-            div_bg, div_fg = div_colors.get(div_val, ("bg-[#27272a]", "text-[#a1a1aa]"))
-            div_pill = f'<span class="{div_bg} {div_fg} text-[10px] font-medium px-1.5 py-0.5 rounded-full shrink-0">{esc(div_val)}</span>' if div_val else ""
+            div_pill = division_pill(m["division"])
             proj = f'<span class="text-[#52525b]">{esc(m["project"])}</span>' if m["project"] else ""
             agent_items.append(
                 f'<div class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0">'
@@ -1249,7 +1270,7 @@ def render_run_row(row) -> str:
     return f"""<tr class="hover:bg-[#18181b] transition-colors">
   <td class="px-3 py-2.5 border-b border-[#27272a] text-xs font-mono text-[#71717a]">#{m['id']}</td>
   <td class="px-3 py-2.5 border-b border-[#27272a]">
-    <div class="text-sm font-medium">{esc(m['agent'])}</div>
+    <div class="flex items-center gap-1.5"><span class="text-sm font-medium">{esc(m['agent'])}</span>{division_pill(m.get('division'))}</div>
     {project_html}
   </td>
   <td class="px-3 py-2.5 border-b border-[#27272a]">{status_html}</td>
@@ -1454,13 +1475,6 @@ def render_presence_html(db: Session, division: str = "") -> str:
     if not rows:
         return '<div class="text-xs text-[#a1a1aa] italic py-1">no agents online</div>'
 
-    DIV_COLORS = {
-        "cancer": ("bg-[#172554]", "text-[#3b82f6]"),
-        "crohns": ("bg-[#1a2e05]", "text-[#84cc16]"),
-        "tourettes": ("bg-[#2e1065]", "text-[#a78bfa]"),
-        "pandas_pans": ("bg-[#431407]", "text-[#fb923c]"),
-    }
-
     items = []
     for row in rows:
         m = row._mapping
@@ -1468,8 +1482,7 @@ def render_presence_html(db: Session, division: str = "") -> str:
         meta_parts = []
         div_val = m["division"] or ""
         if div_val:
-            bg, fg = DIV_COLORS.get(div_val, ("bg-[#27272a]", "text-[#a1a1aa]"))
-            meta_parts.append(f'<span class="{bg} {fg} text-[10px] font-medium px-1.5 py-0.5 rounded-full">{esc(div_val)}</span>')
+            meta_parts.append(division_pill(div_val))
         if m["project"]:
             meta_parts.append(f'<span class="text-[11px] text-[#a1a1aa] truncate">{esc(m["project"])}</span>')
         meta_html = f'<div class="flex items-center gap-1.5 mt-0.5">{"".join(meta_parts)}</div>' if meta_parts else ""
