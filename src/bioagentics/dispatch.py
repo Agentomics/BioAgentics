@@ -340,6 +340,12 @@ def build_agent_command(config: AgentConfig, project: str | None, division: str 
     else:
         summary_file = f"cache/{role}.{div}.summary"
 
+    division_clause = (
+        f"Division: You are in the '{div}' division. "
+        f"Always pass division=\"{div}\" when creating or querying "
+        f"tasks, projects, and journal entries."
+    )
+
     project_clause = ""
     if project:
         project_clause = (
@@ -352,7 +358,7 @@ def build_agent_command(config: AgentConfig, project: str | None, division: str 
         prompt = (
             f"0. Read @org-roles/{div}/{role}.md .\n"
             f"  1. Read previous context summary at @{summary_file} (if exists).\n"
-            f"  2. {project_clause}\n"
+            f"  2. {division_clause} {project_clause}\n"
             f"  3. Do your job. Note: your presence (running/idle) is managed by "
             f"the dispatcher — do not manage your own agent presence.\n"
             f"  4. Finally, save a new short and concise context summary to "
@@ -385,6 +391,7 @@ def build_agent_command(config: AgentConfig, project: str | None, division: str 
             f"You are: {role}\n\n"
             f"{role_content}\n\n"
             f"Previous context summary:\n{summary}\n\n"
+            f"{division_clause}\n\n"
             f"{project_clause}\n\n"
             f"Do your job. Your presence (running/idle) is managed by the "
             f"dispatcher — do not manage your own agent presence.\n\n"
