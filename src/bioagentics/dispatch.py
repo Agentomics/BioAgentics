@@ -530,11 +530,15 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
                     capture_output=True, cwd=REPO_ROOT,
                 )
 
-                # 2. Commit plans, output, and project-specific source files
+                # 2. Commit plans, reports, output, and project-specific source files
                 artifact_paths: list[str] = []
                 plans_dir = REPO_ROOT / "plans"
                 if plans_dir.is_dir():
                     for p in plans_dir.rglob("*.md"):
+                        artifact_paths.append(str(p))
+                reports_dir = REPO_ROOT / "reports"
+                if reports_dir.is_dir():
+                    for p in reports_dir.rglob("*.md"):
                         artifact_paths.append(str(p))
                 output_dir = REPO_ROOT / "output"
                 if output_dir.is_dir():
@@ -548,6 +552,10 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
                         if child.is_dir() and child.name != "bioagentics":
                             for p in child.rglob("*.py"):
                                 artifact_paths.append(str(p))
+                pipelines_dir = REPO_ROOT / "pipelines"
+                if pipelines_dir.is_dir():
+                    for p in pipelines_dir.rglob("*.py"):
+                        artifact_paths.append(str(p))
                 if artifact_paths:
                     subprocess.run(
                         ["git", "add", "--"] + artifact_paths,
