@@ -1,0 +1,4 @@
+study,n_samples,n_responder,n_non_responder,auc,balanced_accuracy,sensitivity,specificity,best_params
+GSE16879,37,20,17,1.0,0.875,1.0,0.75,"{'C': 0.01, 'l1_ratio': 0.1}"
+GSE12251,23,12,11,1.0,1.0,1.0,1.0,"{'C': 0.01, 'l1_ratio': 0.1}"
+GSE73661,23,8,15,1.0,1.0,1.0,1.0,"{'C': 0.01, 'l1_ratio': 0.1}"

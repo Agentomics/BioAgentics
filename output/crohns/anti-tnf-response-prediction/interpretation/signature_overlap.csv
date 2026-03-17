@@ -1,0 +1,6 @@
+published_signature,published_size,overlap_count,overlap_genes,jaccard_index
+Porto_5gene,5,0,none,0.0
+OSMR_oncostatin_M,5,1,OSMR,0.029411764705882353
+GIMATS_module,14,0,none,0.0
+ECM_fibroblast,7,0,none,0.0
+NAMPT_NAD,4,0,none,0.0

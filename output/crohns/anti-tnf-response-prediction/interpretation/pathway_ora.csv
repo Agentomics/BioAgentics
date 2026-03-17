@@ -1,0 +1,7 @@
+pathway,pathway_size,overlap_count,overlap_genes,fraction_in_signature
+Innate_immunity,8,4,"OSMR, PLSCR3, TBK1, TNIP2",0.13333333333333333
+Apoptosis,4,4,"BCL2L2, CASP6, GSDMC, PLSCR3",0.13333333333333333
+TNF_signaling,12,3,"CASP6, TBK1, TNIP2",0.1
+Metabolic,4,3,"ACAD9, NFS1, PGC",0.1
+Fibrosis_ECM,7,2,"ILK, SHC1",0.06666666666666667
+Th17_differentiation,6,0,none,0.0
