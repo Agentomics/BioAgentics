@@ -1,0 +1,3 @@
+gene,n_rb1_intact,n_rb1_lost,cohens_d,pvalue,median_dep_rb1_intact,median_dep_rb1_lost,note
+CDK4,276,6,-0.3455,0.6583805713800457,-0.6124,-0.6046,
+CDK6,276,6,-0.6097,0.09304622243923574,-0.6839,-0.4634,

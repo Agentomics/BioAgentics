@@ -1,0 +1,85 @@
+============================================================
+CDKN2A Pan-Cancer Dependency Atlas - Phase 2: CDK4/6 Effect Sizes
+============================================================
+
+CDK4 DEPENDENCY (CDKN2A-del/RB1-intact vs intact)
+--------------------------------------------------
+  CNS/Brain: d=-0.379 [-0.895, 0.176] FDR=1.107e-01 perm_p=0.1606 LOO=robust -> NOT_SIGNIFICANT
+  Pancreas: d=0.675 [-0.008, 1.911] FDR=7.304e-02 perm_p=0.0822 LOO=robust -> NOT_SIGNIFICANT
+  Skin: d=0.728 [0.144, 1.335] FDR=1.855e-01 perm_p=0.0136 LOO=robust -> MARGINAL
+  Bladder/Urinary Tract: d=-0.340 [-1.287, 0.548] FDR=6.168e-01 perm_p=0.4465 LOO=robust -> NOT_SIGNIFICANT
+  Myeloid: d=0.007 [-0.620, 0.737] FDR=9.652e-01 perm_p=0.9834 LOO=robust -> NOT_SIGNIFICANT
+  Esophagus/Stomach: d=0.491 [0.099, 0.871] FDR=4.349e-01 perm_p=0.1247 LOO=robust -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube: d=0.248 [-0.395, 0.710] FDR=9.652e-01 perm_p=0.4924 LOO=robust -> NOT_SIGNIFICANT
+  Bone: d=-0.205 [-0.916, 0.336] FDR=3.599e-01 perm_p=0.5375 LOO=robust -> NOT_SIGNIFICANT
+  Lung: d=-0.093 [-0.497, 0.268] FDR=4.663e-01 perm_p=0.6642 LOO=robust -> NOT_SIGNIFICANT
+  Head and Neck: d=-0.924 [-2.003, -0.151] FDR=1.107e-01 perm_p=0.0109 LOO=robust -> MARGINAL
+  Lymphoid: d=-0.118 [-0.941, 0.886] FDR=7.335e-01 perm_p=0.7207 LOO=fragile -> NOT_SIGNIFICANT
+  Soft Tissue: d=0.578 [0.120, 1.049] FDR=3.301e-01 perm_p=0.1224 LOO=robust -> NOT_SIGNIFICANT
+  Breast: d=0.023 [-0.672, 0.653] FDR=9.770e-01 perm_p=0.9519 LOO=fragile -> NOT_SIGNIFICANT
+  Pan-cancer (pooled): d=0.078 [-0.047, 0.200] FDR=4.184e-01 perm_p=0.2910 LOO=robust -> NOT_SIGNIFICANT
+
+CDK6 DEPENDENCY (CDKN2A-del/RB1-intact vs intact)
+--------------------------------------------------
+  CNS/Brain: d=-0.745 [-1.583, -0.144] FDR=4.243e-02 perm_p=0.0092 LOO=robust -> ROBUST
+  Pancreas: d=0.218 [-0.533, 1.004] FDR=8.929e-01 perm_p=0.5664 LOO=robust -> NOT_SIGNIFICANT
+  Skin: d=-1.305 [-1.862, -0.874] FDR=7.012e-04 perm_p=0.0001 LOO=robust -> ROBUST
+  Bladder/Urinary Tract: d=-1.460 [-3.517, -0.655] FDR=4.243e-02 perm_p=0.0062 LOO=robust -> ROBUST
+  Myeloid: d=-0.160 [-0.842, 0.520] FDR=8.126e-01 perm_p=0.6314 LOO=robust -> NOT_SIGNIFICANT
+  Esophagus/Stomach: d=-0.438 [-1.127, 0.146] FDR=3.599e-01 perm_p=0.1701 LOO=robust -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube: d=-1.988 [-3.231, -1.245] FDR=7.012e-04 perm_p=0.0001 LOO=robust -> ROBUST
+  Bone: d=-0.400 [-1.130, 0.462] FDR=9.770e-01 perm_p=0.2430 LOO=robust -> NOT_SIGNIFICANT
+  Lung: d=-0.530 [-1.034, -0.127] FDR=2.684e-03 perm_p=0.0144 LOO=robust -> ROBUST
+  Head and Neck: d=0.088 [-0.593, 0.820] FDR=8.929e-01 perm_p=0.7977 LOO=robust -> NOT_SIGNIFICANT
+  Lymphoid: d=-0.052 [-0.808, 0.644] FDR=8.642e-01 perm_p=0.8754 LOO=fragile -> NOT_SIGNIFICANT
+  Soft Tissue: d=-0.634 [-1.509, -0.023] FDR=1.246e-01 perm_p=0.0966 LOO=robust -> NOT_SIGNIFICANT
+  Breast: d=-1.399 [-2.903, -0.534] FDR=2.916e-02 perm_p=0.0018 LOO=robust -> ROBUST
+  Pan-cancer (pooled): d=-0.453 [-0.600, -0.320] FDR=1.184e-14 perm_p=0.0001 LOO=robust -> ROBUST
+
+RB1 CO-LOSS IMPACT (within CDKN2A-deleted)
+--------------------------------------------------
+  CDK4: RB1-intact median=-0.612 vs RB1-lost median=-0.605 d=-0.345 p=6.584e-01
+  CDK6: RB1-intact median=-0.684 vs RB1-lost median=-0.463 d=-0.610 p=9.305e-02
+
+MDM2 DEPENDENCY (CDKN2A-del/TP53-WT vs intact/TP53-WT)
+--------------------------------------------------
+  CNS/Brain: d=-0.476 [-1.644, 0.504] FDR=8.856e-01 -> NOT_SIGNIFICANT
+  Skin: d=0.743 [0.233, 1.418] FDR=7.417e-02 -> NOT_SIGNIFICANT
+  Myeloid: d=-0.108 [-1.573, 1.462] FDR=1.000e+00 -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube: d=0.098 [-1.670, 1.146] FDR=1.000e+00 -> NOT_SIGNIFICANT
+  Bone: d=0.097 [-0.796, 0.747] FDR=1.000e+00 -> NOT_SIGNIFICANT
+  Lung: d=-6.434 [-17.805, -4.715] FDR=2.273e-02 -> ROBUST
+  Lymphoid: d=0.172 [-0.612, 0.875] FDR=1.000e+00 -> NOT_SIGNIFICANT
+  Soft Tissue: d=-0.839 [-2.511, 0.420] FDR=2.740e-01 -> NOT_SIGNIFICANT
+  Pan-cancer (pooled): d=-0.279 [-0.525, -0.050] FDR=5.631e-02 -> MARGINAL
+
+CONTROL GENES CDK2/CDK1 (expect NOT_SIGNIFICANT)
+--------------------------------------------------
+  CNS/Brain / CDK2: d=0.219 FDR=7.126e-01 -> NOT_SIGNIFICANT
+  CNS/Brain / CDK1: d=-0.181 FDR=8.403e-01 -> NOT_SIGNIFICANT
+  Pancreas / CDK2: d=0.411 FDR=6.390e-01 -> NOT_SIGNIFICANT
+  Pancreas / CDK1: d=-0.671 FDR=5.758e-01 -> NOT_SIGNIFICANT
+  Skin / CDK2: d=0.177 FDR=7.126e-01 -> NOT_SIGNIFICANT
+  Skin / CDK1: d=-0.251 FDR=7.126e-01 -> NOT_SIGNIFICANT
+  Bladder/Urinary Tract / CDK2: d=0.748 FDR=5.231e-01 -> NOT_SIGNIFICANT
+  Bladder/Urinary Tract / CDK1: d=0.715 FDR=5.231e-01 -> NOT_SIGNIFICANT
+  Myeloid / CDK2: d=0.414 FDR=6.390e-01 -> NOT_SIGNIFICANT
+  Myeloid / CDK1: d=-0.384 FDR=5.758e-01 -> NOT_SIGNIFICANT
+  Esophagus/Stomach / CDK2: d=0.601 FDR=5.231e-01 -> NOT_SIGNIFICANT
+  Esophagus/Stomach / CDK1: d=-0.301 FDR=8.403e-01 -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube / CDK2: d=1.168 FDR=2.143e-02 -> ROBUST
+  Ovary/Fallopian Tube / CDK1: d=-0.836 FDR=3.217e-01 -> MARGINAL
+  Bone / CDK2: d=0.580 FDR=5.231e-01 -> NOT_SIGNIFICANT
+  Bone / CDK1: d=-0.173 FDR=7.126e-01 -> NOT_SIGNIFICANT
+  Lung / CDK2: d=0.353 FDR=5.758e-01 -> NOT_SIGNIFICANT
+  Lung / CDK1: d=-0.227 FDR=5.444e-01 -> NOT_SIGNIFICANT
+  Head and Neck / CDK2: d=-0.231 FDR=8.403e-01 -> NOT_SIGNIFICANT
+  Head and Neck / CDK1: d=-0.530 FDR=5.758e-01 -> NOT_SIGNIFICANT
+  Lymphoid / CDK2: d=-0.364 FDR=6.390e-01 -> NOT_SIGNIFICANT
+  Lymphoid / CDK1: d=-0.263 FDR=7.043e-01 -> NOT_SIGNIFICANT
+  Soft Tissue / CDK2: d=-0.062 FDR=9.872e-01 -> NOT_SIGNIFICANT
+  Soft Tissue / CDK1: d=-0.273 FDR=7.849e-01 -> NOT_SIGNIFICANT
+  Breast / CDK2: d=0.581 FDR=5.231e-01 -> NOT_SIGNIFICANT
+  Breast / CDK1: d=-0.280 FDR=7.849e-01 -> NOT_SIGNIFICANT
+  Pan-cancer (pooled) / CDK2: d=0.285 FDR=8.267e-03 -> ROBUST
+  Pan-cancer (pooled) / CDK1: d=-0.134 FDR=1.634e-01 -> NOT_SIGNIFICANT
