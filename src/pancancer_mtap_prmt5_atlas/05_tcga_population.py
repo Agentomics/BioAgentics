@@ -112,7 +112,18 @@ def main() -> None:
         any_loss = (n_homdel + n_hetloss) / n_total * 100 if n_total > 0 else 0
 
         incidence = US_INCIDENCE.get(lineage, 0)
-        eligible = int(incidence * homdel_pct / 100)
+
+        # Use C-CAT frequency for population estimates when TCGA is discrepant
+        # (>5pp difference). C-CAT (N=51,828) is more reliable for prevalence.
+        pop_freq = homdel_pct
+        pop_freq_source = "TCGA"
+        if lineage in CCAT_FREQUENCIES:
+            ccat_pct = CCAT_FREQUENCIES[lineage]
+            if abs(homdel_pct - ccat_pct) > 5:
+                pop_freq = ccat_pct
+                pop_freq_source = "C-CAT"
+
+        eligible = int(incidence * pop_freq / 100)
 
         lineage_stats.append({
             "cancer_type": lineage,
@@ -120,6 +131,8 @@ def main() -> None:
             "n_profiled": int(n_total),
             "n_homdel": int(n_homdel),
             "homdel_pct": round(homdel_pct, 1),
+            "pop_freq_pct": round(pop_freq, 1),
+            "pop_freq_source": pop_freq_source,
             "any_loss_pct": round(any_loss, 1),
             "us_incidence": incidence,
             "eligible_patients_year": eligible,
@@ -130,7 +143,9 @@ def main() -> None:
     pop_df.to_csv(OUTPUT_DIR / "patient_population_estimates.csv", index=False)
     print(f"\nPatient population estimates ({len(pop_df)} cancer types):")
     for _, row in pop_df.iterrows():
+        src = f" [via {row['pop_freq_source']}]" if row.get("pop_freq_source") == "C-CAT" else ""
         print(f"  {row['cancer_type']}: {row['homdel_pct']:.1f}% homdel, "
+              f"{row['pop_freq_pct']:.1f}% pop freq{src}, "
               f"{row['eligible_patients_year']:,} eligible/year")
 
     # === C-CAT cross-validation ===
