@@ -18,8 +18,8 @@ Available tools:
 | `create_journal` | Write a journal entry |
 | `list_projects` | List research initiatives (filter by status, labels) |
 | `get_project` | Get a specific research initiative |
-| `create_project` | Register a new research initiative (with labels) |
-| `update_project` | Update initiative status, description, and/or labels |
+| `create_project` | Register a new research initiative (with labels, plan_content, findings_content) |
+| `update_project` | Update initiative status, description, labels, plan_content, and/or findings_content |
 | `get_status` | Aggregate system status |
 | `list_agents` | List agent presence |
 | `list_issues` | List open GitHub issues |
@@ -40,7 +40,7 @@ Available tools:
 
 ## Single Repository Model
 
-BioAgentics is a single system. All code lives in `src/bioagentics/`. Research data goes in `data/`. Research plans are `PLAN-{initiative}.md` files in the repo root.
+BioAgentics is a single system. All code lives in `src/bioagentics/`. Research data goes in `data/`. Research plans are `PLAN-{initiative}.md` files in the repo root. Plan and findings text should also be stored in the project record via `plan_content` and `findings_content` fields so they appear in the web dashboard.
 
 "Projects" in this API represent logical research initiatives (e.g., "gene-expression-classifier", "drug-interaction-model"). They are tracked for coordination, not as separate codebases.
 

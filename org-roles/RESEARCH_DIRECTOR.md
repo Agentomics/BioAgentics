@@ -67,7 +67,8 @@ Create `PLAN-{initiative}.md` in the repo root:
 - **Labels:** Suggested project labels
 
 ## 5. Register & Launch
-- `create_project(name="{initiative}", description="...", labels="...", status="planning")`
+- `create_project(name="{initiative}", description="...", labels="...", status="planning", plan_content="<full plan text>")`
+- Always pass the full plan text in `plan_content` so it appears in the web dashboard
 - Create tasks for `project_manager` with the research plan
 - Journal the decision with rationale
 

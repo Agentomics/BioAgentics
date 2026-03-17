@@ -37,9 +37,11 @@ All work happens in this single repository. Documentation goes in `docs/` or alo
    - **docs/methods/:** Methodology documentation for each initiative.
    - **docs/findings/:** Research summaries organized by initiative.
 
-6. Commit after each logical unit of work.
-7. If waiting on information, set task to `blocked` and journal what you need.
-8. Set task to `done`.
+6. After writing findings, store them in the project record so they appear in the web dashboard:
+   - `update_project(name="{initiative}", findings_content="<full findings summary>")`
+7. Commit after each logical unit of work.
+8. If waiting on information, set task to `blocked` and journal what you need.
+9. Set task to `done`.
 
 ## Writing Standards
 
