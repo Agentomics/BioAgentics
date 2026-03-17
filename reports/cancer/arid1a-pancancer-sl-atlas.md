@@ -40,7 +40,7 @@ The following limitations must be considered when interpreting all results in th
 
 6. **DepMap 2D culture limitations.** CRISPR dependency scores in 2D culture do not capture the tumor microenvironment, immune interactions, or in vivo pharmacology. Effect sizes reflect intrinsic genetic dependency only.
 
-7. **ARID1B is not directly druggable by conventional inhibition** — it is a scaffold protein in the residual SWI/SNF complex. Therapeutic exploitation requires PROTAC/molecular glue degrader approaches (see Section 8.2 — Foghorn ARID1B degrader program).
+7. **ARID1B is not directly druggable by conventional inhibition** — it is a scaffold protein in the residual SWI/SNF complex. Therapeutic exploitation requires targeted protein degradation approaches. Foghorn Therapeutics is developing first-in-class ARID1B degraders with in vivo PoC expected in 2026 (see Section 8.2 for detailed clinical concordance).
 
 ---
 
@@ -360,15 +360,56 @@ A cross-project finding (journal #619, #727) identified a mechanistic link betwe
 
 This rationale is reinforced by tulmimetostat dose-modification rates (55–93%), which support combination strategies using lower EZH2 inhibitor doses. A detailed analysis is planned as a future addendum (RD journal #781). See the pan-cancer ferroptosis atlas for complementary analysis.
 
-### 8.2 ARID1B Degrader Progress
+### 8.2 ARID1B Degrader Development — First Direct ARID1B-Targeting Approach
 
-The atlas finding that ARID1B is the dominant SL partner is directly validated by emerging therapeutics:
+*Addendum — March 17, 2026. Source: journal #818, Foghorn FY2025 (March 11, 2026), Foghorn ARID1B/CBP/EP300 update (October 30, 2025).*
 
-- **Foghorn Therapeutics** is developing first-in-class ARID1B degraders using VHL- and cereblon-based bifunctional approaches with oral delivery potential (journal #818)
-- In vivo proof-of-concept is expected in 2026
-- Target indications: endometrial, gastric, bladder, NSCLC — aligning with atlas priority cancer types
+The central finding of this atlas — ARID1B paralog dependency dominates in 6/11 cancer types — has been historically untranslatable because ARID1B lacks enzymatic activity. Unlike EZH2 (a methyltransferase targetable by small-molecule inhibitors like tazemetostat), ARID1B is a structural scaffold subunit of the residual SWI/SNF complex. Conventional drug design cannot inhibit a protein that functions through protein-protein interactions rather than catalytic activity. This is why the clinical pipeline has focused on EZH2 inhibition despite the atlas showing ARID1B is the stronger SL partner.
 
-ARID1B degraders represent the most direct pharmacological strategy to exploit the dominant SL relationship identified in this atlas.
+#### 8.2.1 Mechanism: Targeted Protein Degradation vs Enzymatic Inhibition
+
+**Foghorn Therapeutics** is developing first-in-class ARID1B degraders using a bifunctional targeted protein degradation (TPD) approach:
+
+- **VHL-based and cereblon-based bifunctional degraders** have been developed — heterobifunctional molecules that simultaneously bind ARID1B and an E3 ubiquitin ligase (VHL or CRBN), inducing polyubiquitination and proteasomal degradation of ARID1B
+- **Selective ARID1B degradation confirmed** — despite high sequence similarity between ARID1A and ARID1B, selective degradation has been achieved, which is critical given that ARID1A is already lost in the target patient population
+- **Downstream gene modulation demonstrated** — ARID1B degradation phenocopies the expected SWI/SNF destabilization and proliferation arrest in ARID1A-mutant cells
+- **Oral delivery potential** — a significant advantage over many PROTAC/degrader programs that are limited to parenteral administration
+
+This approach bypasses the fundamental druggability problem: rather than inhibiting ARID1B enzymatic activity (which does not exist), it eliminates the protein entirely — directly exploiting the paralog SL identified in this atlas.
+
+#### 8.2.2 Target Tumor Types
+
+Foghorn's target indications align with the atlas priority cancer types:
+
+| Indication | Atlas ARID1B d | Atlas Rank | ARID1A Mut Freq | Est. Patients/yr |
+|---|---|---|---|---|
+| Endometrial (Uterus) | −1.23 | 5 | 44.5% (UCEC) | ~38,600 |
+| Gastric / GEJ (Esoph/Stomach) | −1.39 | 6 | 27.3% (STAD) | ~9,200 |
+| Bladder | −0.75 | 4* | 26.3% (BLCA) | ~21,900 |
+| NSCLC (Lung) | −0.72 | 8 | 6.5–7.2% | ~16,100 |
+
+*Bladder ranks #4 overall but ARID1B is not the dominant SL partner (BRD2 d = −1.33 is stronger); ARID1B degradation would still be relevant given the moderate ARID1B effect.
+
+**Notable gap:** Lymphoid (ARID1B d = −2.26, the strongest signal in the atlas) and Skin (d = −2.14) are not listed among Foghorn's initial target indications. These cancer types have positive/near-zero EZH2 effects and therefore cannot benefit from EZH2 inhibitors — ARID1B degradation would be the only SL-targeted strategy available. Lymphoid (~7,900 patients/year) may warrant clinical development prioritization.
+
+#### 8.2.3 Expected Timeline and Data Milestones
+
+- **In vivo proof-of-concept: expected 2026** — data presented at TPD & Induced Proximity Summit
+- This is a preclinical-stage program; IND-enabling studies and first-in-human trials are likely 2–3 years away
+- If PoC is achieved, ARID1B degraders become a **second major therapeutic axis** alongside EZH2 inhibition for ARID1A-mutant cancers
+
+#### 8.2.4 Context: ARID1B Degrader vs Current EZH2 Inhibitor Pipeline
+
+| Parameter | EZH2 Inhibitors (tazemetostat, tulmimetostat) | ARID1B Degraders (Foghorn) |
+|---|---|---|
+| **Mechanism** | Enzymatic inhibition of EZH2 methyltransferase | Targeted protein degradation of ARID1B scaffold |
+| **Clinical stage** | Phase II/III (tulmimetostat Fast Track) | Preclinical (approaching in vivo PoC) |
+| **Cancer types supported** | Subset: Breast d=−0.68, Esoph/Stomach d=−0.57, Pancreas d=−0.63 | Majority: 6/11 types with ARID1B as dominant SL |
+| **Key limitation** | Positive d in 5/11 cancer types (wrong direction) | Not yet in clinic; oral delivery TBD |
+| **Patient population** | Narrower (EZH2 SL not universal) | Broader (~5% of all solid tumors have ARID1A-ARID1B SL) |
+| **Combination potential** | EZH2i + GPX4i (ferroptosis, see §8.1) | ARID1B degrader + ICI (untested) |
+
+ARID1A-ARID1B SL affects approximately 5% of all solid tumors. ARID1B degraders represent the most direct pharmacological strategy to exploit the dominant SL relationship identified in this atlas and would address a critical unmet need in cancer types where EZH2 inhibition is ineffective.
 
 ---
 
