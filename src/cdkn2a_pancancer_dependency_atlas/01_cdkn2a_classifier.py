@@ -306,7 +306,7 @@ def write_summary_txt(
         "OVERVIEW",
         f"  Total cell lines with lineage + CN data: {n_total}",
         f"  Cell lines with CRISPR data: {n_crispr}",
-        f"  CDKN2A-deleted (CN log2 <= {HOMDEL_CN_THRESHOLD}): {n_del} ({n_del/n_total:.1%})",
+        f"  CDKN2A-deleted (CN <= {HOMDEL_CN_THRESHOLD}): {n_del} ({n_del/n_total:.1%})",
         f"  CDKN2A-intact: {n_intact}",
         f"  Expression-discordant lines flagged: {n_discordant}",
         "",

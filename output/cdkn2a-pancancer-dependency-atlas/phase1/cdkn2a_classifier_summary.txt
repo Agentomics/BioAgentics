@@ -5,28 +5,64 @@ CDKN2A Pan-Cancer Dependency Atlas - Phase 1: CDKN2A Classifier
 OVERVIEW
   Total cell lines with lineage + CN data: 1087
   Cell lines with CRISPR data: 830
-  CDKN2A-deleted (CN log2 <= -1.0): 0 (0.0%)
-  CDKN2A-intact: 1087
-  Expression-discordant lines flagged: 286
+  CDKN2A-deleted (CN <= 0.3): 343 (31.6%)
+  CDKN2A-intact: 744
+  Expression-discordant lines flagged: 20
 
 EXPRESSION CROSS-VALIDATION
-  Skipped: No lines in one group
+  Deleted median expression: 0.24
+  Intact median expression: 6.04
+  Mann-Whitney U p-value: 6.84e-142
 
 CO-ALTERATION LANDSCAPE (in CDKN2A-deleted lines)
-  N/A
-  N/A
-  N/A
-  N/A
+  RB1 co-loss: 10/343 (2.9%)
+  TP53 mutation: 185/343 (53.9%)
+  CDKN2B co-deletion: 290/343 (84.5%)
+  CCNE1 amplification: 9/343 (2.6%)
 
 CLINICAL NOTE: RB1 co-loss abolishes CDK4/6 dependency.
-
+  333/343 deleted lines retain RB1 (eligible for CDK4/6i).
 
 QUALIFYING CANCER TYPES (>=5 deleted + >=10 intact with CRISPR)
 ------------------------------------------------------------
-  None qualify with current thresholds.
+  CNS/Brain: 43 del / 21 intact (CRISPR), 45/71 total (63.4%), RB1-intact-del=41
+  Pancreas: 20 del / 11 intact (CRISPR), 20/33 total (60.6%), RB1-intact-del=20
+  Skin: 30 del / 20 intact (CRISPR), 45/77 total (58.4%), RB1-intact-del=29
+  Bladder/Urinary Tract: 9 del / 11 intact (CRISPR), 9/20 total (45.0%), RB1-intact-del=9
+  Myeloid: 17 del / 20 intact (CRISPR), 23/56 total (41.1%), RB1-intact-del=17
+  Esophagus/Stomach: 15 del / 31 intact (CRISPR), 16/51 total (31.4%), RB1-intact-del=15
+  Ovary/Fallopian Tube: 12 del / 26 intact (CRISPR), 13/45 total (28.9%), RB1-intact-del=12
+  Bone: 13 del / 27 intact (CRISPR), 15/52 total (28.8%), RB1-intact-del=13
+  Lung: 35 del / 65 intact (CRISPR), 41/151 total (27.2%), RB1-intact-del=34
+  Head and Neck: 12 del / 31 intact (CRISPR), 13/48 total (27.1%), RB1-intact-del=12
+  Lymphoid: 14 del / 55 intact (CRISPR), 29/109 total (26.6%), RB1-intact-del=12
+  Soft Tissue: 10 del / 29 intact (CRISPR), 12/56 total (21.4%), RB1-intact-del=10
+  Breast: 8 del / 30 intact (CRISPR), 10/54 total (18.5%), RB1-intact-del=8
 
 ALL CANCER TYPES WITH CDKN2A DELETIONS
 ------------------------------------------------------------
+  Pleura: 13 del / 2 intact (CRISPR: 13/2)
+  CNS/Brain: 45 del / 26 intact (CRISPR: 43/21) *
+  Pancreas: 20 del / 13 intact (CRISPR: 20/11) *
+  Skin: 45 del / 32 intact (CRISPR: 30/20) *
+  Kidney: 19 del / 14 intact (CRISPR: 16/9)
+  Biliary Tract: 5 del / 5 intact (CRISPR: 4/4)
+  Bladder/Urinary Tract: 9 del / 11 intact (CRISPR: 9/11) *
+  Myeloid: 23 del / 33 intact (CRISPR: 17/20) *
+  Ampulla of Vater: 1 del / 2 intact (CRISPR: 1/2)
+  Esophagus/Stomach: 16 del / 35 intact (CRISPR: 15/31) *
+  Ovary/Fallopian Tube: 13 del / 32 intact (CRISPR: 12/26) *
+  Bone: 15 del / 37 intact (CRISPR: 13/27) *
+  Lung: 41 del / 110 intact (CRISPR: 35/65) *
+  Head and Neck: 13 del / 35 intact (CRISPR: 12/31) *
+  Lymphoid: 29 del / 80 intact (CRISPR: 14/55) *
+  Soft Tissue: 12 del / 44 intact (CRISPR: 10/29) *
+  Thyroid: 2 del / 8 intact (CRISPR: 2/7)
+  Breast: 10 del / 44 intact (CRISPR: 8/30) *
+  Liver: 4 del / 18 intact (CRISPR: 4/18)
+  Peripheral Nervous System: 4 del / 34 intact (CRISPR: 2/32)
+  Uterus: 2 del / 27 intact (CRISPR: 1/24)
+  Bowel: 2 del / 54 intact (CRISPR: 1/40)
 
 POWER ANALYSIS NOTE
   Qualifying threshold: >=5 deleted + >=10 intact with CRISPR.
