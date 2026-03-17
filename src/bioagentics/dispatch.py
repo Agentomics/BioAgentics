@@ -105,6 +105,21 @@ def clear_all_presence():
             )
 
 
+def reset_stuck_tasks():
+    """Reset in_progress tasks back to pending on startup — no agents are running yet."""
+    resp = api("GET", "/tasks?status=in_progress&limit=100")
+    if not resp or not resp.ok:
+        return
+    stuck = resp.json().get("items", [])
+    if not stuck:
+        return
+    for task in stuck:
+        api("PATCH", f"/tasks/{task['id']}", json={"status": "pending"})
+    labels = ", ".join(f"#{t['id']} {t['title']}" for t in stuck)
+    print(f"  cleanup: reset {len(stuck)} stuck in_progress task(s) to pending")
+    journal(f"startup cleanup: reset {len(stuck)} stuck in_progress task(s) to pending: {labels}")
+
+
 def has_work(username: str) -> bool:
     for status in ("pending", "in_progress"):
         resp = api("GET", f"/tasks?username={username}&status={status}&limit=1")
@@ -682,9 +697,11 @@ def main():
     # Write PID file
     _write_pid()
 
-    # Clean up stale presence from previous crashed run
+    # Clean up stale state from previous crashed run
     print("startup: clearing stale agent presence...")
     clear_all_presence()
+    print("startup: checking for stuck in_progress tasks...")
+    reset_stuck_tasks()
 
     # Signal handler sets stop event — actual cleanup happens in _shutdown
     def handle_signal(sig, _frame):

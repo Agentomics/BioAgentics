@@ -177,17 +177,20 @@ class ProjectUpdate(BaseModel):
     findings_content: str | None = Field(default=None, max_length=50_000)
 
 
-class ProjectEntry(BaseModel):
+class ProjectSummary(BaseModel):
     name: str
     status: str
     description: str | None
     labels: str | None
-    plan_content: str | None
-    findings_content: str | None
     created_at: str
     updated_at: str
 
 
+class ProjectEntry(ProjectSummary):
+    plan_content: str | None
+    findings_content: str | None
+
+
 class ProjectList(BaseModel):
     total: int
-    items: list[ProjectEntry]
+    items: list[ProjectSummary]

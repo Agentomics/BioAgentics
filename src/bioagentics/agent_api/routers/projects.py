@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 from bioagentics.agent_api.auth import require_auth
 from bioagentics.agent_api.database import SessionLocal, projects_table
-from bioagentics.agent_api.models import ProjectCreate, ProjectEntry, ProjectList, ProjectUpdate
+from bioagentics.agent_api.models import ProjectCreate, ProjectEntry, ProjectList, ProjectSummary, ProjectUpdate
 
 router = APIRouter(prefix="/projects", tags=["projects"])
 
@@ -52,7 +52,15 @@ def list_projects(
     offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
 ):
-    query = select(projects_table)
+    summary_cols = [
+        projects_table.c.name,
+        projects_table.c.status,
+        projects_table.c.description,
+        projects_table.c.labels,
+        projects_table.c.created_at,
+        projects_table.c.updated_at,
+    ]
+    query = select(*summary_cols)
     count_query = select(func.count()).select_from(projects_table)
 
     if status is not None:
