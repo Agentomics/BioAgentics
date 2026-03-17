@@ -12,6 +12,7 @@ Approximately 30-50% of CD patients progress from inflammatory (B1) to stricturi
 - **GSE16879** (Arijs et al.) — Mucosal gene expression with clinical phenotype annotations, potential external validation
 - **ClinVar/gnomAD** — Variant frequencies for CD-associated fibrosis genes (NOD2, TGFβR, SMAD3, MUC19)
 - **MSigDB** — Curated fibrosis and ECM gene sets for pathway-level features
+- **Broad Single Cell Portal SCP2959 / dbGaP phs003943.v1.p1** — Stricturing CD spatial/scRNA-seq dataset (Nature Genetics Jul 2025, doi:10.1038/s41588-025-02225-y): 61 samples from 21 CD patients + 10 non-IBD controls, paired scRNA-seq and spatial transcriptomics, 68 fine-grained cell types. **Data now publicly available.** Use as: (1) cell-type reference atlas for deconvolving RISK cohort bulk RNA-seq via InstaPrism (estimate inflammatory fibroblast proportions as predictive feature), (2) validation of the 8-gene stricture panel, (3) spatial context for interpreting cell neighborhoods driving stricture progression.
 
 ## Methodology
 1. **Phenotype extraction**: Parse RISK cohort clinical metadata to identify patients who progressed to B2/B3 vs those who remained B1 at latest follow-up. Define binary outcome (progressor vs non-progressor) and time-to-event if dates available.
