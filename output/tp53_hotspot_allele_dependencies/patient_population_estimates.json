@@ -1,0 +1,1442 @@
+{
+  "total_hotspot_patients": 88289,
+  "allele_totals": {
+    "G245S": 7463,
+    "R175H": 25973,
+    "R248W": 14408,
+    "R249S": 3435,
+    "R273H": 15068,
+    "R282W": 14279,
+    "Y220C": 7663
+  },
+  "cancer_type_totals": {
+    "COADREAD": 26037,
+    "BRCA": 15176,
+    "HNSC": 7401,
+    "PAAD": 6080,
+    "UCEC": 4851,
+    "PRAD": 4651,
+    "ESCA": 4052,
+    "LUSC": 3614,
+    "BLCA": 3045,
+    "LUAD": 2888,
+    "STAD": 2491,
+    "OV": 1807,
+    "LIHC": 1801,
+    "GBM": 1047,
+    "SKCM": 888,
+    "SARC": 594,
+    "UCS": 490,
+    "LGG": 444,
+    "DLBC": 439,
+    "CHOL": 222,
+    "KICH": 156,
+    "MESO": 68,
+    "CESC": 47,
+    "LAML": 0,
+    "ACC": 0
+  },
+  "y220c_rezatapopt_addressable": 7663,
+  "per_cancer_per_allele": [
+    {
+      "cancer_type": "COADREAD",
+      "allele": "R175H",
+      "us_annual_incidence": 152810,
+      "tp53_mutation_rate": 0.588,
+      "allele_fraction_of_mutant": 0.102,
+      "estimated_annual_patients": 9156
+    },
+    {
+      "cancer_type": "BRCA",
+      "allele": "R175H",
+      "us_annual_incidence": 310720,
+      "tp53_mutation_rate": 0.326,
+      "allele_fraction_of_mutant": 0.061,
+      "estimated_annual_patients": 6130
+    },
+    {
+      "cancer_type": "COADREAD",
+      "allele": "R282W",
+      "us_annual_incidence": 152810,
+      "tp53_mutation_rate": 0.588,
+      "allele_fraction_of_mutant": 0.064,
+      "estimated_annual_patients": 5723
+    },
+    {
+      "cancer_type": "COADREAD",
+      "allele": "R273H",
+      "us_annual_incidence": 152810,
+      "tp53_mutation_rate": 0.588,
+      "allele_fraction_of_mutant": 0.054,
+      "estimated_annual_patients": 4864
+    },
+    {
+      "cancer_type": "COADREAD",
+      "allele": "R248W",
+      "us_annual_incidence": 152810,
+      "tp53_mutation_rate": 0.588,
+      "allele_fraction_of_mutant": 0.048,
+      "estimated_annual_patients": 4292
+    },
+    {
+      "cancer_type": "BRCA",
+      "allele": "R273H",
+      "us_annual_incidence": 310720,
+      "tp53_mutation_rate": 0.326,
+      "allele_fraction_of_mutant": 0.037,
+      "estimated_annual_patients": 3794
+    },
+    {
+      "cancer_type": "BRCA",
+      "allele": "Y220C",
+      "us_annual_incidence": 310720,
+      "tp53_mutation_rate": 0.326,
+      "allele_fraction_of_mutant": 0.02,
+      "estimated_annual_patients": 2043
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "G245S",
+      "us_annual_incidence": 288300,
+      "tp53_mutation_rate": 0.115,
+      "allele_fraction_of_mutant": 0.053,
+      "estimated_annual_patients": 1744
+    },
+    {
+      "cancer_type": "COADREAD",
+      "allele": "G245S",
+      "us_annual_incidence": 152810,
+      "tp53_mutation_rate": 0.588,
+      "allele_fraction_of_mutant": 0.019,
+      "estimated_annual_patients": 1716
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "R175H",
+      "us_annual_incidence": 66920,
+      "tp53_mutation_rate": 0.693,
+      "allele_fraction_of_mutant": 0.034,
+      "estimated_annual_patients": 1558
+    },
+    {
+      "cancer_type": "BRCA",
+      "allele": "R248W",
+      "us_annual_incidence": 310720,
+      "tp53_mutation_rate": 0.326,
+      "allele_fraction_of_mutant": 0.014,
+      "estimated_annual_patients": 1459
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "R175H",
+      "us_annual_incidence": 64050,
+      "tp53_mutation_rate": 0.598,
+      "allele_fraction_of_mutant": 0.037,
+      "estimated_annual_patients": 1431
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "R248W",
+      "us_annual_incidence": 64050,
+      "tp53_mutation_rate": 0.598,
+      "allele_fraction_of_mutant": 0.037,
+      "estimated_annual_patients": 1431
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "R282W",
+      "us_annual_incidence": 66920,
+      "tp53_mutation_rate": 0.693,
+      "allele_fraction_of_mutant": 0.031,
+      "estimated_annual_patients": 1428
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "R273H",
+      "us_annual_incidence": 67880,
+      "tp53_mutation_rate": 0.373,
+      "allele_fraction_of_mutant": 0.052,
+      "estimated_annual_patients": 1311
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "R249S",
+      "us_annual_incidence": 41210,
+      "tp53_mutation_rate": 0.301,
+      "allele_fraction_of_mutant": 0.1,
+      "estimated_annual_patients": 1240
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "R175H",
+      "us_annual_incidence": 22370,
+      "tp53_mutation_rate": 0.868,
+      "allele_fraction_of_mutant": 0.063,
+      "estimated_annual_patients": 1228
+    },
+    {
+      "cancer_type": "BRCA",
+      "allele": "R282W",
+      "us_annual_incidence": 310720,
+      "tp53_mutation_rate": 0.326,
+      "allele_fraction_of_mutant": 0.012,
+      "estimated_annual_patients": 1167
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "R282W",
+      "us_annual_incidence": 288300,
+      "tp53_mutation_rate": 0.115,
+      "allele_fraction_of_mutant": 0.035,
+      "estimated_annual_patients": 1163
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "R175H",
+      "us_annual_incidence": 288300,
+      "tp53_mutation_rate": 0.115,
+      "allele_fraction_of_mutant": 0.035,
+      "estimated_annual_patients": 1163
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "R273H",
+      "us_annual_incidence": 64050,
+      "tp53_mutation_rate": 0.598,
+      "allele_fraction_of_mutant": 0.028,
+      "estimated_annual_patients": 1073
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "G245S",
+      "us_annual_incidence": 66920,
+      "tp53_mutation_rate": 0.693,
+      "allele_fraction_of_mutant": 0.022,
+      "estimated_annual_patients": 1039
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "R273H",
+      "us_annual_incidence": 66920,
+      "tp53_mutation_rate": 0.693,
+      "allele_fraction_of_mutant": 0.022,
+      "estimated_annual_patients": 1039
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "R248W",
+      "us_annual_incidence": 66920,
+      "tp53_mutation_rate": 0.693,
+      "allele_fraction_of_mutant": 0.022,
+      "estimated_annual_patients": 1039
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "R175H",
+      "us_annual_incidence": 67880,
+      "tp53_mutation_rate": 0.373,
+      "allele_fraction_of_mutant": 0.036,
+      "estimated_annual_patients": 918
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "R248W",
+      "us_annual_incidence": 67880,
+      "tp53_mutation_rate": 0.373,
+      "allele_fraction_of_mutant": 0.036,
+      "estimated_annual_patients": 918
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "Y220C",
+      "us_annual_incidence": 66920,
+      "tp53_mutation_rate": 0.693,
+      "allele_fraction_of_mutant": 0.02,
+      "estimated_annual_patients": 909
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "R248W",
+      "us_annual_incidence": 83190,
+      "tp53_mutation_rate": 0.493,
+      "allele_fraction_of_mutant": 0.02,
+      "estimated_annual_patients": 812
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "R175H",
+      "us_annual_incidence": 83190,
+      "tp53_mutation_rate": 0.493,
+      "allele_fraction_of_mutant": 0.02,
+      "estimated_annual_patients": 812
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "R282W",
+      "us_annual_incidence": 67880,
+      "tp53_mutation_rate": 0.373,
+      "allele_fraction_of_mutant": 0.031,
+      "estimated_annual_patients": 787
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "R248W",
+      "us_annual_incidence": 22370,
+      "tp53_mutation_rate": 0.868,
+      "allele_fraction_of_mutant": 0.038,
+      "estimated_annual_patients": 737
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "R273H",
+      "us_annual_incidence": 22370,
+      "tp53_mutation_rate": 0.868,
+      "allele_fraction_of_mutant": 0.038,
+      "estimated_annual_patients": 737
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "R175H",
+      "us_annual_incidence": 26500,
+      "tp53_mutation_rate": 0.489,
+      "allele_fraction_of_mutant": 0.056,
+      "estimated_annual_patients": 730
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "R282W",
+      "us_annual_incidence": 70000,
+      "tp53_mutation_rate": 0.835,
+      "allele_fraction_of_mutant": 0.012,
+      "estimated_annual_patients": 723
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "R249S",
+      "us_annual_incidence": 70000,
+      "tp53_mutation_rate": 0.835,
+      "allele_fraction_of_mutant": 0.012,
+      "estimated_annual_patients": 723
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "Y220C",
+      "us_annual_incidence": 64050,
+      "tp53_mutation_rate": 0.598,
+      "allele_fraction_of_mutant": 0.019,
+      "estimated_annual_patients": 715
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "G245S",
+      "us_annual_incidence": 64050,
+      "tp53_mutation_rate": 0.598,
+      "allele_fraction_of_mutant": 0.019,
+      "estimated_annual_patients": 715
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "R282W",
+      "us_annual_incidence": 64050,
+      "tp53_mutation_rate": 0.598,
+      "allele_fraction_of_mutant": 0.019,
+      "estimated_annual_patients": 715
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "R175H",
+      "us_annual_incidence": 117000,
+      "tp53_mutation_rate": 0.521,
+      "allele_fraction_of_mutant": 0.01,
+      "estimated_annual_patients": 619
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "Y220C",
+      "us_annual_incidence": 117000,
+      "tp53_mutation_rate": 0.521,
+      "allele_fraction_of_mutant": 0.01,
+      "estimated_annual_patients": 619
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "R249S",
+      "us_annual_incidence": 117000,
+      "tp53_mutation_rate": 0.521,
+      "allele_fraction_of_mutant": 0.01,
+      "estimated_annual_patients": 619
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "R282W",
+      "us_annual_incidence": 22370,
+      "tp53_mutation_rate": 0.868,
+      "allele_fraction_of_mutant": 0.032,
+      "estimated_annual_patients": 614
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "R282W",
+      "us_annual_incidence": 83190,
+      "tp53_mutation_rate": 0.493,
+      "allele_fraction_of_mutant": 0.015,
+      "estimated_annual_patients": 609
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "R273H",
+      "us_annual_incidence": 26500,
+      "tp53_mutation_rate": 0.489,
+      "allele_fraction_of_mutant": 0.047,
+      "estimated_annual_patients": 608
+    },
+    {
+      "cancer_type": "BRCA",
+      "allele": "G245S",
+      "us_annual_incidence": 310720,
+      "tp53_mutation_rate": 0.326,
+      "allele_fraction_of_mutant": 0.006,
+      "estimated_annual_patients": 583
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "R248W",
+      "us_annual_incidence": 288300,
+      "tp53_mutation_rate": 0.115,
+      "allele_fraction_of_mutant": 0.018,
+      "estimated_annual_patients": 581
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "R175H",
+      "us_annual_incidence": 70000,
+      "tp53_mutation_rate": 0.835,
+      "allele_fraction_of_mutant": 0.01,
+      "estimated_annual_patients": 578
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "R248W",
+      "us_annual_incidence": 70000,
+      "tp53_mutation_rate": 0.835,
+      "allele_fraction_of_mutant": 0.01,
+      "estimated_annual_patients": 578
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "R175H",
+      "us_annual_incidence": 19710,
+      "tp53_mutation_rate": 0.713,
+      "allele_fraction_of_mutant": 0.04,
+      "estimated_annual_patients": 565
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "Y220C",
+      "us_annual_incidence": 67880,
+      "tp53_mutation_rate": 0.373,
+      "allele_fraction_of_mutant": 0.021,
+      "estimated_annual_patients": 524
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "Y220C",
+      "us_annual_incidence": 22370,
+      "tp53_mutation_rate": 0.868,
+      "allele_fraction_of_mutant": 0.025,
+      "estimated_annual_patients": 491
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "R248W",
+      "us_annual_incidence": 97610,
+      "tp53_mutation_rate": 0.164,
+      "allele_fraction_of_mutant": 0.028,
+      "estimated_annual_patients": 444
+    },
+    {
+      "cancer_type": "DLBC",
+      "allele": "R248W",
+      "us_annual_incidence": 18000,
+      "tp53_mutation_rate": 0.122,
+      "allele_fraction_of_mutant": 0.2,
+      "estimated_annual_patients": 439
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "R273H",
+      "us_annual_incidence": 70000,
+      "tp53_mutation_rate": 0.835,
+      "allele_fraction_of_mutant": 0.007,
+      "estimated_annual_patients": 434
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "Y220C",
+      "us_annual_incidence": 70000,
+      "tp53_mutation_rate": 0.835,
+      "allele_fraction_of_mutant": 0.007,
+      "estimated_annual_patients": 434
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "R282W",
+      "us_annual_incidence": 26500,
+      "tp53_mutation_rate": 0.489,
+      "allele_fraction_of_mutant": 0.033,
+      "estimated_annual_patients": 425
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "R282W",
+      "us_annual_incidence": 117000,
+      "tp53_mutation_rate": 0.521,
+      "allele_fraction_of_mutant": 0.007,
+      "estimated_annual_patients": 413
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "G245S",
+      "us_annual_incidence": 83190,
+      "tp53_mutation_rate": 0.493,
+      "allele_fraction_of_mutant": 0.01,
+      "estimated_annual_patients": 406
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "R249S",
+      "us_annual_incidence": 66920,
+      "tp53_mutation_rate": 0.693,
+      "allele_fraction_of_mutant": 0.008,
+      "estimated_annual_patients": 389
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "R248W",
+      "us_annual_incidence": 19710,
+      "tp53_mutation_rate": 0.713,
+      "allele_fraction_of_mutant": 0.024,
+      "estimated_annual_patients": 339
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "R273H",
+      "us_annual_incidence": 19710,
+      "tp53_mutation_rate": 0.713,
+      "allele_fraction_of_mutant": 0.024,
+      "estimated_annual_patients": 339
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "Y220C",
+      "us_annual_incidence": 19710,
+      "tp53_mutation_rate": 0.713,
+      "allele_fraction_of_mutant": 0.024,
+      "estimated_annual_patients": 339
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "R248W",
+      "us_annual_incidence": 26500,
+      "tp53_mutation_rate": 0.489,
+      "allele_fraction_of_mutant": 0.023,
+      "estimated_annual_patients": 304
+    },
+    {
+      "cancer_type": "COADREAD",
+      "allele": "Y220C",
+      "us_annual_incidence": 152810,
+      "tp53_mutation_rate": 0.588,
+      "allele_fraction_of_mutant": 0.003,
+      "estimated_annual_patients": 286
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "R175H",
+      "us_annual_incidence": 13410,
+      "tp53_mutation_rate": 0.305,
+      "allele_fraction_of_mutant": 0.066,
+      "estimated_annual_patients": 270
+    },
+    {
+      "cancer_type": "SARC",
+      "allele": "R175H",
+      "us_annual_incidence": 16890,
+      "tp53_mutation_rate": 0.333,
+      "allele_fraction_of_mutant": 0.047,
+      "estimated_annual_patients": 264
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "G245S",
+      "us_annual_incidence": 67880,
+      "tp53_mutation_rate": 0.373,
+      "allele_fraction_of_mutant": 0.01,
+      "estimated_annual_patients": 262
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "G245S",
+      "us_annual_incidence": 22370,
+      "tp53_mutation_rate": 0.868,
+      "allele_fraction_of_mutant": 0.013,
+      "estimated_annual_patients": 245
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "Y220C",
+      "us_annual_incidence": 26500,
+      "tp53_mutation_rate": 0.489,
+      "allele_fraction_of_mutant": 0.019,
+      "estimated_annual_patients": 243
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "Y220C",
+      "us_annual_incidence": 41210,
+      "tp53_mutation_rate": 0.301,
+      "allele_fraction_of_mutant": 0.018,
+      "estimated_annual_patients": 225
+    },
+    {
+      "cancer_type": "CHOL",
+      "allele": "R248W",
+      "us_annual_incidence": 8000,
+      "tp53_mutation_rate": 0.111,
+      "allele_fraction_of_mutant": 0.25,
+      "estimated_annual_patients": 222
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "R175H",
+      "us_annual_incidence": 97610,
+      "tp53_mutation_rate": 0.164,
+      "allele_fraction_of_mutant": 0.014,
+      "estimated_annual_patients": 222
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "Y220C",
+      "us_annual_incidence": 97610,
+      "tp53_mutation_rate": 0.164,
+      "allele_fraction_of_mutant": 0.014,
+      "estimated_annual_patients": 222
+    },
+    {
+      "cancer_type": "UCS",
+      "allele": "R273H",
+      "us_annual_incidence": 4000,
+      "tp53_mutation_rate": 0.912,
+      "allele_fraction_of_mutant": 0.058,
+      "estimated_annual_patients": 210
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "R273H",
+      "us_annual_incidence": 117000,
+      "tp53_mutation_rate": 0.521,
+      "allele_fraction_of_mutant": 0.003,
+      "estimated_annual_patients": 206
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "R248W",
+      "us_annual_incidence": 117000,
+      "tp53_mutation_rate": 0.521,
+      "allele_fraction_of_mutant": 0.003,
+      "estimated_annual_patients": 206
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "G245S",
+      "us_annual_incidence": 117000,
+      "tp53_mutation_rate": 0.521,
+      "allele_fraction_of_mutant": 0.003,
+      "estimated_annual_patients": 206
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "Y220C",
+      "us_annual_incidence": 83190,
+      "tp53_mutation_rate": 0.493,
+      "allele_fraction_of_mutant": 0.005,
+      "estimated_annual_patients": 203
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "R249S",
+      "us_annual_incidence": 83190,
+      "tp53_mutation_rate": 0.493,
+      "allele_fraction_of_mutant": 0.005,
+      "estimated_annual_patients": 203
+    },
+    {
+      "cancer_type": "SARC",
+      "allele": "R248W",
+      "us_annual_incidence": 16890,
+      "tp53_mutation_rate": 0.333,
+      "allele_fraction_of_mutant": 0.035,
+      "estimated_annual_patients": 198
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "R248W",
+      "us_annual_incidence": 13410,
+      "tp53_mutation_rate": 0.305,
+      "allele_fraction_of_mutant": 0.041,
+      "estimated_annual_patients": 169
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "Y220C",
+      "us_annual_incidence": 13410,
+      "tp53_mutation_rate": 0.305,
+      "allele_fraction_of_mutant": 0.041,
+      "estimated_annual_patients": 169
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "R282W",
+      "us_annual_incidence": 13410,
+      "tp53_mutation_rate": 0.305,
+      "allele_fraction_of_mutant": 0.041,
+      "estimated_annual_patients": 169
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "R282W",
+      "us_annual_incidence": 19710,
+      "tp53_mutation_rate": 0.713,
+      "allele_fraction_of_mutant": 0.011,
+      "estimated_annual_patients": 150
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "G245S",
+      "us_annual_incidence": 70000,
+      "tp53_mutation_rate": 0.835,
+      "allele_fraction_of_mutant": 0.002,
+      "estimated_annual_patients": 144
+    },
+    {
+      "cancer_type": "UCS",
+      "allele": "R175H",
+      "us_annual_incidence": 4000,
+      "tp53_mutation_rate": 0.912,
+      "allele_fraction_of_mutant": 0.038,
+      "estimated_annual_patients": 140
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "R273H",
+      "us_annual_incidence": 13410,
+      "tp53_mutation_rate": 0.305,
+      "allele_fraction_of_mutant": 0.033,
+      "estimated_annual_patients": 135
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "G245S",
+      "us_annual_incidence": 13410,
+      "tp53_mutation_rate": 0.305,
+      "allele_fraction_of_mutant": 0.033,
+      "estimated_annual_patients": 135
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "R249S",
+      "us_annual_incidence": 67880,
+      "tp53_mutation_rate": 0.373,
+      "allele_fraction_of_mutant": 0.005,
+      "estimated_annual_patients": 131
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "G245S",
+      "us_annual_incidence": 26500,
+      "tp53_mutation_rate": 0.489,
+      "allele_fraction_of_mutant": 0.009,
+      "estimated_annual_patients": 121
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "R273H",
+      "us_annual_incidence": 41210,
+      "tp53_mutation_rate": 0.301,
+      "allele_fraction_of_mutant": 0.009,
+      "estimated_annual_patients": 112
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "R248W",
+      "us_annual_incidence": 41210,
+      "tp53_mutation_rate": 0.301,
+      "allele_fraction_of_mutant": 0.009,
+      "estimated_annual_patients": 112
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "R175H",
+      "us_annual_incidence": 41210,
+      "tp53_mutation_rate": 0.301,
+      "allele_fraction_of_mutant": 0.009,
+      "estimated_annual_patients": 112
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "R273H",
+      "us_annual_incidence": 5000,
+      "tp53_mutation_rate": 0.484,
+      "allele_fraction_of_mutant": 0.044,
+      "estimated_annual_patients": 106
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "Y220C",
+      "us_annual_incidence": 5000,
+      "tp53_mutation_rate": 0.484,
+      "allele_fraction_of_mutant": 0.04,
+      "estimated_annual_patients": 97
+    },
+    {
+      "cancer_type": "KICH",
+      "allele": "R282W",
+      "us_annual_incidence": 5100,
+      "tp53_mutation_rate": 0.323,
+      "allele_fraction_of_mutant": 0.048,
+      "estimated_annual_patients": 78
+    },
+    {
+      "cancer_type": "KICH",
+      "allele": "Y220C",
+      "us_annual_incidence": 5100,
+      "tp53_mutation_rate": 0.323,
+      "allele_fraction_of_mutant": 0.048,
+      "estimated_annual_patients": 78
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "R175H",
+      "us_annual_incidence": 5000,
+      "tp53_mutation_rate": 0.484,
+      "allele_fraction_of_mutant": 0.032,
+      "estimated_annual_patients": 77
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "G245S",
+      "us_annual_incidence": 19710,
+      "tp53_mutation_rate": 0.713,
+      "allele_fraction_of_mutant": 0.005,
+      "estimated_annual_patients": 75
+    },
+    {
+      "cancer_type": "UCS",
+      "allele": "R249S",
+      "us_annual_incidence": 4000,
+      "tp53_mutation_rate": 0.912,
+      "allele_fraction_of_mutant": 0.019,
+      "estimated_annual_patients": 70
+    },
+    {
+      "cancer_type": "UCS",
+      "allele": "R248W",
+      "us_annual_incidence": 4000,
+      "tp53_mutation_rate": 0.912,
+      "allele_fraction_of_mutant": 0.019,
+      "estimated_annual_patients": 70
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "R282W",
+      "us_annual_incidence": 5000,
+      "tp53_mutation_rate": 0.484,
+      "allele_fraction_of_mutant": 0.028,
+      "estimated_annual_patients": 68
+    },
+    {
+      "cancer_type": "SARC",
+      "allele": "R273H",
+      "us_annual_incidence": 16890,
+      "tp53_mutation_rate": 0.333,
+      "allele_fraction_of_mutant": 0.012,
+      "estimated_annual_patients": 66
+    },
+    {
+      "cancer_type": "SARC",
+      "allele": "Y220C",
+      "us_annual_incidence": 16890,
+      "tp53_mutation_rate": 0.333,
+      "allele_fraction_of_mutant": 0.012,
+      "estimated_annual_patients": 66
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "R249S",
+      "us_annual_incidence": 26500,
+      "tp53_mutation_rate": 0.489,
+      "allele_fraction_of_mutant": 0.005,
+      "estimated_annual_patients": 60
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "R248W",
+      "us_annual_incidence": 5000,
+      "tp53_mutation_rate": 0.484,
+      "allele_fraction_of_mutant": 0.024,
+      "estimated_annual_patients": 58
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "R282W",
+      "us_annual_incidence": 13820,
+      "tp53_mutation_rate": 0.079,
+      "allele_fraction_of_mutant": 0.043,
+      "estimated_annual_patients": 47
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "G245S",
+      "us_annual_incidence": 5000,
+      "tp53_mutation_rate": 0.484,
+      "allele_fraction_of_mutant": 0.016,
+      "estimated_annual_patients": 38
+    },
+    {
+      "cancer_type": "MESO",
+      "allele": "G245S",
+      "us_annual_incidence": 3000,
+      "tp53_mutation_rate": 0.163,
+      "allele_fraction_of_mutant": 0.071,
+      "estimated_annual_patients": 34
+    },
+    {
+      "cancer_type": "MESO",
+      "allele": "R273H",
+      "us_annual_incidence": 3000,
+      "tp53_mutation_rate": 0.163,
+      "allele_fraction_of_mutant": 0.071,
+      "estimated_annual_patients": 34
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "R249S",
+      "us_annual_incidence": 288300,
+      "tp53_mutation_rate": 0.115,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CHOL",
+      "allele": "R273H",
+      "us_annual_incidence": 8000,
+      "tp53_mutation_rate": 0.111,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "UCS",
+      "allele": "G245S",
+      "us_annual_incidence": 4000,
+      "tp53_mutation_rate": 0.912,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CHOL",
+      "allele": "R175H",
+      "us_annual_incidence": 8000,
+      "tp53_mutation_rate": 0.111,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "UCS",
+      "allele": "Y220C",
+      "us_annual_incidence": 4000,
+      "tp53_mutation_rate": 0.912,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "Y220C",
+      "us_annual_incidence": 288300,
+      "tp53_mutation_rate": 0.115,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "KICH",
+      "allele": "R249S",
+      "us_annual_incidence": 5100,
+      "tp53_mutation_rate": 0.323,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "UCS",
+      "allele": "R282W",
+      "us_annual_incidence": 4000,
+      "tp53_mutation_rate": 0.912,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CHOL",
+      "allele": "G245S",
+      "us_annual_incidence": 8000,
+      "tp53_mutation_rate": 0.111,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "R249S",
+      "us_annual_incidence": 22370,
+      "tp53_mutation_rate": 0.868,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "R249S",
+      "us_annual_incidence": 19710,
+      "tp53_mutation_rate": 0.713,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "DLBC",
+      "allele": "R282W",
+      "us_annual_incidence": 18000,
+      "tp53_mutation_rate": 0.122,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "DLBC",
+      "allele": "Y220C",
+      "us_annual_incidence": 18000,
+      "tp53_mutation_rate": 0.122,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "R273H",
+      "us_annual_incidence": 288300,
+      "tp53_mutation_rate": 0.115,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CHOL",
+      "allele": "R249S",
+      "us_annual_incidence": 8000,
+      "tp53_mutation_rate": 0.111,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "DLBC",
+      "allele": "G245S",
+      "us_annual_incidence": 18000,
+      "tp53_mutation_rate": 0.122,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LAML",
+      "allele": "R282W",
+      "us_annual_incidence": 20380,
+      "tp53_mutation_rate": 0.08,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "Y220C",
+      "us_annual_incidence": 13820,
+      "tp53_mutation_rate": 0.079,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "R249S",
+      "us_annual_incidence": 13820,
+      "tp53_mutation_rate": 0.079,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "G245S",
+      "us_annual_incidence": 13820,
+      "tp53_mutation_rate": 0.079,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "R273H",
+      "us_annual_incidence": 13820,
+      "tp53_mutation_rate": 0.079,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "R248W",
+      "us_annual_incidence": 13820,
+      "tp53_mutation_rate": 0.079,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "R175H",
+      "us_annual_incidence": 13820,
+      "tp53_mutation_rate": 0.079,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LAML",
+      "allele": "Y220C",
+      "us_annual_incidence": 20380,
+      "tp53_mutation_rate": 0.08,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CHOL",
+      "allele": "Y220C",
+      "us_annual_incidence": 8000,
+      "tp53_mutation_rate": 0.111,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LAML",
+      "allele": "R249S",
+      "us_annual_incidence": 20380,
+      "tp53_mutation_rate": 0.08,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LAML",
+      "allele": "G245S",
+      "us_annual_incidence": 20380,
+      "tp53_mutation_rate": 0.08,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LAML",
+      "allele": "R273H",
+      "us_annual_incidence": 20380,
+      "tp53_mutation_rate": 0.08,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LAML",
+      "allele": "R248W",
+      "us_annual_incidence": 20380,
+      "tp53_mutation_rate": 0.08,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LAML",
+      "allele": "R175H",
+      "us_annual_incidence": 20380,
+      "tp53_mutation_rate": 0.08,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CHOL",
+      "allele": "R282W",
+      "us_annual_incidence": 8000,
+      "tp53_mutation_rate": 0.111,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "DLBC",
+      "allele": "R249S",
+      "us_annual_incidence": 18000,
+      "tp53_mutation_rate": 0.122,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "R249S",
+      "us_annual_incidence": 64050,
+      "tp53_mutation_rate": 0.598,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "DLBC",
+      "allele": "R273H",
+      "us_annual_incidence": 18000,
+      "tp53_mutation_rate": 0.122,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "KICH",
+      "allele": "G245S",
+      "us_annual_incidence": 5100,
+      "tp53_mutation_rate": 0.323,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "R249S",
+      "us_annual_incidence": 13410,
+      "tp53_mutation_rate": 0.305,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "KICH",
+      "allele": "R273H",
+      "us_annual_incidence": 5100,
+      "tp53_mutation_rate": 0.323,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "KICH",
+      "allele": "R248W",
+      "us_annual_incidence": 5100,
+      "tp53_mutation_rate": 0.323,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "KICH",
+      "allele": "R175H",
+      "us_annual_incidence": 5100,
+      "tp53_mutation_rate": 0.323,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "BRCA",
+      "allele": "R249S",
+      "us_annual_incidence": 310720,
+      "tp53_mutation_rate": 0.326,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "SARC",
+      "allele": "R282W",
+      "us_annual_incidence": 16890,
+      "tp53_mutation_rate": 0.333,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "G245S",
+      "us_annual_incidence": 41210,
+      "tp53_mutation_rate": 0.301,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "SARC",
+      "allele": "R249S",
+      "us_annual_incidence": 16890,
+      "tp53_mutation_rate": 0.333,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "R249S",
+      "us_annual_incidence": 5000,
+      "tp53_mutation_rate": 0.484,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "R282W",
+      "us_annual_incidence": 41210,
+      "tp53_mutation_rate": 0.301,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "ACC",
+      "allele": "R175H",
+      "us_annual_incidence": 600,
+      "tp53_mutation_rate": 0.198,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "ACC",
+      "allele": "R248W",
+      "us_annual_incidence": 600,
+      "tp53_mutation_rate": 0.198,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "ACC",
+      "allele": "R273H",
+      "us_annual_incidence": 600,
+      "tp53_mutation_rate": 0.198,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "ACC",
+      "allele": "G245S",
+      "us_annual_incidence": 600,
+      "tp53_mutation_rate": 0.198,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "ACC",
+      "allele": "R249S",
+      "us_annual_incidence": 600,
+      "tp53_mutation_rate": 0.198,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "ACC",
+      "allele": "Y220C",
+      "us_annual_incidence": 600,
+      "tp53_mutation_rate": 0.198,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "ACC",
+      "allele": "R282W",
+      "us_annual_incidence": 600,
+      "tp53_mutation_rate": 0.198,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "R273H",
+      "us_annual_incidence": 83190,
+      "tp53_mutation_rate": 0.493,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "R273H",
+      "us_annual_incidence": 97610,
+      "tp53_mutation_rate": 0.164,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "G245S",
+      "us_annual_incidence": 97610,
+      "tp53_mutation_rate": 0.164,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "R249S",
+      "us_annual_incidence": 97610,
+      "tp53_mutation_rate": 0.164,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "COADREAD",
+      "allele": "R249S",
+      "us_annual_incidence": 152810,
+      "tp53_mutation_rate": 0.588,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "R282W",
+      "us_annual_incidence": 97610,
+      "tp53_mutation_rate": 0.164,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "MESO",
+      "allele": "R175H",
+      "us_annual_incidence": 3000,
+      "tp53_mutation_rate": 0.163,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "MESO",
+      "allele": "R248W",
+      "us_annual_incidence": 3000,
+      "tp53_mutation_rate": 0.163,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "MESO",
+      "allele": "R249S",
+      "us_annual_incidence": 3000,
+      "tp53_mutation_rate": 0.163,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "MESO",
+      "allele": "Y220C",
+      "us_annual_incidence": 3000,
+      "tp53_mutation_rate": 0.163,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "MESO",
+      "allele": "R282W",
+      "us_annual_incidence": 3000,
+      "tp53_mutation_rate": 0.163,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "DLBC",
+      "allele": "R175H",
+      "us_annual_incidence": 18000,
+      "tp53_mutation_rate": 0.122,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "SARC",
+      "allele": "G245S",
+      "us_annual_incidence": 16890,
+      "tp53_mutation_rate": 0.333,
+      "allele_fraction_of_mutant": 0.0,
+      "estimated_annual_patients": 0
+    }
+  ]
+}
