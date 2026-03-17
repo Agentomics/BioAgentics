@@ -1,0 +1,6 @@
+drug,gene,mechanism,spearman_r,p_value,n_lines
+trilaciclib,CDK6,CDK4/6 inhibitor,0.272,1.293687278410303e-13,716
+milademetan,MDM2,MDM2 inhibitor,0.546,7.10296529374057e-57,716
+GSK3326595,PRMT5,PRMT5 inhibitor (type I),0.1526,4.321824206433647e-05,712
+JNJ-64619178,PRMT5,PRMT5 inhibitor (type II),0.1857,6.010941869833098e-07,712
+EPZ020411,PRMT5,PRMT5 inhibitor (SAM-competitive),-0.0242,0.5187460861282321,714

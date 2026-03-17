@@ -1,0 +1,128 @@
+============================================================
+CDKN2A Pan-Cancer Dependency Atlas - Phase 4: PRISM Drug Sensitivity
+============================================================
+
+DRUG AVAILABILITY IN PRISM 24Q2
+--------------------------------------------------
+  trilaciclib (CDK4/6 inhibitor): AVAILABLE
+  milademetan (MDM2 inhibitor): AVAILABLE
+  GSK3326595 (PRMT5 inhibitor (type I)): AVAILABLE
+  JNJ-64619178 (PRMT5 inhibitor (type II)): AVAILABLE
+  EPZ020411 (PRMT5 inhibitor (SAM-competitive)): AVAILABLE
+  palbociclib (CDK4/6 inhibitor): NOT FOUND
+  ribociclib (CDK4/6 inhibitor): NOT FOUND
+  abemaciclib (CDK4/6 inhibitor): NOT FOUND
+  idasanutlin (MDM2 inhibitor): NOT FOUND
+
+TARGETED DRUG SENSITIVITY (CDKN2A-del vs intact)
+--------------------------------------------------
+  Lung / milademetan [tp53_wt]: d=-5.870 FDR=3.286e-01
+  Bladder/Urinary Tract / trilaciclib [rb1_intact]: d=-1.650 FDR=1.482e-01
+  Bladder/Urinary Tract / trilaciclib [all]: d=-1.650 FDR=1.482e-01
+  Lymphoid / milademetan [all]: d=-1.169 FDR=4.738e-02 *
+  Lymphoid / milademetan [tp53_wt]: d=-0.986 FDR=3.286e-01
+  Ovary/Fallopian Tube / trilaciclib [rb1_intact]: d=-0.928 FDR=2.716e-01
+  Ovary/Fallopian Tube / trilaciclib [all]: d=-0.928 FDR=2.716e-01
+  Lymphoid / trilaciclib [all]: d=-0.793 FDR=2.862e-01
+  Lymphoid / trilaciclib [rb1_intact]: d=-0.793 FDR=2.862e-01
+  Bone / JNJ-64619178 [all]: d=-0.708 FDR=4.294e-01
+  Lung / milademetan [all]: d=-0.677 FDR=2.862e-01
+  Esophagus/Stomach / trilaciclib [all]: d=-0.655 FDR=4.177e-01
+  Esophagus/Stomach / trilaciclib [rb1_intact]: d=-0.655 FDR=4.177e-01
+  Breast / GSK3326595 [all]: d=-0.654 FDR=5.025e-01
+  Skin / milademetan [all]: d=-0.628 FDR=4.348e-01
+  Skin / trilaciclib [rb1_intact]: d=-0.617 FDR=5.025e-01
+  CNS/Brain / trilaciclib [rb1_intact]: d=-0.604 FDR=2.862e-01
+  Ovary/Fallopian Tube / milademetan [all]: d=-0.569 FDR=5.025e-01
+  Pan-cancer (pooled) / trilaciclib [rb1_intact]: d=-0.565 FDR=1.256e-08 *
+  Head and Neck / trilaciclib [all]: d=-0.565 FDR=6.886e-01
+  Head and Neck / trilaciclib [rb1_intact]: d=-0.565 FDR=6.886e-01
+  Soft Tissue / EPZ020411 [all]: d=-0.565 FDR=8.066e-01
+  Breast / JNJ-64619178 [all]: d=-0.554 FDR=5.857e-01
+  CNS/Brain / trilaciclib [all]: d=-0.549 FDR=3.286e-01
+  Pan-cancer (pooled) / trilaciclib [all]: d=-0.539 FDR=3.264e-08 *
+  Skin / trilaciclib [all]: d=-0.504 FDR=5.857e-01
+  Pancreas / GSK3326595 [all]: d=-0.495 FDR=7.808e-01
+  Esophagus/Stomach / JNJ-64619178 [all]: d=-0.495 FDR=4.477e-01
+  Pancreas / JNJ-64619178 [all]: d=-0.490 FDR=6.433e-01
+  Soft Tissue / trilaciclib [rb1_intact]: d=-0.441 FDR=7.184e-01
+  Soft Tissue / trilaciclib [all]: d=-0.441 FDR=7.184e-01
+  Lung / trilaciclib [rb1_intact]: d=-0.440 FDR=4.116e-01
+  Esophagus/Stomach / EPZ020411 [all]: d=-0.396 FDR=6.886e-01
+  Lung / trilaciclib [all]: d=-0.382 FDR=4.477e-01
+  Soft Tissue / JNJ-64619178 [all]: d=-0.357 FDR=7.184e-01
+  Myeloid / trilaciclib [all]: d=-0.323 FDR=7.184e-01
+  Myeloid / trilaciclib [rb1_intact]: d=-0.323 FDR=7.184e-01
+  Breast / trilaciclib [rb1_intact]: d=-0.308 FDR=9.275e-01
+  Breast / trilaciclib [all]: d=-0.308 FDR=9.275e-01
+  Esophagus/Stomach / milademetan [all]: d=-0.303 FDR=7.184e-01
+  Bladder/Urinary Tract / milademetan [all]: d=-0.282 FDR=9.275e-01
+  Esophagus/Stomach / GSK3326595 [all]: d=-0.279 FDR=7.808e-01
+  Pan-cancer (pooled) / milademetan [all]: d=-0.278 FDR=2.294e-02 *
+  CNS/Brain / milademetan [tp53_wt]: d=-0.275 FDR=9.661e-01
+  CNS/Brain / milademetan [all]: d=-0.239 FDR=4.177e-01
+  Skin / EPZ020411 [all]: d=-0.190 FDR=9.275e-01
+  Pan-cancer (pooled) / milademetan [tp53_wt]: d=-0.163 FDR=6.886e-01
+  Lymphoid / JNJ-64619178 [all]: d=-0.147 FDR=8.641e-01
+  Lung / JNJ-64619178 [all]: d=-0.144 FDR=5.857e-01
+  Lung / GSK3326595 [all]: d=-0.124 FDR=7.184e-01
+  Soft Tissue / GSK3326595 [all]: d=-0.113 FDR=1.000e+00
+  Pan-cancer (pooled) / JNJ-64619178 [all]: d=-0.094 FDR=4.177e-01
+  Lymphoid / EPZ020411 [all]: d=-0.093 FDR=9.275e-01
+  CNS/Brain / EPZ020411 [all]: d=-0.082 FDR=9.275e-01
+  Head and Neck / GSK3326595 [all]: d=-0.065 FDR=9.275e-01
+  CNS/Brain / JNJ-64619178 [all]: d=-0.057 FDR=6.886e-01
+  Pan-cancer (pooled) / EPZ020411 [all]: d=-0.029 FDR=8.641e-01
+  Myeloid / JNJ-64619178 [all]: d=-0.021 FDR=9.297e-01
+  Pancreas / trilaciclib [all]: d=-0.006 FDR=9.519e-01
+  Pancreas / trilaciclib [rb1_intact]: d=-0.006 FDR=9.519e-01
+  Bone / milademetan [all]: d=0.009 FDR=9.275e-01
+  Bone / milademetan [tp53_wt]: d=0.013 FDR=1.000e+00
+  Bone / trilaciclib [rb1_intact]: d=0.030 FDR=9.275e-01
+  Bone / trilaciclib [all]: d=0.030 FDR=9.275e-01
+  Pancreas / milademetan [all]: d=0.035 FDR=9.275e-01
+  Lung / EPZ020411 [all]: d=0.053 FDR=9.275e-01
+  Pan-cancer (pooled) / GSK3326595 [all]: d=0.066 FDR=9.275e-01
+  Lymphoid / GSK3326595 [all]: d=0.080 FDR=9.275e-01
+  Skin / JNJ-64619178 [all]: d=0.123 FDR=9.551e-01
+  CNS/Brain / GSK3326595 [all]: d=0.128 FDR=9.275e-01
+  Bladder/Urinary Tract / EPZ020411 [all]: d=0.161 FDR=9.275e-01
+  Soft Tissue / milademetan [all]: d=0.174 FDR=9.275e-01
+  Ovary/Fallopian Tube / JNJ-64619178 [all]: d=0.186 FDR=9.275e-01
+  Head and Neck / JNJ-64619178 [all]: d=0.208 FDR=9.275e-01
+  Bone / EPZ020411 [all]: d=0.209 FDR=8.082e-01
+  Head and Neck / milademetan [all]: d=0.209 FDR=8.250e-01
+  Breast / milademetan [all]: d=0.242 FDR=9.275e-01
+  Head and Neck / EPZ020411 [all]: d=0.244 FDR=9.275e-01
+  Skin / milademetan [tp53_wt]: d=0.295 FDR=8.250e-01
+  Bladder/Urinary Tract / JNJ-64619178 [all]: d=0.367 FDR=8.775e-01
+  Bone / GSK3326595 [all]: d=0.389 FDR=6.886e-01
+  Ovary/Fallopian Tube / GSK3326595 [all]: d=0.415 FDR=7.184e-01
+  Myeloid / EPZ020411 [all]: d=0.424 FDR=8.014e-01
+  Myeloid / milademetan [all]: d=0.430 FDR=5.094e-01
+  Breast / EPZ020411 [all]: d=0.440 FDR=8.250e-01
+  Pancreas / EPZ020411 [all]: d=0.490 FDR=5.857e-01
+  Ovary/Fallopian Tube / EPZ020411 [all]: d=0.496 FDR=3.526e-01
+  Skin / GSK3326595 [all]: d=0.510 FDR=6.417e-01
+  Ovary/Fallopian Tube / milademetan [tp53_wt]: d=0.535 FDR=9.275e-01
+  Bladder/Urinary Tract / GSK3326595 [all]: d=0.576 FDR=6.886e-01
+  Myeloid / milademetan [tp53_wt]: d=0.708 FDR=7.184e-01
+  Myeloid / GSK3326595 [all]: d=1.028 FDR=2.862e-01
+  (* = FDR < 0.05)
+
+GENOME-WIDE DRUG SCREEN: 5 significant (FDR<0.05)
+  CDKN2A-selective sensitivity (d<-0.3, FDR<0.05): 5
+--------------------------------------------------
+  BRD:BRD-K00003412-300-01-9: d=-0.539 FDR=4.818e-06
+  BRD:BRD-K51313569-003-03-3: d=-0.481 FDR=9.004e-03
+  BRD:BRD-K88554883-001-03-2: d=-0.439 FDR=1.155e-04
+  BRD:BRD-K33127281-001-05-6: d=-0.420 FDR=3.611e-02
+  BRD:BRD-A99367815-001-04-9: d=-0.393 FDR=7.237e-03
+
+CRISPR-PRISM CONCORDANCE
+--------------------------------------------------
+  trilaciclib vs CDK6: r=0.272 p=1.294e-13 n=716
+  milademetan vs MDM2: r=0.546 p=7.103e-57 n=716
+  GSK3326595 vs PRMT5: r=0.153 p=4.322e-05 n=712
+  JNJ-64619178 vs PRMT5: r=0.186 p=6.011e-07 n=712
+  EPZ020411 vs PRMT5: r=-0.024 p=5.187e-01 n=714
