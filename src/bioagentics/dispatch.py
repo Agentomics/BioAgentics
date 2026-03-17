@@ -436,9 +436,10 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
             validate_summary(config.role, project)
             # Commit cache summary (lock prevents races between parallel agents)
             with _git_lock:
+                cache_dir = REPO_ROOT / "cache"
                 subprocess.run(
-                    ["git", "add"] + [str(p) for p in Path("cache").glob("*summary")],
-                    capture_output=True,
+                    ["git", "add"] + [str(p) for p in cache_dir.glob("*summary")],
+                    capture_output=True, cwd=REPO_ROOT,
                 )
                 subprocess.run(
                     [
@@ -447,9 +448,9 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
                         "-m",
                         f"run_agent: commit {config.role} summary cache",
                     ],
-                    capture_output=True,
+                    capture_output=True, cwd=REPO_ROOT,
                 )
-                subprocess.run(["git", "push"], capture_output=True)
+                subprocess.run(["git", "push"], capture_output=True, cwd=REPO_ROOT)
             return 0
 
         # Determine retry strategy
