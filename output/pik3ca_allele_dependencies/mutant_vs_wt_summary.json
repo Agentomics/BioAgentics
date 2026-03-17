@@ -1,0 +1,235 @@
+{
+  "analyses": [
+    {
+      "cancer_type": "Pan-cancer",
+      "n_mutant": 144,
+      "n_wt": 1042,
+      "n_genes_tested": 17931,
+      "n_significant": 63,
+      "positive_control_PIK3CA": {
+        "cohens_d": -1.4826,
+        "fdr": 5.817673952808306e-27,
+        "passes_positive_control": true
+      },
+      "top_hits": [
+        {
+          "gene": "PIK3CA",
+          "cohens_d": -1.4826,
+          "fdr": 5.817673952808306e-27
+        },
+        {
+          "gene": "FOXA1",
+          "cohens_d": -0.5475,
+          "fdr": 0.0428385893237996
+        },
+        {
+          "gene": "AKT1",
+          "cohens_d": -0.5003,
+          "fdr": 0.008335453849305095
+        },
+        {
+          "gene": "GSDMB",
+          "cohens_d": -0.4729,
+          "fdr": 0.019437521079314277
+        },
+        {
+          "gene": "GSPT1",
+          "cohens_d": -0.4687,
+          "fdr": 0.0038068852053184444
+        },
+        {
+          "gene": "ZAR1",
+          "cohens_d": -0.4685,
+          "fdr": 0.017038385730283327
+        },
+        {
+          "gene": "TUT7",
+          "cohens_d": -0.4464,
+          "fdr": 0.00016570699841135755
+        },
+        {
+          "gene": "IGBP1",
+          "cohens_d": -0.4449,
+          "fdr": 0.03255862016029976
+        },
+        {
+          "gene": "TRAF4",
+          "cohens_d": -0.4248,
+          "fdr": 0.02038904848998516
+        },
+        {
+          "gene": "DDIT4",
+          "cohens_d": -0.4125,
+          "fdr": 0.00155456208171824
+        },
+        {
+          "gene": "EID2B",
+          "cohens_d": -0.4062,
+          "fdr": 0.0020529257099777083
+        },
+        {
+          "gene": "GPR148",
+          "cohens_d": -0.4,
+          "fdr": 0.019586466098942833
+        },
+        {
+          "gene": "ALDOC",
+          "cohens_d": -0.3946,
+          "fdr": 0.03860999581163273
+        },
+        {
+          "gene": "SLC10A4",
+          "cohens_d": -0.3898,
+          "fdr": 0.03354517760104238
+        },
+        {
+          "gene": "MRPS5",
+          "cohens_d": -0.3743,
+          "fdr": 0.03255862016029976
+        },
+        {
+          "gene": "FBLN7",
+          "cohens_d": -0.3701,
+          "fdr": 0.017038385730283327
+        },
+        {
+          "gene": "CHCHD1",
+          "cohens_d": -0.366,
+          "fdr": 0.021329426071003483
+        },
+        {
+          "gene": "PTEN",
+          "cohens_d": -0.3618,
+          "fdr": 0.010335780966687974
+        },
+        {
+          "gene": "FBXW7",
+          "cohens_d": -0.3583,
+          "fdr": 0.02743813774871221
+        },
+        {
+          "gene": "STK26",
+          "cohens_d": -0.358,
+          "fdr": 0.02743813774871221
+        }
+      ]
+    },
+    {
+      "cancer_type": "Endometrial Carcinoma",
+      "n_mutant": 16,
+      "n_wt": 12,
+      "n_genes_tested": 17787,
+      "n_significant": 0,
+      "positive_control_PIK3CA": {
+        "cohens_d": -0.613,
+        "fdr": 0.9821846946056436,
+        "passes_positive_control": true
+      },
+      "top_hits": []
+    },
+    {
+      "cancer_type": "Invasive Breast Carcinoma",
+      "n_mutant": 17,
+      "n_wt": 32,
+      "n_genes_tested": 17931,
+      "n_significant": 0,
+      "positive_control_PIK3CA": {
+        "cohens_d": -1.4489,
+        "fdr": 0.8028820202898049,
+        "passes_positive_control": true
+      },
+      "top_hits": []
+    },
+    {
+      "cancer_type": "Bladder Urothelial Carcinoma",
+      "n_mutant": 10,
+      "n_wt": 20,
+      "n_genes_tested": 17787,
+      "n_significant": 0,
+      "positive_control_PIK3CA": {
+        "cohens_d": -2.1133,
+        "fdr": 0.9088228929705401,
+        "passes_positive_control": true
+      },
+      "top_hits": []
+    },
+    {
+      "cancer_type": "Colorectal Adenocarcinoma",
+      "n_mutant": 21,
+      "n_wt": 42,
+      "n_genes_tested": 17931,
+      "n_significant": 0,
+      "positive_control_PIK3CA": {
+        "cohens_d": -1.0626,
+        "fdr": 0.8341473167933878,
+        "passes_positive_control": true
+      },
+      "top_hits": []
+    },
+    {
+      "cancer_type": "Ovarian Epithelial Tumor",
+      "n_mutant": 15,
+      "n_wt": 43,
+      "n_genes_tested": 17931,
+      "n_significant": 0,
+      "positive_control_PIK3CA": {
+        "cohens_d": -1.7474,
+        "fdr": 0.595899418800685,
+        "passes_positive_control": true
+      },
+      "top_hits": []
+    },
+    {
+      "cancer_type": "Esophagogastric Adenocarcinoma",
+      "n_mutant": 7,
+      "n_wt": 38,
+      "n_genes_tested": 17931,
+      "n_significant": 0,
+      "positive_control_PIK3CA": {
+        "cohens_d": -2.0687,
+        "fdr": 1.0,
+        "passes_positive_control": true
+      },
+      "top_hits": []
+    },
+    {
+      "cancer_type": "Head and Neck Squamous Cell Carcinoma",
+      "n_mutant": 9,
+      "n_wt": 63,
+      "n_genes_tested": 17931,
+      "n_significant": 0,
+      "positive_control_PIK3CA": {
+        "cohens_d": -1.6023,
+        "fdr": 0.8438283618179093,
+        "passes_positive_control": true
+      },
+      "top_hits": []
+    },
+    {
+      "cancer_type": "Non-Small Cell Lung Cancer",
+      "n_mutant": 9,
+      "n_wt": 89,
+      "n_genes_tested": 17931,
+      "n_significant": 0,
+      "positive_control_PIK3CA": {
+        "cohens_d": -1.3294,
+        "fdr": 0.9321755452799031,
+        "passes_positive_control": true
+      },
+      "top_hits": []
+    },
+    {
+      "cancer_type": "Diffuse Glioma",
+      "n_mutant": 6,
+      "n_wt": 65,
+      "n_genes_tested": 17786,
+      "n_significant": 0,
+      "positive_control_PIK3CA": {
+        "cohens_d": -1.2824,
+        "fdr": 0.8476358082801335,
+        "passes_positive_control": true
+      },
+      "top_hits": []
+    }
+  ]
+}
