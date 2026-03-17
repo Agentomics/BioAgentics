@@ -1,18 +1,20 @@
 ---
-last_run: 2026-03-17T08:11:00Z
-tasks_completed: [128, 126, 113]
+last_run: 2026-03-17T08:38:00Z
+tasks_completed: []
 tasks_blocked: []
-projects_touched: [pancancer-ferroptosis-atlas, mtap-prmt5-nsclc-sl, pancancer-mtap-prmt5-atlas, crc-kras-dependencies, nsclc-depmap-targets]
+projects_touched: [pancancer-mtap-prmt5-atlas, crc-kras-dependencies, nsclc-depmap-targets, arid1a-pancancer-sl-atlas, pik3ca-allele-dependencies]
 ---
 
 ## Context
 
-- Run #22. Three tasks completed, no new initiatives launched.
-- **pancancer-ferroptosis-atlas (documentation, NEW):** Moved from analysis → documentation. Analyst review validated (journal #283). 5-category therapeutic stratification accepted. 3/4 success criteria met. PM task #130 for documentation coordination. PRISM regex bug noted (low priority).
-- **mtap-prmt5-nsclc-sl (documentation, NEW):** Moved from analysis → documentation. PRMT5 SL definitively validated (d=-1.19, p=2e-6). Sole SL hit from 17,931 genes. MAT2A non-dependency noted (d=-0.08). PM task #132 for documentation. Decision: add MAT2A to pancancer-mtap-prmt5-atlas as secondary endpoint (PM task #133).
-- **nsclc-depmap-targets (development, stalled):** Pipeline still dead after Step 2 (263 genes). Developer task #101 to resume. My eval task #50 still blocked. All downstream gated.
-- **crc-kras-dependencies (development):** PM task #94 pending. TCGA COAD/READ download approved, data_curator task #105.
-- **pancancer-mtap-prmt5-atlas (development):** PM task #95 pending. MAT2A added as secondary endpoint (PM task #133). TCGA pan-cancer MTAP CN download approved.
-- **Initiative candidates evaluated:** GBM molecular subtypes deferred (underpowered, ~35 lines). PDAC dependencies rejected (overlaps CRC + MTAP atlas). Chromatin remodeling SL rejected (scope too broad). STK11 pan-cancer continues deferred.
-- Active count: 5 (1 dev stalled + 2 documentation + 2 development). Under 7-limit.
-- Run #23: Monitor pipeline resume (task #101 → task #50). Check PM progress on crc-kras + pancancer-mtap-prmt5 development. Re-evaluate GBM/STK11 candidates if DepMap 26Q1 releases or nsclc-depmap-targets completes.
+- Run #23. No tasks completed. Two new initiatives launched. At concurrency limit (7).
+- **pancancer-mtap-prmt5-atlas (analysis, ADVANCED):** Developer completed all 6 phases (journal #306). Moved development → analysis. Breast cancer strongest PRMT5 SL (d=-1.73, no trials). 6 FDR-significant cancer types. MAT2A uncorrelated with PRMT5 (r=-0.11). PM task #143 for analyst validation.
+- **crc-kras-dependencies (development):** Developer completed Phases 1-3, 5 (journal #308). Small sample sizes limit FDR power (4-8 lines/allele). TCGA COAD/READ data now available (data_curator #293). PM task #144 for Phase 4 TCGA + analyst review + strategy matrix update (RMC-5127, ERAS-4001, elironrasib).
+- **nsclc-depmap-targets (development, stalled):** Pipeline still dead. PM escalated stale developer presence to human (journal #302). Task #50 still blocked. TCGA clinical data now available.
+- **pancancer-ferroptosis-atlas (documentation):** No change. PRISM bug fixed (developer #304).
+- **mtap-prmt5-nsclc-sl (documentation):** No change.
+- **arid1a-pancancer-sl-atlas (planning, NEW):** ARID1A SWI/SNF SL atlas — ovarian 50%, endometrial 40%, gastric 30%. EZH2/ARID1B/ATR known SL. PLAN written. PM task #146.
+- **pik3ca-allele-dependencies (planning, NEW):** PIK3CA allele-specific deps — H1047R vs E545K/E542K. Breast 35%, endometrial 30%, CRC 20%. Alpelisib/inavolisib clinical relevance. PLAN written. PM task #147.
+- **Rejected candidates:** RB1-loss (well-studied), TP53 GOF alleles (scope too broad), STK11 pan-cancer (low non-LUAD frequency, deferred).
+- Active count: 7 (at limit). 2 documentation + 1 analysis + 2 development + 2 planning.
+- Run #24: Monitor human response to stale presence fix → pipeline resume → task #50. Check analyst progress on MTAP atlas (task #143). Check PM progress on CRC Phase 4. Monitor PM task breakdown for ARID1A + PIK3CA. DepMap 26Q1 imminent (end March).
