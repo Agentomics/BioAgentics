@@ -1,0 +1,1199 @@
+{
+  "total_lines_with_crispr": 1186,
+  "total_tp53_mutant_with_crispr": 795,
+  "n_structural": 68,
+  "n_contact": 142,
+  "powered_mutant_vs_wt_count": 9,
+  "powered_structural_vs_contact_count": 0,
+  "allele_counts": {
+    "other_missense": 545,
+    "R248W": 69,
+    "R273H": 66,
+    "truncating": 40,
+    "R175H": 29,
+    "G245S": 17,
+    "R282W": 11,
+    "Y220C": 11,
+    "R249S": 7
+  },
+  "cancer_types": [
+    {
+      "cancer_type": "Adenosquamous Carcinoma of the Pancreas",
+      "N_total": 2,
+      "N_mutant": 2,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 2
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Adrenocortical Carcinoma",
+      "N_total": 1,
+      "N_mutant": 1,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Anaplastic Thyroid Cancer",
+      "N_total": 7,
+      "N_mutant": 7,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 5,
+        "R273H": 1,
+        "truncating": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Bladder Squamous Cell Carcinoma",
+      "N_total": 2,
+      "N_mutant": 2,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 2
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Breast Ductal Carcinoma In Situ",
+      "N_total": 3,
+      "N_mutant": 3,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 3
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Breast Neoplasm, NOS",
+      "N_total": 1,
+      "N_mutant": 1,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "truncating": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Chondrosarcoma",
+      "N_total": 1,
+      "N_mutant": 1,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Clear Cell Sarcoma",
+      "N_total": 1,
+      "N_mutant": 1,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Cutaneous Squamous Cell Carcinoma",
+      "N_total": 5,
+      "N_mutant": 5,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 4,
+        "R273H": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Esophageal Squamous Cell Carcinoma",
+      "N_total": 24,
+      "N_mutant": 24,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 16,
+        "R248W": 4,
+        "truncating": 2,
+        "R273H": 1,
+        "G245S": 1
+      },
+      "N_structural": 1,
+      "N_contact": 5,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Extra Gonadal Germ Cell Tumor",
+      "N_total": 1,
+      "N_mutant": 1,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Intracholecystic Papillary Neoplasm",
+      "N_total": 6,
+      "N_mutant": 6,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 5,
+        "R282W": 1
+      },
+      "N_structural": 1,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Merkel Cell Carcinoma",
+      "N_total": 3,
+      "N_mutant": 3,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 3
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Mucosal Melanoma of the Vulva/Vagina",
+      "N_total": 1,
+      "N_mutant": 1,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Myeloproliferative Neoplasms",
+      "N_total": 10,
+      "N_mutant": 10,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 8,
+        "R248W": 2
+      },
+      "N_structural": 0,
+      "N_contact": 2,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Poorly Differentiated Thyroid Cancer",
+      "N_total": 1,
+      "N_mutant": 1,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "SMARCA4-deficient undifferentiated tumor",
+      "N_total": 2,
+      "N_mutant": 2,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 2
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Sarcoma, NOS",
+      "N_total": 1,
+      "N_mutant": 1,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Squamous Cell Carcinoma of the Vulva/Vagina",
+      "N_total": 1,
+      "N_mutant": 1,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Urethral Cancer",
+      "N_total": 2,
+      "N_mutant": 2,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "R248W": 1,
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Uterine Sarcoma/Mesenchymal",
+      "N_total": 3,
+      "N_mutant": 3,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other_missense": 2,
+        "R175H": 1
+      },
+      "N_structural": 1,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Lung Neuroendocrine Tumor",
+      "N_total": 26,
+      "N_mutant": 25,
+      "N_wt": 1,
+      "mutation_freq": 0.9615,
+      "allele_counts": {
+        "other_missense": 17,
+        "truncating": 4,
+        "R273H": 2,
+        "R248W": 1,
+        "G245S": 1
+      },
+      "N_structural": 1,
+      "N_contact": 3,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Head and Neck Squamous Cell Carcinoma",
+      "N_total": 72,
+      "N_mutant": 66,
+      "N_wt": 6,
+      "mutation_freq": 0.9167,
+      "allele_counts": {
+        "other_missense": 43,
+        "truncating": 6,
+        "R248W": 5,
+        "R175H": 4,
+        "R273H": 3,
+        "G245S": 2,
+        "Y220C": 1,
+        "R249S": 1,
+        "R282W": 1
+      },
+      "N_structural": 8,
+      "N_contact": 9,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Pancreatic Adenocarcinoma",
+      "N_total": 46,
+      "N_mutant": 39,
+      "N_wt": 7,
+      "mutation_freq": 0.8478,
+      "allele_counts": {
+        "other_missense": 24,
+        "R273H": 4,
+        "R282W": 3,
+        "R248W": 2,
+        "Y220C": 2,
+        "G245S": 2,
+        "truncating": 2
+      },
+      "N_structural": 7,
+      "N_contact": 6,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Invasive Breast Carcinoma",
+      "N_total": 49,
+      "N_mutant": 41,
+      "N_wt": 8,
+      "mutation_freq": 0.8367,
+      "allele_counts": {
+        "other_missense": 28,
+        "R175H": 3,
+        "R273H": 3,
+        "R248W": 3,
+        "Y220C": 2,
+        "truncating": 1,
+        "R249S": 1
+      },
+      "N_structural": 5,
+      "N_contact": 7,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Non-Small Cell Lung Cancer",
+      "N_total": 98,
+      "N_mutant": 82,
+      "N_wt": 16,
+      "mutation_freq": 0.8367,
+      "allele_counts": {
+        "other_missense": 65,
+        "truncating": 6,
+        "R273H": 4,
+        "R248W": 3,
+        "R175H": 2,
+        "Y220C": 1,
+        "R249S": 1
+      },
+      "N_structural": 3,
+      "N_contact": 8,
+      "powered_mutant_vs_wt": true,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "T-Lymphoblastic Leukemia/Lymphoma",
+      "N_total": 6,
+      "N_mutant": 5,
+      "N_wt": 1,
+      "mutation_freq": 0.8333,
+      "allele_counts": {
+        "other_missense": 3,
+        "R248W": 2
+      },
+      "N_structural": 0,
+      "N_contact": 2,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Esophagogastric Adenocarcinoma",
+      "N_total": 45,
+      "N_mutant": 37,
+      "N_wt": 8,
+      "mutation_freq": 0.8222,
+      "allele_counts": {
+        "other_missense": 26,
+        "R175H": 3,
+        "R248W": 3,
+        "R273H": 2,
+        "Y220C": 1,
+        "R282W": 1,
+        "G245S": 1
+      },
+      "N_structural": 6,
+      "N_contact": 5,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Colorectal Adenocarcinoma",
+      "N_total": 63,
+      "N_mutant": 51,
+      "N_wt": 12,
+      "mutation_freq": 0.8095,
+      "allele_counts": {
+        "other_missense": 36,
+        "R248W": 6,
+        "R175H": 3,
+        "R273H": 3,
+        "G245S": 2,
+        "R249S": 1
+      },
+      "N_structural": 5,
+      "N_contact": 10,
+      "powered_mutant_vs_wt": true,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Hepatocellular Carcinoma",
+      "N_total": 21,
+      "N_mutant": 17,
+      "N_wt": 4,
+      "mutation_freq": 0.8095,
+      "allele_counts": {
+        "other_missense": 12,
+        "R249S": 2,
+        "truncating": 2,
+        "Y220C": 1
+      },
+      "N_structural": 1,
+      "N_contact": 2,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Prostate Adenocarcinoma",
+      "N_total": 5,
+      "N_mutant": 4,
+      "N_wt": 1,
+      "mutation_freq": 0.8,
+      "allele_counts": {
+        "other_missense": 3,
+        "R248W": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Bladder Urothelial Carcinoma",
+      "N_total": 30,
+      "N_mutant": 23,
+      "N_wt": 7,
+      "mutation_freq": 0.7667,
+      "allele_counts": {
+        "other_missense": 18,
+        "R248W": 2,
+        "R282W": 1,
+        "R175H": 1,
+        "truncating": 1
+      },
+      "N_structural": 2,
+      "N_contact": 2,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Endometrial Carcinoma",
+      "N_total": 28,
+      "N_mutant": 21,
+      "N_wt": 7,
+      "mutation_freq": 0.75,
+      "allele_counts": {
+        "other_missense": 8,
+        "R273H": 5,
+        "R248W": 3,
+        "truncating": 2,
+        "R175H": 1,
+        "R282W": 1,
+        "Y220C": 1
+      },
+      "N_structural": 3,
+      "N_contact": 8,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Diffuse Glioma",
+      "N_total": 71,
+      "N_mutant": 53,
+      "N_wt": 18,
+      "mutation_freq": 0.7465,
+      "allele_counts": {
+        "other_missense": 35,
+        "R273H": 6,
+        "R248W": 4,
+        "G245S": 3,
+        "R175H": 2,
+        "truncating": 2,
+        "R282W": 1
+      },
+      "N_structural": 6,
+      "N_contact": 10,
+      "powered_mutant_vs_wt": true,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Intraductal Papillary Neoplasm of the Bile Duct",
+      "N_total": 28,
+      "N_mutant": 20,
+      "N_wt": 8,
+      "mutation_freq": 0.7143,
+      "allele_counts": {
+        "other_missense": 12,
+        "R175H": 3,
+        "R273H": 2,
+        "R248W": 2,
+        "truncating": 1
+      },
+      "N_structural": 3,
+      "N_contact": 4,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Ovarian Epithelial Tumor",
+      "N_total": 58,
+      "N_mutant": 41,
+      "N_wt": 17,
+      "mutation_freq": 0.7069,
+      "allele_counts": {
+        "other_missense": 30,
+        "R273H": 4,
+        "R248W": 2,
+        "R175H": 2,
+        "Y220C": 1,
+        "truncating": 1,
+        "R282W": 1
+      },
+      "N_structural": 4,
+      "N_contact": 6,
+      "powered_mutant_vs_wt": true,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Ewing Sarcoma",
+      "N_total": 27,
+      "N_mutant": 19,
+      "N_wt": 8,
+      "mutation_freq": 0.7037,
+      "allele_counts": {
+        "other_missense": 10,
+        "R273H": 4,
+        "Y220C": 1,
+        "truncating": 1,
+        "G245S": 1,
+        "R248W": 1,
+        "R175H": 1
+      },
+      "N_structural": 3,
+      "N_contact": 5,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Acute Myeloid Leukemia",
+      "N_total": 30,
+      "N_mutant": 20,
+      "N_wt": 10,
+      "mutation_freq": 0.6667,
+      "allele_counts": {
+        "other_missense": 10,
+        "R248W": 6,
+        "truncating": 3,
+        "R273H": 1
+      },
+      "N_structural": 0,
+      "N_contact": 7,
+      "powered_mutant_vs_wt": true,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Cervical Adenocarcinoma",
+      "N_total": 3,
+      "N_mutant": 2,
+      "N_wt": 1,
+      "mutation_freq": 0.6667,
+      "allele_counts": {
+        "R273H": 1,
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Head and Neck Carcinoma, Other",
+      "N_total": 3,
+      "N_mutant": 2,
+      "N_wt": 1,
+      "mutation_freq": 0.6667,
+      "allele_counts": {
+        "other_missense": 2
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Nerve Sheath Tumor",
+      "N_total": 6,
+      "N_mutant": 4,
+      "N_wt": 2,
+      "mutation_freq": 0.6667,
+      "allele_counts": {
+        "other_missense": 3,
+        "R273H": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Rhabdomyosarcoma",
+      "N_total": 12,
+      "N_mutant": 8,
+      "N_wt": 4,
+      "mutation_freq": 0.6667,
+      "allele_counts": {
+        "other_missense": 4,
+        "R248W": 3,
+        "R273H": 1
+      },
+      "N_structural": 0,
+      "N_contact": 4,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Well-Differentiated Thyroid Cancer",
+      "N_total": 3,
+      "N_mutant": 2,
+      "N_wt": 1,
+      "mutation_freq": 0.6667,
+      "allele_counts": {
+        "R273H": 2
+      },
+      "N_structural": 0,
+      "N_contact": 2,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Mature T and NK Neoplasms",
+      "N_total": 8,
+      "N_mutant": 5,
+      "N_wt": 3,
+      "mutation_freq": 0.625,
+      "allele_counts": {
+        "R273H": 2,
+        "other_missense": 2,
+        "R248W": 1
+      },
+      "N_structural": 0,
+      "N_contact": 3,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Mature B-Cell Neoplasms",
+      "N_total": 56,
+      "N_mutant": 34,
+      "N_wt": 22,
+      "mutation_freq": 0.6071,
+      "allele_counts": {
+        "other_missense": 20,
+        "R273H": 6,
+        "R248W": 4,
+        "R175H": 2,
+        "truncating": 2
+      },
+      "N_structural": 2,
+      "N_contact": 10,
+      "powered_mutant_vs_wt": true,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Ampullary Carcinoma",
+      "N_total": 5,
+      "N_mutant": 3,
+      "N_wt": 2,
+      "mutation_freq": 0.6,
+      "allele_counts": {
+        "other_missense": 2,
+        "G245S": 1
+      },
+      "N_structural": 1,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "B-Cell Acute Lymphoblastic Leukemia",
+      "N_total": 12,
+      "N_mutant": 6,
+      "N_wt": 6,
+      "mutation_freq": 0.5,
+      "allele_counts": {
+        "R248W": 3,
+        "other_missense": 3
+      },
+      "N_structural": 0,
+      "N_contact": 3,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Epithelioid Sarcoma",
+      "N_total": 2,
+      "N_mutant": 1,
+      "N_wt": 1,
+      "mutation_freq": 0.5,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Hepatoblastoma",
+      "N_total": 2,
+      "N_mutant": 1,
+      "N_wt": 1,
+      "mutation_freq": 0.5,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Leiomyosarcoma",
+      "N_total": 4,
+      "N_mutant": 2,
+      "N_wt": 2,
+      "mutation_freq": 0.5,
+      "allele_counts": {
+        "G245S": 1,
+        "R175H": 1
+      },
+      "N_structural": 2,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Non-Hodgkin Lymphoma",
+      "N_total": 6,
+      "N_mutant": 3,
+      "N_wt": 3,
+      "mutation_freq": 0.5,
+      "allele_counts": {
+        "other_missense": 3
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Retinoblastoma",
+      "N_total": 2,
+      "N_mutant": 1,
+      "N_wt": 1,
+      "mutation_freq": 0.5,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Salivary Carcinoma",
+      "N_total": 2,
+      "N_mutant": 1,
+      "N_wt": 1,
+      "mutation_freq": 0.5,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Undifferentiated Pleomorphic Sarcoma/Malignant Fibrous Histiocytoma/High-Grade Spindle Cell Sarcoma",
+      "N_total": 6,
+      "N_mutant": 3,
+      "N_wt": 3,
+      "mutation_freq": 0.5,
+      "allele_counts": {
+        "other_missense": 2,
+        "R248W": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Embryonal Tumor",
+      "N_total": 15,
+      "N_mutant": 7,
+      "N_wt": 8,
+      "mutation_freq": 0.4667,
+      "allele_counts": {
+        "other_missense": 6,
+        "R273H": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Neuroblastoma",
+      "N_total": 39,
+      "N_mutant": 16,
+      "N_wt": 23,
+      "mutation_freq": 0.4103,
+      "allele_counts": {
+        "other_missense": 14,
+        "G245S": 1,
+        "R282W": 1
+      },
+      "N_structural": 2,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": true,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Synovial Sarcoma",
+      "N_total": 5,
+      "N_mutant": 2,
+      "N_wt": 3,
+      "mutation_freq": 0.4,
+      "allele_counts": {
+        "R273H": 1,
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Renal Cell Carcinoma",
+      "N_total": 29,
+      "N_mutant": 10,
+      "N_wt": 19,
+      "mutation_freq": 0.3448,
+      "allele_counts": {
+        "other_missense": 5,
+        "R248W": 3,
+        "truncating": 2
+      },
+      "N_structural": 0,
+      "N_contact": 3,
+      "powered_mutant_vs_wt": true,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Hodgkin Lymphoma",
+      "N_total": 3,
+      "N_mutant": 1,
+      "N_wt": 2,
+      "mutation_freq": 0.3333,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Meningothelial Tumor",
+      "N_total": 3,
+      "N_mutant": 1,
+      "N_wt": 2,
+      "mutation_freq": 0.3333,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Melanoma",
+      "N_total": 67,
+      "N_mutant": 21,
+      "N_wt": 46,
+      "mutation_freq": 0.3134,
+      "allele_counts": {
+        "other_missense": 18,
+        "R273H": 1,
+        "R248W": 1,
+        "G245S": 1
+      },
+      "N_structural": 1,
+      "N_contact": 2,
+      "powered_mutant_vs_wt": true,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Liposarcoma",
+      "N_total": 9,
+      "N_mutant": 2,
+      "N_wt": 7,
+      "mutation_freq": 0.2222,
+      "allele_counts": {
+        "other_missense": 2
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Non-Seminomatous Germ Cell Tumor",
+      "N_total": 5,
+      "N_mutant": 1,
+      "N_wt": 4,
+      "mutation_freq": 0.2,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Osteosarcoma",
+      "N_total": 20,
+      "N_mutant": 4,
+      "N_wt": 16,
+      "mutation_freq": 0.2,
+      "allele_counts": {
+        "other_missense": 3,
+        "R273H": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Pleural Mesothelioma",
+      "N_total": 21,
+      "N_mutant": 4,
+      "N_wt": 17,
+      "mutation_freq": 0.1905,
+      "allele_counts": {
+        "other_missense": 3,
+        "R249S": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Non-Cancerous",
+      "N_total": 16,
+      "N_mutant": 3,
+      "N_wt": 13,
+      "mutation_freq": 0.1875,
+      "allele_counts": {
+        "other_missense": 2,
+        "R273H": 1
+      },
+      "N_structural": 0,
+      "N_contact": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Cervical Squamous Cell Carcinoma",
+      "N_total": 13,
+      "N_mutant": 2,
+      "N_wt": 11,
+      "mutation_freq": 0.1538,
+      "allele_counts": {
+        "R273H": 2
+      },
+      "N_structural": 0,
+      "N_contact": 2,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Rhabdoid Cancer",
+      "N_total": 10,
+      "N_mutant": 1,
+      "N_wt": 9,
+      "mutation_freq": 0.1,
+      "allele_counts": {
+        "other_missense": 1
+      },
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Acute Leukemias of Ambiguous Lineage",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Fibrosarcoma",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Gestational Trophoblastic Disease",
+      "N_total": 3,
+      "N_mutant": 0,
+      "N_wt": 3,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Giant Cell Tumor of Bone",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Glassy Cell Carcinoma of the Cervix",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Hepatocellular Carcinoma plus Intrahepatic Cholangiocarcinoma",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Mixed Cervical Carcinoma",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Ocular Melanoma",
+      "N_total": 8,
+      "N_mutant": 0,
+      "N_wt": 8,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    },
+    {
+      "cancer_type": "Ovarian Germ Cell Tumor",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_structural": 0,
+      "N_contact": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_structural_vs_contact": false
+    }
+  ]
+}
