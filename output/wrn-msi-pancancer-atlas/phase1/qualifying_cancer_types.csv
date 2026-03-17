@@ -1,0 +1,18 @@
+cancer_type,n_total,n_msi_h,n_mss,msi_h_freq,n_msi_h_crispr,n_mss_crispr,n_mlh1_methylated,n_mmr_mutated,n_annotated_msi,qualifies
+Bowel,99,55,44,0.5556,35,28,41,21,18,True
+Head and Neck,94,46,48,0.4894,37,40,46,3,0,True
+Ovary/Fallopian Tube,75,31,44,0.4133,23,36,28,9,0,True
+Biliary Tract,45,15,30,0.3333,12,22,15,0,0,True
+Pancreas,68,22,46,0.3235,18,30,21,1,0,True
+Kidney,74,23,51,0.3108,17,18,20,4,0,True
+Breast,96,26,70,0.2708,17,36,24,2,0,True
+Cervix,26,7,19,0.2692,7,11,6,1,0,True
+Esophagus/Stomach,104,27,77,0.2596,22,47,27,4,0,True
+Bladder/Urinary Tract,39,10,29,0.2564,9,25,8,2,0,True
+Lung,260,60,200,0.2308,36,90,54,8,0,True
+Liver,29,6,23,0.2069,6,18,6,0,0,True
+Lymphoid,263,47,216,0.1787,20,73,21,29,0,True
+Bone,93,15,78,0.1613,10,39,14,1,0,True
+Skin,150,23,127,0.1533,13,62,19,5,0,True
+Soft Tissue,93,12,81,0.129,6,40,12,1,0,True
+CNS/Brain,127,9,118,0.0709,8,81,6,3,0,True
