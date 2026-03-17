@@ -1,0 +1,25 @@
+cancer_type,depmap_lineage,cdkn2a_del_pct,rb1_coloss_pct,us_incidence,estimated_cdkn2a_del_patients_per_year,estimated_eligible_patients_per_year
+MESO,Pleura,72.0,2.0,2800,2016,1975
+GBM,CNS/Brain,58.0,10.0,14000,8119,7307
+PAAD,Pancreas,30.0,3.0,66440,19932,19334
+SKCM,Skin,20.0,3.0,100640,20128,19524
+BLCA,Bladder/Urinary Tract,20.0,15.0,83190,16638,14142
+HNSC,Head and Neck,18.0,5.0,58450,10521,9994
+LUSC,Lung,15.0,8.0,58775,8816,8110
+ACC,Adrenal Gland,15.0,5.0,600,90,85
+LGG,CNS/Brain,12.0,5.0,11400,1368,1299
+ESCA,Esophagus/Stomach,12.0,5.0,22370,2684,2549
+SARC,Soft Tissue,12.0,10.0,13590,1630,1467
+DLBC,Lymphoid,10.0,5.0,80620,8062,7658
+CHOL,Biliary Tract,10.0,5.0,12220,1222,1160
+LUAD,Lung,8.0,5.0,58775,4702,4466
+LAML,Myeloid,8.0,5.0,20380,1630,1548
+STAD,Esophagus/Stomach,5.0,5.0,26890,1344,1276
+OV,Ovary/Fallopian Tube,5.0,5.0,19680,984,934
+LIHC,Liver,5.0,5.0,41210,2060,1957
+BRCA,Breast,2.0,5.0,310720,6214,5903
+COADREAD,Bowel,2.0,5.0,152810,3056,2903
+UCEC,Uterus,1.0,5.0,67880,678,644
+PRAD,Prostate,1.0,5.0,288300,2883,2738
+KIRC,Kidney,1.0,5.0,81800,818,777
+THCA,Thyroid,0.5,5.0,44020,220,209

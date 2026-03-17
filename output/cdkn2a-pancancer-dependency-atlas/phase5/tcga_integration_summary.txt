@@ -1,0 +1,88 @@
+============================================================
+CDKN2A Pan-Cancer Dependency Atlas - Phase 5: TCGA Clinical Integration
+============================================================
+
+Estimated total US CDKN2A-deleted patients/year: ~125,815
+Estimated CDK4/6i-eligible (CDKN2A-del/RB1-intact): ~117,959
+
+CDKN2A DELETION PREVALENCE
+--------------------------------------------------
+  MESO: 72% del, ~2,016 pts/yr, eligible: ~1,975
+  GBM: 58% del, ~8,119 pts/yr, eligible: ~7,307
+  PAAD: 30% del, ~19,932 pts/yr, eligible: ~19,334
+  SKCM: 20% del, ~20,128 pts/yr, eligible: ~19,524
+  BLCA: 20% del, ~16,638 pts/yr, eligible: ~14,142
+  HNSC: 18% del, ~10,521 pts/yr, eligible: ~9,994
+  LUSC: 15% del, ~8,816 pts/yr, eligible: ~8,110
+  ACC: 15% del, ~90 pts/yr, eligible: ~85
+  LGG: 12% del, ~1,368 pts/yr, eligible: ~1,299
+  ESCA: 12% del, ~2,684 pts/yr, eligible: ~2,549
+  SARC: 12% del, ~1,630 pts/yr, eligible: ~1,467
+  DLBC: 10% del, ~8,062 pts/yr, eligible: ~7,658
+  CHOL: 10% del, ~1,222 pts/yr, eligible: ~1,160
+  LUAD: 8% del, ~4,702 pts/yr, eligible: ~4,466
+  LAML: 8% del, ~1,630 pts/yr, eligible: ~1,548
+  STAD: 5% del, ~1,344 pts/yr, eligible: ~1,276
+  OV: 5% del, ~984 pts/yr, eligible: ~934
+  LIHC: 5% del, ~2,060 pts/yr, eligible: ~1,957
+  BRCA: 2% del, ~6,214 pts/yr, eligible: ~5,903
+  COADREAD: 2% del, ~3,056 pts/yr, eligible: ~2,903
+  UCEC: 1% del, ~678 pts/yr, eligible: ~644
+  PRAD: 1% del, ~2,883 pts/yr, eligible: ~2,738
+  KIRC: 1% del, ~818 pts/yr, eligible: ~777
+  THCA: 0% del, ~220 pts/yr, eligible: ~209
+
+PRIORITY RANKING (CDK6 SL x population)
+--------------------------------------------------
+  BLCA: score=14.0, CDK6 d=-1.460 [lineage-specific], ~14,142 pts/yr
+  OV: score=13.6, CDK6 d=-1.988 [lineage-specific], ~934 pts/yr
+  SKCM: score=12.9, CDK6 d=-1.305 [lineage-specific], ~19,524 pts/yr
+  BRCA: score=12.1, CDK6 d=-1.399 [lineage-specific], ~5,903 pts/yr
+  GBM: score=6.6, CDK6 d=-0.745 [lineage-specific], ~7,307 pts/yr
+  LGG: score=5.3, CDK6 d=-0.745 [lineage-specific], ~1,299 pts/yr
+  LUSC: score=4.8, CDK6 d=-0.530 [lineage-specific], ~8,110 pts/yr
+  SARC: score=4.6, CDK6 d=-0.634 [lineage-specific], ~1,467 pts/yr
+  LUAD: score=4.5, CDK6 d=-0.530 [lineage-specific], ~4,466 pts/yr
+  COADREAD: score=3.6, CDK6 d=-0.453 [pan-cancer pooled], ~2,903 pts/yr
+  PRAD: score=3.6, CDK6 d=-0.453 [pan-cancer pooled], ~2,738 pts/yr
+  MESO: score=3.4, CDK6 d=-0.453 [pan-cancer pooled], ~1,975 pts/yr
+  ESCA: score=3.4, CDK6 d=-0.438 [lineage-specific], ~2,549 pts/yr
+  LIHC: score=3.4, CDK6 d=-0.453 [pan-cancer pooled], ~1,957 pts/yr
+  CHOL: score=3.2, CDK6 d=-0.453 [pan-cancer pooled], ~1,160 pts/yr
+
+MESOTHELIOMA DEEP-DIVE
+--------------------------------------------------
+  Incidence: 2,800/yr
+  CDKN2A deletion: 72%
+  Estimated CDKN2A-del: ~2,016/yr
+  RB1 co-loss: ~2%
+  Eligible for CDK4/6i: ~1,975/yr
+  Active CDK4/6i trials: NONE (major clinical gap)
+  NOTE: Mesothelioma has highest CDKN2A del rate (72%),
+  limited treatment options, and poor prognosis — strong rationale
+  for CDK4/6 inhibitor clinical trials.
+
+TRIAL GAP ANALYSIS (14 underexplored types)
+--------------------------------------------------
+  [major_gap] BLCA: ~14,142 eligible pts/yr, 20% del rate, no CDK4/6i trials
+  [major_gap] DLBC: ~7,658 eligible pts/yr, 10% del rate, no CDK4/6i trials
+  [major_gap] COADREAD: ~2,903 eligible pts/yr, 2% del rate, no CDK4/6i trials
+  [major_gap] PRAD: ~2,738 eligible pts/yr, 1% del rate, no CDK4/6i trials
+  [major_gap] ESCA: ~2,549 eligible pts/yr, 12% del rate, no CDK4/6i trials
+  [major_gap] MESO: ~1,975 eligible pts/yr, 72% del rate, no CDK4/6i trials
+  [major_gap] LIHC: ~1,957 eligible pts/yr, 5% del rate, no CDK4/6i trials
+  [major_gap] LAML: ~1,548 eligible pts/yr, 8% del rate, no CDK4/6i trials
+  [major_gap] LGG: ~1,299 eligible pts/yr, 12% del rate, no CDK4/6i trials
+  [major_gap] STAD: ~1,276 eligible pts/yr, 5% del rate, no CDK4/6i trials
+  [major_gap] CHOL: ~1,160 eligible pts/yr, 10% del rate, no CDK4/6i trials
+  [gap] KIRC: ~777 eligible pts/yr, 1% del rate, no CDK4/6i trials
+  [gap] UCEC: ~644 eligible pts/yr, 1% del rate, no CDK4/6i trials
+  [gap] THCA: ~209 eligible pts/yr, 0% del rate, no CDK4/6i trials
+
+CO-MUTATION LANDSCAPE
+--------------------------------------------------
+  RB1 co-loss rate varies by cancer type (2-15%).
+  RB1-intact tumors are the primary CDK4/6i target population.
+  CDKN2B co-deletion is common (~85% of CDKN2A-del in DepMap).
+
+Sources: TCGA PanCanAtlas 2018, ACS 2024 estimates, ClinicalTrials.gov

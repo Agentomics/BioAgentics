@@ -1,0 +1,25 @@
+cancer_type,depmap_lineage,cdk6_d,eligible_patients,cdkn2a_del_pct,active_trials,n_trials,gap_type
+BLCA,Bladder/Urinary Tract,-1.4599,14142,20.0,none,0,major_gap
+DLBC,Lymphoid,-0.0517,7658,10.0,none,0,major_gap
+COADREAD,Bowel,-0.4534,2903,2.0,none,0,major_gap
+PRAD,Prostate,-0.4534,2738,1.0,none,0,major_gap
+ESCA,Esophagus/Stomach,-0.4382,2549,12.0,none,0,major_gap
+MESO,Pleura,-0.4534,1975,72.0,none,0,major_gap
+LIHC,Liver,-0.4534,1957,5.0,none,0,major_gap
+LAML,Myeloid,-0.16,1548,8.0,none,0,major_gap
+LGG,CNS/Brain,-0.7454,1299,12.0,none,0,major_gap
+STAD,Esophagus/Stomach,-0.4382,1276,5.0,none,0,major_gap
+CHOL,Biliary Tract,-0.4534,1160,10.0,none,0,major_gap
+KIRC,Kidney,-0.4534,777,1.0,none,0,gap
+UCEC,Uterus,-0.4534,644,1.0,none,0,gap
+THCA,Thyroid,-0.4534,209,0.5,none,0,gap
+ACC,Adrenal Gland,-0.4534,85,15.0,none,0,small_population
+SKCM,Skin,-1.3051,19524,20.0,ribociclib + binimetinib (NCT01781572),1,covered
+PAAD,Pancreas,0.2182,19334,30.0,palbociclib + gedatolisib (NCT03065062),1,covered
+HNSC,Head and Neck,0.0876,9994,18.0,palbociclib (NCT02101034),1,covered
+LUSC,Lung,-0.5303,8110,15.0,abemaciclib (NCT02246621),1,covered
+GBM,CNS/Brain,-0.7454,7307,58.0,ribociclib (NCT02933736); abemaciclib (NCT02981940),2,covered
+BRCA,Breast,-1.3989,5903,2.0,palbociclib (PALOMA-2/3); ribociclib (MONALEESA); abemaciclib (monarchE),3,covered
+LUAD,Lung,-0.5303,4466,8.0,palbociclib (NCT02896335),1,covered
+SARC,Soft Tissue,-0.6344,1467,12.0,palbociclib (NCT02784795),1,covered
+OV,Ovary/Fallopian Tube,-1.9875,934,5.0,ribociclib (NCT03056833),1,covered
