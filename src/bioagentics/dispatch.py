@@ -187,7 +187,9 @@ def clear_stale_presences():
             set_presence(username, "idle", project, division)
             journal(
                 f"stale presence cleanup: {label} was running for "
-                f"{int(age)}s (timeout {_dispatch.presence_timeout}s), reset to idle"
+                f"{int(age)}s (timeout {_dispatch.presence_timeout}s), reset to idle",
+                project,
+                division,
             )
 
 
@@ -667,7 +669,7 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
                 locked_by = project_locked_by(proj)
                 if locked_by == role:
                     print(f"  SKIP: {label} (already running)")
-                    journal(f"skipped {label} — already running on this project", proj)
+                    journal(f"skipped {label} — already running on this project", proj, config.division)
                     continue
                 claimed.add((role, proj))
 

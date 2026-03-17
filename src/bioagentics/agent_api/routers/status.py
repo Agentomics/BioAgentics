@@ -19,7 +19,7 @@ def get_db():
 
 @router.get("")
 def get_status(db: Session = Depends(get_db)):
-    # Agents — composite PK is (username, project), so pick the most
+    # Agents — composite PK is (username, division, project), so pick the most
     # relevant entry per username: prefer "running" over "idle".
     agent_rows = db.execute(select(agents)).fetchall()
     agents_map: dict[str, dict] = {}

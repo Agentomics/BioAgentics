@@ -84,10 +84,13 @@ def list_agents(
 @router.get("/{username}", response_model=AgentEntry)
 def get_agent(
     username: str,
+    division: str | None = Query(default=None),
     project: str | None = Query(default=None),
     db: Session = Depends(get_db),
 ):
     query = select(agents).where(agents.c.username == username)
+    if division is not None:
+        query = query.where(agents.c.division == division)
     if project is not None:
         query = query.where(agents.c.project == project)
     row = db.execute(query.order_by(agents.c.updated_at.desc())).first()
@@ -99,10 +102,13 @@ def get_agent(
 @router.delete("/{username}", status_code=204, dependencies=[Depends(require_auth)])
 def deregister_agent(
     username: str,
+    division: str | None = Query(default=None),
     project: str | None = Query(default=None),
     db: Session = Depends(get_db),
 ):
     cond = agents.c.username == username
+    if division is not None:
+        cond = cond & (agents.c.division == division)
     if project is not None:
         cond = cond & (agents.c.project == project)
     row = db.execute(select(agents).where(cond)).first()

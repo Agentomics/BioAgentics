@@ -726,21 +726,22 @@ def _clear_filters_btn(path: str, has_filters: bool) -> str:
 # ── Tab Content Renderers ─────────────────────────────────────────────
 
 
-def render_dashboard_tab(db: Session) -> str:
+def render_dashboard_tab(db: Session, division: str = "") -> str:
     """Dashboard home view with summary widgets."""
     # Recent active tasks
+    task_q = select(tasks).where(tasks.c.status.in_(["pending", "in_progress", "blocked"]))
+    if division:
+        task_q = task_q.where(tasks.c.division == division)
     recent_tasks = db.execute(
-        select(tasks)
-        .where(tasks.c.status.in_(["pending", "in_progress", "blocked"]))
-        .order_by(tasks.c.priority.desc(), tasks.c.updated_at.desc())
-        .limit(8)
+        task_q.order_by(tasks.c.priority.desc(), tasks.c.updated_at.desc()).limit(8)
     ).fetchall()
 
     # Recent journal
+    journal_q = select(journal)
+    if division:
+        journal_q = journal_q.where(journal.c.division == division)
     recent_journal = db.execute(
-        select(journal)
-        .order_by(journal.c.created_at.desc())
-        .limit(5)
+        journal_q.order_by(journal.c.created_at.desc()).limit(5)
     ).fetchall()
 
     # Active agents
@@ -972,7 +973,7 @@ def render_projects_tab(db: Session, search: str, status: str, labels: str, offs
     else:
         list_html = f'<div class="flex flex-col items-center justify-center py-16 text-[#a1a1aa]">{ICONS["inbox"]}<div class="mt-3 text-sm font-medium">No projects found</div><div class="text-xs mt-1">Try adjusting your filters</div></div>'
 
-    params = dict(search=search, status=status, labels=labels)
+    params = dict(search=search, status=status, labels=labels, division=division)
     pager_html = render_pager("p", path, offset, total, **params)
 
     return f"""<div class="flex items-center justify-between mb-4">
@@ -1094,7 +1095,7 @@ def render_tasks_tab(
 <datalist id="dl-users">{dl_users}</datalist>
 <datalist id="dl-projects">{dl_projects}</datalist>"""
 
-    params = dict(search=search, username=username, project=project, status=status, priority=priority, sort=sort)
+    params = dict(search=search, username=username, project=project, status=status, priority=priority, sort=sort, division=division)
     pager_html = render_pager("t", path, offset, total, **params)
 
     return f"""<div class="flex items-center justify-between mb-4">
@@ -1172,7 +1173,7 @@ def render_journal_tab(
 <datalist id="dl-users">{dl_users}</datalist>
 <datalist id="dl-projects">{dl_projects}</datalist>"""
 
-    params = dict(search=search, username=username, project=project, sort=sort)
+    params = dict(search=search, username=username, project=project, sort=sort, division=division)
     pager_html = render_pager("j", path, offset, total, **params)
 
     return f"""<div class="flex items-center justify-between mb-4">
@@ -1322,7 +1323,7 @@ def render_runs_tab(
     else:
         list_html = f'<div class="flex flex-col items-center justify-center py-16 text-[#a1a1aa]">{ICONS["inbox"]}<div class="mt-3 text-sm font-medium">No runs recorded</div><div class="text-xs mt-1">Runs will appear as agents start executing</div></div>'
 
-    params = dict(agent=agent, project=project, sort=sort)
+    params = dict(agent=agent, project=project, sort=sort, division=division)
     pager_html = render_pager("r", path, offset, total, **params)
 
     return f"""<div class="flex items-center justify-between mb-4">
@@ -1378,16 +1379,19 @@ def render_keys_tab(db: Session, api_key: str) -> str:
 # ── Stats & Presence Partials ─────────────────────────────────────────
 
 
-def render_stats_html(db: Session) -> str:
-    task_rows = db.execute(
-        select(tasks.c.status, func.count()).group_by(tasks.c.status)
-    ).all()
+def render_stats_html(db: Session, division: str = "") -> str:
+    task_q = select(tasks.c.status, func.count()).group_by(tasks.c.status)
+    journal_q = select(func.count()).select_from(journal)
+    if division:
+        task_q = task_q.where(tasks.c.division == division)
+        journal_q = journal_q.where(journal.c.division == division)
+    task_rows = db.execute(task_q).all()
     task_counts = {row[0]: row[1] for row in task_rows}
     total_tasks = sum(task_counts.values())
     running_agents = db.execute(
         select(func.count(agents.c.username.distinct())).where(agents.c.status == "running")
     ).scalar() or 0
-    journal_count = db.execute(select(func.count()).select_from(journal)).scalar() or 0
+    journal_count = db.execute(journal_q).scalar() or 0
 
     pending = task_counts.get("pending", 0)
     in_progress = task_counts.get("in_progress", 0)
@@ -1669,6 +1673,8 @@ async function submitNewTask() {
   var btn = document.getElementById('nt-submit');
   btn.textContent = '...'; btn.disabled = true;
   var body = { username: user, title: title, priority: parseInt(document.getElementById('nt-priority').value) };
+  var div = getDivision();
+  if (div) body.division = div;
   var project = document.getElementById('nt-project').value.trim();
   if (project) body.project = project;
   var desc = document.getElementById('nt-desc').value.trim();
@@ -2020,12 +2026,13 @@ def ui_redirect():
 @router.get("/ui/dashboard", response_class=HTMLResponse)
 def ui_dashboard_page(
     request: Request,
+    division: str = Query(default=""),
     db: Session = Depends(get_db),
 ):
-    content = render_dashboard_tab(db)
+    content = render_dashboard_tab(db, division)
     if is_htmx(request):
         return HTMLResponse(content + render_sidebar_nav_oob("dashboard", db))
-    stats_html = render_stats_html(db)
+    stats_html = render_stats_html(db, division)
     presence_html = render_presence_html(db)
     return HTMLResponse(render_shell("dashboard", content, stats_html, presence_html, _human_task_count(db)))
 
