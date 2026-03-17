@@ -5,93 +5,53 @@ WRN-MSI Pan-Cancer Atlas — Phase 1: MSI/MMR Classifier
 OVERVIEW
   Total cell lines with lineage annotation: 2119
   Cell lines with CRISPR data: 1186
-  MSI-H classified: 509 (24.0%)
-  MSS classified: 1610
+  MSI-H classified: 70 (3.3%)
+  MSS classified: 2049
 
-CLASSIFICATION SOURCES
-  Annotation (Model.csv): 18
-  Molecular (MLH1 expr + MMR mutations): 491
-  Both annotation + molecular: 15
+CLASSIFICATION TIERS
+  tier3_MSH2_LOF: 30
+  tier2_MLH1_silenced: 22
+  tier1_annotated: 12
+  tier1_annotated+molecular: 6
 
-MSI-H SUBTYPES
-  MLH1-methylated: 381
-  MMR-mutated: 82
-  MLH1-methylated+MMR-mutated: 43
+MSI-H SUBTYPES (mechanism)
+  MMR-mutated: 41
+  MLH1-methylated: 16
+  MLH1-methylated+MMR-mutated: 10
   annotated-only: 3
 
-MLH1 EXPRESSION THRESHOLD (Q25): 4.66
+MLH1 SILENCING THRESHOLD: 1.0 (log2 TPM+1)
+  Tier 1: Model.csv annotation (ModelSubtypeFeatures = MSI)
+  Tier 2: MLH1 expression < threshold + no MLH1 LOF (methylation)
+  Tier 3: MSH2 LOF mutation (dominant mutation-driven MSI)
+  MSH6/PMS2-only LOF: recorded but not sufficient for MSI-H call
 
-QUALIFYING CANCER TYPES (≥5 MSI-H + ≥10 MSS with CRISPR data)
+QUALIFYING CANCER TYPES (>=5 MSI-H + >=10 MSS with CRISPR)
 ------------------------------------------------------------
-  Bowel: 35 MSI-H / 28 MSS (CRISPR), 55/99 total (55.6%)
-  Head and Neck: 37 MSI-H / 40 MSS (CRISPR), 46/94 total (48.9%)
-  Ovary/Fallopian Tube: 23 MSI-H / 36 MSS (CRISPR), 31/75 total (41.3%)
-  Biliary Tract: 12 MSI-H / 22 MSS (CRISPR), 15/45 total (33.3%)
-  Pancreas: 18 MSI-H / 30 MSS (CRISPR), 22/68 total (32.4%)
-  Kidney: 17 MSI-H / 18 MSS (CRISPR), 23/74 total (31.1%)
-  Breast: 17 MSI-H / 36 MSS (CRISPR), 26/96 total (27.1%)
-  Cervix: 7 MSI-H / 11 MSS (CRISPR), 7/26 total (26.9%)
-  Esophagus/Stomach: 22 MSI-H / 47 MSS (CRISPR), 27/104 total (26.0%)
-  Bladder/Urinary Tract: 9 MSI-H / 25 MSS (CRISPR), 10/39 total (25.6%)
-  Lung: 36 MSI-H / 90 MSS (CRISPR), 60/260 total (23.1%)
-  Liver: 6 MSI-H / 18 MSS (CRISPR), 6/29 total (20.7%)
-  Lymphoid: 20 MSI-H / 73 MSS (CRISPR), 47/263 total (17.9%)
-  Bone: 10 MSI-H / 39 MSS (CRISPR), 15/93 total (16.1%)
-  Skin: 13 MSI-H / 62 MSS (CRISPR), 23/150 total (15.3%)
-  Soft Tissue: 6 MSI-H / 40 MSS (CRISPR), 12/93 total (12.9%)
-  CNS/Brain: 8 MSI-H / 81 MSS (CRISPR), 9/127 total (7.1%)
+  Uterus: 8 MSI-H / 26 MSS (CRISPR), 11/44 total (25.0%)
+  Bowel: 12 MSI-H / 51 MSS (CRISPR), 22/99 total (22.2%)
 
 ALL CANCER TYPES WITH MSI-H LINES
 ------------------------------------------------------------
-  Uterus: 31 MSI-H / 13 MSS (CRISPR: 27/7)
-  Bowel: 55 MSI-H / 44 MSS (CRISPR: 35/28) ★
-  Head and Neck: 46 MSI-H / 48 MSS (CRISPR: 37/40) ★
-  Ovary/Fallopian Tube: 31 MSI-H / 44 MSS (CRISPR: 23/36) ★
-  Vulva/Vagina: 2 MSI-H / 3 MSS (CRISPR: 2/0)
-  Biliary Tract: 15 MSI-H / 30 MSS (CRISPR: 12/22) ★
-  Pancreas: 22 MSI-H / 46 MSS (CRISPR: 18/30) ★
-  Thyroid: 8 MSI-H / 17 MSS (CRISPR: 3/8)
-  Kidney: 23 MSI-H / 51 MSS (CRISPR: 17/18) ★
-  Breast: 26 MSI-H / 70 MSS (CRISPR: 17/36) ★
-  Cervix: 7 MSI-H / 19 MSS (CRISPR: 7/11) ★
-  Prostate: 4 MSI-H / 11 MSS (CRISPR: 4/6)
-  Esophagus/Stomach: 27 MSI-H / 77 MSS (CRISPR: 22/47) ★
-  Bladder/Urinary Tract: 10 MSI-H / 29 MSS (CRISPR: 9/25) ★
-  Testis: 3 MSI-H / 9 MSS (CRISPR: 1/4)
-  Eye: 6 MSI-H / 18 MSS (CRISPR: 2/13)
-  Lung: 60 MSI-H / 200 MSS (CRISPR: 36/90) ★
-  Liver: 6 MSI-H / 23 MSS (CRISPR: 6/18) ★
-  Ampulla of Vater: 1 MSI-H / 4 MSS (CRISPR: 1/4)
-  Lymphoid: 47 MSI-H / 216 MSS (CRISPR: 20/73) ★
-  Bone: 15 MSI-H / 78 MSS (CRISPR: 10/39) ★
-  Skin: 23 MSI-H / 127 MSS (CRISPR: 13/62) ★
-  Soft Tissue: 12 MSI-H / 81 MSS (CRISPR: 6/40) ★
-  Pleura: 4 MSI-H / 32 MSS (CRISPR: 3/18)
-  Peripheral Nervous System: 6 MSI-H / 54 MSS (CRISPR: 4/41)
-  Fibroblast: 4 MSI-H / 41 MSS (CRISPR: 0/1)
-  Normal: 1 MSI-H / 12 MSS (CRISPR: 0/0)
-  CNS/Brain: 9 MSI-H / 118 MSS (CRISPR: 8/81) ★
-  Myeloid: 5 MSI-H / 83 MSS (CRISPR: 4/39)
+  Uterus: 11 MSI-H / 33 MSS (CRISPR: 8/26) *
+  Bowel: 22 MSI-H / 77 MSS (CRISPR: 12/51) *
+  Vulva/Vagina: 1 MSI-H / 4 MSS (CRISPR: 1/1)
+  Ovary/Fallopian Tube: 5 MSI-H / 70 MSS (CRISPR: 4/55)
+  Esophagus/Stomach: 6 MSI-H / 98 MSS (CRISPR: 4/65)
+  Eye: 1 MSI-H / 23 MSS (CRISPR: 0/15)
+  Cervix: 1 MSI-H / 25 MSS (CRISPR: 1/17)
+  Breast: 3 MSI-H / 93 MSS (CRISPR: 2/51)
+  Pleura: 1 MSI-H / 35 MSS (CRISPR: 0/21)
+  Lymphoid: 7 MSI-H / 256 MSS (CRISPR: 3/90)
+  Head and Neck: 2 MSI-H / 92 MSS (CRISPR: 2/75)
+  Lung: 4 MSI-H / 256 MSS (CRISPR: 3/123)
+  Pancreas: 1 MSI-H / 67 MSS (CRISPR: 0/48)
+  Kidney: 1 MSI-H / 73 MSS (CRISPR: 0/35)
+  Skin: 2 MSI-H / 148 MSS (CRISPR: 2/73)
+  Myeloid: 1 MSI-H / 87 MSS (CRISPR: 1/42)
+  CNS/Brain: 1 MSI-H / 126 MSS (CRISPR: 1/88)
 
 POWER ANALYSIS NOTE
-  Qualifying threshold: ≥5 MSI-H + ≥10 MSS with CRISPR data.
+  Qualifying threshold: >=5 MSI-H + >=10 MSS with CRISPR data.
   This ensures adequate statistical power for Cohen's d effect
   size estimation with bootstrap CI in Phase 2.
-
-DISCORDANCE NOTES
-  Annotated MSI-H but no molecular evidence: 3 lines
-    ACH-000950 (Bowel)
-    ACH-000963 (Bowel)
-    ACH-001091 (Bowel)
-  Molecular MSI-H but no annotation: 491 lines
-    ACH-000001 (Ovary/Fallopian Tube) — MLH1-methylated
-    ACH-000012 (Lung) — MLH1-methylated
-    ACH-000021 (Lung) — MLH1-methylated
-    ACH-000029 (Lung) — MLH1-methylated
-    ACH-000039 (Bone) — MLH1-methylated
-    ACH-000042 (Pancreas) — MLH1-methylated
-    ACH-000050 (Lymphoid) — MLH1-methylated
-    ACH-000055 (CNS/Brain) — MLH1-methylated
-    ACH-000058 (Thyroid) — MLH1-methylated
-    ACH-000060 (Pancreas) — MLH1-methylated
-    ... and 481 more
