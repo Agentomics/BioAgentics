@@ -7,7 +7,7 @@ prefix = "/api"                 # API path prefix (e.g. "/api" for /api/tasks, /
 short_break = 30            # seconds between normal iterations
 long_break =  7200          # seconds for extended breaks
 long_break_every = 4        # take a long break every N iterations
-max_workers = 4             # parallel agent slots
+max_workers = 8             # parallel agent slots
 retry_delays = [60, 300, 600, 1000]
 retry_max_attempts = 6
 oom_delays = [300, 600]
@@ -97,6 +97,31 @@ effort = "max"
 role = "LITERATURE_REVIEWER"
 division = "crohns"
 
+# --- Crohn's: Task-driven agents ---
+
+[[agents]]
+role = "PROJECT_MANAGER"
+division = "crohns"
+
+[[agents]]
+role = "DEVELOPER"
+division = "crohns"
+effort = "max"
+
+[[agents]]
+role = "ANALYST"
+division = "crohns"
+effort = "max"
+
+[[agents]]
+role = "VALIDATION_SCIENTIST"
+division = "crohns"
+effort = "max"
+
+[[agents]]
+role = "RESEARCH_WRITER"
+division = "crohns"
+
 # --- Tourette's: Generators ---
 
 [[agents]]
@@ -106,6 +131,31 @@ effort = "max"
 
 [[agents]]
 role = "LITERATURE_REVIEWER"
+division = "tourettes"
+
+# --- Tourette's: Task-driven agents ---
+
+[[agents]]
+role = "PROJECT_MANAGER"
+division = "tourettes"
+
+[[agents]]
+role = "DEVELOPER"
+division = "tourettes"
+effort = "max"
+
+[[agents]]
+role = "ANALYST"
+division = "tourettes"
+effort = "max"
+
+[[agents]]
+role = "VALIDATION_SCIENTIST"
+division = "tourettes"
+effort = "max"
+
+[[agents]]
+role = "RESEARCH_WRITER"
 division = "tourettes"
 
 # --- PANDAS/PANS: Generators ---
@@ -119,6 +169,31 @@ effort = "max"
 role = "LITERATURE_REVIEWER"
 division = "pandas_pans"
 
+# --- PANDAS/PANS: Task-driven agents ---
+
+[[agents]]
+role = "PROJECT_MANAGER"
+division = "pandas_pans"
+
+[[agents]]
+role = "DEVELOPER"
+division = "pandas_pans"
+effort = "max"
+
+[[agents]]
+role = "ANALYST"
+division = "pandas_pans"
+effort = "max"
+
+[[agents]]
+role = "VALIDATION_SCIENTIST"
+division = "pandas_pans"
+effort = "max"
+
+[[agents]]
+role = "RESEARCH_WRITER"
+division = "pandas_pans"
+
 # --- Diagnostics: Generators ---
 
 [[agents]]
@@ -128,4 +203,29 @@ effort = "max"
 
 [[agents]]
 role = "LITERATURE_REVIEWER"
+division = "diagnostics"
+
+# --- Diagnostics: Task-driven agents ---
+
+[[agents]]
+role = "PROJECT_MANAGER"
+division = "diagnostics"
+
+[[agents]]
+role = "DEVELOPER"
+division = "diagnostics"
+effort = "max"
+
+[[agents]]
+role = "ANALYST"
+division = "diagnostics"
+effort = "max"
+
+[[agents]]
+role = "VALIDATION_SCIENTIST"
+division = "diagnostics"
+effort = "max"
+
+[[agents]]
+role = "RESEARCH_WRITER"
 division = "diagnostics"
