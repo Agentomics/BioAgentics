@@ -1,0 +1,35 @@
+depmap_lineage,depmap_n_total,depmap_n_lost,depmap_pten_loss_pct,tcga_pten_loss_pct,tcga_n_sequenced,representation_ratio,flag
+Adrenal Gland,2,0,0.0,,,,NOT_IN_DEPMAP
+Ampulla of Vater,5,0,0.0,,,,NOT_IN_DEPMAP
+Biliary Tract,45,3,6.7,,,,NOT_IN_DEPMAP
+Bladder/Urinary Tract,39,4,10.3,10.0,412.0,1.03,OK
+Bone,93,1,1.1,,,,NOT_IN_DEPMAP
+Bowel,99,10,10.1,7.0,594.0,1.44,OK
+Breast,96,13,13.5,6.0,1084.0,2.25,OVERREPRESENTED
+CNS/Brain,127,47,37.0,36.0,592.0,1.03,OK
+Cervix,26,1,3.8,,,,NOT_IN_DEPMAP
+Embryonal,1,0,0.0,,,,NOT_IN_DEPMAP
+Esophagus/Stomach,104,7,6.7,6.0,625.0,1.12,OK
+Eye,24,0,0.0,,,,NOT_IN_DEPMAP
+Fibroblast,45,0,0.0,,,,NOT_IN_DEPMAP
+Hair,2,0,0.0,,,,NOT_IN_DEPMAP
+Head and Neck,94,3,3.2,3.0,523.0,1.07,OK
+Kidney,74,4,5.4,3.0,512.0,1.8,OK
+Liver,29,2,6.9,3.0,373.0,2.3,OVERREPRESENTED
+Lung,260,21,8.1,5.5,1070.0,1.47,OK
+Lymphoid,263,23,8.7,5.0,48.0,1.74,OK
+Muscle,5,0,0.0,,,,NOT_IN_DEPMAP
+Myeloid,88,5,5.7,,,,NOT_IN_DEPMAP
+Normal,13,0,0.0,,,,NOT_IN_DEPMAP
+Other,2,0,0.0,,,,NOT_IN_DEPMAP
+Ovary/Fallopian Tube,75,7,9.3,6.0,316.0,1.55,OK
+Pancreas,68,1,1.5,1.5,185.0,1.0,OK
+Peripheral Nervous System,60,2,3.3,,,,NOT_IN_DEPMAP
+Pleura,36,2,5.6,,,,NOT_IN_DEPMAP
+Prostate,15,3,20.0,20.0,499.0,1.0,OK
+Skin,150,22,14.7,12.0,472.0,1.22,OK
+Soft Tissue,93,0,0.0,,,,NOT_IN_DEPMAP
+Testis,12,1,8.3,,,,NOT_IN_DEPMAP
+Thyroid,25,4,16.0,1.0,501.0,16.0,OVERREPRESENTED
+Uterus,44,23,52.3,50.0,586.0,1.05,OK
+Vulva/Vagina,5,0,0.0,,,,NOT_IN_DEPMAP

@@ -1,0 +1,20 @@
+cancer_type,depmap_lineage,us_incidence,total_pten_loss_pct,estimated_pten_loss_patients_per_year
+UCEC,Uterus,67880,65.0,44122
+GBM,CNS/Brain,14000,36.0,5040
+UCS,Uterus,5000,35.0,1750
+PRAD,Prostate,288300,20.0,57660
+SKCM,Skin,100640,12.0,12076
+BLCA,Bladder/Urinary Tract,83190,10.0,8319
+STAD,Esophagus/Stomach,26890,7.0,1882
+COADREAD,Bowel,152810,7.0,10696
+BRCA,Breast,310720,6.0,18643
+LUAD,Lung,58775,6.0,3526
+OV,Ovary/Fallopian Tube,19680,6.0,1180
+LUSC,Lung,58775,5.0,2938
+ESCA,Esophagus/Stomach,22370,5.0,1118
+DLBC,Lymphoid,80620,5.0,4031
+HNSC,Head and Neck,58450,3.0,1753
+KIRC,Kidney,81800,3.0,2454
+LIHC,Liver,41210,3.0,1236
+PAAD,Pancreas,66440,1.5,996
+THCA,Thyroid,44020,1.0,440

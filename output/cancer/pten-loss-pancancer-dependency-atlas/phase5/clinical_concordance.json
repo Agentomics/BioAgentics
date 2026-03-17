@@ -1,0 +1,176 @@
+{
+  "trial_coverage": {
+    "BRCA": {
+      "trials": [
+        {
+          "drug": "capivasertib + fulvestrant",
+          "phase": "FDA-approved",
+          "trial": "CAPItello-291",
+          "note": "PIK3CA/AKT1/PTEN-altered HR+/HER2-"
+        },
+        {
+          "drug": "ipatasertib + paclitaxel",
+          "phase": "Phase 3",
+          "trial": "IPATential150-like",
+          "note": "PTEN-loss breast"
+        }
+      ],
+      "estimated_patients": 18643,
+      "pten_loss_pct": 6.0,
+      "dep_d": -2.2288
+    },
+    "UCEC": {
+      "trials": [
+        {
+          "drug": "alpelisib + fulvestrant",
+          "phase": "Phase 2",
+          "trial": "EPIK-E3",
+          "note": "PIK3CA/PTEN-altered endometrial"
+        }
+      ],
+      "estimated_patients": 44122,
+      "pten_loss_pct": 65.0,
+      "dep_d": 0.3816
+    },
+    "GBM": {
+      "trials": [
+        {
+          "drug": "GDC-0084 (paxalisib)",
+          "phase": "Phase 2",
+          "trial": "GBM AGILE",
+          "note": "PI3K/mTOR inhibitor, brain-penetrant"
+        }
+      ],
+      "estimated_patients": 5040,
+      "pten_loss_pct": 36.0,
+      "dep_d": -0.3232
+    },
+    "PRAD": {
+      "trials": [
+        {
+          "drug": "ipatasertib + abiraterone",
+          "phase": "Phase 3",
+          "trial": "IPATential150",
+          "note": "PTEN-loss mCRPC"
+        },
+        {
+          "drug": "capivasertib + abiraterone",
+          "phase": "Phase 3",
+          "trial": "CAPItello-281",
+          "note": "PI3K/AKT/PTEN-altered prostate"
+        }
+      ],
+      "estimated_patients": 57660,
+      "pten_loss_pct": 20.0,
+      "dep_d": 0.0
+    }
+  },
+  "trial_gaps": [
+    {
+      "cancer_type": "SKCM",
+      "estimated_patients": 12076,
+      "pten_loss_pct": 12.0,
+      "dep_d": -1.4971,
+      "rationale": "~12,076 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "LUAD",
+      "estimated_patients": 3526,
+      "pten_loss_pct": 6.0,
+      "dep_d": -1.3042,
+      "rationale": "~3,526 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "LUSC",
+      "estimated_patients": 2938,
+      "pten_loss_pct": 5.0,
+      "dep_d": -1.3042,
+      "rationale": "~2,938 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "STAD",
+      "estimated_patients": 1882,
+      "pten_loss_pct": 7.0,
+      "dep_d": -1.0902,
+      "rationale": "~1,882 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "ESCA",
+      "estimated_patients": 1118,
+      "pten_loss_pct": 5.0,
+      "dep_d": -1.0902,
+      "rationale": "~1,118 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "DLBC",
+      "estimated_patients": 4031,
+      "pten_loss_pct": 5.0,
+      "dep_d": -0.48,
+      "rationale": "~4,031 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "UCS",
+      "estimated_patients": 1750,
+      "pten_loss_pct": 35.0,
+      "dep_d": 0.3816,
+      "rationale": "~1,750 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "COADREAD",
+      "estimated_patients": 10696,
+      "pten_loss_pct": 7.0,
+      "dep_d": -0.2598,
+      "rationale": "~10,696 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "OV",
+      "estimated_patients": 1180,
+      "pten_loss_pct": 6.0,
+      "dep_d": 0.1724,
+      "rationale": "~1,180 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "BLCA",
+      "estimated_patients": 8319,
+      "pten_loss_pct": 10.0,
+      "dep_d": 0.0,
+      "rationale": "~8,319 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "HNSC",
+      "estimated_patients": 1753,
+      "pten_loss_pct": 3.0,
+      "dep_d": 0.0,
+      "rationale": "~1,753 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "KIRC",
+      "estimated_patients": 2454,
+      "pten_loss_pct": 3.0,
+      "dep_d": 0.0,
+      "rationale": "~2,454 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "LIHC",
+      "estimated_patients": 1236,
+      "pten_loss_pct": 3.0,
+      "dep_d": 0.0,
+      "rationale": "~1,236 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    },
+    {
+      "cancer_type": "PAAD",
+      "estimated_patients": 996,
+      "pten_loss_pct": 1.5,
+      "dep_d": 0.0,
+      "rationale": "~996 PTEN-loss pts/yr with no active PTEN-targeted trials"
+    }
+  ],
+  "emerging_agents": [
+    {
+      "drug": "GT220 (PI3K\u03b2-selective)",
+      "phase": "Phase 1",
+      "trial": "emerging",
+      "note": "PTEN-null selective, preclinical/early clinical"
+    }
+  ]
+}

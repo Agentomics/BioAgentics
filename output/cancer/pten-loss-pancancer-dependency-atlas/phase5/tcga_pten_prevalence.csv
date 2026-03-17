@@ -1,0 +1,20 @@
+cancer_type,depmap_lineage,deep_deletion_pct,truncating_mutation_pct,missense_pct,total_pten_loss_pct,n_tcga_sequenced,us_incidence,estimated_pten_loss_patients_per_year
+UCEC,Uterus,3.0,52.0,20.0,65.0,529,67880,44122
+GBM,CNS/Brain,25.0,10.0,5.0,36.0,592,14000,5040
+UCS,Uterus,5.0,25.0,8.0,35.0,57,5000,1750
+PRAD,Prostate,15.0,5.0,3.0,20.0,499,288300,57660
+SKCM,Skin,5.0,6.0,3.0,12.0,472,100640,12076
+BLCA,Bladder/Urinary Tract,3.0,5.0,3.0,10.0,412,83190,8319
+STAD,Esophagus/Stomach,2.0,3.0,3.0,7.0,440,26890,1882
+COADREAD,Bowel,2.0,3.0,3.0,7.0,594,152810,10696
+BRCA,Breast,2.0,2.0,2.0,6.0,1084,310720,18643
+LUAD,Lung,2.0,2.0,2.0,6.0,566,58775,3526
+OV,Ovary/Fallopian Tube,3.0,2.0,2.0,6.0,316,19680,1180
+LUSC,Lung,2.0,2.0,2.0,5.0,504,58775,2938
+ESCA,Esophagus/Stomach,2.0,2.0,2.0,5.0,185,22370,1118
+DLBC,Lymphoid,2.0,2.0,2.0,5.0,48,80620,4031
+HNSC,Head and Neck,1.0,1.0,1.0,3.0,523,58450,1753
+KIRC,Kidney,1.0,1.0,1.0,3.0,512,81800,2454
+LIHC,Liver,1.0,1.0,1.0,3.0,373,41210,1236
+PAAD,Pancreas,0.5,0.5,0.5,1.5,185,66440,996
+THCA,Thyroid,0.5,0.5,0.5,1.0,501,44020,440

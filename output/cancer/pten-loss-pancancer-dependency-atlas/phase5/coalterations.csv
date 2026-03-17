@@ -1,0 +1,12 @@
+cancer_type,pten_tp53_comut_pct,pten_pik3ca_comut_pct,pten_rb1_comut_pct
+UCEC,40.0,50.0,5.0
+GBM,30.0,5.0,15.0
+PRAD,35.0,2.0,10.0
+SKCM,20.0,3.0,5.0
+BRCA,60.0,25.0,5.0
+COADREAD,55.0,15.0,3.0
+STAD,45.0,15.0,3.0
+OV,85.0,10.0,5.0
+BLCA,50.0,8.0,15.0
+LUAD,50.0,5.0,5.0
+LUSC,75.0,5.0,10.0

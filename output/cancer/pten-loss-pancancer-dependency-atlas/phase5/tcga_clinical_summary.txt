@@ -1,0 +1,131 @@
+======================================================================
+PTEN Loss Pan-Cancer Dependency Atlas - Phase 5: TCGA Clinical Integration
+======================================================================
+
+Estimated total US PTEN-loss patients/year: ~179,860
+Cancer types assessed: 19
+
+PTEN LOSS PREVALENCE BY ALTERATION TYPE (TCGA)
+--------------------------------------------------
+  UCEC: 65% total (del=3%, trunc=52%, miss=20%) — ~44,122 pts/yr
+  GBM: 36% total (del=25%, trunc=10%, miss=5%) — ~5,040 pts/yr
+  UCS: 35% total (del=5%, trunc=25%, miss=8%) — ~1,750 pts/yr
+  PRAD: 20% total (del=15%, trunc=5%, miss=3%) — ~57,660 pts/yr
+  SKCM: 12% total (del=5%, trunc=6%, miss=3%) — ~12,076 pts/yr
+  BLCA: 10% total (del=3%, trunc=5%, miss=3%) — ~8,319 pts/yr
+  STAD: 7% total (del=2%, trunc=3%, miss=3%) — ~1,882 pts/yr
+  COADREAD: 7% total (del=2%, trunc=3%, miss=3%) — ~10,696 pts/yr
+  BRCA: 6% total (del=2%, trunc=2%, miss=2%) — ~18,643 pts/yr
+  LUAD: 6% total (del=2%, trunc=2%, miss=2%) — ~3,526 pts/yr
+  OV: 6% total (del=3%, trunc=2%, miss=2%) — ~1,180 pts/yr
+  LUSC: 5% total (del=2%, trunc=2%, miss=2%) — ~2,938 pts/yr
+  ESCA: 5% total (del=2%, trunc=2%, miss=2%) — ~1,118 pts/yr
+  DLBC: 5% total (del=2%, trunc=2%, miss=2%) — ~4,031 pts/yr
+  HNSC: 3% total (del=1%, trunc=1%, miss=1%) — ~1,753 pts/yr
+  KIRC: 3% total (del=1%, trunc=1%, miss=1%) — ~2,454 pts/yr
+  LIHC: 3% total (del=1%, trunc=1%, miss=1%) — ~1,236 pts/yr
+  PAAD: 2% total (del=0%, trunc=0%, miss=0%) — ~996 pts/yr
+  THCA: 1% total (del=0%, trunc=0%, miss=0%) — ~440 pts/yr
+
+DEPMAP vs TCGA REPRESENTATION
+--------------------------------------------------
+  [NOT_IN_DEPMAP] Adrenal Gland: DepMap=0.0% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Ampulla of Vater: DepMap=0.0% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Biliary Tract: DepMap=6.7% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Bone: DepMap=1.1% vs TCGA=nan%
+  [OVERREPRESENTED] Breast: DepMap=13.5% vs TCGA=6.0%
+  [NOT_IN_DEPMAP] Cervix: DepMap=3.8% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Embryonal: DepMap=0.0% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Eye: DepMap=0.0% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Fibroblast: DepMap=0.0% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Hair: DepMap=0.0% vs TCGA=nan%
+  [OVERREPRESENTED] Liver: DepMap=6.9% vs TCGA=3.0%
+  [NOT_IN_DEPMAP] Muscle: DepMap=0.0% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Myeloid: DepMap=5.7% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Normal: DepMap=0.0% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Other: DepMap=0.0% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Peripheral Nervous System: DepMap=3.3% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Pleura: DepMap=5.6% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Soft Tissue: DepMap=0.0% vs TCGA=nan%
+  [NOT_IN_DEPMAP] Testis: DepMap=8.3% vs TCGA=nan%
+  [OVERREPRESENTED] Thyroid: DepMap=16.0% vs TCGA=1.0%
+  [NOT_IN_DEPMAP] Vulva/Vagina: DepMap=0.0% vs TCGA=nan%
+
+CO-OCCURRING ALTERATIONS IN PTEN-LOST TUMORS (TCGA)
+--------------------------------------------------
+  UCEC: TP53=40%, PIK3CA=50%, RB1=5%
+  GBM: TP53=30%, PIK3CA=5%, RB1=15%
+  PRAD: TP53=35%, PIK3CA=2%, RB1=10%
+  SKCM: TP53=20%, PIK3CA=3%, RB1=5%
+  BRCA: TP53=60%, PIK3CA=25%, RB1=5%
+  COADREAD: TP53=55%, PIK3CA=15%, RB1=3%
+  STAD: TP53=45%, PIK3CA=15%, RB1=3%
+  OV: TP53=85%, PIK3CA=10%, RB1=5%
+  BLCA: TP53=50%, PIK3CA=8%, RB1=15%
+  LUAD: TP53=50%, PIK3CA=5%, RB1=5%
+  LUSC: TP53=75%, PIK3CA=5%, RB1=10%
+
+PRIORITY RANKING (PIK3CB dependency x population)
+--------------------------------------------------
+  BRCA: score=21.9, PIK3CB d=-2.229 [lineage-specific], ~18,643 pts/yr
+  SKCM: score=14.1, PIK3CB d=-1.497 [lineage-specific], ~12,076 pts/yr
+  LUAD: score=10.7, PIK3CB d=-1.304 [lineage-specific], ~3,526 pts/yr
+  LUSC: score=10.4, PIK3CB d=-1.304 [lineage-specific], ~2,938 pts/yr
+  STAD: score=8.2, PIK3CB d=-1.090 [lineage-specific], ~1,882 pts/yr
+  ESCA: score=7.7, PIK3CB d=-1.090 [lineage-specific], ~1,118 pts/yr
+  UCEC: score=4.1, PIK3CB d=0.382 [lineage-specific], ~44,122 pts/yr
+  DLBC: score=4.0, PIK3CB d=-0.480 [lineage-specific], ~4,031 pts/yr
+  UCS: score=2.9, PIK3CB d=0.382 [lineage-specific], ~1,750 pts/yr
+  GBM: score=2.8, PIK3CB d=-0.323 [lineage-specific], ~5,040 pts/yr
+  COADREAD: score=2.4, PIK3CB d=-0.260 [lineage-specific], ~10,696 pts/yr
+  OV: score=1.2, PIK3CB d=0.172 [lineage-specific], ~1,180 pts/yr
+  BLCA: score=0.0, PIK3CB d=0.000 [pan-cancer pooled], ~8,319 pts/yr
+  PRAD: score=0.0, PIK3CB d=0.000 [pan-cancer pooled], ~57,660 pts/yr
+  HNSC: score=0.0, PIK3CB d=0.000 [pan-cancer pooled], ~1,753 pts/yr
+
+TRIAL GAP ANALYSIS (14 underexplored types)
+--------------------------------------------------
+  SKCM: ~12,076 pts/yr, 12% PTEN loss, no active trials
+  LUAD: ~3,526 pts/yr, 6% PTEN loss, no active trials
+  LUSC: ~2,938 pts/yr, 5% PTEN loss, no active trials
+  STAD: ~1,882 pts/yr, 7% PTEN loss, no active trials
+  ESCA: ~1,118 pts/yr, 5% PTEN loss, no active trials
+  DLBC: ~4,031 pts/yr, 5% PTEN loss, no active trials
+  UCS: ~1,750 pts/yr, 35% PTEN loss, no active trials
+  COADREAD: ~10,696 pts/yr, 7% PTEN loss, no active trials
+  OV: ~1,180 pts/yr, 6% PTEN loss, no active trials
+  BLCA: ~8,319 pts/yr, 10% PTEN loss, no active trials
+  HNSC: ~1,753 pts/yr, 3% PTEN loss, no active trials
+  KIRC: ~2,454 pts/yr, 3% PTEN loss, no active trials
+  LIHC: ~1,236 pts/yr, 3% PTEN loss, no active trials
+  PAAD: ~996 pts/yr, 2% PTEN loss, no active trials
+
+TRIAL COVERAGE
+--------------------------------------------------
+  BRCA: capivasertib + fulvestrant (FDA-approved, CAPItello-291)
+  BRCA: ipatasertib + paclitaxel (Phase 3, IPATential150-like)
+  UCEC: alpelisib + fulvestrant (Phase 2, EPIK-E3)
+  GBM: GDC-0084 (paxalisib) (Phase 2, GBM AGILE)
+  PRAD: ipatasertib + abiraterone (Phase 3, IPATential150)
+  PRAD: capivasertib + abiraterone (Phase 3, CAPItello-281)
+
+EMERGING PI3Kβ-SELECTIVE AGENTS
+--------------------------------------------------
+  GT220 (PI3Kβ-selective): PTEN-null selective, preclinical/early clinical
+
+PTEN vs PIK3CA ATLAS CROSS-REFERENCE
+--------------------------------------------------
+  PIK3CA atlas results not yet available
+
+KEY FINDINGS
+--------------------------------------------------
+  1. PTEN loss is most common in endometrial (65%), GBM (36%), prostate (20%)
+  2. Endometrial PTEN loss is predominantly truncating mutations; GBM/prostate predominantly deletions
+  3. PIK3CB is ROBUST PTEN-selective dependency in Breast (d=-2.23) and Skin (d=-1.50)
+  4. AKT inhibitor afuresertib shows PTEN-selective sensitivity (Uterus d=-1.97, Ovary d=-1.68)
+  5. PIK3CA co-mutation is very high in endometrial PTEN-lost (50%) — potential double-hit
+  6. TP53 co-mutation is high across most PTEN-lost cancers (40-85%)
+  7. GT220 (PI3Kβ-selective) is an emerging agent specifically for PTEN-null tumors
+  8. Major trial gaps: melanoma, bladder, bowel — large populations with limited PTEN-targeted trials
+
+Sources: TCGA PanCanAtlas 2018, ACS 2024 estimates, ClinicalTrials.gov
