@@ -7,7 +7,7 @@ Perform a systematic computational screen of the entire Group A Streptococcus pr
 The molecular mimicry hypothesis — that GAS surface proteins share structural similarity with human basal ganglia proteins, triggering cross-reactive autoantibodies — is the leading mechanistic model for PANDAS. Prior work identified specific mimicry targets (lysoganglioside GM1, dopamine D1/D2 receptors, tubulin, β-lysoganglioside) primarily through experimental approaches. However, no study has performed a systematic, proteome-wide computational screen using modern sequence and structural bioinformatics tools. Such a screen could identify novel autoantibody targets, explain phenotypic heterogeneity across PANDAS patients, and reveal why certain GAS strains are more pathogenic.
 
 ## Data Sources
-- **UniProt:** Complete proteomes for multiple GAS serotypes (M1, M3, M5, M12, M18 — historically associated with rheumatic fever/PANDAS)
+- **UniProt:** Complete proteomes for multiple GAS serotypes (M1, M3, M5, M12, M18 — historically associated with rheumatic fever/PANDAS; M49 — emm49.8 emerged as dominant type in England 2025-26 season per UK HSA, displacing emm1/emm3)
 - **Human Protein Atlas:** Basal ganglia-enriched and brain-enriched proteins
 - **Allen Brain Atlas:** Regional brain expression data for hit prioritization
 - **IEDB (Immune Epitope Database):** Known B-cell and T-cell epitopes for GAS and human neuronal proteins
