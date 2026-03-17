@@ -23,6 +23,7 @@ KRAS_ALLELE_MAP = {
     "p.G13D": "G13D",
     "p.G12V": "G12V",
     "p.G12C": "G12C",
+    "p.G12A": "G12A",
     "p.Q61H": "Q61H",
     "p.A146T": "A146T",
 }
@@ -45,7 +46,7 @@ KNOWN_MSI_H_LINES = {
 def classify_kras_allele(protein_changes: list[str]) -> str:
     """Classify KRAS allele from a list of protein changes.
 
-    Returns one of: G12D, G13D, G12V, G12C, Q61H, A146T, KRAS_other, WT.
+    Returns one of: G12D, G13D, G12V, G12C, G12A, Q61H, A146T, KRAS_other, WT.
     """
     hotspot_alleles = []
     for pc in protein_changes:
@@ -58,7 +59,7 @@ def classify_kras_allele(protein_changes: list[str]) -> str:
         return "KRAS_other" if protein_changes else "WT"
 
     # Priority order: most common CRC alleles first
-    for preferred in ["G12D", "G13D", "G12V", "G12C", "Q61H", "A146T"]:
+    for preferred in ["G12D", "G13D", "G12V", "G12C", "G12A", "Q61H", "A146T"]:
         if preferred in hotspot_alleles:
             return preferred
     return hotspot_alleles[0]
