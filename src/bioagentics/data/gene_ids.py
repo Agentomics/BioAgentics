@@ -245,8 +245,6 @@ def load_tcga_mutations(mut_dir: str | Path) -> pd.DataFrame:
 
 def load_tcga_clinical(clinical_path: str | Path) -> pd.DataFrame:
     """Load TCGA clinical JSON (from GDC cases API) into a flat DataFrame."""
-    import json
-
     with open(clinical_path) as f:
         cases = json.load(f)
 
