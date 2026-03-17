@@ -63,6 +63,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Results output directory (default: data/results/)",
     )
     parser.add_argument("--n-features", type=int, default=6000, help="Number of expression features")
+    parser.add_argument("--max-target-genes", type=int, default=5000,
+                        help="Train models for top N most variable target genes (0=all)")
     parser.add_argument("--min-r", type=float, default=0.3, help="Min CV r for model selection")
     parser.add_argument("--n-folds", type=int, default=5, help="CV folds for model training")
     parser.add_argument("--grouping", default="kl", choices=["kl", "kp", "separate"],
@@ -125,6 +127,7 @@ def main(argv: list[str] | None = None) -> None:
             feat.X, feat.Y,
             n_folds=args.n_folds,
             min_r=args.min_r,
+            max_target_genes=args.max_target_genes,
         )
         save_results(model_results, results_dir)
         models = model_results.models

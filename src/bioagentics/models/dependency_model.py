@@ -52,8 +52,8 @@ def _train_single_gene(
     """
     # Fit ElasticNetCV on all data to select best alpha/l1_ratio
     model = ElasticNetCV(
-        l1_ratio=[0.1, 0.5, 0.7, 0.9, 0.95, 0.99, 1.0],
-        alphas=50,
+        l1_ratio=[0.5, 0.9, 1.0],
+        alphas=30,
         cv=n_folds,
         n_jobs=1,
         max_iter=5000,
@@ -123,6 +123,7 @@ def train_all_models(
     min_r: float = 0.3,
     random_state: int = 42,
     n_jobs: int = -1,
+    max_target_genes: int = 0,
 ) -> ModelResults:
     """Train elastic-net models for all target genes.
 
@@ -140,6 +141,9 @@ def train_all_models(
         Random seed for reproducibility.
     n_jobs : int
         Number of parallel jobs (-1 for all cores).
+    max_target_genes : int
+        If > 0, train only the top N most variable target genes (by dependency
+        score variance). Low-variance genes are unlikely to be predictable.
 
     Returns
     -------
@@ -147,6 +151,18 @@ def train_all_models(
     """
     X_arr = X.values
     target_genes = Y.columns.tolist()
+
+    # Pre-filter to most variable target genes if requested
+    if max_target_genes > 0 and len(target_genes) > max_target_genes:
+        variances = Y.var()
+        top_genes = variances.nlargest(max_target_genes).index.tolist()
+        skipped_genes = [g for g in target_genes if g not in set(top_genes)]
+        target_genes = top_genes
+        logger.info("Pre-filtered to %d most variable target genes (skipped %d low-variance)",
+                    len(target_genes), len(skipped_genes))
+    else:
+        skipped_genes = []
+
     n_genes = len(target_genes)
 
     logger.info("Training elastic-net models for %d target genes (n_jobs=%s)...",
@@ -172,12 +188,17 @@ def train_all_models(
         if result["model"] is not None:
             models[result["gene"]] = result["model"]
 
+    # Add skipped low-variance genes as non-predictable
+    for gene in skipped_genes:
+        rows.append({"gene": gene, "cv_r": 0.0, "rmse": np.inf,
+                     "alpha": np.nan, "l1_ratio": np.nan})
+
     metrics = pd.DataFrame(rows).set_index("gene")
     predictable = metrics[metrics["cv_r"] > min_r].index.tolist()
 
     logger.info(
         "Training complete. %d / %d genes predictable (CV r > %.2f)",
-        len(predictable), n_genes, min_r,
+        len(predictable), n_genes + len(skipped_genes), min_r,
     )
 
     return ModelResults(
