@@ -746,8 +746,12 @@ def render_dashboard_tab(db: Session, division: str = "") -> str:
         journal_q.order_by(journal.c.created_at.desc()).limit(5)
     ).fetchall()
 
-    # Active agents
-    agents_q = select(agents).order_by(agents.c.updated_at.desc())
+    # Active agents (running first, limit 10)
+    from sqlalchemy import case
+    agents_q = select(agents).order_by(
+        case((agents.c.status == "running", 0), else_=1),
+        agents.c.updated_at.desc(),
+    ).limit(10)
     if division:
         agents_q = agents_q.where(agents.c.division == division)
     active_agents = db.execute(agents_q).fetchall()
@@ -1452,6 +1456,8 @@ def render_presence_html(db: Session, division: str = "") -> str:
     DIV_COLORS = {
         "cancer": ("bg-[#172554]", "text-[#3b82f6]"),
         "crohns": ("bg-[#1a2e05]", "text-[#84cc16]"),
+        "tourettes": ("bg-[#2e1065]", "text-[#a78bfa]"),
+        "pandas_pans": ("bg-[#431407]", "text-[#fb923c]"),
     }
 
     items = []
@@ -1940,6 +1946,8 @@ def render_shell(active_tab: str, content: str, stats_html: str, presence_html: 
       <option value="">All</option>
       <option value="cancer">Cancer</option>
       <option value="crohns">Crohn's</option>
+      <option value="tourettes">Tourette's</option>
+      <option value="pandas_pans">PANDAS/PANS</option>
     </select>
   </div>
 

@@ -23,6 +23,14 @@ description = "Cancer research and drug discovery"
 name = "crohns"
 description = "Crohn's disease research"
 
+[[divisions]]
+name = "tourettes"
+description = "Tourette syndrome research"
+
+[[divisions]]
+name = "pandas_pans"
+description = "PANDAS/PANS autoimmune neuropsychiatric research"
+
 [defaults]
 backend = "claude"
 model = "claude-opus-4-6"
@@ -84,3 +92,25 @@ effort = "max"
 [[agents]]
 role = "LITERATURE_REVIEWER"
 division = "crohns"
+
+# --- Tourette's: Generators ---
+
+[[agents]]
+role = "RESEARCH_DIRECTOR"
+division = "tourettes"
+effort = "max"
+
+[[agents]]
+role = "LITERATURE_REVIEWER"
+division = "tourettes"
+
+# --- PANDAS/PANS: Generators ---
+
+[[agents]]
+role = "RESEARCH_DIRECTOR"
+division = "pandas_pans"
+effort = "max"
+
+[[agents]]
+role = "LITERATURE_REVIEWER"
+division = "pandas_pans"
