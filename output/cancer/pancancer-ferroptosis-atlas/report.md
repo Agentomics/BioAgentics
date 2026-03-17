@@ -278,7 +278,7 @@ The opposing biases above (GPX4 overestimated, FSP1 underestimated) converge on 
 
 NRF2 constitutive activation (via KEAP1 loss-of-function or NFE2L2 gain-of-function) provides multi-layered ferroptosis defense that masks individual gene dependencies in DepMap CRISPR screens.
 
-**NSCLC panel cross-reference:** Across all 10 ferroptosis genes tested in the NSCLC panel (data/results/ferroptosis_panel/keap1_enrichment_stats.csv), **no gene** shows FDR-significant KEAP1-enriched dependency (all FDR > 0.44). This is not because KEAP1-mutant cells are ferroptosis-resistant — it is because NRF2 activation simultaneously upregulates multiple redundant defense pathways (GPX4, SLC7A11, GCLC, NQO1), so knocking out any single gene is buffered by the others.
+**NSCLC panel cross-reference:** Across all 9 ferroptosis genes tested in the NSCLC panel (data/results/ferroptosis_panel/keap1_enrichment_stats.csv), **no gene** shows FDR-significant KEAP1-enriched dependency (all FDR > 0.44). This is not because KEAP1-mutant cells are ferroptosis-resistant — it is because NRF2 activation simultaneously upregulates multiple redundant defense pathways (GPX4, SLC7A11, GCLC, NQO1), so knocking out any single gene is buffered by the others.
 
 **Implication:** KEAP1-mutant tumors may be more ferroptosis-vulnerable than DepMap suggests, but only when multiple defense arms are targeted simultaneously. Single-gene CRISPR data systematically underestimates the ferroptosis vulnerability of NRF2-active cancers.
 

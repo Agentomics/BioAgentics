@@ -1,0 +1,34 @@
+============================================================
+CDKN2A Pan-Cancer Dependency Atlas - Phase 1: CDKN2A Classifier
+============================================================
+
+OVERVIEW
+  Total cell lines with lineage + CN data: 1087
+  Cell lines with CRISPR data: 830
+  CDKN2A-deleted (CN log2 <= -1.0): 0 (0.0%)
+  CDKN2A-intact: 1087
+  Expression-discordant lines flagged: 286
+
+EXPRESSION CROSS-VALIDATION
+  Skipped: No lines in one group
+
+CO-ALTERATION LANDSCAPE (in CDKN2A-deleted lines)
+  N/A
+  N/A
+  N/A
+  N/A
+
+CLINICAL NOTE: RB1 co-loss abolishes CDK4/6 dependency.
+
+
+QUALIFYING CANCER TYPES (>=5 deleted + >=10 intact with CRISPR)
+------------------------------------------------------------
+  None qualify with current thresholds.
+
+ALL CANCER TYPES WITH CDKN2A DELETIONS
+------------------------------------------------------------
+
+POWER ANALYSIS NOTE
+  Qualifying threshold: >=5 deleted + >=10 intact with CRISPR.
+  Phase 2 primary analysis uses CDKN2A-deleted/RB1-intact stratum.
+  Cancer types with <5 RB1-intact deleted lines flagged for limited stratified power.
