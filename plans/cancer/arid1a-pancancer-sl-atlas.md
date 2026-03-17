@@ -38,11 +38,15 @@ Our pan-cancer atlas pipeline (proven with MTAP/PRMT5) can systematically quanti
 Per qualifying cancer type, compute dependency scores (Mann-Whitney U + Cohen's d + BH-FDR) in ARID1A-mutant vs WT for:
 - **EZH2** (primary positive control — well-established SL)
 - **ARID1B** (paralog SL — most direct)
-- **ATR/ATRIP** (replication stress)
+- **USP8** (deubiquitinase → FGFR2 degradation → STAT3 dephosphorylation — claimed MORE selective than EZH2i in OCCC; Saito et al., npj Precision Oncology 2025)
+- **BRD2/BRD4** (bromodomain reader — ARID1A loss → loss of HDAC1 binding → H4K acetylation → BRD4-driven transcription; Nagarajan et al., Nature Genetics 2020)
+- **HDAC1/HDAC2/HDAC3** (histone deacetylases — pan-HDAC inhibitor sensitivity shown in OCCC; Bitler et al., Cell Reports 2018)
 - **HDAC6** (chromatin compensation)
+- **ATR/ATRIP** (replication stress SL)
+- **PARP1/PARP2** (DNA damage repair deficiency SL)
+- **HSP90AA1** (proteostatic stress SL)
 - **PIK3CA/AKT1/MTOR** (co-activated pathway)
-- **BRD2/BRD4** (bromodomain reader)
-- Generate forest plot ranked by EZH2 SL strength. Flag cancer types where ARID1B > EZH2 or vice versa.
+- Generate forest plot ranked by EZH2 SL strength. Flag cancer types where USP8/BRD4/HDAC > EZH2 — these may represent tumor-type-specific SL hierarchies (literature suggests different dominant SL partners per cancer type).
 
 ### Phase 3: Genome-Wide SL Screen
 - For each qualifying cancer type: genome-wide differential dependency (ARID1A-mut vs WT), Mann-Whitney U + Cohen's d + BH-FDR
@@ -62,7 +66,8 @@ Per qualifying cancer type, compute dependency scores (Mann-Whitney U + Cohen's 
 - Per cancer type: rank available drugs by predicted efficacy in ARID1A-mutant context
 
 ### Phase 5: TCGA Population & Clinical Concordance
-- Download ARID1A mutation frequencies per cancer type from TCGA PanCancer Atlas (cBioPortal)
+- ARID1A mutation frequencies already downloaded: `data/tcga/pancancer_arid1a/arid1a_mutation_deletion_frequencies.csv` (32 cancer types, 10,443 patients, 8.2% pan-cancer rate; top: UCEC 44.5%, STAD 27.3%, BLCA 26.3%)
+- NOTE: ARID1A is predominantly LOF mutations, not homdel (unlike MTAP). Phase 1 classification must capture both LOF + homdel. SKCM has low LOF ratio — UV-passenger mutations may inflate mutation count.
 - Estimate ARID1A-mutant patient population per cancer type per year
 - Map DepMap SL ranking × patient population → combined clinical impact score
 - Cross-reference with ClinicalTrials.gov: which cancer types have SL-based trials? Which are underexplored?

@@ -15,6 +15,9 @@ Recent work has shown allele-specific differences:
 - Croessmann et al. (Cancer Discovery 2020): differential response to PI3Ki by mutation location
 - Inavolisib Phase III (INAVO120): showed benefit across PIK3CA mutations but subgroup analysis suggested allele-dependent magnitude
 - Alpelisib (SOLAR-1): FDA-approved for PIK3CA-mutant HR+/HER2- breast, but not all mutations respond equally
+- **TRIUMPH trial (PMID 39901702, Cancer Res Treatment 2025): H1047R patients had PFS 1.6 vs 7.3 months (p=0.017) compared to helical-domain + amplification patients on alpelisib in HNSCC — 4.6x worse PFS. Direct clinical evidence for allele-specific response.**
+- **H1047R-selective inhibitors: pyridopyrimidinone scaffold (J Med Chem 2024, DOI 10.1021/acs.jmedchem.4c00078) — compound 17 achieved tumor regression via cryptic C-terminal pocket unique to H1047R**
+- **Inavolisib Phase 2 shows activity across PIK3CA-mutated cancers beyond breast (Targeted Oncology, 2025)**
 
 No systematic DepMap analysis has examined whether different PIK3CA alleles create different gene dependencies. This is directly analogous to our KRAS allele-specific approach in CRC — and PIK3CA has significantly more mutant cell lines than KRAS alleles in CRC.
 
@@ -61,7 +64,8 @@ No systematic DepMap analysis has examined whether different PIK3CA alleles crea
 - Compute CRISPR-drug concordance (do genetic dependencies predict drug sensitivity?)
 
 ### Phase 4: TCGA Allele Frequencies
-- Download PIK3CA allele-level mutation frequencies per cancer type from TCGA
+- PIK3CA mutation frequencies already downloaded: `data/tcga/pancancer_pik3ca/pik3ca_mutation_frequencies.csv` (32 cancer types, 10,443 patients, 13.1% pan-cancer rate; top: UCEC 50.1%, BRCA 32.6%, CESC 28.5%, COADREAD 27.5%, BLCA 22.0%)
+- Key observation: allele distribution varies by cancer type — BRCA is kinase-domain dominant (H1047R), CESC/BLCA/COADREAD are helical-domain dominant (E545K). This directly affects allele-specific analysis power per cancer type.
 - Calculate per-allele patient populations by cancer type
 - Cross-validate with DepMap cell line allele distributions
 - Identify alleles with large patient populations but limited therapeutic options
