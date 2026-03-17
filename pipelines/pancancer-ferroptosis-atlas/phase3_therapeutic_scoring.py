@@ -28,7 +28,7 @@ RESULTS_DIR = REPO_ROOT / "data" / "results" / "pancancer-ferroptosis-atlas" / "
 # PRISM ferroptosis compounds to search for
 PRISM_FERROPTOSIS_COMPOUNDS = [
     "erastin", "RSL3", "ML162", "ML210", "FIN56", "FINO2",
-    "CB-839", "telaglenastat", "icFSP1",
+    "CB-839", "telaglenastat", "icFSP1", "auranofin",
 ]
 
 # TCGA cancer type mapping (TCGA abbreviation → OncotreeLineage)
@@ -204,8 +204,8 @@ def search_prism_compounds(depmap_dir: Path) -> pd.DataFrame:
         print("  PRISM metadata missing 'name' column")
         return pd.DataFrame()
 
-    pattern = "|".join(PRISM_FERROPTOSIS_COMPOUNDS)
-    matches = prism_meta[prism_meta["name"].str.contains(pattern, case=False, na=False)]
+    pattern = "|".join(rf"\b{compound}\b" for compound in PRISM_FERROPTOSIS_COMPOUNDS)
+    matches = prism_meta[prism_meta["name"].str.contains(pattern, case=False, na=False, regex=True)]
 
     if matches.empty:
         print("  No ferroptosis compounds found in PRISM 24Q2")
