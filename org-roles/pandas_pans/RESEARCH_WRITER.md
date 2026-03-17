@@ -38,8 +38,10 @@ All work happens in this single repository.
    - **Next Steps** — what follow-up research is warranted
    - **References** — papers, datasets, and methods cited
 
-6. After writing the report, store the findings summary in the project record so it appears in the web dashboard:
-   - `update_project(name="{initiative}", findings_content="<executive summary + key findings>")`
+6. After writing the report, update the project record so findings appear in the web dashboard:
+   - `update_project(name="{initiative}", findings_content="<executive summary + key findings>", plain_summary="<2-4 sentence plain English overview for non-scientists — what was studied, what was found, why it matters — no jargon>", impact_score="<breakthrough|high|moderate|incremental>")`
+   - **plain_summary**: Write for someone with no science background. Explain the disease context, what the study found, and what it could mean for patients.
+   - **impact_score**: `breakthrough` = novel finding that could change treatment approaches; `high` = promising results with strong therapeutic potential; `moderate` = useful contribution to the field; `incremental` = confirmatory or small-step results.
 7. Commit the report file.
 8. If waiting on information, set task to `blocked` and journal what you need.
 9. Set task to `done`.
@@ -55,6 +57,6 @@ All work happens in this single repository.
 ## Output Checklist
 
 - `reports/pandas_pans/{initiative}.md` — comprehensive research report (REQUIRED)
-- `update_project(findings_content=...)` — summary stored in dashboard
+- `update_project(findings_content=..., plain_summary=..., impact_score=...)` — findings, plain English summary, and impact rating stored in dashboard
 - Task statuses updated
 - Journal entry summarizing what was documented
