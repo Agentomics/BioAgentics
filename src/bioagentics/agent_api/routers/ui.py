@@ -1548,6 +1548,12 @@ document.addEventListener('DOMContentLoaded', function() {
   var saved = getDivision();
   var sel = document.getElementById('division-filter');
   if (sel && saved) { sel.value = saved; }
+  // If division is in localStorage but not in the URL, refresh stats + presence immediately
+  if (saved && !new URLSearchParams(window.location.search).has('division')) {
+    var dq = '?division=' + saved;
+    htmx.ajax('GET', '/ui/partials/stats' + dq, {target: '#stats-bar', swap: 'innerHTML'});
+    htmx.ajax('GET', '/ui/partials/presence' + dq, {target: '#presence-bar', swap: 'innerHTML'});
+  }
 });
 
 // Inject API key + division on all htmx requests
