@@ -93,12 +93,41 @@ def _train_single_gene(
     }
 
 
+def _process_gene(
+    gene: str,
+    X_arr: np.ndarray,
+    y: np.ndarray,
+    n_folds: int,
+    random_state: int,
+) -> dict:
+    """Process a single gene: skip if trivial, otherwise train."""
+    if np.nanstd(y) < 1e-10:
+        return {"gene": gene, "cv_r": 0.0, "rmse": np.inf,
+                "alpha": np.nan, "l1_ratio": np.nan, "model": None}
+
+    valid = ~np.isnan(y)
+    if valid.sum() < n_folds + 2:
+        return {"gene": gene, "cv_r": 0.0, "rmse": np.inf,
+                "alpha": np.nan, "l1_ratio": np.nan, "model": None}
+
+    result = _train_single_gene(X_arr[valid], y[valid], n_folds, random_state)
+    return {
+        "gene": gene,
+        "cv_r": result["cv_r"],
+        "rmse": result["rmse"],
+        "alpha": result["alpha"],
+        "l1_ratio": result["l1_ratio"],
+        "model": result["model"],
+    }
+
+
 def train_all_models(
     X: pd.DataFrame,
     Y: pd.DataFrame,
     n_folds: int = 5,
     min_r: float = 0.3,
     random_state: int = 42,
+    n_jobs: int = -1,
 ) -> ModelResults:
     """Train elastic-net models for all target genes.
 
@@ -114,6 +143,8 @@ def train_all_models(
         Minimum CV Pearson r to consider a gene predictable.
     random_state : int
         Random seed for reproducibility.
+    n_jobs : int
+        Number of parallel jobs (-1 for all cores).
 
     Returns
     -------
@@ -123,38 +154,28 @@ def train_all_models(
     target_genes = Y.columns.tolist()
     n_genes = len(target_genes)
 
-    logger.info("Training elastic-net models for %d target genes...", n_genes)
+    logger.info("Training elastic-net models for %d target genes (n_jobs=%s)...",
+                n_genes, n_jobs)
+
+    results = joblib.Parallel(n_jobs=n_jobs, verbose=10)(
+        joblib.delayed(_process_gene)(
+            gene, X_arr, Y[gene].values, n_folds, random_state,
+        )
+        for gene in target_genes
+    )
 
     rows = []
     models = {}
-    for i, gene in enumerate(target_genes):
-        if (i + 1) % 500 == 0 or i == 0:
-            logger.info("  Progress: %d / %d genes", i + 1, n_genes)
-
-        y = Y[gene].values
-        # Skip genes with no variance in dependency scores
-        if np.nanstd(y) < 1e-10:
-            rows.append({"gene": gene, "cv_r": 0.0, "rmse": np.inf,
-                         "alpha": np.nan, "l1_ratio": np.nan})
-            continue
-
-        # Drop samples with NaN dependency
-        valid = ~np.isnan(y)
-        if valid.sum() < n_folds + 2:
-            rows.append({"gene": gene, "cv_r": 0.0, "rmse": np.inf,
-                         "alpha": np.nan, "l1_ratio": np.nan})
-            continue
-
-        result = _train_single_gene(X_arr[valid], y[valid], n_folds, random_state)
+    for result in results:
         rows.append({
-            "gene": gene,
+            "gene": result["gene"],
             "cv_r": result["cv_r"],
             "rmse": result["rmse"],
             "alpha": result["alpha"],
             "l1_ratio": result["l1_ratio"],
         })
         if result["model"] is not None:
-            models[gene] = result["model"]
+            models[result["gene"]] = result["model"]
 
     metrics = pd.DataFrame(rows).set_index("gene")
     predictable = metrics[metrics["cv_r"] > min_r].index.tolist()
