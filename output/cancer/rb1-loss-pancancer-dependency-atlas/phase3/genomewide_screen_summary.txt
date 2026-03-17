@@ -1,0 +1,64 @@
+======================================================================
+RB1-Loss Pan-Cancer Dependency Atlas - Phase 3: Genome-Wide Screen
+======================================================================
+
+Total tests: 357684
+Gained dependencies (FDR<0.05, |d|>0.3): 23
+Lost dependencies (FDR<0.05, |d|>0.3): 33
+
+TOP GAINED DEPENDENCIES IN RB1-LOSS
+------------------------------------------------------------
+  Biliary Tract / LCE3C: d=-2.772 FDR=2.645e-02
+  CNS/Brain / E2F3: d=-1.879 FDR=1.129e-03 [pathway]
+  CNS/Brain / CCNE1: d=-1.528 FDR=2.884e-02 [pathway]
+  Lung / SKP2: d=-1.022 FDR=3.298e-02 [pathway]
+  Lung / E2F3: d=-0.903 FDR=3.298e-02 [pathway]
+  Lung / CKS1B: d=-0.830 FDR=4.764e-02
+  Lung / MAGEC3: d=-0.773 FDR=4.764e-02
+  Pan-cancer (pooled) / SKP2: d=-0.731 FDR=9.354e-15 [pathway]
+  Pan-cancer (pooled) / E2F3: d=-0.705 FDR=2.757e-13 [pathway]
+  Pan-cancer (pooled) / CCNE1: d=-0.610 FDR=1.719e-10 [pathway]
+  Pan-cancer (pooled) / CDK2: d=-0.524 FDR=5.389e-07 [known SL]
+  Pan-cancer (pooled) / CKS1B: d=-0.520 FDR=5.680e-08
+  Pan-cancer (pooled) / TADA2A: d=-0.423 FDR=9.829e-07
+  Pan-cancer (pooled) / CCNE2: d=-0.403 FDR=5.240e-03 [pathway]
+  Pan-cancer (pooled) / YEATS2: d=-0.386 FDR=1.417e-04
+  Pan-cancer (pooled) / ZZZ3: d=-0.385 FDR=2.922e-04
+  Pan-cancer (pooled) / ZC3H13: d=-0.349 FDR=2.204e-03
+  Pan-cancer (pooled) / OR7D2: d=-0.326 FDR=5.633e-03
+  Pan-cancer (pooled) / VPS36: d=-0.317 FDR=4.080e-02
+  Pan-cancer (pooled) / CHD8: d=-0.316 FDR=2.900e-04
+  Pan-cancer (pooled) / PPP1R15B: d=-0.315 FDR=3.584e-03
+  Pan-cancer (pooled) / ESS2: d=-0.305 FDR=6.784e-03
+  Pan-cancer (pooled) / WFDC9: d=-0.304 FDR=3.584e-03
+
+PATHWAY ENRICHMENT (pan-cancer gained)
+------------------------------------------------------------
+  Cell_cycle: obs=3, fold=192.03x, p=4.342e-07
+  DNA_replication: obs=0, fold=0.0x, p=1.000e+00
+  Mitotic_checkpoint: obs=0, fold=0.0x, p=1.000e+00
+  DDR_checkpoint: obs=0, fold=0.0x, p=1.000e+00
+  E2F_targets: obs=2, fold=153.62x, p=7.367e-05
+
+CDKN2A ATLAS COMPARISON (pan-cancer)
+------------------------------------------------------------
+  Shared: 9, RB1-unique: 30, CDKN2A-unique: 109
+
+PRIORITY TARGETS: 16
+------------------------------------------------------------
+  SKP2: d=-0.731, in 1 types [pathway]
+  E2F3: d=-0.705, in 2 types [pathway]
+  CCNE1: d=-0.610, in 1 types [pathway]
+  CDK2: d=-0.524, in 0 types [known SL]
+  CKS1B: d=-0.520, in 1 types
+  TADA2A: d=-0.423, in 0 types
+  CCNE2: d=-0.403, in 0 types [pathway]
+  YEATS2: d=-0.386, in 0 types
+  ZZZ3: d=-0.385, in 0 types
+  ZC3H13: d=-0.349, in 0 types
+  OR7D2: d=-0.326, in 0 types
+  VPS36: d=-0.317, in 0 types
+  CHD8: d=-0.316, in 0 types
+  PPP1R15B: d=-0.315, in 0 types
+  ESS2: d=-0.305, in 0 types
+  WFDC9: d=-0.304, in 0 types

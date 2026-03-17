@@ -1,0 +1,279 @@
+======================================================================
+RB1-Loss Pan-Cancer Dependency Atlas - Phase 2: Candidate SL Dependencies
+======================================================================
+
+CDK2 DEPENDENCY (RB1-loss vs intact)
+  1 ROBUST, 6 MARGINAL, 13 NOT_SIGNIFICANT
+------------------------------------------------------------
+  Skin: d=-1.545 [-2.519, -0.747] FDR=1.609e-01 perm_p=0.0001 LOO=robust -> MARGINAL
+  Lymphoid: d=-0.953 [-1.625, -0.386] FDR=2.412e-01 perm_p=0.0004 LOO=robust -> MARGINAL
+  Bone: d=-0.929 [-1.758, -0.231] FDR=5.479e-01 perm_p=0.0070 LOO=robust -> MARGINAL
+  Ovary/Fallopian Tube: d=-0.746 [-1.644, -0.200] FDR=5.093e-01 perm_p=0.0073 LOO=robust -> MARGINAL
+  Pancreas: d=-0.661 [-1.505, 0.053] FDR=6.376e-01 perm_p=0.0797 LOO=robust -> NOT_SIGNIFICANT
+  Uterus: d=-0.656 [-1.221, -0.113] FDR=5.479e-01 perm_p=0.0646 LOO=robust -> NOT_SIGNIFICANT
+  Bladder/Urinary Tract: d=-0.648 [-1.501, -0.034] FDR=5.479e-01 perm_p=0.0707 LOO=robust -> NOT_SIGNIFICANT
+  Biliary Tract: d=-0.606 [-1.708, 0.380] FDR=6.376e-01 perm_p=0.1596 LOO=robust -> NOT_SIGNIFICANT
+  CNS/Brain: d=-0.584 [-1.176, -0.010] FDR=5.479e-01 perm_p=0.0234 LOO=robust -> MARGINAL
+  Liver: d=-0.580 [-1.952, 0.184] FDR=5.479e-01 perm_p=0.1677 LOO=robust -> NOT_SIGNIFICANT
+  Pan-cancer (pooled): d=-0.524 [-0.683, -0.379] FDR=2.631e-09 perm_p=0.0001 LOO=robust -> ROBUST
+  Lung: d=-0.425 [-0.818, -0.049] FDR=5.479e-01 perm_p=0.0218 LOO=robust -> MARGINAL
+  Bowel: d=-0.113 [-1.026, 0.852] FDR=8.060e-01 perm_p=0.7398 LOO=fragile -> NOT_SIGNIFICANT
+  Breast: d=-0.054 [-0.580, 0.632] FDR=8.259e-01 perm_p=0.8511 LOO=robust -> NOT_SIGNIFICANT
+  Esophagus/Stomach: d=-0.049 [-0.640, 0.475] FDR=9.906e-01 perm_p=0.8667 LOO=robust -> NOT_SIGNIFICANT
+  Soft Tissue: d=0.189 [-0.731, 0.996] FDR=8.573e-01 perm_p=0.6657 LOO=robust -> NOT_SIGNIFICANT
+  Cervix: d=0.228 [-0.678, 1.210] FDR=9.906e-01 perm_p=0.6425 LOO=robust -> NOT_SIGNIFICANT
+  Head and Neck: d=0.304 [-0.134, 0.829] FDR=8.026e-01 perm_p=0.3209 LOO=robust -> NOT_SIGNIFICANT
+  Eye: d=0.388 [-0.989, 1.960] FDR=8.060e-01 perm_p=0.4920 LOO=robust -> NOT_SIGNIFICANT
+  Kidney: d=0.821 [0.225, 1.620] FDR=6.376e-01 perm_p=0.0981 LOO=robust -> NOT_SIGNIFICANT
+
+AURKA DEPENDENCY (RB1-loss vs intact)
+  1 ROBUST, 2 MARGINAL, 17 NOT_SIGNIFICANT
+------------------------------------------------------------
+  Cervix: d=-1.078 [-2.252, -0.220] FDR=5.568e-01 perm_p=0.0408 LOO=robust -> MARGINAL
+  Lymphoid: d=-0.681 [-1.212, -0.229] FDR=5.479e-01 perm_p=0.0076 LOO=robust -> MARGINAL
+  Skin: d=-0.478 [-1.221, 0.205] FDR=8.043e-01 perm_p=0.1850 LOO=robust -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube: d=-0.418 [-0.993, 0.086] FDR=5.568e-01 perm_p=0.1222 LOO=robust -> NOT_SIGNIFICANT
+  Liver: d=-0.244 [-1.157, 0.455] FDR=8.026e-01 perm_p=0.5602 LOO=robust -> NOT_SIGNIFICANT
+  Bladder/Urinary Tract: d=-0.231 [-0.972, 0.528] FDR=9.906e-01 perm_p=0.4999 LOO=robust -> NOT_SIGNIFICANT
+  Esophagus/Stomach: d=-0.229 [-0.877, 0.412] FDR=9.267e-01 perm_p=0.4484 LOO=robust -> NOT_SIGNIFICANT
+  Lung: d=-0.228 [-0.602, 0.137] FDR=6.376e-01 perm_p=0.2206 LOO=robust -> NOT_SIGNIFICANT
+  Pan-cancer (pooled): d=-0.208 [-0.342, -0.077] FDR=2.576e-02 perm_p=0.0025 LOO=robust -> ROBUST
+  Biliary Tract: d=-0.176 [-1.099, 0.490] FDR=8.060e-01 perm_p=0.6825 LOO=robust -> NOT_SIGNIFICANT
+  Bowel: d=-0.172 [-0.814, 0.558] FDR=8.060e-01 perm_p=0.6113 LOO=robust -> NOT_SIGNIFICANT
+  Bone: d=-0.104 [-0.762, 0.549] FDR=8.446e-01 perm_p=0.7465 LOO=robust -> NOT_SIGNIFICANT
+  Head and Neck: d=-0.068 [-0.630, 0.379] FDR=8.043e-01 perm_p=0.8230 LOO=robust -> NOT_SIGNIFICANT
+  Breast: d=-0.046 [-0.574, 0.548] FDR=9.906e-01 perm_p=0.8760 LOO=fragile -> NOT_SIGNIFICANT
+  Kidney: d=0.050 [-1.767, 1.720] FDR=9.282e-01 perm_p=0.9157 LOO=fragile -> NOT_SIGNIFICANT
+  CNS/Brain: d=0.056 [-0.496, 0.559] FDR=8.675e-01 perm_p=0.8235 LOO=robust -> NOT_SIGNIFICANT
+  Pancreas: d=0.115 [-0.461, 0.727] FDR=8.076e-01 perm_p=0.7603 LOO=robust -> NOT_SIGNIFICANT
+  Uterus: d=0.128 [-0.568, 0.900] FDR=8.581e-01 perm_p=0.7199 LOO=robust -> NOT_SIGNIFICANT
+  Eye: d=0.367 [-0.808, 1.798] FDR=8.060e-01 perm_p=0.5175 LOO=robust -> NOT_SIGNIFICANT
+  Soft Tissue: d=0.479 [-0.157, 1.296] FDR=6.376e-01 perm_p=0.2836 LOO=robust -> NOT_SIGNIFICANT
+
+AURKB DEPENDENCY (RB1-loss vs intact)
+  0 ROBUST, 0 MARGINAL, 20 NOT_SIGNIFICANT
+------------------------------------------------------------
+  Skin: d=-0.471 [-1.456, 0.420] FDR=5.778e-01 perm_p=0.1894 LOO=robust -> NOT_SIGNIFICANT
+  Bowel: d=-0.447 [-1.184, 0.254] FDR=7.471e-01 perm_p=0.2025 LOO=robust -> NOT_SIGNIFICANT
+  Cervix: d=-0.315 [-1.273, 0.859] FDR=9.806e-01 perm_p=0.5269 LOO=robust -> NOT_SIGNIFICANT
+  Lung: d=-0.290 [-0.619, 0.057] FDR=5.725e-01 perm_p=0.1159 LOO=robust -> NOT_SIGNIFICANT
+  Liver: d=-0.282 [-1.246, 0.435] FDR=7.581e-01 perm_p=0.4963 LOO=robust -> NOT_SIGNIFICANT
+  Lymphoid: d=-0.239 [-0.794, 0.219] FDR=7.332e-01 perm_p=0.3475 LOO=robust -> NOT_SIGNIFICANT
+  CNS/Brain: d=-0.235 [-0.746, 0.288] FDR=8.026e-01 perm_p=0.3508 LOO=robust -> NOT_SIGNIFICANT
+  Bladder/Urinary Tract: d=-0.223 [-1.341, 0.428] FDR=5.651e-01 perm_p=0.5558 LOO=robust -> NOT_SIGNIFICANT
+  Biliary Tract: d=-0.101 [-1.248, 1.051] FDR=1.000e+00 perm_p=0.8115 LOO=fragile -> NOT_SIGNIFICANT
+  Bone: d=-0.087 [-0.924, 0.627] FDR=9.806e-01 perm_p=0.7865 LOO=robust -> NOT_SIGNIFICANT
+  Head and Neck: d=-0.021 [-0.391, 0.464] FDR=9.906e-01 perm_p=0.9445 LOO=robust -> NOT_SIGNIFICANT
+  Pan-cancer (pooled): d=0.025 [-0.102, 0.162] FDR=5.381e-01 perm_p=0.7139 LOO=robust -> NOT_SIGNIFICANT
+  Pancreas: d=0.041 [-0.578, 0.646] FDR=9.906e-01 perm_p=0.9131 LOO=robust -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube: d=0.202 [-0.317, 0.832] FDR=8.060e-01 perm_p=0.4482 LOO=robust -> NOT_SIGNIFICANT
+  Soft Tissue: d=0.204 [-0.969, 1.381] FDR=8.060e-01 perm_p=0.6343 LOO=robust -> NOT_SIGNIFICANT
+  Breast: d=0.292 [-0.261, 0.942] FDR=7.968e-01 perm_p=0.3220 LOO=robust -> NOT_SIGNIFICANT
+  Eye: d=0.404 [-0.639, 1.967] FDR=8.026e-01 perm_p=0.4736 LOO=robust -> NOT_SIGNIFICANT
+  Uterus: d=0.407 [-0.266, 1.290] FDR=5.725e-01 perm_p=0.2528 LOO=robust -> NOT_SIGNIFICANT
+  Esophagus/Stomach: d=0.465 [-0.183, 1.198] FDR=5.479e-01 perm_p=0.1245 LOO=robust -> NOT_SIGNIFICANT
+  Kidney: d=0.739 [0.168, 1.447] FDR=5.479e-01 perm_p=0.1348 LOO=robust -> NOT_SIGNIFICANT
+
+CHEK1 DEPENDENCY (RB1-loss vs intact)
+  0 ROBUST, 0 MARGINAL, 20 NOT_SIGNIFICANT
+------------------------------------------------------------
+  Eye: d=-1.076 [-2.733, 0.091] FDR=6.376e-01 perm_p=0.0644 LOO=robust -> NOT_SIGNIFICANT
+  Cervix: d=-0.979 [-2.348, -0.141] FDR=5.479e-01 perm_p=0.0616 LOO=robust -> NOT_SIGNIFICANT
+  Liver: d=-0.815 [-1.641, -0.053] FDR=5.479e-01 perm_p=0.0618 LOO=robust -> NOT_SIGNIFICANT
+  Soft Tissue: d=-0.576 [-1.485, 0.184] FDR=7.804e-01 perm_p=0.1897 LOO=robust -> NOT_SIGNIFICANT
+  Kidney: d=-0.412 [-1.543, 0.640] FDR=8.196e-01 perm_p=0.4088 LOO=robust -> NOT_SIGNIFICANT
+  Bladder/Urinary Tract: d=-0.336 [-1.109, 0.356] FDR=7.471e-01 perm_p=0.3413 LOO=robust -> NOT_SIGNIFICANT
+  Breast: d=-0.314 [-0.890, 0.216] FDR=7.808e-01 perm_p=0.2791 LOO=robust -> NOT_SIGNIFICANT
+  Uterus: d=-0.305 [-1.083, 0.481] FDR=8.043e-01 perm_p=0.3804 LOO=robust -> NOT_SIGNIFICANT
+  Head and Neck: d=-0.259 [-0.892, 0.330] FDR=8.026e-01 perm_p=0.3998 LOO=robust -> NOT_SIGNIFICANT
+  Lymphoid: d=-0.232 [-0.757, 0.281] FDR=8.446e-01 perm_p=0.3692 LOO=robust -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube: d=-0.192 [-0.758, 0.350] FDR=8.043e-01 perm_p=0.4934 LOO=robust -> NOT_SIGNIFICANT
+  Pancreas: d=-0.180 [-0.834, 0.469] FDR=9.906e-01 perm_p=0.6188 LOO=robust -> NOT_SIGNIFICANT
+  Bowel: d=-0.147 [-0.732, 0.393] FDR=9.593e-01 perm_p=0.6681 LOO=robust -> NOT_SIGNIFICANT
+  Pan-cancer (pooled): d=-0.119 [-0.245, 0.029] FDR=1.721e-01 perm_p=0.0794 LOO=robust -> NOT_SIGNIFICANT
+  Skin: d=-0.036 [-0.664, 0.544] FDR=8.573e-01 perm_p=0.9165 LOO=fragile -> NOT_SIGNIFICANT
+  Bone: d=0.035 [-0.532, 0.603] FDR=9.968e-01 perm_p=0.9188 LOO=robust -> NOT_SIGNIFICANT
+  Biliary Tract: d=0.182 [-0.533, 0.858] FDR=9.619e-01 perm_p=0.6690 LOO=robust -> NOT_SIGNIFICANT
+  Lung: d=0.264 [-0.087, 0.612] FDR=7.332e-01 perm_p=0.1543 LOO=robust -> NOT_SIGNIFICANT
+  Esophagus/Stomach: d=0.344 [-0.171, 0.912] FDR=8.060e-01 perm_p=0.2442 LOO=robust -> NOT_SIGNIFICANT
+  CNS/Brain: d=0.367 [-0.121, 0.914] FDR=6.376e-01 perm_p=0.1474 LOO=robust -> NOT_SIGNIFICANT
+
+WEE1 DEPENDENCY (RB1-loss vs intact)
+  0 ROBUST, 0 MARGINAL, 20 NOT_SIGNIFICANT
+------------------------------------------------------------
+  Pancreas: d=-0.737 [-1.445, -0.136] FDR=5.479e-01 perm_p=0.0543 LOO=robust -> NOT_SIGNIFICANT
+  Uterus: d=-0.537 [-1.274, 0.082] FDR=7.025e-01 perm_p=0.1253 LOO=robust -> NOT_SIGNIFICANT
+  Skin: d=-0.474 [-1.090, 0.159] FDR=7.761e-01 perm_p=0.1800 LOO=robust -> NOT_SIGNIFICANT
+  Soft Tissue: d=-0.420 [-1.272, 0.396] FDR=6.829e-01 perm_p=0.3428 LOO=robust -> NOT_SIGNIFICANT
+  Head and Neck: d=-0.388 [-0.941, 0.138] FDR=7.262e-01 perm_p=0.2018 LOO=robust -> NOT_SIGNIFICANT
+  Lymphoid: d=-0.346 [-0.724, 0.019] FDR=7.332e-01 perm_p=0.1763 LOO=robust -> NOT_SIGNIFICANT
+  Bone: d=-0.261 [-0.838, 0.305] FDR=8.026e-01 perm_p=0.4349 LOO=robust -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube: d=-0.238 [-0.804, 0.265] FDR=8.026e-01 perm_p=0.3816 LOO=robust -> NOT_SIGNIFICANT
+  Pan-cancer (pooled): d=0.025 [-0.114, 0.162] FDR=9.375e-01 perm_p=0.7011 LOO=robust -> NOT_SIGNIFICANT
+  Breast: d=0.030 [-0.519, 0.555] FDR=9.906e-01 perm_p=0.9206 LOO=robust -> NOT_SIGNIFICANT
+  Cervix: d=0.052 [-0.977, 1.187] FDR=9.906e-01 perm_p=0.9183 LOO=fragile -> NOT_SIGNIFICANT
+  CNS/Brain: d=0.067 [-0.435, 0.683] FDR=9.906e-01 perm_p=0.8018 LOO=robust -> NOT_SIGNIFICANT
+  Bladder/Urinary Tract: d=0.068 [-0.643, 0.674] FDR=9.906e-01 perm_p=0.8585 LOO=fragile -> NOT_SIGNIFICANT
+  Esophagus/Stomach: d=0.144 [-0.481, 0.823] FDR=9.282e-01 perm_p=0.6312 LOO=robust -> NOT_SIGNIFICANT
+  Kidney: d=0.254 [-0.912, 1.593] FDR=9.982e-01 perm_p=0.6030 LOO=fragile -> NOT_SIGNIFICANT
+  Lung: d=0.301 [-0.083, 0.644] FDR=8.026e-01 perm_p=0.1046 LOO=robust -> NOT_SIGNIFICANT
+  Eye: d=0.312 [-0.608, 2.069] FDR=8.446e-01 perm_p=0.5790 LOO=robust -> NOT_SIGNIFICANT
+  Biliary Tract: d=0.324 [-0.380, 1.192] FDR=7.968e-01 perm_p=0.4506 LOO=robust -> NOT_SIGNIFICANT
+  Bowel: d=0.632 [-0.114, 1.485] FDR=5.568e-01 perm_p=0.0782 LOO=robust -> NOT_SIGNIFICANT
+  Liver: d=0.663 [-0.106, 1.590] FDR=6.376e-01 perm_p=0.1194 LOO=robust -> NOT_SIGNIFICANT
+
+CSNK2A1 DEPENDENCY (RB1-loss vs intact)
+  0 ROBUST, 3 MARGINAL, 17 NOT_SIGNIFICANT
+------------------------------------------------------------
+  Biliary Tract: d=-0.798 [-2.093, 0.305] FDR=5.479e-01 perm_p=0.0692 LOO=robust -> NOT_SIGNIFICANT
+  Bladder/Urinary Tract: d=-0.774 [-1.560, -0.120] FDR=5.479e-01 perm_p=0.0312 LOO=robust -> MARGINAL
+  Pancreas: d=-0.594 [-1.820, 0.574] FDR=7.968e-01 perm_p=0.1125 LOO=robust -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube: d=-0.589 [-1.181, -0.102] FDR=5.479e-01 perm_p=0.0330 LOO=robust -> MARGINAL
+  Soft Tissue: d=-0.538 [-1.164, 0.101] FDR=6.376e-01 perm_p=0.2319 LOO=robust -> NOT_SIGNIFICANT
+  Kidney: d=-0.506 [-0.991, -0.021] FDR=8.446e-01 perm_p=0.3176 LOO=robust -> NOT_SIGNIFICANT
+  Bone: d=-0.448 [-1.173, 0.191] FDR=5.479e-01 perm_p=0.1744 LOO=robust -> NOT_SIGNIFICANT
+  CNS/Brain: d=-0.415 [-0.847, 0.024] FDR=5.479e-01 perm_p=0.1043 LOO=robust -> NOT_SIGNIFICANT
+  Uterus: d=-0.201 [-0.836, 0.502] FDR=9.906e-01 perm_p=0.5651 LOO=robust -> NOT_SIGNIFICANT
+  Head and Neck: d=-0.181 [-0.777, 0.401] FDR=8.060e-01 perm_p=0.5534 LOO=robust -> NOT_SIGNIFICANT
+  Pan-cancer (pooled): d=-0.143 [-0.268, -0.018] FDR=1.721e-01 perm_p=0.0319 LOO=robust -> MARGINAL
+  Eye: d=-0.067 [-1.072, 1.067] FDR=9.906e-01 perm_p=0.9034 LOO=fragile -> NOT_SIGNIFICANT
+  Lung: d=0.030 [-0.313, 0.406] FDR=9.906e-01 perm_p=0.8723 LOO=robust -> NOT_SIGNIFICANT
+  Breast: d=0.052 [-0.500, 0.623] FDR=9.619e-01 perm_p=0.8608 LOO=robust -> NOT_SIGNIFICANT
+  Bowel: d=0.053 [-0.627, 0.694] FDR=9.906e-01 perm_p=0.8833 LOO=fragile -> NOT_SIGNIFICANT
+  Esophagus/Stomach: d=0.100 [-0.507, 0.648] FDR=9.982e-01 perm_p=0.7373 LOO=robust -> NOT_SIGNIFICANT
+  Lymphoid: d=0.173 [-0.330, 0.620] FDR=8.026e-01 perm_p=0.4991 LOO=robust -> NOT_SIGNIFICANT
+  Cervix: d=0.221 [-0.845, 1.123] FDR=8.446e-01 perm_p=0.6631 LOO=robust -> NOT_SIGNIFICANT
+  Liver: d=0.328 [-0.438, 1.064] FDR=9.906e-01 perm_p=0.4281 LOO=robust -> NOT_SIGNIFICANT
+  Skin: d=0.585 [-0.217, 1.445] FDR=6.376e-01 perm_p=0.1035 LOO=robust -> NOT_SIGNIFICANT
+
+TTK DEPENDENCY (RB1-loss vs intact)
+  0 ROBUST, 2 MARGINAL, 18 NOT_SIGNIFICANT
+------------------------------------------------------------
+  Cervix: d=-0.759 [-2.404, 0.353] FDR=6.376e-01 perm_p=0.1383 LOO=robust -> NOT_SIGNIFICANT
+  Bone: d=-0.746 [-1.516, -0.063] FDR=5.479e-01 perm_p=0.0243 LOO=robust -> MARGINAL
+  Eye: d=-0.591 [-1.648, 0.190] FDR=7.761e-01 perm_p=0.3068 LOO=robust -> NOT_SIGNIFICANT
+  CNS/Brain: d=-0.558 [-1.156, -0.003] FDR=5.479e-01 perm_p=0.0306 LOO=robust -> MARGINAL
+  Pancreas: d=-0.442 [-1.311, 0.322] FDR=7.761e-01 perm_p=0.2460 LOO=robust -> NOT_SIGNIFICANT
+  Liver: d=-0.430 [-1.176, 0.366] FDR=8.076e-01 perm_p=0.3055 LOO=robust -> NOT_SIGNIFICANT
+  Lung: d=-0.316 [-0.680, 0.049] FDR=5.479e-01 perm_p=0.0914 LOO=robust -> NOT_SIGNIFICANT
+  Lymphoid: d=-0.309 [-0.807, 0.149] FDR=6.376e-01 perm_p=0.2273 LOO=robust -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube: d=-0.222 [-0.767, 0.224] FDR=7.887e-01 perm_p=0.4205 LOO=robust -> NOT_SIGNIFICANT
+  Skin: d=-0.205 [-0.687, 0.270] FDR=8.026e-01 perm_p=0.5622 LOO=robust -> NOT_SIGNIFICANT
+  Pan-cancer (pooled): d=-0.069 [-0.210, 0.089] FDR=4.112e-01 perm_p=0.3055 LOO=robust -> NOT_SIGNIFICANT
+  Soft Tissue: d=0.001 [-0.534, 0.522] FDR=9.906e-01 perm_p=0.9987 LOO=fragile -> NOT_SIGNIFICANT
+  Head and Neck: d=0.037 [-0.491, 0.675] FDR=9.906e-01 perm_p=0.9024 LOO=fragile -> NOT_SIGNIFICANT
+  Kidney: d=0.108 [-0.862, 1.092] FDR=9.593e-01 perm_p=0.8197 LOO=fragile -> NOT_SIGNIFICANT
+  Uterus: d=0.116 [-0.539, 0.891] FDR=8.060e-01 perm_p=0.7428 LOO=robust -> NOT_SIGNIFICANT
+  Bowel: d=0.380 [-0.337, 1.038] FDR=7.471e-01 perm_p=0.2755 LOO=robust -> NOT_SIGNIFICANT
+  Breast: d=0.409 [-0.125, 0.999] FDR=8.043e-01 perm_p=0.1583 LOO=robust -> NOT_SIGNIFICANT
+  Bladder/Urinary Tract: d=0.533 [-0.141, 1.214] FDR=6.376e-01 perm_p=0.1377 LOO=robust -> NOT_SIGNIFICANT
+  Esophagus/Stomach: d=0.571 [-0.064, 1.310] FDR=5.479e-01 perm_p=0.0561 LOO=robust -> NOT_SIGNIFICANT
+  Biliary Tract: d=0.604 [0.045, 1.233] FDR=5.778e-01 perm_p=0.1628 LOO=robust -> NOT_SIGNIFICANT
+
+FOXM1 DEPENDENCY (RB1-loss vs intact)
+  0 ROBUST, 0 MARGINAL, 20 NOT_SIGNIFICANT
+------------------------------------------------------------
+  Bone: d=-0.641 [-1.407, -0.024] FDR=5.479e-01 perm_p=0.0579 LOO=robust -> NOT_SIGNIFICANT
+  Eye: d=-0.500 [-2.291, 0.941] FDR=9.619e-01 perm_p=0.3967 LOO=robust -> NOT_SIGNIFICANT
+  Biliary Tract: d=-0.497 [-1.233, 0.077] FDR=5.778e-01 perm_p=0.2456 LOO=robust -> NOT_SIGNIFICANT
+  CNS/Brain: d=-0.340 [-0.925, 0.245] FDR=7.761e-01 perm_p=0.1753 LOO=robust -> NOT_SIGNIFICANT
+  Kidney: d=-0.222 [-1.909, 1.134] FDR=8.530e-01 perm_p=0.6523 LOO=fragile -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube: d=-0.202 [-0.801, 0.335] FDR=8.026e-01 perm_p=0.4717 LOO=robust -> NOT_SIGNIFICANT
+  Esophagus/Stomach: d=-0.191 [-0.884, 0.536] FDR=9.906e-01 perm_p=0.5308 LOO=fragile -> NOT_SIGNIFICANT
+  Soft Tissue: d=-0.187 [-0.984, 0.560] FDR=8.675e-01 perm_p=0.6741 LOO=robust -> NOT_SIGNIFICANT
+  Liver: d=-0.109 [-1.148, 0.624] FDR=8.060e-01 perm_p=0.7941 LOO=robust -> NOT_SIGNIFICANT
+  Lymphoid: d=-0.070 [-0.530, 0.375] FDR=9.906e-01 perm_p=0.7806 LOO=robust -> NOT_SIGNIFICANT
+  Pan-cancer (pooled): d=-0.042 [-0.175, 0.095] FDR=8.300e-01 perm_p=0.5369 LOO=robust -> NOT_SIGNIFICANT
+  Skin: d=-0.033 [-0.928, 0.698] FDR=9.166e-01 perm_p=0.9231 LOO=fragile -> NOT_SIGNIFICANT
+  Uterus: d=-0.032 [-0.773, 0.663] FDR=1.000e+00 perm_p=0.9258 LOO=robust -> NOT_SIGNIFICANT
+  Breast: d=0.040 [-0.560, 0.626] FDR=1.000e+00 perm_p=0.8874 LOO=robust -> NOT_SIGNIFICANT
+  Lung: d=0.105 [-0.233, 0.490] FDR=8.446e-01 perm_p=0.5781 LOO=robust -> NOT_SIGNIFICANT
+  Bladder/Urinary Tract: d=0.286 [-0.398, 1.081] FDR=8.259e-01 perm_p=0.4019 LOO=robust -> NOT_SIGNIFICANT
+  Head and Neck: d=0.312 [-0.186, 0.788] FDR=8.060e-01 perm_p=0.3000 LOO=robust -> NOT_SIGNIFICANT
+  Cervix: d=0.367 [-0.560, 1.491] FDR=8.043e-01 perm_p=0.4603 LOO=robust -> NOT_SIGNIFICANT
+  Bowel: d=0.617 [0.163, 1.097] FDR=5.651e-01 perm_p=0.0816 LOO=robust -> NOT_SIGNIFICANT
+  Pancreas: d=0.661 [-0.128, 1.561] FDR=5.479e-01 perm_p=0.0817 LOO=robust -> NOT_SIGNIFICANT
+
+MYBL2 DEPENDENCY (RB1-loss vs intact)
+  1 ROBUST, 0 MARGINAL, 19 NOT_SIGNIFICANT
+------------------------------------------------------------
+  Skin: d=-0.707 [-1.771, 0.338] FDR=6.376e-01 perm_p=0.0519 LOO=robust -> NOT_SIGNIFICANT
+  Biliary Tract: d=-0.694 [-1.531, -0.093] FDR=5.725e-01 perm_p=0.1138 LOO=robust -> NOT_SIGNIFICANT
+  Uterus: d=-0.667 [-1.319, -0.034] FDR=5.479e-01 perm_p=0.0626 LOO=robust -> NOT_SIGNIFICANT
+  Liver: d=-0.590 [-1.511, 0.159] FDR=6.376e-01 perm_p=0.1580 LOO=robust -> NOT_SIGNIFICANT
+  Ovary/Fallopian Tube: d=-0.498 [-1.129, -0.002] FDR=5.479e-01 perm_p=0.0728 LOO=robust -> NOT_SIGNIFICANT
+  CNS/Brain: d=-0.428 [-1.013, 0.038] FDR=5.479e-01 perm_p=0.0897 LOO=robust -> NOT_SIGNIFICANT
+  Cervix: d=-0.374 [-1.452, 0.709] FDR=9.906e-01 perm_p=0.4453 LOO=robust -> NOT_SIGNIFICANT
+  Esophagus/Stomach: d=-0.332 [-1.014, 0.274] FDR=7.887e-01 perm_p=0.2767 LOO=robust -> NOT_SIGNIFICANT
+  Lung: d=-0.286 [-0.629, 0.046] FDR=5.725e-01 perm_p=0.1142 LOO=robust -> NOT_SIGNIFICANT
+  Bone: d=-0.182 [-0.840, 0.377] FDR=8.060e-01 perm_p=0.5858 LOO=robust -> NOT_SIGNIFICANT
+  Pan-cancer (pooled): d=-0.148 [-0.288, -0.016] FDR=3.566e-02 perm_p=0.0292 LOO=robust -> ROBUST
+  Lymphoid: d=-0.129 [-0.600, 0.358] FDR=8.172e-01 perm_p=0.6055 LOO=robust -> NOT_SIGNIFICANT
+  Bowel: d=-0.022 [-0.588, 0.521] FDR=9.906e-01 perm_p=0.9478 LOO=robust -> NOT_SIGNIFICANT
+  Bladder/Urinary Tract: d=0.043 [-0.698, 0.648] FDR=9.906e-01 perm_p=0.9036 LOO=robust -> NOT_SIGNIFICANT
+  Pancreas: d=0.049 [-0.655, 0.729] FDR=9.906e-01 perm_p=0.8951 LOO=fragile -> NOT_SIGNIFICANT
+  Breast: d=0.059 [-0.540, 0.620] FDR=9.906e-01 perm_p=0.8418 LOO=robust -> NOT_SIGNIFICANT
+  Head and Neck: d=0.196 [-0.309, 0.655] FDR=8.675e-01 perm_p=0.5198 LOO=robust -> NOT_SIGNIFICANT
+  Eye: d=0.212 [-1.414, 1.965] FDR=9.906e-01 perm_p=0.6950 LOO=fragile -> NOT_SIGNIFICANT
+  Soft Tissue: d=0.291 [-0.426, 0.901] FDR=8.060e-01 perm_p=0.5110 LOO=robust -> NOT_SIGNIFICANT
+  Kidney: d=0.505 [-0.292, 1.408] FDR=7.332e-01 perm_p=0.3108 LOO=robust -> NOT_SIGNIFICANT
+
+UNIVERSALITY ANALYSIS
+------------------------------------------------------------
+  CDK2: ROBUST in 1 types: Pan-cancer (pooled)
+  AURKA: ROBUST in 1 types: Pan-cancer (pooled)
+  AURKB: No ROBUST results
+  CHEK1: No ROBUST results
+  WEE1: No ROBUST results
+  CSNK2A1: No ROBUST results
+  TTK: No ROBUST results
+  FOXM1: No ROBUST results
+  MYBL2: ROBUST in 1 types: Pan-cancer (pooled)
+
+NEGATIVE CONTROLS: CDK4, CDK6 (should NOT show SL with RB1-loss)
+------------------------------------------------------------
+  Bladder/Urinary Tract / CDK4: d=1.060 FDR=9.482e-02 -> MARGINAL (UNEXPECTED)
+  Bladder/Urinary Tract / CDK6: d=0.916 FDR=3.592e-02 -> ROBUST (UNEXPECTED)
+  Lung / CDK4: d=0.338 FDR=1.388e-01 -> NOT_SIGNIFICANT (PASS)
+  Lung / CDK6: d=0.963 FDR=3.489e-06 -> ROBUST (UNEXPECTED)
+  Breast / CDK4: d=0.651 FDR=2.735e-02 -> ROBUST (UNEXPECTED)
+  Breast / CDK6: d=0.495 FDR=5.135e-02 -> NOT_SIGNIFICANT (PASS)
+  Liver / CDK4: d=1.357 FDR=2.387e-02 -> ROBUST (UNEXPECTED)
+  Liver / CDK6: d=0.362 FDR=3.899e-01 -> NOT_SIGNIFICANT (PASS)
+  Uterus / CDK4: d=0.406 FDR=1.750e-01 -> NOT_SIGNIFICANT (PASS)
+  Uterus / CDK6: d=0.909 FDR=1.347e-02 -> ROBUST (UNEXPECTED)
+  Eye / CDK4: d=0.829 FDR=3.899e-01 -> NOT_SIGNIFICANT (PASS)
+  Eye / CDK6: d=0.877 FDR=1.682e-01 -> NOT_SIGNIFICANT (PASS)
+  Ovary/Fallopian Tube / CDK4: d=0.402 FDR=3.108e-02 -> MARGINAL (UNEXPECTED)
+  Ovary/Fallopian Tube / CDK6: d=0.834 FDR=3.414e-02 -> ROBUST (UNEXPECTED)
+  Cervix / CDK4: d=-0.187 FDR=1.000e+00 -> NOT_SIGNIFICANT (PASS)
+  Cervix / CDK6: d=-0.635 FDR=6.276e-01 -> NOT_SIGNIFICANT (PASS)
+  Bone / CDK4: d=0.923 FDR=1.768e-02 -> ROBUST (UNEXPECTED)
+  Bone / CDK6: d=0.287 FDR=8.676e-01 -> NOT_SIGNIFICANT (PASS)
+  CNS/Brain / CDK4: d=0.952 FDR=1.318e-03 -> ROBUST (UNEXPECTED)
+  CNS/Brain / CDK6: d=1.185 FDR=1.741e-04 -> ROBUST (UNEXPECTED)
+  Lymphoid / CDK4: d=0.364 FDR=3.899e-01 -> NOT_SIGNIFICANT (PASS)
+  Lymphoid / CDK6: d=0.549 FDR=9.330e-02 -> MARGINAL (UNEXPECTED)
+  Esophagus/Stomach / CDK4: d=0.534 FDR=4.034e-01 -> NOT_SIGNIFICANT (PASS)
+  Esophagus/Stomach / CDK6: d=0.022 FDR=1.000e+00 -> NOT_SIGNIFICANT (PASS)
+  Head and Neck / CDK4: d=-0.134 FDR=6.297e-01 -> NOT_SIGNIFICANT (PASS)
+  Head and Neck / CDK6: d=-0.114 FDR=6.276e-01 -> NOT_SIGNIFICANT (PASS)
+  Pancreas / CDK4: d=-0.013 FDR=1.000e+00 -> NOT_SIGNIFICANT (PASS)
+  Pancreas / CDK6: d=-0.507 FDR=2.702e-01 -> NOT_SIGNIFICANT (PASS)
+  Biliary Tract / CDK4: d=0.460 FDR=3.899e-01 -> NOT_SIGNIFICANT (PASS)
+  Biliary Tract / CDK6: d=0.218 FDR=6.297e-01 -> NOT_SIGNIFICANT (PASS)
+  Soft Tissue / CDK4: d=-0.563 FDR=3.899e-01 -> NOT_SIGNIFICANT (PASS)
+  Soft Tissue / CDK6: d=0.393 FDR=4.624e-01 -> NOT_SIGNIFICANT (PASS)
+  Bowel / CDK4: d=0.351 FDR=2.702e-01 -> NOT_SIGNIFICANT (PASS)
+  Bowel / CDK6: d=0.246 FDR=6.560e-01 -> NOT_SIGNIFICANT (PASS)
+  Skin / CDK4: d=0.556 FDR=3.414e-02 -> MARGINAL (UNEXPECTED)
+  Skin / CDK6: d=0.868 FDR=3.108e-02 -> ROBUST (UNEXPECTED)
+  Kidney / CDK4: d=0.276 FDR=8.976e-01 -> NOT_SIGNIFICANT (PASS)
+  Kidney / CDK6: d=-0.388 FDR=7.008e-01 -> NOT_SIGNIFICANT (PASS)
+  Pan-cancer (pooled) / CDK4: d=0.362 FDR=9.904e-12 -> ROBUST (UNEXPECTED)
+  Pan-cancer (pooled) / CDK6: d=0.637 FDR=2.121e-24 -> ROBUST (UNEXPECTED)
+
+CCNE1 AMPLIFICATION SUBGROUP (CDK2 dependency)
+------------------------------------------------------------
+  CCNE1-amp+RB1-loss vs RB1-intact: d=-2.236 [-3.539, -0.945] p=1.098e-03
+  RB1-loss/CCNE1-amp vs RB1-loss/CCNE1-normal: d=-1.337 [-2.442, -0.346] p=1.155e-02

@@ -1,0 +1,6 @@
+pathway,observed,expected,fold_enrichment,fisher_p,n_hits,n_pathway_in_universe,genes_in_overlap
+Cell_cycle,3,0.02,192.03,4.3423381597206423e-07,16,18,CCNE1;CCNE2;CDK2
+DNA_replication,0,0.02,0.0,1.0,16,22,
+Mitotic_checkpoint,0,0.01,0.0,1.0,16,16,
+DDR_checkpoint,0,0.01,0.0,1.0,16,16,
+E2F_targets,2,0.01,153.62,7.366798353303859e-05,16,15,E2F3;SKP2

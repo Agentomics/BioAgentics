@@ -1,0 +1,3 @@
+comparison,n_group1,n_group2,cohens_d,ci_lower,ci_upper,pvalue,median_dep_group1,median_dep_group2
+CCNE1-amp+RB1-loss vs RB1-intact,15,820,-2.236,-3.5388,-0.9445,0.0010982967058935315,-1.5683,-0.6898
+RB1-loss/CCNE1-amp vs RB1-loss/CCNE1-normal,15,291,-1.3375,-2.4423,-0.346,0.011548716243584277,-1.5683,-0.8297
