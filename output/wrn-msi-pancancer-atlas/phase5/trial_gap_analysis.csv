@@ -1,0 +1,19 @@
+cancer_type,depmap_lineage,wrn_d,msi_h_pct,estimated_msi_h_patients,pembrolizumab_orr,wrn_trials,gap_type,rationale
+DLBC,Lymphoid,-2.8334,0.049,3950,,none,not_in_trials,"DLBC: ~3,950 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials"
+UCS,Uterus,-1.086,0.053,3597,,none,not_in_trials,"UCS: ~3,597 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials"
+SKCM,Skin,-2.8334,0.009,905,,none,not_in_trials,"SKCM: ~905 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials"
+BRCA,Breast,-2.8334,0.002,621,,none,not_in_trials,"BRCA: ~621 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials"
+ESCA,Esophagus/Stomach,-2.8334,0.027,603,,none,not_in_trials,"ESCA: ~603 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials"
+BLCA,Bladder/Urinary Tract,-2.8334,0.007,582,,none,not_in_trials,"BLCA: ~582 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials"
+PAAD,Pancreas,-2.8334,0.006,398,0.182,none,not_in_trials,"PAAD: ~398 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials, pembrolizumab ORR 18%"
+CHOL,Biliary Tract,-2.8334,0.028,342,0.409,none,not_in_trials,"CHOL: ~342 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials, pembrolizumab ORR 41%"
+KIRP,Kidney,-2.8334,0.004,327,,none,not_in_trials,"KIRP: ~327 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials"
+LUAD,Lung,-2.8334,0.002,235,,none,not_in_trials,"LUAD: ~235 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials"
+KIRC,Kidney,-2.8334,0.002,163,,none,not_in_trials,"KIRC: ~163 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials"
+LIHC,Liver,-2.8334,0.003,123,,none,not_in_trials,"LIHC: ~123 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials"
+HNSC,Head and Neck,-2.8334,0.002,116,,none,not_in_trials,"HNSC: ~116 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials"
+LGG,CNS/Brain,-2.8334,0.002,50,,none,small_population,LGG: small MSI-H population (~50/yr)
+COADREAD,Bowel,-2.8441,0.154,23532,0.438,VVD-214;HRO-761,covered,COADREAD: enrolled in VVD-214;HRO-761
+UCEC,Uterus,-1.086,0.309,20974,0.571,VVD-214;HRO-761,covered,UCEC: enrolled in VVD-214;HRO-761
+STAD,Esophagus/Stomach,-2.8334,0.197,5297,0.458,VVD-214;HRO-761,covered,STAD: enrolled in VVD-214;HRO-761
+OV,Ovary/Fallopian Tube,-2.8334,0.002,39,0.333,VVD-214;HRO-761,covered,OV: enrolled in VVD-214;HRO-761

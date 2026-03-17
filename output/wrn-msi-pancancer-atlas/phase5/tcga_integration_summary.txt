@@ -1,0 +1,68 @@
+=== Phase 5: TCGA Clinical Integration Summary ===
+
+MSI-H cancer types with prevalence data: 18
+Estimated total US MSI-H patients/year: ~61,854
+
+--- Top 5 MSI-H Populations (US annual estimates) ---
+  COADREAD: ~23,532/yr (15.4% of 152,810), WRN d=-2.844 [lineage-specific]
+  STAD: ~5,297/yr (19.7% of 26,890), WRN d=-2.833 [pan-cancer pooled]
+  DLBC: ~3,950/yr (4.9% of 80,620), WRN d=-2.833 [pan-cancer pooled]
+  SKCM: ~905/yr (0.9% of 100,640), WRN d=-2.833 [pan-cancer pooled]
+  BRCA: ~621/yr (0.2% of 310,720), WRN d=-2.833 [pan-cancer pooled]
+
+--- Priority Ranking (WRN SL × population) ---
+  COADREAD: score=28.6, WRN d=-2.844, ~23,532 pts/yr
+  STAD: score=24.3, WRN d=-2.833, ~5,297 pts/yr
+  DLBC: score=23.5, WRN d=-2.833, ~3,950 pts/yr
+  SKCM: score=19.3, WRN d=-2.833, ~905 pts/yr
+  BRCA: score=18.2, WRN d=-2.833, ~621 pts/yr
+  ESCA: score=18.1, WRN d=-2.833, ~603 pts/yr
+  BLCA: score=18.0, WRN d=-2.833, ~582 pts/yr
+  PAAD: score=17.0, WRN d=-2.833, ~398 pts/yr
+  CHOL: score=16.5, WRN d=-2.833, ~342 pts/yr
+  KIRP: score=16.4, WRN d=-2.833, ~327 pts/yr
+  LUAD: score=15.5, WRN d=-2.833, ~235 pts/yr
+  KIRC: score=14.4, WRN d=-2.833, ~163 pts/yr
+  LIHC: score=13.7, WRN d=-2.833, ~123 pts/yr
+  HNSC: score=13.5, WRN d=-2.833, ~116 pts/yr
+  LGG: score=11.1, WRN d=-2.833, ~50 pts/yr
+  UCEC: score=10.8, WRN d=-1.086, ~20,974 pts/yr
+  OV: score=10.5, WRN d=-2.833, ~39 pts/yr
+  UCS: score=8.9, WRN d=-1.086, ~3,597 pts/yr
+
+--- Pembrolizumab Concordance ---
+  COADREAD: WRN d=-2.844, pembro ORR=43.8%
+  STAD: WRN d=-2.833, pembro ORR=45.8%
+  PAAD: WRN d=-2.833, pembro ORR=18.2%
+  CHOL: WRN d=-2.833, pembro ORR=40.9%
+  UCEC: WRN d=-1.086, pembro ORR=57.1%
+  OV: WRN d=-2.833, pembro ORR=33.3%
+
+--- Trial Gap Analysis (13 underexplored types) ---
+  [not_in_trials] DLBC: ~3,950 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials
+  [not_in_trials] UCS: ~3,597 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials
+  [not_in_trials] SKCM: ~905 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials
+  [not_in_trials] BRCA: ~621 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials
+  [not_in_trials] ESCA: ~603 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials
+  [not_in_trials] BLCA: ~582 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials
+  [not_in_trials] PAAD: ~398 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials, pembrolizumab ORR 18%
+  [not_in_trials] CHOL: ~342 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials, pembrolizumab ORR 41%
+  [not_in_trials] KIRP: ~327 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials
+  [not_in_trials] LUAD: ~235 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials
+  [not_in_trials] KIRC: ~163 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials
+  [not_in_trials] LIHC: ~123 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials
+  [not_in_trials] HNSC: ~116 MSI-H patients/yr, not enrolled in VVD-214 or HRO-761 trials
+  [small_population] LGG: small MSI-H population (~50/yr)
+  [covered] COADREAD: enrolled in VVD-214;HRO-761
+  [covered] UCEC: enrolled in VVD-214;HRO-761
+  [covered] STAD: enrolled in VVD-214;HRO-761
+  [covered] OV: enrolled in VVD-214;HRO-761
+
+--- Key Conclusions ---
+1. COADREAD and UCEC are the largest MSI-H populations with confirmed WRN SL
+2. STAD is a major MSI-H population — WRN dependency uses pan-cancer pooled estimate
+3. 13 MSI-H tumor types with meaningful patient populations lack WRN trial enrollment
+4. Pembrolizumab ORR varies widely (18-57%) across MSI-H tumor types —
+   low-response types (e.g., PAAD) may especially benefit from WRN inhibitor combinations
+
+Sources: TCGA PanCanAtlas 2018, ACS 2024, KEYNOTE-158/164/177, NCT06004245, NCT05838768

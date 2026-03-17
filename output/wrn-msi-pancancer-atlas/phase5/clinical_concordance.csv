@@ -1,0 +1,19 @@
+cancer_type,depmap_lineage,wrn_d,wrn_source,msi_h_pct,estimated_msi_h_patients,pembrolizumab_orr,pembro_data_available,wrn_trials,n_wrn_trials
+COADREAD,Bowel,-2.8441,lineage-specific,0.154,23532,0.438,True,VVD-214;HRO-761,2
+STAD,Esophagus/Stomach,-2.8334,pan-cancer pooled,0.197,5297,0.458,True,VVD-214;HRO-761,2
+DLBC,Lymphoid,-2.8334,pan-cancer pooled,0.049,3950,,False,none,0
+SKCM,Skin,-2.8334,pan-cancer pooled,0.009,905,,False,none,0
+BRCA,Breast,-2.8334,pan-cancer pooled,0.002,621,,False,none,0
+ESCA,Esophagus/Stomach,-2.8334,pan-cancer pooled,0.027,603,,False,none,0
+BLCA,Bladder/Urinary Tract,-2.8334,pan-cancer pooled,0.007,582,,False,none,0
+PAAD,Pancreas,-2.8334,pan-cancer pooled,0.006,398,0.182,True,none,0
+CHOL,Biliary Tract,-2.8334,pan-cancer pooled,0.028,342,0.409,True,none,0
+KIRP,Kidney,-2.8334,pan-cancer pooled,0.004,327,,False,none,0
+LUAD,Lung,-2.8334,pan-cancer pooled,0.002,235,,False,none,0
+KIRC,Kidney,-2.8334,pan-cancer pooled,0.002,163,,False,none,0
+LIHC,Liver,-2.8334,pan-cancer pooled,0.003,123,,False,none,0
+HNSC,Head and Neck,-2.8334,pan-cancer pooled,0.002,116,,False,none,0
+LGG,CNS/Brain,-2.8334,pan-cancer pooled,0.002,50,,False,none,0
+UCEC,Uterus,-1.086,lineage-specific,0.309,20974,0.571,True,VVD-214;HRO-761,2
+OV,Ovary/Fallopian Tube,-2.8334,pan-cancer pooled,0.002,39,0.333,True,VVD-214;HRO-761,2
+UCS,Uterus,-1.086,lineage-specific,0.053,3597,,False,none,0
