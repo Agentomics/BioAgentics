@@ -1,0 +1,55 @@
+======================================================================
+PTEN Loss Pan-Cancer Dependency Atlas - Phase 2
+PI3K/AKT/mTOR Pathway Dependency Effect Sizes
+======================================================================
+
+Total tests: 63
+ROBUST hits (FDR<0.05, |d|>0.5): 5
+MARGINAL hits: 0
+
+--- PIK3CB POSITIVE CONTROL ---
+PASS: PIK3CB is ROBUST in 2 cancer types
+  Breast                         d=-2.229 FDR=3.558e-04 [ROBUST]
+  Skin                           d=-1.497 FDR=2.196e-03 [ROBUST]
+  Lung                           d=-1.304 FDR=1.783e-01 [NOT_SIGNIFICANT]
+  Esophagus/Stomach              d=-1.090 FDR=5.329e-01 [NOT_SIGNIFICANT]
+  Lymphoid                       d=-0.480 FDR=5.190e-01 [NOT_SIGNIFICANT]
+  CNS/Brain                      d=-0.323 FDR=3.232e-01 [NOT_SIGNIFICANT]
+  Bowel                          d=-0.260 FDR=9.249e-01 [NOT_SIGNIFICANT]
+  Ovary/Fallopian Tube           d=0.172 FDR=8.290e-01 [NOT_SIGNIFICANT]
+  Uterus                         d=0.382 FDR=5.329e-01 [NOT_SIGNIFICANT]
+
+--- PIK3CA NEGATIVE CONTROL ---
+** INVESTIGATE: PIK3CA shows significant PTEN-selectivity in 2 types
+  Esophagus/Stomach              d=-1.267 FDR=2.963e-01 [NOT_SIGNIFICANT]
+  Ovary/Fallopian Tube           d=0.018 FDR=7.703e-01 [NOT_SIGNIFICANT]
+  Skin                           d=0.389 FDR=5.329e-01 [NOT_SIGNIFICANT]
+  CNS/Brain                      d=0.414 FDR=2.357e-01 [NOT_SIGNIFICANT]
+  Lung                           d=0.442 FDR=5.329e-01 [NOT_SIGNIFICANT]
+  Uterus                         d=0.649 FDR=5.275e-01 [NOT_SIGNIFICANT]
+  Lymphoid                       d=0.715 FDR=1.997e-02 [ROBUST]
+  Bowel                          d=0.924 FDR=2.094e-01 [NOT_SIGNIFICANT]
+  Breast                         d=0.945 FDR=9.088e-03 [ROBUST]
+
+--- ALL ROBUST HITS ---
+  Breast                         PIK3CB     d=-2.229 [-3.359, -1.570] FDR=3.558e-04
+  Skin                           PIK3CB     d=-1.497 [-2.462, -0.741] FDR=2.196e-03
+  Lymphoid                       AKT2       d=-1.073 [-1.797, -0.489] FDR=9.088e-03
+  Lymphoid                       PIK3CA     d=0.715 [0.355, 1.112] FDR=1.997e-02
+  Breast                         PIK3CA     d=0.945 [0.420, 1.546] FDR=9.088e-03
+
+--- LEAVE-ONE-OUT ROBUSTNESS ---
+  Skin                           PIK3CB     orig_d=-1.497 loo_range=[-1.718, -1.362] STABLE
+  Breast                         PIK3CB     orig_d=-2.229 loo_range=[-2.485, -2.086] STABLE
+  Breast                         PIK3CA     orig_d=0.945 loo_range=[0.879, 1.174] STABLE
+  Lymphoid                       PIK3CA     orig_d=0.715 loo_range=[0.638, 0.826] STABLE
+  Lymphoid                       AKT2       orig_d=-1.073 loo_range=[-1.203, -0.888] STABLE
+
+--- PIK3CA CO-MUTATION STRATIFICATION ---
+  Uterus                         PIK3CB     PIK3CA-WT: d=0.238 (n=13) PIK3CA-mut: d=0.589 (n=6)
+  Uterus                         PIK3CA     PIK3CA-WT: d=0.741 (n=13) PIK3CA-mut: d=0.302 (n=6)
+  Uterus                         AKT1       PIK3CA-WT: d=-0.443 (n=13) PIK3CA-mut: d=-0.022 (n=6)
+  Uterus                         AKT2       PIK3CA-WT: d=0.783 (n=13) PIK3CA-mut: d=0.610 (n=6)
+  Uterus                         MTOR       PIK3CA-WT: d=-0.445 (n=13) PIK3CA-mut: d=-0.009 (n=6)
+  Uterus                         RICTOR     PIK3CA-WT: d=-0.074 (n=13) PIK3CA-mut: d=0.395 (n=6)
+  Uterus                         RPTOR      PIK3CA-WT: d=-0.226 (n=13) PIK3CA-mut: d=0.332 (n=6)
