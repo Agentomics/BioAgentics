@@ -1,0 +1,67 @@
+======================================================================
+PTEN Loss Pan-Cancer Dependency Atlas - Phase 4: PRISM Drug Sensitivity
+======================================================================
+
+DRUG AVAILABILITY IN PRISM 24Q2
+--------------------------------------------------
+  capivasertib (AKT inhibitor): NOT FOUND
+  ipatasertib (AKT inhibitor): NOT FOUND
+  MK-2206 (AKT inhibitor (allosteric)): NOT FOUND
+  AZD5363 (AKT inhibitor): NOT FOUND
+  alpelisib (PI3Kα inhibitor): NOT FOUND
+  pictilisib (PI3K inhibitor (pan)): NOT FOUND
+  buparlisib (PI3K inhibitor (pan)): NOT FOUND
+  copanlisib (PI3K inhibitor (pan)): NOT FOUND
+  inavolisib (PI3Kα inhibitor (mutant-selective)): NOT FOUND
+  AZD8186 (PI3Kβ inhibitor): NOT FOUND
+  GSK2636771 (PI3Kβ inhibitor): NOT FOUND
+  everolimus (mTOR inhibitor (rapalog)): NOT FOUND
+  rapamycin (mTOR inhibitor (rapalog)): NOT FOUND
+  sirolimus (mTOR inhibitor (rapalog)): NOT FOUND
+  temsirolimus (mTOR inhibitor (rapalog)): NOT FOUND
+  AZD8055 (mTOR inhibitor (catalytic)): NOT FOUND
+  INK-128 (mTOR inhibitor (catalytic)): NOT FOUND
+  dactolisib (PI3K/mTOR dual inhibitor): NOT FOUND
+  apitolisib (PI3K/mTOR dual inhibitor): NOT FOUND
+
+GENOME-WIDE DRUG SCREEN: 110 significant (FDR<0.05)
+  PTEN-selective sensitivity (d<-0.3, FDR<0.05): 51
+--------------------------------------------------
+  BRD:BRD-K99023089-001-03-7: d=-0.928 FDR=2.757e-07
+  BRD:BRD-K25325018-001-05-6: d=-0.915 FDR=6.733e-05
+  BRD:BRD-K71480163-001-01-4: d=-0.838 FDR=1.961e-05
+  BRD:BRD-K32127727-001-04-2: d=-0.782 FDR=6.733e-05
+  BRD:BRD-K25412176-001-01-9: d=-0.734 FDR=1.121e-04
+  BRD:BRD-K12040459-001-06-0: d=-0.651 FDR=7.623e-04
+  BRD:BRD-K76406695-001-02-9: d=-0.637 FDR=1.853e-04
+  BRD:BRD-K67173685-001-06-9: d=-0.637 FDR=1.056e-03
+  BRD:BRD-K73982490-001-02-9: d=-0.599 FDR=1.852e-03
+  BRD:BRD-K06543683-066-02-1: d=-0.595 FDR=1.676e-03
+  GSK2110183: d=-0.579 FDR=1.121e-04
+  BRD:BRD-K53328210-001-04-4: d=-0.562 FDR=1.852e-03
+  BRD:BRD-K16180792-001-01-7: d=-0.561 FDR=4.430e-03
+  BRD:BRD-K68938568-001-01-7: d=-0.541 FDR=1.947e-03
+  BRD:BRD-K21038058-001-01-9: d=-0.533 FDR=1.286e-02
+  BRD:BRD-K81916719-001-13-9: d=-0.530 FDR=2.883e-02
+  BRD:BRD-A12230535-001-06-7: d=-0.529 FDR=3.913e-02
+  BRD:BRD-K21547160-001-01-4: d=-0.526 FDR=8.909e-03
+  BRD:BRD-K71221037-001-01-6: d=-0.512 FDR=1.114e-02
+  BRD:BRD-K89464729-001-03-1: d=-0.509 FDR=6.620e-03
+
+COMBINATION CANDIDATES (non-PI3K drugs, PTEN-selective): 51
+--------------------------------------------------
+  BRD:BRD-K99023089-001-03-7: d=-0.928 FDR=2.757e-07
+  BRD:BRD-K25325018-001-05-6: d=-0.915 FDR=6.733e-05
+  BRD:BRD-K71480163-001-01-4: d=-0.838 FDR=1.961e-05
+  BRD:BRD-K32127727-001-04-2: d=-0.782 FDR=6.733e-05
+  BRD:BRD-K25412176-001-01-9: d=-0.734 FDR=1.121e-04
+  BRD:BRD-K12040459-001-06-0: d=-0.651 FDR=7.623e-04
+  BRD:BRD-K76406695-001-02-9: d=-0.637 FDR=1.853e-04
+  BRD:BRD-K67173685-001-06-9: d=-0.637 FDR=1.056e-03
+  BRD:BRD-K73982490-001-02-9: d=-0.599 FDR=1.852e-03
+  BRD:BRD-K06543683-066-02-1: d=-0.595 FDR=1.676e-03
+  GSK2110183: d=-0.579 FDR=1.121e-04
+  BRD:BRD-K53328210-001-04-4: d=-0.562 FDR=1.852e-03
+  BRD:BRD-K16180792-001-01-7: d=-0.561 FDR=4.430e-03
+  BRD:BRD-K68938568-001-01-7: d=-0.541 FDR=1.947e-03
+  BRD:BRD-K21038058-001-01-9: d=-0.533 FDR=1.286e-02

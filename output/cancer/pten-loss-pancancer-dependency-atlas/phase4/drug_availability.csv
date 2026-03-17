@@ -1,0 +1,20 @@
+drug_name,mechanism,crispr_gene,in_prism
+capivasertib,AKT inhibitor,AKT1,False
+ipatasertib,AKT inhibitor,AKT1,False
+MK-2206,AKT inhibitor (allosteric),AKT1,False
+AZD5363,AKT inhibitor,AKT1,False
+alpelisib,PI3Kα inhibitor,PIK3CA,False
+pictilisib,PI3K inhibitor (pan),PIK3CA,False
+buparlisib,PI3K inhibitor (pan),PIK3CA,False
+copanlisib,PI3K inhibitor (pan),PIK3CA,False
+inavolisib,PI3Kα inhibitor (mutant-selective),PIK3CA,False
+AZD8186,PI3Kβ inhibitor,PIK3CB,False
+GSK2636771,PI3Kβ inhibitor,PIK3CB,False
+everolimus,mTOR inhibitor (rapalog),MTOR,False
+rapamycin,mTOR inhibitor (rapalog),MTOR,False
+sirolimus,mTOR inhibitor (rapalog),MTOR,False
+temsirolimus,mTOR inhibitor (rapalog),MTOR,False
+AZD8055,mTOR inhibitor (catalytic),MTOR,False
+INK-128,mTOR inhibitor (catalytic),MTOR,False
+dactolisib,PI3K/mTOR dual inhibitor,MTOR,False
+apitolisib,PI3K/mTOR dual inhibitor,MTOR,False
