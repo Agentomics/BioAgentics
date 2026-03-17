@@ -2328,8 +2328,8 @@ if (localStorage.getItem('agent_comms_api_key')) {
 
 
 @router.get("/ui/partials/stats", response_class=HTMLResponse)
-def ui_partials_stats(db: Session = Depends(get_db)):
-    return HTMLResponse(render_stats_html(db))
+def ui_partials_stats(division: str = Query(default=""), db: Session = Depends(get_db)):
+    return HTMLResponse(render_stats_html(db, division))
 
 
 @router.get("/ui/partials/presence", response_class=HTMLResponse)

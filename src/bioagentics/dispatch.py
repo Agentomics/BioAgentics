@@ -125,7 +125,7 @@ def reset_stuck_tasks():
     journal(f"startup cleanup: reset {len(stuck)} stuck in_progress task(s) to pending: {labels}")
 
 
-def get_work(username: str) -> list[str] | None:
+def get_work(username: str, division: str | None = None) -> list[str] | None:
     """Return projects with pending/in_progress work, or None if no work at all.
 
     Returns sorted project list (may be empty if tasks have no project field).
@@ -133,8 +133,9 @@ def get_work(username: str) -> list[str] | None:
     """
     projects: set[str] = set()
     has_any = False
+    div_filter = f"&division={division}" if division else ""
     for status in ("pending", "in_progress"):
-        resp = api("GET", f"/tasks?username={username}&status={status}&limit=100")
+        resp = api("GET", f"/tasks?username={username}&status={status}&limit=100{div_filter}")
         if resp and resp.ok:
             for task in resp.json().get("items", []):
                 has_any = True
@@ -146,12 +147,14 @@ def get_work(username: str) -> list[str] | None:
     return sorted(projects)
 
 
-def project_locked_by(project: str) -> str | None:
+def project_locked_by(project: str, division: str | None = None) -> str | None:
     """Return the role running on this project, or None if unlocked."""
     resp = api("GET", "/agents?status=running")
     if resp and resp.ok:
         for agent in resp.json().get("items", []):
             if agent.get("project") == project:
+                if division and agent.get("division") != division:
+                    continue
                 return agent["username"]
     return None
 
@@ -209,13 +212,14 @@ def check_stale_blocked_tasks():
             journal(f"STALE BLOCKED: {total} task(s) blocked >3h:\n" + "\n".join(lines))
 
 
-def _project_is_idle(name: str) -> bool:
+def _project_is_idle(name: str, division: str | None = None) -> bool:
     """True if project has no active/blocked tasks but at least one done task."""
+    div_filter = f"&division={division}" if division else ""
     for status in ("pending", "in_progress", "blocked"):
-        task_resp = api("GET", f"/tasks?project={name}&status={status}&limit=1")
+        task_resp = api("GET", f"/tasks?project={name}&status={status}&limit=1{div_filter}")
         if task_resp and task_resp.ok and task_resp.json().get("total", 0) > 0:
             return False
-    done_resp = api("GET", f"/tasks?project={name}&status=done&limit=1")
+    done_resp = api("GET", f"/tasks?project={name}&status=done&limit=1{div_filter}")
     return (
         done_resp is not None
         and done_resp.ok
@@ -231,7 +235,8 @@ def _advance_projects(from_status: str, to_status: str):
 
     for proj in resp.json().get("items", []):
         name = proj["name"]
-        if not _project_is_idle(name):
+        div = proj.get("division")
+        if not _project_is_idle(name, div):
             continue
 
         patch_resp = api("PATCH", f"/projects/{name}", json={"status": to_status})
@@ -241,6 +246,7 @@ def _advance_projects(from_status: str, to_status: str):
                 f"auto-advanced from {from_status} to {to_status} — "
                 "no pending/in_progress tasks remain",
                 name,
+                div,
             )
         else:
             print(f"  WARNING: failed to advance {name} to {to_status}")
@@ -259,12 +265,13 @@ def check_stale_pipeline_projects():
 
 
 
-def validate_summary(role: str, project: str | None = None):
+def validate_summary(role: str, project: str | None = None, division: str | None = None):
     """Check if the summary file has a YAML frontmatter header."""
+    div = f".{division}" if division else ""
     if project:
-        path = Path(f"cache/{role}.{project}.summary")
+        path = Path(f"cache/{role}{div}.{project}.summary")
     else:
-        path = Path(f"cache/{role}.summary")
+        path = Path(f"cache/{role}{div}.summary")
 
     if not path.exists():
         return
@@ -329,9 +336,9 @@ def build_agent_command(config: AgentConfig, project: str | None, division: str 
 
     # Use project-specific summary when scoped to a project, global otherwise
     if project:
-        summary_file = f"cache/{role}.{project}.summary"
+        summary_file = f"cache/{role}.{div}.{project}.summary"
     else:
-        summary_file = f"cache/{role}.summary"
+        summary_file = f"cache/{role}.{div}.summary"
 
     project_clause = ""
     if project:
@@ -497,7 +504,7 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
             print(f"  DONE: {label} ({duration}s)")
             journal(f"completed {label} in {duration}s", project, division)
             # Validate summary format
-            validate_summary(config.role, project)
+            validate_summary(config.role, project, division)
             # Commit cache summary + research artifacts (lock prevents races)
             with _git_lock:
                 # 1. Commit cache summaries
@@ -626,7 +633,7 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
             continue
 
         username = config.role.lower()
-        projects = get_work(username)
+        projects = get_work(username, config.division)
         if projects is None:
             print(f"  SKIP: {config.role} (no pending tasks)")
             continue
@@ -666,7 +673,7 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
                     print(f"  SKIP: {label} (already dispatched)")
                     continue
                 # Same role already running on this project from a prior cycle
-                locked_by = project_locked_by(proj)
+                locked_by = project_locked_by(proj, config.division)
                 if locked_by == role:
                     print(f"  SKIP: {label} (already running)")
                     journal(f"skipped {label} — already running on this project", proj, config.division)
