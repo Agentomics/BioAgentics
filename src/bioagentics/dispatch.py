@@ -502,7 +502,12 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
 
 
 def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
-    """Run one dispatch cycle."""
+    """Run one dispatch cycle.
+
+    Generators and task-driven agents run in parallel.  Generators create
+    work (research proposals, literature scans, etc.) while task-driven
+    agents process existing work items concurrently.
+    """
     if _is_stopping():
         return
 
@@ -512,23 +517,19 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
     # Advance projects through the research pipeline
     check_stale_pipeline_projects()
 
-    # Phase 1: Run generators sequentially (they create work for others)
+    # Build the full work queue: generators + task-driven agents
+    work_queue: list[tuple[AgentConfig, str | None]] = []
+
+    # Add generators (unscoped — they decide their own work)
     for config in agents:
-        if _is_stopping():
-            return
         if config.role not in GENERATORS:
             continue
         if config.role == "RESEARCH_DIRECTOR" and not allow_research_director:
             print(f"  SKIP: {config.role} (disabled)")
             continue
-        run_agent(config)
+        work_queue.append((config, None))
 
-    if _is_stopping():
-        return
-
-    # Phase 2: Collect work for task-driven agents
-    work_queue: list[tuple[AgentConfig, str | None]] = []
-
+    # Add task-driven agents (scoped to projects with pending work)
     for config in agents:
         if config.role in GENERATORS:
             continue
@@ -547,10 +548,10 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
             work_queue.append((config, None))
 
     if not work_queue:
-        print("  no work queued for task-driven agents")
+        print("  no work queued")
         return
 
-    # Phase 3: Execute work queue in parallel (respecting project locks)
+    # Execute all agents in parallel (respecting project locks)
     print(f"  dispatching {len(work_queue)} agent/project pair(s)...")
 
     # Track (role, project) pairs claimed this cycle to prevent the same

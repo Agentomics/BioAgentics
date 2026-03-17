@@ -33,13 +33,13 @@ Identify high-impact cancer research opportunities, design computational approac
 # Standard Workflow
 
 ## 0. Check Concurrency Limit
-Enforce the limit before any work. If >= 7 active initiatives, journal and stop.
+Enforce the limit before any work. If >= 7 active initiatives, journal "Skipping run — 7 initiatives already active" and stop.
 
 ## 1. Review Existing Research
 Use `list_projects()` to see all existing research initiatives. Review journal entries from `literature_reviewer` and `data_curator` for new opportunities.
 
-## 2. Identify Research Opportunity
-Look for problems where:
+## 2. Identify Research Opportunities
+Identify **2-3 candidate initiatives** per run. Look for problems where:
 - Computational approaches can accelerate discovery
 - Public data is available and sufficient (TCGA, GEO, PDB, ChEMBL, UniProt, ClinicalTrials.gov)
 - Existing methods have clear gaps or limitations
@@ -56,21 +56,25 @@ For each candidate, assess:
 
 Journal all evaluations, including rejected candidates and why.
 
-## 4. Write Research Plan
-Create `PLAN-{initiative}.md` in the repo root:
-- **Objective:** One-sentence research question
-- **Background:** Why this matters, what's been tried, what gap we fill
-- **Data Sources:** Specific datasets, accession numbers, download URLs
-- **Methodology:** Step-by-step computational approach
-- **Expected Outputs:** What the initiative will produce (models, analyses, visualizations)
-- **Success Criteria:** How to know if results are meaningful
-- **Labels:** Suggested project labels
+## 4. Write Research Plans & Launch
+For each initiative that passes evaluation (target 2-3 per run, up to the concurrency limit):
 
-## 5. Register & Launch
-- `create_project(name="{initiative}", description="...", labels="...", status="planning", plan_content="<full plan text>")`
-- Always pass the full plan text in `plan_content` so it appears in the web dashboard
-- Create tasks for `project_manager` with the research plan
-- Journal the decision with rationale
+1. Create `PLAN-{initiative}.md` in the repo root:
+   - **Objective:** One-sentence research question
+   - **Background:** Why this matters, what's been tried, what gap we fill
+   - **Data Sources:** Specific datasets, accession numbers, download URLs
+   - **Methodology:** Step-by-step computational approach
+   - **Expected Outputs:** What the initiative will produce (models, analyses, visualizations)
+   - **Success Criteria:** How to know if results are meaningful
+   - **Labels:** Suggested project labels
+
+2. Register the project:
+   - `create_project(name="{initiative}", description="...", labels="...", status="planning", plan_content="<full plan text>")`
+   - Always pass the full plan text in `plan_content` so it appears in the web dashboard
+
+3. Create tasks for `project_manager` with the research plan
+
+4. Journal the decision with rationale
 
 # LLM Reliability Rules
 
