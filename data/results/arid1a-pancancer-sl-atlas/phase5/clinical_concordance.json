@@ -1,0 +1,19 @@
+{
+  "clinically_validated": [
+    "Uterus",
+    "Ovary/Fallopian Tube"
+  ],
+  "underexplored": [
+    "Lymphoid",
+    "Skin",
+    "Breast",
+    "Bladder/Urinary Tract",
+    "Esophagus/Stomach",
+    "Bowel",
+    "Lung",
+    "Biliary Tract",
+    "Pancreas"
+  ],
+  "moderate_sl": [],
+  "weak_sl": []
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "cancer_type": "Lymphoid",
+    "strongest_sl_gene": "ARID1B",
+    "best_sl_d": -2.263,
+    "ezh2_d": 0.185,
+    "estimated_arid1a_patients_per_year": 7900,
+    "priority_score": 20.31,
+    "rationale": "Strong SL (d=-2.26 for ARID1B), ~7,900 estimated ARID1A-mutant patients/year in US, no active SL-targeted clinical trials identified"
+  },
+  {
+    "cancer_type": "Skin",
+    "strongest_sl_gene": "ARID1B",
+    "best_sl_d": -2.139,
+    "ezh2_d": 0.194,
+    "estimated_arid1a_patients_per_year": 8655,
+    "priority_score": 19.4,
+    "rationale": "Strong SL (d=-2.14 for ARID1B), ~8,655 estimated ARID1A-mutant patients/year in US, no active SL-targeted clinical trials identified"
+  },
+  {
+    "cancer_type": "Breast",
+    "strongest_sl_gene": "ARID1B",
+    "best_sl_d": -1.86,
+    "ezh2_d": -0.676,
+    "estimated_arid1a_patients_per_year": 13050,
+    "priority_score": 17.63,
+    "rationale": "Strong SL (d=-1.86 for ARID1B), ~13,050 estimated ARID1A-mutant patients/year in US, no active SL-targeted clinical trials identified"
+  },
+  {
+    "cancer_type": "Bladder/Urinary Tract",
+    "strongest_sl_gene": "BRD2",
+    "best_sl_d": -1.33,
+    "ezh2_d": -0.431,
+    "estimated_arid1a_patients_per_year": 21878,
+    "priority_score": 13.29,
+    "rationale": "Strong SL (d=-1.33 for BRD2), ~21,878 estimated ARID1A-mutant patients/year in US, no active SL-targeted clinical trials identified"
+  },
+  {
+    "cancer_type": "Esophagus/Stomach",
+    "strongest_sl_gene": "ARID1B",
+    "best_sl_d": -1.387,
+    "ezh2_d": -0.57,
+    "estimated_arid1a_patients_per_year": 9174,
+    "priority_score": 12.66,
+    "rationale": "Strong SL (d=-1.39 for ARID1B), ~9,174 estimated ARID1A-mutant patients/year in US, no active SL-targeted clinical trials identified"
+  }
+]

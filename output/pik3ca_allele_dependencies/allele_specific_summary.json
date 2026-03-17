@@ -1,0 +1,344 @@
+{
+  "analyses": [
+    {
+      "label": "Pan-cancer kinase vs helical",
+      "n_kinase": 38,
+      "n_helical": 46,
+      "n_genes_tested": 17931,
+      "n_significant_fdr": 0,
+      "n_nominal_p05": 969,
+      "top_hits": [
+        {
+          "gene": "WDR36",
+          "cohens_d": 1.0487,
+          "fdr": 0.845235306645247,
+          "p_value": 0.0032721422313457694,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "DCPS",
+          "cohens_d": 1.0163,
+          "fdr": 0.6269137876333897,
+          "p_value": 3.496256693064468e-05,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "SEMA4G",
+          "cohens_d": 0.8866,
+          "fdr": 0.7296072642522401,
+          "p_value": 0.0003662074272639652,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "PRB4",
+          "cohens_d": -0.8629,
+          "fdr": 0.8565259057540646,
+          "p_value": 0.010017335977648936,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "ARHGAP9",
+          "cohens_d": -0.8522,
+          "fdr": 0.687097116982018,
+          "p_value": 9.786464448872909e-05,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "AURKAIP1",
+          "cohens_d": 0.8473,
+          "fdr": 0.845235306645247,
+          "p_value": 0.001790471827359772,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "TRMT61A",
+          "cohens_d": 0.8463,
+          "fdr": 0.8322510780505333,
+          "p_value": 0.0007890395586893685,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "TAMM41",
+          "cohens_d": 0.8442,
+          "fdr": 0.687097116982018,
+          "p_value": 0.00025901316587254204,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "APOM",
+          "cohens_d": -0.8438,
+          "fdr": 0.8322510780505333,
+          "p_value": 0.0007637787232720312,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "IFNA17",
+          "cohens_d": 0.8394,
+          "fdr": 0.8051492118044498,
+          "p_value": 0.000673539578220219,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "C3orf18",
+          "cohens_d": -0.8347,
+          "fdr": 0.687097116982018,
+          "p_value": 0.0001362139490415195,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "LARP6",
+          "cohens_d": 0.8258,
+          "fdr": 0.687097116982018,
+          "p_value": 0.00019525742805982248,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "MRPL20",
+          "cohens_d": 0.8164,
+          "fdr": 0.845235306645247,
+          "p_value": 0.0009576224591859733,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "SNRPD1",
+          "cohens_d": -0.811,
+          "fdr": 0.7785589520861228,
+          "p_value": 0.0004341971736579793,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "PTCH1",
+          "cohens_d": 0.8061,
+          "fdr": 0.7939077848513015,
+          "p_value": 0.0005313085393015236,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "JAZF1",
+          "cohens_d": -0.801,
+          "fdr": 0.7296072642522401,
+          "p_value": 0.0003419096447185737,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "SNTB2",
+          "cohens_d": -0.7987,
+          "fdr": 0.845235306645247,
+          "p_value": 0.0016331945626663783,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "ZNF365",
+          "cohens_d": 0.7786,
+          "fdr": 0.8820534702664216,
+          "p_value": 0.029328620268825645,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "OR7A10",
+          "cohens_d": -0.7775,
+          "fdr": 0.845235306645247,
+          "p_value": 0.003854706381977856,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "POLR2D",
+          "cohens_d": -0.7708,
+          "fdr": 0.845235306645247,
+          "p_value": 0.002147549213792977,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        }
+      ]
+    },
+    {
+      "label": "Colorectal Adenocarcinoma",
+      "n_kinase": 7,
+      "n_helical": 8,
+      "n_genes_tested": 17787,
+      "n_significant_fdr": 0,
+      "n_nominal_p05": 739,
+      "top_hits": [
+        {
+          "gene": "ALDH2",
+          "cohens_d": 3.3098,
+          "fdr": 0.5819163292847503,
+          "p_value": 0.0003108003108003108,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "TCEA3",
+          "cohens_d": -2.9159,
+          "fdr": 0.5819163292847503,
+          "p_value": 0.0006216006216006216,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "GRM6",
+          "cohens_d": 2.757,
+          "fdr": 0.5819163292847503,
+          "p_value": 0.0003108003108003108,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "CTU1",
+          "cohens_d": 2.7555,
+          "fdr": 0.9112426035502958,
+          "p_value": 0.0037296037296037296,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "MSANTD3",
+          "cohens_d": -2.7445,
+          "fdr": 0.5819163292847503,
+          "p_value": 0.0003108003108003108,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "ZNF575",
+          "cohens_d": 2.5512,
+          "fdr": 0.8999403697078115,
+          "p_value": 0.0021756021756021756,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "COG8",
+          "cohens_d": 2.3708,
+          "fdr": 0.5819163292847503,
+          "p_value": 0.0006216006216006216,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "RNF4",
+          "cohens_d": 2.3639,
+          "fdr": 0.8999403697078115,
+          "p_value": 0.0021756021756021756,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "HHLA2",
+          "cohens_d": -2.3459,
+          "fdr": 0.5819163292847503,
+          "p_value": 0.0003108003108003108,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "PCDHGA2",
+          "cohens_d": 2.3342,
+          "fdr": 0.5819163292847503,
+          "p_value": 0.0006216006216006216,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "CALM3",
+          "cohens_d": -2.3213,
+          "fdr": 0.5819163292847503,
+          "p_value": 0.0006216006216006216,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "RNF151",
+          "cohens_d": 2.2981,
+          "fdr": 0.5819163292847503,
+          "p_value": 0.0003108003108003108,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "CENPU",
+          "cohens_d": 2.2765,
+          "fdr": 0.8999403697078115,
+          "p_value": 0.0021756021756021756,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "OR10P1",
+          "cohens_d": -2.2643,
+          "fdr": 0.9112426035502958,
+          "p_value": 0.010101010101010102,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "HNRNPL",
+          "cohens_d": -2.2576,
+          "fdr": 0.8189933523266857,
+          "p_value": 0.0012432012432012432,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "CUL2",
+          "cohens_d": -2.1684,
+          "fdr": 0.8189933523266857,
+          "p_value": 0.0012432012432012432,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "GOT1L1",
+          "cohens_d": -2.1573,
+          "fdr": 0.8999403697078115,
+          "p_value": 0.0021756021756021756,
+          "pathway": "",
+          "direction": "kinase_more_dependent"
+        },
+        {
+          "gene": "SGCD",
+          "cohens_d": 2.1518,
+          "fdr": 0.8999403697078115,
+          "p_value": 0.0021756021756021756,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "ZFAT",
+          "cohens_d": 2.1491,
+          "fdr": 0.5819163292847503,
+          "p_value": 0.0003108003108003108,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        },
+        {
+          "gene": "CALCA",
+          "cohens_d": 2.1252,
+          "fdr": 0.5819163292847503,
+          "p_value": 0.0006216006216006216,
+          "pathway": "",
+          "direction": "helical_more_dependent"
+        }
+      ]
+    }
+  ]
+}
