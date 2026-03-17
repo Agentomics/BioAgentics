@@ -382,7 +382,8 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
         stats: RunStats | None = None
         try:
             # Stream stdout line by line, tee to terminal, parse result event
-            assert proc.stdout is not None
+            if proc.stdout is None:
+                raise RuntimeError(f"Failed to capture stdout for {label}")
             for line in proc.stdout:
                 sys.stdout.write(line)
                 sys.stdout.flush()
@@ -647,8 +648,14 @@ def status():
         print(f"dispatcher is running (pid {pid})")
 
 
+_shutdown_once = threading.Event()
+
+
 def _shutdown():
     """Clean shutdown: signal stop, terminate children, clear presence, remove PID."""
+    if _shutdown_once.is_set():
+        return
+    _shutdown_once.set()
     _stop_event.set()
     _terminate_children()
     # Wait briefly for children to exit
@@ -703,12 +710,13 @@ def main():
     print("startup: checking for stuck in_progress tasks...")
     reset_stuck_tasks()
 
-    # Signal handler sets stop event — actual cleanup happens in _shutdown
+    # Signal handler only sets the stop event — actual cleanup happens in the
+    # finally block via _shutdown().  Calling _shutdown() here would risk
+    # deadlocking on _children_lock or hanging on API calls.
     def handle_signal(sig, _frame):
         signame = signal.Signals(sig).name
         print(f"\n{signame} received — shutting down...")
-        _shutdown()
-        sys.exit(0)
+        _stop_event.set()
 
     signal.signal(signal.SIGINT, handle_signal)
     signal.signal(signal.SIGTERM, handle_signal)

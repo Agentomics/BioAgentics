@@ -367,12 +367,18 @@ def close_issue(number: int, comment: str = "") -> str:
     return _gh(*args)
 
 
+_MERGE_STRATEGIES = {"squash", "merge", "rebase"}
+_REVIEW_ACTIONS = {"approve", "request-changes", "comment"}
+
+
 @mcp.tool()
 def merge_pr(number: int, strategy: str = "squash") -> str:
     """Merge a GitHub pull request.
 
     Strategy: squash (default), merge, or rebase.
     """
+    if strategy not in _MERGE_STRATEGIES:
+        return json.dumps({"error": f"invalid strategy: {strategy!r}, must be one of {_MERGE_STRATEGIES}"})
     repo = f"{GITHUB_ORG}/{GITHUB_REPO}"
     return _gh("pr", "merge", str(number), f"--{strategy}", "--repo", repo)
 
@@ -383,6 +389,8 @@ def review_pr(number: int, action: str = "comment", body: str = "") -> str:
 
     Action: approve, request-changes, or comment.
     """
+    if action not in _REVIEW_ACTIONS:
+        return json.dumps({"error": f"invalid action: {action!r}, must be one of {_REVIEW_ACTIONS}"})
     repo = f"{GITHUB_ORG}/{GITHUB_REPO}"
     args = ["pr", "review", str(number), "--repo", repo, f"--{action}"]
     if body:
