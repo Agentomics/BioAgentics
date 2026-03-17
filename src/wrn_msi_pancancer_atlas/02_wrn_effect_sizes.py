@@ -260,6 +260,89 @@ def add_pancancer_pooled(
     return result
 
 
+# TP53 gain-of-function hotspot alleles (disrupt p53/PUMA apoptotic signaling)
+TP53_GOF_HOTSPOTS = {"R175H", "R248W", "R273H", "R248Q", "R273C", "G245S"}
+
+
+def tp53_stratification(
+    classified: pd.DataFrame,
+    crispr: pd.DataFrame,
+    depmap_dir: Path,
+) -> pd.DataFrame:
+    """Stratify WRN dependency by TP53 status within MSI-H lines.
+
+    Pan-cancer pooled analysis (per-type N too small for most types).
+    Compares TP53-WT vs TP53-mutant vs TP53-GOF-hotspot within MSI-H.
+    """
+    # Load TP53 mutations
+    cols = ["ModelID", "HugoSymbol", "ProteinChange", "LikelyLoF", "Hotspot"]
+    mutations = pd.read_csv(
+        depmap_dir / "OmicsSomaticMutations.csv",
+        usecols=lambda c: c in cols,
+    )
+    tp53_mut = mutations[mutations["HugoSymbol"] == "TP53"].copy()
+
+    # Classify TP53 status per line
+    tp53_lines = set(tp53_mut["ModelID"].unique())
+
+    # Identify GOF hotspot lines
+    tp53_mut["protein_short"] = tp53_mut["ProteinChange"].str.extract(r"p\.([A-Z]\d+[A-Z])", expand=False)
+    gof_lines = set(
+        tp53_mut[tp53_mut["protein_short"].isin(TP53_GOF_HOTSPOTS)]["ModelID"].unique()
+    )
+
+    # Get MSI-H lines with CRISPR + WRN data
+    msi_h = classified[
+        (classified["msi_status"] == "MSI-H") & (classified["has_crispr"])
+    ]
+    merged = msi_h.join(crispr[["WRN"]], how="inner")
+    merged = merged.dropna(subset=["WRN"])
+
+    # Assign TP53 status
+    merged["tp53_status"] = "TP53-WT"
+    merged.loc[merged.index.isin(tp53_lines), "tp53_status"] = "TP53-mutant"
+    merged.loc[merged.index.isin(gof_lines), "tp53_status"] = "TP53-GOF-hotspot"
+
+    rows = []
+
+    # Pan-cancer pooled comparison
+    for tp53_cat in ["TP53-WT", "TP53-mutant", "TP53-GOF-hotspot"]:
+        subset = merged[merged["tp53_status"] == tp53_cat]
+        rows.append({
+            "cancer_type": "Pan-cancer (pooled)",
+            "tp53_status": tp53_cat,
+            "n": len(subset),
+            "mean_wrn_dep": round(float(subset["WRN"].mean()), 4) if len(subset) > 0 else float("nan"),
+            "median_wrn_dep": round(float(subset["WRN"].median()), 4) if len(subset) > 0 else float("nan"),
+        })
+
+    # TP53-WT vs TP53-mutant comparison
+    wt_vals = merged[merged["tp53_status"] == "TP53-WT"]["WRN"].values
+    mut_vals = merged[merged["tp53_status"] != "TP53-WT"]["WRN"].values
+
+    if len(wt_vals) >= 3 and len(mut_vals) >= 3:
+        d = cohens_d(wt_vals, mut_vals)
+        _, pval = stats.mannwhitneyu(wt_vals, mut_vals, alternative="two-sided")
+        rows[0]["cohens_d_vs_mut"] = round(d, 4)
+        rows[0]["pvalue_vs_mut"] = float(pval)
+
+    # Per qualifying cancer type
+    for ct in merged["OncotreeLineage"].unique():
+        ct_data = merged[merged["OncotreeLineage"] == ct]
+        for tp53_cat in ["TP53-WT", "TP53-mutant", "TP53-GOF-hotspot"]:
+            subset = ct_data[ct_data["tp53_status"] == tp53_cat]
+            if len(subset) > 0:
+                rows.append({
+                    "cancer_type": ct,
+                    "tp53_status": tp53_cat,
+                    "n": len(subset),
+                    "mean_wrn_dep": round(float(subset["WRN"].mean()), 4),
+                    "median_wrn_dep": round(float(subset["WRN"].median()), 4),
+                })
+
+    return pd.DataFrame(rows)
+
+
 def plot_forest(result: pd.DataFrame, gene: str, out_path: Path) -> None:
     """Forest plot of effect sizes across cancer types for a single gene."""
     gene_data = result[result["gene"] == gene].sort_values("cohens_d").reset_index(drop=True)
@@ -306,6 +389,7 @@ def write_summary_txt(
     wrn_result: pd.DataFrame,
     control_result: pd.DataFrame,
     output_dir: Path,
+    tp53_result: pd.DataFrame | None = None,
 ) -> None:
     """Write human-readable summary."""
     lines = [
@@ -357,6 +441,25 @@ def write_summary_txt(
             lines.append(f"  Pan-cancer pooled: d={pooled.iloc[0]['cohens_d']:.3f} "
                          f"→ {pooled.iloc[0]['classification']}")
     lines.append("")
+
+    # TP53 stratification section
+    if tp53_result is not None and len(tp53_result) > 0:
+        lines.append("TP53 STRATIFICATION (within MSI-H lines)")
+        lines.append("-" * 50)
+        lines.append("  Clinical context: WRN SL may be p53/PUMA-dependent (PMID 36508676)")
+        lines.append("  TP53-mutant MSI tumors may partially resist WRN inhibitors")
+        lines.append("")
+        for ct in tp53_result["cancer_type"].unique():
+            ct_data = tp53_result[tp53_result["cancer_type"] == ct]
+            lines.append(f"  {ct}:")
+            for _, row in ct_data.iterrows():
+                d_str = f" d_vs_mut={row['cohens_d_vs_mut']:.3f} p={row['pvalue_vs_mut']:.3e}" if pd.notna(row.get("cohens_d_vs_mut")) else ""
+                lines.append(
+                    f"    {row['tp53_status']}: n={row['n']}, "
+                    f"mean_WRN={row['mean_wrn_dep']:.3f}, "
+                    f"median_WRN={row['median_wrn_dep']:.3f}{d_str}"
+                )
+            lines.append("")
 
     with open(output_dir / "wrn_effect_sizes_summary.txt", "w") as f:
         f.write("\n".join(lines))
@@ -415,6 +518,15 @@ def main() -> None:
         print(f"  {row['cancer_type']} / {row['gene']}: d={row['cohens_d']:.3f} "
               f"→ {row.get('classification', 'N/A')}")
 
+    # TP53 stratification
+    print("\nComputing TP53 stratification within MSI-H lines...")
+    tp53_result = tp53_stratification(classified, crispr, DEPMAP_DIR)
+    print("  TP53 stratification:")
+    pooled_tp53 = tp53_result[tp53_result["cancer_type"] == "Pan-cancer (pooled)"]
+    for _, row in pooled_tp53.iterrows():
+        print(f"    {row['tp53_status']}: n={row['n']}, "
+              f"mean_WRN={row['mean_wrn_dep']:.3f}")
+
     # Save outputs
     print("\nSaving outputs...")
     wrn_result.to_csv(OUTPUT_DIR / "wrn_effect_sizes.csv", index=False)
@@ -423,12 +535,15 @@ def main() -> None:
     control_result.to_csv(OUTPUT_DIR / "control_helicase_effects.csv", index=False)
     print("  control_helicase_effects.csv")
 
+    tp53_result.to_csv(OUTPUT_DIR / "wrn_tp53_stratification.csv", index=False)
+    print("  wrn_tp53_stratification.csv")
+
     # Forest plot
     plot_forest(wrn_result, "WRN", OUTPUT_DIR / "wrn_forest_plot.png")
     print("  wrn_forest_plot.png")
 
     # Summary text
-    write_summary_txt(wrn_result, control_result, OUTPUT_DIR)
+    write_summary_txt(wrn_result, control_result, OUTPUT_DIR, tp53_result)
     print("  wrn_effect_sizes_summary.txt")
 
     print("\nDone.")

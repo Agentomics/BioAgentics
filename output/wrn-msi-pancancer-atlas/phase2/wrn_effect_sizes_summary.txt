@@ -29,3 +29,64 @@ INTERPRETATION
     Uterus: d=-1.086
     Bowel: d=-2.844
     Pan-cancer (pooled): d=-2.833
+
+TP53 STRATIFICATION (within MSI-H lines)
+--------------------------------------------------
+  Clinical context: WRN SL may be p53/PUMA-dependent (PMID 36508676)
+  TP53-mutant MSI tumors may partially resist WRN inhibitors
+
+  Pan-cancer (pooled):
+    TP53-WT: n=16, mean_WRN=-1.354, median_WRN=-1.446 d_vs_mut=-0.556 p=2.559e-02
+    TP53-mutant: n=18, mean_WRN=-0.964, median_WRN=-0.302
+    TP53-GOF-hotspot: n=10, mean_WRN=-0.505, median_WRN=-0.592
+
+  CNS/Brain:
+    TP53-WT: n=1, mean_WRN=-0.115, median_WRN=-0.115
+
+  Head and Neck:
+    TP53-mutant: n=2, mean_WRN=-0.163, median_WRN=-0.163
+
+  Lung:
+    TP53-mutant: n=2, mean_WRN=-0.194, median_WRN=-0.194
+    TP53-GOF-hotspot: n=1, mean_WRN=-0.078, median_WRN=-0.078
+
+  Lymphoid:
+    TP53-WT: n=1, mean_WRN=-0.594, median_WRN=-0.594
+    TP53-mutant: n=1, mean_WRN=-0.038, median_WRN=-0.038
+    TP53-GOF-hotspot: n=1, mean_WRN=0.031, median_WRN=0.031
+
+  Breast:
+    TP53-WT: n=1, mean_WRN=-0.539, median_WRN=-0.539
+    TP53-mutant: n=1, mean_WRN=-0.248, median_WRN=-0.248
+
+  Uterus:
+    TP53-WT: n=3, mean_WRN=-0.739, median_WRN=-0.641
+    TP53-mutant: n=2, mean_WRN=-2.658, median_WRN=-2.658
+    TP53-GOF-hotspot: n=3, mean_WRN=-0.728, median_WRN=-0.666
+
+  Ovary/Fallopian Tube:
+    TP53-WT: n=1, mean_WRN=-1.632, median_WRN=-1.632
+    TP53-mutant: n=1, mean_WRN=-1.446, median_WRN=-1.446
+    TP53-GOF-hotspot: n=2, mean_WRN=-0.297, median_WRN=-0.297
+
+  Esophagus/Stomach:
+    TP53-WT: n=2, mean_WRN=-1.736, median_WRN=-1.736
+    TP53-mutant: n=2, mean_WRN=-1.258, median_WRN=-1.258
+
+  Bowel:
+    TP53-WT: n=7, mean_WRN=-1.870, median_WRN=-2.001
+    TP53-mutant: n=4, mean_WRN=-1.691, median_WRN=-1.653
+    TP53-GOF-hotspot: n=1, mean_WRN=-0.984, median_WRN=-0.984
+
+  Myeloid:
+    TP53-mutant: n=1, mean_WRN=-0.034, median_WRN=-0.034
+
+  Skin:
+    TP53-mutant: n=1, mean_WRN=-0.059, median_WRN=-0.059
+    TP53-GOF-hotspot: n=1, mean_WRN=-0.464, median_WRN=-0.464
+
+  Cervix:
+    TP53-GOF-hotspot: n=1, mean_WRN=-0.780, median_WRN=-0.780
+
+  Vulva/Vagina:
+    TP53-mutant: n=1, mean_WRN=-0.217, median_WRN=-0.217
