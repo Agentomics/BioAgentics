@@ -27,35 +27,41 @@ DEPMAP_DIR = REPO_ROOT / "data" / "depmap" / "25q3"
 PHASE1_DIR = REPO_ROOT / "output" / "cancer" / "pten-loss-pancancer-dependency-atlas" / "phase1"
 OUTPUT_DIR = REPO_ROOT / "output" / "cancer" / "pten-loss-pancancer-dependency-atlas" / "phase4"
 
-# Target drugs: name -> (mechanism, CRISPR gene for concordance)
+# Target drugs: name (as in PRISM 24Q2) -> (mechanism, CRISPR gene for concordance)
+# Names verified against Repurposing_Public_24Q2_Treatment_Meta_Data.csv
 TARGET_DRUGS = {
     # AKT inhibitors
-    "capivasertib": ("AKT inhibitor", "AKT1"),
-    "ipatasertib": ("AKT inhibitor", "AKT1"),
-    "MK-2206": ("AKT inhibitor (allosteric)", "AKT1"),
-    "AZD5363": ("AKT inhibitor", "AKT1"),
-    # PI3K inhibitors (pan-class I)
-    "alpelisib": ("PI3Kα inhibitor", "PIK3CA"),
-    "pictilisib": ("PI3K inhibitor (pan)", "PIK3CA"),
-    "buparlisib": ("PI3K inhibitor (pan)", "PIK3CA"),
-    "copanlisib": ("PI3K inhibitor (pan)", "PIK3CA"),
-    "inavolisib": ("PI3Kα inhibitor (mutant-selective)", "PIK3CA"),
-    # PI3Kβ-selective (key for PTEN-null biology)
-    "AZD8186": ("PI3Kβ inhibitor", "PIK3CB"),
-    "GSK2636771": ("PI3Kβ inhibitor", "PIK3CB"),
+    "GSK2110183": ("AKT inhibitor (afuresertib)", "AKT1"),
+    "triciribine-phosphate": ("AKT inhibitor", "AKT1"),
+    # PI3K inhibitors
+    "wortmannin": ("PI3K inhibitor (pan, research tool)", "PIK3CA"),
+    "GDC-0077": ("PI3Kα inhibitor (inavolisib)", "PIK3CA"),
+    "PI3Kd-IN-2": ("PI3Kδ inhibitor", "PIK3CD"),
+    # PI3K/mTOR dual
+    "GDC-0084": ("PI3K/mTOR dual inhibitor (brain-penetrant)", "MTOR"),
     # mTOR inhibitors
-    "everolimus": ("mTOR inhibitor (rapalog)", "MTOR"),
-    "rapamycin": ("mTOR inhibitor (rapalog)", "MTOR"),
-    "sirolimus": ("mTOR inhibitor (rapalog)", "MTOR"),
-    "temsirolimus": ("mTOR inhibitor (rapalog)", "MTOR"),
-    "AZD8055": ("mTOR inhibitor (catalytic)", "MTOR"),
-    "INK-128": ("mTOR inhibitor (catalytic)", "MTOR"),
-    # Dual PI3K/mTOR
-    "dactolisib": ("PI3K/mTOR dual inhibitor", "MTOR"),
-    "apitolisib": ("PI3K/mTOR dual inhibitor", "MTOR"),
+    "CC-223": ("mTOR inhibitor (catalytic)", "MTOR"),
 }
 
+# Drugs we searched for but are NOT in PRISM 24Q2 (for documentation)
+NOT_IN_PRISM = [
+    "capivasertib", "ipatasertib", "MK-2206", "alpelisib", "buparlisib",
+    "copanlisib", "pictilisib", "AZD8186", "GSK2636771", "everolimus",
+    "rapamycin", "sirolimus", "temsirolimus", "AZD8055", "dactolisib",
+]
+
 MIN_SAMPLES = 3
+
+
+def _extract_compound_key(broad_id: str) -> str:
+    """Extract compound key (BRD-KXXXXXXXX) from a broad_id string.
+
+    Handles both matrix format (BRD:BRD-K99023089-001-03-7) and
+    metadata format (BRD-K99023089-001-04-9).
+    """
+    import re
+    m = re.search(r"BRD-[A-Za-z]\d{8}", str(broad_id))
+    return m.group(0) if m else str(broad_id)
 
 
 def cohens_d(group1: np.ndarray, group2: np.ndarray) -> float:
@@ -95,17 +101,26 @@ def find_available_drugs(meta: pd.DataFrame) -> tuple[dict, pd.DataFrame]:
         in_prism = drug_name in all_names
         if in_prism:
             drug_rows = meta[meta["name"] == drug_name]
-            broad_id = drug_rows["broad_id"].iloc[0]
+            compound_key = _extract_compound_key(drug_rows["broad_id"].values[0])
             available[drug_name] = {
                 "mechanism": mechanism,
                 "crispr_gene": gene,
-                "broad_id": broad_id,
+                "compound_key": compound_key,
             }
         report_rows.append({
             "drug_name": drug_name,
             "mechanism": mechanism,
             "crispr_gene": gene or "",
             "in_prism": in_prism,
+        })
+
+    # Document drugs we looked for but didn't find
+    for drug_name in NOT_IN_PRISM:
+        report_rows.append({
+            "drug_name": drug_name,
+            "mechanism": "(not in PRISM 24Q2)",
+            "crispr_gene": "",
+            "in_prism": False,
         })
 
     return available, pd.DataFrame(report_rows)
@@ -125,8 +140,8 @@ def compute_targeted_sensitivity(
     rows = []
 
     for drug_name, info in available_drugs.items():
-        broad_id = info["broad_id"]
-        matching_rows = [idx for idx in prism.index if broad_id in str(idx)]
+        compound_key = info["compound_key"]
+        matching_rows = [idx for idx in prism.index if compound_key in str(idx)]
         if not matching_rows:
             continue
 
@@ -204,14 +219,13 @@ def genomewide_drug_screen(
     lost_lines = classified[classified["PTEN_status"] == "lost"].index
     intact_lines = classified[classified["PTEN_status"] == "intact"].index
 
-    # Build broad_id -> name mapping
-    bid_to_name = {}
-    bid_to_moa = {}
+    # Build compound_key -> name mapping (handles version suffix mismatches)
+    key_to_name = {}
     for _, row in drug_meta.iterrows():
         bid = row.get("broad_id")
         name = row.get("name")
         if pd.notna(bid) and pd.notna(name):
-            bid_to_name[bid] = name
+            key_to_name[_extract_compound_key(str(bid))] = str(name)
 
     rows = []
     pvals = []
@@ -227,10 +241,8 @@ def genomewide_drug_screen(
         d = cohens_d(lost_vals, intact_vals)
         _, pval = stats.mannwhitneyu(lost_vals, intact_vals, alternative="two-sided")
 
-        broad_id = str(treatment_id).split("::")[0] if "::" in str(treatment_id) else str(treatment_id)
-        # Strip BRD: prefix for lookup
-        lookup_bid = broad_id.replace("BRD:", "") if broad_id.startswith("BRD:") else broad_id
-        drug_name = bid_to_name.get(lookup_bid, bid_to_name.get(broad_id, ""))
+        compound_key = _extract_compound_key(str(treatment_id))
+        drug_name = key_to_name.get(compound_key, "")
 
         rows.append({
             "treatment_id": treatment_id,
@@ -264,8 +276,8 @@ def compute_concordance(
         if not gene or gene not in crispr.columns:
             continue
 
-        broad_id = info["broad_id"]
-        matching_rows = [idx for idx in prism.index if broad_id in str(idx)]
+        compound_key = info["compound_key"]
+        matching_rows = [idx for idx in prism.index if compound_key in str(idx)]
         if not matching_rows:
             continue
 
@@ -308,15 +320,16 @@ def identify_combination_candidates(
         "pi3k", "akt", "mtor", "rapamycin", "everolimus", "sirolimus",
         "alpelisib", "capivasertib", "ipatasertib", "pictilisib",
         "buparlisib", "copanlisib", "dactolisib", "apitolisib",
-        "temsirolimus", "inavolisib",
+        "temsirolimus", "inavolisib", "wortmannin", "triciribine",
+        "gsk2110183", "gdc-0077", "gdc-0084", "cc-223", "afuresertib",
     ]
 
-    def is_pi3k_drug(name: str) -> bool:
-        name_lower = str(name).lower()
+    def is_pi3k_drug(row: pd.Series) -> bool:
+        name_lower = str(row.get("drug_name", "")).lower()
         return any(term in name_lower for term in pi3k_terms)
 
     if len(pten_selective) > 0:
-        non_pi3k = pten_selective[~pten_selective["drug_name"].apply(is_pi3k_drug)]
+        non_pi3k = pten_selective[~pten_selective.apply(is_pi3k_drug, axis=1)]
         return non_pi3k
     return pd.DataFrame()
 

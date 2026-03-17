@@ -1,0 +1,8 @@
+drug,gene,mechanism,spearman_r,p_value,n_lines
+GSK2110183,AKT1,AKT inhibitor (afuresertib),0.2302,6.165772182486402e-07,459
+triciribine-phosphate,AKT1,AKT inhibitor,-0.0026,0.9455687779695282,712
+wortmannin,PIK3CA,"PI3K inhibitor (pan, research tool)",0.0554,0.13861658007162606,716
+GDC-0077,PIK3CA,PI3Kα inhibitor (inavolisib),0.3353,3.5791393806743475e-20,712
+PI3Kd-IN-2,PIK3CD,PI3Kδ inhibitor,-0.0025,0.9457568796720395,716
+GDC-0084,MTOR,PI3K/mTOR dual inhibitor (brain-penetrant),0.133,0.00037413563024324295,712
+CC-223,MTOR,mTOR inhibitor (catalytic),0.1385,0.0002003253189593965,716

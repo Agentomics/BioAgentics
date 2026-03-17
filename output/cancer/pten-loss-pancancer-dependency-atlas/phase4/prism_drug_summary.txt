@@ -4,25 +4,115 @@ PTEN Loss Pan-Cancer Dependency Atlas - Phase 4: PRISM Drug Sensitivity
 
 DRUG AVAILABILITY IN PRISM 24Q2
 --------------------------------------------------
-  capivasertib (AKT inhibitor): NOT FOUND
-  ipatasertib (AKT inhibitor): NOT FOUND
-  MK-2206 (AKT inhibitor (allosteric)): NOT FOUND
-  AZD5363 (AKT inhibitor): NOT FOUND
-  alpelisib (PI3Kα inhibitor): NOT FOUND
-  pictilisib (PI3K inhibitor (pan)): NOT FOUND
-  buparlisib (PI3K inhibitor (pan)): NOT FOUND
-  copanlisib (PI3K inhibitor (pan)): NOT FOUND
-  inavolisib (PI3Kα inhibitor (mutant-selective)): NOT FOUND
-  AZD8186 (PI3Kβ inhibitor): NOT FOUND
-  GSK2636771 (PI3Kβ inhibitor): NOT FOUND
-  everolimus (mTOR inhibitor (rapalog)): NOT FOUND
-  rapamycin (mTOR inhibitor (rapalog)): NOT FOUND
-  sirolimus (mTOR inhibitor (rapalog)): NOT FOUND
-  temsirolimus (mTOR inhibitor (rapalog)): NOT FOUND
-  AZD8055 (mTOR inhibitor (catalytic)): NOT FOUND
-  INK-128 (mTOR inhibitor (catalytic)): NOT FOUND
-  dactolisib (PI3K/mTOR dual inhibitor): NOT FOUND
-  apitolisib (PI3K/mTOR dual inhibitor): NOT FOUND
+  GSK2110183 (AKT inhibitor (afuresertib)): AVAILABLE
+  triciribine-phosphate (AKT inhibitor): AVAILABLE
+  wortmannin (PI3K inhibitor (pan, research tool)): AVAILABLE
+  GDC-0077 (PI3Kα inhibitor (inavolisib)): AVAILABLE
+  PI3Kd-IN-2 (PI3Kδ inhibitor): AVAILABLE
+  GDC-0084 (PI3K/mTOR dual inhibitor (brain-penetrant)): AVAILABLE
+  CC-223 (mTOR inhibitor (catalytic)): AVAILABLE
+  capivasertib ((not in PRISM 24Q2)): NOT FOUND
+  ipatasertib ((not in PRISM 24Q2)): NOT FOUND
+  MK-2206 ((not in PRISM 24Q2)): NOT FOUND
+  alpelisib ((not in PRISM 24Q2)): NOT FOUND
+  buparlisib ((not in PRISM 24Q2)): NOT FOUND
+  copanlisib ((not in PRISM 24Q2)): NOT FOUND
+  pictilisib ((not in PRISM 24Q2)): NOT FOUND
+  AZD8186 ((not in PRISM 24Q2)): NOT FOUND
+  GSK2636771 ((not in PRISM 24Q2)): NOT FOUND
+  everolimus ((not in PRISM 24Q2)): NOT FOUND
+  rapamycin ((not in PRISM 24Q2)): NOT FOUND
+  sirolimus ((not in PRISM 24Q2)): NOT FOUND
+  temsirolimus ((not in PRISM 24Q2)): NOT FOUND
+  AZD8055 ((not in PRISM 24Q2)): NOT FOUND
+  dactolisib ((not in PRISM 24Q2)): NOT FOUND
+
+TARGETED DRUG SENSITIVITY (PTEN-lost vs intact)
+--------------------------------------------------
+
+  AKT inhibitor (afuresertib):
+    Uterus / GSK2110183: d=-1.970 FDR=2.386e-03 *
+    Ovary/Fallopian Tube / GSK2110183: d=-1.679 FDR=2.143e-02 *
+    Skin / GSK2110183: d=-0.992 FDR=9.680e-02
+    Pan-cancer (pooled) / GSK2110183: d=-0.734 FDR=1.075e-05 *
+    Breast / GSK2110183: d=-0.449 FDR=7.760e-01
+    CNS/Brain / GSK2110183: d=-0.412 FDR=4.853e-01
+    Lung / GSK2110183: d=-0.359 FDR=9.490e-01
+    Bowel / GSK2110183: d=-0.304 FDR=7.430e-01
+    Esophagus/Stomach / GSK2110183: d=0.073 FDR=9.490e-01
+
+  AKT inhibitor:
+    Uterus / triciribine-phosphate: d=-0.359 FDR=6.757e-01
+    Ovary/Fallopian Tube / triciribine-phosphate: d=-0.137 FDR=7.760e-01
+    CNS/Brain / triciribine-phosphate: d=0.196 FDR=7.760e-01
+    Lymphoid / triciribine-phosphate: d=0.224 FDR=8.760e-01
+    Pan-cancer (pooled) / triciribine-phosphate: d=0.403 FDR=1.171e-03 *
+    Skin / triciribine-phosphate: d=0.486 FDR=4.482e-01
+    Esophagus/Stomach / triciribine-phosphate: d=0.528 FDR=7.903e-01
+    Lung / triciribine-phosphate: d=0.556 FDR=4.807e-01
+    Bowel / triciribine-phosphate: d=0.812 FDR=2.638e-01
+    Breast / triciribine-phosphate: d=1.247 FDR=1.806e-03 *
+
+  PI3K inhibitor (pan, research tool):
+    Uterus / wortmannin: d=-0.517 FDR=2.375e-01
+    Lymphoid / wortmannin: d=-0.314 FDR=4.482e-01
+    Skin / wortmannin: d=-0.201 FDR=4.917e-01
+    Breast / wortmannin: d=-0.073 FDR=9.319e-01
+    Pan-cancer (pooled) / wortmannin: d=0.075 FDR=9.319e-01
+    Bowel / wortmannin: d=0.145 FDR=9.490e-01
+    Ovary/Fallopian Tube / wortmannin: d=0.188 FDR=9.490e-01
+    CNS/Brain / wortmannin: d=0.226 FDR=7.310e-01
+    Lung / wortmannin: d=0.279 FDR=8.217e-01
+    Esophagus/Stomach / wortmannin: d=0.338 FDR=9.490e-01
+
+  PI3Kα inhibitor (inavolisib):
+    Lung / GDC-0077: d=-0.274 FDR=7.310e-01
+    Bowel / GDC-0077: d=0.029 FDR=9.490e-01
+    Ovary/Fallopian Tube / GDC-0077: d=0.088 FDR=9.490e-01
+    Lymphoid / GDC-0077: d=0.194 FDR=9.490e-01
+    Skin / GDC-0077: d=0.370 FDR=7.430e-01
+    Breast / GDC-0077: d=0.396 FDR=4.608e-01
+    Uterus / GDC-0077: d=0.434 FDR=7.310e-01
+    Pan-cancer (pooled) / GDC-0077: d=0.444 FDR=1.581e-04 *
+    CNS/Brain / GDC-0077: d=0.474 FDR=4.547e-01
+    Esophagus/Stomach / GDC-0077: d=0.755 FDR=7.310e-01
+
+  PI3Kδ inhibitor:
+    Esophagus/Stomach / PI3Kd-IN-2: d=-1.179 FDR=9.490e-01
+    Lung / PI3Kd-IN-2: d=-0.815 FDR=1.601e-01
+    CNS/Brain / PI3Kd-IN-2: d=-0.252 FDR=7.430e-01
+    Skin / PI3Kd-IN-2: d=-0.216 FDR=8.217e-01
+    Pan-cancer (pooled) / PI3Kd-IN-2: d=0.033 FDR=9.903e-01
+    Uterus / PI3Kd-IN-2: d=0.063 FDR=9.282e-01
+    Lymphoid / PI3Kd-IN-2: d=0.329 FDR=8.393e-01
+    Breast / PI3Kd-IN-2: d=0.396 FDR=7.760e-01
+    Bowel / PI3Kd-IN-2: d=0.432 FDR=8.671e-01
+    Ovary/Fallopian Tube / PI3Kd-IN-2: d=0.772 FDR=1.878e-01
+
+  PI3K/mTOR dual inhibitor (brain-penetrant):
+    Ovary/Fallopian Tube / GDC-0084: d=-0.598 FDR=4.853e-01
+    Uterus / GDC-0084: d=-0.328 FDR=8.217e-01
+    Bowel / GDC-0084: d=-0.116 FDR=9.377e-01
+    Skin / GDC-0084: d=-0.110 FDR=9.319e-01
+    Lymphoid / GDC-0084: d=-0.086 FDR=9.319e-01
+    Lung / GDC-0084: d=0.026 FDR=8.671e-01
+    Pan-cancer (pooled) / GDC-0084: d=0.196 FDR=1.601e-01
+    CNS/Brain / GDC-0084: d=0.357 FDR=7.430e-01
+    Breast / GDC-0084: d=0.838 FDR=1.528e-01
+    Esophagus/Stomach / GDC-0084: d=1.126 FDR=4.547e-01
+
+  mTOR inhibitor (catalytic):
+    Ovary/Fallopian Tube / CC-223: d=-0.671 FDR=4.066e-01
+    Uterus / CC-223: d=-0.545 FDR=5.459e-01
+    Skin / CC-223: d=-0.362 FDR=5.275e-01
+    CNS/Brain / CC-223: d=-0.197 FDR=7.310e-01
+    Bowel / CC-223: d=-0.153 FDR=8.671e-01
+    Pan-cancer (pooled) / CC-223: d=0.028 FDR=9.319e-01
+    Lymphoid / CC-223: d=0.120 FDR=9.490e-01
+    Lung / CC-223: d=0.182 FDR=9.490e-01
+    Breast / CC-223: d=0.367 FDR=7.310e-01
+    Esophagus/Stomach / CC-223: d=0.705 FDR=4.801e-01
+  (* = FDR < 0.05)
 
 GENOME-WIDE DRUG SCREEN: 110 significant (FDR<0.05)
   PTEN-selective sensitivity (d<-0.3, FDR<0.05): 51
@@ -31,7 +121,7 @@ GENOME-WIDE DRUG SCREEN: 110 significant (FDR<0.05)
   BRD:BRD-K25325018-001-05-6: d=-0.915 FDR=6.733e-05
   BRD:BRD-K71480163-001-01-4: d=-0.838 FDR=1.961e-05
   BRD:BRD-K32127727-001-04-2: d=-0.782 FDR=6.733e-05
-  BRD:BRD-K25412176-001-01-9: d=-0.734 FDR=1.121e-04
+  GSK2110183: d=-0.734 FDR=1.121e-04
   BRD:BRD-K12040459-001-06-0: d=-0.651 FDR=7.623e-04
   BRD:BRD-K76406695-001-02-9: d=-0.637 FDR=1.853e-04
   BRD:BRD-K67173685-001-06-9: d=-0.637 FDR=1.056e-03
@@ -48,20 +138,30 @@ GENOME-WIDE DRUG SCREEN: 110 significant (FDR<0.05)
   BRD:BRD-K71221037-001-01-6: d=-0.512 FDR=1.114e-02
   BRD:BRD-K89464729-001-03-1: d=-0.509 FDR=6.620e-03
 
-COMBINATION CANDIDATES (non-PI3K drugs, PTEN-selective): 51
+COMBINATION CANDIDATES (non-PI3K drugs, PTEN-selective): 49
 --------------------------------------------------
   BRD:BRD-K99023089-001-03-7: d=-0.928 FDR=2.757e-07
   BRD:BRD-K25325018-001-05-6: d=-0.915 FDR=6.733e-05
   BRD:BRD-K71480163-001-01-4: d=-0.838 FDR=1.961e-05
   BRD:BRD-K32127727-001-04-2: d=-0.782 FDR=6.733e-05
-  BRD:BRD-K25412176-001-01-9: d=-0.734 FDR=1.121e-04
   BRD:BRD-K12040459-001-06-0: d=-0.651 FDR=7.623e-04
   BRD:BRD-K76406695-001-02-9: d=-0.637 FDR=1.853e-04
   BRD:BRD-K67173685-001-06-9: d=-0.637 FDR=1.056e-03
   BRD:BRD-K73982490-001-02-9: d=-0.599 FDR=1.852e-03
   BRD:BRD-K06543683-066-02-1: d=-0.595 FDR=1.676e-03
-  GSK2110183: d=-0.579 FDR=1.121e-04
   BRD:BRD-K53328210-001-04-4: d=-0.562 FDR=1.852e-03
   BRD:BRD-K16180792-001-01-7: d=-0.561 FDR=4.430e-03
   BRD:BRD-K68938568-001-01-7: d=-0.541 FDR=1.947e-03
   BRD:BRD-K21038058-001-01-9: d=-0.533 FDR=1.286e-02
+  BRD:BRD-K81916719-001-13-9: d=-0.530 FDR=2.883e-02
+  BRD:BRD-A12230535-001-06-7: d=-0.529 FDR=3.913e-02
+
+CRISPR-PRISM CONCORDANCE
+--------------------------------------------------
+  GSK2110183 vs AKT1: r=0.230 p=6.166e-07 n=459
+  triciribine-phosphate vs AKT1: r=-0.003 p=9.456e-01 n=712
+  wortmannin vs PIK3CA: r=0.055 p=1.386e-01 n=716
+  GDC-0077 vs PIK3CA: r=0.335 p=3.579e-20 n=712
+  PI3Kd-IN-2 vs PIK3CD: r=-0.003 p=9.458e-01 n=716
+  GDC-0084 vs MTOR: r=0.133 p=3.741e-04 n=712
+  CC-223 vs MTOR: r=0.139 p=2.003e-04 n=716

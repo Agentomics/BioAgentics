@@ -1,20 +1,23 @@
 drug_name,mechanism,crispr_gene,in_prism
-capivasertib,AKT inhibitor,AKT1,False
-ipatasertib,AKT inhibitor,AKT1,False
-MK-2206,AKT inhibitor (allosteric),AKT1,False
-AZD5363,AKT inhibitor,AKT1,False
-alpelisib,PI3Kα inhibitor,PIK3CA,False
-pictilisib,PI3K inhibitor (pan),PIK3CA,False
-buparlisib,PI3K inhibitor (pan),PIK3CA,False
-copanlisib,PI3K inhibitor (pan),PIK3CA,False
-inavolisib,PI3Kα inhibitor (mutant-selective),PIK3CA,False
-AZD8186,PI3Kβ inhibitor,PIK3CB,False
-GSK2636771,PI3Kβ inhibitor,PIK3CB,False
-everolimus,mTOR inhibitor (rapalog),MTOR,False
-rapamycin,mTOR inhibitor (rapalog),MTOR,False
-sirolimus,mTOR inhibitor (rapalog),MTOR,False
-temsirolimus,mTOR inhibitor (rapalog),MTOR,False
-AZD8055,mTOR inhibitor (catalytic),MTOR,False
-INK-128,mTOR inhibitor (catalytic),MTOR,False
-dactolisib,PI3K/mTOR dual inhibitor,MTOR,False
-apitolisib,PI3K/mTOR dual inhibitor,MTOR,False
+GSK2110183,AKT inhibitor (afuresertib),AKT1,True
+triciribine-phosphate,AKT inhibitor,AKT1,True
+wortmannin,"PI3K inhibitor (pan, research tool)",PIK3CA,True
+GDC-0077,PI3Kα inhibitor (inavolisib),PIK3CA,True
+PI3Kd-IN-2,PI3Kδ inhibitor,PIK3CD,True
+GDC-0084,PI3K/mTOR dual inhibitor (brain-penetrant),MTOR,True
+CC-223,mTOR inhibitor (catalytic),MTOR,True
+capivasertib,(not in PRISM 24Q2),,False
+ipatasertib,(not in PRISM 24Q2),,False
+MK-2206,(not in PRISM 24Q2),,False
+alpelisib,(not in PRISM 24Q2),,False
+buparlisib,(not in PRISM 24Q2),,False
+copanlisib,(not in PRISM 24Q2),,False
+pictilisib,(not in PRISM 24Q2),,False
+AZD8186,(not in PRISM 24Q2),,False
+GSK2636771,(not in PRISM 24Q2),,False
+everolimus,(not in PRISM 24Q2),,False
+rapamycin,(not in PRISM 24Q2),,False
+sirolimus,(not in PRISM 24Q2),,False
+temsirolimus,(not in PRISM 24Q2),,False
+AZD8055,(not in PRISM 24Q2),,False
+dactolisib,(not in PRISM 24Q2),,False
