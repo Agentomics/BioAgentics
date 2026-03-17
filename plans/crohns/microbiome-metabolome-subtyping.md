@@ -15,7 +15,12 @@ Crohn's disease is clinically heterogeneous — patients vary in disease locatio
 ## Methodology
 1. **Data acquisition and QC**: Download HMP2 metagenomic species/pathway abundances and metabolomic profiles. Filter low-prevalence features, normalize (CLR for metagenomics, log-transform for metabolomics).
 2. **Single-omic exploration**: Characterize CD vs control differences in each omic layer. Identify differentially abundant species (Faecalibacterium, Roseburia, E. coli) and metabolites (SCFAs, bile acids, acylcarnitines).
-3. **Multi-omic integration**: Apply Multi-Omics Factor Analysis (MOFA2) to identify latent factors capturing shared variance across metagenomics and metabolomics. Also test DIABLO (mixOmics) as alternative.
+3. **Multi-omic integration** (multi-method approach per Communications Biology 2025 benchmark, doi:10.1038/s42003-025-08515-9):
+   - *Primary*: **MOFA2** for latent factor discovery — identifies interpretable latent factors capturing shared variance across metagenomics and metabolomics. Valuable for subtype discovery despite being outperformed by RDA for pure data summarization.
+   - *Complementary feature selection*: **sPLS-Regression** (mixOmics) for multivariate feature selection — best performer in benchmark for exploiting inter-omics correlations. Use to identify the specific species-metabolite pairs driving each MOFA2 factor.
+   - *Compositional-aware selection*: **CODA-LASSO** for univariate feature selection — scale-invariant and preserves sub-compositionality of microbiome data. Use to identify individual microbial taxa with strongest metabolite associations without compositional bias.
+   - *Exploratory*: Consider mechanistic metabolic modeling (Taubenheim et al., Nature Comms 2025, doi:10.1038/s41467-025-60233-2) to map which MOFA2 latent factors correspond to specific metabolic derangements (tryptophan-NAD axis, bile acid deconjugation, SCFA pathways). This establishes causal metabolic relationships complementing MOFA2's statistical associations.
+   - Benchmark code available: https://github.com/lmangnier/Benchmark_Integration_Metagenomics_Metabolomics
 4. **Subtype discovery**: Cluster CD patients based on integrated latent factors using consensus clustering. Determine optimal number of subtypes via silhouette analysis and gap statistic.
 5. **Subtype characterization**: For each subtype, identify — top driving species and metabolites, associated clinical features (Montreal classification, CRP, fecal calprotectin), pathway enrichment (MetaCyc/KEGG).
 6. **Validation**: Test subtype reproducibility in curatedMetagenomicData cohorts. Assess association with treatment response where data available.
