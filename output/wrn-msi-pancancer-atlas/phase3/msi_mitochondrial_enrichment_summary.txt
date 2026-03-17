@@ -1,0 +1,43 @@
+======================================================================
+WRN-MSI Pan-Cancer Atlas — Mitochondrial/OXPHOS Enrichment Analysis
+======================================================================
+
+Pan-cancer MSI-H gained dependencies: 181 genes (FDR<0.05, d<-0.5)
+Mitochondrial genes in gained deps: 33/181 (18.2%)
+Expected by chance: 11.5 (MitoCarta ~1,136 / 17,931 tested)
+Enrichment: 2.9-fold
+Fisher's exact test OR=3.37, p=3.32e-08
+
+OXPHOS COMPLEX BREAKDOWN
+----------------------------------------
+  Complex I (NADH dehydrogenase):    5 genes, avg d=-0.604
+  Complex II (SDH):                  2 genes, avg d=-0.634
+  Complex III (ubiquinol-cyt c):     2 genes, avg d=-0.622
+  Complex IV (cytochrome c oxidase): 6 genes, avg d=-0.618
+  Mitochondrial ribosome:           15 genes, avg d=-0.599
+  Mito transcription/replication:    2 genes, avg d=-0.704
+  TCA cycle:                         1 gene,  avg d=-0.772
+
+INTERPRETATION
+----------------------------------------
+MSI-H tumors show systematic dependency on mitochondrial function,
+spanning all 5 OXPHOS complexes plus mitochondrial translation/replication.
+This suggests metabolic reprogramming toward OXPHOS reliance in MSI-H cells.
+
+Possible mechanism: MMR deficiency may impair nuclear-encoded mitochondrial
+gene expression or mtDNA stability, creating synthetic dependency on
+remaining mitochondrial function. Alternatively, MSI-H cells may shift
+toward OXPHOS to compensate for glycolytic impairment from frameshift
+mutations in metabolic enzymes.
+
+THERAPEUTIC IMPLICATIONS
+----------------------------------------
+OXPHOS inhibitors as WRN inhibitor combination partners:
+  - IACS-010759 (Complex I inhibitor) — clinical development halted but proof of concept
+  - Metformin (weak Complex I inhibitor) — repurposing candidate, favorable safety
+  - Venetoclax (indirect OXPHOS inhibition) — approved in AML
+  - Mubritinib (Complex I) — preclinical
+
+WRN inhibitor + OXPHOS inhibitor could exploit dual synthetic lethality:
+  1. WRN inhibitor → replication stress from expanded microsatellites
+  2. OXPHOS inhibitor → metabolic crisis from mitochondrial dependency
