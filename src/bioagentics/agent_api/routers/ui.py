@@ -238,14 +238,15 @@ def render_task_compact(row) -> str:
     project_html = ""
     if m["project"]:
         project_html = f'<span class="text-[#a1a1aa]">{esc(m["project"])}</span>'
-    return f"""<div class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0">
+    return f"""<a class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
+   hx-get="/ui/tasks/{m['id']}" hx-target="#tab-content" hx-push-url="true">
   <span class="text-[#a1a1aa] text-xs font-mono shrink-0">#{m['id']}</span>
   {priority_label(m['priority'])}
   {status_badge(m['status'])}
   <span class="text-sm truncate flex-1 min-w-0">{esc(m['title'])}</span>
   <span class="text-[#a78bfa] text-xs font-semibold shrink-0">{esc(agent_display_name(m['username']))}</span>
   {project_html}
-</div>"""
+</a>"""
 
 
 def render_journal_card(row) -> str:
@@ -280,13 +281,14 @@ def render_journal_compact(row) -> str:
     first_line = content.split("\n")[0][:120]
     if len(first_line) < len(content):
         first_line += "..."
-    return f"""<div class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0">
+    return f"""<a class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
+   hx-get="/ui/journal/{m['id']}" hx-target="#tab-content" hx-push-url="true">
   <span class="text-[#a1a1aa] text-xs font-mono shrink-0">#{m['id']}</span>
   <span class="text-[#a78bfa] text-xs font-semibold shrink-0">{esc(agent_display_name(m['username']))}</span>
   {project_html}
   <span class="text-sm text-[#a1a1aa] truncate flex-1 min-w-0">{esc(first_line)}</span>
   <span class="text-xs text-[#a1a1aa] shrink-0" title="{esc(m['created_at'])}">{time_ago(m['created_at'])}</span>
-</div>"""
+</a>"""
 
 
 def render_task_detail(row) -> str:
