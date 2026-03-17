@@ -1,0 +1,961 @@
+{
+  "analyses": [
+    {
+      "cancer_type": "Pan-cancer",
+      "n_mutant": 795,
+      "n_wt": 391,
+      "n_genes_tested": 18435,
+      "n_significant": 616,
+      "positive_control_MDM2": {
+        "cohens_d": 1.9155,
+        "fdr": 3.3912426670252814e-87,
+        "median_dep_mutant": -0.3384,
+        "median_dep_wt": -1.1657,
+        "passes": true
+      },
+      "MDM4": {
+        "cohens_d": 1.2859,
+        "fdr": 5.936273334301457e-52
+      },
+      "highlighted_genes": {
+        "TP53": {
+          "cohens_d": -1.5606,
+          "fdr": 1.1602431972411565e-88
+        },
+        "MDM4": {
+          "cohens_d": 1.2859,
+          "fdr": 5.936273334301457e-52
+        },
+        "MDM2": {
+          "cohens_d": 1.9155,
+          "fdr": 3.3912426670252814e-87
+        },
+        "ATR": {
+          "cohens_d": -0.0133,
+          "fdr": 0.7711633583161066
+        },
+        "CHEK1": {
+          "cohens_d": -0.2108,
+          "fdr": 0.013941068589661236
+        },
+        "TP53BP1": {
+          "cohens_d": -1.1103,
+          "fdr": 9.530068590136646e-50
+        },
+        "CDKN2A": {
+          "cohens_d": -0.4553,
+          "fdr": 5.289726416527609e-09
+        },
+        "USP7": {
+          "cohens_d": 0.9221,
+          "fdr": 4.867226649961164e-36
+        },
+        "CDKN1A": {
+          "cohens_d": -0.9309,
+          "fdr": 1.0112953611574874e-32
+        },
+        "WEE1": {
+          "cohens_d": -0.0793,
+          "fdr": 0.36960474370808194
+        },
+        "HSP90AB1": {
+          "cohens_d": 0.1147,
+          "fdr": 0.12107553471371421
+        },
+        "HSP90AA1": {
+          "cohens_d": 0.0814,
+          "fdr": 0.2836019613663374
+        }
+      },
+      "top_hits": [
+        {
+          "gene": "TP53",
+          "cohens_d": -1.5606,
+          "fdr": 1.1602431972411565e-88
+        },
+        {
+          "gene": "TP53BP1",
+          "cohens_d": -1.1103,
+          "fdr": 9.530068590136646e-50
+        },
+        {
+          "gene": "HIPK2",
+          "cohens_d": -1.0608,
+          "fdr": 0.01052752390236659
+        },
+        {
+          "gene": "CHEK2",
+          "cohens_d": -0.9727,
+          "fdr": 9.873685697798337e-45
+        },
+        {
+          "gene": "USP28",
+          "cohens_d": -0.9498,
+          "fdr": 1.0483650829380679e-33
+        },
+        {
+          "gene": "CDKN1A",
+          "cohens_d": -0.9309,
+          "fdr": 1.0112953611574874e-32
+        },
+        {
+          "gene": "CLASP2",
+          "cohens_d": -0.8395,
+          "fdr": 0.04182767640928069
+        },
+        {
+          "gene": "ATM",
+          "cohens_d": -0.835,
+          "fdr": 1.395387583274681e-31
+        },
+        {
+          "gene": "GVQW3",
+          "cohens_d": -0.827,
+          "fdr": 0.03764213171764812
+        },
+        {
+          "gene": "GTPBP6",
+          "cohens_d": -0.7866,
+          "fdr": 0.0461844591125537
+        },
+        {
+          "gene": "UBE2D3",
+          "cohens_d": 0.7991,
+          "fdr": 4.5783385830182934e-27
+        },
+        {
+          "gene": "PPM1G",
+          "cohens_d": 0.8009,
+          "fdr": 7.118836349863779e-23
+        },
+        {
+          "gene": "DDX31",
+          "cohens_d": 0.887,
+          "fdr": 6.301708769727223e-33
+        },
+        {
+          "gene": "USP7",
+          "cohens_d": 0.9221,
+          "fdr": 4.867226649961164e-36
+        },
+        {
+          "gene": "NUTM2D",
+          "cohens_d": 0.9344,
+          "fdr": 0.018157595221279164
+        },
+        {
+          "gene": "TVP23C",
+          "cohens_d": 0.9416,
+          "fdr": 0.04771792905619852
+        },
+        {
+          "gene": "CROCC2",
+          "cohens_d": 1.0382,
+          "fdr": 0.03193908111008437
+        },
+        {
+          "gene": "MDM4",
+          "cohens_d": 1.2859,
+          "fdr": 5.936273334301457e-52
+        },
+        {
+          "gene": "PPM1D",
+          "cohens_d": 1.3702,
+          "fdr": 2.4402135514995736e-67
+        },
+        {
+          "gene": "MDM2",
+          "cohens_d": 1.9155,
+          "fdr": 3.3912426670252814e-87
+        }
+      ]
+    },
+    {
+      "cancer_type": "Non-Small Cell Lung Cancer",
+      "n_mutant": 82,
+      "n_wt": 16,
+      "n_genes_tested": 17787,
+      "n_significant": 1,
+      "positive_control_MDM2": {
+        "cohens_d": 2.8001,
+        "fdr": 0.06161843142013751,
+        "median_dep_mutant": -0.3128,
+        "median_dep_wt": -1.2645,
+        "passes": false
+      },
+      "MDM4": {
+        "cohens_d": 2.2449,
+        "fdr": 0.06161843142013751
+      },
+      "highlighted_genes": {
+        "TP53": {
+          "cohens_d": -2.4164,
+          "fdr": 0.030888618984159642
+        },
+        "MDM4": {
+          "cohens_d": 2.2449,
+          "fdr": 0.06161843142013751
+        },
+        "MDM2": {
+          "cohens_d": 2.8001,
+          "fdr": 0.06161843142013751
+        },
+        "ATR": {
+          "cohens_d": -0.1778,
+          "fdr": 0.8306348394818177
+        },
+        "CHEK1": {
+          "cohens_d": -0.4479,
+          "fdr": 0.5337227638303571
+        },
+        "TP53BP1": {
+          "cohens_d": -1.3523,
+          "fdr": 0.10524634491438836
+        },
+        "CDKN2A": {
+          "cohens_d": -0.7729,
+          "fdr": 0.4181431409078263
+        },
+        "USP7": {
+          "cohens_d": 1.1486,
+          "fdr": 0.22376870183375117
+        },
+        "CDKN1A": {
+          "cohens_d": -0.9494,
+          "fdr": 0.4181431409078263
+        },
+        "WEE1": {
+          "cohens_d": -0.2592,
+          "fdr": 0.6760039593010173
+        },
+        "HSP90AB1": {
+          "cohens_d": -0.0693,
+          "fdr": 0.976183017887085
+        },
+        "HSP90AA1": {
+          "cohens_d": 0.1244,
+          "fdr": 0.9594729586736103
+        }
+      },
+      "top_hits": [
+        {
+          "gene": "TP53",
+          "cohens_d": -2.4164,
+          "fdr": 0.030888618984159642
+        }
+      ]
+    },
+    {
+      "cancer_type": "Colorectal Adenocarcinoma",
+      "n_mutant": 51,
+      "n_wt": 12,
+      "n_genes_tested": 17787,
+      "n_significant": 2,
+      "positive_control_MDM2": {
+        "cohens_d": 3.947,
+        "fdr": 0.0028208133330165893,
+        "median_dep_mutant": -0.3568,
+        "median_dep_wt": -1.5386,
+        "passes": true
+      },
+      "MDM4": {
+        "cohens_d": 1.8917,
+        "fdr": 0.19842906665775495
+      },
+      "highlighted_genes": {
+        "TP53": {
+          "cohens_d": -1.9988,
+          "fdr": 0.04191671279480645
+        },
+        "MDM4": {
+          "cohens_d": 1.8917,
+          "fdr": 0.19842906665775495
+        },
+        "MDM2": {
+          "cohens_d": 3.947,
+          "fdr": 0.0028208133330165893
+        },
+        "ATR": {
+          "cohens_d": 0.1398,
+          "fdr": 0.8047678073119877
+        },
+        "CHEK1": {
+          "cohens_d": -0.8941,
+          "fdr": 0.4429389484474411
+        },
+        "TP53BP1": {
+          "cohens_d": -1.2049,
+          "fdr": 0.2912157660843435
+        },
+        "CDKN2A": {
+          "cohens_d": -0.4214,
+          "fdr": 0.8158378340937872
+        },
+        "USP7": {
+          "cohens_d": 1.5022,
+          "fdr": 0.12542412536501815
+        },
+        "CDKN1A": {
+          "cohens_d": -0.8532,
+          "fdr": 0.5873688322538358
+        },
+        "WEE1": {
+          "cohens_d": -0.272,
+          "fdr": 0.8386833926794987
+        },
+        "HSP90AB1": {
+          "cohens_d": 0.1679,
+          "fdr": 0.8961937683892849
+        },
+        "HSP90AA1": {
+          "cohens_d": 0.3723,
+          "fdr": 0.7285852401628136
+        }
+      },
+      "top_hits": [
+        {
+          "gene": "TP53",
+          "cohens_d": -1.9988,
+          "fdr": 0.04191671279480645
+        },
+        {
+          "gene": "MDM2",
+          "cohens_d": 3.947,
+          "fdr": 0.0028208133330165893
+        }
+      ]
+    },
+    {
+      "cancer_type": "Diffuse Glioma",
+      "n_mutant": 53,
+      "n_wt": 18,
+      "n_genes_tested": 17787,
+      "n_significant": 5,
+      "positive_control_MDM2": {
+        "cohens_d": 2.8414,
+        "fdr": 0.004378748122536459,
+        "median_dep_mutant": -0.3701,
+        "median_dep_wt": -1.4205,
+        "passes": true
+      },
+      "MDM4": {
+        "cohens_d": 1.351,
+        "fdr": 0.29203090989768676
+      },
+      "highlighted_genes": {
+        "TP53": {
+          "cohens_d": -2.5249,
+          "fdr": 5.908701559036948e-05
+        },
+        "MDM4": {
+          "cohens_d": 1.351,
+          "fdr": 0.29203090989768676
+        },
+        "MDM2": {
+          "cohens_d": 2.8414,
+          "fdr": 0.004378748122536459
+        },
+        "ATR": {
+          "cohens_d": 0.0517,
+          "fdr": 0.993141306386811
+        },
+        "CHEK1": {
+          "cohens_d": -0.4044,
+          "fdr": 0.6035253302287875
+        },
+        "TP53BP1": {
+          "cohens_d": -1.4223,
+          "fdr": 0.12839191512665443
+        },
+        "CDKN2A": {
+          "cohens_d": -0.2168,
+          "fdr": 0.9425568476615551
+        },
+        "USP7": {
+          "cohens_d": 0.9902,
+          "fdr": 0.25559105682229954
+        },
+        "CDKN1A": {
+          "cohens_d": -1.8535,
+          "fdr": 0.027585180047365685
+        },
+        "WEE1": {
+          "cohens_d": 0.2112,
+          "fdr": 0.7980215019715389
+        },
+        "HSP90AB1": {
+          "cohens_d": 0.1045,
+          "fdr": 0.9654428663851522
+        },
+        "HSP90AA1": {
+          "cohens_d": -0.4204,
+          "fdr": 0.6989449304301202
+        }
+      },
+      "top_hits": [
+        {
+          "gene": "TP53",
+          "cohens_d": -2.5249,
+          "fdr": 5.908701559036948e-05
+        },
+        {
+          "gene": "CDKN1A",
+          "cohens_d": -1.8535,
+          "fdr": 0.027585180047365685
+        },
+        {
+          "gene": "USP28",
+          "cohens_d": -1.743,
+          "fdr": 0.032832929720264865
+        },
+        {
+          "gene": "TRIR",
+          "cohens_d": -1.2551,
+          "fdr": 0.032832929720264865
+        },
+        {
+          "gene": "MDM2",
+          "cohens_d": 2.8414,
+          "fdr": 0.004378748122536459
+        }
+      ]
+    },
+    {
+      "cancer_type": "Ovarian Epithelial Tumor",
+      "n_mutant": 41,
+      "n_wt": 17,
+      "n_genes_tested": 17787,
+      "n_significant": 11,
+      "positive_control_MDM2": {
+        "cohens_d": 2.8063,
+        "fdr": 0.000658960901790913,
+        "median_dep_mutant": -0.3375,
+        "median_dep_wt": -1.2157,
+        "passes": true
+      },
+      "MDM4": {
+        "cohens_d": 1.486,
+        "fdr": 0.046074498543005424
+      },
+      "highlighted_genes": {
+        "TP53": {
+          "cohens_d": -2.8551,
+          "fdr": 0.00045609478769294856
+        },
+        "MDM4": {
+          "cohens_d": 1.486,
+          "fdr": 0.046074498543005424
+        },
+        "MDM2": {
+          "cohens_d": 2.8063,
+          "fdr": 0.000658960901790913
+        },
+        "ATR": {
+          "cohens_d": -0.12,
+          "fdr": 0.7634641875316777
+        },
+        "CHEK1": {
+          "cohens_d": -0.2673,
+          "fdr": 0.8645386628529724
+        },
+        "TP53BP1": {
+          "cohens_d": -1.7574,
+          "fdr": 0.006472922107916809
+        },
+        "CDKN2A": {
+          "cohens_d": -0.8272,
+          "fdr": 0.33784315933432896
+        },
+        "USP7": {
+          "cohens_d": 1.6728,
+          "fdr": 0.019119020540353898
+        },
+        "CDKN1A": {
+          "cohens_d": -1.9103,
+          "fdr": 0.007801621280003006
+        },
+        "WEE1": {
+          "cohens_d": -0.9356,
+          "fdr": 0.1963696136346826
+        },
+        "HSP90AB1": {
+          "cohens_d": -0.1822,
+          "fdr": 0.7878862062508369
+        },
+        "HSP90AA1": {
+          "cohens_d": -0.3712,
+          "fdr": 0.6411788135633901
+        }
+      },
+      "top_hits": [
+        {
+          "gene": "TP53",
+          "cohens_d": -2.8551,
+          "fdr": 0.00045609478769294856
+        },
+        {
+          "gene": "CDKN1A",
+          "cohens_d": -1.9103,
+          "fdr": 0.007801621280003006
+        },
+        {
+          "gene": "TP53BP1",
+          "cohens_d": -1.7574,
+          "fdr": 0.006472922107916809
+        },
+        {
+          "gene": "USP28",
+          "cohens_d": -1.661,
+          "fdr": 0.006472922107916809
+        },
+        {
+          "gene": "MDM4",
+          "cohens_d": 1.486,
+          "fdr": 0.046074498543005424
+        },
+        {
+          "gene": "BRAP",
+          "cohens_d": 1.5329,
+          "fdr": 0.03743175569992167
+        },
+        {
+          "gene": "CENPF",
+          "cohens_d": 1.6722,
+          "fdr": 0.012277442826609506
+        },
+        {
+          "gene": "USP7",
+          "cohens_d": 1.6728,
+          "fdr": 0.019119020540353898
+        },
+        {
+          "gene": "DDX31",
+          "cohens_d": 1.8299,
+          "fdr": 0.007801621280003006
+        },
+        {
+          "gene": "PPM1D",
+          "cohens_d": 1.9169,
+          "fdr": 0.00932197571419409
+        },
+        {
+          "gene": "MDM2",
+          "cohens_d": 2.8063,
+          "fdr": 0.000658960901790913
+        }
+      ]
+    },
+    {
+      "cancer_type": "Acute Myeloid Leukemia",
+      "n_mutant": 20,
+      "n_wt": 10,
+      "n_genes_tested": 17787,
+      "n_significant": 0,
+      "positive_control_MDM2": {
+        "cohens_d": 1.9866,
+        "fdr": 0.4166005199241367,
+        "median_dep_mutant": -0.227,
+        "median_dep_wt": -1.1383,
+        "passes": false
+      },
+      "MDM4": {
+        "cohens_d": 2.2133,
+        "fdr": 0.36422976811256946
+      },
+      "highlighted_genes": {
+        "TP53": {
+          "cohens_d": -1.7828,
+          "fdr": 0.36422976811256946
+        },
+        "MDM4": {
+          "cohens_d": 2.2133,
+          "fdr": 0.36422976811256946
+        },
+        "MDM2": {
+          "cohens_d": 1.9866,
+          "fdr": 0.4166005199241367
+        },
+        "ATR": {
+          "cohens_d": -0.961,
+          "fdr": 0.47933129861507484
+        },
+        "CHEK1": {
+          "cohens_d": -0.755,
+          "fdr": 0.5842691813464606
+        },
+        "TP53BP1": {
+          "cohens_d": -0.711,
+          "fdr": 0.5457498988128852
+        },
+        "CDKN2A": {
+          "cohens_d": -0.5774,
+          "fdr": 0.6115659405852227
+        },
+        "USP7": {
+          "cohens_d": 0.6765,
+          "fdr": 0.6389330998173071
+        },
+        "CDKN1A": {
+          "cohens_d": -0.5749,
+          "fdr": 0.6990589564169744
+        },
+        "WEE1": {
+          "cohens_d": -0.65,
+          "fdr": 0.6115659405852227
+        },
+        "HSP90AB1": {
+          "cohens_d": 0.6835,
+          "fdr": 0.7121000596077665
+        },
+        "HSP90AA1": {
+          "cohens_d": -0.1221,
+          "fdr": 0.9206155109166915
+        }
+      },
+      "top_hits": []
+    },
+    {
+      "cancer_type": "Mature B-Cell Neoplasms",
+      "n_mutant": 34,
+      "n_wt": 22,
+      "n_genes_tested": 17787,
+      "n_significant": 2,
+      "positive_control_MDM2": {
+        "cohens_d": 2.1453,
+        "fdr": 0.007530924528825706,
+        "median_dep_mutant": -0.2874,
+        "median_dep_wt": -1.0684,
+        "passes": true
+      },
+      "MDM4": {
+        "cohens_d": 1.2481,
+        "fdr": 0.42094880520129685
+      },
+      "highlighted_genes": {
+        "TP53": {
+          "cohens_d": -1.2656,
+          "fdr": 0.42094880520129685
+        },
+        "MDM4": {
+          "cohens_d": 1.2481,
+          "fdr": 0.42094880520129685
+        },
+        "MDM2": {
+          "cohens_d": 2.1453,
+          "fdr": 0.007530924528825706
+        },
+        "ATR": {
+          "cohens_d": 0.2156,
+          "fdr": 0.9386535960138087
+        },
+        "CHEK1": {
+          "cohens_d": 0.0094,
+          "fdr": 0.9895774970558346
+        },
+        "TP53BP1": {
+          "cohens_d": -0.6359,
+          "fdr": 0.8171306701685263
+        },
+        "CDKN2A": {
+          "cohens_d": -0.6688,
+          "fdr": 0.6971393439064891
+        },
+        "USP7": {
+          "cohens_d": 0.5186,
+          "fdr": 0.8107147496786894
+        },
+        "CDKN1A": {
+          "cohens_d": -0.5575,
+          "fdr": 0.7507666456128084
+        },
+        "WEE1": {
+          "cohens_d": -0.028,
+          "fdr": 0.9971131513184466
+        },
+        "HSP90AB1": {
+          "cohens_d": 0.5008,
+          "fdr": 0.5417575603055361
+        },
+        "HSP90AA1": {
+          "cohens_d": 0.2053,
+          "fdr": 0.9422317720080836
+        }
+      },
+      "top_hits": [
+        {
+          "gene": "PPM1D",
+          "cohens_d": 1.4855,
+          "fdr": 0.022487055311884965
+        },
+        {
+          "gene": "MDM2",
+          "cohens_d": 2.1453,
+          "fdr": 0.007530924528825706
+        }
+      ]
+    },
+    {
+      "cancer_type": "Neuroblastoma",
+      "n_mutant": 16,
+      "n_wt": 23,
+      "n_genes_tested": 17787,
+      "n_significant": 0,
+      "positive_control_MDM2": {
+        "cohens_d": 1.3884,
+        "fdr": 0.34314233806957833,
+        "median_dep_mutant": -0.3227,
+        "median_dep_wt": -1.0388,
+        "passes": false
+      },
+      "MDM4": {
+        "cohens_d": 1.3644,
+        "fdr": 0.27791773408220416
+      },
+      "highlighted_genes": {
+        "TP53": {
+          "cohens_d": -1.5064,
+          "fdr": 0.27791773408220416
+        },
+        "MDM4": {
+          "cohens_d": 1.3644,
+          "fdr": 0.27791773408220416
+        },
+        "MDM2": {
+          "cohens_d": 1.3884,
+          "fdr": 0.34314233806957833
+        },
+        "ATR": {
+          "cohens_d": -0.2591,
+          "fdr": 0.962464479457111
+        },
+        "CHEK1": {
+          "cohens_d": 0.1804,
+          "fdr": 0.9245126072720127
+        },
+        "TP53BP1": {
+          "cohens_d": -1.1443,
+          "fdr": 0.5404655496910499
+        },
+        "CDKN2A": {
+          "cohens_d": -0.0024,
+          "fdr": 1.0
+        },
+        "USP7": {
+          "cohens_d": 0.7315,
+          "fdr": 0.6824021632583275
+        },
+        "CDKN1A": {
+          "cohens_d": -0.7425,
+          "fdr": 0.6674717108900826
+        },
+        "WEE1": {
+          "cohens_d": 0.2201,
+          "fdr": 0.9977531885106928
+        },
+        "HSP90AB1": {
+          "cohens_d": -0.573,
+          "fdr": 0.7726734812009595
+        },
+        "HSP90AA1": {
+          "cohens_d": 0.1493,
+          "fdr": 0.9004557352248383
+        }
+      },
+      "top_hits": []
+    },
+    {
+      "cancer_type": "Renal Cell Carcinoma",
+      "n_mutant": 10,
+      "n_wt": 19,
+      "n_genes_tested": 17205,
+      "n_significant": 0,
+      "positive_control_MDM2": {
+        "cohens_d": 1.3045,
+        "fdr": 0.9903312655330845,
+        "median_dep_mutant": -0.5072,
+        "median_dep_wt": -1.5622,
+        "passes": false
+      },
+      "MDM4": {
+        "cohens_d": 0.3891,
+        "fdr": 0.9988360751396637
+      },
+      "highlighted_genes": {
+        "TP53": {
+          "cohens_d": -0.8308,
+          "fdr": 0.9903312655330845
+        },
+        "MDM4": {
+          "cohens_d": 0.3891,
+          "fdr": 0.9988360751396637
+        },
+        "MDM2": {
+          "cohens_d": 1.3045,
+          "fdr": 0.9903312655330845
+        },
+        "ATR": {
+          "cohens_d": -1.0153,
+          "fdr": 0.9903312655330845
+        },
+        "CHEK1": {
+          "cohens_d": -0.3682,
+          "fdr": 0.9980669708082962
+        },
+        "TP53BP1": {
+          "cohens_d": -0.7588,
+          "fdr": 0.9903312655330845
+        },
+        "CDKN2A": {
+          "cohens_d": -0.5609,
+          "fdr": 0.9903312655330845
+        },
+        "USP7": {
+          "cohens_d": 1.0025,
+          "fdr": 0.9903312655330845
+        },
+        "CDKN1A": {
+          "cohens_d": -0.7575,
+          "fdr": 0.9903312655330845
+        },
+        "WEE1": {
+          "cohens_d": -0.3665,
+          "fdr": 0.9957671514424514
+        },
+        "HSP90AB1": {
+          "cohens_d": 0.1166,
+          "fdr": 0.9988360751396637
+        },
+        "HSP90AA1": {
+          "cohens_d": 0.4851,
+          "fdr": 0.9903312655330845
+        }
+      },
+      "top_hits": []
+    },
+    {
+      "cancer_type": "Melanoma",
+      "n_mutant": 21,
+      "n_wt": 46,
+      "n_genes_tested": 17787,
+      "n_significant": 11,
+      "positive_control_MDM2": {
+        "cohens_d": 2.2171,
+        "fdr": 0.0002540615111541108,
+        "median_dep_mutant": -0.3515,
+        "median_dep_wt": -1.6048,
+        "passes": true
+      },
+      "MDM4": {
+        "cohens_d": 0.8033,
+        "fdr": 0.40368743011766667
+      },
+      "highlighted_genes": {
+        "TP53": {
+          "cohens_d": -1.6292,
+          "fdr": 0.005636215424118954
+        },
+        "MDM4": {
+          "cohens_d": 0.8033,
+          "fdr": 0.40368743011766667
+        },
+        "MDM2": {
+          "cohens_d": 2.2171,
+          "fdr": 0.0002540615111541108
+        },
+        "ATR": {
+          "cohens_d": -0.0809,
+          "fdr": 0.935501401879276
+        },
+        "CHEK1": {
+          "cohens_d": -0.3535,
+          "fdr": 0.8027597017167059
+        },
+        "TP53BP1": {
+          "cohens_d": -1.2165,
+          "fdr": 0.017634088673787483
+        },
+        "CDKN2A": {
+          "cohens_d": -0.5582,
+          "fdr": 0.5760437805580401
+        },
+        "USP7": {
+          "cohens_d": 0.5752,
+          "fdr": 0.39251105573236617
+        },
+        "CDKN1A": {
+          "cohens_d": -0.898,
+          "fdr": 0.046478861196415186
+        },
+        "WEE1": {
+          "cohens_d": -0.0762,
+          "fdr": 0.9685617763856238
+        },
+        "HSP90AB1": {
+          "cohens_d": 0.2763,
+          "fdr": 0.6510034524436464
+        },
+        "HSP90AA1": {
+          "cohens_d": 0.5192,
+          "fdr": 0.7401371845155749
+        }
+      },
+      "top_hits": [
+        {
+          "gene": "TP53",
+          "cohens_d": -1.6292,
+          "fdr": 0.005636215424118954
+        },
+        {
+          "gene": "PELI1",
+          "cohens_d": -1.4757,
+          "fdr": 0.006738846557913683
+        },
+        {
+          "gene": "CHEK2",
+          "cohens_d": -1.3544,
+          "fdr": 0.006100398161975179
+        },
+        {
+          "gene": "TP53BP1",
+          "cohens_d": -1.2165,
+          "fdr": 0.017634088673787483
+        },
+        {
+          "gene": "USP28",
+          "cohens_d": -1.1126,
+          "fdr": 0.02629750024735788
+        },
+        {
+          "gene": "CDKN1A",
+          "cohens_d": -0.898,
+          "fdr": 0.046478861196415186
+        },
+        {
+          "gene": "PSME3",
+          "cohens_d": 1.1328,
+          "fdr": 0.014663980713656842
+        },
+        {
+          "gene": "PPM1D",
+          "cohens_d": 1.1721,
+          "fdr": 0.014663980713656842
+        },
+        {
+          "gene": "LYRM9",
+          "cohens_d": 1.2523,
+          "fdr": 0.02629750024735788
+        },
+        {
+          "gene": "ADRM1",
+          "cohens_d": 1.3767,
+          "fdr": 0.006738846557913683
+        },
+        {
+          "gene": "MDM2",
+          "cohens_d": 2.2171,
+          "fdr": 0.0002540615111541108
+        }
+      ]
+    }
+  ]
+}
