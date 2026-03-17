@@ -38,11 +38,14 @@ Predict Crohn's disease flares before clinical onset using longitudinal multi-om
 ### Phase 3: Pre-Flare Signature Discovery
 - Within-patient paired analysis: pre-flare vs stable features per individual (controls for inter-individual variation)
 - Feature selection: stability selection via randomized lasso across bootstrap samples
-- Multi-omic integration: MOFA2 for latent factor discovery across omic layers, then test whether latent factors shift before flares
+- Multi-omic integration (two-stage approach):
+  - **Stage 1 — MOFA2** (primary): Latent factor discovery across omic layers. Test whether latent factor trajectories shift before flares. MOFA2 handles missing data and heterogeneous data types but treats samples independently — it does not model temporal structure.
+  - **Stage 1 — MintTea** (complementary module discovery): Sparse generalized CCA (sgCCA) to identify disease-associated multi-omic modules with flare status as the outcome variable. May capture cross-omic correlations missed by MOFA2's unsupervised approach. GitHub: efratmuller/MintTea. Nature Comms 2024 (doi:10.1038/s41467-024-46888-3).
+  - **Stage 2 — Temporal modeling of latent factors**: Feed MOFA2 latent factor trajectories (or MintTea module scores) into temporal models in Phase 4. This two-stage design separates multi-omic integration (Stage 1) from temporal prediction (Stage 2), keeping each stage tractable.
 
 ### Phase 4: Predictive Modeling
 - **Sliding-window classifier**: Extract feature windows at each timepoint, classify as "pre-flare" or "stable"
-- Models: XGBoost (primary), logistic regression (interpretable baseline), LSTM (if sufficient sequence length)
+- Models: XGBoost (primary), logistic regression (interpretable baseline), GRU (handles variable-length time-series — relevant for HMP2's uneven sampling intervals; preferred over LSTM for smaller datasets). **DBN option**: Dynamic Bayesian Networks (from PALM pipeline, Briefings in Bioinformatics 2025 review) for directed temporal causal structure — captures which omic features drive which others across timepoints, providing mechanistic interpretability that black-box models lack. Trade-off: DBN may overfit with n=67 CD patients; use as an exploratory/interpretive complement to XGBoost, not as primary classifier.
 - Validation: Leave-one-patient-out cross-validation (critical for temporal data to avoid leakage)
 - Calibration: Platt scaling for probability outputs
 - Comparison baselines: calprotectin-only, CRP-only, microbiome diversity-only
