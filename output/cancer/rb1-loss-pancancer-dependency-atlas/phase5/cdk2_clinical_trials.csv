@@ -1,0 +1,3 @@
+drug,sponsor,phase,nct,biomarkers,tumor_types,includes_rb1_loss
+INX-315,Incyte,Phase 1/2,NCT05735080,"CCNE1 amplification, RB1 loss",Breast; Ovarian; Endometrial; Solid tumors,True
+PF-07220060,Pfizer,Phase 1,NCT05757544,"CCNE1 amplification, CDK4/6i-resistant",Breast; Solid tumors,False

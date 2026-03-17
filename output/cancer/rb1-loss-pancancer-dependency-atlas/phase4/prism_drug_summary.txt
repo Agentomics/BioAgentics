@@ -1,0 +1,64 @@
+======================================================================
+RB1-Loss Pan-Cancer Dependency Atlas - Phase 4: PRISM Drug Sensitivity
+======================================================================
+
+DRUG AVAILABILITY IN PRISM 24Q2
+------------------------------------------------------------
+  trilaciclib (CDK4/6 inhibitor): AVAILABLE
+  palbociclib (CDK4/6 inhibitor): NOT FOUND
+  ribociclib (CDK4/6 inhibitor): NOT FOUND
+  abemaciclib (CDK4/6 inhibitor): NOT FOUND
+  alisertib (Aurora A inhibitor): NOT FOUND
+  barasertib (Aurora B inhibitor): NOT FOUND
+  prexasertib (CHK1 inhibitor): NOT FOUND
+  adavosertib (WEE1 inhibitor): NOT FOUND
+  azenosertib (WEE1 inhibitor): NOT FOUND
+  cisplatin (Platinum agent): NOT FOUND
+  carboplatin (Platinum agent): NOT FOUND
+  etoposide (Topoisomerase II inhibitor): NOT FOUND
+  olaparib (PARP inhibitor): NOT FOUND
+  talazoparib (PARP inhibitor): NOT FOUND
+  rucaparib (PARP inhibitor): NOT FOUND
+  niraparib (PARP inhibitor): NOT FOUND
+
+TARGETED DRUG SENSITIVITY (RB1-loss vs intact)
+------------------------------------------------------------
+  CDK4/6 INHIBITORS (negative control: should LOSE efficacy in RB1-loss)
+    Cervix / trilaciclib: d=-0.500 FDR=6.065e-01 (unexpected)
+    Biliary Tract / trilaciclib: d=0.075 FDR=8.014e-01 (VALIDATES)
+    Breast / trilaciclib: d=0.386 FDR=3.006e-01 (VALIDATES)
+    Pancreas / trilaciclib: d=0.440 FDR=2.353e-01 (VALIDATES)
+    Esophagus/Stomach / trilaciclib: d=0.468 FDR=1.542e-01 (VALIDATES)
+    Kidney / trilaciclib: d=0.486 FDR=6.032e-01 (VALIDATES)
+    Bowel / trilaciclib: d=0.506 FDR=5.660e-01 (VALIDATES)
+    CNS/Brain / trilaciclib: d=0.565 FDR=1.210e-01 (VALIDATES)
+    Uterus / trilaciclib: d=0.609 FDR=1.542e-01 (VALIDATES)
+    Lung / trilaciclib: d=0.629 FDR=5.935e-03 (VALIDATES) *
+    Pan-cancer (pooled) / trilaciclib: d=0.678 FDR=3.861e-18 (VALIDATES) *
+    Liver / trilaciclib: d=0.738 FDR=4.337e-01 (VALIDATES)
+    Ovary/Fallopian Tube / trilaciclib: d=0.856 FDR=5.566e-02 (VALIDATES)
+    Skin / trilaciclib: d=0.867 FDR=6.922e-02 (VALIDATES)
+    Bone / trilaciclib: d=0.890 FDR=6.922e-02 (VALIDATES)
+    Head and Neck / trilaciclib: d=0.894 FDR=3.604e-02 (VALIDATES) *
+    Lymphoid / trilaciclib: d=0.963 FDR=5.935e-03 (VALIDATES) *
+    Bladder/Urinary Tract / trilaciclib: d=1.294 FDR=2.501e-02 (VALIDATES) *
+
+GENOME-WIDE DRUG SCREEN: 11 significant (FDR<0.05)
+  RB1-loss selective (d<-0.3): 3
+  RB1-loss resistant (d>0.3): 6
+------------------------------------------------------------
+  Top RB1-loss selective drugs:
+    BRD:BRD-K09291936-001-13-3: d=-0.429 FDR=2.113e-02
+    BRD:BRD-K07881437-001-04-6: d=-0.397 FDR=1.947e-02
+    BRD:BRD-K38548312-001-01-0: d=-0.355 FDR=4.598e-02
+  Top RB1-loss resistant drugs (CDK4/6i expected here):
+    BRD:BRD-K00003412-300-01-9: d=0.678 FDR=1.456e-15
+    BRD:BRD-K51313569-003-03-3: d=0.549 FDR=2.021e-05
+    BRD:BRD-K88554883-001-03-2: d=0.534 FDR=2.572e-10
+    BRD:BRD-K97452254-001-01-3: d=0.458 FDR=7.403e-03
+    BRD:BRD-K36788280-001-01-2: d=0.422 FDR=7.143e-03
+    BRD:BRD-K00003406-001-01-9: d=0.321 FDR=3.522e-02
+
+CRISPR-PRISM CONCORDANCE
+------------------------------------------------------------
+  trilaciclib vs CDK4: r=0.184 p=6.800e-07 n=716

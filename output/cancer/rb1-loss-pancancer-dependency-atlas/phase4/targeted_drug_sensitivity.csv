@@ -1,0 +1,19 @@
+cancer_type,drug,mechanism,expected_direction,cohens_d,p_value,n_lost,n_intact,median_sens_lost,median_sens_intact,fdr
+Pan-cancer (pooled),trilaciclib,CDK4/6 inhibitor,negative_control,0.6782,2.144860579330673e-19,250,629,-0.4641,-1.1643,3.8607490427952116e-18
+Bladder/Urinary Tract,trilaciclib,CDK4/6 inhibitor,negative_control,1.2945,0.005557010032320622,18,12,-0.6542,-1.462,0.025006545145442798
+Lung,trilaciclib,CDK4/6 inhibitor,negative_control,0.6293,0.0009300580687522056,48,69,-0.3759,-1.2125,0.005934895083675586
+Breast,trilaciclib,CDK4/6 inhibitor,negative_control,0.3858,0.21710323794272546,13,20,-0.5475,-0.9419,0.30060448330531214
+Liver,trilaciclib,CDK4/6 inhibitor,negative_control,0.7377,0.3373556517763615,12,9,-0.8158,-0.9211,0.4337429808553219
+Uterus,trilaciclib,CDK4/6 inhibitor,negative_control,0.6089,0.0942468109671007,16,18,-0.4566,-0.9138,0.15422205430980115
+Ovary/Fallopian Tube,trilaciclib,CDK4/6 inhibitor,negative_control,0.8559,0.01855468522478266,16,28,-0.1748,-1.1003,0.05566405567434798
+Cervix,trilaciclib,CDK4/6 inhibitor,negative_control,-0.4998,0.5727605727605728,6,8,-0.1388,-0.118,0.6064523711582536
+Bone,trilaciclib,CDK4/6 inhibitor,negative_control,0.8904,0.03076247424073511,7,20,-0.3594,-1.2421,0.06921556704165399
+CNS/Brain,trilaciclib,CDK4/6 inhibitor,negative_control,0.565,0.060490667632313824,14,48,-0.5454,-0.9292,0.12098133526462765
+Lymphoid,trilaciclib,CDK4/6 inhibitor,negative_control,0.9631,0.0009891491806125977,16,60,-0.4236,-1.4456,0.005934895083675586
+Esophagus/Stomach,trilaciclib,CDK4/6 inhibitor,negative_control,0.4675,0.0901878032529149,15,42,-0.3763,-0.8254,0.15422205430980115
+Head and Neck,trilaciclib,CDK4/6 inhibitor,negative_control,0.8939,0.010012046767887445,12,30,-0.5436,-1.2078,0.0360433683643948
+Pancreas,trilaciclib,CDK4/6 inhibitor,negative_control,0.4395,0.15685167315462567,8,34,-0.4779,-1.018,0.2352775097319385
+Biliary Tract,trilaciclib,CDK4/6 inhibitor,negative_control,0.0752,0.8014446887637376,9,23,-1.0218,-0.8267,0.8014446887637376
+Bowel,trilaciclib,CDK4/6 inhibitor,negative_control,0.5065,0.47163613471043986,5,38,-0.3648,-1.1185,0.5659633616525279
+Skin,trilaciclib,CDK4/6 inhibitor,negative_control,0.8674,0.030249546627161505,6,46,-0.4286,-1.3644,0.06921556704165399
+Kidney,trilaciclib,CDK4/6 inhibitor,negative_control,0.4863,0.5361795292829775,4,26,-1.7211,-1.9214,0.6032019704433497

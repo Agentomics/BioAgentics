@@ -1,0 +1,17 @@
+drug_name,mechanism,crispr_gene,expected_for_rb1_loss,in_prism
+trilaciclib,CDK4/6 inhibitor,CDK4,negative_control,True
+palbociclib,CDK4/6 inhibitor,CDK4,negative_control,False
+ribociclib,CDK4/6 inhibitor,CDK4,negative_control,False
+abemaciclib,CDK4/6 inhibitor,CDK4,negative_control,False
+alisertib,Aurora A inhibitor,AURKA,selective,False
+barasertib,Aurora B inhibitor,AURKB,selective,False
+prexasertib,CHK1 inhibitor,CHEK1,selective,False
+adavosertib,WEE1 inhibitor,WEE1,selective,False
+azenosertib,WEE1 inhibitor,WEE1,selective,False
+cisplatin,Platinum agent,,selective,False
+carboplatin,Platinum agent,,selective,False
+etoposide,Topoisomerase II inhibitor,TOP2A,selective,False
+olaparib,PARP inhibitor,PARP1,selective,False
+talazoparib,PARP inhibitor,PARP1,selective,False
+rucaparib,PARP inhibitor,PARP1,selective,False
+niraparib,PARP inhibitor,PARP1,selective,False

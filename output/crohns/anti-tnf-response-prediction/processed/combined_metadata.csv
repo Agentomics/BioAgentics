@@ -1,24 +1,84 @@
 sample_id,study,response_status,drug,tissue_type,timepoint,prior_biologic_exposure,disease
-GSM307886,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307887,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307888,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307889,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307890,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307891,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307892,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307893,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307894,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307895,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307896,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307897,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307898,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307899,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307900,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307901,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307902,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307903,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307904,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307905,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307906,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307907,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
-GSM307908,GSE12251,unknown,infliximab,colonic_biopsy,pre_treatment,unknown,unknown
+GSM423010,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423012,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423013,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423015,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423017,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423019,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423021,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423023,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423025,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423027,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423029,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423031,GSE16879,responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423033,GSE16879,non_responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423035,GSE16879,non_responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423037,GSE16879,non_responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423039,GSE16879,non_responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423041,GSE16879,non_responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423043,GSE16879,non_responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423045,GSE16879,non_responder,infliximab,colon,pre_treatment,unknown,cd
+GSM423053,GSE16879,responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423055,GSE16879,responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423057,GSE16879,responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423059,GSE16879,responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423061,GSE16879,responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423063,GSE16879,responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423065,GSE16879,responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423067,GSE16879,responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423069,GSE16879,non_responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423071,GSE16879,non_responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423073,GSE16879,non_responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423075,GSE16879,non_responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423077,GSE16879,non_responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423079,GSE16879,non_responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423081,GSE16879,non_responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423083,GSE16879,non_responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423085,GSE16879,non_responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM423087,GSE16879,non_responder,infliximab,ileum,pre_treatment,unknown,cd
+GSM307886,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307887,GSE12251,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307888,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307889,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307890,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307891,GSE12251,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307892,GSE12251,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307893,GSE12251,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307894,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307895,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307896,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307897,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307898,GSE12251,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307899,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307900,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307901,GSE12251,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307902,GSE12251,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307903,GSE12251,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307904,GSE12251,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307905,GSE12251,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307906,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307907,GSE12251,responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM307908,GSE12251,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,crohn's disease
+GSM1900148,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900154,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900155,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900158,GSE73661,responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900172,GSE73661,responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900175,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900176,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900180,GSE73661,responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900181,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900184,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900185,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900186,GSE73661,responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900192,GSE73661,responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900195,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900202,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900204,GSE73661,responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900206,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900208,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900210,GSE73661,responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900213,GSE73661,responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900214,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900215,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd
+GSM1900217,GSE73661,non_responder,infliximab,colonic_biopsy,pre_treatment,unknown,ibd

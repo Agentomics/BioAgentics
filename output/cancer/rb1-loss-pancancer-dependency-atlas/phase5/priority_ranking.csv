@@ -1,0 +1,23 @@
+cancer_type,depmap_lineage,rb1_loss_pct,us_incidence,rb1_loss_patients_per_year,cdk2_d,cdk2_source,drug_availability_score,priority_score
+SKCM,Skin,4.0,100640,4025,-1.5447,lineage-specific,2.0,25.64
+SARC_osteo,Bone,65.0,3600,2340,-0.9294,lineage-specific,2.0,14.42
+BLCA,Bladder/Urinary Tract,18.0,83190,14974,-0.6481,lineage-specific,2.0,12.46
+KIRC,Kidney,2.0,81800,1636,0.8205,lineage-specific,2.0,12.14
+PRAD,Prostate,12.0,288300,34596,-0.5239,pan-cancer pooled,2.0,10.95
+UCEC,Uterus,6.0,67880,4072,-0.6562,lineage-specific,2.0,10.91
+PAAD,Pancreas,5.0,66440,3322,-0.661,lineage-specific,2.0,10.72
+OV_HGSC,Ovary/Fallopian Tube,8.0,13700,1096,-0.7463,lineage-specific,2.0,10.45
+LIHC,Liver,6.0,41210,2472,-0.5803,lineage-specific,2.0,9.07
+SCLC,Lung,95.0,30000,28500,-0.4248,lineage-specific,2.0,8.71
+GBM,CNS/Brain,10.0,14000,1400,-0.584,lineage-specific,2.0,8.46
+BLCA_neuro,Bladder/Urinary Tract,40.0,1600,640,-0.6481,lineage-specific,2.0,8.38
+PRAD_NEPC,Prostate,40.0,5800,2320,-0.5239,pan-cancer pooled,2.0,8.12
+LUSC,Lung,8.0,58775,4702,-0.4248,lineage-specific,2.0,7.18
+LUAD,Lung,5.0,58775,2938,-0.4248,lineage-specific,2.0,6.78
+HNSC,Head and Neck,4.0,58450,2338,0.3039,lineage-specific,2.0,4.71
+Retinoblastoma,Eye,100.0,300,300,0.3882,lineage-specific,2.0,4.43
+SARC,Soft Tissue,8.0,13590,1087,0.1894,lineage-specific,2.0,2.65
+COADREAD,Bowel,3.0,152810,4584,-0.1131,lineage-specific,2.0,1.91
+BRCA_TNBC,Breast,12.0,46600,5592,-0.0544,lineage-specific,2.0,0.94
+STAD,Esophagus/Stomach,4.0,26890,1075,-0.0494,lineage-specific,2.0,0.69
+ESCA,Esophagus/Stomach,5.0,22370,1118,-0.0494,lineage-specific,2.0,0.69

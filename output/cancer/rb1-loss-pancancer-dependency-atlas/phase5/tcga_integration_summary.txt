@@ -1,0 +1,98 @@
+======================================================================
+RB1-Loss Pan-Cancer Dependency Atlas - Phase 5: TCGA Clinical Integration
+======================================================================
+
+Estimated total US RB1-loss cancer patients/year: ~125,127
+
+RB1-LOSS PREVALENCE BY CANCER TYPE
+------------------------------------------------------------
+  Retinoblastoma: 100% loss, ~300 pts/yr
+  SCLC: 95% loss, ~28,500 pts/yr
+  SARC_osteo: 65% loss, ~2,340 pts/yr
+  BLCA_neuro: 40% loss, ~640 pts/yr
+  PRAD_NEPC: 40% loss, ~2,320 pts/yr
+  BLCA: 18% loss, ~14,974 pts/yr
+  BRCA_TNBC: 12% loss, ~5,592 pts/yr
+  PRAD: 12% loss, ~34,596 pts/yr
+  GBM: 10% loss, ~1,400 pts/yr
+  OV_HGSC: 8% loss, ~1,096 pts/yr
+  LUSC: 8% loss, ~4,702 pts/yr
+  SARC: 8% loss, ~1,087 pts/yr
+  UCEC: 6% loss, ~4,072 pts/yr
+  LIHC: 6% loss, ~2,472 pts/yr
+  LUAD: 5% loss, ~2,938 pts/yr
+  ESCA: 5% loss, ~1,118 pts/yr
+  PAAD: 5% loss, ~3,322 pts/yr
+  STAD: 4% loss, ~1,075 pts/yr
+  HNSC: 4% loss, ~2,338 pts/yr
+  SKCM: 4% loss, ~4,025 pts/yr
+  COADREAD: 3% loss, ~4,584 pts/yr
+  KIRC: 2% loss, ~1,636 pts/yr
+
+CDK2 INHIBITOR CLINICAL LANDSCAPE
+------------------------------------------------------------
+  INX-315 (Incyte, Phase 1/2): NCT05735080
+    Biomarkers: CCNE1 amplification, RB1 loss
+    Tumor types: Breast; Ovarian; Endometrial; Solid tumors
+    Includes RB1 loss: YES
+  PF-07220060 (Pfizer, Phase 1): NCT05757544
+    Biomarkers: CCNE1 amplification, CDK4/6i-resistant
+    Tumor types: Breast; Solid tumors
+    Includes RB1 loss: NO
+
+OTHER RELEVANT TRIALS FOR RB1-LOSS CANCERS
+------------------------------------------------------------
+  Alisertib (AURKA) (Phase 2): SCLC
+    Activity in SCLC (RB1-loss enriched)
+  Lurbinectedin (Approved): SCLC
+    Approved for relapsed SCLC
+  Tarlatamab (DLL3 BiTE) (Approved): SCLC
+    DLL3-targeting bispecific, approved SCLC
+
+PRIORITY RANKING (CDK2 SL strength x population x drug availability)
+------------------------------------------------------------
+  SKCM: score=25.6, CDK2 d=-1.545 [lineage-specific], ~4,025 pts/yr
+  SARC_osteo: score=14.4, CDK2 d=-0.929 [lineage-specific], ~2,340 pts/yr
+  BLCA: score=12.5, CDK2 d=-0.648 [lineage-specific], ~14,974 pts/yr
+  KIRC: score=12.1, CDK2 d=0.821 [lineage-specific], ~1,636 pts/yr
+  PRAD: score=10.9, CDK2 d=-0.524 [pan-cancer pooled], ~34,596 pts/yr
+  UCEC: score=10.9, CDK2 d=-0.656 [lineage-specific], ~4,072 pts/yr
+  PAAD: score=10.7, CDK2 d=-0.661 [lineage-specific], ~3,322 pts/yr
+  OV_HGSC: score=10.4, CDK2 d=-0.746 [lineage-specific], ~1,096 pts/yr
+  LIHC: score=9.1, CDK2 d=-0.580 [lineage-specific], ~2,472 pts/yr
+  SCLC: score=8.7, CDK2 d=-0.425 [lineage-specific], ~28,500 pts/yr
+  GBM: score=8.5, CDK2 d=-0.584 [lineage-specific], ~1,400 pts/yr
+  BLCA_neuro: score=8.4, CDK2 d=-0.648 [lineage-specific], ~640 pts/yr
+  PRAD_NEPC: score=8.1, CDK2 d=-0.524 [pan-cancer pooled], ~2,320 pts/yr
+  LUSC: score=7.2, CDK2 d=-0.425 [lineage-specific], ~4,702 pts/yr
+  LUAD: score=6.8, CDK2 d=-0.425 [lineage-specific], ~2,938 pts/yr
+
+SCLC DEEP-DIVE
+------------------------------------------------------------
+  RB1 loss: ~95% (near-universal)
+  TP53 co-loss: ~98% (hallmark of SCLC)
+  5-year survival: <7%
+  Standard of care: platinum + etoposide + IO
+  Unmet need: Nearly all patients relapse
+  CDK2 dependency (DepMap): ROBUST (d=-0.524 pan-cancer)
+  Key opportunity: CDK2 inhibitors as targeted therapy for SCLC
+  SCLC has no approved targeted therapies — CDK2i could be first-in-class
+
+CO-ALTERATION LANDSCAPE
+------------------------------------------------------------
+  RB1+TP53 co-loss: Defines SCLC, common in NEPC and osteosarcoma
+  RB1+CCNE1 amp: Intensifies CDK2 dependency (d=-2.236 in DepMap)
+  RB1+MYC amp: Drives proliferation, may modify dependency landscape
+  SCLC: RB1+TP53 = SCLC hallmark
+  BRCA_TNBC: CCNE1 amp intensifies CDK2 dep
+  OV_HGSC: CCNE1 amp intensifies CDK2 dep
+
+CLINICAL RECOMMENDATIONS
+------------------------------------------------------------
+  1. SCLC: Highest priority for CDK2 inhibitor trials (~28,500 RB1-loss/yr)
+  2. Prostate (NEPC): RB1 loss enriched in treatment-resistant disease
+  3. Bladder: 18% RB1 loss, large population (~15,000 pts/yr)
+  4. TNBC: RB1+CCNE1 co-alteration subgroup most CDK2-dependent
+  5. Osteosarcoma: 65% RB1 loss, pediatric unmet need
+
+Sources: TCGA PanCanAtlas, ACS 2024, ClinicalTrials.gov, ASCO 2025

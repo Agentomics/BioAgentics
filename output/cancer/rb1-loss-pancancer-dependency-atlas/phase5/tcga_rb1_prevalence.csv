@@ -1,0 +1,23 @@
+cancer_type,depmap_lineage,rb1_loss_pct,tp53_comut_pct,ccne1_amp_pct,us_incidence,estimated_rb1_loss_patients_per_year
+Retinoblastoma,Eye,100.0,50.0,3.0,300,300
+SCLC,Lung,95.0,98.0,5.0,30000,28500
+SARC_osteo,Bone,65.0,80.0,3.0,3600,2340
+BLCA_neuro,Bladder/Urinary Tract,40.0,50.0,3.0,1600,640
+PRAD_NEPC,Prostate,40.0,70.0,3.0,5800,2320
+BLCA,Bladder/Urinary Tract,18.0,60.0,8.0,83190,14974
+BRCA_TNBC,Breast,12.0,85.0,15.0,46600,5592
+PRAD,Prostate,12.0,50.0,3.0,288300,34596
+GBM,CNS/Brain,10.0,30.0,3.0,14000,1400
+OV_HGSC,Ovary/Fallopian Tube,8.0,96.0,20.0,13700,1096
+LUSC,Lung,8.0,70.0,3.0,58775,4702
+SARC,Soft Tissue,8.0,50.0,3.0,13590,1087
+UCEC,Uterus,6.0,50.0,10.0,67880,4072
+LIHC,Liver,6.0,50.0,3.0,41210,2472
+LUAD,Lung,5.0,50.0,3.0,58775,2938
+ESCA,Esophagus/Stomach,5.0,50.0,3.0,22370,1118
+PAAD,Pancreas,5.0,50.0,3.0,66440,3322
+STAD,Esophagus/Stomach,4.0,50.0,3.0,26890,1075
+HNSC,Head and Neck,4.0,70.0,3.0,58450,2338
+SKCM,Skin,4.0,50.0,3.0,100640,4025
+COADREAD,Bowel,3.0,50.0,3.0,152810,4584
+KIRC,Kidney,2.0,50.0,3.0,81800,1636
