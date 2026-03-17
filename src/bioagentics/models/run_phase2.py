@@ -83,15 +83,22 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
 
+    results_dir = args.results_dir
+    results_dir.mkdir(parents=True, exist_ok=True)
+
+    log_level = logging.DEBUG if args.verbose else logging.INFO
+    log_fmt = "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
     logging.basicConfig(
-        level=logging.DEBUG if args.verbose else logging.INFO,
-        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        level=log_level,
+        format=log_fmt,
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(results_dir / "pipeline.log"),
+        ],
     )
 
     depmap_dir = args.data_dir / "depmap" / "25q3"
     tcga_dir = args.data_dir / "tcga"
-    results_dir = args.results_dir
-    results_dir.mkdir(parents=True, exist_ok=True)
 
     summary = {}
     patients = None  # lazily computed; classify_patients re-parses MAF files
