@@ -27,6 +27,9 @@ No computational re-analysis has been performed on this dataset. A systematic si
 
 ### Phase 3: Pathway & Network Analysis
 - Gene set enrichment per cell type using GO, KEGG, Reactome.
+- **Autophagy pathway scoring:** Specifically assess ATG7, UVRAG, and BECN1 expression pre/post IVIG in monocyte clusters. Singh SC et al. 2026 (PMID 41822482) showed IVIG upregulates core autophagy genes in monocytes with cell-type-specific selective autophagy programs. This connects to mTOR→autophagy axis (Fronticelli Baldelli G 2025, PMID 41462744).
+- **S100A12-TLR4-MYD88 axis assessment:** Evaluate S100A12 expression in CD14+CD16 monocytes as a candidate predictor of IVIG non-response. Feng C et al. 2025 (PMID 41394864) identified this axis in IVIG-non-responsive Kawasaki disease, along with T/NK exhaustion and disrupted Tfh-B cell coordination.
+- **Cell-cell communication analysis:** Apply CellChat or NicheNet framework (as in Singh et al.) to characterize how IVIG remodels immune cell communication networks.
 - Cross-reference with cytokine-network-flare-prediction cytokine gene sets (IL-17, TNF-α, IL-6, TGF-β1, complement).
 - Cross-reference with autoantibody-target-network-mapping pathways — do IVIG-responsive cell types express autoantibody target-related genes?
 - Histone modification pathway deep-dive in neutrophils/NK cells (novel finding from original paper).
