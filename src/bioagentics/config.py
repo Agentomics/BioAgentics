@@ -66,6 +66,7 @@ class DispatchConfig:
     retry_max_attempts: int = 3
     oom_delays: list[int] | None = None  # OOM/crash retry delays
     oom_max_attempts: int = 2
+    presence_timeout: int = 1800  # seconds before a running agent is considered stale
 
     def __post_init__(self):
         if self.retry_delays is None:
@@ -94,6 +95,7 @@ def load_config(path: str = "agents.toml") -> tuple[list[AgentConfig], DispatchC
         retry_max_attempts=d.get("retry_max_attempts", 3),
         oom_delays=d.get("oom_delays"),
         oom_max_attempts=d.get("oom_max_attempts", 2),
+        presence_timeout=d.get("presence_timeout", 1800),
     )
 
     # Agent configs

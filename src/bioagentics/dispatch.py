@@ -151,6 +151,40 @@ def project_locked_by(project: str) -> str | None:
     return None
 
 
+def clear_stale_presences():
+    """Reset agents stuck as 'running' beyond the presence timeout.
+
+    Catches the case where set_presence("idle") failed in run_agent's
+    finally block (e.g. API timeout), leaving an agent permanently stuck
+    and blocking all future dispatches for its project.
+    """
+    resp = api("GET", "/agents?status=running")
+    if not resp or not resp.ok:
+        return
+    now = datetime.now(timezone.utc)
+    for agent in resp.json().get("items", []):
+        updated = agent.get("updated_at", "")
+        if not updated:
+            continue
+        try:
+            last_seen = datetime.strptime(updated, "%Y-%m-%dT%H:%M:%SZ").replace(
+                tzinfo=timezone.utc
+            )
+        except ValueError:
+            continue
+        age = (now - last_seen).total_seconds()
+        if age > _dispatch.presence_timeout:
+            username = agent["username"]
+            project = agent.get("project") or None
+            label = f"{username}/{project}" if project else username
+            print(f"  STALE: {label} running for {int(age)}s — resetting to idle")
+            set_presence(username, "idle", project)
+            journal(
+                f"stale presence cleanup: {label} was running for "
+                f"{int(age)}s (timeout {_dispatch.presence_timeout}s), reset to idle"
+            )
+
+
 def check_stale_blocked_tasks():
     """Log warnings for tasks blocked longer than 3 hours."""
     resp = api("GET", "/tasks?status=blocked&older_than=3h&limit=100")
@@ -517,6 +551,9 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
     """
     if _is_stopping():
         return
+
+    # Clear agents stuck as 'running' beyond the presence timeout
+    clear_stale_presences()
 
     # Check for stale blocked tasks
     check_stale_blocked_tasks()
