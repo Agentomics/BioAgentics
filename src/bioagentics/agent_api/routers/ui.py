@@ -512,7 +512,10 @@ def render_project_detail(
     <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     Research Plan
   </summary>
-  <div class="text-sm whitespace-pre-wrap break-words text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a] mt-2 max-h-[500px] overflow-y-auto">{esc(plan_content)}</div>
+  <div class="md-wrap mt-2">
+    <button class="md-copy" onclick="copyMd(this)"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy</button>
+    <div class="text-sm text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a] max-h-[500px] overflow-y-auto whitespace-pre-wrap break-words md-body">{esc(plan_content)}</div>
+  </div>
 </details>""")
 
     if findings_content:
@@ -521,7 +524,10 @@ def render_project_detail(
     <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     Findings &amp; Summary
   </summary>
-  <div class="text-sm whitespace-pre-wrap break-words text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a] mt-2 max-h-[500px] overflow-y-auto">{esc(findings_content)}</div>
+  <div class="md-wrap mt-2">
+    <button class="md-copy" onclick="copyMd(this)"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy</button>
+    <div class="text-sm text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a] max-h-[500px] overflow-y-auto whitespace-pre-wrap break-words md-body">{esc(findings_content)}</div>
+  </div>
 </details>""")
 
     if report_content:
@@ -530,7 +536,10 @@ def render_project_detail(
     <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
     Research Report
   </summary>
-  <div class="text-sm whitespace-pre-wrap break-words text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a] mt-2 max-h-[600px] overflow-y-auto">{esc(report_content)}</div>
+  <div class="md-wrap mt-2">
+    <button class="md-copy" onclick="copyMd(this)"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy</button>
+    <div class="text-sm text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a] max-h-[600px] overflow-y-auto whitespace-pre-wrap break-words md-body">{esc(report_content)}</div>
+  </div>
 </details>""")
 
     if result_files:
@@ -1929,6 +1938,36 @@ async function revokeKey(id, name) {
     alert('Failed to revoke key: ' + e.message);
   }
 }
+
+// --- Markdown rendering & copy-to-clipboard ---
+
+function renderMarkdown(root) {
+  if (typeof marked === 'undefined' || typeof DOMPurify === 'undefined') return;
+  (root || document).querySelectorAll('.md-body:not(.md-rendered)').forEach(function(el) {
+    // Store raw text for copy button before rendering
+    el.dataset.rawMd = el.textContent;
+    var html = DOMPurify.sanitize(marked.parse(el.textContent));
+    el.innerHTML = html;
+    el.classList.add('md-rendered');
+  });
+}
+
+function copyMd(btn) {
+  var body = btn.parentElement.querySelector('.md-body');
+  if (!body) return;
+  var text = body.dataset.rawMd || body.textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    var orig = btn.innerHTML;
+    btn.innerHTML = '<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Copied';
+    setTimeout(function() { btn.classList.remove('copied'); btn.innerHTML = orig; }, 1500);
+  });
+}
+
+// Render on initial load
+document.addEventListener('DOMContentLoaded', function() { renderMarkdown(); });
+// Re-render after HTMX swaps
+document.body.addEventListener('htmx:afterSettle', function(evt) { renderMarkdown(evt.detail.target); });
 """
 
 
@@ -1978,6 +2017,43 @@ SHELL_CSS = """
     z-index: 50;
     pointer-events: none;
   }
+
+  /* Markdown content wrapper */
+  .md-wrap { position: relative; }
+  .md-wrap .md-copy {
+    position: absolute; top: 8px; right: 8px; z-index: 10;
+    background: #27272a; border: 1px solid #3f3f46; color: #a1a1aa;
+    padding: 4px 10px; border-radius: 6px; font-size: 11px; cursor: pointer;
+    opacity: 0; transition: opacity 150ms;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .md-wrap:hover .md-copy { opacity: 1; }
+  .md-copy:hover { background: #3f3f46; color: #fafafa; }
+  .md-copy.copied { background: #052e16; border-color: #166534; color: #4ade80; }
+
+  /* Rendered markdown styles — override Tailwind whitespace-pre-wrap */
+  .md-rendered { white-space: normal !important; word-break: normal !important; }
+  .md-rendered h1 { font-size: 1.25em; font-weight: 700; margin: 1em 0 0.5em; color: #fafafa; }
+  .md-rendered h2 { font-size: 1.1em; font-weight: 600; margin: 1em 0 0.4em; color: #fafafa; border-bottom: 1px solid #27272a; padding-bottom: 0.3em; }
+  .md-rendered h3 { font-size: 1em; font-weight: 600; margin: 0.8em 0 0.3em; color: #e4e4e7; }
+  .md-rendered h4,
+  .md-rendered h5,
+  .md-rendered h6 { font-size: 0.95em; font-weight: 600; margin: 0.6em 0 0.2em; color: #d4d4d8; }
+  .md-rendered p { margin: 0.5em 0; line-height: 1.65; }
+  .md-rendered ul, .md-rendered ol { margin: 0.4em 0; padding-left: 1.5em; }
+  .md-rendered li { margin: 0.2em 0; line-height: 1.55; }
+  .md-rendered li > ul, .md-rendered li > ol { margin: 0.1em 0; }
+  .md-rendered code { background: #18181b; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; color: #e4e4e7; }
+  .md-rendered pre { background: #18181b; border: 1px solid #27272a; border-radius: 6px; padding: 12px; margin: 0.5em 0; overflow-x: auto; }
+  .md-rendered pre code { background: none; padding: 0; }
+  .md-rendered blockquote { border-left: 3px solid #3b82f6; padding-left: 12px; margin: 0.5em 0; color: #a1a1aa; }
+  .md-rendered table { border-collapse: collapse; margin: 0.5em 0; width: 100%; }
+  .md-rendered th, .md-rendered td { border: 1px solid #27272a; padding: 6px 10px; text-align: left; font-size: 0.9em; }
+  .md-rendered th { background: #18181b; font-weight: 600; color: #e4e4e7; }
+  .md-rendered hr { border: none; border-top: 1px solid #27272a; margin: 1em 0; }
+  .md-rendered a { color: #60a5fa; text-decoration: underline; }
+  .md-rendered strong { color: #fafafa; }
+  .md-rendered img { max-width: 100%; border-radius: 6px; }
 """
 
 
@@ -2001,6 +2077,8 @@ def render_shell(active_tab: str, content: str, stats_html: str, presence_html: 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
 <style>{SHELL_CSS}</style>
 </head>
 <body class="bg-[#09090b] text-[#fafafa] font-['Inter',system-ui,sans-serif] leading-relaxed antialiased">
