@@ -94,6 +94,7 @@ def main(argv: list[str] | None = None) -> None:
     results_dir.mkdir(parents=True, exist_ok=True)
 
     summary = {}
+    patients = None  # lazily computed; classify_patients re-parses MAF files
 
     # Step 1: Feature matrix preparation
     logger.info("=== Step 1: Feature matrix preparation ===")
@@ -168,7 +169,8 @@ def main(argv: list[str] | None = None) -> None:
         dep_matrix = predict_tcga_dependencies(models, feat.feature_genes, tcga_expr_log)
 
         # Get patient subtypes
-        patients = classify_patients(tcga_dir)
+        if patients is None:
+            patients = classify_patients(tcga_dir)
         save_predictions(dep_matrix, results_dir, patient_meta=patients)
         logger.info("  Predicted: %d patients x %d genes", *dep_matrix.shape)
 
@@ -179,7 +181,8 @@ def main(argv: list[str] | None = None) -> None:
         logger.info("=== Step 5: Skipped (--skip-analysis) ===")
     else:
         logger.info("=== Step 5: Subtype-specific dependency analysis ===")
-        patients = classify_patients(tcga_dir)
+        if patients is None:
+            patients = classify_patients(tcga_dir)
         patient_subtypes = pd.Series(
             patients.set_index("patient_id")["molecular_subtype"],
         )
@@ -200,7 +203,8 @@ def main(argv: list[str] | None = None) -> None:
         logger.info("=== Step 6: Skipped (--skip-validation) ===")
     else:
         logger.info("=== Step 6: Positive control validation ===")
-        patients = classify_patients(tcga_dir)
+        if patients is None:
+            patients = classify_patients(tcga_dir)
         patients_indexed = patients.set_index("patient_id")
         patient_subtypes = patients_indexed["molecular_subtype"]
 
