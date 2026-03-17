@@ -1,0 +1,1035 @@
+{
+  "total_lines_with_crispr": 1186,
+  "total_pik3ca_mutant_with_crispr": 144,
+  "powered_mutant_vs_wt_count": 9,
+  "powered_allele_vs_allele_count": 1,
+  "cancer_types": [
+    {
+      "cancer_type": "Urethral Cancer",
+      "N_total": 2,
+      "N_mutant": 2,
+      "N_wt": 0,
+      "mutation_freq": 1.0,
+      "allele_counts": {
+        "other": 2
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Breast Ductal Carcinoma In Situ",
+      "N_total": 3,
+      "N_mutant": 2,
+      "N_wt": 1,
+      "mutation_freq": 0.6667,
+      "allele_counts": {
+        "E545K": 1,
+        "H1047R": 1
+      },
+      "N_h1047r_group": 1,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Uterine Sarcoma/Mesenchymal",
+      "N_total": 3,
+      "N_mutant": 2,
+      "N_wt": 1,
+      "mutation_freq": 0.6667,
+      "allele_counts": {
+        "E545K": 1,
+        "other_activating": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Endometrial Carcinoma",
+      "N_total": 28,
+      "N_mutant": 16,
+      "N_wt": 12,
+      "mutation_freq": 0.5714,
+      "allele_counts": {
+        "other_activating": 7,
+        "other": 6,
+        "H1047R": 1,
+        "E545K": 1,
+        "C420R": 1
+      },
+      "N_h1047r_group": 1,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": true,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Bladder Squamous Cell Carcinoma",
+      "N_total": 2,
+      "N_mutant": 1,
+      "N_wt": 1,
+      "mutation_freq": 0.5,
+      "allele_counts": {
+        "E545K": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Invasive Breast Carcinoma",
+      "N_total": 49,
+      "N_mutant": 17,
+      "N_wt": 32,
+      "mutation_freq": 0.3469,
+      "allele_counts": {
+        "H1047R": 9,
+        "E545K": 3,
+        "H1047L": 2,
+        "other": 1,
+        "C420R": 1,
+        "E542K": 1
+      },
+      "N_h1047r_group": 11,
+      "N_helical_group": 4,
+      "powered_mutant_vs_wt": true,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Bladder Urothelial Carcinoma",
+      "N_total": 30,
+      "N_mutant": 10,
+      "N_wt": 20,
+      "mutation_freq": 0.3333,
+      "allele_counts": {
+        "E545K": 6,
+        "H1047R": 2,
+        "other": 1,
+        "E542K": 1
+      },
+      "N_h1047r_group": 2,
+      "N_helical_group": 7,
+      "powered_mutant_vs_wt": true,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Cervical Adenocarcinoma",
+      "N_total": 3,
+      "N_mutant": 1,
+      "N_wt": 2,
+      "mutation_freq": 0.3333,
+      "allele_counts": {
+        "other": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Colorectal Adenocarcinoma",
+      "N_total": 63,
+      "N_mutant": 21,
+      "N_wt": 42,
+      "mutation_freq": 0.3333,
+      "allele_counts": {
+        "E545K": 7,
+        "H1047R": 6,
+        "other": 4,
+        "E542K": 1,
+        "C420R": 1,
+        "other_activating": 1,
+        "H1047L": 1
+      },
+      "N_h1047r_group": 7,
+      "N_helical_group": 8,
+      "powered_mutant_vs_wt": true,
+      "powered_allele_vs_allele": true
+    },
+    {
+      "cancer_type": "Meningothelial Tumor",
+      "N_total": 3,
+      "N_mutant": 1,
+      "N_wt": 2,
+      "mutation_freq": 0.3333,
+      "allele_counts": {
+        "other": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Merkel Cell Carcinoma",
+      "N_total": 3,
+      "N_mutant": 1,
+      "N_wt": 2,
+      "mutation_freq": 0.3333,
+      "allele_counts": {
+        "E542K": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Ovarian Epithelial Tumor",
+      "N_total": 58,
+      "N_mutant": 15,
+      "N_wt": 43,
+      "mutation_freq": 0.2586,
+      "allele_counts": {
+        "other": 7,
+        "H1047R": 5,
+        "C420R": 1,
+        "H1047L": 1,
+        "other_activating": 1
+      },
+      "N_h1047r_group": 6,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": true,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Cervical Squamous Cell Carcinoma",
+      "N_total": 13,
+      "N_mutant": 3,
+      "N_wt": 10,
+      "mutation_freq": 0.2308,
+      "allele_counts": {
+        "E545K": 2,
+        "other_activating": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 2,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Ampullary Carcinoma",
+      "N_total": 5,
+      "N_mutant": 1,
+      "N_wt": 4,
+      "mutation_freq": 0.2,
+      "allele_counts": {
+        "E545K": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Cutaneous Squamous Cell Carcinoma",
+      "N_total": 5,
+      "N_mutant": 1,
+      "N_wt": 4,
+      "mutation_freq": 0.2,
+      "allele_counts": {
+        "E545K": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Prostate Adenocarcinoma",
+      "N_total": 5,
+      "N_mutant": 1,
+      "N_wt": 4,
+      "mutation_freq": 0.2,
+      "allele_counts": {
+        "E545K": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Synovial Sarcoma",
+      "N_total": 5,
+      "N_mutant": 1,
+      "N_wt": 4,
+      "mutation_freq": 0.2,
+      "allele_counts": {
+        "H1047R": 1
+      },
+      "N_h1047r_group": 1,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "B-Cell Acute Lymphoblastic Leukemia",
+      "N_total": 12,
+      "N_mutant": 2,
+      "N_wt": 10,
+      "mutation_freq": 0.1667,
+      "allele_counts": {
+        "other": 2
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "T-Lymphoblastic Leukemia/Lymphoma",
+      "N_total": 6,
+      "N_mutant": 1,
+      "N_wt": 5,
+      "mutation_freq": 0.1667,
+      "allele_counts": {
+        "other": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Esophagogastric Adenocarcinoma",
+      "N_total": 45,
+      "N_mutant": 7,
+      "N_wt": 38,
+      "mutation_freq": 0.1556,
+      "allele_counts": {
+        "E542K": 4,
+        "other": 2,
+        "E545K": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 5,
+      "powered_mutant_vs_wt": true,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Esophageal Squamous Cell Carcinoma",
+      "N_total": 24,
+      "N_mutant": 3,
+      "N_wt": 21,
+      "mutation_freq": 0.125,
+      "allele_counts": {
+        "E545K": 2,
+        "other": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 2,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Head and Neck Squamous Cell Carcinoma",
+      "N_total": 72,
+      "N_mutant": 9,
+      "N_wt": 63,
+      "mutation_freq": 0.125,
+      "allele_counts": {
+        "H1047R": 4,
+        "E545K": 3,
+        "other": 1,
+        "H1047L": 1
+      },
+      "N_h1047r_group": 5,
+      "N_helical_group": 3,
+      "powered_mutant_vs_wt": true,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Myeloproliferative Neoplasms",
+      "N_total": 10,
+      "N_mutant": 1,
+      "N_wt": 9,
+      "mutation_freq": 0.1,
+      "allele_counts": {
+        "E545K": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Non-Small Cell Lung Cancer",
+      "N_total": 98,
+      "N_mutant": 9,
+      "N_wt": 89,
+      "mutation_freq": 0.0918,
+      "allele_counts": {
+        "other": 4,
+        "E545K": 2,
+        "other_activating": 2,
+        "H1047R": 1
+      },
+      "N_h1047r_group": 1,
+      "N_helical_group": 2,
+      "powered_mutant_vs_wt": true,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Diffuse Glioma",
+      "N_total": 71,
+      "N_mutant": 6,
+      "N_wt": 65,
+      "mutation_freq": 0.0845,
+      "allele_counts": {
+        "other": 5,
+        "H1047R": 1
+      },
+      "N_h1047r_group": 1,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": true,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Renal Cell Carcinoma",
+      "N_total": 29,
+      "N_mutant": 2,
+      "N_wt": 27,
+      "mutation_freq": 0.069,
+      "allele_counts": {
+        "E545K": 1,
+        "H1047R": 1
+      },
+      "N_h1047r_group": 1,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Neuroblastoma",
+      "N_total": 39,
+      "N_mutant": 2,
+      "N_wt": 37,
+      "mutation_freq": 0.0513,
+      "allele_counts": {
+        "other": 1,
+        "E542K": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Osteosarcoma",
+      "N_total": 20,
+      "N_mutant": 1,
+      "N_wt": 19,
+      "mutation_freq": 0.05,
+      "allele_counts": {
+        "other": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Lung Neuroendocrine Tumor",
+      "N_total": 26,
+      "N_mutant": 1,
+      "N_wt": 25,
+      "mutation_freq": 0.0385,
+      "allele_counts": {
+        "H1047R": 1
+      },
+      "N_h1047r_group": 1,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Ewing Sarcoma",
+      "N_total": 27,
+      "N_mutant": 1,
+      "N_wt": 26,
+      "mutation_freq": 0.037,
+      "allele_counts": {
+        "other_activating": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Intraductal Papillary Neoplasm of the Bile Duct",
+      "N_total": 28,
+      "N_mutant": 1,
+      "N_wt": 27,
+      "mutation_freq": 0.0357,
+      "allele_counts": {
+        "E545K": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Mature B-Cell Neoplasms",
+      "N_total": 56,
+      "N_mutant": 1,
+      "N_wt": 55,
+      "mutation_freq": 0.0179,
+      "allele_counts": {
+        "E545K": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 1,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Melanoma",
+      "N_total": 67,
+      "N_mutant": 1,
+      "N_wt": 66,
+      "mutation_freq": 0.0149,
+      "allele_counts": {
+        "other": 1
+      },
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Acute Leukemias of Ambiguous Lineage",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Acute Myeloid Leukemia",
+      "N_total": 30,
+      "N_mutant": 0,
+      "N_wt": 30,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Adenosquamous Carcinoma of the Pancreas",
+      "N_total": 2,
+      "N_mutant": 0,
+      "N_wt": 2,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Adrenocortical Carcinoma",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Anaplastic Thyroid Cancer",
+      "N_total": 7,
+      "N_mutant": 0,
+      "N_wt": 7,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Breast Neoplasm, NOS",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Chondrosarcoma",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Clear Cell Sarcoma",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Embryonal Tumor",
+      "N_total": 15,
+      "N_mutant": 0,
+      "N_wt": 15,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Epithelioid Sarcoma",
+      "N_total": 2,
+      "N_mutant": 0,
+      "N_wt": 2,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Extra Gonadal Germ Cell Tumor",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Fibrosarcoma",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Gestational Trophoblastic Disease",
+      "N_total": 3,
+      "N_mutant": 0,
+      "N_wt": 3,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Giant Cell Tumor of Bone",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Glassy Cell Carcinoma of the Cervix",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Head and Neck Carcinoma, Other",
+      "N_total": 3,
+      "N_mutant": 0,
+      "N_wt": 3,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Hepatoblastoma",
+      "N_total": 2,
+      "N_mutant": 0,
+      "N_wt": 2,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Hepatocellular Carcinoma",
+      "N_total": 21,
+      "N_mutant": 0,
+      "N_wt": 21,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Hepatocellular Carcinoma plus Intrahepatic Cholangiocarcinoma",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Hodgkin Lymphoma",
+      "N_total": 3,
+      "N_mutant": 0,
+      "N_wt": 3,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Intracholecystic Papillary Neoplasm",
+      "N_total": 6,
+      "N_mutant": 0,
+      "N_wt": 6,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Leiomyosarcoma",
+      "N_total": 4,
+      "N_mutant": 0,
+      "N_wt": 4,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Liposarcoma",
+      "N_total": 9,
+      "N_mutant": 0,
+      "N_wt": 9,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Mature T and NK Neoplasms",
+      "N_total": 8,
+      "N_mutant": 0,
+      "N_wt": 8,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Mixed Cervical Carcinoma",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Mucosal Melanoma of the Vulva/Vagina",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Nerve Sheath Tumor",
+      "N_total": 6,
+      "N_mutant": 0,
+      "N_wt": 6,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Non-Cancerous",
+      "N_total": 16,
+      "N_mutant": 0,
+      "N_wt": 16,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Non-Hodgkin Lymphoma",
+      "N_total": 6,
+      "N_mutant": 0,
+      "N_wt": 6,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Non-Seminomatous Germ Cell Tumor",
+      "N_total": 5,
+      "N_mutant": 0,
+      "N_wt": 5,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Ocular Melanoma",
+      "N_total": 8,
+      "N_mutant": 0,
+      "N_wt": 8,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Ovarian Germ Cell Tumor",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Pancreatic Adenocarcinoma",
+      "N_total": 46,
+      "N_mutant": 0,
+      "N_wt": 46,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Pleural Mesothelioma",
+      "N_total": 21,
+      "N_mutant": 0,
+      "N_wt": 21,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Poorly Differentiated Thyroid Cancer",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Retinoblastoma",
+      "N_total": 2,
+      "N_mutant": 0,
+      "N_wt": 2,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Rhabdoid Cancer",
+      "N_total": 10,
+      "N_mutant": 0,
+      "N_wt": 10,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Rhabdomyosarcoma",
+      "N_total": 12,
+      "N_mutant": 0,
+      "N_wt": 12,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "SMARCA4-deficient undifferentiated tumor",
+      "N_total": 2,
+      "N_mutant": 0,
+      "N_wt": 2,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Salivary Carcinoma",
+      "N_total": 2,
+      "N_mutant": 0,
+      "N_wt": 2,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Sarcoma, NOS",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Squamous Cell Carcinoma of the Vulva/Vagina",
+      "N_total": 1,
+      "N_mutant": 0,
+      "N_wt": 1,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Undifferentiated Pleomorphic Sarcoma/Malignant Fibrous Histiocytoma/High-Grade Spindle Cell Sarcoma",
+      "N_total": 6,
+      "N_mutant": 0,
+      "N_wt": 6,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    },
+    {
+      "cancer_type": "Well-Differentiated Thyroid Cancer",
+      "N_total": 3,
+      "N_mutant": 0,
+      "N_wt": 3,
+      "mutation_freq": 0.0,
+      "allele_counts": {},
+      "N_h1047r_group": 0,
+      "N_helical_group": 0,
+      "powered_mutant_vs_wt": false,
+      "powered_allele_vs_allele": false
+    }
+  ]
+}
