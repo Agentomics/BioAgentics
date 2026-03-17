@@ -107,6 +107,7 @@ def compute_drug_sensitivity(
 ) -> pd.DataFrame:
     """Compare drug sensitivity (MSI-H vs MSS) pan-cancer."""
     rows = []
+    qualifying = pd.read_csv(PHASE1_DIR / "qualifying_cancer_types.csv")
 
     for drug_name, info in available_drugs.items():
         # Find the drug rows in PRISM matrix (may have multiple doses/profiles)
@@ -145,7 +146,6 @@ def compute_drug_sensitivity(
         })
 
         # Per qualifying cancer type
-        qualifying = pd.read_csv(PHASE1_DIR / "qualifying_cancer_types.csv")
         for ct in qualifying["cancer_type"]:
             ct_lines = classified[classified["OncotreeLineage"] == ct]
             msi_ct = ct_lines[ct_lines["msi_status"] == "MSI-H"].index
