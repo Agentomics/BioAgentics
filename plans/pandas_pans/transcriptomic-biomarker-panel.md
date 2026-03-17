@@ -18,7 +18,7 @@ PANDAS/PANS diagnosis remains clinical and subjective — no validated laborator
 
 ## Methodology
 1. **Data Acquisition & Harmonization:** Download and normalize GEO datasets using standard pipelines (RMA/quantile normalization for microarray; DESeq2/edgeR for RNA-seq). Apply batch correction (ComBat/limma) across studies.
-2. **Differential Expression Analysis:** Identify DEGs between autoimmune neuropsychiatric (proxy for PANDAS/PANS) vs primary psychiatric vs healthy controls using limma-voom or DESeq2.
+2. **Differential Expression Analysis:** Identify DEGs between autoimmune neuropsychiatric (proxy for PANDAS/PANS) vs primary psychiatric vs healthy controls using limma-voom or DESeq2. **MANDATORY: All DE analyses must be run sex-stratified as well as combined** — Rahman SS et al. 2025 (PMID 41254741) demonstrated striking sex-associated differences in monocyte phenotypes in PANS, particularly during recovery. Collapsing sexes risks masking diagnostic signatures.
 3. **Weighted Gene Co-expression Network Analysis (WGCNA):** Identify gene modules correlated with autoimmune neuropsychiatric phenotype. Focus on modules enriched in immune/inflammatory pathways.
 4. **Feature Selection & Classifier Training:** Use recursive feature elimination + cross-validation to select top discriminatory genes. Train Random Forest, XGBoost, and logistic regression classifiers. Evaluate with nested cross-validation (AUC, sensitivity, specificity).
 5. **Pathway Enrichment:** GSEA and over-representation analysis on classifier genes to validate biological plausibility (expect complement, Th17, BBB, autoantibody pathways).
