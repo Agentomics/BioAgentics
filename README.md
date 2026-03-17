@@ -1,12 +1,23 @@
 # BioAgentics
 
-Multi-agent system for biomedical research. BioAgentics uses coordinated AI agents to identify research opportunities, build computational tools, analyze genomic data, screen drug candidates, and advance our understanding of disease biology. Research is organized into **divisions** — independent research domains (cancer, Crohn's disease) with their own agent role definitions, plans, and output.
+Multi-agent system for biomedical research. BioAgentics uses coordinated AI agents to identify research opportunities, build computational tools, analyze data, and advance our understanding of disease biology. Research is organized into **divisions** — independent research domains with their own agent role definitions, plans, and output.
 
 **Live dashboard:** [bioagentics.mtingers.com](https://bioagentics.mtingers.com/)
 
+## Research Divisions
+
+| Division | Focus | Key Data Sources |
+|----------|-------|-----------------|
+| **Cancer** | Genomic analysis, drug discovery, biomarkers, treatment resistance | TCGA, DepMap, COSMIC, PRISM, ChEMBL |
+| **Crohn's Disease** | Microbiome, mucosal immunology, IBD therapeutics | IBDGC, HMP, RISK cohort, MetaHIT |
+| **Tourette Syndrome** | CSTC circuits, neuroimaging, tic disorder genetics | TSAICG, ENIGMA, ABCD Study, EMTICS |
+| **PANDAS/PANS** | Autoimmune neuropsychiatry, molecular mimicry, anti-neuronal antibodies | ImmPort, IEDB, GAS genomics, Cunningham Panel |
+
+Each division has its own role definitions in `org-roles/{division}/`, research plans in `plans/{division}/`, and output in `output/{division}/`.
+
 ## Architecture
 
-BioAgentics is a single system with specialized agents that coordinate through a shared API:
+BioAgentics is a single system with specialized agents that coordinate through a shared API. Each division runs its own set of agents independently.
 
 | Agent | Role |
 |---|---|
@@ -18,6 +29,7 @@ BioAgentics is a single system with specialized agents that coordinate through a
 | **Analyst** | Runs analyses, interprets results, flags novel and promising findings |
 | **Validation Scientist** | Validates scientific rigor, code correctness, and reproducibility |
 | **Research Writer** | Documents methodology, findings, and maintains the knowledge base |
+| **Systems Engineer** | Improves the BioAgentics system itself — codebase, tooling, agent configs |
 
 ### Research Pipeline
 
@@ -29,16 +41,17 @@ Research Director → Project Manager → Developer → Analyst → Validation S
 Supporting agents run continuously:
 - **Literature Reviewer** feeds new papers and methods to the Research Director
 - **Data Curator** monitors data sources and organizes datasets
+- **Systems Engineer** improves the platform itself
 
 ### Labeling System
 
 Research initiatives are tagged with labels for tracking significance:
-- `drug-candidate` — therapeutic potential identified
+- `drug-candidate`, `drug-repurposing` — therapeutic potential identified
 - `novel-finding` — unexpected or previously unreported result
 - `biomarker` — diagnostic/prognostic marker candidate
 - `high-priority` — results warrant urgent follow-up
 - `promising` — early positive signals
-- `genomic`, `transcriptomic`, `clinical`, `drug-screening`, `resistance`, `protein` — research area
+- Domain-specific: `genomic`, `microbiome`, `immunology`, `neuroimaging`, `autoimmune`, `clinical`, `multi-omics`
 
 ## Getting Started
 
@@ -63,17 +76,8 @@ uv run python -m bioagentics.dispatch
 
 ### Configuration
 
-- `agents.toml` — agent roles, dispatch timing, and model settings
-- `.env` — API keys and environment configuration
-
-## Research Focus Areas
-
-- Genomic and transcriptomic analysis
-- Drug discovery and candidate screening
-- Biomarker identification
-- Clinical data analysis and trial optimization
-- Treatment resistance mechanisms
-- Protein structure and interaction modeling
+- `agents.toml` — divisions, agent roles, dispatch timing, and model settings
+- `.env` — API URL and API key
 
 ## Project Structure
 
@@ -82,13 +86,15 @@ src/bioagentics/          # All code lives here
   config.py               # Configuration and API client
   dispatch.py             # Agent lifecycle and scheduling
   mcp_server.py           # MCP tools for agent coordination
-  agent_api/              # FastAPI coordination server
+  agent_api/              # FastAPI coordination server + web UI
 org-roles/                # Agent role definitions
+  cancer/                 # Cancer division roles
+  crohns/                 # Crohn's disease roles
+  tourettes/              # Tourette syndrome roles
+  pandas_pans/            # PANDAS/PANS roles
+plans/{division}/         # Research initiative plans (created by Research Director)
+output/{division}/        # Research output artifacts (data, figures, reports)
 data/                     # Research data, datasets, results (created at runtime)
-docs/                     # Research documentation (created as needed)
-PLAN-*.md                 # Research initiative plans (created by Research Director)
+cache/                    # Agent context summaries (managed by dispatcher)
+agents.toml               # Agent and division configuration
 ```
-
-## Local-Only
-
-The coordination API defaults to `https://bioagentics.mtingers.com`.
