@@ -278,21 +278,18 @@ def check_published_missing_reports():
         if report_path.exists():
             continue
 
-        # Check if a task already exists for this
-        task_resp = api(
-            "GET",
-            f"/tasks?username=research_writer&project={name}&division={div}"
-            f"&status=pending&limit=1",
-        )
-        if task_resp and task_resp.ok and task_resp.json().get("total", 0) > 0:
-            continue
-
-        task_resp2 = api(
-            "GET",
-            f"/tasks?username=research_writer&project={name}&division={div}"
-            f"&status=in_progress&limit=1",
-        )
-        if task_resp2 and task_resp2.ok and task_resp2.json().get("total", 0) > 0:
+        # Check if a task already exists for this (pending, in_progress, or blocked)
+        has_existing = False
+        for st in ("pending", "in_progress", "blocked"):
+            task_resp = api(
+                "GET",
+                f"/tasks?username=research_writer&project={name}&division={div}"
+                f"&status={st}&limit=1",
+            )
+            if task_resp and task_resp.ok and task_resp.json().get("total", 0) > 0:
+                has_existing = True
+                break
+        if has_existing:
             continue
 
         # Create the task
