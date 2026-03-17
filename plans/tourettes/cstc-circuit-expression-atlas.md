@@ -27,7 +27,8 @@ The CSTC circuit is the primary neural circuit implicated in tic generation. Mot
 5. **Iron homeostasis pathway spatial profiling**: Map iron pathway gene expression across CSTC nodes; test concordance with 7T MRI iron depletion pattern [NEW]
 6. **Co-expression network analysis**: WGCNA on AHBA data within CSTC regions to identify co-expression modules enriched for TS genes
 7. **Circuit vulnerability scoring**: Integrate spatial, temporal, and cell-type data to score each CSTC node for TS genetic vulnerability
-6. **Comparison with neuroimaging findings**: Cross-reference expression-based vulnerability with published TS structural MRI and fMRI findings (ENIGMA-TS)
+6. **DBS optimal fiber tract profiling** [NEW]: Multi-center DBS study (n=115, 12 centers, medRxiv Feb 2026) identified three optimal fiber tracts for tic improvement: ansa lenticularis, fasciculus lenticularis, and posterior intralaminar-lentiform projections (explaining 19% of variance). Prioritize expression profiling of TS risk genes along these three tract corridors. OCD response maps diverge from tic maps in thalamus — examine whether different gene sets are expressed in tic-responsive vs. OCD-responsive thalamic regions [task #359]
+7. **Comparison with neuroimaging findings**: Cross-reference expression-based vulnerability with published TS structural MRI and fMRI findings (ENIGMA-TS)
 
 ## Expected Outputs
 - CSTC regional expression heatmap for TS risk genes

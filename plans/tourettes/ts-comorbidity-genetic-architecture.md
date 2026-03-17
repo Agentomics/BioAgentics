@@ -31,6 +31,8 @@ Tourette syndrome shows extensive psychiatric comorbidity — ~50% have ADHD, ~4
   - TS-ADHD shared PRS (loci in neurodevelopmental factor)
   - TS-specific PRS (residual loci)
 - Validate in UK Biobank by testing association with tic-related phenotypes and comorbidity patterns
+- **PRS-PheWAS validation framework** [NEW]: TS PRS-PheWAS study (Translational Psychiatry 2023) found 57 traits associated with TS PRS but aggregate PRS did NOT predict OCD, ADHD, or ASD severity. This directly validates the need for factor-specific PRS decomposition — factor-specific PRS should recover comorbidity associations that aggregate PRS misses. The 57 significant trait associations provide a validation set [task #360]
+- **DBS dissociation as testable prediction** [NEW]: DBS tic vs. OCD response dissociation (pallidum shared, thalamus divergent) suggests compulsive factor genes should enrich in pallidal cell types while TS-specific factor genes enrich in thalamic cell types — testable via cross-reference with CSTC atlas project [task #360]
 
 ### Phase 4: Pathway-Level Decomposition
 - MAGMA gene-set analysis on each PRS stratum

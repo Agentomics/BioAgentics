@@ -26,15 +26,19 @@ Despite this evidence, no study has systematically characterized the **genetic a
 ### Phase 1 — Genetic Correlation Screening
 LDSC cross-trait genetic correlations between TS GWAS and 15+ autoimmune/inflammatory disease GWAS. Identify which immune conditions share significant genetic risk with TS. The TSAICG paper tested 112 genetic correlations but focused on psychiatric disorders — autoimmune correlations were not systematically tested.
 
+### Phase 1b — Lymphocytic GWAS Enrichment Replication [NEW]
+Prior TS GWAS (Translational Psychiatry 2020) found significant lymphocytic gene set enrichment via set-based association — the strongest existing genomic evidence for immune involvement in TS. **Replicate this finding using the larger 2024 TSAICG GWAS (9,619 cases)** as foundational validation before proceeding with cell-type-specific analyses. If lymphocytic enrichment replicates, it confirms immune pathways contribute at the genetic level, not just as secondary inflammation [task #331].
+
 ### Phase 2 — Immune Cell-Type Enrichment
-Apply MAGMA cell-type analysis and seismic (Nat Comms 2025, journal #485) to TS GWAS using immune cell expression references (ImmGen, DICE). Test enrichment in specific immune cell populations: microglia, Th17 cells, B cells, NK cells, monocytes/macrophages. Compare with brain cell-type enrichment (already known: 5 brain cell types from TSAICG).
+Apply MAGMA cell-type analysis and seismic (Nat Comms 2025, journal #485) to TS GWAS using immune cell expression references (ImmGen, DICE). **Prioritize Th17 and NK cell gene sets** based on meta-analytic evidence of low CD4+ T cells, high NK cells, and high IL-17 in TS patients. Test enrichment in specific immune cell populations: microglia, **Th17 cells [high priority]**, B cells, **NK cells [high priority]**, monocytes/macrophages. Compare with brain cell-type enrichment (already known: 5 brain cell types from TSAICG) [task #328].
 
 ### Phase 3 — Mendelian Randomization
 Two-sample MR for causal effects of circulating immune biomarkers on TS risk:
-- Exposures: CRP, IL-6, TNF-α, lymphocyte/monocyte/neutrophil counts, IgG levels
+- Exposures: CRP, IL-6, TNF-α, lymphocyte/monocyte/neutrophil counts, IgG levels, **NK cell count, IL-17, CD4+ count** [NEW — meta-analytic evidence, task #328]
 - Outcome: TS GWAS summary stats
 - Methods: IVW, weighted median, MR-Egger, CAUSE
 - Bidirectional MR to test reverse causation (TS → immune dysregulation)
+- **CCL2/CCR2 axis**: CSF MCP-1/CCL2 elevated in TS children — links peripheral immune activation to microglial activation. Include CCL2 as MR exposure and CCR2 as druggable target candidate [task #328]
 
 ### Phase 4 — Microglia Transcriptomic Integration
 Cross-reference TS GWAS hits with Wang et al. microglia DEGs and published activated microglia gene signatures. Identify GWAS-supported immune genes expressed in disease-relevant microglia states. Test enrichment of TS risk genes in microglia activation modules.

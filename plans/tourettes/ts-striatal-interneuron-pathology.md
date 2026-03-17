@@ -28,6 +28,8 @@ Wang et al. (Biological Psychiatry, Jan 2025; PMID 39892689) published the first
 - Identify which subclasses drive the ~50% overall interneuron loss
 - Test whether cholinergic (ChAT+), parvalbumin (PV+), or somatostatin (SST+) interneurons are differentially affected
 - Assess whether loss reflects cell death, dedifferentiation, or developmental deficit
+- **Include de novo variant risk genes** (PPP5C, EXOC1, GXYLT1) in subtype analysis — these lack functional characterization; expression patterns across interneuron subclasses may predict their mechanisms [task #292]
+- **Leverage mesoscale striatal atlas (GSE303705, 1.1M cells)** for spatial context: map interneuron loss onto 6-zone striatal subdivision to test whether pathology is zone-specific [task #382]
 
 ### Phase 3: Transcriptomic Dysregulation Profiling
 - Differential expression analysis at subclass resolution (pseudobulk DESeq2)

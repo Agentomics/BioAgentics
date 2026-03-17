@@ -32,11 +32,14 @@ Systematic literature review to compile all TS-implicated rare variant genes. Fo
 - Variant type: LoF, missense, structural
 - Pathway membership
 
+### Phase 1b — Costa Rica Pedigree & Clinical Exome Cross-Validation [NEW]
+Integrate additional convergence evidence streams: (1) Costa Rica pedigree IBD analysis (Mol Psychiatry 2022) found neuronal development and signal transduction pathway enrichment — provides a third convergence evidence stream alongside rare and common variants; (2) stratify convergence analysis by gene function (synaptic, chromatin remodeling, signaling) based on clinical exome dual model; (3) note PPP5C/EXOC1/GXYLT1 have no functional characterization — PPI network analysis in Phase 3 could predict their mechanisms [task #330].
+
 ### Phase 2 — Constraint Analysis
 Map TS rare variant genes AND GWAS-implicated genes (MAGMA gene-based significant + eQTL-mapped) onto gnomAD constraint landscape:
 - Compare pLI/LOEUF distributions against genome-wide background
 - Test whether rare variant genes and GWAS genes show similar constraint profiles
-- Identify whether TS genes are enriched for LoF-intolerant genes (extending TSAICG finding)
+- Identify whether TS genes are enriched for LoF-intolerant genes (extending TSAICG finding — 21% heritability from rare variants AND enrichment in LoF-intolerant genes enables formal constraint convergence testing) [task #330]
 
 ### Phase 3 — Network Connectivity Analysis
 Build PPI subnetwork containing rare variant genes + GWAS-implicated genes using STRING v12:

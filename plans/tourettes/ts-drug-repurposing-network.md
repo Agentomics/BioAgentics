@@ -12,17 +12,27 @@ Current TS pharmacotherapy is limited — antipsychotics (haloperidol, pimozide,
 - **TS gene/protein set** — TSAICG GWAS genes, rare variant genes, differentially expressed genes from TS transcriptome studies
 - **STRING/BioGRID** — Protein-protein interaction (PPI) networks for building TS-relevant subnetworks
 - **DrugBank** — Drug-target interaction database
-- **LINCS L1000 (CMap)** — Gene expression signatures of drug perturbations for signature-based matching
-- **ChEMBL** — Bioactivity data for TS-relevant targets (DRD2, VMAT2, SERT, H3R, GABA receptors, **PDE10A** [NEW])
+- **LINCS L1000 (CMap)** — Gene expression signatures of drug perturbations for signature-based matching. **NOTE:** CMap reproducibility is limited — use as hypothesis-generating, not definitive. Cross-validate top hits with independent perturbation data where available [task #239]
+- **ChEMBL** — Bioactivity data for TS-relevant targets (DRD2, DRD1, VMAT2, SERT, H3R, GABA receptors, **PDE10A**, **CHRM4/M4** [NEW])
 - **ClinicalTrials.gov** — Existing TS clinical trials for cross-referencing candidate compounds
 
 ## Methodology
 1. **TS disease network construction**: Build PPI network seeded with TS risk genes (GWAS + rare variant). Extend by first-degree interactors. Identify densely connected modules (Louvain clustering)
 2. **Network proximity analysis**: For each FDA-approved drug in DrugBank, compute network proximity between drug targets and TS disease modules (shortest path distance, z-score against random)
 3. **Signature matching**: Query LINCS L1000 with TS-associated expression signatures (inverse correlation = therapeutic candidate)
-4. **Target pathway analysis**: Map drug targets to TS-relevant pathways: dopamine (D2R modulation), serotonin (5-HT2A/2C), GABA/glutamate balance, histamine (H3R), cannabinoid (CB1), synaptic adhesion, and **PDE10A/cAMP-cGMP intracellular signaling** [NEW — validated by gemlapodect Phase 2a]
-5. **Safety and feasibility filtering**: Filter candidates by: FDA-approved, acceptable CNS safety profile, blood-brain barrier penetrance, no overlapping major contraindications with TS comorbidities (ADHD, OCD)
-6. **Candidate ranking**: Multi-criteria ranking (network proximity z-score, signature correlation, target pathway relevance, safety profile, clinical precedent)
+4. **Target pathway analysis**: Map drug targets to TS-relevant pathways:
+   - Dopamine: D2R modulation, **D1R antagonism [validated — ecopipam FDA breakthrough therapy; add D1 pathway as confirmed mechanism]** [task #273]
+   - Serotonin: 5-HT2A/2C
+   - GABA/glutamate balance
+   - Histamine: H3R
+   - Cannabinoid: CB1
+   - Synaptic adhesion
+   - **PDE10A/cAMP-cGMP intracellular signaling** [validated by gemlapodect Phase 2a]
+   - **Muscarinic cholinergic: CHRM4/M4 receptor** — M4 activation reduces tic-like behaviors via cholinergic interneuron pathway. **KarXT/Cobenfy (xanomeline-trospium, orthosteric M1/M4 agonist)** is FDA-approved for schizophrenia (Sep 2024) with robust Phase 3 efficacy — high-priority repurposing candidate. **NOTE:** Emraclidine (M4 PAM) FAILED both Phase 2 trials (EMPOWER 1 & 2, Nov 2024) — PAM vs orthosteric distinction may explain divergent results; downgrade PAMs, prioritize orthosteric agonists [tasks #294, #329]
+   - **Immune/neuroinflammatory module**: Include TNF, IL-12/23, JAK-STAT, CCL2/CCR2 as TS-relevant immune targets. Cross-reference with ts-neuroimmune-subtyping project for immune gene targets. Anti-TNF, anti-IL-12/23, JAK inhibitors as immunomodulatory candidates [task #270]
+5. **VMAT2 negative control**: VMAT2 inhibitors (valbenazine, deutetrabenazine) showed disappointing TS trial results despite mechanistic rationale — use as negative control to calibrate scoring. Drugs scoring similarly to VMAT2 inhibitors should be penalized [task #239]
+6. **Safety and feasibility filtering**: Filter candidates by: FDA-approved, acceptable CNS safety profile, blood-brain barrier penetrance, no overlapping major contraindications with TS comorbidities (ADHD, OCD)
+7. **Candidate ranking**: Multi-criteria ranking (network proximity z-score, signature correlation, target pathway relevance, safety profile, clinical precedent)
 
 ## Expected Outputs
 - TS protein interaction network with functional modules
