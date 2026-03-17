@@ -412,15 +412,8 @@ def render_journal_detail(row) -> str:
 </div>"""
 
 
-def render_project_detail(
-    row, task_counts: dict, journal_count: int, recent_tasks, recent_journal,
-    *, plan_content: str | None = None, findings_content: str | None = None,
-    report_content: str | None = None,
-    result_files: list[str] | None = None, output_files: list[str] | None = None,
-) -> str:
-    """Full detail view for a single project."""
-    m = row._mapping
-    name = m["name"]
+def _render_project_task_summary(name: str, task_counts: dict) -> str:
+    """Render task count summary bar (used as partial)."""
     tc = task_counts
     pend = tc.get("pending", 0)
     act = tc.get("in_progress", 0)
@@ -428,15 +421,6 @@ def render_project_detail(
     done = tc.get("done", 0)
     cancelled = tc.get("cancelled", 0)
     total = pend + act + blk + done + cancelled
-
-    desc_html = ""
-    if m.get("description"):
-        desc_html = f"""<div class="mt-4">
-    <div class="text-xs text-[#71717a] font-medium mb-1.5">Description</div>
-    <div class="text-sm whitespace-pre-wrap break-words text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a]">{esc(m['description'])}</div>
-  </div>"""
-
-    # Task summary bar
     task_summary = '<span class="text-[#a1a1aa] text-sm">No tasks yet</span>'
     if total > 0:
         parts = []
@@ -450,14 +434,20 @@ def render_project_detail(
             if count:
                 parts.append(f'<span class="{bg} {fg} px-2 py-0.5 rounded-full text-xs font-medium">{count} {label}</span>')
         task_summary = f'<div class="flex gap-2 flex-wrap">{"".join(parts)}</div>'
+    return f"""<div class="mt-4">
+    <div class="text-xs text-[#71717a] font-medium mb-1.5">Tasks ({total})</div>
+    {task_summary}
+  </div>"""
 
-    # Recent tasks list
-    tasks_html = ""
-    if recent_tasks:
-        task_rows = ""
-        for t in recent_tasks:
-            tm = t._mapping
-            task_rows += f"""<a class="flex items-center gap-2 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
+
+def _render_project_recent_tasks(name: str, recent_tasks) -> str:
+    """Render recent tasks list (used as partial)."""
+    if not recent_tasks:
+        return ""
+    task_rows = ""
+    for t in recent_tasks:
+        tm = t._mapping
+        task_rows += f"""<a class="flex items-center gap-2 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
    hx-get="/ui/tasks/{tm['id']}" hx-target="#tab-content" hx-push-url="true">
   <span class="text-[#71717a] text-xs font-mono shrink-0">#{tm['id']}</span>
   {priority_label(tm['priority'])}
@@ -465,42 +455,63 @@ def render_project_detail(
   <span class="text-sm truncate flex-1 min-w-0">{esc(tm['title'])}</span>
   <span class="text-[#a78bfa] text-xs shrink-0">{esc(agent_display_name(tm['username']))}</span>
 </a>"""
-        tq = build_qs(project=name)
-        tasks_html = f"""<div class="mt-6">
-  <div class="flex items-center justify-between mb-2">
+    tq = build_qs(project=name)
+    return f"""<div class="flex items-center justify-between mb-2">
     <div class="text-xs text-[#71717a] font-medium">Recent Tasks</div>
     <a class="text-xs text-[#3b82f6] no-underline hover:underline cursor-pointer"
        hx-get="/ui/tasks?{tq}" hx-target="#tab-content" hx-push-url="true">View all &rarr;</a>
   </div>
-  <div>{task_rows}</div>
-</div>"""
+  <div>{task_rows}</div>"""
 
-    # Recent journal entries
-    journal_html = ""
-    if recent_journal:
-        journal_rows = ""
-        for j in recent_journal:
-            jm = j._mapping
-            content = str(jm["content"] or "")
-            first_line = content.split("\n")[0][:120]
-            if len(first_line) < len(content):
-                first_line += "..."
-            journal_rows += f"""<a class="flex items-center gap-2 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
+
+def _render_project_recent_journal(name: str, recent_journal) -> str:
+    """Render recent journal entries (used as partial)."""
+    if not recent_journal:
+        return ""
+    journal_rows = ""
+    for j in recent_journal:
+        jm = j._mapping
+        content = str(jm["content"] or "")
+        first_line = content.split("\n")[0][:120]
+        if len(first_line) < len(content):
+            first_line += "..."
+        journal_rows += f"""<a class="flex items-center gap-2 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
    hx-get="/ui/journal/{jm['id']}" hx-target="#tab-content" hx-push-url="true">
   <span class="text-[#71717a] text-xs font-mono shrink-0">#{jm['id']}</span>
   <span class="text-[#a78bfa] text-xs font-semibold shrink-0">{esc(agent_display_name(jm['username']))}</span>
   <span class="text-sm text-[#a1a1aa] truncate flex-1 min-w-0">{esc(first_line)}</span>
   <span class="text-xs text-[#a1a1aa] shrink-0">{time_ago(jm['created_at'])}</span>
 </a>"""
-        jq = build_qs(project=name)
-        journal_html = f"""<div class="mt-6">
-  <div class="flex items-center justify-between mb-2">
+    jq = build_qs(project=name)
+    return f"""<div class="flex items-center justify-between mb-2">
     <div class="text-xs text-[#71717a] font-medium">Recent Journal Entries</div>
     <a class="text-xs text-[#3b82f6] no-underline hover:underline cursor-pointer"
        hx-get="/ui/journal?{jq}" hx-target="#tab-content" hx-push-url="true">View all &rarr;</a>
   </div>
-  <div>{journal_rows}</div>
-</div>"""
+  <div>{journal_rows}</div>"""
+
+
+def render_project_detail(
+    row, task_counts: dict, journal_count: int, recent_tasks, recent_journal,
+    *, plan_content: str | None = None, findings_content: str | None = None,
+    report_content: str | None = None,
+    result_files: list[str] | None = None, output_files: list[str] | None = None,
+) -> str:
+    """Full detail view for a single project."""
+    m = row._mapping
+    name = m["name"]
+
+    # Dynamic sections rendered via partials for targeted polling
+    task_summary_html = _render_project_task_summary(name, task_counts)
+    recent_tasks_html = _render_project_recent_tasks(name, recent_tasks)
+    recent_journal_html = _render_project_recent_journal(name, recent_journal)
+
+    desc_html = ""
+    if m.get("description"):
+        desc_html = f"""<div class="mt-4">
+    <div class="text-xs text-[#71717a] font-medium mb-1.5">Description</div>
+    <div class="text-sm whitespace-pre-wrap break-words text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a]">{esc(m['description'])}</div>
+  </div>"""
 
     # Research artifacts
     artifacts_html = ""
@@ -612,12 +623,15 @@ def render_project_detail(
   {summary_html}
   {desc_html}
   {artifacts_html}
-  <div class="mt-4">
-    <div class="text-xs text-[#71717a] font-medium mb-1.5">Tasks ({total})</div>
-    {task_summary}
+  <div id="project-task-summary" hx-get="/ui/partials/project/{quote(name, safe='')}/tasks" hx-trigger="every 30s" hx-swap="innerHTML">
+    {task_summary_html}
   </div>
-  {tasks_html}
-  {journal_html}
+  <div id="project-recent-tasks" class="mt-6" hx-get="/ui/partials/project/{quote(name, safe='')}/recent-tasks" hx-trigger="every 30s" hx-swap="innerHTML">
+    {recent_tasks_html}
+  </div>
+  <div id="project-recent-journal" class="mt-6" hx-get="/ui/partials/project/{quote(name, safe='')}/recent-journal" hx-trigger="every 30s" hx-swap="innerHTML">
+    {recent_journal_html}
+  </div>
   <div class="mt-6 pt-4 border-t border-[#27272a] flex items-center gap-4 text-xs text-[#71717a]">
     <span>Created {time_tag(m['created_at'])}</span>
     <span>Updated {time_tag(m['updated_at'])}</span>
@@ -812,9 +826,8 @@ def _clear_filters_btn(path: str, has_filters: bool) -> str:
 # ── Tab Content Renderers ─────────────────────────────────────────────
 
 
-def render_dashboard_tab(db: Session, division: str = "") -> str:
-    """Dashboard home view with summary widgets."""
-    # Recent active tasks
+def _render_dashboard_widgets(db: Session, division: str = "") -> str:
+    """Render dashboard widget HTML (inner content, used as partial)."""
     task_q = select(tasks).where(tasks.c.status.in_(["pending", "in_progress", "blocked"]))
     if division:
         task_q = task_q.where(tasks.c.division == division)
@@ -960,12 +973,20 @@ def render_dashboard_tab(db: Session, division: str = "") -> str:
   {runs_html}
 </div>"""
 
-    return f"""<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-  {human_banner}
+    return f"""{human_banner}
   {tasks_widget}
   {agents_widget}
   {journal_widget}
-  {runs_widget}
+  {runs_widget}"""
+
+
+def render_dashboard_tab(db: Session, division: str = "") -> str:
+    """Dashboard home view with summary widgets."""
+    widgets = _render_dashboard_widgets(db, division)
+    dq = f"?division={quote(division, safe='')}" if division else ""
+    return f"""<div id="dashboard-widgets" class="grid grid-cols-1 lg:grid-cols-2 gap-4"
+     hx-get="/ui/partials/dashboard{dq}" hx-trigger="every 30s" hx-swap="innerHTML">
+  {widgets}
 </div>"""
 
 
@@ -1896,33 +1917,7 @@ document.body.addEventListener('htmx:beforeRequest', function(evt) {
   }
 });
 
-// Auto-refresh tab content every 30s (skip if user is interacting)
-setInterval(function() {
-  var ae = document.activeElement;
-  if (ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA' || ae.tagName === 'SELECT')) return;
-  // Skip if user has text selected (so copy isn't disrupted)
-  var sel = window.getSelection();
-  if (sel && sel.toString().length > 0) return;
-  // Skip if sidebar is open on mobile
-  var sb = document.getElementById('sidebar');
-  if (sb && window.innerWidth < 1024 && !sb.classList.contains('-translate-x-full')) return;
-  // Skip if a modal is open
-  if (document.querySelector('#action-modal, #new-task-modal, #new-key-modal')) return;
-  var tc = document.getElementById('tab-content');
-  if (tc) {
-    // Remember which <details> elements are open so we can restore after swap
-    var openDetails = [];
-    tc.querySelectorAll('details').forEach(function(d, i) { if (d.open) openDetails.push(i); });
-    _autoRefreshing = true;
-    var url = window.location.pathname + window.location.search;
-    htmx.ajax('GET', url, {target: '#tab-content', swap: 'innerHTML'}).then(function() {
-      _autoRefreshing = false;
-      openDetails.forEach(function(i) { var d = tc.querySelectorAll('details')[i]; if (d) d.open = true; });
-    }).catch(function() {
-      _autoRefreshing = false;
-    });
-  }
-}, 30000);
+// No global tab-content auto-refresh — dynamic sections use targeted HTMX polling instead.
 
 async function revokeKey(id, name) {
   if (!confirm('Revoke key "' + name + '"? Any system using it will lose write access.')) return;
@@ -2544,6 +2539,47 @@ def ui_partials_stats(division: str = Query(default=""), db: Session = Depends(g
 @router.get("/ui/partials/presence", response_class=HTMLResponse)
 def ui_partials_presence(division: str = Query(default=""), db: Session = Depends(get_db)):
     return HTMLResponse(render_presence_html(db, division))
+
+
+@router.get("/ui/partials/dashboard", response_class=HTMLResponse)
+def ui_partials_dashboard(division: str = Query(default=""), db: Session = Depends(get_db)):
+    return HTMLResponse(_render_dashboard_widgets(db, division))
+
+
+@router.get("/ui/partials/project/{name}/tasks", response_class=HTMLResponse)
+def ui_partials_project_tasks(name: str, db: Session = Depends(get_db)):
+    row = db.execute(select(projects_table).where(projects_table.c.name == name)).first()
+    if row is None:
+        return HTMLResponse("")
+    tc_rows = db.execute(
+        select(tasks.c.status, func.count())
+        .where(tasks.c.project == name)
+        .group_by(tasks.c.status)
+    ).all()
+    task_counts = {st: cnt for st, cnt in tc_rows}
+    return HTMLResponse(_render_project_task_summary(name, task_counts))
+
+
+@router.get("/ui/partials/project/{name}/recent-tasks", response_class=HTMLResponse)
+def ui_partials_project_recent_tasks(name: str, db: Session = Depends(get_db)):
+    recent_tasks = db.execute(
+        select(tasks)
+        .where(tasks.c.project == name)
+        .order_by(tasks.c.updated_at.desc())
+        .limit(10)
+    ).fetchall()
+    return HTMLResponse(_render_project_recent_tasks(name, recent_tasks))
+
+
+@router.get("/ui/partials/project/{name}/recent-journal", response_class=HTMLResponse)
+def ui_partials_project_recent_journal(name: str, db: Session = Depends(get_db)):
+    recent_journal = db.execute(
+        select(journal)
+        .where(journal.c.project == name)
+        .order_by(journal.c.created_at.desc())
+        .limit(10)
+    ).fetchall()
+    return HTMLResponse(_render_project_recent_journal(name, recent_journal))
 
 
 # ── JSON Endpoints (backward compat) ─────────────────────────────────
