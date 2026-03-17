@@ -8,24 +8,27 @@ TS genetics spans both rare variants (SLITRK1, HDC, NRXN1, CNTN6, copy number va
 
 The TSAICG GWAS (journal #446) found enrichment in loss-of-function intolerant genes and high-confidence neurodevelopmental disorder genes, suggesting substantial overlap with the rare variant architecture. Identifying convergent pathways would prioritize the highest-confidence biological mechanisms for therapeutic targeting and provide the strongest evidence for causal gene nomination.
 
+**Update (Mar 2026):** Chen et al. (Science Advances) demonstrated that WWC1 W88C mutation causes TS-like phenotype via Hippo pathway dysregulation and excess striatal dopamine release — first functional validation connecting TS to Hippo signaling. Rescue is developmental-stage-specific, aligning with childhood TS onset. A clinical exome study in 80 pediatric TS patients (Frontiers in Psychiatry, Feb 2026) provides ACMG-classified variants for genotype-phenotype correlation and cross-validation.
+
 ## Data Sources
 - **TSAICG GWAS summary statistics** — PGC portal (task #235)
 - **TS rare variant genes** — Literature curation:
   - Established: SLITRK1, HDC, NRXN1, CNTN6
-  - Candidate: CELSR3, WWC1, ASH1L, OPRK1, FN1
+  - Candidate: CELSR3, **WWC1 [upgraded — functionally validated via W88C knock-in mouse, Science Advances Mar 2025]**, ASH1L, OPRK1, FN1
   - TS-associated CNV regions (16p13.11, 22q11.2, NRXN1 deletions)
   - De novo variant genes from trio studies
 - **gnomAD v4** — pLI, LOEUF, missense Z-scores
 - **STRING v12** — PPI network
 - **Gene Ontology, KEGG, Reactome** — Pathway databases
 - **Cross-disorder rare variant genes** — Autism (SFARI Gene), OCD, ADHD for specificity analysis
+- **Pediatric clinical exome TS cohort** — 80 patients with ACMG-classified variants (Frontiers in Psychiatry, Feb 2026) [NEW]
 
 ## Methodology
 
 ### Phase 1 — Rare Variant Gene Curation
 Systematic literature review to compile all TS-implicated rare variant genes. For each gene:
 - Evidence type: de novo, segregation, functional, CNV, case report
-- Evidence strength: strong (replicated, functional validation), moderate (multiple independent reports), suggestive (single report, no functional data)
+- Evidence strength: strong (replicated, functional validation — **WWC1 now qualifies as strong**), moderate (multiple independent reports), suggestive (single report, no functional data)
 - Variant type: LoF, missense, structural
 - Pathway membership
 
@@ -48,6 +51,7 @@ Independent pathway enrichment for rare variant gene set and GWAS gene set:
 - Rank pathways by convergence strength (Fisher's combined probability test)
 - Identify pathways enriched in BOTH gene sets independently
 - Focus on pathways relevant to CSTC circuit biology
+- **Include Hippo signaling pathway (YAP/TAZ, LATS1/2, MST1/2, WWC1)** as a candidate convergent pathway [NEW]
 
 ### Phase 5 — Cross-Disorder Specificity
 Compare TS convergent pathways with convergent pathways from:

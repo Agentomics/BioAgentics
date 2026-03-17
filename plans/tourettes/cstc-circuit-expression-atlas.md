@@ -10,21 +10,30 @@ The CSTC circuit is the primary neural circuit implicated in tic generation. Mot
 - **Allen Human Brain Atlas (AHBA)** — bulk microarray data across ~3,700 brain samples from 6 donors, covering all CSTC regions
 - **BrainSpan** — developmental transcriptome (prenatal through adult) for temporal expression trajectories
 - **Human striatum single-cell RNA-seq** — GEO datasets (e.g., GSE118020 Tran et al. 2019, GSE160936 Zhu et al. 2021) for striatal cell-type resolution
+- **Mesoscale striatal atlas (GSE303705)** — 1.1M cells, 19 donors, Slide-tags spatial transcriptomics, 6-zone striatal subdivision with neuron-astrocyte spatial coordination data [NEW Mar 2026]
+- **3 new basal ganglia spatial transcriptomics atlases (Jan-Mar 2026)** — developing human BG multi-omic atlas (snm3C-seq + spatial), additional datasets identified by literature_reviewer [NEW]
 - **PsychENCODE single-cell data** — cortical cell-type expression
 - **TS risk gene lists** — TSAICG GWAS genes, rare variant genes (SLITRK1, HDC, NRXN1, CNTN6, WWC1), and curated TS candidate gene sets
+
+## Additional Gene Sets (NEW Mar 2026)
+- **Iron homeostasis pathway**: TF, TFR1 (TFRC), FTH1, FTL, IRP1 (ACO1), IRP2 (IREB2), HAMP, SLC40A1 — informed by 7T MRI study (Brain Communications 2025) showing circuit-wide iron depletion in caudate, pallidum, STN, thalamus, red nucleus, and substantia nigra, with D1 receptor correlation to tic severity
+- **Hippo signaling pathway**: WWC1/KIBRA, YAP1, TAZ (WWTR1), LATS1, LATS2, MST1 (STK4), MST2 (STK3) — informed by WWC1 W88C functional study (Science Advances Mar 2025) showing developmental-stage-specific dopamine dysregulation
 
 ## Methodology
 1. **AHBA spatial mapping**: Extract expression of TS risk genes across CSTC regions (prefrontal cortex, motor cortex, caudate, putamen, GPe, GPi, STN, thalamus). Compute regional enrichment scores
 2. **Developmental trajectory analysis**: Use BrainSpan to characterize when TS risk genes are most highly expressed during development (critical period identification)
 3. **Single-cell deconvolution**: Map TS gene expression onto striatal cell types (D1/D2 medium spiny neurons, cholinergic interneurons, parvalbumin interneurons, astrocytes, oligodendrocytes)
-4. **Co-expression network analysis**: WGCNA on AHBA data within CSTC regions to identify co-expression modules enriched for TS genes
-5. **Circuit vulnerability scoring**: Integrate spatial, temporal, and cell-type data to score each CSTC node for TS genetic vulnerability
+4. **Mesoscale striatal zone-specific profiling**: Use GSE303705 to map TS gene expression across 6 striatal zones [NEW]
+5. **Iron homeostasis pathway spatial profiling**: Map iron pathway gene expression across CSTC nodes; test concordance with 7T MRI iron depletion pattern [NEW]
+6. **Co-expression network analysis**: WGCNA on AHBA data within CSTC regions to identify co-expression modules enriched for TS genes
+7. **Circuit vulnerability scoring**: Integrate spatial, temporal, and cell-type data to score each CSTC node for TS genetic vulnerability
 6. **Comparison with neuroimaging findings**: Cross-reference expression-based vulnerability with published TS structural MRI and fMRI findings (ENIGMA-TS)
 
 ## Expected Outputs
 - CSTC regional expression heatmap for TS risk genes
 - Developmental expression trajectory plots (critical windows for TS gene activity)
 - Cell-type specificity profiles (which cell types express TS genes most)
+- Iron homeostasis pathway spatial expression map across CSTC nodes [NEW]
 - Co-expression modules enriched for TS genes with hub gene identification
 - Circuit vulnerability score per CSTC node
 - Integration figure overlaying genetic vulnerability with neuroimaging alterations
@@ -34,6 +43,7 @@ The CSTC circuit is the primary neural circuit implicated in tic generation. Mot
 - Cell-type specificity for D1 vs D2 MSNs or specific interneuron populations
 - At least one co-expression module significantly enriched for TS genes (permutation p < 0.01)
 - Concordance between expression-based vulnerability and published neuroimaging findings
+- Iron pathway expression profile concordant with 7T MRI iron depletion pattern [NEW]
 
 ## Labels
 genomic, neuroimaging, novel-finding, high-priority
