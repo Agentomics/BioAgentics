@@ -1,0 +1,29 @@
+{
+  "drug": "GSK3326595 (PRMT5 inhibitor)",
+  "brd_id": "BRD:BRD-K00003421-001-01-9",
+  "nsclc": {
+    "label": "NSCLC: GSK3326595 sensitivity by MTAP status",
+    "n_deleted": 19,
+    "n_intact": 74,
+    "median_deleted": -1.08831653075028,
+    "median_intact": -1.0187688394988,
+    "mannwhitney_p": 0.9127423567173795,
+    "cohens_d": 0.061471760353015624
+  },
+  "pan_cancer": {
+    "label": "Pan-cancer: GSK3326595 sensitivity by MTAP status",
+    "n_deleted": 167,
+    "n_intact": 432,
+    "median_deleted": -0.950354923589792,
+    "median_intact": -0.8687729396317995,
+    "mannwhitney_p": 0.8506956451934153,
+    "cohens_d": 0.03068684802263643
+  },
+  "crispr_drug_correlation": {
+    "n": 712,
+    "spearman_r": 0.1526322452713752,
+    "spearman_p": 4.321824206433647e-05,
+    "pearson_r": 0.15071823922852953,
+    "pearson_p": 5.398138080200736e-05
+  }
+}

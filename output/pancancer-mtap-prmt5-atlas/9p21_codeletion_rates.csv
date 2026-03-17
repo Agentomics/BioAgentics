@@ -1,0 +1,17 @@
+cancer_type,N_mtap_deleted,CDKN2A_codeletion_rate,CDKN2B_codeletion_rate,DMRTA1_codeletion_rate,IFNA2_codeletion_rate,IFNB1_codeletion_rate
+CNS/Brain,39,1.0,0.974,0.564,0.436,0.308
+Pleura,8,1.0,1.0,0.875,0.5,0.25
+Pancreas,17,1.0,0.941,0.765,0.529,0.412
+Skin,31,1.0,0.742,0.323,0.194,0.097
+Bladder/Urinary Tract,8,1.0,1.0,0.625,0.125,0.125
+Myeloid,20,1.0,0.95,0.7,0.5,0.4
+Bone,15,1.0,0.867,0.4,0.267,0.267
+Lymphoid,25,1.0,0.8,0.28,0.28,0.24
+Liver,5,1.0,1.0,0.8,0.6,0.4
+Lung,33,1.0,0.97,0.515,0.364,0.273
+Esophagus/Stomach,11,1.0,1.0,0.455,0.364,0.273
+Kidney,7,1.0,0.857,0.714,0.286,0.143
+Soft Tissue,11,1.0,0.909,0.455,0.182,0.182
+Head and Neck,9,1.0,0.667,0.222,0.222,0.111
+Breast,10,1.0,1.0,0.7,0.5,0.4
+Ovary/Fallopian Tube,7,1.0,0.857,0.714,0.429,0.286

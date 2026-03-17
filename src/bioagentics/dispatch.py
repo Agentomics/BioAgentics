@@ -484,8 +484,9 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
             journal(f"completed {label} in {duration}s", project)
             # Validate summary format
             validate_summary(config.role, project)
-            # Commit cache summary (lock prevents races between parallel agents)
+            # Commit cache summary + research artifacts (lock prevents races)
             with _git_lock:
+                # 1. Commit cache summaries
                 cache_dir = REPO_ROOT / "cache"
                 subprocess.run(
                     ["git", "add"] + [str(p) for p in cache_dir.glob("*summary")],
@@ -500,12 +501,41 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
                     ],
                     capture_output=True, cwd=REPO_ROOT,
                 )
+
+                # 2. Commit PLAN files and output artifacts
+                artifact_paths: list[str] = []
+                for p in REPO_ROOT.glob("PLAN-*.md"):
+                    artifact_paths.append(str(p))
+                output_dir = REPO_ROOT / "output"
+                if output_dir.is_dir():
+                    for p in output_dir.rglob("*"):
+                        if p.is_file() and p.name != ".DS_Store":
+                            artifact_paths.append(str(p))
+                if artifact_paths:
+                    subprocess.run(
+                        ["git", "add", "--"] + artifact_paths,
+                        capture_output=True, cwd=REPO_ROOT,
+                    )
+                    # Only commit if there are staged changes
+                    diff = subprocess.run(
+                        ["git", "diff", "--cached", "--quiet"],
+                        capture_output=True, cwd=REPO_ROOT,
+                    )
+                    if diff.returncode != 0:
+                        artifact_msg = f"run_agent: commit research artifacts after {config.role}"
+                        if project:
+                            artifact_msg += f" [{project}]"
+                        subprocess.run(
+                            ["git", "commit", "-m", artifact_msg],
+                            capture_output=True, cwd=REPO_ROOT,
+                        )
+
                 push = subprocess.run(
                     ["git", "push"], capture_output=True, cwd=REPO_ROOT,
                 )
                 if push.returncode != 0:
                     print(
-                        f"  warning: git push failed for {config.role} summary "
+                        f"  warning: git push failed for {config.role} "
                         f"(exit {push.returncode})"
                     )
             return 0

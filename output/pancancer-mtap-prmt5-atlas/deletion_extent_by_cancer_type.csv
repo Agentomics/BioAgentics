@@ -1,0 +1,17 @@
+cancer_type,N_total,intact,CDKN2A_only,CDKN2A+MTAP,full_9p21
+CNS/Brain,71,26,6,25,14
+Pleura,15,2,5,4,4
+Pancreas,33,11,5,8,9
+Skin,77,31,15,25,6
+Bladder/Urinary Tract,20,11,1,8,0
+Myeloid,56,33,3,12,8
+Bone,52,35,2,11,4
+Lymphoid,109,79,5,20,5
+Liver,22,16,1,2,3
+Lung,151,107,11,22,11
+Esophagus/Stomach,51,33,7,8,3
+Kidney,33,13,13,6,1
+Soft Tissue,56,43,2,9,2
+Head and Neck,48,35,4,7,2
+Breast,54,40,4,5,5
+Ovary/Fallopian Tube,45,32,6,5,2

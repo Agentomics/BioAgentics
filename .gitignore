@@ -24,3 +24,7 @@ data/*
 cache/
 
 db.sqlite*
+
+.DS_Store
+
+deploy.sh

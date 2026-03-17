@@ -1,0 +1,207 @@
+{
+  "pan_cancer_reference_orrs": {
+    "vopimetostat_pan": 27.0,
+    "vopimetostat_selective": 49.0,
+    "AMG_193_pan": 21.4
+  },
+  "strong_sl_threshold": -0.5,
+  "classifications": [
+    {
+      "cancer_type": "Breast",
+      "cohens_d": -1.72754962697287,
+      "fdr": 0.0029565574371889,
+      "sl_rank": 1,
+      "strong_sl": true,
+      "has_clinical_data": false,
+      "classification": "underexplored",
+      "eligible_patients_year": 10163
+    },
+    {
+      "cancer_type": "Lung",
+      "cohens_d": -1.2287485993869065,
+      "fdr": 4.859462681056512e-06,
+      "sl_rank": 2,
+      "strong_sl": true,
+      "has_clinical_data": true,
+      "classification": "clinical_validated",
+      "drugs": [
+        "vopimetostat",
+        "BMS-986504",
+        "AMG 193"
+      ],
+      "orr_pct": 29.0,
+      "clinical_notes": "BMS-986504: 29% ORR in NSCLC (Phase 1). Vopimetostat: included in histology-selective cohort (49% ORR mixed). AMG 193: included in pan-cancer Phase 1.",
+      "eligible_patients_year": 37494
+    },
+    {
+      "cancer_type": "Soft Tissue",
+      "cohens_d": -1.0519284544339038,
+      "fdr": 0.039525140309225,
+      "sl_rank": 3,
+      "strong_sl": true,
+      "has_clinical_data": false,
+      "classification": "underexplored",
+      "eligible_patients_year": 1289
+    },
+    {
+      "cancer_type": "Esophagus/Stomach",
+      "cohens_d": -0.9655391129984308,
+      "fdr": 0.0321385315450702,
+      "sl_rank": 4,
+      "strong_sl": true,
+      "has_clinical_data": true,
+      "classification": "clinical_validated",
+      "drugs": [
+        "AMG 193"
+      ],
+      "orr_pct": null,
+      "clinical_notes": "AMG 193: esophageal cancer included in pan-cancer Phase 1. No tumor-specific ORR reported.",
+      "eligible_patients_year": 6086
+    },
+    {
+      "cancer_type": "Ovary/Fallopian Tube",
+      "cohens_d": -0.8982070005283117,
+      "fdr": 0.1233462871121502,
+      "sl_rank": 5,
+      "strong_sl": true,
+      "has_clinical_data": false,
+      "classification": "underexplored",
+      "eligible_patients_year": 516
+    },
+    {
+      "cancer_type": "Kidney",
+      "cohens_d": -0.8516199077336305,
+      "fdr": 0.193053116379523,
+      "sl_rank": 6,
+      "strong_sl": true,
+      "has_clinical_data": false,
+      "classification": "underexplored",
+      "eligible_patients_year": 1344
+    },
+    {
+      "cancer_type": "Head and Neck",
+      "cohens_d": -0.7129114445087691,
+      "fdr": 0.193053116379523,
+      "sl_rank": 7,
+      "strong_sl": true,
+      "has_clinical_data": true,
+      "classification": "clinical_validated",
+      "drugs": [
+        "AMG 193"
+      ],
+      "orr_pct": null,
+      "clinical_notes": "AMG 193: head and neck included in pan-cancer Phase 1. No tumor-specific ORR reported.",
+      "eligible_patients_year": 8119
+    },
+    {
+      "cancer_type": "CNS/Brain",
+      "cohens_d": -0.6776185282756915,
+      "fdr": 0.0125062827725673,
+      "sl_rank": 8,
+      "strong_sl": true,
+      "has_clinical_data": true,
+      "classification": "clinical_validated",
+      "drugs": [
+        "TNG456"
+      ],
+      "orr_pct": null,
+      "clinical_notes": "TNG456: brain-penetrant PRMT5i, GBM enrolling (NCT06810544). No response data yet.",
+      "eligible_patients_year": 6759
+    },
+    {
+      "cancer_type": "Myeloid",
+      "cohens_d": -0.6417156519187834,
+      "fdr": 0.10461604757423,
+      "sl_rank": 9,
+      "strong_sl": true,
+      "has_clinical_data": false,
+      "classification": "underexplored",
+      "eligible_patients_year": 124
+    },
+    {
+      "cancer_type": "Liver",
+      "cohens_d": -0.6176797861673837,
+      "fdr": 0.3529707007967877,
+      "sl_rank": 10,
+      "strong_sl": true,
+      "has_clinical_data": false,
+      "classification": "underexplored",
+      "eligible_patients_year": 1134
+    },
+    {
+      "cancer_type": "Bladder/Urinary Tract",
+      "cohens_d": -0.4905316970398664,
+      "fdr": 0.628222947924577,
+      "sl_rank": 11,
+      "strong_sl": false,
+      "has_clinical_data": true,
+      "classification": "weak_sl",
+      "drugs": [
+        "AMG 193"
+      ],
+      "orr_pct": null,
+      "clinical_notes": "AMG 193: bladder cancer included in pan-cancer Phase 1. No tumor-specific ORR reported.",
+      "eligible_patients_year": 21613
+    },
+    {
+      "cancer_type": "Skin",
+      "cohens_d": -0.4736554336927402,
+      "fdr": 0.1233462871121502,
+      "sl_rank": 12,
+      "strong_sl": false,
+      "has_clinical_data": false,
+      "classification": "weak_sl",
+      "eligible_patients_year": 19744
+    },
+    {
+      "cancer_type": "Pancreas",
+      "cohens_d": -0.4532866864332019,
+      "fdr": 0.0373234155234419,
+      "sl_rank": 13,
+      "strong_sl": false,
+      "has_clinical_data": true,
+      "classification": "weak_sl",
+      "drugs": [
+        "vopimetostat",
+        "AMG 193"
+      ],
+      "orr_pct": 25.0,
+      "clinical_notes": "Vopimetostat: 25% ORR in PDAC (Phase 1/2). Pivotal trial targets PDAC. AMG 193: PDAC included in pan-cancer Phase 1.",
+      "eligible_patients_year": 14522
+    },
+    {
+      "cancer_type": "Lymphoid",
+      "cohens_d": -0.1812283999403116,
+      "fdr": 0.6802508496737699,
+      "sl_rank": 14,
+      "strong_sl": false,
+      "has_clinical_data": false,
+      "classification": "weak_sl",
+      "eligible_patients_year": 2940
+    },
+    {
+      "cancer_type": "Pleura",
+      "cohens_d": -0.1210920740239638,
+      "fdr": 0.7501007420512065,
+      "sl_rank": 15,
+      "strong_sl": false,
+      "has_clinical_data": false,
+      "classification": "weak_sl",
+      "eligible_patients_year": 804
+    },
+    {
+      "cancer_type": "Bone",
+      "cohens_d": 0.0087045758971932,
+      "fdr": 0.6802508496737699,
+      "sl_rank": 16,
+      "strong_sl": false,
+      "has_clinical_data": false,
+      "classification": "weak_sl"
+    }
+  ],
+  "summary": {
+    "clinical_validated": 4,
+    "underexplored": 6,
+    "weak_sl": 6
+  }
+}

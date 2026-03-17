@@ -1,0 +1,31 @@
+cancer_type,N_total,N_deleted,N_intact,deletion_freq,qualifies
+CNS/Brain,71,39,32,0.5493,True
+Pleura,15,8,7,0.5333,True
+Pancreas,33,17,16,0.5152,True
+Skin,77,31,46,0.4026,True
+Biliary Tract,10,4,6,0.4,False
+Bladder/Urinary Tract,20,8,12,0.4,True
+Myeloid,56,20,36,0.3571,True
+Bone,52,15,37,0.2885,True
+Lymphoid,109,25,84,0.2294,True
+Liver,22,5,17,0.2273,True
+Lung,151,33,118,0.2185,True
+Esophagus/Stomach,51,11,40,0.2157,True
+Kidney,33,7,26,0.2121,True
+Thyroid,10,2,8,0.2,False
+Soft Tissue,56,11,45,0.1964,True
+Head and Neck,48,9,39,0.1875,True
+Breast,54,10,44,0.1852,True
+Ovary/Fallopian Tube,45,7,38,0.1556,True
+Peripheral Nervous System,38,3,35,0.0789,False
+Bowel,56,2,54,0.0357,False
+Uterus,29,1,28,0.0345,False
+Prostate,6,0,6,0.0,False
+Testis,8,0,8,0.0,False
+Adrenal Gland,2,0,2,0.0,False
+Other,1,0,1,0.0,False
+Ampulla of Vater,3,0,3,0.0,False
+Fibroblast,4,0,4,0.0,False
+Eye,18,0,18,0.0,False
+Cervix,7,0,7,0.0,False
+Vulva/Vagina,2,0,2,0.0,False

@@ -1,9 +1,11 @@
+import io
+import zipfile
 from datetime import datetime, timezone
 from html import escape as _esc
 from urllib.parse import quote, urlencode
 
 from fastapi import APIRouter, Depends, Header, Query, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, StreamingResponse
 from sqlalchemy import func, select, union
 from sqlalchemy.orm import Session
 
@@ -376,7 +378,7 @@ def render_journal_detail(row) -> str:
 def render_project_detail(
     row, task_counts: dict, journal_count: int, recent_tasks, recent_journal,
     *, plan_content: str | None = None, findings_content: str | None = None,
-    result_files: list[str] | None = None,
+    result_files: list[str] | None = None, output_files: list[str] | None = None,
 ) -> str:
     """Full detail view for a single project."""
     m = row._mapping
@@ -495,6 +497,29 @@ def render_project_detail(
     Result Files ({len(result_files)})
   </summary>
   <div class="bg-[#09090b] rounded-lg p-4 border border-[#27272a] mt-2 max-h-[300px] overflow-y-auto">{file_items}</div>
+</details>""")
+
+    if output_files:
+        ofile_items = "".join(
+            f'<div class="text-sm text-[#a1a1aa] py-1 font-mono text-xs">{esc(f)}</div>'
+            for f in output_files
+        )
+        download_url = f"/ui/projects/{quote(name, safe='')}/download"
+        artifact_sections.append(f"""<details open class="group">
+  <summary class="text-xs text-[#71717a] font-medium cursor-pointer hover:text-[#3b82f6] transition-colors select-none list-none flex items-center gap-1">
+    <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    Output Files ({len(output_files)})
+  </summary>
+  <div class="bg-[#09090b] rounded-lg p-4 border border-[#27272a] mt-2">
+    <div class="flex items-center justify-between mb-3">
+      <span class="text-xs text-[#71717a]">{len(output_files)} file{'s' if len(output_files) != 1 else ''}</span>
+      <a href="{download_url}" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#172554] text-[#3b82f6] text-xs font-medium rounded-md hover:bg-[#1e3a8a] transition-colors no-underline cursor-pointer">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download ZIP
+      </a>
+    </div>
+    <div class="max-h-[250px] overflow-y-auto">{ofile_items}</div>
+  </div>
 </details>""")
 
     if artifact_sections:
@@ -1976,6 +2001,32 @@ def ui_projects_page(
     return HTMLResponse(render_shell("projects", content, stats_html, presence_html, _human_task_count(db)))
 
 
+@router.get("/ui/projects/{name:path}/download")
+def ui_project_download(name: str):
+    """Download a project's output directory as a ZIP file."""
+    _repo_resolved = REPO_ROOT.resolve()
+    output_dir = (REPO_ROOT / "output" / name).resolve()
+    if not output_dir.is_relative_to(_repo_resolved) or not output_dir.is_dir():
+        return HTMLResponse("<h1>Not found</h1>", status_code=404)
+
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        for p in sorted(output_dir.rglob("*")):
+            if p.is_file() and p.name != ".DS_Store":
+                zf.write(p, arcname=str(p.relative_to(output_dir)))
+    buf.seek(0)
+
+    if buf.getbuffer().nbytes <= 22:  # empty zip
+        return HTMLResponse("<h1>No files to download</h1>", status_code=404)
+
+    filename = f"{name}-output.zip"
+    return StreamingResponse(
+        buf,
+        media_type="application/zip",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
+
+
 @router.get("/ui/projects/{name:path}", response_class=HTMLResponse)
 def ui_project_detail_page(
     request: Request,
@@ -2058,10 +2109,20 @@ def ui_project_detail_page(
             str(p.relative_to(results_dir)) for p in results_dir.rglob("*") if p.is_file()
         )
 
+    # Check for output directory
+    output_dir = (REPO_ROOT / "output" / name).resolve()
+    has_output = output_dir.is_relative_to(_repo_resolved) and output_dir.is_dir() and any(output_dir.rglob("*"))
+    output_files = None
+    if has_output:
+        output_files = sorted(
+            str(p.relative_to(output_dir)) for p in output_dir.rglob("*") if p.is_file() and p.name != ".DS_Store"
+        )
+        has_output = bool(output_files)
+
     content = render_project_detail(
         row, task_counts, journal_count, recent_tasks, recent_journal,
         plan_content=plan_content, findings_content=findings_content,
-        result_files=result_files,
+        result_files=result_files, output_files=output_files,
     )
     if is_htmx(request):
         return HTMLResponse(content + render_sidebar_nav_oob("projects", db))

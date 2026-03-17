@@ -1,0 +1,109 @@
+{
+  "spearman_r": -0.10588235294117648,
+  "spearman_p": 0.6963341050381158,
+  "n_cancer_types": 16,
+  "classifications": [
+    {
+      "cancer_type": "Breast",
+      "prmt5_d": -1.72754962697287,
+      "mat2a_d": -0.2399989953345078,
+      "classification": "PRMT5_only"
+    },
+    {
+      "cancer_type": "Lung",
+      "prmt5_d": -1.2287485993869065,
+      "mat2a_d": 0.014389444695322608,
+      "classification": "PRMT5_only"
+    },
+    {
+      "cancer_type": "Soft Tissue",
+      "prmt5_d": -1.0519284544339038,
+      "mat2a_d": 0.3667929650455179,
+      "classification": "PRMT5_only"
+    },
+    {
+      "cancer_type": "Esophagus/Stomach",
+      "prmt5_d": -0.9655391129984308,
+      "mat2a_d": -0.4235211360198874,
+      "classification": "PRMT5_only"
+    },
+    {
+      "cancer_type": "Ovary/Fallopian Tube",
+      "prmt5_d": -0.8982070005283117,
+      "mat2a_d": -0.30924296251087924,
+      "classification": "PRMT5_only"
+    },
+    {
+      "cancer_type": "Kidney",
+      "prmt5_d": -0.8516199077336305,
+      "mat2a_d": -0.3071783344703588,
+      "classification": "PRMT5_only"
+    },
+    {
+      "cancer_type": "Head and Neck",
+      "prmt5_d": -0.7129114445087691,
+      "mat2a_d": -0.6868770269403112,
+      "classification": "dual_target"
+    },
+    {
+      "cancer_type": "CNS/Brain",
+      "prmt5_d": -0.6776185282756915,
+      "mat2a_d": -0.2136916043955221,
+      "classification": "PRMT5_only"
+    },
+    {
+      "cancer_type": "Myeloid",
+      "prmt5_d": -0.6417156519187834,
+      "mat2a_d": -0.2723030038591106,
+      "classification": "PRMT5_only"
+    },
+    {
+      "cancer_type": "Liver",
+      "prmt5_d": -0.6176797861673837,
+      "mat2a_d": -0.7732565708154641,
+      "classification": "dual_target"
+    },
+    {
+      "cancer_type": "Bladder/Urinary Tract",
+      "prmt5_d": -0.4905316970398664,
+      "mat2a_d": 0.06868842651725357,
+      "classification": "neither"
+    },
+    {
+      "cancer_type": "Skin",
+      "prmt5_d": -0.4736554336927402,
+      "mat2a_d": -0.6217800459006688,
+      "classification": "MAT2A_only"
+    },
+    {
+      "cancer_type": "Pancreas",
+      "prmt5_d": -0.4532866864332019,
+      "mat2a_d": -0.4034751508354129,
+      "classification": "neither"
+    },
+    {
+      "cancer_type": "Lymphoid",
+      "prmt5_d": -0.1812283999403116,
+      "mat2a_d": 0.018172231429605577,
+      "classification": "neither"
+    },
+    {
+      "cancer_type": "Pleura",
+      "prmt5_d": -0.1210920740239638,
+      "mat2a_d": -0.36301090466690894,
+      "classification": "neither"
+    },
+    {
+      "cancer_type": "Bone",
+      "prmt5_d": 0.0087045758971932,
+      "mat2a_d": -0.11753970376797811,
+      "classification": "neither"
+    }
+  ],
+  "counts": {
+    "dual_target": 2,
+    "PRMT5_only": 8,
+    "MAT2A_only": 1,
+    "neither": 5
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "PRMT5": {
+    "kruskal_wallis_H": 27.619387962070846,
+    "kruskal_wallis_p": 1.0058335260584735e-06,
+    "group_medians": {
+      "CDKN2A_only": -1.0913451551812643,
+      "CDKN2A+MTAP": -1.2577563908366607,
+      "full_9p21": -1.3064306590365344
+    },
+    "group_sizes": {
+      "CDKN2A_only": 82,
+      "CDKN2A+MTAP": 148,
+      "full_9p21": 69
+    }
+  },
+  "MAT2A": {
+    "kruskal_wallis_H": 6.848151392134582,
+    "kruskal_wallis_p": 0.03257938032585324,
+    "group_medians": {
+      "CDKN2A_only": -1.421976279392759,
+      "CDKN2A+MTAP": -1.4796535228884444,
+      "full_9p21": -1.6135350541677889
+    },
+    "group_sizes": {
+      "CDKN2A_only": 82,
+      "CDKN2A+MTAP": 148,
+      "full_9p21": 69
+    }
+  },
+  "PRMT5_focal_vs_full": {
+    "mannwhitney_U": 4635.0,
+    "mannwhitney_p": 0.2746739998610709,
+    "median_focal": -1.2577563908366607,
+    "median_full": -1.3064306590365344,
+    "n_focal": 148,
+    "n_full": 69
+  },
+  "MAT2A_focal_vs_full": {
+    "mannwhitney_U": 4357.0,
+    "mannwhitney_p": 0.08224677661503373,
+    "median_focal": -1.4796535228884444,
+    "median_full": -1.6135350541677889,
+    "n_focal": 148,
+    "n_full": 69
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "cohort_sizes": {
+    "LUAD": 258,
+    "LUSC": 306,
+    "total": 564
+  },
+  "mtap_deletion": {
+    "overall_homozygous_rate": 15.602836879432624,
+    "overall_any_deletion_rate": 39.00709219858156,
+    "luad_homozygous_rate": 12.015503875968992,
+    "lusc_homozygous_rate": 18.627450980392158,
+    "luad_vs_lusc_fisher_p": 0.03589087342734465
+  },
+  "subtype_distribution": {
+    "KRAS-WT": 885,
+    "KOnly": 70,
+    "KP": 55,
+    "KL": 29,
+    "KPL": 3
+  },
+  "patient_population_estimate": {
+    "US NSCLC incidence": 230000,
+    "MTAP-deleted (15.6%)": 35886,
+    "LUAD MTAP-deleted (12.0%)": 23490,
+    "Potential PRMT5i-eligible (all MTAP-del)": 35886
+  },
+  "notes": [
+    "Survival analysis requires clinical data download (not yet available)",
+    "Subtype-level MTAP deletion rates require CN-to-barcode mapping via manifest",
+    "Population estimate assumes all MTAP-deleted patients are PRMT5i-eligible (Phase 2 showed no co-mutation modulators)"
+  ]
+}

@@ -1,0 +1,166 @@
+ModelID,CellLineName,OncotreeSubtype,MTAP_CN_log2,MTAP_deleted,MTAP_expression,KRAS_status,KRAS_allele,STK11_mut,KEAP1_mut,TP53_mut,NFE2L2_mut
+ACH-000012,HCC-827,Lung Adenocarcinoma,1.0778429970729888,False,6.584699485464188,False,WT,False,False,True,False
+ACH-000015,NCI-H1581,Large Cell Lung Carcinoma,0.7533712255203899,False,3.893449585341169,False,WT,False,False,True,False
+ACH-000021,NCI-H1693,Lung Adenocarcinoma,0.8734179441266273,False,4.7741070540337605,False,WT,False,False,True,False
+ACH-000029,HCC-827-GR5,Lung Adenocarcinoma,1.045438562776796,False,7.19953493876541,False,WT,False,False,True,False
+ACH-000030,PC-14,Lung Adenocarcinoma,0.8277953533117745,False,4.294179602713216,False,WT,False,False,True,False
+ACH-000033,NCI-H1819,Lung Adenocarcinoma,,False,4.090582476362442,False,WT,False,False,False,False
+ACH-000035,NCI-H1650,Non-Small Cell Lung Cancer,7.49469295065984e-05,True,2.0752895944509904,False,WT,False,False,True,False
+ACH-000062,RERF-LC-MS,Lung Adenocarcinoma,1.0552853113106628,False,4.834468521710303,False,WT,False,True,True,False
+ACH-000066,HCC4006,Lung Adenocarcinoma,,False,5.5065733814817435,False,WT,False,False,True,False
+ACH-000109,NCI-H3255,Lung Adenocarcinoma,,False,0.105763886200093,False,WT,False,False,True,False
+ACH-000121,NCI-H2405,Lung Adenocarcinoma,,False,6.103537504198778,False,WT,False,False,True,False
+ACH-000143,HCC2429,NUT Carcinoma of the Lung,0.9959061300274644,False,5.293444059187092,False,WT,False,False,True,False
+ACH-000150,HCC2935,Lung Adenocarcinoma,1.1869020767157783e-05,True,0.3944790207667235,False,WT,False,True,True,False
+ACH-000161,COR-L105,Lung Adenocarcinoma,,False,5.092355455616345,False,WT,False,False,False,False
+ACH-000176,LOU-NH91,Lung Squamous Cell Carcinoma,,False,4.804435665552785,False,WT,False,False,True,False
+ACH-000186,NCI-H2444,Non-Small Cell Lung Cancer,,False,4.573725946647555,True,G12V,False,False,True,False
+ACH-000251,NCI-H2887,Non-Small Cell Lung Cancer,0.9565405664584004,False,5.897160542597566,True,G12V,False,False,True,False
+ACH-000261,RERF-LC-AI,Lung Squamous Cell Carcinoma,0.650379872122987,False,4.45049205834146,False,WT,False,False,True,False
+ACH-000264,Calu-6,Lung Adenocarcinoma,0.8723293915258441,False,4.607129062251169,True,Q61,False,False,True,False
+ACH-000282,NCI-H1755,Lung Adenocarcinoma,,False,0.1366140248328061,False,WT,False,False,False,False
+ACH-000309,SK-LU-1,Lung Adenocarcinoma,,False,,True,G12D,False,False,True,False
+ACH-000311,NCI-H2122,Lung Adenocarcinoma,0.7975700350019588,False,5.612591355303947,True,G12C,True,True,True,False
+ACH-000314,HCC-2108,Lung Adenocarcinoma,0.7846896084571204,False,6.634906863717264,True,Q61,True,False,True,False
+ACH-000327,NCI-H1395,Lung Adenocarcinoma,,False,3.507528271910241,False,WT,True,False,False,False
+ACH-000337,NCI-H3122,Lung Adenocarcinoma,0.0001523619408576,True,0.0,False,WT,False,False,True,False
+ACH-000339,HCC-461,Lung Adenocarcinoma,,False,5.294576640343491,True,G12D,False,False,True,False
+ACH-000343,NCI-H522,Lung Adenocarcinoma,0.9851963886328852,False,6.994839910805181,False,WT,False,False,True,False
+ACH-000378,NCI-H647,Lung Adenosquamous Carcinoma,1.116823545933868e-05,True,0.2063769134057017,True,G13,True,True,True,False
+ACH-000379,NCI-H1781,Lung Adenocarcinoma,,False,4.741774369045022,False,WT,False,False,True,False
+ACH-000390,LUDLU-1,Lung Squamous Cell Carcinoma,1.1924269484612896e-05,True,0.07381886255939,False,WT,False,True,True,False
+ACH-000392,Calu-3,Lung Adenocarcinoma,,False,5.537581844003972,False,WT,True,False,True,False
+ACH-000395,NCI-H520,Lung Squamous Cell Carcinoma,1.13703482039672,False,5.438286197066379,False,WT,False,False,True,False
+ACH-000414,NCI-H1944,Lung Adenocarcinoma,,False,3.941679142504295,True,G13,True,True,False,False
+ACH-000416,NCI-H838,Lung Adenocarcinoma,1.2606786219139447e-05,True,0.0960499543157673,False,WT,True,True,True,False
+ACH-000434,NCI-H1915,Large Cell Lung Carcinoma,,False,5.121537661520912,False,WT,True,True,True,False
+ACH-000438,Lu-65,Giant Cell Carcinoma of the Lung,0.8723793035105127,False,5.889405397431271,True,G12C,True,False,False,False
+ACH-000442,RERF-LC-Sq1,Lung Squamous Cell Carcinoma,,False,0.1520522885071731,False,WT,False,False,True,True
+ACH-000444,LU99,Giant Cell Carcinoma of the Lung,1.4283006644371734e-05,True,0.0613794450948793,True,G12C,False,False,False,False
+ACH-000447,NCI-H2228,Lung Adenocarcinoma,1.116823545933868e-05,True,0.1540322590245801,False,WT,False,False,True,True
+ACH-000448,NCI-H1666,Lung Adenocarcinoma,1.116823545933868e-05,True,0.1424787906422466,False,WT,True,False,False,False
+ACH-000451,NCI-H2085,Lung Adenocarcinoma,,False,4.714234525662032,False,WT,False,False,True,False
+ACH-000454,HCC-95,Lung Squamous Cell Carcinoma,0.4149406342161955,True,4.468511636610733,False,WT,False,False,True,False
+ACH-000463,NCI-H460,Large Cell Lung Carcinoma,0.928819993658787,False,5.170970576371826,True,Q61,True,True,False,False
+ACH-000481,NCI-H2170,Lung Squamous Cell Carcinoma,1.466319526079087e-05,True,0.1871342914745355,False,WT,False,True,True,False
+ACH-000482,RERF-LC-KJ,Lung Adenocarcinoma,,False,4.680144290063842,False,WT,False,False,True,False
+ACH-000496,NCI-H1792,Lung Adenocarcinoma,0.5664713559287265,False,4.921236365814616,True,G12C,False,True,True,False
+ACH-000510,NCI-H1299,Large Cell Lung Carcinoma,0.9883803730805344,False,5.133571745265554,False,WT,False,False,True,False
+ACH-000511,Calu-1,Lung Squamous Cell Carcinoma,0.9170880370450748,False,5.5644879214094125,True,G12C,False,False,False,False
+ACH-000521,NCI-H2030,Lung Adenocarcinoma,0.7113402662075836,False,4.272239726413392,True,G12C,True,True,True,False
+ACH-000528,ABC-1,Lung Adenocarcinoma,0.6131156417355829,False,4.089218465974801,False,WT,False,False,True,False
+ACH-000553,Sq-1,Lung Squamous Cell Carcinoma,,False,5.452878727524215,False,WT,False,False,True,False
+ACH-000562,HCC-78,Lung Adenocarcinoma,,False,5.950414755348343,False,WT,False,False,True,False
+ACH-000563,EBC-1,Lung Squamous Cell Carcinoma,,False,5.442416069539653,False,WT,False,False,True,True
+ACH-000575,HCC-364,Lung Adenocarcinoma,,False,5.9052522067754625,False,WT,False,False,False,False
+ACH-000578,HCC-1171,Lung Adenocarcinoma,,False,1.134293237017208,False,WT,False,False,False,False
+ACH-000585,EPLC-272H,Lung Squamous Cell Carcinoma,0.9503243220367198,False,5.289140978826214,False,WT,False,False,True,False
+ACH-000587,NCI-H1975,Lung Adenocarcinoma,0.7094135671548462,False,4.382321407114501,False,WT,False,False,True,False
+ACH-000589,NCI-H1437,Lung Adenocarcinoma,1.1832877355405852e-05,True,0.157637486613218,False,WT,False,False,True,False
+ACH-000590,NCI-H2073,Lung Adenocarcinoma,,False,3.560421495130302,False,WT,True,False,True,False
+ACH-000596,LCLC-97TM1,Large Cell Lung Carcinoma,0.0012970212337691,True,4.01772597314398,True,G12V,False,False,True,False
+ACH-000603,BEN,Non-Small Cell Lung Cancer,,False,3.980445796442397,False,WT,False,True,True,False
+ACH-000627,LCLC-103H,Large Cell Lung Carcinoma,1.0375788210675656,False,5.5049444857208005,False,WT,False,False,True,False
+ACH-000628,NCI-H596,Lung Adenosquamous Carcinoma,1.063720365395808,False,5.104890145912558,False,WT,False,False,True,False
+ACH-000638,NCI-H441,Lung Adenocarcinoma,,False,4.320282484364429,True,G12V,False,False,True,False
+ACH-000662,COR-L23,Large Cell Lung Carcinoma,0.6675486501040004,False,5.8642332017508245,True,G12V,False,False,False,False
+ACH-000665,SK-MES-1,Lung Squamous Cell Carcinoma,0.93722989143186,False,5.116264935777214,False,WT,False,False,True,False
+ACH-000666,NCI-H1355,Lung Adenocarcinoma,0.9817806660809912,False,5.364117141153146,True,G13,True,True,True,False
+ACH-000667,HCC-44,Lung Adenocarcinoma,1.0166538768370763,False,4.980066441145688,True,G12C,True,True,True,False
+ACH-000669,SW 900,Lung Squamous Cell Carcinoma,1.116823545933868e-05,True,0.5428087693222404,True,G12V,False,False,True,False
+ACH-000672,IA-LM,Large Cell Lung Carcinoma,,False,4.991286007100115,True,G12C,False,False,True,False
+ACH-000675,NCI-H1734,Lung Adenocarcinoma,,False,4.794509443534071,True,G13,True,False,True,False
+ACH-000677,SW 1573,Lung Adenocarcinoma,,False,0.8195447521817975,True,G12C,False,False,False,False
+ACH-000681,A549,Lung Adenocarcinoma,0.0002095470160622,True,1.0581917914703465,True,G12_other,True,True,False,False
+ACH-000690,HCC-2814,Lung Squamous Cell Carcinoma,,False,4.7465600029590025,False,WT,False,False,False,False
+ACH-000700,NCI-H2882,Lung Squamous Cell Carcinoma,1.185586495270801e-05,True,0.0,False,WT,False,False,True,False
+ACH-000705,LC-1F,Lung Squamous Cell Carcinoma,1.3236303059821069e-05,True,0.0692250842503212,False,WT,False,False,True,False
+ACH-000706,EKVX,Lung Adenocarcinoma,0.8830002787407694,False,4.762391341031846,False,WT,True,False,True,False
+ACH-000712,HCC-1833,Lung Adenocarcinoma,0.494110846342081,True,3.287219609275906,False,WT,True,False,True,False
+ACH-000718,NCI-H2291,Lung Adenocarcinoma,0.7994411289802682,False,5.280470138685437,True,G12_other,False,False,True,False
+ACH-000731,HCC-2279,Lung Adenosquamous Carcinoma,,False,0.1111889315697275,False,WT,False,False,False,False
+ACH-000733,NCI-H1838,Lung Adenocarcinoma,,False,4.011254096011545,False,WT,False,False,True,False
+ACH-000737,NCI-H1385,Lung Squamous Cell Carcinoma,,False,1.8321325269959157,False,WT,False,False,False,False
+ACH-000744,NCI-H1623,Lung Adenocarcinoma,,False,3.5946440891047673,False,WT,True,True,True,False
+ACH-000747,NCI-H1703,Lung Squamous Cell Carcinoma,0.6492542412975449,False,4.9694774694247315,False,WT,False,False,True,False
+ACH-000757,A427,Lung Adenocarcinoma,,False,6.238670323633874,True,G12D,False,False,False,False
+ACH-000766,NCI-H1648,Lung Adenocarcinoma,1.116823545933868e-05,True,0.2061968445965437,False,WT,False,True,True,False
+ACH-000769,LK-2,Lung Squamous Cell Carcinoma,1.1199796880356596,False,5.623108920220588,False,WT,False,False,True,True
+ACH-000774,RERF-LC-Ad2,Lung Adenocarcinoma,,False,4.538513332176161,True,G12V,False,False,True,False
+ACH-000779,PC-9,Lung Adenocarcinoma,,False,4.830209681378166,False,WT,False,False,True,False
+ACH-000781,NCI-H2023,Lung Adenocarcinoma,5.628219935202104e-05,True,1.3833918762982027,False,WT,False,True,True,False
+ACH-000785,NCI-H2126,Lung Adenocarcinoma,1.1909401330325452e-05,True,0.2631401995910687,False,WT,False,True,True,False
+ACH-000787,LXF-289,Lung Adenocarcinoma,,False,6.495631211958446,False,WT,False,True,True,False
+ACH-000789,NCI-H810,Large Cell Lung Carcinoma,,False,5.098276372677811,False,WT,True,False,True,False
+ACH-000791,RERF-LC-Ad1,Lung Adenocarcinoma,1.25579464758371e-05,True,0.2044775567652809,True,G12_other,False,False,True,False
+ACH-000813,T3M-10,Large Cell Lung Carcinoma,,False,5.123852397369978,True,G12D,True,True,True,False
+ACH-000825,HOP-92,Non-Small Cell Lung Cancer,,False,4.3281542964627855,False,WT,False,False,True,False
+ACH-000826,CAL-12T,Non-Small Cell Lung Cancer,0.9127308823828172,False,5.234895969058122,False,WT,False,False,True,False
+ACH-000837,NCI-H322,Lung Adenocarcinoma,1.3385770221530344e-05,True,0.2488845380046229,False,WT,False,True,True,False
+ACH-000840,HCC-366,Lung Adenosquamous Carcinoma,0.9398774506521632,False,5.083455924899895,False,WT,False,False,True,False
+ACH-000841,NCI-H2087,Lung Adenocarcinoma,0.5415984154457923,False,4.499150675363698,False,WT,False,False,True,False
+ACH-000843,HARA,Lung Squamous Cell Carcinoma,0.9361677690062142,False,6.255498844802856,False,WT,False,False,True,False
+ACH-000845,NCI-H1373,Lung Adenocarcinoma,1.0883477286318028,False,5.669613591651682,True,G12C,False,False,True,False
+ACH-000851,MOR/CPR,Lung Adenocarcinoma,,False,3.4457915807981467,True,G13,True,True,True,False
+ACH-000852,NCI-H1435,Lung Adenocarcinoma,0.7461153515249602,False,4.519283987835642,False,WT,True,True,True,False
+ACH-000853,NCI-H661,Large Cell Lung Carcinoma,0.9964342075609096,False,4.080981636491173,False,WT,False,True,True,False
+ACH-000858,KNS-62,Lung Squamous Cell Carcinoma,0.968554988230097,False,4.970839852982624,False,WT,False,False,True,False
+ACH-000860,NCI-H358,Lung Adenocarcinoma,,False,5.083885618139376,True,G12C,False,False,False,False
+ACH-000861,HOP-62,Lung Adenocarcinoma,0.9764337270921744,False,4.565414390410533,True,G12C,False,False,True,False
+ACH-000867,ChaGo-K-1,Non-Small Cell Lung Cancer,0.652862496982093,False,3.9471237585918297,False,WT,True,False,True,False
+ACH-000868,HCC-1195,Lung Adenosquamous Carcinoma,,False,3.564292799468859,False,WT,True,False,True,False
+ACH-000869,NCI-H1568,Lung Adenocarcinoma,0.8996910088442095,False,5.41473089400469,False,WT,False,False,True,True
+ACH-000872,HCC515,Lung Adenocarcinoma,0.813024059362937,False,4.486141557015365,True,G13,True,False,True,False
+ACH-000875,NCI-H2347,Lung Adenocarcinoma,,False,4.966661176698773,True,other,False,False,False,False
+ACH-000878,HCC-15,Lung Squamous Cell Carcinoma,0.0003075082242656,True,1.9821703764495056,False,WT,False,True,True,False
+ACH-000886,NCI-H2009,Lung Adenocarcinoma,,False,5.810453386738256,True,G12_other,False,False,True,False
+ACH-000888,NCI-H1793,Lung Adenocarcinoma,0.9823855613509366,False,4.64839066024572,False,WT,False,False,True,False
+ACH-000891,HCC-1438,Large Cell Lung Carcinoma,,False,5.372603915204483,False,WT,False,False,True,False
+ACH-000892,NCI-H1563,Lung Adenocarcinoma,,False,0.2265714151450224,False,WT,True,False,False,False
+ACH-000893,NCI-H1651,Lung Adenocarcinoma,,False,0.1293120354333753,False,WT,False,False,True,False
+ACH-000894,NCI-H1869,Lung Squamous Cell Carcinoma,0.9395002707557508,False,5.76293077307578,False,WT,False,False,True,False
+ACH-000900,NCI-H23,Lung Adenocarcinoma,0.6140745708190678,False,3.8129807543593417,True,G12C,True,True,True,False
+ACH-000901,HCC-1359,Giant Cell Carcinoma of the Lung,1.7239264541518423e-05,True,0.2726503114534004,False,WT,False,False,True,False
+ACH-000904,NCI-H2106,Large Cell Lung Carcinoma,,False,5.15223210310563,False,WT,False,False,False,False
+ACH-000916,NCI-H1573,Lung Adenocarcinoma,,False,4.209219396110765,True,G12_other,True,True,True,False
+ACH-000921,NCI-H157-DM,Lung Squamous Cell Carcinoma,1.1175400221962346,False,5.425543226784638,True,G12_other,False,True,True,False
+ACH-000924,NCI-H2172,Non-Small Cell Lung Cancer,0.8763075241343976,False,4.789499737163023,False,WT,False,True,True,False
+ACH-000925,DV-90,Lung Adenocarcinoma,,False,5.03593616663067,True,G13,False,False,False,False
+ACH-000929,NCI-H2110,Non-Small Cell Lung Cancer,0.9327741535370522,False,5.085841019686879,False,WT,False,True,True,False
+ACH-000945,NCI-H650,Lung Adenocarcinoma,0.8394122099771527,False,5.251302506338649,True,Q61,False,False,True,False
+ACH-000951,NCI-H2342,Lung Adenocarcinoma,,False,3.8423956037247367,False,WT,False,False,True,False
+ACH-000975,HCC2450,Lung Squamous Cell Carcinoma,1.04356956242694,False,4.981784169304781,False,WT,False,False,True,True
+ACH-000980,NCI-H1155,Large Cell Lung Carcinoma,,False,5.625241261059152,True,Q61,False,False,True,False
+ACH-001075,NCI-H292,Mucoepidermoid Carcinoma of the Lung,1.116823545933868e-05,True,0.1626985875611886,False,WT,False,False,False,False
+ACH-001079,HCC1897,Lung Squamous Cell Carcinoma,,False,,False,WT,False,False,False,False
+ACH-001088,HLC-1,Lung Adenocarcinoma,,False,,False,WT,False,False,False,False
+ACH-001113,LC-1/sq-SF,Lung Squamous Cell Carcinoma,,False,0.0,False,WT,False,False,True,False
+ACH-001137,NCI-H1993,Lung Adenocarcinoma,,False,,False,WT,True,False,True,False
+ACH-001233,VMRC-LCD,Lung Adenocarcinoma,,False,,False,WT,True,False,True,False
+ACH-001234,VMRC-LCP,Lung Squamous Cell Carcinoma,,False,,False,WT,False,False,False,False
+ACH-001362,NCI-H1770,Non-Small Cell Lung Cancer,1.068686016274561,False,,False,WT,False,False,True,False
+ACH-001363,NCI-H2135,Non-Small Cell Lung Cancer,,False,,False,WT,False,False,True,False
+ACH-001489,COR-L32,Lung Squamous Cell Carcinoma,0.9941513036029525,False,5.518384063528784,False,WT,False,False,False,False
+ACH-001490,COR-L321,Lung Adenocarcinoma,,False,,False,WT,False,False,True,False
+ACH-002034,T3M-11,NUT Carcinoma of the Lung,0.987973598110915,False,4.497516565954266,False,WT,False,False,False,False
+ACH-002035,LCAM1,Poorly Differentiated Non-Small Cell Lung Cancer,1.112420233517259,False,5.665341602671671,False,WT,False,False,False,False
+ACH-002089,201T,Lung Adenocarcinoma,,False,,False,WT,True,False,True,False
+ACH-002101,EMC-BAC-1,Non-Small Cell Lung Cancer,,False,,False,WT,True,False,True,False
+ACH-002102,EMC-BAC-2,Non-Small Cell Lung Cancer,,False,,True,G12_other,True,False,False,False
+ACH-002122,GT3TKB,Lung Squamous Cell Carcinoma,,False,,False,WT,False,False,True,False
+ACH-002138,H513,Lung Adenosquamous Carcinoma,,False,,False,WT,False,False,False,False
+ACH-002156,LC-1-sq,Lung Squamous Cell Carcinoma,,False,,False,WT,False,False,True,False
+ACH-002157,LC-2-ad,Lung Adenocarcinoma,,False,,False,WT,False,False,True,False
+ACH-002158,LU-99A,Giant Cell Carcinoma of the Lung,,False,,False,WT,False,False,False,False
+ACH-002172,NCI-H322M,Lung Adenocarcinoma,,False,,False,WT,False,False,False,False
+ACH-002184,PC-3 [JPC-3],Lung Adenocarcinoma,,False,,False,WT,False,False,False,False
+ACH-002333,HCC-827-GR,Lung Adenocarcinoma,,False,,False,WT,False,False,False,False
+ACH-002337,JHU-028,Lung Adenocarcinoma,,False,,True,G12_other,True,True,False,False
+ACH-002497,NCI-H920,Lung Adenocarcinoma,1.3089446172064385,False,6.81299871774955,False,WT,False,True,True,False
+ACH-002522,SNU-2292,Lung Adenocarcinoma,2.1417589816560293e-05,True,0.0159656414310881,False,WT,False,False,True,False
+ACH-002526,SNU-1327,Lung Adenocarcinoma,9.60349026215548e-05,True,1.3499200536213878,False,WT,True,False,True,False
+ACH-002529,SNU-1330,Lung Squamous Cell Carcinoma,1.355852338812311e-05,True,,False,WT,False,False,True,False
+ACH-002531,SNU-2535,Lung Adenocarcinoma,0.7040943695774396,False,4.866591519576815,False,WT,False,False,False,True
+ACH-002650,ETCC-016,Lung Adenocarcinoma,0.0544418479747691,True,4.47945693479402,False,WT,False,False,True,False
+ACH-002996,CI34601,Non-Small Cell Lung Cancer,,False,,False,WT,False,False,False,False
+ACH-003012,A549_CRAF_KD,Lung Adenocarcinoma,0.0001766618372784,True,3.0073551938823817,True,G12_other,True,True,False,False
