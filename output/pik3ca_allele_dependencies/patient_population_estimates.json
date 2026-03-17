@@ -1,0 +1,793 @@
+{
+  "total_estimated_pik3ca_mutant_patients": 149773,
+  "allele_totals": {
+    "C420R": 4212,
+    "E542K": 30114,
+    "E545K": 47157,
+    "H1047R_L": 60490,
+    "N345K": 7800
+  },
+  "cancer_type_totals": {
+    "BRCA": 79691,
+    "COADREAD": 20866,
+    "BLCA": 11386,
+    "UCEC": 10634,
+    "HNSC": 7936,
+    "LUSC": 4937,
+    "CESC": 3082,
+    "PRAD": 2882,
+    "LUAD": 2660,
+    "STAD": 2432,
+    "ESCA": 1223,
+    "SKCM": 664,
+    "LIHC": 570,
+    "KIRC": 382,
+    "GBM": 234,
+    "OV": 109,
+    "LGG": 85,
+    "PAAD": 0,
+    "THCA": 0
+  },
+  "per_cancer_per_allele": [
+    {
+      "cancer_type": "BRCA",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 310720,
+      "pik3ca_mutation_rate": 0.326,
+      "allele_fraction": 0.409,
+      "estimated_annual_patients": 41452
+    },
+    {
+      "cancer_type": "BRCA",
+      "allele": "E545K",
+      "us_annual_incidence": 310720,
+      "pik3ca_mutation_rate": 0.326,
+      "allele_fraction": 0.187,
+      "estimated_annual_patients": 18974
+    },
+    {
+      "cancer_type": "BRCA",
+      "allele": "E542K",
+      "us_annual_incidence": 310720,
+      "pik3ca_mutation_rate": 0.326,
+      "allele_fraction": 0.124,
+      "estimated_annual_patients": 12552
+    },
+    {
+      "cancer_type": "COADREAD",
+      "allele": "E545K",
+      "us_annual_incidence": 152810,
+      "pik3ca_mutation_rate": 0.275,
+      "allele_fraction": 0.238,
+      "estimated_annual_patients": 10005
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "E545K",
+      "us_annual_incidence": 83190,
+      "pik3ca_mutation_rate": 0.22,
+      "allele_fraction": 0.322,
+      "estimated_annual_patients": 5897
+    },
+    {
+      "cancer_type": "COADREAD",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 152810,
+      "pik3ca_mutation_rate": 0.275,
+      "allele_fraction": 0.129,
+      "estimated_annual_patients": 5431
+    },
+    {
+      "cancer_type": "BRCA",
+      "allele": "N345K",
+      "us_annual_incidence": 310720,
+      "pik3ca_mutation_rate": 0.326,
+      "allele_fraction": 0.052,
+      "estimated_annual_patients": 5254
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 67880,
+      "pik3ca_mutation_rate": 0.501,
+      "allele_fraction": 0.143,
+      "estimated_annual_patients": 4858
+    },
+    {
+      "cancer_type": "COADREAD",
+      "allele": "E542K",
+      "us_annual_incidence": 152810,
+      "pik3ca_mutation_rate": 0.275,
+      "allele_fraction": 0.088,
+      "estimated_annual_patients": 3716
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "E542K",
+      "us_annual_incidence": 83190,
+      "pik3ca_mutation_rate": 0.22,
+      "allele_fraction": 0.2,
+      "estimated_annual_patients": 3660
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "E545K",
+      "us_annual_incidence": 66920,
+      "pik3ca_mutation_rate": 0.175,
+      "allele_fraction": 0.289,
+      "estimated_annual_patients": 3383
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "E542K",
+      "us_annual_incidence": 66920,
+      "pik3ca_mutation_rate": 0.175,
+      "allele_fraction": 0.211,
+      "estimated_annual_patients": 2472
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "E542K",
+      "us_annual_incidence": 67880,
+      "pik3ca_mutation_rate": 0.501,
+      "allele_fraction": 0.066,
+      "estimated_annual_patients": 2232
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "E545K",
+      "us_annual_incidence": 67880,
+      "pik3ca_mutation_rate": 0.501,
+      "allele_fraction": 0.058,
+      "estimated_annual_patients": 1969
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "E542K",
+      "us_annual_incidence": 70000,
+      "pik3ca_mutation_rate": 0.11,
+      "allele_fraction": 0.245,
+      "estimated_annual_patients": 1888
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "E545K",
+      "us_annual_incidence": 70000,
+      "pik3ca_mutation_rate": 0.11,
+      "allele_fraction": 0.245,
+      "estimated_annual_patients": 1888
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 66920,
+      "pik3ca_mutation_rate": 0.175,
+      "allele_fraction": 0.156,
+      "estimated_annual_patients": 1821
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "E545K",
+      "us_annual_incidence": 13820,
+      "pik3ca_mutation_rate": 0.285,
+      "allele_fraction": 0.446,
+      "estimated_annual_patients": 1755
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 83190,
+      "pik3ca_mutation_rate": 0.22,
+      "allele_fraction": 0.089,
+      "estimated_annual_patients": 1626
+    },
+    {
+      "cancer_type": "BRCA",
+      "allele": "C420R",
+      "us_annual_incidence": 310720,
+      "pik3ca_mutation_rate": 0.326,
+      "allele_fraction": 0.014,
+      "estimated_annual_patients": 1459
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "E545K",
+      "us_annual_incidence": 117000,
+      "pik3ca_mutation_rate": 0.049,
+      "allele_fraction": 0.214,
+      "estimated_annual_patients": 1228
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 288300,
+      "pik3ca_mutation_rate": 0.02,
+      "allele_fraction": 0.2,
+      "estimated_annual_patients": 1153
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "E542K",
+      "us_annual_incidence": 288300,
+      "pik3ca_mutation_rate": 0.02,
+      "allele_fraction": 0.2,
+      "estimated_annual_patients": 1153
+    },
+    {
+      "cancer_type": "COADREAD",
+      "allele": "C420R",
+      "us_annual_incidence": 152810,
+      "pik3ca_mutation_rate": 0.275,
+      "allele_fraction": 0.027,
+      "estimated_annual_patients": 1143
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "E542K",
+      "us_annual_incidence": 13820,
+      "pik3ca_mutation_rate": 0.285,
+      "allele_fraction": 0.277,
+      "estimated_annual_patients": 1091
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "C420R",
+      "us_annual_incidence": 67880,
+      "pik3ca_mutation_rate": 0.501,
+      "allele_fraction": 0.031,
+      "estimated_annual_patients": 1050
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 70000,
+      "pik3ca_mutation_rate": 0.11,
+      "allele_fraction": 0.132,
+      "estimated_annual_patients": 1016
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 26500,
+      "pik3ca_mutation_rate": 0.163,
+      "allele_fraction": 0.225,
+      "estimated_annual_patients": 973
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "E542K",
+      "us_annual_incidence": 117000,
+      "pik3ca_mutation_rate": 0.049,
+      "allele_fraction": 0.143,
+      "estimated_annual_patients": 819
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "E545K",
+      "us_annual_incidence": 22370,
+      "pik3ca_mutation_rate": 0.093,
+      "allele_fraction": 0.353,
+      "estimated_annual_patients": 734
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "E545K",
+      "us_annual_incidence": 26500,
+      "pik3ca_mutation_rate": 0.163,
+      "allele_fraction": 0.141,
+      "estimated_annual_patients": 608
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "N345K",
+      "us_annual_incidence": 288300,
+      "pik3ca_mutation_rate": 0.02,
+      "allele_fraction": 0.1,
+      "estimated_annual_patients": 576
+    },
+    {
+      "cancer_type": "COADREAD",
+      "allele": "N345K",
+      "us_annual_incidence": 152810,
+      "pik3ca_mutation_rate": 0.275,
+      "allele_fraction": 0.014,
+      "estimated_annual_patients": 571
+    },
+    {
+      "cancer_type": "UCEC",
+      "allele": "N345K",
+      "us_annual_incidence": 67880,
+      "pik3ca_mutation_rate": 0.501,
+      "allele_fraction": 0.015,
+      "estimated_annual_patients": 525
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 22370,
+      "pik3ca_mutation_rate": 0.093,
+      "allele_fraction": 0.235,
+      "estimated_annual_patients": 489
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 41210,
+      "pik3ca_mutation_rate": 0.036,
+      "allele_fraction": 0.308,
+      "estimated_annual_patients": 456
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "E545K",
+      "us_annual_incidence": 97610,
+      "pik3ca_mutation_rate": 0.05,
+      "allele_fraction": 0.091,
+      "estimated_annual_patients": 443
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 117000,
+      "pik3ca_mutation_rate": 0.049,
+      "allele_fraction": 0.071,
+      "estimated_annual_patients": 409
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "E542K",
+      "us_annual_incidence": 26500,
+      "pik3ca_mutation_rate": 0.163,
+      "allele_fraction": 0.085,
+      "estimated_annual_patients": 365
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "N345K",
+      "us_annual_incidence": 26500,
+      "pik3ca_mutation_rate": 0.163,
+      "allele_fraction": 0.07,
+      "estimated_annual_patients": 304
+    },
+    {
+      "cancer_type": "KIRC",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 51020,
+      "pik3ca_mutation_rate": 0.015,
+      "allele_fraction": 0.333,
+      "estimated_annual_patients": 255
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 97610,
+      "pik3ca_mutation_rate": 0.05,
+      "allele_fraction": 0.045,
+      "estimated_annual_patients": 221
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "N345K",
+      "us_annual_incidence": 117000,
+      "pik3ca_mutation_rate": 0.049,
+      "allele_fraction": 0.036,
+      "estimated_annual_patients": 204
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "N345K",
+      "us_annual_incidence": 83190,
+      "pik3ca_mutation_rate": 0.22,
+      "allele_fraction": 0.011,
+      "estimated_annual_patients": 203
+    },
+    {
+      "cancer_type": "STAD",
+      "allele": "C420R",
+      "us_annual_incidence": 26500,
+      "pik3ca_mutation_rate": 0.163,
+      "allele_fraction": 0.042,
+      "estimated_annual_patients": 182
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "C420R",
+      "us_annual_incidence": 70000,
+      "pik3ca_mutation_rate": 0.11,
+      "allele_fraction": 0.019,
+      "estimated_annual_patients": 145
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 13820,
+      "pik3ca_mutation_rate": 0.285,
+      "allele_fraction": 0.036,
+      "estimated_annual_patients": 142
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "N345K",
+      "us_annual_incidence": 66920,
+      "pik3ca_mutation_rate": 0.175,
+      "allele_fraction": 0.011,
+      "estimated_annual_patients": 130
+    },
+    {
+      "cancer_type": "HNSC",
+      "allele": "C420R",
+      "us_annual_incidence": 66920,
+      "pik3ca_mutation_rate": 0.175,
+      "allele_fraction": 0.011,
+      "estimated_annual_patients": 130
+    },
+    {
+      "cancer_type": "KIRC",
+      "allele": "E545K",
+      "us_annual_incidence": 51020,
+      "pik3ca_mutation_rate": 0.015,
+      "allele_fraction": 0.167,
+      "estimated_annual_patients": 127
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "E542K",
+      "us_annual_incidence": 41210,
+      "pik3ca_mutation_rate": 0.036,
+      "allele_fraction": 0.077,
+      "estimated_annual_patients": 114
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "E545K",
+      "us_annual_incidence": 13410,
+      "pik3ca_mutation_rate": 0.091,
+      "allele_fraction": 0.083,
+      "estimated_annual_patients": 101
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "C420R",
+      "us_annual_incidence": 13820,
+      "pik3ca_mutation_rate": 0.285,
+      "allele_fraction": 0.024,
+      "estimated_annual_patients": 94
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 19710,
+      "pik3ca_mutation_rate": 0.015,
+      "allele_fraction": 0.25,
+      "estimated_annual_patients": 73
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 13410,
+      "pik3ca_mutation_rate": 0.091,
+      "allele_fraction": 0.056,
+      "estimated_annual_patients": 67
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 5000,
+      "pik3ca_mutation_rate": 0.082,
+      "allele_fraction": 0.119,
+      "estimated_annual_patients": 48
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "E545K",
+      "us_annual_incidence": 19710,
+      "pik3ca_mutation_rate": 0.015,
+      "allele_fraction": 0.125,
+      "estimated_annual_patients": 36
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "E542K",
+      "us_annual_incidence": 13410,
+      "pik3ca_mutation_rate": 0.091,
+      "allele_fraction": 0.028,
+      "estimated_annual_patients": 33
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "N345K",
+      "us_annual_incidence": 13410,
+      "pik3ca_mutation_rate": 0.091,
+      "allele_fraction": 0.028,
+      "estimated_annual_patients": 33
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "E542K",
+      "us_annual_incidence": 5000,
+      "pik3ca_mutation_rate": 0.082,
+      "allele_fraction": 0.048,
+      "estimated_annual_patients": 19
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "C420R",
+      "us_annual_incidence": 5000,
+      "pik3ca_mutation_rate": 0.082,
+      "allele_fraction": 0.024,
+      "estimated_annual_patients": 9
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "E545K",
+      "us_annual_incidence": 5000,
+      "pik3ca_mutation_rate": 0.082,
+      "allele_fraction": 0.024,
+      "estimated_annual_patients": 9
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "C420R",
+      "us_annual_incidence": 97610,
+      "pik3ca_mutation_rate": 0.05,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "E542K",
+      "us_annual_incidence": 19710,
+      "pik3ca_mutation_rate": 0.015,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LUSC",
+      "allele": "N345K",
+      "us_annual_incidence": 70000,
+      "pik3ca_mutation_rate": 0.11,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "KIRC",
+      "allele": "E542K",
+      "us_annual_incidence": 51020,
+      "pik3ca_mutation_rate": 0.015,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "KIRC",
+      "allele": "C420R",
+      "us_annual_incidence": 51020,
+      "pik3ca_mutation_rate": 0.015,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "KIRC",
+      "allele": "N345K",
+      "us_annual_incidence": 51020,
+      "pik3ca_mutation_rate": 0.015,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "BLCA",
+      "allele": "C420R",
+      "us_annual_incidence": 83190,
+      "pik3ca_mutation_rate": 0.22,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "CESC",
+      "allele": "N345K",
+      "us_annual_incidence": 13820,
+      "pik3ca_mutation_rate": 0.285,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "N345K",
+      "us_annual_incidence": 19710,
+      "pik3ca_mutation_rate": 0.015,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "OV",
+      "allele": "C420R",
+      "us_annual_incidence": 19710,
+      "pik3ca_mutation_rate": 0.015,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "C420R",
+      "us_annual_incidence": 22370,
+      "pik3ca_mutation_rate": 0.093,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "THCA",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 43720,
+      "pik3ca_mutation_rate": 0.008,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "THCA",
+      "allele": "E545K",
+      "us_annual_incidence": 43720,
+      "pik3ca_mutation_rate": 0.008,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "THCA",
+      "allele": "E542K",
+      "us_annual_incidence": 43720,
+      "pik3ca_mutation_rate": 0.008,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "THCA",
+      "allele": "C420R",
+      "us_annual_incidence": 43720,
+      "pik3ca_mutation_rate": 0.008,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "E542K",
+      "us_annual_incidence": 22370,
+      "pik3ca_mutation_rate": 0.093,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "E545K",
+      "us_annual_incidence": 288300,
+      "pik3ca_mutation_rate": 0.02,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "PRAD",
+      "allele": "C420R",
+      "us_annual_incidence": 288300,
+      "pik3ca_mutation_rate": 0.02,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "ESCA",
+      "allele": "N345K",
+      "us_annual_incidence": 22370,
+      "pik3ca_mutation_rate": 0.093,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "N345K",
+      "us_annual_incidence": 97610,
+      "pik3ca_mutation_rate": 0.05,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "GBM",
+      "allele": "C420R",
+      "us_annual_incidence": 13410,
+      "pik3ca_mutation_rate": 0.091,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "N345K",
+      "us_annual_incidence": 64050,
+      "pik3ca_mutation_rate": 0.028,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "C420R",
+      "us_annual_incidence": 64050,
+      "pik3ca_mutation_rate": 0.028,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "E542K",
+      "us_annual_incidence": 64050,
+      "pik3ca_mutation_rate": 0.028,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "E545K",
+      "us_annual_incidence": 64050,
+      "pik3ca_mutation_rate": 0.028,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "PAAD",
+      "allele": "H1047R_L",
+      "us_annual_incidence": 64050,
+      "pik3ca_mutation_rate": 0.028,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "N345K",
+      "us_annual_incidence": 41210,
+      "pik3ca_mutation_rate": 0.036,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "C420R",
+      "us_annual_incidence": 41210,
+      "pik3ca_mutation_rate": 0.036,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LIHC",
+      "allele": "E545K",
+      "us_annual_incidence": 41210,
+      "pik3ca_mutation_rate": 0.036,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LUAD",
+      "allele": "C420R",
+      "us_annual_incidence": 117000,
+      "pik3ca_mutation_rate": 0.049,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "LGG",
+      "allele": "N345K",
+      "us_annual_incidence": 5000,
+      "pik3ca_mutation_rate": 0.082,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "SKCM",
+      "allele": "E542K",
+      "us_annual_incidence": 97610,
+      "pik3ca_mutation_rate": 0.05,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    },
+    {
+      "cancer_type": "THCA",
+      "allele": "N345K",
+      "us_annual_incidence": 43720,
+      "pik3ca_mutation_rate": 0.008,
+      "allele_fraction": 0.0,
+      "estimated_annual_patients": 0
+    }
+  ]
+}
