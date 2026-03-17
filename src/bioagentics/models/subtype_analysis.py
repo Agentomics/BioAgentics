@@ -164,9 +164,10 @@ def analyze_subtype_dependencies(
                 if allele_rows:
                     allele_df = pd.DataFrame(allele_rows).set_index("gene")
                     allele_df["kw_fdr"] = _benjamini_hochberg(allele_df["kw_p"].values)
-                    # Append allele results to pairwise with group labels
-                    for _, row in allele_df.iterrows():
-                        pw_rows.append({
+                    # Append allele results to existing pairwise DataFrame
+                    # (not pw_rows, which lacks the BH-corrected fdr column)
+                    allele_pw = pd.DataFrame([
+                        {
                             "gene": row.name,
                             "group_a": "KRAS_allele_axis",
                             "group_b": row["alleles_tested"],
@@ -176,8 +177,10 @@ def analyze_subtype_dependencies(
                             "mean_a": np.nan, "mean_b": np.nan,
                             "direction": "allele_kw",
                             "fdr": row["kw_fdr"],
-                        })
-                    pw_df = pd.DataFrame(pw_rows)
+                        }
+                        for _, row in allele_df.iterrows()
+                    ])
+                    pw_df = pd.concat([pw_df, allele_pw], ignore_index=True)
 
     logger.info("%d / %d genes significant (FDR < %.2f)", len(sig_genes), len(kw_df), fdr_threshold)
 
