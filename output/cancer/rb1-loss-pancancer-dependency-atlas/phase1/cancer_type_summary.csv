@@ -1,0 +1,34 @@
+cancer_type,n_total,n_lost,n_intact,loss_freq,n_lost_crispr,n_intact_crispr,n_by_mutation,n_by_cn,n_by_expr,median_evidence_modalities,tp53_co_mutation,ccne1_amplification,myc_amplification,qualifies
+Testis,11,8,3,0.7273,4,1,0,0,8,1.0,1,0,0,False
+Bladder/Urinary Tract,38,20,18,0.5263,19,15,8,1,16,1.0,17,0,1,True
+Lung,234,123,111,0.5256,50,73,74,3,85,1.0,110,4,29,True
+Adrenal Gland,2,1,1,0.5,0,1,0,1,0,1.0,0,0,0,False
+Vulva/Vagina,2,1,1,0.5,1,1,0,0,1,1.0,1,0,0,False
+Breast,70,33,37,0.4714,22,28,2,4,33,1.0,27,6,13,True
+Liver,27,12,15,0.4444,11,13,2,1,11,1.0,7,0,1,True
+Uterus,43,19,24,0.4419,19,15,7,1,16,1.0,13,2,4,True
+Eye,23,10,13,0.4348,5,10,1,1,9,1.0,1,0,6,True
+Ampulla of Vater,5,2,3,0.4,2,3,0,0,2,1.0,1,0,1,False
+Ovary/Fallopian Tube,68,26,42,0.3824,22,35,2,0,25,1.0,20,3,3,True
+Cervix,21,7,14,0.3333,7,11,2,0,7,1.0,3,0,1,True
+Bone,62,20,42,0.3226,15,26,7,4,17,1.0,9,2,8,True
+Prostate,13,4,9,0.3077,3,7,1,0,4,1.0,2,0,1,False
+Thyroid,22,6,16,0.2727,1,10,1,0,6,1.0,5,0,0,False
+CNS/Brain,107,29,78,0.271,21,62,15,0,22,1.0,25,1,5,True
+Lymphoid,192,44,148,0.2292,20,72,7,3,39,1.0,26,1,5,True
+Esophagus/Stomach,79,18,61,0.2278,15,48,5,1,17,1.0,14,0,3,True
+Head and Neck,75,17,58,0.2267,14,49,0,0,17,1.0,17,0,2,True
+Pancreas,55,12,43,0.2182,9,37,0,0,12,1.0,11,0,1,True
+Biliary Tract,43,9,34,0.2093,7,27,2,0,8,1.0,6,0,0,True
+Soft Tissue,83,16,67,0.1928,6,40,1,3,16,1.0,3,0,3,True
+Bowel,89,15,74,0.1685,10,51,4,0,11,1.0,12,1,2,True
+Skin,121,17,104,0.1405,9,65,9,0,17,2.0,9,0,1,True
+Pleura,22,3,19,0.1364,3,18,0,0,3,1.0,0,0,0,False
+Kidney,54,7,47,0.1296,5,28,0,0,7,1.0,2,0,0,True
+Myeloid,75,9,66,0.12,3,38,0,0,9,1.0,6,0,1,False
+Peripheral Nervous System,45,3,42,0.0667,2,36,1,0,2,1.0,2,0,1,False
+Fibroblast,42,2,40,0.0476,1,0,1,0,2,1.5,1,0,0,False
+Other,1,0,1,0.0,0,0,0,0,0,0.0,0,0,0,False
+Hair,2,0,2,0.0,0,0,0,0,0,0.0,0,0,0,False
+Embryonal,1,0,1,0.0,0,0,0,0,0,0.0,0,0,0,False
+Muscle,5,0,5,0.0,0,0,0,0,0,0.0,0,0,0,False

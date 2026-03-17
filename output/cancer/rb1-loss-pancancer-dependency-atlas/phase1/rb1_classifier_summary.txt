@@ -1,0 +1,88 @@
+=================================================================
+RB1-Loss Pan-Cancer Dependency Atlas - Phase 1: RB1 Classifier
+=================================================================
+
+OVERVIEW
+  Total cell lines with lineage + data: 1732
+  Cell lines with CRISPR data: 1126
+  RB1-loss (multi-modal): 493 (28.5%)
+  RB1-intact: 1239
+
+CLASSIFICATION MODALITIES (in RB1-loss lines)
+  LOF mutations: 152
+  Deep deletion (CN <= 0.3): 23
+  Expression loss (bottom 25th percentile): 422
+  Multi-modal concordance (>=2 modalities): 104
+
+EXPRESSION CROSS-VALIDATION
+  RB1-loss median expression: 3.31
+  RB1-intact median expression: 4.74
+  Mann-Whitney U p-value: 1.45e-188
+
+CDK4/6 DEPENDENCY VALIDATION (positive control)
+  RB1-loss lines should NOT depend on CDK4/CDK6 (no target to phosphorylate).
+  CDK4: median dep lost=-0.487 vs intact=-0.628, p=4.95e-12, d=0.36 (VALIDATES)
+  CDK6: median dep lost=-0.182 vs intact=-0.589, p=5.30e-25, d=0.64 (VALIDATES)
+
+CO-ALTERATION LANDSCAPE (in RB1-loss lines)
+  TP53 mutation: 351/493 (71.2%)
+  CCNE1 amplification: 20/493 (4.1%)
+  MYC amplification: 92/493 (18.7%)
+
+CLINICAL NOTE: RB1+TP53 co-loss defines SCLC. CCNE1 amplification
+  intensifies CDK2 dependency. MYC amplification drives proliferation.
+
+QUALIFYING CANCER TYPES (>=5 RB1-loss + >=10 intact with CRISPR)
+-----------------------------------------------------------------
+  Bladder/Urinary Tract: 19 lost / 15 intact (CRISPR), 20/38 total (52.6%), TP53=17, CCNE1=0
+  Lung: 50 lost / 73 intact (CRISPR), 123/234 total (52.6%), TP53=110, CCNE1=4
+  Breast: 22 lost / 28 intact (CRISPR), 33/70 total (47.1%), TP53=27, CCNE1=6
+  Liver: 11 lost / 13 intact (CRISPR), 12/27 total (44.4%), TP53=7, CCNE1=0
+  Uterus: 19 lost / 15 intact (CRISPR), 19/43 total (44.2%), TP53=13, CCNE1=2
+  Eye: 5 lost / 10 intact (CRISPR), 10/23 total (43.5%), TP53=1, CCNE1=0
+  Ovary/Fallopian Tube: 22 lost / 35 intact (CRISPR), 26/68 total (38.2%), TP53=20, CCNE1=3
+  Cervix: 7 lost / 11 intact (CRISPR), 7/21 total (33.3%), TP53=3, CCNE1=0
+  Bone: 15 lost / 26 intact (CRISPR), 20/62 total (32.3%), TP53=9, CCNE1=2
+  CNS/Brain: 21 lost / 62 intact (CRISPR), 29/107 total (27.1%), TP53=25, CCNE1=1
+  Lymphoid: 20 lost / 72 intact (CRISPR), 44/192 total (22.9%), TP53=26, CCNE1=1
+  Esophagus/Stomach: 15 lost / 48 intact (CRISPR), 18/79 total (22.8%), TP53=14, CCNE1=0
+  Head and Neck: 14 lost / 49 intact (CRISPR), 17/75 total (22.7%), TP53=17, CCNE1=0
+  Pancreas: 9 lost / 37 intact (CRISPR), 12/55 total (21.8%), TP53=11, CCNE1=0
+  Biliary Tract: 7 lost / 27 intact (CRISPR), 9/43 total (20.9%), TP53=6, CCNE1=0
+  Soft Tissue: 6 lost / 40 intact (CRISPR), 16/83 total (19.3%), TP53=3, CCNE1=0
+  Bowel: 10 lost / 51 intact (CRISPR), 15/89 total (16.9%), TP53=12, CCNE1=1
+  Skin: 9 lost / 65 intact (CRISPR), 17/121 total (14.1%), TP53=9, CCNE1=0
+  Kidney: 5 lost / 28 intact (CRISPR), 7/54 total (13.0%), TP53=2, CCNE1=0
+
+ALL CANCER TYPES WITH RB1 LOSS
+-----------------------------------------------------------------
+  Testis: 8 lost / 3 intact (CRISPR: 4/1)
+  Bladder/Urinary Tract: 20 lost / 18 intact (CRISPR: 19/15) *
+  Lung: 123 lost / 111 intact (CRISPR: 50/73) *
+  Adrenal Gland: 1 lost / 1 intact (CRISPR: 0/1)
+  Vulva/Vagina: 1 lost / 1 intact (CRISPR: 1/1)
+  Breast: 33 lost / 37 intact (CRISPR: 22/28) *
+  Liver: 12 lost / 15 intact (CRISPR: 11/13) *
+  Uterus: 19 lost / 24 intact (CRISPR: 19/15) *
+  Eye: 10 lost / 13 intact (CRISPR: 5/10) *
+  Ampulla of Vater: 2 lost / 3 intact (CRISPR: 2/3)
+  Ovary/Fallopian Tube: 26 lost / 42 intact (CRISPR: 22/35) *
+  Cervix: 7 lost / 14 intact (CRISPR: 7/11) *
+  Bone: 20 lost / 42 intact (CRISPR: 15/26) *
+  Prostate: 4 lost / 9 intact (CRISPR: 3/7)
+  Thyroid: 6 lost / 16 intact (CRISPR: 1/10)
+  CNS/Brain: 29 lost / 78 intact (CRISPR: 21/62) *
+  Lymphoid: 44 lost / 148 intact (CRISPR: 20/72) *
+  Esophagus/Stomach: 18 lost / 61 intact (CRISPR: 15/48) *
+  Head and Neck: 17 lost / 58 intact (CRISPR: 14/49) *
+  Pancreas: 12 lost / 43 intact (CRISPR: 9/37) *
+  Biliary Tract: 9 lost / 34 intact (CRISPR: 7/27) *
+  Soft Tissue: 16 lost / 67 intact (CRISPR: 6/40) *
+  Bowel: 15 lost / 74 intact (CRISPR: 10/51) *
+  Skin: 17 lost / 104 intact (CRISPR: 9/65) *
+  Pleura: 3 lost / 19 intact (CRISPR: 3/18)
+  Kidney: 7 lost / 47 intact (CRISPR: 5/28) *
+  Myeloid: 9 lost / 66 intact (CRISPR: 3/38)
+  Peripheral Nervous System: 3 lost / 42 intact (CRISPR: 2/36)
+  Fibroblast: 2 lost / 40 intact (CRISPR: 1/0)
+
