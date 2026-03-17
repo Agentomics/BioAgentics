@@ -119,61 +119,61 @@
       "top_drug_sensitivities": [
         {
           "drug": "BRD-A00055058-001-01-0",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.979144538516795,
           "cohens_d": 0.8297731672198344
         },
         {
           "drug": "BRD-A01412266-001-01-0",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.979144538516795,
           "cohens_d": 0.8311778258343627
         },
         {
           "drug": "BRD-A01493904-003-12-1",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.979144538516795,
           "cohens_d": -0.9520554557014774
         },
         {
           "drug": "BRD-A01636364-003-15-1",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.979144538516795,
           "cohens_d": 0.7262292196054271
         },
         {
           "drug": "BRD-A01907367-001-01-7",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.979144538516795,
           "cohens_d": -0.5552358106275316
         },
         {
           "drug": "BRD-A02232681-001-01-8",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.979144538516795,
           "cohens_d": -0.48244232576241475
         },
         {
           "drug": "BRD-A02710418-003-11-8",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.979144538516795,
           "cohens_d": -0.7353539520220529
         },
         {
           "drug": "BRD-A03880619-001-01-0",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.979144538516795,
           "cohens_d": -0.8259992493230125
         },
         {
           "drug": "BRD-A04497688-001-04-2",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.979144538516795,
           "cohens_d": 0.985497962805925
         },
         {
           "drug": "BRD-A05674712-001-06-0",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.979144538516795,
           "cohens_d": -0.8892937174442966
         }
@@ -289,61 +289,61 @@
       "top_drug_sensitivities": [
         {
           "drug": "ARV-825",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 1.0,
           "cohens_d": -0.08402714902084292
         },
         {
           "drug": "BRD-A00055058-001-01-0",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 1.0,
           "cohens_d": -0.1409924334286468
         },
         {
           "drug": "BRD-A00077618-236-07-6",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 1.0,
           "cohens_d": -0.23206958379127507
         },
         {
           "drug": "docusate",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 1.0,
           "cohens_d": 1.3640260483448179
         },
         {
           "drug": "BRD-A00100033-001-08-9",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 1.0,
           "cohens_d": 0.9552444793260272
         },
         {
           "drug": "BRD-A00147595-001-01-5",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 1.0,
           "cohens_d": -0.5668107680896528
         },
         {
           "drug": "BRD-A00218260-001-03-4",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 1.0,
           "cohens_d": -0.6554248892261897
         },
         {
           "drug": "BRD-A00376169-001-01-6",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 1.0,
           "cohens_d": 0.4576928471722731
         },
         {
           "drug": "BRD-A00520476-001-07-4",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 1.0,
           "cohens_d": 1.116358306117731
         },
         {
           "drug": "BRD-A00546892-001-02-6",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 1.0,
           "cohens_d": 0.22315204994952295
         }
@@ -465,61 +465,61 @@
       "top_drug_sensitivities": [
         {
           "drug": "BRD-A02710418-003-11-8",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8901985066472409,
           "cohens_d": -1.1910124556128419
         },
         {
           "drug": "BRD-A03932035-004-04-3",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8901985066472409,
           "cohens_d": 1.414592839364059
         },
         {
           "drug": "BRD-A06935312-001-04-3",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8901985066472409,
           "cohens_d": 1.1832352034260671
         },
         {
           "drug": "BRD-A07780951-001-08-9",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8901985066472409,
           "cohens_d": 1.2952272702218306
         },
         {
           "drug": "BRD-A13561534-003-02-0",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8901985066472409,
           "cohens_d": 1.3205382293364964
         },
         {
           "drug": "BRD-A15687940-001-05-6",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8901985066472409,
           "cohens_d": 1.5544021914910728
         },
         {
           "drug": "BRD-A16263897-001-06-6",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8901985066472409,
           "cohens_d": -1.460688006988105
         },
         {
           "drug": "BRD-A16694057-001-06-8",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8901985066472409,
           "cohens_d": 0.9106253918932512
         },
         {
           "drug": "BRD-A17428743-003-09-0",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8901985066472409,
           "cohens_d": 1.069135619034567
         },
         {
           "drug": "dihydroxyphenylglycine",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8901985066472409,
           "cohens_d": -1.1278025418033768
         }
@@ -571,65 +571,136 @@
           "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
-      "top_dependencies": [],
+      "top_dependencies": [
+        {
+          "gene": "SNRPD3",
+          "mean": -5.897441737450565,
+          "median": -5.897441737450565,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL15",
+          "mean": -5.685113761471466,
+          "median": -5.685113761471466,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RAN",
+          "mean": -4.516469606042883,
+          "median": -4.642018762389703,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "HSPE1",
+          "mean": -3.8897687624288686,
+          "median": -3.9672261269920264,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "SNRPF",
+          "mean": -3.826506704071522,
+          "median": -3.8137904424737474,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL17",
+          "mean": -3.7598560977542026,
+          "median": -3.7927431002534284,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "PSMA6",
+          "mean": -3.4262231120914275,
+          "median": -3.5167207728776493,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RRM1",
+          "mean": -3.3773028978243755,
+          "median": -3.335108367668674,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "SMU1",
+          "mean": -3.3456418750915544,
+          "median": -3.4271951094666067,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "EEF2",
+          "mean": -3.3317567502435974,
+          "median": -3.3355908016808753,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        }
+      ],
       "top_drug_sensitivities": [
         {
           "drug": "NS-11394",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.7744897959183673,
           "cohens_d": 1.373197070570848
         },
         {
           "drug": "(Rac)-Tavapadon",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.7744897959183673,
           "cohens_d": 1.9637917349985279
         },
         {
           "drug": "AZD-7648",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.7744897959183673,
           "cohens_d": 1.892443391459785
         },
         {
           "drug": "anthraquinone",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.7744897959183673,
           "cohens_d": 1.455236635655051
         },
         {
           "drug": "ML324",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.7744897959183673,
           "cohens_d": -2.150671460128434
         },
         {
           "drug": "VER-155008",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.7744897959183673,
           "cohens_d": -1.628392493348068
         },
         {
           "drug": "PSNCBAM-1",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.7744897959183673,
           "cohens_d": -1.6355663367380682
         },
         {
           "drug": "zileuton",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8504201680672269,
           "cohens_d": -1.2229003892357808
         },
         {
           "drug": "eribulin",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8504201680672269,
           "cohens_d": 1.5017431378977204
         },
         {
           "drug": "succinobucol",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.8504201680672269,
           "cohens_d": 1.9705840984701222
         }
@@ -670,7 +741,78 @@
           "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
-      "top_dependencies": [],
+      "top_dependencies": [
+        {
+          "gene": "SNRPD3",
+          "mean": -5.895079840272548,
+          "median": -5.895079840272548,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL15",
+          "mean": -5.696870486580631,
+          "median": -5.696870486580631,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RAN",
+          "mean": -4.942499842585122,
+          "median": -4.942499842585122,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL12",
+          "mean": -3.703852311150499,
+          "median": -3.703852311150499,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPS8",
+          "mean": -3.5342941688961473,
+          "median": -3.5342941688961473,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "POLR2L",
+          "mean": -3.487954425394342,
+          "median": -3.487954425394342,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "PSMA6",
+          "mean": -3.458467094817794,
+          "median": -3.458467094817794,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RRM1",
+          "mean": -3.4274710744136994,
+          "median": -3.4274710744136994,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "SNRPA1",
+          "mean": -3.3562846006639173,
+          "median": -3.3562846006639173,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "HSPE1",
+          "mean": -3.349404120350011,
+          "median": -3.349404120350011,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        }
+      ],
       "top_drug_sensitivities": [],
       "n_significant_dependencies": 0,
       "n_significant_drugs": 0
@@ -708,7 +850,78 @@
           "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
-      "top_dependencies": [],
+      "top_dependencies": [
+        {
+          "gene": "SNRPD3",
+          "mean": -5.656711477270296,
+          "median": -5.461486346405,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL15",
+          "mean": -5.543113124062148,
+          "median": -5.577547434296782,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RAN",
+          "mean": -4.299089087076076,
+          "median": -4.173364248514119,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL17",
+          "mean": -3.887257628828092,
+          "median": -3.725264730598976,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "ATP6V0C",
+          "mean": -3.838684782050679,
+          "median": -3.854487108137689,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL21",
+          "mean": -3.690629368445228,
+          "median": -3.652899858634892,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "SNRPA1",
+          "mean": -3.6508670821664637,
+          "median": -3.7790905021422256,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "HSPE1",
+          "mean": -3.5442958226592185,
+          "median": -3.8638427893486664,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "UBL5",
+          "mean": -3.5186513929783736,
+          "median": -3.4155802062933867,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "PCNA",
+          "mean": -3.466088121967216,
+          "median": -3.3661566506739056,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        }
+      ],
       "top_drug_sensitivities": [],
       "n_significant_dependencies": 0,
       "n_significant_drugs": 0
@@ -716,9 +929,9 @@
     "all_KRAS_mut": {
       "allele": "all_KRAS_mut",
       "population_estimate": {
-        "annual_us_cases": 0,
-        "fraction_of_kras_mutant_tcga_pct": 0,
-        "fraction_of_kras_mutant_literature": 0,
+        "annual_us_cases": 68850,
+        "fraction_of_kras_mutant_tcga_pct": 45.0,
+        "fraction_of_kras_mutant_literature": 0.45,
         "source": "TCGA COAD/READ + literature"
       },
       "clinical_agents": [
@@ -821,61 +1034,61 @@
       "top_drug_sensitivities": [
         {
           "drug": "docusate",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.9336027467089532,
           "cohens_d": 0.518076629968572
         },
         {
           "drug": "BRD-A00520476-001-07-4",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.9336027467089532,
           "cohens_d": 0.9991256430236432
         },
         {
           "drug": "BRD-A00993607-003-24-6",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.9336027467089532,
           "cohens_d": 0.5884669576648219
         },
         {
           "drug": "BRD-A01098288-001-02-9",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.9336027467089532,
           "cohens_d": 0.31580648857324883
         },
         {
           "drug": "BRD-A01412266-001-01-0",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.9336027467089532,
           "cohens_d": 0.8611303403986548
         },
         {
           "drug": "BRD-A01493904-003-12-1",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.9336027467089532,
           "cohens_d": -0.6609787831155333
         },
         {
           "drug": "BRD-A02710418-003-11-8",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.9336027467089532,
           "cohens_d": -0.845855918609442
         },
         {
           "drug": "BRD-A03359064-001-02-3",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.9336027467089532,
           "cohens_d": 0.655178936441091
         },
         {
           "drug": "BRD-A04497688-001-04-2",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.9336027467089532,
           "cohens_d": 0.8917261566503039
         },
         {
           "drug": "BRD-A05523972-001-01-5",
-          "drug_class": NaN,
+          "drug_class": null,
           "fdr": 0.9336027467089532,
           "cohens_d": 0.6873485657691082
         }
@@ -1095,7 +1308,10 @@
         "n_wt": 14,
         "fdr": 0.9651626638616186
       }
-    ]
+    ],
+    "MEK": {
+      "note": "MEK inhibitors (trametinib, selumetinib, binimetinib) not present in PRISM Repurposing 24Q2 dataset"
+    }
   },
   "acss2_g12v_analysis": {
     "literature": "Scafuro et al. Cell Reports March 2025: KRAS G12V-selective ACSS2 dependency, MEK inhibitor synergy",

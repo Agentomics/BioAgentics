@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from pathlib import Path
 
 from bioagentics.config import REPO_ROOT
@@ -89,6 +90,17 @@ LITERATURE_ALLELE_FREQ = {
 }
 
 
+def _sanitize_for_json(obj: object) -> object:
+    """Recursively convert NaN/float-nan to None for JSON-safe output."""
+    if isinstance(obj, dict):
+        return {k: _sanitize_for_json(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_sanitize_for_json(v) for v in obj]
+    if isinstance(obj, float) and math.isnan(obj):
+        return None
+    return obj
+
+
 def _load_json(path: Path) -> dict | None:
     if path.exists():
         with open(path) as f:
@@ -105,18 +117,26 @@ def _build_allele_strategy(
 ) -> dict:
     """Build strategy entry for a single KRAS allele."""
     # Population estimate: prefer TCGA-derived if available, fall back to literature
+    # all_KRAS_mut = total KRAS-mutant population (all alleles combined)
+    if allele == "all_KRAS_mut":
+        lit_fraction = KRAS_MUTANT_FRACTION
+        fallback_cases = int(CRC_US_ANNUAL_CASES * KRAS_MUTANT_FRACTION)
+    else:
+        lit_fraction = ALLELE_FREQUENCIES.get(allele, 0)
+        fallback_cases = int(CRC_US_ANNUAL_CASES * KRAS_MUTANT_FRACTION * lit_fraction)
+
     if tcga_results:
         tcga_pop = tcga_results.get("population_estimates", {}).get("per_allele", {}).get(allele, {})
         pop_estimate = {
-            "annual_us_cases": tcga_pop.get("estimated_annual_us", int(CRC_US_ANNUAL_CASES * KRAS_MUTANT_FRACTION * ALLELE_FREQUENCIES.get(allele, 0))),
-            "fraction_of_kras_mutant_tcga_pct": tcga_pop.get("tcga_pct", ALLELE_FREQUENCIES.get(allele, 0) * 100),
-            "fraction_of_kras_mutant_literature": ALLELE_FREQUENCIES.get(allele, 0),
+            "annual_us_cases": tcga_pop.get("estimated_annual_us", fallback_cases),
+            "fraction_of_kras_mutant_tcga_pct": tcga_pop.get("tcga_pct", lit_fraction * 100),
+            "fraction_of_kras_mutant_literature": lit_fraction,
             "source": "TCGA COAD/READ + literature",
         }
     else:
         pop_estimate = {
-            "annual_us_cases": int(CRC_US_ANNUAL_CASES * KRAS_MUTANT_FRACTION * ALLELE_FREQUENCIES.get(allele, 0)),
-            "fraction_of_kras_mutant": ALLELE_FREQUENCIES.get(allele, 0),
+            "annual_us_cases": fallback_cases,
+            "fraction_of_kras_mutant": lit_fraction,
         }
 
     # Agents: allele-specific + pan-KRAS + pan-RAS
@@ -138,11 +158,21 @@ def _build_allele_strategy(
     if dep_results:
         allele_data = dep_results.get("allele_comparisons", {}).get(allele, {})
         top_deps = allele_data.get("top_dependencies", [])[:10]
-        strategy["top_dependencies"] = [
-            {"gene": d["gene"], "fdr": d.get("fdr"), "cohens_d": d.get("cohens_d"),
-             "mean_allele": d.get("mean_allele"), "mean_wt": d.get("mean_wt")}
-            for d in top_deps
-        ]
+        if top_deps:
+            strategy["top_dependencies"] = [
+                {"gene": d["gene"], "fdr": d.get("fdr"), "cohens_d": d.get("cohens_d"),
+                 "mean_allele": d.get("mean_allele"), "mean_wt": d.get("mean_wt")}
+                for d in top_deps
+            ]
+        else:
+            # Fall back to descriptive_only for alleles with too few lines
+            desc_deps = dep_results.get("descriptive_only", {}).get(allele, [])[:10]
+            if desc_deps:
+                strategy["top_dependencies"] = [
+                    {"gene": d["gene"], "mean": d.get("mean"), "median": d.get("median"),
+                     "n": d.get("n"), "note": "descriptive only — too few lines for statistical test"}
+                    for d in desc_deps
+                ]
         strategy["n_significant_dependencies"] = allele_data.get("n_significant", 0)
 
     # Top drug sensitivities from Phase 3
@@ -150,7 +180,8 @@ def _build_allele_strategy(
         allele_drug = drug_results.get("allele_drug_comparisons", {}).get(allele, {})
         top_drugs = allele_drug.get("top_drugs", [])[:10]
         strategy["top_drug_sensitivities"] = [
-            {"drug": d.get("drug_name", ""), "drug_class": d.get("drug_class"),
+            {"drug": d.get("drug_name", ""),
+             "drug_class": _sanitize_for_json(d.get("drug_class")),
              "fdr": d.get("fdr"), "cohens_d": d.get("cohens_d")}
             for d in top_drugs
         ]
@@ -295,6 +326,11 @@ def build_strategy_matrix(output_dir: str | Path = DEFAULT_OUTPUT_DIR) -> dict:
     # Key drug classes from Phase 3
     if drug_results:
         matrix["key_drug_classes"] = drug_results.get("key_drugs", {})
+        # Note: MEK inhibitors (trametinib, selumetinib) not present in PRISM 24Q2 dataset
+        if "MEK" not in matrix["key_drug_classes"]:
+            matrix["key_drug_classes"]["MEK"] = {
+                "note": "MEK inhibitors (trametinib, selumetinib, binimetinib) not present in PRISM Repurposing 24Q2 dataset",
+            }
 
     # ACSS2 G12V check
     matrix["acss2_g12v_analysis"] = _check_acss2(dep_results)
@@ -352,6 +388,7 @@ def main(argv: list[str] | None = None) -> None:
     matrix = build_strategy_matrix(args.output_dir)
 
     args.dest.parent.mkdir(parents=True, exist_ok=True)
+    matrix = _sanitize_for_json(matrix)
     with open(args.dest, "w") as f:
         json.dump(matrix, f, indent=2)
     print(f"\nSaved to {args.dest}")

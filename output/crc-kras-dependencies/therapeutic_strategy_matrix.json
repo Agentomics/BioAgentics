@@ -44,8 +44,142 @@
           "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
-      "top_dependencies": [],
-      "top_drug_sensitivities": []
+      "top_dependencies": [
+        {
+          "gene": "KRAS",
+          "fdr": 0.022517195775063992,
+          "cohens_d": -2.9788057024557677,
+          "mean_allele": -2.196832781957905,
+          "mean_wt": -0.7092561086675216
+        },
+        {
+          "gene": "NKD1",
+          "fdr": 0.24057846012305215,
+          "cohens_d": 1.5626623809251803,
+          "mean_allele": 0.26731830313587684,
+          "mean_wt": 0.07917888847672959
+        },
+        {
+          "gene": "VPS26B",
+          "fdr": 0.24057846012305215,
+          "cohens_d": -2.0033952455590613,
+          "mean_allele": -0.15529226689403186,
+          "mean_wt": 0.029432654480296312
+        },
+        {
+          "gene": "ESR1",
+          "fdr": 0.30368586407158676,
+          "cohens_d": -1.2083105281359978,
+          "mean_allele": -0.15583894860172098,
+          "mean_wt": 0.006653088487817904
+        },
+        {
+          "gene": "KCNN3",
+          "fdr": 0.3112113479227266,
+          "cohens_d": 1.3925473306878988,
+          "mean_allele": 0.1500494160854724,
+          "mean_wt": 0.006154481779653986
+        },
+        {
+          "gene": "ROMO1",
+          "fdr": 0.44424903544186406,
+          "cohens_d": 1.7537481488161768,
+          "mean_allele": -0.6987817485701904,
+          "mean_wt": -1.2283133992120436
+        },
+        {
+          "gene": "TMEM209",
+          "fdr": 0.44424903544186406,
+          "cohens_d": 1.5977217871520812,
+          "mean_allele": 0.14859918782497075,
+          "mean_wt": -0.05259903624501505
+        },
+        {
+          "gene": "PWWP2B",
+          "fdr": 0.7325495599190227,
+          "cohens_d": -1.5190105392381767,
+          "mean_allele": -0.06088423506675745,
+          "mean_wt": 0.09191838938627031
+        },
+        {
+          "gene": "HTATSF1",
+          "fdr": 0.7946858275000657,
+          "cohens_d": -1.39087854783219,
+          "mean_allele": -0.9309507837451152,
+          "mean_wt": -0.626096264627929
+        },
+        {
+          "gene": "A1BG",
+          "fdr": 1.0,
+          "cohens_d": -0.6086771530109615,
+          "mean_allele": -0.0727240658373837,
+          "mean_wt": 0.002068020317536002
+        }
+      ],
+      "top_drug_sensitivities": [
+        {
+          "drug": "BRD-A00055058-001-01-0",
+          "drug_class": null,
+          "fdr": 0.979144538516795,
+          "cohens_d": 0.8297731672198344
+        },
+        {
+          "drug": "BRD-A01412266-001-01-0",
+          "drug_class": null,
+          "fdr": 0.979144538516795,
+          "cohens_d": 0.8311778258343627
+        },
+        {
+          "drug": "BRD-A01493904-003-12-1",
+          "drug_class": null,
+          "fdr": 0.979144538516795,
+          "cohens_d": -0.9520554557014774
+        },
+        {
+          "drug": "BRD-A01636364-003-15-1",
+          "drug_class": null,
+          "fdr": 0.979144538516795,
+          "cohens_d": 0.7262292196054271
+        },
+        {
+          "drug": "BRD-A01907367-001-01-7",
+          "drug_class": null,
+          "fdr": 0.979144538516795,
+          "cohens_d": -0.5552358106275316
+        },
+        {
+          "drug": "BRD-A02232681-001-01-8",
+          "drug_class": null,
+          "fdr": 0.979144538516795,
+          "cohens_d": -0.48244232576241475
+        },
+        {
+          "drug": "BRD-A02710418-003-11-8",
+          "drug_class": null,
+          "fdr": 0.979144538516795,
+          "cohens_d": -0.7353539520220529
+        },
+        {
+          "drug": "BRD-A03880619-001-01-0",
+          "drug_class": null,
+          "fdr": 0.979144538516795,
+          "cohens_d": -0.8259992493230125
+        },
+        {
+          "drug": "BRD-A04497688-001-04-2",
+          "drug_class": null,
+          "fdr": 0.979144538516795,
+          "cohens_d": 0.985497962805925
+        },
+        {
+          "drug": "BRD-A05674712-001-06-0",
+          "drug_class": null,
+          "fdr": 0.979144538516795,
+          "cohens_d": -0.8892937174442966
+        }
+      ],
+      "n_significant_dependencies": 1,
+      "n_significant_drugs": 0
     },
     "G13D": {
       "allele": "G13D",
@@ -80,8 +214,142 @@
           "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
-      "top_dependencies": [],
-      "top_drug_sensitivities": []
+      "top_dependencies": [
+        {
+          "gene": "XRCC6",
+          "fdr": 0.3199812031193304,
+          "cohens_d": -1.7145618128213929,
+          "mean_allele": -2.3329303568748645,
+          "mean_wt": -1.7604452221113729
+        },
+        {
+          "gene": "A1CF",
+          "fdr": 0.9955714592178616,
+          "cohens_d": 0.22566827734947453,
+          "mean_allele": -0.024338897391189135,
+          "mean_wt": -0.07022972610935292
+        },
+        {
+          "gene": "A2M",
+          "fdr": 0.9955714592178616,
+          "cohens_d": 0.8419540731952283,
+          "mean_allele": 0.031155189439916884,
+          "mean_wt": -0.042201732520014586
+        },
+        {
+          "gene": "A2ML1",
+          "fdr": 0.9955714592178616,
+          "cohens_d": -0.691856498750285,
+          "mean_allele": 0.03375369342121793,
+          "mean_wt": 0.11488166505777646
+        },
+        {
+          "gene": "A4GALT",
+          "fdr": 0.9955714592178616,
+          "cohens_d": 0.6996432195624069,
+          "mean_allele": 0.028394646828913534,
+          "mean_wt": -0.07196253369772289
+        },
+        {
+          "gene": "A4GNT",
+          "fdr": 0.9955714592178616,
+          "cohens_d": -0.2770642159181575,
+          "mean_allele": 0.07720564098218848,
+          "mean_wt": 0.10610991887658346
+        },
+        {
+          "gene": "AAAS",
+          "fdr": 0.9955714592178616,
+          "cohens_d": -0.5820118149538053,
+          "mean_allele": -0.3753692702981927,
+          "mean_wt": -0.2772729434319424
+        },
+        {
+          "gene": "AACS",
+          "fdr": 0.9955714592178616,
+          "cohens_d": -0.15041344825033243,
+          "mean_allele": 0.008612103490850431,
+          "mean_wt": 0.038051991374602266
+        },
+        {
+          "gene": "AADAC",
+          "fdr": 0.9955714592178616,
+          "cohens_d": 0.3501721481620363,
+          "mean_allele": 0.1210013678027213,
+          "mean_wt": 0.076153022951185
+        },
+        {
+          "gene": "AADAT",
+          "fdr": 0.9955714592178616,
+          "cohens_d": 0.3951391986550935,
+          "mean_allele": 0.05873205396325038,
+          "mean_wt": 0.0006103896244680634
+        }
+      ],
+      "top_drug_sensitivities": [
+        {
+          "drug": "ARV-825",
+          "drug_class": null,
+          "fdr": 1.0,
+          "cohens_d": -0.08402714902084292
+        },
+        {
+          "drug": "BRD-A00055058-001-01-0",
+          "drug_class": null,
+          "fdr": 1.0,
+          "cohens_d": -0.1409924334286468
+        },
+        {
+          "drug": "BRD-A00077618-236-07-6",
+          "drug_class": null,
+          "fdr": 1.0,
+          "cohens_d": -0.23206958379127507
+        },
+        {
+          "drug": "docusate",
+          "drug_class": null,
+          "fdr": 1.0,
+          "cohens_d": 1.3640260483448179
+        },
+        {
+          "drug": "BRD-A00100033-001-08-9",
+          "drug_class": null,
+          "fdr": 1.0,
+          "cohens_d": 0.9552444793260272
+        },
+        {
+          "drug": "BRD-A00147595-001-01-5",
+          "drug_class": null,
+          "fdr": 1.0,
+          "cohens_d": -0.5668107680896528
+        },
+        {
+          "drug": "BRD-A00218260-001-03-4",
+          "drug_class": null,
+          "fdr": 1.0,
+          "cohens_d": -0.6554248892261897
+        },
+        {
+          "drug": "BRD-A00376169-001-01-6",
+          "drug_class": null,
+          "fdr": 1.0,
+          "cohens_d": 0.4576928471722731
+        },
+        {
+          "drug": "BRD-A00520476-001-07-4",
+          "drug_class": null,
+          "fdr": 1.0,
+          "cohens_d": 1.116358306117731
+        },
+        {
+          "drug": "BRD-A00546892-001-02-6",
+          "drug_class": null,
+          "fdr": 1.0,
+          "cohens_d": 0.22315204994952295
+        }
+      ],
+      "n_significant_dependencies": 0,
+      "n_significant_drugs": 0
     },
     "G12V": {
       "allele": "G12V",
@@ -122,8 +390,142 @@
           "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
-      "top_dependencies": [],
-      "top_drug_sensitivities": []
+      "top_dependencies": [
+        {
+          "gene": "A1CF",
+          "fdr": 0.9590538385400689,
+          "cohens_d": 0.5118018369212842,
+          "mean_allele": 0.033550710617594466,
+          "mean_wt": -0.07022972610935292
+        },
+        {
+          "gene": "AADACL3",
+          "fdr": 0.9590538385400689,
+          "cohens_d": 1.0061159349441653,
+          "mean_allele": 0.1162008052644931,
+          "mean_wt": -0.02233644579164063
+        },
+        {
+          "gene": "AAR2",
+          "fdr": 0.9590538385400689,
+          "cohens_d": 0.5883253442467201,
+          "mean_allele": 0.06951152037595902,
+          "mean_wt": -2.4444740962271403e-05
+        },
+        {
+          "gene": "AARS2",
+          "fdr": 0.9590538385400689,
+          "cohens_d": -0.8596995983815828,
+          "mean_allele": -0.7324805534853326,
+          "mean_wt": -0.5404286388778586
+        },
+        {
+          "gene": "AASDHPPT",
+          "fdr": 0.9590538385400689,
+          "cohens_d": -0.30649600286330614,
+          "mean_allele": -0.3969195257134996,
+          "mean_wt": -0.32172031907764326
+        },
+        {
+          "gene": "ABCA2",
+          "fdr": 0.9590538385400689,
+          "cohens_d": -0.5404323447664,
+          "mean_allele": -0.0701539794287899,
+          "mean_wt": -0.011772261478825945
+        },
+        {
+          "gene": "ABCA9",
+          "fdr": 0.9590538385400689,
+          "cohens_d": -0.3726901802834367,
+          "mean_allele": 0.021868986395408196,
+          "mean_wt": 0.12125682936432883
+        },
+        {
+          "gene": "ABCB1",
+          "fdr": 0.9590538385400689,
+          "cohens_d": 0.5295423302365272,
+          "mean_allele": 0.009208734977187003,
+          "mean_wt": -0.07030776153564929
+        },
+        {
+          "gene": "ABCB11",
+          "fdr": 0.9590538385400689,
+          "cohens_d": 0.6540431436905023,
+          "mean_allele": 0.03600376910272094,
+          "mean_wt": -0.047145197017833367
+        },
+        {
+          "gene": "ABCB5",
+          "fdr": 0.9590538385400689,
+          "cohens_d": 0.529976043317117,
+          "mean_allele": 0.1805797572171294,
+          "mean_wt": 0.03464630090163871
+        }
+      ],
+      "top_drug_sensitivities": [
+        {
+          "drug": "BRD-A02710418-003-11-8",
+          "drug_class": null,
+          "fdr": 0.8901985066472409,
+          "cohens_d": -1.1910124556128419
+        },
+        {
+          "drug": "BRD-A03932035-004-04-3",
+          "drug_class": null,
+          "fdr": 0.8901985066472409,
+          "cohens_d": 1.414592839364059
+        },
+        {
+          "drug": "BRD-A06935312-001-04-3",
+          "drug_class": null,
+          "fdr": 0.8901985066472409,
+          "cohens_d": 1.1832352034260671
+        },
+        {
+          "drug": "BRD-A07780951-001-08-9",
+          "drug_class": null,
+          "fdr": 0.8901985066472409,
+          "cohens_d": 1.2952272702218306
+        },
+        {
+          "drug": "BRD-A13561534-003-02-0",
+          "drug_class": null,
+          "fdr": 0.8901985066472409,
+          "cohens_d": 1.3205382293364964
+        },
+        {
+          "drug": "BRD-A15687940-001-05-6",
+          "drug_class": null,
+          "fdr": 0.8901985066472409,
+          "cohens_d": 1.5544021914910728
+        },
+        {
+          "drug": "BRD-A16263897-001-06-6",
+          "drug_class": null,
+          "fdr": 0.8901985066472409,
+          "cohens_d": -1.460688006988105
+        },
+        {
+          "drug": "BRD-A16694057-001-06-8",
+          "drug_class": null,
+          "fdr": 0.8901985066472409,
+          "cohens_d": 0.9106253918932512
+        },
+        {
+          "drug": "BRD-A17428743-003-09-0",
+          "drug_class": null,
+          "fdr": 0.8901985066472409,
+          "cohens_d": 1.069135619034567
+        },
+        {
+          "drug": "dihydroxyphenylglycine",
+          "drug_class": null,
+          "fdr": 0.8901985066472409,
+          "cohens_d": -1.1278025418033768
+        }
+      ],
+      "n_significant_dependencies": 0,
+      "n_significant_drugs": 0
     },
     "G12C": {
       "allele": "G12C",
@@ -169,8 +571,142 @@
           "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
-      "top_dependencies": [],
-      "top_drug_sensitivities": []
+      "top_dependencies": [
+        {
+          "gene": "SNRPD3",
+          "mean": -5.897441737450565,
+          "median": -5.897441737450565,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL15",
+          "mean": -5.685113761471466,
+          "median": -5.685113761471466,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RAN",
+          "mean": -4.516469606042883,
+          "median": -4.642018762389703,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "HSPE1",
+          "mean": -3.8897687624288686,
+          "median": -3.9672261269920264,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "SNRPF",
+          "mean": -3.826506704071522,
+          "median": -3.8137904424737474,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL17",
+          "mean": -3.7598560977542026,
+          "median": -3.7927431002534284,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "PSMA6",
+          "mean": -3.4262231120914275,
+          "median": -3.5167207728776493,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RRM1",
+          "mean": -3.3773028978243755,
+          "median": -3.335108367668674,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "SMU1",
+          "mean": -3.3456418750915544,
+          "median": -3.4271951094666067,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "EEF2",
+          "mean": -3.3317567502435974,
+          "median": -3.3355908016808753,
+          "n": 4,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        }
+      ],
+      "top_drug_sensitivities": [
+        {
+          "drug": "NS-11394",
+          "drug_class": null,
+          "fdr": 0.7744897959183673,
+          "cohens_d": 1.373197070570848
+        },
+        {
+          "drug": "(Rac)-Tavapadon",
+          "drug_class": null,
+          "fdr": 0.7744897959183673,
+          "cohens_d": 1.9637917349985279
+        },
+        {
+          "drug": "AZD-7648",
+          "drug_class": null,
+          "fdr": 0.7744897959183673,
+          "cohens_d": 1.892443391459785
+        },
+        {
+          "drug": "anthraquinone",
+          "drug_class": null,
+          "fdr": 0.7744897959183673,
+          "cohens_d": 1.455236635655051
+        },
+        {
+          "drug": "ML324",
+          "drug_class": null,
+          "fdr": 0.7744897959183673,
+          "cohens_d": -2.150671460128434
+        },
+        {
+          "drug": "VER-155008",
+          "drug_class": null,
+          "fdr": 0.7744897959183673,
+          "cohens_d": -1.628392493348068
+        },
+        {
+          "drug": "PSNCBAM-1",
+          "drug_class": null,
+          "fdr": 0.7744897959183673,
+          "cohens_d": -1.6355663367380682
+        },
+        {
+          "drug": "zileuton",
+          "drug_class": null,
+          "fdr": 0.8504201680672269,
+          "cohens_d": -1.2229003892357808
+        },
+        {
+          "drug": "eribulin",
+          "drug_class": null,
+          "fdr": 0.8504201680672269,
+          "cohens_d": 1.5017431378977204
+        },
+        {
+          "drug": "succinobucol",
+          "drug_class": null,
+          "fdr": 0.8504201680672269,
+          "cohens_d": 1.9705840984701222
+        }
+      ],
+      "n_significant_dependencies": 0,
+      "n_significant_drugs": 0
     },
     "Q61H": {
       "allele": "Q61H",
@@ -205,8 +741,81 @@
           "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
-      "top_dependencies": [],
-      "top_drug_sensitivities": []
+      "top_dependencies": [
+        {
+          "gene": "SNRPD3",
+          "mean": -5.895079840272548,
+          "median": -5.895079840272548,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL15",
+          "mean": -5.696870486580631,
+          "median": -5.696870486580631,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RAN",
+          "mean": -4.942499842585122,
+          "median": -4.942499842585122,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL12",
+          "mean": -3.703852311150499,
+          "median": -3.703852311150499,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPS8",
+          "mean": -3.5342941688961473,
+          "median": -3.5342941688961473,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "POLR2L",
+          "mean": -3.487954425394342,
+          "median": -3.487954425394342,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "PSMA6",
+          "mean": -3.458467094817794,
+          "median": -3.458467094817794,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RRM1",
+          "mean": -3.4274710744136994,
+          "median": -3.4274710744136994,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "SNRPA1",
+          "mean": -3.3562846006639173,
+          "median": -3.3562846006639173,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "HSPE1",
+          "mean": -3.349404120350011,
+          "median": -3.349404120350011,
+          "n": 1,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        }
+      ],
+      "top_drug_sensitivities": [],
+      "n_significant_dependencies": 0,
+      "n_significant_drugs": 0
     },
     "A146T": {
       "allele": "A146T",
@@ -241,15 +850,88 @@
           "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
-      "top_dependencies": [],
-      "top_drug_sensitivities": []
+      "top_dependencies": [
+        {
+          "gene": "SNRPD3",
+          "mean": -5.656711477270296,
+          "median": -5.461486346405,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL15",
+          "mean": -5.543113124062148,
+          "median": -5.577547434296782,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RAN",
+          "mean": -4.299089087076076,
+          "median": -4.173364248514119,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL17",
+          "mean": -3.887257628828092,
+          "median": -3.725264730598976,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "ATP6V0C",
+          "mean": -3.838684782050679,
+          "median": -3.854487108137689,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "RPL21",
+          "mean": -3.690629368445228,
+          "median": -3.652899858634892,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "SNRPA1",
+          "mean": -3.6508670821664637,
+          "median": -3.7790905021422256,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "HSPE1",
+          "mean": -3.5442958226592185,
+          "median": -3.8638427893486664,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "UBL5",
+          "mean": -3.5186513929783736,
+          "median": -3.4155802062933867,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        },
+        {
+          "gene": "PCNA",
+          "mean": -3.466088121967216,
+          "median": -3.3661566506739056,
+          "n": 3,
+          "note": "descriptive only \u2014 too few lines for statistical test"
+        }
+      ],
+      "top_drug_sensitivities": [],
+      "n_significant_dependencies": 0,
+      "n_significant_drugs": 0
     },
     "all_KRAS_mut": {
       "allele": "all_KRAS_mut",
       "population_estimate": {
-        "annual_us_cases": 0,
-        "fraction_of_kras_mutant_tcga_pct": 0,
-        "fraction_of_kras_mutant_literature": 0,
+        "annual_us_cases": 68850,
+        "fraction_of_kras_mutant_tcga_pct": 45.0,
+        "fraction_of_kras_mutant_literature": 0.45,
         "source": "TCGA COAD/READ + literature"
       },
       "clinical_agents": [
@@ -277,11 +959,159 @@
           "crc_data": "ORR 40%/DCR 80% CRC G12C (ON-state, outperforms sotorasib mono 9.7%)"
         }
       ],
-      "top_dependencies": [],
-      "top_drug_sensitivities": []
+      "top_dependencies": [
+        {
+          "gene": "KRAS",
+          "fdr": 0.0001171080966434677,
+          "cohens_d": -1.9219761228962873,
+          "mean_allele": -1.96728825189618,
+          "mean_wt": -0.7092561086675216
+        },
+        {
+          "gene": "A2M",
+          "fdr": 0.9879168772173179,
+          "cohens_d": 0.44588986365135674,
+          "mean_allele": 0.008256895027822671,
+          "mean_wt": -0.042201732520014586
+        },
+        {
+          "gene": "A2ML1",
+          "fdr": 0.9879168772173179,
+          "cohens_d": -0.2969337104463862,
+          "mean_allele": 0.0770820265453286,
+          "mean_wt": 0.11488166505777646
+        },
+        {
+          "gene": "A3GALT2",
+          "fdr": 0.9879168772173179,
+          "cohens_d": -0.5221003156538834,
+          "mean_allele": -0.0895415690216223,
+          "mean_wt": -0.014583259768702284
+        },
+        {
+          "gene": "AACS",
+          "fdr": 0.9879168772173179,
+          "cohens_d": -0.35434078873675506,
+          "mean_allele": -0.019735385386429962,
+          "mean_wt": 0.038051991374602266
+        },
+        {
+          "gene": "AATK",
+          "fdr": 0.9879168772173179,
+          "cohens_d": -0.2290457467689542,
+          "mean_allele": -0.11734279011320085,
+          "mean_wt": -0.0839494724619105
+        },
+        {
+          "gene": "ABCA10",
+          "fdr": 0.9879168772173179,
+          "cohens_d": -0.2457939969615312,
+          "mean_allele": 0.052878714532749296,
+          "mean_wt": 0.09678132281571053
+        },
+        {
+          "gene": "ABCA12",
+          "fdr": 0.9879168772173179,
+          "cohens_d": 0.1452460587153188,
+          "mean_allele": 0.011677895703421854,
+          "mean_wt": -0.01291006186691166
+        },
+        {
+          "gene": "ABCA2",
+          "fdr": 0.9879168772173179,
+          "cohens_d": -0.3635078330981702,
+          "mean_allele": -0.051259133572891004,
+          "mean_wt": -0.011772261478825945
+        },
+        {
+          "gene": "ABCA3",
+          "fdr": 0.9879168772173179,
+          "cohens_d": 0.259305744317347,
+          "mean_allele": 0.0417757027042352,
+          "mean_wt": 0.006777179212156398
+        }
+      ],
+      "top_drug_sensitivities": [
+        {
+          "drug": "docusate",
+          "drug_class": null,
+          "fdr": 0.9336027467089532,
+          "cohens_d": 0.518076629968572
+        },
+        {
+          "drug": "BRD-A00520476-001-07-4",
+          "drug_class": null,
+          "fdr": 0.9336027467089532,
+          "cohens_d": 0.9991256430236432
+        },
+        {
+          "drug": "BRD-A00993607-003-24-6",
+          "drug_class": null,
+          "fdr": 0.9336027467089532,
+          "cohens_d": 0.5884669576648219
+        },
+        {
+          "drug": "BRD-A01098288-001-02-9",
+          "drug_class": null,
+          "fdr": 0.9336027467089532,
+          "cohens_d": 0.31580648857324883
+        },
+        {
+          "drug": "BRD-A01412266-001-01-0",
+          "drug_class": null,
+          "fdr": 0.9336027467089532,
+          "cohens_d": 0.8611303403986548
+        },
+        {
+          "drug": "BRD-A01493904-003-12-1",
+          "drug_class": null,
+          "fdr": 0.9336027467089532,
+          "cohens_d": -0.6609787831155333
+        },
+        {
+          "drug": "BRD-A02710418-003-11-8",
+          "drug_class": null,
+          "fdr": 0.9336027467089532,
+          "cohens_d": -0.845855918609442
+        },
+        {
+          "drug": "BRD-A03359064-001-02-3",
+          "drug_class": null,
+          "fdr": 0.9336027467089532,
+          "cohens_d": 0.655178936441091
+        },
+        {
+          "drug": "BRD-A04497688-001-04-2",
+          "drug_class": null,
+          "fdr": 0.9336027467089532,
+          "cohens_d": 0.8917261566503039
+        },
+        {
+          "drug": "BRD-A05523972-001-01-5",
+          "drug_class": null,
+          "fdr": 0.9336027467089532,
+          "cohens_d": 0.6873485657691082
+        }
+      ],
+      "n_significant_dependencies": 1,
+      "n_significant_drugs": 0
     }
   },
-  "cross_allele_insights": {},
+  "cross_allele_insights": {
+    "g12d_vs_g13d": {
+      "n_significant": 0,
+      "interpretation": "G12D and G13D show no statistically significant differential dependencies at current sample sizes, but top-ranked genes may reveal biological differences with validation"
+    },
+    "pik3ca_interaction": {
+      "n_significant": 0,
+      "rate": "37%",
+      "interpretation": "PIK3CA co-mutation (35% of KRAS-mut CRC) does not significantly alter dependency profiles in current data; PI3K pathway combos may still be relevant clinically"
+    },
+    "msi_interaction": {
+      "n_significant": 0,
+      "interpretation": "MSI-H vs MSS shows no significant differential dependencies within KRAS-mutant; immunotherapy eligibility (MSI-H) remains the key clinical distinction"
+    }
+  },
   "crc_vs_nsclc": {
     "available": false,
     "notes": [
@@ -290,10 +1120,209 @@
       "NSCLC MTAP-PRMT5 data available but targets different biology (synthetic lethality vs KRAS allele dependencies)"
     ]
   },
+  "key_drug_classes": {
+    "ERK": [
+      {
+        "broad_id": "BRD-K64857848-001-06-4",
+        "drug_name": "ERK5-IN-1",
+        "drug_class": "ERK",
+        "pvalue": 0.6243237600720506,
+        "cohens_d": -0.030865090661820402,
+        "mean_allele": -0.24857037457910244,
+        "mean_wt": -0.21703128555990053,
+        "n_allele": 29,
+        "n_wt": 13,
+        "fdr": 0.9967924655035677
+      }
+    ],
+    "KRAS": [
+      {
+        "broad_id": "BRD-K00104122-001-01-9",
+        "drug_name": "MRTX1133",
+        "drug_class": "KRAS",
+        "pvalue": 0.006859259746548159,
+        "cohens_d": -0.8686122047890212,
+        "mean_allele": -0.9899946402527772,
+        "mean_wt": -0.2658986290718207,
+        "n_allele": 28,
+        "n_wt": 13,
+        "fdr": 0.9336027467089532
+      },
+      {
+        "broad_id": "BRD-K90756851-001-01-1",
+        "drug_name": "K-Ras(G12C)-inhibitor-12",
+        "drug_class": "KRAS",
+        "pvalue": 0.22813135278874896,
+        "cohens_d": 0.4185024829650688,
+        "mean_allele": -0.4626353758539665,
+        "mean_wt": -0.7581056503952764,
+        "n_allele": 29,
+        "n_wt": 14,
+        "fdr": 0.9483286902565339
+      },
+      {
+        "broad_id": "BRD-K00003529-458-01-9",
+        "drug_name": "cloperastine-fendizoate",
+        "drug_class": "KRAS",
+        "pvalue": 0.3852560836941551,
+        "cohens_d": -0.20188714716621578,
+        "mean_allele": 0.09712104495956544,
+        "mean_wt": 0.2656744802947174,
+        "n_allele": 29,
+        "n_wt": 14,
+        "fdr": 0.971268068490686
+      },
+      {
+        "broad_id": "BRD-K48905682-001-11-1",
+        "drug_name": "madrasin",
+        "drug_class": "KRAS",
+        "pvalue": 0.3839539434560425,
+        "cohens_d": 0.3075268329407088,
+        "mean_allele": -0.23062949986482573,
+        "mean_wt": -0.5099961947472375,
+        "n_allele": 29,
+        "n_wt": 13,
+        "fdr": 0.971268068490686
+      },
+      {
+        "broad_id": "BRD-K00003139-001-01-9",
+        "drug_name": "etrasimod",
+        "drug_class": "KRAS",
+        "pvalue": 0.7264191321209419,
+        "cohens_d": 0.027464030755571016,
+        "mean_allele": -0.07948701510158855,
+        "mean_wt": -0.09744452317949308,
+        "n_allele": 29,
+        "n_wt": 14,
+        "fdr": 0.9967924655035677
+      },
+      {
+        "broad_id": "BRD-K97010173-001-06-9",
+        "drug_name": "deferasirox",
+        "drug_class": "KRAS",
+        "pvalue": 0.7264191321209419,
+        "cohens_d": -0.02667668196253536,
+        "mean_allele": -0.21755846375563095,
+        "mean_wt": -0.2053775277037916,
+        "n_allele": 29,
+        "n_wt": 14,
+        "fdr": 0.9967924655035677
+      },
+      {
+        "broad_id": "BRD-K00003460-001-01-9",
+        "drug_name": "vorasidenib",
+        "drug_class": "KRAS",
+        "pvalue": 0.8458745104134926,
+        "cohens_d": -0.21673897560495337,
+        "mean_allele": 0.02142003247294636,
+        "mean_wt": 0.14466572529394942,
+        "n_allele": 29,
+        "n_wt": 14,
+        "fdr": 1.0
+      },
+      {
+        "broad_id": "BRD-K00077460-001-02-9",
+        "drug_name": "Ilorasertib",
+        "drug_class": "KRAS",
+        "pvalue": 0.8775377881301171,
+        "cohens_d": 0.1668136846561308,
+        "mean_allele": -2.266880707657825,
+        "mean_wt": -2.4934670838466135,
+        "n_allele": 28,
+        "n_wt": 13,
+        "fdr": 1.0
+      },
+      {
+        "broad_id": "BRD-K60265345-001-02-9",
+        "drug_name": "lifitegrast",
+        "drug_class": "KRAS",
+        "pvalue": 0.8662159691675511,
+        "cohens_d": -0.05781436177900443,
+        "mean_allele": -0.030711282380472226,
+        "mean_wt": 0.0018798702340199677,
+        "n_allele": 29,
+        "n_wt": 14,
+        "fdr": 1.0
+      }
+    ],
+    "PI3K": [
+      {
+        "broad_id": "BRD-K00004592-001-01-9",
+        "drug_name": "PI3Kd-IN-2",
+        "drug_class": "PI3K",
+        "pvalue": 0.9483372483499037,
+        "cohens_d": -0.11181057171204621,
+        "mean_allele": -0.030029678122853218,
+        "mean_wt": 0.01788467554433786,
+        "n_allele": 29,
+        "n_wt": 14,
+        "fdr": 1.0
+      }
+    ],
+    "RAF": [
+      {
+        "broad_id": "BRD-K00003576-001-01-9",
+        "drug_name": "encorafenib",
+        "drug_class": "RAF",
+        "pvalue": 0.060237112219627964,
+        "cohens_d": 0.601152032398206,
+        "mean_allele": -0.10312251657806615,
+        "mean_wt": -0.6155355935453254,
+        "n_allele": 29,
+        "n_wt": 14,
+        "fdr": 0.9336027467089532
+      },
+      {
+        "broad_id": "BRD-K00003275-001-01-9",
+        "drug_name": "lifirafenib",
+        "drug_class": "RAF",
+        "pvalue": 0.17361031083877254,
+        "cohens_d": -0.2081901177301598,
+        "mean_allele": -0.6248327349106634,
+        "mean_wt": -0.37412953544345406,
+        "n_allele": 29,
+        "n_wt": 14,
+        "fdr": 0.9483286902565339
+      },
+      {
+        "broad_id": "BRD-K00091122-001-01-9",
+        "drug_name": "Belvarafenib",
+        "drug_class": "RAF",
+        "pvalue": 0.17420849925734427,
+        "cohens_d": -0.4094548996519028,
+        "mean_allele": -2.214434360471877,
+        "mean_wt": -1.7558243303202055,
+        "n_allele": 28,
+        "n_wt": 13,
+        "fdr": 0.9483286902565339
+      },
+      {
+        "broad_id": "BRD-K00010389-001-01-9",
+        "drug_name": "RAF709",
+        "drug_class": "RAF",
+        "pvalue": 0.30594841763906133,
+        "cohens_d": -0.37703391199974284,
+        "mean_allele": -1.4593756466253482,
+        "mean_wt": -0.9445465345615105,
+        "n_allele": 29,
+        "n_wt": 14,
+        "fdr": 0.9651626638616186
+      }
+    ],
+    "MEK": {
+      "note": "MEK inhibitors (trametinib, selumetinib, binimetinib) not present in PRISM Repurposing 24Q2 dataset"
+    }
+  },
   "acss2_g12v_analysis": {
     "literature": "Scafuro et al. Cell Reports March 2025: KRAS G12V-selective ACSS2 dependency, MEK inhibitor synergy",
     "depmap_signal": "not_detected",
-    "note": "No Phase 2a dependency data available"
+    "ACSS2_in_all_KRAS_mut": {
+      "pvalue": 0.22089965295369296,
+      "cohens_d": -0.30380235806432426,
+      "fdr": 0.9879168772173179
+    },
+    "g12v_n_lines": 6,
+    "note": "ACSS2 G12V-selective signal not detectable in DepMap CRISPR data (only 6 G12V lines). Literature supports G12V-selective biology \u2014 potential RMC-5127 + MEKi + ACSS2i combo rationale warrants validation in expanded panels."
   },
   "g12c_efficacy_benchmarks": {
     "sotorasib_mono_2L": {
@@ -346,10 +1375,10 @@
     "survival_pfs_p": 0.035
   },
   "overall_summary": {
-    "total_crc_lines_analyzed": 0,
-    "total_kras_mutant": 0,
-    "total_genes_screened": 0,
-    "total_drugs_screened": 0,
+    "total_crc_lines_analyzed": 63,
+    "total_kras_mutant": 35,
+    "total_genes_screened": 18435,
+    "total_drugs_screened": 6790,
     "phase4_tcga_status": "complete \u2014 594 patients, 218 KRAS-mutant validated",
     "success_criteria": {
       "allele_specific_dependencies_fdr005": "1 (KRAS in G12D), limited by sample size",
