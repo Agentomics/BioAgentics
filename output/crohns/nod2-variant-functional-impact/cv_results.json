@@ -1,0 +1,109 @@
+{
+  "n_folds": 5,
+  "macro_auc": 0.7793889648882809,
+  "classification_report": {
+    "GOF": {
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1-score": 0.5714285714285714,
+      "support": 5.0
+    },
+    "LOF": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 5.0
+    },
+    "neutral": {
+      "precision": 0.9739413680781759,
+      "recall": 0.9933554817275747,
+      "f1-score": 0.9835526315789473,
+      "support": 301.0
+    },
+    "accuracy": 0.9678456591639871,
+    "macro avg": {
+      "precision": 0.6579804560260586,
+      "recall": 0.46445182724252493,
+      "f1-score": 0.5183270676691729,
+      "support": 311.0
+    },
+    "weighted avg": {
+      "precision": 0.9587020957927039,
+      "recall": 0.9678456591639871,
+      "f1-score": 0.9611140995575757,
+      "support": 311.0
+    }
+  },
+  "fold_details": [
+    {
+      "fold": 1,
+      "gb_best_params": {
+        "learning_rate": 0.1,
+        "max_depth": 5,
+        "min_samples_leaf": 5,
+        "n_estimators": 100
+      },
+      "lr_best_params": {
+        "C": 10.0,
+        "penalty": "l2"
+      },
+      "test_size": 63
+    },
+    {
+      "fold": 2,
+      "gb_best_params": {
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "min_samples_leaf": 2,
+        "n_estimators": 100
+      },
+      "lr_best_params": {
+        "C": 0.01,
+        "penalty": "l2"
+      },
+      "test_size": 62
+    },
+    {
+      "fold": 3,
+      "gb_best_params": {
+        "learning_rate": 0.1,
+        "max_depth": 3,
+        "min_samples_leaf": 5,
+        "n_estimators": 100
+      },
+      "lr_best_params": {
+        "C": 1.0,
+        "penalty": "l2"
+      },
+      "test_size": 62
+    },
+    {
+      "fold": 4,
+      "gb_best_params": {
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "min_samples_leaf": 5,
+        "n_estimators": 50
+      },
+      "lr_best_params": {
+        "C": 10.0,
+        "penalty": "l2"
+      },
+      "test_size": 62
+    },
+    {
+      "fold": 5,
+      "gb_best_params": {
+        "learning_rate": 0.1,
+        "max_depth": 5,
+        "min_samples_leaf": 2,
+        "n_estimators": 100
+      },
+      "lr_best_params": {
+        "C": 10.0,
+        "penalty": "l2"
+      },
+      "test_size": 62
+    }
+  ]
+}

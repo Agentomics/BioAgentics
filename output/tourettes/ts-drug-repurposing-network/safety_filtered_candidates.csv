@@ -1,0 +1,18 @@
+signature_id,compound_name,cell_line,concordance_score,is_discordant,p_value,library,bbb_penetrant,safety_tier,cns_safety_concern,comorbidity_risk
+reference,aripiprazole,literature,-0.85,True,nan,reference_literature,True,tier_1_favorable,,Generally safe; augments SSRI for OCD
+reference,ecopipam,literature,-0.8,True,nan,reference_literature,True,tier_1_favorable,,
+reference,haloperidol,literature,-0.78,True,nan,reference_literature,True,tier_3_caution,"EPS, tardive dyskinesia risk",May worsen ADHD symptoms
+reference,pimozide,literature,-0.75,True,nan,reference_literature,True,tier_3_caution,"QTc prolongation, EPS",May worsen ADHD symptoms
+reference,risperidone,literature,-0.72,True,nan,reference_literature,True,tier_2_acceptable,,
+reference,fluphenazine,literature,-0.7,True,nan,reference_literature,True,tier_3_caution,"EPS, tardive dyskinesia risk",
+reference,clonidine,literature,-0.65,True,nan,reference_literature,True,tier_1_favorable,,
+reference,guanfacine,literature,-0.63,True,nan,reference_literature,True,tier_1_favorable,,
+reference,pitolisant,literature,-0.55,True,nan,reference_literature,True,tier_2_acceptable,,
+reference,xanomeline,literature,-0.5,True,nan,reference_literature,True,tier_2_acceptable,,
+reference,topiramate,literature,-0.45,True,nan,reference_literature,True,tier_1_favorable,,
+reference,cannabidiol,literature,-0.4,True,nan,reference_literature,True,tier_1_favorable,,
+reference,riluzole,literature,-0.38,True,nan,reference_literature,True,tier_2_acceptable,,
+reference,n-acetylcysteine,literature,-0.35,True,nan,reference_literature,True,tier_1_favorable,,
+reference,fluvoxamine,literature,-0.3,True,nan,reference_literature,True,tier_2_acceptable,,
+reference,valbenazine,literature,-0.15,False,nan,reference_literature,True,tier_3_caution,"Somnolence, QTc concern",
+reference,deutetrabenazine,literature,-0.12,False,nan,reference_literature,True,tier_3_caution,"Depression, suicidality warning",
