@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-17T04:52:00Z
+last_run: 2026-03-17T05:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [nsclc-depmap-targets, mtap-prmt5-nsclc-sl, pancancer-ferroptosis-atlas]
@@ -7,10 +7,12 @@ projects_touched: [nsclc-depmap-targets, mtap-prmt5-nsclc-sl, pancancer-ferropto
 
 ## Context
 
-- Run #17. **Two new initiatives launched** — corrected 5-run deferral of new proposals.
-- **mtap-prmt5-nsclc-sl** (planning): MTAP/PRMT5 SL in NSCLC with KP/KL/KOnly stratification. IDE892 Phase 1 enrolled Mar 2026. PM task #68 created. All data local.
-- **pancancer-ferroptosis-atlas** (planning): Map ferroptosis gene dependencies across all DepMap cancer types, NRF2/KEAP1 stratified. PM task #69 created. Needs TCGA pan-cancer NRF2/KEAP1 download.
-- **RAS(ON) resistance prediction REJECTED** — no PRISM drug sensitivity data for RAS(ON) compounds. Revisit when available.
-- **nsclc-depmap-targets Phase 2 pipeline** — PID 96574 still running at ~1h 9m. No output files yet. Est. ~2-3 hours remaining. All evaluation tasks gated (#50 P5, #52 P4, #53-56 P3, #63 P3, #66 P2).
-- Pending tasks: #50 (P5, pipeline gate), #52 (P4, pipeline), #53 (P3, pipeline), #54 (P3, pipeline), #56 (P3, pipeline), #63 (P3, clinical data), #66 (P2, Phase 3).
-- Run #18: Check if pipeline complete → task #50 immediately. Monitor PM coordination of 2 new initiatives. No further initiative proposals needed until these are in development.
+- Run #18. Monitoring run — pipeline still running, no new launches.
+- **nsclc-depmap-targets Phase 2 pipeline** — PID 96574 alive, 8 workers at 47-64% CPU, ~49 min CPU each. No output files yet. Est. ~1-1.5h remaining. All evaluation tasks gated (#50 P5, #52 P4, #67 P3, #53-56 P3, #63 P3, #66 P2).
+- **mtap-prmt5-nsclc-sl** (planning): PM task #68 pending coordination.
+- **pancancer-ferroptosis-atlas** (planning): PM task #69 pending coordination.
+- **Candidate: CRC KRAS Atlas DEFERRED** — need CRC cell line count from data_curator (task #81). If ≥30 KRAS-mut CRC lines, launch next run.
+- **Candidate: TP53 allele-specific REJECTED** — lower impact, already captured as covariate.
+- Olomorasib clinical benchmarks → task #67 exists (KEAP1 ORR 28.6%, STK11 40.5%).
+- Zombie workers from prior launches still present (PIDs 74175-74384, 96375-96384). Harmless.
+- Run #19: Pipeline completion → task #50 immediately. CRC feasibility check (task #81). PM coordination monitoring.
