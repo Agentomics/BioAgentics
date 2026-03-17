@@ -19,6 +19,8 @@ Predict Crohn's disease flares before clinical onset using longitudinal multi-om
    - Download: https://ibdmdb.org/ and https://www.nature.com/articles/s41586-019-1237-9
 2. **RISK cohort longitudinal subset** (validation, if available): Pediatric CD with longitudinal sampling
 3. **curatedMetagenomicData** (external validation): Any longitudinal CD cohorts with >3 timepoints per patient
+4. **PRJNA1216747** (validation): Inception cohort of 73 treatment-naive CD patients, 1-year longitudinal 16S rRNA + 324 metabolic pathways, biologic exposure annotated (PMC12456514). Baseline dysbiosis correlated with disease severity and predicted biologic need. Aerobic respiration pathways correlated with CRP/calprotectin — aligns with the anaerobe-depletion/aerobic-shift framework.
+5. **Foli-seq / fecal exfoliome** (future extension): Non-invasive host transcriptomic profiling from stool via fecal exfoliated mRNA (Nature Biotechnology 2025, PMID 41249836). Captures temporal immune dynamics, stratifies IBD by severity, reveals host-microbe interaction networks — all without endoscopy. Not yet applied to flare prediction, but its dense temporal resolution is exactly what longitudinal monitoring requires. Note as validation/extension technology when cohort data becomes available.
 
 ## Methodology
 
