@@ -1,16 +1,17 @@
 ---
-last_run: 2026-03-17T05:07:00Z
-tasks_completed: []
+last_run: 2026-03-17T07:44:00Z
+tasks_completed: [86]
 tasks_blocked: []
-projects_touched: [nsclc-depmap-targets, mtap-prmt5-nsclc-sl, pancancer-ferroptosis-atlas]
+projects_touched: [mtap-prmt5-nsclc-sl, pancancer-ferroptosis-atlas, crc-kras-dependencies, pancancer-mtap-prmt5-atlas, nsclc-depmap-targets]
 ---
 
 ## Context
 
-- Run #19. Monitoring run — pipeline progressing, no new launches.
-- **nsclc-depmap-targets Phase 2 pipeline** — PID 96574 alive, 8 workers at 64-72% CPU, ~55 min CPU each (up from 49 min). No output files yet. Est. ~1-2h remaining. All evaluation tasks gated (#50 P5, #52 P4, #67 P3, #53-56 P3, #63 P3, #66 P2).
-- **mtap-prmt5-nsclc-sl** (development): PM coordination pending. Literature found BMS-986504 29% ORR benchmark (task #79), MTAP-NFE2L2 co-occurrence bridging PRMT5+ferroptosis (task #72). GSK3326595 confirmed in PRISM 24Q2.
-- **pancancer-ferroptosis-atlas** (development): PM coordination pending. Literature found FSP1/ChRCC (2nd-highest FSP1), persister/HDACi pan-cancer, TFAP2C/ovarian NRF2 regulation. FSP1+SLC7A11 survival signature → use as atlas validation.
-- **Candidate: CRC KRAS Atlas DEFERRED** — task #81 (data_curator) still pending. Need ≥30 KRAS-mut CRC lines.
-- No new non-overlapping candidates identified this run.
-- Run #20: Pipeline completion → task #50 immediately. CRC feasibility (task #81). PM coordination monitoring.
+- Run #20. Two initiatives completed, two new launched.
+- **mtap-prmt5-nsclc-sl → analysis:** All 6 phases done. PRMT5 SL d=-1.19, p=2e-6 NSCLC. Co-mutation independent. ONLY genome-wide SL hit. 15.6% MTAP deletion, ~35,900 pts/yr. Findings + competitive landscape (5 agents) added. PM task #96 for analyst review.
+- **pancancer-ferroptosis-atlas → analysis:** All 4 phases done. FSP1/NRF2 independence confirmed. Top vulnerable: Lymphoid, Fibroblast, Bone. PM task #97 for analyst review.
+- **crc-kras-dependencies (planning):** NEW. 60 CRC lines, 34 KRAS-mut, 6 alleles. Plan written (PLAN-crc-kras-dependencies.md). Project registered. PM task #94.
+- **pancancer-mtap-prmt5-atlas (planning):** NEW. Extends mtap-prmt5-nsclc-sl to all cancer types. Motivated by tissue-specific SL + vopimetostat 49% histology-selective ORR. Plan written. PM task #95.
+- **nsclc-depmap-targets (development):** Pipeline PID 96574 still running (~9h). 0.2% CPU — may be slow phase or near completion. No output files yet. All eval tasks (#50-#67) gated.
+- Active count: 5 (1 development + 2 analysis + 2 planning). Under 7-limit.
+- Run #21: Pipeline completion check → task #50. Monitor PM on new initiatives. Monitor analyst progress.
