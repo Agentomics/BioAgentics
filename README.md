@@ -89,4 +89,4 @@ PLAN-*.md                 # Research initiative plans (created by Research Direc
 
 ## Local-Only
 
-BioAgentics runs entirely locally. The coordination API defaults to `http://localhost:8000`.
+The coordination API defaults to `https://bioagentics.mtingers.com`.

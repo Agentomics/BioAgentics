@@ -32,7 +32,7 @@ if _env_path.exists():
                 _key, _, _val = _line.partition("=")
                 os.environ.setdefault(_key.strip(), _val.strip("'\""))
 
-API_URL = os.environ.get("API_URL", "http://localhost:8000")
+API_URL = os.environ.get("API_URL", "https://bioagentics.mtingers.com")
 API_KEY = os.environ.get("API_KEY", "")
 HEADERS = {"X-API-Key": API_KEY, "Content-Type": "application/json"}
 
