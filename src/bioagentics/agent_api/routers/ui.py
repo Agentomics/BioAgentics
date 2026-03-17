@@ -1007,7 +1007,7 @@ def render_tasks_tab(
         if status:
             query = query.where(tasks.c.status == status)
             count_query = count_query.where(tasks.c.status == status)
-        if priority:
+        if priority and priority.isdigit():
             query = query.where(tasks.c.priority == int(priority))
             count_query = count_query.where(tasks.c.priority == int(priority))
         if search:
