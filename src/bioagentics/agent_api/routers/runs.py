@@ -25,6 +25,7 @@ def create_run(body: RunCreate, db: Session = Depends(get_db)):
         "agent": body.agent,
         "backend": body.backend,
         "model": body.model,
+        "division": body.division,
         "project": body.project,
         "started_at": body.started_at,
     }
@@ -57,6 +58,7 @@ def create_run(body: RunCreate, db: Session = Depends(get_db)):
 @router.get("", response_model=RunList)
 def list_runs(
     agent: str | None = Query(default=None),
+    division: str | None = Query(default=None),
     project: str | None = Query(default=None),
     sort: Literal["asc", "desc"] = Query(default="desc"),
     limit: int = Query(default=100, ge=1, le=1000),
@@ -69,6 +71,9 @@ def list_runs(
     if agent is not None:
         query = query.where(runs.c.agent == agent)
         count_query = count_query.where(runs.c.agent == agent)
+    if division is not None:
+        query = query.where(runs.c.division == division)
+        count_query = count_query.where(runs.c.division == division)
     if project is not None:
         query = query.where(runs.c.project == project)
         count_query = count_query.where(runs.c.project == project)

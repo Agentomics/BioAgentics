@@ -37,6 +37,7 @@ def create_task(body: TaskCreate, db: Session = Depends(get_db)):
     result = db.execute(
         tasks.insert().values(
             username=body.username,
+            division=body.division,
             project=body.project,
             title=body.title,
             description=body.description,
@@ -56,6 +57,7 @@ def create_task(body: TaskCreate, db: Session = Depends(get_db)):
 @router.get("", response_model=TaskList)
 def list_tasks(
     username: str | None = Query(default=None),
+    division: str | None = Query(default=None),
     project: str | None = Query(default=None),
     status: str | None = Query(default=None),
     priority: int | None = Query(default=None, ge=1, le=5),
@@ -72,6 +74,9 @@ def list_tasks(
     if username is not None:
         query = query.where(tasks.c.username == username)
         count_query = count_query.where(tasks.c.username == username)
+    if division is not None:
+        query = query.where(tasks.c.division == division)
+        count_query = count_query.where(tasks.c.division == division)
     if project is not None:
         query = query.where(tasks.c.project == project)
         count_query = count_query.where(tasks.c.project == project)

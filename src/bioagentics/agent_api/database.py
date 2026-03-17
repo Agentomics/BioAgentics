@@ -29,6 +29,7 @@ journal = Table(
     metadata,
     Column("id", Integer, primary_key=True, autoincrement=True),
     Column("username", String, nullable=False),
+    Column("division", String, nullable=True),
     Column("project", String, nullable=True),
     Column("content", Text, nullable=False),
     Column(
@@ -44,6 +45,7 @@ tasks = Table(
     metadata,
     Column("id", Integer, primary_key=True, autoincrement=True),
     Column("username", String, nullable=False),
+    Column("division", String, nullable=True),
     Column("project", String, nullable=True),
     Column("title", String, nullable=False),
     Column("description", Text, nullable=True),
@@ -70,6 +72,7 @@ agents = Table(
     "agents",
     metadata,
     Column("username", String, primary_key=True),
+    Column("division", String, primary_key=True, server_default=text("''")),
     Column("project", String, primary_key=True, server_default=text("''")),
     Column("status", String, nullable=False, server_default=text("'running'")),
     Column(
@@ -109,6 +112,7 @@ runs = Table(
     Column("agent", String, nullable=False),
     Column("backend", String, nullable=False),
     Column("model", String, nullable=False),
+    Column("division", String, nullable=True),
     Column("project", String, nullable=True),
     Column("started_at", String, nullable=False),
     Column("finished_at", String, nullable=True),
@@ -127,6 +131,7 @@ projects_table = Table(
     "projects",
     metadata,
     Column("name", String, primary_key=True),
+    Column("division", String, nullable=True),
     Column("status", String, nullable=False, server_default=text("'proposed'")),
     Column("description", String, nullable=True),
     Column("labels", String, nullable=True),
@@ -150,13 +155,12 @@ projects_table = Table(
 def init_db():
     with engine.connect() as conn:
         conn.execute(text("PRAGMA journal_mode=WAL"))
-        # Migrate agents table: old schema had username-only PK, new has (username, project).
-        # Check if migration is needed by inspecting the table's column order/pk.
+        # Migrate agents table: PK is now (username, division, project).
+        # Recreate if schema is outdated (presence data is ephemeral).
         try:
             cols = conn.execute(text("PRAGMA table_info(agents)")).fetchall()
             col_names = [c[1] for c in cols]
-            if col_names and (len(cols) < 2 or cols[1][1] != "project" or cols[1][5] == 0):
-                # Old schema detected — recreate table (presence data is ephemeral)
+            if "division" not in col_names:
                 conn.execute(text("DROP TABLE IF EXISTS agents"))
                 conn.commit()
         except Exception:
@@ -181,4 +185,15 @@ def init_db():
                 conn.commit()
         except Exception:
             pass
+        # Migrate all tables: add division column if missing
+        for tbl_name in ("journal", "tasks", "runs", "projects"):
+            try:
+                cols = conn.execute(text(f"PRAGMA table_info({tbl_name})")).fetchall()
+                col_names = [c[1] for c in cols]
+                if "division" not in col_names:
+                    conn.execute(text(f"ALTER TABLE {tbl_name} ADD COLUMN division TEXT"))
+                    conn.execute(text(f"UPDATE {tbl_name} SET division = 'cancer' WHERE division IS NULL"))
+                    conn.commit()
+            except Exception:
+                pass
     metadata.create_all(engine)

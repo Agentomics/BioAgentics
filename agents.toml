@@ -13,43 +13,74 @@ retry_max_attempts = 6
 oom_delays = [300, 600]
 oom_max_attempts = 4
 
+# --- Divisions ---
+
+[[divisions]]
+name = "cancer"
+description = "Cancer research and drug discovery"
+
+[[divisions]]
+name = "crohns"
+description = "Crohn's disease research"
+
 [defaults]
 backend = "claude"
 model = "claude-opus-4-6"
 effort = "high"
+division = "cancer"
 
-# --- Generators (always run, create work for others) ---
+# --- Cancer: Generators (always run, create work for others) ---
 
 [[agents]]
 role = "RESEARCH_DIRECTOR"
+division = "cancer"
 effort = "max"
 
 [[agents]]
 role = "LITERATURE_REVIEWER"
+division = "cancer"
 
 [[agents]]
 role = "DATA_CURATOR"
+division = "cancer"
 
 [[agents]]
 role = "SYSTEMS_ENGINEER"
+division = "cancer"
 effort = "max"
 
-# --- Task-driven agents (run when they have tasks) ---
+# --- Cancer: Task-driven agents (run when they have tasks) ---
 
 [[agents]]
 role = "PROJECT_MANAGER"
+division = "cancer"
 
 [[agents]]
 role = "DEVELOPER"
+division = "cancer"
 effort = "max"
 
 [[agents]]
 role = "ANALYST"
+division = "cancer"
 effort = "max"
 
 [[agents]]
 role = "VALIDATION_SCIENTIST"
+division = "cancer"
 effort = "max"
 
 [[agents]]
 role = "RESEARCH_WRITER"
+division = "cancer"
+
+# --- Crohn's: Generators ---
+
+[[agents]]
+role = "RESEARCH_DIRECTOR"
+division = "crohns"
+effort = "max"
+
+[[agents]]
+role = "LITERATURE_REVIEWER"
+division = "crohns"

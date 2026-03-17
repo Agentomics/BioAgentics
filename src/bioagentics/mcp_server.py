@@ -61,6 +61,7 @@ def _gh(*args: str, cwd: str | Path | None = None) -> str:
 def list_tasks(
     username: str = "",
     status: str = "",
+    division: str = "",
     project: str = "",
     priority: int = 0,
     search: str = "",
@@ -71,7 +72,7 @@ def list_tasks(
     """List tasks from the agent coordination API.
 
     Filter by username, status (pending/in_progress/blocked/done/cancelled),
-    project, priority (1-5), or search text (matches title/description).
+    division, project, priority (1-5), or search text (matches title/description).
     Sort: desc (newest first, default) or asc.
     Returns highest priority first within sort order.
     """
@@ -80,6 +81,8 @@ def list_tasks(
         qp["username"] = username
     if status:
         qp["status"] = status
+    if division:
+        qp["division"] = division
     if project:
         qp["project"] = project
     if priority:
@@ -100,6 +103,7 @@ def create_task(
     username: str,
     title: str,
     status: str = "pending",
+    division: str = "",
     project: str = "",
     description: str = "",
     priority: int = 3,
@@ -108,6 +112,7 @@ def create_task(
 
     Status: pending, in_progress, blocked, done, cancelled.
     Priority: 1 (lowest) to 5 (highest).
+    Division: research division (e.g. cancer, crohns).
     """
     payload: dict = {
         "username": username,
@@ -115,6 +120,8 @@ def create_task(
         "status": status,
         "priority": priority,
     }
+    if division:
+        payload["division"] = division
     if project:
         payload["project"] = project
     if description:
@@ -159,6 +166,7 @@ def update_task(
 @mcp.tool()
 def list_journal(
     username: str = "",
+    division: str = "",
     project: str = "",
     search: str = "",
     sort: str = "desc",
@@ -167,12 +175,14 @@ def list_journal(
 ) -> str:
     """List journal entries (shared memory between agents).
 
-    Filter by username, project, or search text (matches content).
+    Filter by username, division, project, or search text (matches content).
     Sort: desc (newest first, default) or asc.
     """
     qp: dict[str, str | int] = {"limit": limit, "offset": offset, "sort": sort}
     if username:
         qp["username"] = username
+    if division:
+        qp["division"] = division
     if project:
         qp["project"] = project
     if search:
@@ -181,9 +191,11 @@ def list_journal(
 
 
 @mcp.tool()
-def create_journal(username: str, content: str, project: str = "") -> str:
+def create_journal(username: str, content: str, division: str = "", project: str = "") -> str:
     """Write a journal entry. The journal is shared memory between all agents."""
     payload: dict = {"username": username, "content": content}
+    if division:
+        payload["division"] = division
     if project:
         payload["project"] = project
     return json.dumps(_api("POST", "/journal", json=payload), indent=2)
@@ -193,15 +205,18 @@ def create_journal(username: str, content: str, project: str = "") -> str:
 
 
 @mcp.tool()
-def list_projects(status: str = "", labels: str = "", limit: int = 100) -> str:
+def list_projects(status: str = "", division: str = "", labels: str = "", limit: int = 100) -> str:
     """List research initiatives.
 
     Filter by status: proposed, planning, development, analysis, validation, documentation, published, cancelled.
+    Filter by division: cancer, crohns, etc.
     Filter by labels (partial match): drug-candidate, novel-finding, biomarker, genomic, clinical, high-priority, etc.
     """
     qp: dict[str, str | int] = {"limit": limit}
     if status:
         qp["status"] = status
+    if division:
+        qp["division"] = division
     if labels:
         qp["labels"] = labels
     return json.dumps(_api("GET", f"/projects?{urlencode(qp)}"), indent=2)
@@ -217,6 +232,7 @@ def get_project(name: str) -> str:
 def create_project(
     name: str,
     description: str = "",
+    division: str = "",
     status: str = "proposed",
     labels: str = "",
     plan_content: str = "",
@@ -224,6 +240,7 @@ def create_project(
 ) -> str:
     """Create a new research initiative in the coordination API.
 
+    Division: research division (e.g. cancer, crohns).
     Labels are comma-separated tags for categorizing research. Suggested labels:
     drug-candidate, novel-finding, biomarker, genomic, transcriptomic, clinical,
     drug-screening, resistance, protein, high-priority, promising
@@ -232,6 +249,8 @@ def create_project(
     findings_content: findings/summary text (shown in project detail view).
     """
     payload: dict = {"name": name, "status": status}
+    if division:
+        payload["division"] = division
     if description:
         payload["description"] = description
     if labels:
@@ -289,11 +308,14 @@ def get_status() -> str:
 
 
 @mcp.tool()
-def list_agents(status: str = "") -> str:
-    """List agent presence. Filter by status: running, idle."""
-    path = "/agents"
+def list_agents(status: str = "", division: str = "") -> str:
+    """List agent presence. Filter by status: running, idle. Filter by division."""
+    qp: dict[str, str] = {}
     if status:
-        path += f"?{urlencode({'status': status})}"
+        qp["status"] = status
+    if division:
+        qp["division"] = division
+    path = f"/agents?{urlencode(qp)}" if qp else "/agents"
     return json.dumps(_api("GET", path), indent=2)
 
 

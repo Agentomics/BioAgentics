@@ -22,25 +22,24 @@ def get_db():
 @router.post("", status_code=200, response_model=AgentEntry, dependencies=[Depends(require_auth)])
 def register_agent(body: AgentRegister, db: Session = Depends(get_db)):
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    division = body.division or ""
     project = body.project or ""
-    existing = db.execute(
-        select(agents).where(
-            (agents.c.username == body.username) & (agents.c.project == project)
-        )
-    ).first()
+    pk_cond = (
+        (agents.c.username == body.username)
+        & (agents.c.division == division)
+        & (agents.c.project == project)
+    )
+    existing = db.execute(select(agents).where(pk_cond)).first()
 
     if existing:
         db.execute(
-            agents.update()
-            .where(
-                (agents.c.username == body.username) & (agents.c.project == project)
-            )
-            .values(status=body.status, updated_at=now)
+            agents.update().where(pk_cond).values(status=body.status, updated_at=now)
         )
     else:
         db.execute(
             agents.insert().values(
                 username=body.username,
+                division=division,
                 status=body.status,
                 project=project,
                 started_at=now,
@@ -49,17 +48,14 @@ def register_agent(body: AgentRegister, db: Session = Depends(get_db)):
         )
     db.commit()
 
-    row = db.execute(
-        select(agents).where(
-            (agents.c.username == body.username) & (agents.c.project == project)
-        )
-    ).first()
+    row = db.execute(select(agents).where(pk_cond)).first()
     return row._mapping
 
 
 @router.get("", response_model=AgentList)
 def list_agents(
     status: str | None = Query(default=None),
+    division: str | None = Query(default=None),
     project: str | None = Query(default=None),
     db: Session = Depends(get_db),
 ):
@@ -69,6 +65,9 @@ def list_agents(
     if status is not None:
         query = query.where(agents.c.status == status)
         count_query = count_query.where(agents.c.status == status)
+    if division is not None:
+        query = query.where(agents.c.division == division)
+        count_query = count_query.where(agents.c.division == division)
     if project is not None:
         query = query.where(agents.c.project == project)
         count_query = count_query.where(agents.c.project == project)

@@ -54,6 +54,7 @@ class AgentConfig:
     backend: str
     model: str
     effort: str
+    division: str
 
 
 @dataclass
@@ -108,6 +109,7 @@ def load_config(path: str = "agents.toml") -> tuple[list[AgentConfig], DispatchC
                 backend=entry.get("backend", defaults.get("backend", "claude")),
                 model=entry.get("model", defaults.get("model", "claude-opus-4-6")),
                 effort=entry.get("effort", defaults.get("effort", "max")),
+                division=entry.get("division", defaults.get("division", "cancer")),
             )
         )
     return agents, dispatch

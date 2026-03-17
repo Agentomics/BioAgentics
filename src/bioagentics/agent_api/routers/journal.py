@@ -24,6 +24,7 @@ def create_journal_entry(body: JournalCreate, db: Session = Depends(get_db)):
     result = db.execute(
         journal.insert().values(
             username=body.username,
+            division=body.division,
             project=body.project,
             content=body.content,
         )
@@ -38,6 +39,7 @@ def create_journal_entry(body: JournalCreate, db: Session = Depends(get_db)):
 @router.get("", response_model=JournalList)
 def list_journal_entries(
     username: str | None = Query(default=None),
+    division: str | None = Query(default=None),
     project: str | None = Query(default=None),
     search: str | None = Query(default=None, max_length=200),
     sort: Literal["asc", "desc"] = Query(default="desc"),
@@ -51,6 +53,9 @@ def list_journal_entries(
     if username is not None:
         query = query.where(journal.c.username == username)
         count_query = count_query.where(journal.c.username == username)
+    if division is not None:
+        query = query.where(journal.c.division == division)
+        count_query = count_query.where(journal.c.division == division)
     if project is not None:
         query = query.where(journal.c.project == project)
         count_query = count_query.where(journal.c.project == project)

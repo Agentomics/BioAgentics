@@ -30,6 +30,7 @@ def create_project(body: ProjectCreate, db: Session = Depends(get_db)):
     db.execute(
         projects_table.insert().values(
             name=body.name,
+            division=body.division,
             status=body.status,
             description=body.description,
             labels=body.labels,
@@ -47,6 +48,7 @@ def create_project(body: ProjectCreate, db: Session = Depends(get_db)):
 @router.get("", response_model=ProjectList)
 def list_projects(
     status: str | None = Query(default=None),
+    division: str | None = Query(default=None),
     labels: str | None = Query(default=None),
     limit: int = Query(default=100, ge=1, le=1000),
     offset: int = Query(default=0, ge=0),
@@ -54,6 +56,7 @@ def list_projects(
 ):
     summary_cols = [
         projects_table.c.name,
+        projects_table.c.division,
         projects_table.c.status,
         projects_table.c.description,
         projects_table.c.labels,
@@ -66,6 +69,9 @@ def list_projects(
     if status is not None:
         query = query.where(projects_table.c.status == status)
         count_query = count_query.where(projects_table.c.status == status)
+    if division is not None:
+        query = query.where(projects_table.c.division == division)
+        count_query = count_query.where(projects_table.c.division == division)
     if labels is not None:
         query = query.where(projects_table.c.labels.contains(labels))
         count_query = count_query.where(projects_table.c.labels.contains(labels))

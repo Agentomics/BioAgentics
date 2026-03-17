@@ -69,16 +69,20 @@ def _terminate_children():
                 pass
 
 
-def journal(content: str, project: str | None = None):
+def journal(content: str, project: str | None = None, division: str | None = None):
     """Write a dispatcher journal entry."""
     payload: dict = {"username": "dispatcher", "content": content}
+    if division:
+        payload["division"] = division
     if project:
         payload["project"] = project
     api("POST", "/journal", json=payload)
 
 
-def set_presence(username: str, status: str, project: str | None = None):
+def set_presence(username: str, status: str, project: str | None = None, division: str | None = None):
     payload: dict = {"username": username, "status": status}
+    if division:
+        payload["division"] = division
     if project:
         payload["project"] = project
     api("POST", "/agents", json=payload)
@@ -92,10 +96,11 @@ def clear_all_presence():
         if stuck:
             for agent in stuck:
                 username = agent["username"]
+                division = agent.get("division") or None
                 project = agent.get("project") or None
                 label = f"{username}/{project}" if project else username
                 print(f"  cleanup: {label} was stuck as 'running', setting idle")
-                set_presence(username, "idle", project)
+                set_presence(username, "idle", project, division)
             journal(
                 f"startup cleanup: reset {len(stuck)} stuck agent(s) to idle: "
                 + ", ".join(
@@ -175,10 +180,11 @@ def clear_stale_presences():
         age = (now - last_seen).total_seconds()
         if age > _dispatch.presence_timeout:
             username = agent["username"]
+            division = agent.get("division") or None
             project = agent.get("project") or None
             label = f"{username}/{project}" if project else username
             print(f"  STALE: {label} running for {int(age)}s — resetting to idle")
-            set_presence(username, "idle", project)
+            set_presence(username, "idle", project, division)
             journal(
                 f"stale presence cleanup: {label} was running for "
                 f"{int(age)}s (timeout {_dispatch.presence_timeout}s), reset to idle"
@@ -276,6 +282,7 @@ def log_run(
     exit_code: int,
     duration_seconds: int,
     stats: RunStats | None = None,
+    division: str | None = None,
 ):
     """Log a run to the agent-comms API."""
     payload: dict = {
@@ -287,6 +294,8 @@ def log_run(
         "exit_code": exit_code,
         "duration_seconds": duration_seconds,
     }
+    if division:
+        payload["division"] = division
     if project:
         payload["project"] = project
     if stats:
@@ -311,9 +320,10 @@ def utcnow() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def build_agent_command(config: AgentConfig, project: str | None) -> list[str]:
+def build_agent_command(config: AgentConfig, project: str | None, division: str | None = None) -> list[str]:
     """Build the CLI command to invoke an agent."""
     role = config.role
+    div = division or config.division
 
     # Use project-specific summary when scoped to a project, global otherwise
     if project:
@@ -331,7 +341,7 @@ def build_agent_command(config: AgentConfig, project: str | None) -> list[str]:
 
     if config.backend == "claude":
         prompt = (
-            f"0. Read @org-roles/{role}.md .\n"
+            f"0. Read @org-roles/{div}/{role}.md .\n"
             f"  1. Read previous context summary at @{summary_file} (if exists).\n"
             f"  2. {project_clause}\n"
             f"  3. Do your job. Note: your presence (running/idle) is managed by "
@@ -356,7 +366,7 @@ def build_agent_command(config: AgentConfig, project: str | None) -> list[str]:
         ]
 
     elif config.backend == "codex":
-        role_content = Path(f"org-roles/{role}.md").read_text()
+        role_content = Path(f"org-roles/{div}/{role}.md").read_text()
         try:
             summary = Path(summary_file).read_text()
         except FileNotFoundError:
@@ -386,6 +396,7 @@ def build_agent_command(config: AgentConfig, project: str | None) -> list[str]:
 
 def run_agent(config: AgentConfig, project: str | None = None) -> int:
     """Invoke an agent with retry logic, managing its presence lifecycle."""
+    division = config.division
     label = f"{config.role}" + (f"/{project}" if project else "")
     username = config.role.lower()
 
@@ -395,9 +406,9 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
         attempt += 1
 
         # --- Dispatcher owns presence ---
-        set_presence(username, "running", project)
+        set_presence(username, "running", project, division)
 
-        cmd = build_agent_command(config, project)
+        cmd = build_agent_command(config, project, division)
         print(
             f"  dispatch: role={config.role} backend={config.backend} "
             f"model={config.model} effort={config.effort} "
@@ -448,8 +459,8 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
             with _children_lock:
                 if proc in _children:
                     _children.remove(proc)
-            # --- Always clean up presence (must include project for composite PK) ---
-            set_presence(username, "idle", project)
+            # --- Always clean up presence (must include division+project for composite PK) ---
+            set_presence(username, "idle", project, division)
 
         # If we're stopping, don't log or retry — just exit
         if _is_stopping():
@@ -477,11 +488,12 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
             exit_code=exit_code,
             duration_seconds=duration,
             stats=stats,
+            division=division,
         )
 
         if exit_code == 0:
             print(f"  DONE: {label} ({duration}s)")
-            journal(f"completed {label} in {duration}s", project)
+            journal(f"completed {label} in {duration}s", project, division)
             # Validate summary format
             validate_summary(config.role, project)
             # Commit cache summary + research artifacts (lock prevents races)
@@ -502,10 +514,12 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
                     capture_output=True, cwd=REPO_ROOT,
                 )
 
-                # 2. Commit PLAN files and output artifacts
+                # 2. Commit plans and output artifacts
                 artifact_paths: list[str] = []
-                for p in REPO_ROOT.glob("PLAN-*.md"):
-                    artifact_paths.append(str(p))
+                plans_dir = REPO_ROOT / "plans"
+                if plans_dir.is_dir():
+                    for p in plans_dir.rglob("*.md"):
+                        artifact_paths.append(str(p))
                 output_dir = REPO_ROOT / "output"
                 if output_dir.is_dir():
                     for p in output_dir.rglob("*"):
@@ -550,7 +564,7 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
             else:
                 msg = f"finished {label} (exit {exit_code})"
                 print(f"  DONE: {label} (exit {exit_code})")
-            journal(msg, project)
+            journal(msg, project, division)
             return exit_code
 
         if attempt >= strategy["max_attempts"]:
@@ -560,6 +574,7 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
             journal(
                 f"gave up on {label} after {attempt} attempts (exit {exit_code})",
                 project,
+                division,
             )
             return exit_code
 

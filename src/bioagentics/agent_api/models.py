@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field
 
 class JournalCreate(BaseModel):
     username: str = Field(..., min_length=1, max_length=64, pattern=r"^\S+$")
+    division: str | None = Field(default=None, min_length=1, max_length=64)
     project: str | None = Field(default=None, min_length=1, max_length=64)
     content: str = Field(..., min_length=1, max_length=10_000)
 
@@ -10,6 +11,7 @@ class JournalCreate(BaseModel):
 class JournalEntry(BaseModel):
     id: int
     username: str
+    division: str | None
     project: str | None
     content: str
     created_at: str
@@ -27,12 +29,14 @@ _AGENT_STATUS_PATTERN = r"^(running|idle)$"
 class AgentRegister(BaseModel):
     username: str = Field(..., min_length=1, max_length=64, pattern=r"^\S+$")
     status: str = Field(default="running", pattern=_AGENT_STATUS_PATTERN)
+    division: str | None = Field(default=None, min_length=1, max_length=64)
     project: str | None = Field(default=None, min_length=1, max_length=64)
 
 
 class AgentEntry(BaseModel):
     username: str
     status: str
+    division: str | None
     project: str | None
     started_at: str
     updated_at: str
@@ -49,6 +53,7 @@ _STATUS_PATTERN = r"^(pending|in_progress|blocked|done|cancelled)$"
 
 class TaskCreate(BaseModel):
     username: str = Field(..., min_length=1, max_length=64, pattern=r"^\S+$")
+    division: str | None = Field(default=None, min_length=1, max_length=64)
     project: str | None = Field(default=None, min_length=1, max_length=64)
     title: str = Field(..., min_length=1, max_length=200)
     description: str | None = Field(default=None, max_length=5_000)
@@ -68,6 +73,7 @@ class TaskUpdate(BaseModel):
 class TaskEntry(BaseModel):
     id: int
     username: str
+    division: str | None
     project: str | None
     title: str
     description: str | None
@@ -104,6 +110,7 @@ class RunCreate(BaseModel):
     agent: str = Field(..., min_length=1, max_length=64)
     backend: str = Field(..., min_length=1, max_length=64)
     model: str = Field(..., min_length=1, max_length=128)
+    division: str | None = Field(default=None, min_length=1, max_length=64)
     project: str | None = Field(default=None, min_length=1, max_length=64)
     started_at: str = Field(..., min_length=1, max_length=64)
     finished_at: str | None = Field(default=None, max_length=64)
@@ -133,6 +140,7 @@ class RunEntry(BaseModel):
     agent: str
     backend: str
     model: str
+    division: str | None
     project: str | None
     started_at: str
     finished_at: str | None
@@ -162,6 +170,7 @@ _PROJECT_STATUS_PATTERN = (
 
 class ProjectCreate(BaseModel):
     name: str = Field(..., min_length=1, max_length=64, pattern=r"^\S+$")
+    division: str | None = Field(default=None, min_length=1, max_length=64)
     status: str = Field(default="proposed", pattern=_PROJECT_STATUS_PATTERN)
     description: str | None = Field(default=None, max_length=5_000)
     labels: str | None = Field(default=None, max_length=500)
@@ -179,6 +188,7 @@ class ProjectUpdate(BaseModel):
 
 class ProjectSummary(BaseModel):
     name: str
+    division: str | None
     status: str
     description: str | None
     labels: str | None

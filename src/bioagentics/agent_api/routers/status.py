@@ -26,11 +26,14 @@ def get_status(db: Session = Depends(get_db)):
     for row in agent_rows:
         m = row._mapping
         username = m["username"]
+        division = m["division"] or None
         project = m["project"] or None
         entry: dict = {
             "status": m["status"],
             "last_heartbeat": m["updated_at"],
         }
+        if division:
+            entry["division"] = division
         if project:
             entry["project"] = project
 

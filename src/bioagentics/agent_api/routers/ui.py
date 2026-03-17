@@ -876,10 +876,13 @@ def render_dashboard_tab(db: Session) -> str:
 </div>"""
 
 
-def render_projects_tab(db: Session, search: str, status: str, labels: str, offset: int) -> str:
+def render_projects_tab(db: Session, search: str, status: str, labels: str, offset: int, division: str = "") -> str:
     query = select(projects_table)
     count_query = select(func.count()).select_from(projects_table)
 
+    if division:
+        query = query.where(projects_table.c.division == division)
+        count_query = count_query.where(projects_table.c.division == division)
     if status:
         query = query.where(projects_table.c.status == status)
         count_query = count_query.where(projects_table.c.status == status)
@@ -990,6 +993,7 @@ def render_tasks_tab(
     priority: str,
     sort: str,
     offset: int,
+    division: str = "",
 ) -> str:
     # Fetch filter options for datalists
     usernames = sorted(
@@ -1023,6 +1027,9 @@ def render_tasks_tab(
         query = select(tasks)
         count_query = select(func.count()).select_from(tasks)
 
+        if division:
+            query = query.where(tasks.c.division == division)
+            count_query = count_query.where(tasks.c.division == division)
         if username:
             query = query.where(tasks.c.username == username)
             count_query = count_query.where(tasks.c.username == username)
@@ -1106,6 +1113,7 @@ def render_journal_tab(
     project: str,
     sort: str,
     offset: int,
+    division: str = "",
 ) -> str:
     usernames = sorted(
         db.execute(
@@ -1124,6 +1132,9 @@ def render_journal_tab(
     query = select(journal)
     count_query = select(func.count()).select_from(journal)
 
+    if division:
+        query = query.where(journal.c.division == division)
+        count_query = count_query.where(journal.c.division == division)
     if username:
         query = query.where(journal.c.username == username)
         count_query = count_query.where(journal.c.username == username)
@@ -1245,12 +1256,16 @@ def render_runs_tab(
     project: str,
     sort: str,
     offset: int,
+    division: str = "",
 ) -> str:
     from bioagentics.agent_api.database import runs
 
     query = select(runs)
     count_query = select(func.count()).select_from(runs)
 
+    if division:
+        query = query.where(runs.c.division == division)
+        count_query = count_query.where(runs.c.division == division)
     if agent:
         query = query.where(runs.c.agent == agent)
         count_query = count_query.where(runs.c.agent == agent)
@@ -1493,10 +1508,31 @@ document.addEventListener('DOMContentLoaded', function() {
   if (saved) { document.getElementById('api-key').value = saved; }
 });
 
-// Inject API key header on all htmx requests
+// Division filter
+function getDivision() { return localStorage.getItem('bioagentics_division') || ''; }
+function setDivision(val) {
+  if (val) { localStorage.setItem('bioagentics_division', val); }
+  else { localStorage.removeItem('bioagentics_division'); }
+  // Reload current tab content
+  var tabContent = document.getElementById('tab-content');
+  if (tabContent) {
+    var url = new URL(window.location.href);
+    if (val) { url.searchParams.set('division', val); } else { url.searchParams.delete('division'); }
+    htmx.ajax('GET', url.pathname + '?' + url.searchParams.toString(), {target: '#tab-content', pushUrl: true});
+  }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var saved = getDivision();
+  var sel = document.getElementById('division-filter');
+  if (sel && saved) { sel.value = saved; }
+});
+
+// Inject API key + division on all htmx requests
 document.addEventListener('htmx:configRequest', function(evt) {
   var key = getApiKey();
   if (key) { evt.detail.headers['X-API-Key'] = key; }
+  var div = getDivision();
+  if (div && !evt.detail.parameters['division']) { evt.detail.parameters['division'] = div; }
 });
 
 // Sidebar toggle (mobile)
@@ -1864,6 +1900,16 @@ def render_shell(active_tab: str, content: str, stats_html: str, presence_html: 
     </div>
   </div>
 
+  <div class="px-3 py-2.5 border-b border-[#27272a]">
+    <div class="text-[10px] text-[#52525b] font-medium uppercase tracking-wider mb-1.5">Division</div>
+    <select id="division-filter" onchange="setDivision(this.value)"
+            class="w-full bg-[#18181b] border border-[#27272a] text-sm text-[#fafafa] px-2 py-1.5 rounded-md focus:outline-none focus:ring-1 focus:ring-[#3b82f6]/40 cursor-pointer">
+      <option value="">All</option>
+      <option value="cancer">Cancer</option>
+      <option value="crohns">Crohn's</option>
+    </select>
+  </div>
+
   <nav id="sidebar-nav" class="flex-1 px-2 py-3 space-y-0.5 overflow-y-auto">
     {render_sidebar_nav(active_tab, human_count)}
   </nav>
@@ -1990,10 +2036,11 @@ def ui_projects_page(
     search: str = Query(default="", max_length=200),
     status: str = Query(default=""),
     labels: str = Query(default=""),
+    division: str = Query(default=""),
     offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
 ):
-    content = render_projects_tab(db, search, status, labels, offset)
+    content = render_projects_tab(db, search, status, labels, offset, division)
     if is_htmx(request):
         return HTMLResponse(content + render_sidebar_nav_oob("projects", db))
     stats_html = render_stats_html(db)
@@ -2002,10 +2049,15 @@ def ui_projects_page(
 
 
 @router.get("/ui/projects/{name:path}/download")
-def ui_project_download(name: str):
+def ui_project_download(name: str, db: Session = Depends(get_db)):
     """Download a project's output directory as a ZIP file."""
     _repo_resolved = REPO_ROOT.resolve()
-    output_dir = (REPO_ROOT / "output" / name).resolve()
+    # Look up division from project record
+    row = db.execute(select(projects_table).where(projects_table.c.name == name)).first()
+    proj_division = row._mapping.get("division", "cancer") if row else "cancer"
+    output_dir = (REPO_ROOT / "output" / proj_division / name).resolve()
+    if not output_dir.is_dir():
+        output_dir = (REPO_ROOT / "output" / name).resolve()
     if not output_dir.is_relative_to(_repo_resolved) or not output_dir.is_dir():
         return HTMLResponse("<h1>Not found</h1>", status_code=404)
 
@@ -2077,7 +2129,11 @@ def ui_project_detail_page(
     findings_content = m.get("findings_content") or None
 
     if not plan_content:
-        plan_path = (REPO_ROOT / f"PLAN-{name}.md").resolve()
+        division = m.get("division") or "cancer"
+        # Try division-scoped plans directory first, then legacy PLAN-{name}.md
+        plan_path = (REPO_ROOT / "plans" / division / f"{name}.md").resolve()
+        if not (plan_path.is_relative_to(REPO_ROOT.resolve()) and plan_path.is_file()):
+            plan_path = (REPO_ROOT / f"PLAN-{name}.md").resolve()
         if plan_path.is_relative_to(REPO_ROOT.resolve()) and plan_path.is_file():
             try:
                 plan_content = plan_path.read_text()
@@ -2109,8 +2165,11 @@ def ui_project_detail_page(
             str(p.relative_to(results_dir)) for p in results_dir.rglob("*") if p.is_file()
         )
 
-    # Check for output directory
-    output_dir = (REPO_ROOT / "output" / name).resolve()
+    # Check for output directory (division-scoped, fallback to legacy)
+    proj_division = m.get("division") or "cancer"
+    output_dir = (REPO_ROOT / "output" / proj_division / name).resolve()
+    if not output_dir.is_dir():
+        output_dir = (REPO_ROOT / "output" / name).resolve()
     has_output = output_dir.is_relative_to(_repo_resolved) and output_dir.is_dir() and any(output_dir.rglob("*"))
     output_files = None
     if has_output:
@@ -2139,11 +2198,12 @@ def ui_tasks_page(
     project: str = Query(default=""),
     status: str = Query(default=""),
     priority: str = Query(default=""),
+    division: str = Query(default=""),
     sort: str = Query(default="desc"),
     offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
 ):
-    content = render_tasks_tab(db, search, username, project, status, priority, sort, offset)
+    content = render_tasks_tab(db, search, username, project, status, priority, sort, offset, division)
     if is_htmx(request):
         return HTMLResponse(content + render_sidebar_nav_oob("tasks", db))
     stats_html = render_stats_html(db)
@@ -2179,11 +2239,12 @@ def ui_journal_page(
     search: str = Query(default="", max_length=200),
     username: str = Query(default=""),
     project: str = Query(default=""),
+    division: str = Query(default=""),
     sort: str = Query(default="desc"),
     offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
 ):
-    content = render_journal_tab(db, search, username, project, sort, offset)
+    content = render_journal_tab(db, search, username, project, sort, offset, division)
     if is_htmx(request):
         return HTMLResponse(content + render_sidebar_nav_oob("journal", db))
     stats_html = render_stats_html(db)
@@ -2218,11 +2279,12 @@ def ui_runs_page(
     request: Request,
     agent: str = Query(default=""),
     project: str = Query(default=""),
+    division: str = Query(default=""),
     sort: str = Query(default="desc"),
     offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
 ):
-    content = render_runs_tab(db, agent, project, sort, offset)
+    content = render_runs_tab(db, agent, project, sort, offset, division)
     if is_htmx(request):
         return HTMLResponse(content + render_sidebar_nav_oob("runs", db))
     stats_html = render_stats_html(db)

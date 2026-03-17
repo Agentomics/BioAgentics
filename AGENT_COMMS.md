@@ -40,7 +40,18 @@ Available tools:
 
 ## Single Repository Model
 
-BioAgentics is a single system. All code lives in `src/bioagentics/`. Research data goes in `data/`. Research plans are `PLAN-{initiative}.md` files in the repo root. Plan and findings text should also be stored in the project record via `plan_content` and `findings_content` fields so they appear in the web dashboard.
+BioAgentics is a single system. All code lives in `src/bioagentics/`. Research data goes in `data/`. Research plans are in `plans/{division}/{initiative}.md`. Output artifacts go in `output/{division}/{project}/`. Plan and findings text should also be stored in the project record via `plan_content` and `findings_content` fields so they appear in the web dashboard.
+
+## Divisions
+
+Research is organized into divisions — each division is an independent research domain with its own agent role definitions, plans, and output.
+
+| Division | Description | Role definitions |
+|----------|-------------|-----------------|
+| `cancer` | Cancer research and drug discovery | `org-roles/cancer/` |
+| `crohns` | Crohn's disease research | `org-roles/crohns/` |
+
+All tasks, journal entries, projects, and runs should include a `division` field. The dispatcher automatically sets division based on each agent's config in `agents.toml`.
 
 "Projects" in this API represent logical research initiatives (e.g., "gene-expression-classifier", "drug-interaction-model"). They are tracked for coordination, not as separate codebases.
 
