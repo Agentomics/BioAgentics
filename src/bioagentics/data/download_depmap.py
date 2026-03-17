@@ -18,6 +18,8 @@ from pathlib import Path
 import requests
 from tqdm import tqdm
 
+from bioagentics.config import REPO_ROOT
+
 API_BASE = "https://depmap.org/portal/download/api"
 DEFAULT_RELEASE = "DepMap Public 25Q3"
 DEFAULT_PRISM_RELEASE = "PRISM Primary Repurposing DepMap Public 24Q2"
@@ -38,7 +40,6 @@ PRISM_FILES = [
     "Repurposing_Public_24Q2_Cell_Line_Meta_Data.csv",
 ]
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DEST = REPO_ROOT / "data" / "depmap" / "25q3"
 
 TIMEOUT = 60

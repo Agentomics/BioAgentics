@@ -23,6 +23,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from bioagentics.config import REPO_ROOT
 from bioagentics.data.gene_ids import load_tcga_expression_matrix
 from bioagentics.data.nsclc_tcga import classify_patients
 
@@ -44,8 +45,6 @@ from bioagentics.models.validation import (
     save_validation_report,
     validate_positive_controls,
 )
-
-REPO_ROOT = Path(__file__).resolve().parents[3]
 
 logger = logging.getLogger(__name__)
 

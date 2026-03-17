@@ -18,6 +18,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from bioagentics.config import REPO_ROOT
 from bioagentics.data.nsclc_common import (
     DAMAGING_CLASSIFICATIONS,
     DRIVER_GENES,
@@ -25,7 +26,6 @@ from bioagentics.data.nsclc_common import (
     classify_molecular_subtype,
 )
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_TCGA_DIR = REPO_ROOT / "data" / "tcga"
 
 

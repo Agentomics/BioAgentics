@@ -15,6 +15,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from bioagentics.config import REPO_ROOT
 from bioagentics.data.gene_ids import load_depmap_model_metadata, load_depmap_mutations
 from bioagentics.data.nsclc_common import (
     DRIVER_GENES,
@@ -22,7 +23,6 @@ from bioagentics.data.nsclc_common import (
     classify_molecular_subtype,
 )
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DEPMAP_DIR = REPO_ROOT / "data" / "depmap" / "25q3"
 
 

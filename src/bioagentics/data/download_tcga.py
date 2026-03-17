@@ -23,10 +23,11 @@ from pathlib import Path
 import requests
 from tqdm import tqdm
 
+from bioagentics.config import REPO_ROOT
+
 GDC_API = "https://api.gdc.cancer.gov"
 DEFAULT_CANCER_TYPE = "BRCA"
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DEST = REPO_ROOT / "data" / "tcga"
 
 TIMEOUT = 60

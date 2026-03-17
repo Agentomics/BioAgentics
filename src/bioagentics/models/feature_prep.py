@@ -16,10 +16,10 @@ from pathlib import Path
 
 import pandas as pd
 
+from bioagentics.config import REPO_ROOT
 from bioagentics.data.gene_ids import load_depmap_matrix
 from bioagentics.data.nsclc_depmap import annotate_nsclc_lines
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DEPMAP_DIR = REPO_ROOT / "data" / "depmap" / "25q3"
 
 # KPL grouping strategies for sensitivity analysis
