@@ -189,10 +189,13 @@ def project_status_badge(status: str) -> str:
     return f'<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium {bg} {fg}">{esc(status)}</span>'
 
 
-def impact_badge(score: str | None) -> str:
+def impact_badge(score: str | None, compact: bool = False) -> str:
     if not score or score not in IMPACT_SCORE_STYLES:
         return ""
     bg, fg, label = IMPACT_SCORE_STYLES[score]
+    if compact:
+        icon = '<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>' if score in ("breakthrough", "high") else '<span class="w-1.5 h-1.5 rounded-full bg-current"></span>'
+        return f'<span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] {bg} {fg}" title="{esc(label)}">{icon}</span>'
     icon = '<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>' if score in ("breakthrough", "high") else ""
     return f'<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium {bg} {fg}">{icon}{esc(label)}</span>'
 
@@ -692,7 +695,7 @@ def render_project_row(p, task_counts: dict, journal_count: int) -> str:
 
     div_html = division_pill(m.get("division"))
     score = m.get("impact_score") or ""
-    ib_html = impact_badge(score)
+    ib_html = impact_badge(score, compact=True)
     # Highlight row for breakthrough/high potential
     row_cls = "hover:bg-[#18181b]"
     if score == "breakthrough":
