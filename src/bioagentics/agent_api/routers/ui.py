@@ -145,6 +145,13 @@ PROJECT_STATUS_COLORS = {
     "cancelled": ("bg-[#450a0a]", "text-[#f87171]"),
 }
 
+IMPACT_SCORE_STYLES = {
+    "breakthrough": ("bg-[#431407] border border-[#f97316]", "text-[#fb923c]", "Breakthrough Potential"),
+    "high": ("bg-[#422006] border border-[#a16207]", "text-[#fbbf24]", "High Potential"),
+    "moderate": ("bg-[#172554]", "text-[#60a5fa]", "Moderate Potential"),
+    "incremental": ("bg-[#27272a]", "text-[#a1a1aa]", "Incremental"),
+}
+
 AGENT_DISPLAY_NAMES = {
     "research_director": "Research Director",
     "literature_reviewer": "Literature Reviewer",
@@ -180,6 +187,14 @@ def status_badge(status: str) -> str:
 def project_status_badge(status: str) -> str:
     bg, fg = PROJECT_STATUS_COLORS.get(status, ("bg-[#27272a]", "text-[#a1a1aa]"))
     return f'<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium {bg} {fg}">{esc(status)}</span>'
+
+
+def impact_badge(score: str | None) -> str:
+    if not score or score not in IMPACT_SCORE_STYLES:
+        return ""
+    bg, fg, label = IMPACT_SCORE_STYLES[score]
+    icon = '<svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>' if score in ("breakthrough", "high") else ""
+    return f'<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium {bg} {fg}">{icon}{esc(label)}</span>'
 
 
 def labels_tags(labels: str | None) -> str:
@@ -400,6 +415,7 @@ def render_journal_detail(row) -> str:
 def render_project_detail(
     row, task_counts: dict, journal_count: int, recent_tasks, recent_journal,
     *, plan_content: str | None = None, findings_content: str | None = None,
+    report_content: str | None = None,
     result_files: list[str] | None = None, output_files: list[str] | None = None,
 ) -> str:
     """Full detail view for a single project."""
@@ -508,6 +524,15 @@ def render_project_detail(
   <div class="text-sm whitespace-pre-wrap break-words text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a] mt-2 max-h-[500px] overflow-y-auto">{esc(findings_content)}</div>
 </details>""")
 
+    if report_content:
+        artifact_sections.append(f"""<details open class="group">
+  <summary class="text-xs text-[#71717a] font-medium cursor-pointer hover:text-[#3b82f6] transition-colors select-none list-none flex items-center gap-1">
+    <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    Research Report
+  </summary>
+  <div class="text-sm whitespace-pre-wrap break-words text-[#d4d4d8] bg-[#09090b] rounded-lg p-4 border border-[#27272a] mt-2 max-h-[600px] overflow-y-auto">{esc(report_content)}</div>
+</details>""")
+
     if result_files:
         file_items = "".join(
             f'<div class="text-sm text-[#a1a1aa] py-1 font-mono text-xs">{esc(f)}</div>'
@@ -550,6 +575,20 @@ def render_project_detail(
   <div class="flex flex-col gap-3">{"".join(artifact_sections)}</div>
 </div>"""
 
+    # Plain English summary for published projects
+    plain_summary = m.get("plain_summary") or ""
+    summary_html = ""
+    if plain_summary:
+        summary_html = f"""<div class="mt-4 bg-[#0a1628] border border-[#1e3a5f] rounded-lg p-4">
+    <div class="flex items-center gap-1.5 mb-2">
+      <svg class="w-4 h-4 text-[#60a5fa]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span class="text-xs font-semibold text-[#60a5fa]">What This Means</span>
+    </div>
+    <div class="text-sm text-[#d4d4d8] leading-relaxed">{esc(plain_summary)}</div>
+  </div>"""
+
+    ib_html = impact_badge(m.get("impact_score"))
+
     return f"""<div class="mb-4">
   <a class="text-xs text-[#71717a] hover:text-[#3b82f6] cursor-pointer no-underline transition-colors"
      hx-get="/ui/projects" hx-target="#tab-content" hx-push-url="true">&larr; Back to projects</a>
@@ -557,9 +596,11 @@ def render_project_detail(
 <div class="bg-[#0c0c0e] border border-[#27272a] rounded-lg p-6 max-w-3xl">
   <div class="flex items-center gap-2 mb-3 flex-wrap">
     {project_status_badge(m['status'])}
+    {ib_html}
     {labels_tags(m.get('labels', ''))}
   </div>
   <h2 class="text-lg font-semibold mb-3">{esc(name)}</h2>
+  {summary_html}
   {desc_html}
   {artifacts_html}
   <div class="mt-4">
@@ -627,13 +668,22 @@ def render_project_row(p, task_counts: dict, journal_count: int) -> str:
         desc_html = f'<div class="text-[#a1a1aa] text-xs max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap" title="{esc(m["description"])}">{esc(m["description"])}</div>'
 
     div_html = division_pill(m.get("division"))
+    score = m.get("impact_score") or ""
+    ib_html = impact_badge(score)
+    # Highlight row for breakthrough/high potential
+    row_cls = "hover:bg-[#18181b]"
+    if score == "breakthrough":
+        row_cls = "bg-[#1a0f00] hover:bg-[#261600] border-l-2 border-l-[#f97316]"
+    elif score == "high":
+        row_cls = "bg-[#1a1400] hover:bg-[#262000] border-l-2 border-l-[#fbbf24]"
 
-    return f"""<tr class="hover:bg-[#18181b]">
+    return f"""<tr class="{row_cls}">
   <td class="px-2.5 py-2 border-b border-[#27272a] align-middle">
     <div class="flex items-center gap-2">
       <a class="font-semibold text-[#3b82f6] text-sm no-underline hover:underline cursor-pointer"
          hx-get="/ui/projects/{quote(name)}" hx-target="#tab-content" hx-push-url="true">{esc(name)}</a>
       {div_html}
+      {ib_html}
     </div>
     {desc_html}
   </td>
@@ -1829,10 +1879,21 @@ setInterval(function() {
   });
 }, 60000);
 
+// Cancel HTMX polling requests when user has text selected
+document.body.addEventListener('htmx:beforeRequest', function(evt) {
+  var sel = window.getSelection();
+  if (sel && sel.toString().length > 0) {
+    evt.preventDefault();
+  }
+});
+
 // Auto-refresh tab content every 30s (skip if user is interacting)
 setInterval(function() {
   var ae = document.activeElement;
   if (ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA' || ae.tagName === 'SELECT')) return;
+  // Skip if user has text selected (so copy isn't disrupted)
+  var sel = window.getSelection();
+  if (sel && sel.toString().length > 0) return;
   // Skip if sidebar is open on mobile
   var sb = document.getElementById('sidebar');
   if (sb && window.innerWidth < 1024 && !sb.classList.contains('-translate-x-full')) return;
@@ -2223,6 +2284,16 @@ def ui_project_detail_page(
             if findings_content:
                 break
 
+    # Read research report from reports/{division}/{name}.md
+    report_content = None
+    report_division = m.get("division") or "cancer"
+    report_path = (REPO_ROOT / "reports" / report_division / f"{name}.md").resolve()
+    if report_path.is_relative_to(REPO_ROOT.resolve()) and report_path.is_file():
+        try:
+            report_content = report_path.read_text()
+        except OSError:
+            pass
+
     result_files = None
     _repo_resolved = REPO_ROOT.resolve()
     results_dir = (REPO_ROOT / "data" / "results" / name).resolve()
@@ -2247,6 +2318,7 @@ def ui_project_detail_page(
     content = render_project_detail(
         row, task_counts, journal_count, recent_tasks, recent_journal,
         plan_content=plan_content, findings_content=findings_content,
+        report_content=report_content,
         result_files=result_files, output_files=output_files,
     )
     if is_htmx(request):

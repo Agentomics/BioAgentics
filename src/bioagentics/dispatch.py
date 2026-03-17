@@ -307,7 +307,12 @@ def check_published_missing_reports():
                     f"discussion, limitations, next steps, references.\n\n"
                     f"Review the research plan, journal entries from analyst and "
                     f"validation_scientist, and code/results in data/results/{name}/.\n\n"
-                    f"Also update the project's findings_content via update_project()."
+                    f"Also update the project via update_project() with:\n"
+                    f"- findings_content: the technical findings summary\n"
+                    f"- plain_summary: a 2-4 sentence plain English overview for "
+                    f"non-scientists explaining what was studied, what was found, "
+                    f"and why it matters — no jargon\n"
+                    f"- impact_score: one of breakthrough/high/moderate/incremental"
                 ),
                 "project": name,
                 "division": div,

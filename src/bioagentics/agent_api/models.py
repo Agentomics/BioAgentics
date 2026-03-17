@@ -176,6 +176,11 @@ class ProjectCreate(BaseModel):
     labels: str | None = Field(default=None, max_length=500)
     plan_content: str | None = Field(default=None, max_length=50_000)
     findings_content: str | None = Field(default=None, max_length=50_000)
+    plain_summary: str | None = Field(default=None, max_length=5_000)
+    impact_score: str | None = Field(
+        default=None,
+        pattern=r"^(breakthrough|high|moderate|incremental)$",
+    )
 
 
 class ProjectUpdate(BaseModel):
@@ -184,6 +189,11 @@ class ProjectUpdate(BaseModel):
     labels: str | None = Field(default=None, max_length=500)
     plan_content: str | None = Field(default=None, max_length=50_000)
     findings_content: str | None = Field(default=None, max_length=50_000)
+    plain_summary: str | None = Field(default=None, max_length=5_000)
+    impact_score: str | None = Field(
+        default=None,
+        pattern=r"^(breakthrough|high|moderate|incremental)$",
+    )
 
 
 class ProjectSummary(BaseModel):
@@ -192,6 +202,8 @@ class ProjectSummary(BaseModel):
     status: str
     description: str | None
     labels: str | None
+    plain_summary: str | None = None
+    impact_score: str | None = None
     created_at: str
     updated_at: str
 

@@ -237,6 +237,8 @@ def create_project(
     labels: str = "",
     plan_content: str = "",
     findings_content: str = "",
+    plain_summary: str = "",
+    impact_score: str = "",
 ) -> str:
     """Create a new research initiative in the coordination API.
 
@@ -247,6 +249,14 @@ def create_project(
 
     plan_content: research plan text (shown in project detail view).
     findings_content: findings/summary text (shown in project detail view).
+    plain_summary: a plain English summary of the research results written for
+        non-scientists. Explain what was studied, what was found, and why it
+        matters in everyday language. Avoid jargon. 2-4 sentences.
+    impact_score: significance rating — one of: breakthrough, high, moderate,
+        incremental. Use 'breakthrough' for novel findings that could change
+        treatment approaches, 'high' for promising results with strong
+        therapeutic potential, 'moderate' for useful contributions to the field,
+        'incremental' for confirmatory or small-step results.
     """
     payload: dict = {"name": name, "status": status}
     if division:
@@ -259,6 +269,10 @@ def create_project(
         payload["plan_content"] = plan_content
     if findings_content:
         payload["findings_content"] = findings_content
+    if plain_summary:
+        payload["plain_summary"] = plain_summary
+    if impact_score:
+        payload["impact_score"] = impact_score
     return json.dumps(_api("POST", "/projects", json=payload), indent=2)
 
 
@@ -270,6 +284,8 @@ def update_project(
     labels: str = "",
     plan_content: str = "",
     findings_content: str = "",
+    plain_summary: str = "",
+    impact_score: str = "",
 ) -> str:
     """Update a research initiative's status, description, and/or labels.
 
@@ -279,6 +295,14 @@ def update_project(
 
     plan_content: research plan text (shown in project detail view).
     findings_content: findings/summary text (shown in project detail view).
+    plain_summary: a plain English summary of the research results written for
+        non-scientists. Explain what was studied, what was found, and why it
+        matters in everyday language. Avoid jargon. 2-4 sentences.
+    impact_score: significance rating — one of: breakthrough, high, moderate,
+        incremental. Use 'breakthrough' for novel findings that could change
+        treatment approaches, 'high' for promising results with strong
+        therapeutic potential, 'moderate' for useful contributions to the field,
+        'incremental' for confirmatory or small-step results.
     """
     payload: dict = {}
     if status:
@@ -291,6 +315,10 @@ def update_project(
         payload["plan_content"] = plan_content
     if findings_content:
         payload["findings_content"] = findings_content
+    if plain_summary:
+        payload["plain_summary"] = plain_summary
+    if impact_score:
+        payload["impact_score"] = impact_score
     if not payload:
         return json.dumps({"error": "no fields to update"})
     return json.dumps(
