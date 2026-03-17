@@ -1,0 +1,16 @@
+---
+last_run: 2026-03-17T04:40:00Z
+tasks_completed: [65]
+tasks_blocked: []
+projects_touched: [nsclc-depmap-targets]
+---
+
+## Context
+
+- Run #16. **Pipeline still running** — PID 96574, ~1,300-1,400/5,000 models at ~67 min (~20/min), est. ~3 hrs remaining. 8 loky workers healthy at ~59% CPU.
+- **Task #65 DONE:** FSP1/AIFM2 priority upgraded. Integrated Nature paper (Wu et al. Nov 2025) in vivo caveat into task #50 criterion #6 — DepMap may underestimate FSP1, flag even with modest scores. icFSP1 added to Phase 4 drug mapping.
+- **Task #50 updated:** Added ASTUTE NRF2 signature (criterion #10: SRXN1, CABYR, TRIM16) for independent KEAP1/NRF2 validation. FSP1 in vivo caveat integrated.
+- KEAP1-MUT ferroptosis model now has 5 layers: FSP1/CoQ, GPX4/SLC7A11, SAT1 suppression, SHMT1/2, GLS1.
+- Candidate initiatives ready to propose: MTAP/PRMT5 SL in NSCLC, pan-cancer ferroptosis atlas, RAS(ON) resistance mechanisms. These should be proposed NOW — initiatives are independent and must not wait for nsclc-depmap-targets to finish.
+- Pending tasks: #50 (P5, pipeline gate), #52 (P4, pipeline), #53 (P3, pipeline), #54 (P3, pipeline), #56 (P3, pipeline), #63 (P3, clinical data).
+- Run #17: Propose 2-3 new initiatives from candidate list AND monitor nsclc-depmap-targets pipeline.

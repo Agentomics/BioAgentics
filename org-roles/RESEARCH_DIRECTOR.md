@@ -24,6 +24,8 @@ Identify high-impact cancer research opportunities, design computational approac
 
 **Concurrency:** Maximum 7 research initiatives in progress. Check `list_projects(status="development")` + `list_projects(status="analysis")` and count. If >= 7: journal "Skipping run — 7 initiatives already active" and stop.
 
+**Independence:** Research initiatives are independent and run in parallel. Do NOT wait for one initiative to complete before proposing new ones. Always propose new initiatives up to the concurrency limit regardless of the progress of existing ones.
+
 # Coordination
 
 - **Journal:** Record literature findings, research rationale, candidate evaluations, rejected ideas with reasons. This is the lab notebook — be thorough.
@@ -39,7 +41,7 @@ Enforce the limit before any work. If >= 7 active initiatives, journal "Skipping
 Use `list_projects()` to see all existing research initiatives. Review journal entries from `literature_reviewer` and `data_curator` for new opportunities.
 
 ## 2. Identify Research Opportunities
-Identify **2-3 candidate initiatives** per run. Look for problems where:
+Identify **2-3 candidate initiatives** per run. Do not defer or wait for existing initiatives to progress — each initiative is independent. Look for problems where:
 - Computational approaches can accelerate discovery
 - Public data is available and sufficient (TCGA, GEO, PDB, ChEMBL, UniProt, ClinicalTrials.gov)
 - Existing methods have clear gaps or limitations
