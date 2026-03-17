@@ -6,19 +6,21 @@
     "allele_counts": {
       "G12D": 58,
       "G12V": 49,
-      "KRAS_other": 41,
       "G13D": 36,
+      "KRAS_other": 31,
       "A146T": 16,
       "G12C": 14,
+      "G12A": 10,
       "Q61H": 4
     },
     "allele_pct": {
       "G12D": 26.6,
       "G12V": 22.5,
-      "KRAS_other": 18.8,
       "G13D": 16.5,
+      "KRAS_other": 14.2,
       "A146T": 7.3,
       "G12C": 6.4,
+      "G12A": 4.6,
       "Q61H": 1.8
     },
     "by_cancer_type": {
@@ -29,19 +31,21 @@
         "allele_counts": {
           "G12D": 48,
           "G12V": 34,
-          "KRAS_other": 32,
           "G13D": 27,
+          "KRAS_other": 25,
           "A146T": 13,
           "G12C": 10,
+          "G12A": 7,
           "Q61H": 2
         },
         "allele_pct": {
           "G12D": 28.9,
           "G12V": 20.5,
-          "KRAS_other": 19.3,
           "G13D": 16.3,
+          "KRAS_other": 15.1,
           "A146T": 7.8,
           "G12C": 6.0,
+          "G12A": 4.2,
           "Q61H": 1.2
         }
       },
@@ -53,18 +57,20 @@
           "G12V": 15,
           "G12D": 10,
           "G13D": 9,
-          "KRAS_other": 9,
+          "KRAS_other": 6,
           "G12C": 4,
           "A146T": 3,
+          "G12A": 3,
           "Q61H": 2
         },
         "allele_pct": {
           "G12V": 28.8,
           "G12D": 19.2,
           "G13D": 17.3,
-          "KRAS_other": 17.3,
+          "KRAS_other": 11.5,
           "G12C": 7.7,
           "A146T": 5.8,
+          "G12A": 5.8,
           "Q61H": 3.8
         }
       }
@@ -109,6 +115,13 @@
           "rate_pct": 78.6,
           "odds_ratio_vs_other_kras": 0.71,
           "p_value": 0.7075
+        },
+        "G12A": {
+          "n": 10,
+          "mutated": 9,
+          "rate_pct": 90.0,
+          "odds_ratio_vs_other_kras": 1.82,
+          "p_value": 1.0
         },
         "Q61H": {
           "n": 4,
@@ -158,6 +171,13 @@
           "odds_ratio_vs_other_kras": 3.01,
           "p_value": 0.1
         },
+        "G12A": {
+          "n": 10,
+          "mutated": 7,
+          "rate_pct": 70.0,
+          "odds_ratio_vs_other_kras": 1.85,
+          "p_value": 0.5192
+        },
         "Q61H": {
           "n": 4,
           "mutated": 1,
@@ -206,6 +226,13 @@
           "odds_ratio_vs_other_kras": 0.42,
           "p_value": 0.2582
         },
+        "G12A": {
+          "n": 10,
+          "mutated": 4,
+          "rate_pct": 40.0,
+          "odds_ratio_vs_other_kras": 1.09,
+          "p_value": 1.0
+        },
         "Q61H": {
           "n": 4,
           "mutated": 2,
@@ -249,6 +276,13 @@
         },
         "G12C": {
           "n": 14,
+          "mutated": 0,
+          "rate_pct": 0.0,
+          "odds_ratio_vs_other_kras": 0.0,
+          "p_value": 1.0
+        },
+        "G12A": {
+          "n": 10,
           "mutated": 0,
           "rate_pct": 0.0,
           "odds_ratio_vs_other_kras": 0.0,
@@ -301,6 +335,13 @@
           "rate_pct": 0.0,
           "odds_ratio_vs_other_kras": 0.0,
           "p_value": 0.1356
+        },
+        "G12A": {
+          "n": 10,
+          "mutated": 2,
+          "rate_pct": 20.0,
+          "odds_ratio_vs_other_kras": 1.43,
+          "p_value": 0.6503
         },
         "Q61H": {
           "n": 4,
@@ -425,13 +466,13 @@
         "tcga_pct": 22.5,
         "estimated_annual_us": 15491
       },
-      "KRAS_other": {
-        "tcga_pct": 18.8,
-        "estimated_annual_us": 12943
-      },
       "G13D": {
         "tcga_pct": 16.5,
         "estimated_annual_us": 11360
+      },
+      "KRAS_other": {
+        "tcga_pct": 14.2,
+        "estimated_annual_us": 9776
       },
       "A146T": {
         "tcga_pct": 7.3,
@@ -440,6 +481,10 @@
       "G12C": {
         "tcga_pct": 6.4,
         "estimated_annual_us": 4406
+      },
+      "G12A": {
+        "tcga_pct": 4.6,
+        "estimated_annual_us": 3167
       },
       "Q61H": {
         "tcga_pct": 1.8,
