@@ -36,9 +36,9 @@ OUTPUT_DIR = REPO_ROOT / "output" / "tp53_hotspot_allele_dependencies"
 
 MIN_PER_GROUP = 10  # minimum lines per allele for powered analysis
 
-# TP53 LOH threshold on copy ratio (PortalOmicsCNGeneLog2.csv is actually copy ratios
-# despite the filename; 1.0 = diploid). Values < 0.7 indicate hemizygous deletion / LOH.
-LOH_CN_THRESHOLD = 0.7
+# TP53 LOH threshold on log2(CN/2) scale (PortalOmicsCNGeneLog2.csv).
+# 0 = diploid, -1.0 = single copy. Threshold -0.5 ≈ 70% of normal copy number.
+LOH_CN_THRESHOLD = -0.5
 
 
 def load_cell_lines(depmap_dir: Path) -> pd.DataFrame:
