@@ -530,7 +530,7 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
                     capture_output=True, cwd=REPO_ROOT,
                 )
 
-                # 2. Commit plans and output artifacts
+                # 2. Commit plans, output, and project-specific source files
                 artifact_paths: list[str] = []
                 plans_dir = REPO_ROOT / "plans"
                 if plans_dir.is_dir():
@@ -541,6 +541,13 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
                     for p in output_dir.rglob("*"):
                         if p.is_file() and p.name != ".DS_Store":
                             artifact_paths.append(str(p))
+                # Project-specific pipeline scripts (not the core bioagentics package)
+                src_dir = REPO_ROOT / "src"
+                if src_dir.is_dir():
+                    for child in src_dir.iterdir():
+                        if child.is_dir() and child.name != "bioagentics":
+                            for p in child.rglob("*.py"):
+                                artifact_paths.append(str(p))
                 if artifact_paths:
                     subprocess.run(
                         ["git", "add", "--"] + artifact_paths,
