@@ -1,0 +1,15 @@
+{
+  "total_vus": 665,
+  "high_confidence": 440,
+  "class_distribution": {
+    "neutral": 493,
+    "GOF": 125,
+    "LOF": 47
+  },
+  "output_files": {
+    "predictions": "output/crohns/nod2-variant-functional-impact/vus_predictions.tsv",
+    "feature_importance": "output/crohns/nod2-variant-functional-impact/figures/feature_importance.png",
+    "domain_distribution": "output/crohns/nod2-variant-functional-impact/figures/domain_distribution.png",
+    "structure_coloring": "output/crohns/nod2-variant-functional-impact/figures/structure_coloring.csv"
+  }
+}
