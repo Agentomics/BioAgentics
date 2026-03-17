@@ -265,6 +265,66 @@ def check_stale_pipeline_projects():
 
 
 
+def check_published_missing_reports():
+    """Create research_writer tasks for published projects missing report files."""
+    resp = api("GET", "/projects?status=published&limit=100")
+    if not resp or not resp.ok:
+        return
+
+    for proj in resp.json().get("items", []):
+        name = proj["name"]
+        div = proj.get("division") or "cancer"
+        report_path = Path(f"reports/{div}/{name}.md")
+        if report_path.exists():
+            continue
+
+        # Check if a task already exists for this
+        task_resp = api(
+            "GET",
+            f"/tasks?username=research_writer&project={name}&division={div}"
+            f"&status=pending&limit=1",
+        )
+        if task_resp and task_resp.ok and task_resp.json().get("total", 0) > 0:
+            continue
+
+        task_resp2 = api(
+            "GET",
+            f"/tasks?username=research_writer&project={name}&division={div}"
+            f"&status=in_progress&limit=1",
+        )
+        if task_resp2 and task_resp2.ok and task_resp2.json().get("total", 0) > 0:
+            continue
+
+        # Create the task
+        print(f"  REPORT MISSING: {div}/{name} — creating research_writer task")
+        api(
+            "POST",
+            "/tasks",
+            json={
+                "username": "research_writer",
+                "title": f"Write research report for {name}",
+                "description": (
+                    f"Project {name} is published but missing its research report.\n\n"
+                    f"Write a comprehensive report at reports/{div}/{name}.md covering:\n"
+                    f"- Executive summary, background, methodology, results, "
+                    f"discussion, limitations, next steps, references.\n\n"
+                    f"Review the research plan, journal entries from analyst and "
+                    f"validation_scientist, and code/results in data/results/{name}/.\n\n"
+                    f"Also update the project's findings_content via update_project()."
+                ),
+                "project": name,
+                "division": div,
+                "priority": 3,
+            },
+        )
+        journal(
+            f"auto-created research_writer task — reports/{div}/{name}.md missing "
+            f"for published project",
+            name,
+            div,
+        )
+
+
 def validate_summary(role: str, project: str | None = None, division: str | None = None):
     """Check if the summary file has a YAML frontmatter header."""
     div = f".{division}" if division else ""
@@ -636,6 +696,9 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
 
     # Advance projects through the research pipeline
     check_stale_pipeline_projects()
+
+    # Create tasks for published projects missing research reports
+    check_published_missing_reports()
 
     # Build the full work queue: generators + task-driven agents
     work_queue: list[tuple[AgentConfig, str | None]] = []

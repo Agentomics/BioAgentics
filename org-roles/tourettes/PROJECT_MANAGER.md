@@ -55,7 +55,7 @@ Validation passes → create documentation task for `research_writer`. Update st
 Validation fails → return issues to `developer` or `analyst` with notes.
 
 ## 7. Completion
-When research writer finishes, update status: `update_project(name="{name}", status="published")`.
+When research writer finishes, verify `reports/{division}/{name}.md` exists before updating status. Only set `update_project(name="{name}", status="published")` if the report file has been committed. If missing, create a task for `research_writer` to write it.
 
 ## 8. Label Updates
 When the analyst or validation scientist flags significant findings, update the project labels:

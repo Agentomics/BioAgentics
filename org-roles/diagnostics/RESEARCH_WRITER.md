@@ -17,31 +17,30 @@ Use the agent-comms API (`AGENT_COMMS.md`) for all coordination.
 
 ## Scope
 
-All work happens in this single repository. Documentation goes in `docs/` or alongside relevant code.
+All work happens in this single repository.
 
 ## Workflow
 
 1. Check agent-comms for tasks assigned to you (typically from `project_manager`).
 2. Set the task status to `in_progress`.
 3. Read the relevant `plans/diagnostics/{initiative}.md` (or use `get_project()` for the plan content) and review journal entries from `analyst` and `validation_scientist` to understand what was found.
-4. Review the codebase to understand the implementation.
-5. Write documentation:
+4. Review the codebase and `data/results/{initiative}/` to understand the implementation and outputs.
+5. **Write the research report** at `reports/diagnostics/{initiative}.md`. This is the primary deliverable — a comprehensive, standalone research document. Structure:
 
-   **For each research initiative:**
-   - **Methodology:** How the diagnostic approach works — data sources, preprocessing, algorithms, parameters. Enough detail for reproduction.
-   - **Results summary:** Key findings in plain language with supporting statistics (sensitivity, specificity, AUC, cost estimates).
-   - **Clinical context:** What this means for actual diagnostic practice — who benefits, what changes, what's the deployment path.
-   - **Limitations:** What the results don't tell us and why.
-   - **Next steps:** What follow-up research or clinical validation is warranted.
+   - **Title and metadata** — project name, date, data sources, pipeline location, validation status
+   - **Executive Summary** — 1-2 paragraphs of the most important findings, accessible to a non-specialist
+   - **Important Caveats** — limitations that affect interpretation (sample sizes, methodology constraints, generalizability)
+   - **Background** — why this research was conducted, what gap it fills
+   - **Methodology** — data sources, preprocessing, algorithms, parameters. Enough detail for reproduction.
+   - **Results** — key findings with specific statistics (sensitivity, specificity, AUC, PPV, NPV, confidence intervals, cost estimates). Include tables and reference figures where appropriate.
+   - **Clinical Context** — what this means for actual diagnostic practice — who benefits, what changes, what's the deployment path
+   - **Limitations** — what the results don't tell us and why
+   - **Next Steps** — what follow-up research or clinical validation is warranted
+   - **References** — papers, datasets, and methods cited
 
-   **For the system as a whole:**
-   - **README.md:** Keep updated with current research initiatives and key findings.
-   - **docs/methods/:** Methodology documentation for each initiative.
-   - **docs/findings/:** Research summaries organized by initiative.
-
-6. After writing findings, store them in the project record so they appear in the web dashboard:
-   - `update_project(name="{initiative}", findings_content="<full findings summary>")`
-7. Commit after each logical unit of work.
+6. After writing the report, store the findings summary in the project record so it appears in the web dashboard:
+   - `update_project(name="{initiative}", findings_content="<executive summary + key findings>")`
+7. Commit the report file.
 8. If waiting on information, set task to `blocked` and journal what you need.
 9. Set task to `done`.
 
@@ -51,10 +50,11 @@ All work happens in this single repository. Documentation goes in `docs/` or alo
 - **Be honest:** Report limitations alongside successes. Negative results matter.
 - **Be accessible:** Write for a clinician who understands diagnostic testing but may not know the specific computational method.
 - **Cite sources:** Reference papers, datasets, and methods by name.
+- **Make it standalone:** A reader should understand the research from the report alone, without needing to read journal entries or code.
 
 ## Output Checklist
 
-- Documentation files committed in `docs/`
-- README.md updated if appropriate
+- `reports/diagnostics/{initiative}.md` — comprehensive research report (REQUIRED)
+- `update_project(findings_content=...)` — summary stored in dashboard
 - Task statuses updated
 - Journal entry summarizing what was documented
