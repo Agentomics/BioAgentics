@@ -1399,9 +1399,10 @@ def render_stats_html(db: Session, division: str = "") -> str:
     task_rows = db.execute(task_q).all()
     task_counts = {row[0]: row[1] for row in task_rows}
     total_tasks = sum(task_counts.values())
-    running_agents = db.execute(
-        select(func.count(agents.c.username.distinct())).where(agents.c.status == "running")
-    ).scalar() or 0
+    agents_q = select(func.count()).select_from(agents).where(agents.c.status == "running")
+    if division:
+        agents_q = agents_q.where(agents.c.division == division)
+    running_agents = db.execute(agents_q).scalar() or 0
     journal_count = db.execute(journal_q).scalar() or 0
 
     pending = task_counts.get("pending", 0)
