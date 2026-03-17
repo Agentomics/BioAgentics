@@ -130,6 +130,8 @@ projects_table = Table(
     Column("status", String, nullable=False, server_default=text("'proposed'")),
     Column("description", String, nullable=True),
     Column("labels", String, nullable=True),
+    Column("plan_content", Text, nullable=True),
+    Column("findings_content", Text, nullable=True),
     Column(
         "created_at",
         String,
@@ -166,6 +168,16 @@ def init_db():
             if "cache_read_tokens" not in col_names:
                 conn.execute(text("ALTER TABLE runs ADD COLUMN cache_read_tokens INTEGER"))
                 conn.execute(text("ALTER TABLE runs ADD COLUMN cache_creation_tokens INTEGER"))
+                conn.commit()
+        except Exception:
+            pass
+        # Migrate projects table: add plan_content and findings_content if missing
+        try:
+            cols = conn.execute(text("PRAGMA table_info(projects)")).fetchall()
+            col_names = [c[1] for c in cols]
+            if "plan_content" not in col_names:
+                conn.execute(text("ALTER TABLE projects ADD COLUMN plan_content TEXT"))
+                conn.execute(text("ALTER TABLE projects ADD COLUMN findings_content TEXT"))
                 conn.commit()
         except Exception:
             pass

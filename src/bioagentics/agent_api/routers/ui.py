@@ -2020,40 +2020,40 @@ def ui_project_detail_page(
         .limit(10)
     ).fetchall()
 
-    # Read research artifacts from filesystem
-    # Guard against path traversal via crafted project names
-    plan_content = None
-    plan_path = (REPO_ROOT / f"PLAN-{name}.md").resolve()
-    if not plan_path.is_relative_to(REPO_ROOT.resolve()):
-        plan_path = None
-    if plan_path and plan_path.is_file():
-        try:
-            plan_content = plan_path.read_text()
-        except OSError:
-            pass
+    # Read research artifacts from database, fall back to filesystem
+    m = row._mapping
+    plan_content = m.get("plan_content") or None
+    findings_content = m.get("findings_content") or None
 
-    findings_content = None
-    _repo_resolved = REPO_ROOT.resolve()
-    for findings_dir in [REPO_ROOT / "docs" / "findings" / name, REPO_ROOT / "docs" / "findings"]:
-        if not findings_dir.resolve().is_relative_to(_repo_resolved):
-            continue
-        if not findings_dir.is_dir():
-            continue
-        for md in sorted(findings_dir.glob("*.md")):
-            if name in md.stem:
-                try:
-                    findings_content = md.read_text()
-                except OSError:
-                    pass
+    if not plan_content:
+        plan_path = (REPO_ROOT / f"PLAN-{name}.md").resolve()
+        if plan_path.is_relative_to(REPO_ROOT.resolve()) and plan_path.is_file():
+            try:
+                plan_content = plan_path.read_text()
+            except OSError:
+                pass
+
+    if not findings_content:
+        _repo_resolved = REPO_ROOT.resolve()
+        for findings_dir in [REPO_ROOT / "docs" / "findings" / name, REPO_ROOT / "docs" / "findings"]:
+            if not findings_dir.resolve().is_relative_to(_repo_resolved):
+                continue
+            if not findings_dir.is_dir():
+                continue
+            for md_file in sorted(findings_dir.glob("*.md")):
+                if name in md_file.stem:
+                    try:
+                        findings_content = md_file.read_text()
+                    except OSError:
+                        pass
+                    break
+            if findings_content:
                 break
-        if findings_content:
-            break
 
     result_files = None
+    _repo_resolved = REPO_ROOT.resolve()
     results_dir = (REPO_ROOT / "data" / "results" / name).resolve()
-    if not results_dir.is_relative_to(_repo_resolved):
-        results_dir = None
-    if results_dir and results_dir.is_dir():
+    if results_dir.is_relative_to(_repo_resolved) and results_dir.is_dir():
         result_files = sorted(
             str(p.relative_to(results_dir)) for p in results_dir.rglob("*") if p.is_file()
         )

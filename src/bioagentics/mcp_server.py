@@ -219,30 +219,47 @@ def create_project(
     description: str = "",
     status: str = "proposed",
     labels: str = "",
+    plan_content: str = "",
+    findings_content: str = "",
 ) -> str:
     """Create a new research initiative in the coordination API.
 
     Labels are comma-separated tags for categorizing research. Suggested labels:
     drug-candidate, novel-finding, biomarker, genomic, transcriptomic, clinical,
     drug-screening, resistance, protein, high-priority, promising
+
+    plan_content: research plan text (shown in project detail view).
+    findings_content: findings/summary text (shown in project detail view).
     """
     payload: dict = {"name": name, "status": status}
     if description:
         payload["description"] = description
     if labels:
         payload["labels"] = labels
+    if plan_content:
+        payload["plan_content"] = plan_content
+    if findings_content:
+        payload["findings_content"] = findings_content
     return json.dumps(_api("POST", "/projects", json=payload), indent=2)
 
 
 @mcp.tool()
 def update_project(
-    name: str, status: str = "", description: str = "", labels: str = "",
+    name: str,
+    status: str = "",
+    description: str = "",
+    labels: str = "",
+    plan_content: str = "",
+    findings_content: str = "",
 ) -> str:
     """Update a research initiative's status, description, and/or labels.
 
     Labels are comma-separated tags: drug-candidate, novel-finding, biomarker,
     genomic, transcriptomic, clinical, drug-screening, resistance, protein,
     high-priority, promising
+
+    plan_content: research plan text (shown in project detail view).
+    findings_content: findings/summary text (shown in project detail view).
     """
     payload: dict = {}
     if status:
@@ -251,6 +268,10 @@ def update_project(
         payload["description"] = description
     if labels:
         payload["labels"] = labels
+    if plan_content:
+        payload["plan_content"] = plan_content
+    if findings_content:
+        payload["findings_content"] = findings_content
     if not payload:
         return json.dumps({"error": "no fields to update"})
     return json.dumps(

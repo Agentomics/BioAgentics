@@ -165,12 +165,16 @@ class ProjectCreate(BaseModel):
     status: str = Field(default="proposed", pattern=_PROJECT_STATUS_PATTERN)
     description: str | None = Field(default=None, max_length=5_000)
     labels: str | None = Field(default=None, max_length=500)
+    plan_content: str | None = Field(default=None, max_length=50_000)
+    findings_content: str | None = Field(default=None, max_length=50_000)
 
 
 class ProjectUpdate(BaseModel):
     status: str | None = Field(default=None, pattern=_PROJECT_STATUS_PATTERN)
     description: str | None = Field(default=None, max_length=5_000)
     labels: str | None = Field(default=None, max_length=500)
+    plan_content: str | None = Field(default=None, max_length=50_000)
+    findings_content: str | None = Field(default=None, max_length=50_000)
 
 
 class ProjectEntry(BaseModel):
@@ -178,6 +182,8 @@ class ProjectEntry(BaseModel):
     status: str
     description: str | None
     labels: str | None
+    plan_content: str | None
+    findings_content: str | None
     created_at: str
     updated_at: str
 

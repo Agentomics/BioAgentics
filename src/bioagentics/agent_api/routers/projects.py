@@ -33,6 +33,8 @@ def create_project(body: ProjectCreate, db: Session = Depends(get_db)):
             status=body.status,
             description=body.description,
             labels=body.labels,
+            plan_content=body.plan_content,
+            findings_content=body.findings_content,
         )
     )
     db.commit()
