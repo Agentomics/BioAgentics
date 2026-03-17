@@ -2,7 +2,7 @@
 
 ## Objective
 
-Rank all MSI-H cancer types by WRN synthetic lethal dependency in DepMap 25Q3, to predict which tumor types will respond best to WRN inhibitors (VVD-130037, HRO-761) and identify co-factors beyond MSI status that modulate WRN dependency.
+Rank all MSI-H cancer types by WRN synthetic lethal dependency in DepMap 25Q3, to predict which tumor types will respond best to WRN inhibitors (VVD-214, HRO-761, NDI-219216) and identify co-factors beyond MSI status that modulate WRN dependency. Incorporate resistance-aware deployment framework based on divergent resistance profiles between compounds.
 
 ## Background
 
@@ -10,10 +10,14 @@ WRN helicase is selectively essential in microsatellite instability-high (MSI-H)
 
 MSI-H prevalence varies dramatically by cancer type (~25% endometrial, ~20% gastric, ~15% CRC, rare in most others), but **no systematic pan-cancer ranking of WRN dependency by tumor type has been published.** The field assumes WRN-MSI SL is universal, but effect sizes likely vary by tissue context, MMR defect mechanism (MLH1 methylation vs MMR gene mutation), and co-occurring mutations.
 
-**Clinical context:**
+**Clinical context (updated March 2026):**
 - **Pembrolizumab** is approved pan-tumor for MSI-H/dMMR, but ~50% of MSI-H patients don't respond to IO alone.
-- **WRN inhibitors entering clinic:** VVD-130037 (Vividion/Roche, Phase 1 ~2025), HRO-761 (Novartis, preclinical/Phase 1), multiple preclinical programs.
-- **Unmet need:** Which MSI-H tumor types should WRN inhibitor trials prioritize for expansion? Which patients within MSI-H benefit most?
+- **Three WRN inhibitors now in clinic:**
+  - **VVD-214** (Vividion/Roche/Bayer): Covalent allosteric WRN helicase inhibitor. Phase 1. JMedChem cover publication (Jan 2026, PMID 40964743) validates mechanism.
+  - **HRO-761** (Novartis): Non-covalent allosteric WRN inhibitor. Phase 1.
+  - **NDI-219216** (Nimbus): Non-covalent WRN inhibitor (distinct binding mode). Phase 1/2 Part A dose escalation COMPLETE (Dec 2025). Favorable safety — no DLTs, no MTD reached. >24h WRN target engagement at multiple dose levels. Initial efficacy data expected H1 2026.
+- **Resistance framework (bioRxiv Jan 2026, 10.64898/2026.01.22.700152v1):** Resistance profiles DIVERGE between HRO-761 and VVD-214 — heterozygous single-allele binding-site mutations sufficient for resistance. Specific mutations impair one compound but preserve sensitivity to the other. MSI-H tumors have high mutation rates, making resistance emergence likely. Drug switching and combination with NHEJ/WIP1 targets proposed as mitigation strategies.
+- **Unmet need:** Which MSI-H tumor types should WRN inhibitor trials prioritize? Which compound(s) per tumor type? What resistance-aware sequencing strategy?
 
 **Cross-project links:**
 - CRC-KRAS project: MSI-H enriched in CRC (~15%), MSI-H CRC may have distinct KRAS dependencies.
@@ -59,13 +63,23 @@ MSI-H prevalence varies dramatically by cancer type (~25% endometrial, ~20% gast
 - CRISPR-PRISM concordance: do gene dependencies predict drug sensitivity?
 - Note: WRN-specific inhibitors (VVD-130037) unlikely to be in PRISM yet
 
-### Phase 5 — TCGA Clinical Integration
+### Phase 5 — TCGA Clinical Integration & Three-Drug Landscape
 - MSI-H prevalence per cancer type from TCGA pan-cancer data
 - Estimate addressable patient populations (MSI-H patients per US cancer type per year)
 - Survival analysis: MSI-H vs MSS by cancer type (known prognostic in CRC, less clear elsewhere)
 - Priority ranking: WRN SL strength × MSI-H population size
 - Cross-reference with pembrolizumab MSI-H response rates where available
 - Identify underexplored MSI-H tumor types with strong WRN dependency but limited clinical attention
+- **Three-drug clinical landscape annotation:** VVD-214 (covalent), HRO-761 (non-covalent allosteric), NDI-219216 (non-covalent, distinct binding mode) — map trial enrollment criteria, tumor type focus, and emerging efficacy signals per compound
+- **Track NDI-219216 efficacy data** expected H1 2026 — first readout for this compound
+
+### Phase 6 — Resistance-Aware Deployment Framework
+- Annotate known resistance mutations per compound from bioRxiv preprint (HRO-761 vs VVD-214 divergent profiles)
+- Map predicted resistance mutation sites onto WRN protein structure — classify by compound-specific vs pan-resistance
+- Model resistance emergence probability: MSI-H tumors have elevated mutation rates (10-100x MSS), making single-allele binding-site resistance likely under selective pressure
+- Propose compound sequencing strategy: first-line drug selection → predicted resistance mutation → switching to compound with non-overlapping binding site
+- Identify combination vulnerabilities: NHEJ pathway factors, WIP1 phosphatase as synthetic vulnerabilities in WRN-resistant cells
+- Per-tumor-type recommendation: optimal first-line compound and switching strategy based on tumor mutation rate and co-dependency profiles from Phases 2-3
 
 ## Expected Outputs
 
@@ -76,6 +90,8 @@ MSI-H prevalence varies dramatically by cancer type (~25% endometrial, ~20% gast
 5. Priority matrix combining SL strength with addressable patient population
 6. Population estimates for WRN inhibitor-eligible MSI-H patients per cancer type
 7. Identification of co-factors (MLH1 methylation vs MMR mutation, co-occurring drivers) that modulate WRN dependency
+8. Three-drug clinical landscape annotation per tumor type (VVD-214 vs HRO-761 vs NDI-219216 trial alignment)
+9. Resistance-aware compound deployment model: first-line selection, switching strategy, and combination partner rationale per tumor type
 
 ## Success Criteria
 
@@ -84,6 +100,8 @@ MSI-H prevalence varies dramatically by cancer type (~25% endometrial, ~20% gast
 - **Novel findings:** ≥1 novel MSI-H-specific dependency beyond WRN/WRNIP1 validated by SL benchmarks
 - **Clinical concordance:** DepMap WRN rankings directionally align with known MSI-H tumor biology
 - **Actionable prediction:** Identify ≥1 underexplored MSI-H tumor type for WRN inhibitor trial prioritization
+- **Resistance framework:** Compound-specific resistance mutation map with switching recommendations for ≥2 compounds
+- **Three-drug coverage:** All three clinical WRN inhibitors annotated with trial status, mechanism, and tumor type alignment
 
 ## Labels
 
