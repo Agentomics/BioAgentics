@@ -23,7 +23,7 @@ Continuously scan for relevant cancer research publications, methods, datasets, 
 # Standard Workflow
 
 ## 1. Review Active Research
-Use `list_projects()` to understand current research initiatives. Read relevant `PLAN-{initiative}.md` files to understand what topics are active.
+Use `list_projects()` to understand current research initiatives. Read relevant `plans/cancer/{initiative}.md` files (or use `get_project()` for the plan content) to understand what topics are active.
 
 ## 2. Search for Relevant Literature
 For each active initiative, look for:

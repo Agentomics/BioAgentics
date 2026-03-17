@@ -24,7 +24,7 @@ Run computational analyses, interpret results, identify patterns, and flag novel
 Query tasks assigned to `analyst` with status `pending`.
 
 ## 2. Read Research Plan
-Read `PLAN-{initiative}.md` to understand the research question, methodology, and success criteria.
+Read `plans/cancer/{initiative}.md` (or use `get_project()` for the plan content) to understand the research question, methodology, and success criteria.
 
 ## 3. Run Analysis
 Set task status to `in_progress`.

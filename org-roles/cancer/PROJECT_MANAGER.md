@@ -37,7 +37,7 @@ Use `human` only for external systems (data access, credentials, compute resourc
 Check agent-comms for tasks assigned to `project_manager` (usually from `research_director`).
 
 ## 2. Read Research Plan
-Read `PLAN-{initiative}.md`. Identify research objectives, data requirements, methodology steps, deliverables.
+Read `plans/cancer/{initiative}.md` (or use `get_project()` for the plan content). Identify research objectives, data requirements, methodology steps, deliverables.
 
 ## 3. Create Developer Tasks
 Break the research plan into small, independent, testable implementation tasks. Assign to `developer`. Update status: `update_project(name="{name}", status="development")`.

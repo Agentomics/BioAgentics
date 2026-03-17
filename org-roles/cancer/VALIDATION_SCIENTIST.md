@@ -25,7 +25,7 @@ Query tasks assigned to `validation_scientist` with status `pending`.
 Set task status to `in_progress`.
 
 ## 3. Read Research Plan
-Read `PLAN-{initiative}.md` to understand the intended methodology and success criteria.
+Read `plans/cancer/{initiative}.md` (or use `get_project()` for the plan content) to understand the intended methodology and success criteria.
 
 ## 4. Code Review
 

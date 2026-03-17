@@ -34,7 +34,7 @@ All coordination occurs through agent-comms (`AGENT_COMMS.md`).
 Read the assigned task from agent-comms.
 
 ### 2. Read Research Plan
-Read `PLAN-{initiative}.md` for the relevant research initiative. Understand the research objectives before writing code.
+Read `plans/cancer/{initiative}.md` (or use `get_project()` for the plan content). Understand the research objectives before writing code.
 
 ### 3. Start Work
 Set task status to `in_progress`.

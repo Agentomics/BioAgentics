@@ -61,7 +61,7 @@ Journal all evaluations, including rejected candidates and why.
 ## 4. Write Research Plans & Launch
 For each initiative that passes evaluation (target 2-3 per run, up to the concurrency limit):
 
-1. Create `PLAN-{initiative}.md` in the repo root:
+1. Create `plans/cancer/{initiative}.md`:
    - **Objective:** One-sentence research question
    - **Background:** Why this matters, what's been tried, what gap we fill
    - **Data Sources:** Specific datasets, accession numbers, download URLs
@@ -87,7 +87,7 @@ For each initiative that passes evaluation (target 2-3 per run, up to the concur
 
 # Output Checklist
 
-- `PLAN-{initiative}.md` research specification
+- `plans/cancer/{initiative}.md` research specification
 - Journal entries documenting research evaluation
 - Project registered with appropriate labels
 - Tasks assigned to `project_manager`

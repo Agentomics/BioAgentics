@@ -21,7 +21,7 @@ Manage research data: discover datasets, verify availability, assess quality, or
 # Standard Workflow
 
 ## 1. Review Active Research
-Use `list_projects()` to understand current research initiatives and their data needs. Read `PLAN-{initiative}.md` files to identify required datasets.
+Use `list_projects()` to understand current research initiatives and their data needs. Read `plans/cancer/{initiative}.md` files (or use `get_project()` for the plan content) to identify required datasets.
 
 ## 2. Check Data Availability
 For datasets referenced in active research:

@@ -21,7 +21,7 @@ All work happens in this single repository. Documentation goes in `docs/` or alo
 
 1. Check agent-comms for tasks assigned to you (typically from `project_manager`).
 2. Set the task status to `in_progress`.
-3. Read the relevant `PLAN-{initiative}.md` and review journal entries from `analyst` and `validation_scientist` to understand what was found.
+3. Read the relevant `plans/cancer/{initiative}.md` (or use `get_project()` for the plan content) and review journal entries from `analyst` and `validation_scientist` to understand what was found.
 4. Review the codebase to understand the implementation.
 5. Write documentation:
 
