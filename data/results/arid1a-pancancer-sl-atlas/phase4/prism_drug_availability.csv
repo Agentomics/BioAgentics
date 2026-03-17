@@ -1,0 +1,13 @@
+drug_name,mechanism,in_prism
+CPI-1205,EZH2 inhibitor,True
+EPZ020411,EZH2 inhibitor,True
+tazemetostat,EZH2 inhibitor,False
+berzosertib,ATR inhibitor,False
+ceralasertib,ATR inhibitor,False
+alpelisib,PI3K inhibitor,False
+inavolisib,PI3K inhibitor,False
+vorinostat,HDAC inhibitor,False
+panobinostat,HDAC inhibitor,False
+tucidinostat,HDAC inhibitor,True
+JQ1,BET inhibitor,False
+OTX015,BET inhibitor,False
