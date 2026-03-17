@@ -1,0 +1,32 @@
+============================================================
+OXPHOS Inhibitor Drug Validation for MSI-H
+============================================================
+
+PRISM DRUG AVAILABILITY
+  Metformin:   NOT IN PRISM
+  Venetoclax:  NOT IN PRISM  
+  IACS-10759:  AVAILABLE (OXPHOS Complex I inhibitor)
+  Tigecycline: AVAILABLE (Mitochondrial ribosome inhibitor)
+
+DRUG SENSITIVITY (MSI-H vs MSS)
+  Pan-cancer / IACS-10759:   d=-0.203, p=0.18, FDR=0.36
+  Pan-cancer / tigecycline:  d=-0.206, p=0.12, FDR=0.36
+  Uterus / IACS-10759:       d=-0.764, p=0.23, FDR=0.36 (underpowered, n=9)
+  Bowel / tigecycline:       d=-0.284, p=0.24, FDR=0.36
+
+VERDICT: Trend toward MSI-H sensitivity but NOT statistically significant.
+
+CRISPR-PRISM CONCORDANCE (within MSI-H lines)
+  Tigecycline vs COX5A:  r=-0.353, p=0.038 *  (n=35)
+  Tigecycline vs TFAM:   r=-0.341, p=0.045 *  (n=35)
+  Tigecycline vs NDUFS4: r=-0.271, p=0.115    (n=35)
+  
+  IACS-10759: No significant concordance within MSI-H lines
+
+INTERPRETATION:
+  - PRISM drug data provides WEAK support for OXPHOS vulnerability
+  - Within MSI-H lines, tigecycline sensitivity correlates with CRISPR
+    OXPHOS dependency, supporting the biological hypothesis
+  - Metformin/venetoclax (clinically relevant) not testable in PRISM
+  - CRISPR genetic data (33/181 mito genes, p=3.32e-08) remains
+    stronger evidence than PRISM pharmacological data

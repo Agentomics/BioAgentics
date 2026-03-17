@@ -1,0 +1,46 @@
+============================================================
+DHX9 as Druggable MSI-H Synthetic Lethal Target
+============================================================
+
+1. CRISPR DEPENDENCY PROFILE
+   MSI-H: mean=-1.285, median=-1.046 (n=44)
+   MSS:   mean=-0.941, median=-0.908 (n=1142)
+   Cohen's d = -0.933, Mann-Whitney p = 7.19e-06
+   Fraction < -0.5: MSI-H=100.0%, MSS=95.1%
+
+2. PER CANCER TYPE
+   Bowel:  d=-1.682, p=1.07e-05, MSI-H mean=-1.905 (n=12)
+   Uterus: d=-0.779, p=7.71e-02, MSI-H mean=-1.250 (n=8)
+
+3. WRN-DHX9 CORRELATION
+   All lines: r=0.047 (n=1186) — independent mechanisms
+   MSI-H only: r=0.232 (n=44) — weak positive co-dependency
+
+4. RNA HELICASE SPECIFICITY
+   DHX9 is the ONLY RNA helicase with significant MSI-H selectivity:
+   DHX9:  d=-0.933, p=7.19e-06 ***
+   DDX3X: d=-0.262, p=0.099 (marginal)
+   DHX15: d=0.159 (n.s.)
+   DDX5:  d=0.332 (MSS-selective)
+   DDX17: d=-0.070 (n.s.)
+   DDX41: d=0.020 (n.s.)
+   DHX36: d=0.026 (n.s.)
+   DHX37: d=-0.114 (n.s.)
+
+5. DRUG AVAILABILITY
+   No RNA helicase inhibitors in PRISM 24Q2.
+   No clinical-stage DHX9 inhibitors exist.
+   DHX9 is a validated target for ASO/siRNA approaches in cancer.
+
+6. BIOLOGICAL RATIONALE
+   DHX9 (RNA helicase A) resolves R-loops (RNA:DNA hybrids).
+   MSI-H cells likely have elevated R-loop burden from:
+   - Transcription-replication conflicts at unstable microsatellites
+   - MMR deficiency impairing co-transcriptional repair
+   DHX9 dependency is INDEPENDENT of WRN (r=0.047), suggesting
+   distinct mechanisms (R-loop resolution vs replication fork rescue).
+
+7. THERAPEUTIC IMPLICATIONS
+   - DHX9 as standalone MSI-H target (pre-clinical)
+   - WRN + DHX9 dual targeting (independent mechanisms, potential synergy)
+   - 100% of MSI-H lines show DHX9 dependency (potential wide therapeutic window)
