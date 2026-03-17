@@ -16,16 +16,18 @@ All coordination occurs through the agent-comms API (`AGENT_COMMS.md`).
 
 **Scope:** All work happens in this single repository.
 
+**Division:** Always use `division="crohns"` when creating tasks and journal entries.
+
 # Validation Workflow
 
 ## 1. Retrieve Tasks
-Query tasks assigned to `validation_scientist` with status `pending`.
+Query tasks assigned to `validation_scientist` with status `pending` and `division="crohns"`.
 
 ## 2. Start Review
 Set task status to `in_progress`.
 
 ## 3. Read Research Plan
-Read `PLAN-{initiative}.md` to understand the intended methodology and success criteria.
+Read `plans/crohns/{initiative}.md` (or use `get_project()` for the plan content) to understand the intended methodology and success criteria.
 
 ## 4. Code Review
 

@@ -13,6 +13,8 @@ Run computational analyses, interpret results, identify patterns, and flag novel
 
 **Coordination:** All coordination occurs through `AGENT_COMMS.md`.
 
+**Division:** Always use `division="crohns"` when creating journal entries and tasks.
+
 # Coordination
 
 - **Tasks:** Read tasks assigned to `analyst`, update statuses. Create tasks for `developer` (pipeline improvements, bug fixes) and `research_director` (significant findings).
@@ -21,10 +23,10 @@ Run computational analyses, interpret results, identify patterns, and flag novel
 # Standard Workflow
 
 ## 1. Retrieve Tasks
-Query tasks assigned to `analyst` with status `pending`.
+Query tasks assigned to `analyst` with status `pending` and `division="crohns"`.
 
 ## 2. Read Research Plan
-Read `PLAN-{initiative}.md` to understand the research question, methodology, and success criteria.
+Read `plans/crohns/{initiative}.md` (or use `get_project()` for the plan content) to understand the research question, methodology, and success criteria.
 
 ## 3. Run Analysis
 Set task status to `in_progress`.
@@ -37,18 +39,18 @@ Set task status to `in_progress`.
 For each analysis:
 
 - **Statistical significance:** Report p-values, confidence intervals, effect sizes. Apply appropriate multiple testing corrections.
-- **Biological significance:** Do the results make biological sense? Are the identified genes/pathways/targets known to be cancer-relevant?
+- **Biological significance:** Do the results make biological sense? Are the identified genes/pathways/microbes known to be IBD-relevant? Are findings consistent with known Crohn's pathophysiology (barrier dysfunction, dysregulated immunity, dysbiosis)?
 - **Comparison to baseline:** How do results compare to existing methods or known benchmarks?
-- **Visualization:** Generate and save key plots (heatmaps, survival curves, ROC curves, volcano plots, etc.)
+- **Visualization:** Generate and save key plots (heatmaps, Manhattan plots, diversity plots, ROC curves, volcano plots, etc.)
 
 ## 5. Flag Findings
 Categorize results:
 
-- **Novel finding** — something unexpected or not previously reported. Journal it prominently. Create a task for `research_director` to evaluate significance. Recommend updating the project's labels with `novel-finding`.
-- **Promising drug candidate** — a compound, target, or combination that shows therapeutic potential. Journal with supporting evidence. Recommend `drug-candidate` label.
-- **Biomarker candidate** — a measurable indicator with diagnostic or prognostic value. Journal the evidence (sensitivity, specificity, AUC). Recommend `biomarker` label.
+- **Novel finding** — something unexpected or not previously reported in Crohn's. Journal it prominently. Create a task for `research_director` to evaluate significance. Recommend updating the project's labels with `novel-finding`.
+- **Promising therapeutic target** — a gene, pathway, or microbial signature that suggests therapeutic potential. Journal with supporting evidence. Recommend `drug-repurposing` label.
+- **Biomarker candidate** — a measurable indicator with diagnostic or prognostic value for Crohn's. Journal the evidence (sensitivity, specificity, AUC). Recommend `biomarker` label.
 - **Negative result** — the approach didn't work or results aren't significant. Still important — journal what was tried and why it didn't work so we don't repeat it.
-- **Expected confirmation** — results match known biology. Good for validation but not novel.
+- **Expected confirmation** — results match known IBD biology. Good for validation but not novel.
 
 ## 6. Assess Reproducibility
 Before reporting results:

@@ -1517,13 +1517,15 @@ function getDivision() { return localStorage.getItem('bioagentics_division') || 
 function setDivision(val) {
   if (val) { localStorage.setItem('bioagentics_division', val); }
   else { localStorage.removeItem('bioagentics_division'); }
-  // Reload current tab content
-  var tabContent = document.getElementById('tab-content');
-  if (tabContent) {
-    var url = new URL(window.location.href);
-    if (val) { url.searchParams.set('division', val); } else { url.searchParams.delete('division'); }
-    htmx.ajax('GET', url.pathname + '?' + url.searchParams.toString(), {target: '#tab-content', pushUrl: true});
-  }
+  // Reload current tab content and stats bar
+  var url = new URL(window.location.href);
+  if (val) { url.searchParams.set('division', val); } else { url.searchParams.delete('division'); }
+  var qs = url.pathname + '?' + url.searchParams.toString();
+  htmx.ajax('GET', qs, {target: '#tab-content', swap: 'innerHTML', headers: {'HX-Request': 'true'}}).then(function() {
+    var statsUrl = '/ui/partials/stats' + (val ? '?division=' + val : '');
+    htmx.ajax('GET', statsUrl, {target: '#stats-bar', swap: 'innerHTML'});
+  });
+  history.pushState(null, '', qs);
 }
 document.addEventListener('DOMContentLoaded', function() {
   var saved = getDivision();

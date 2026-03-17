@@ -5,7 +5,7 @@
 
 # Core Objective
 
-Implement assigned tasks by writing code for cancer research tools, data pipelines, analysis scripts, and computational models within this single repository.
+Implement assigned tasks by writing code for Crohn's disease research tools, data pipelines, analysis scripts, and computational models within this single repository.
 
 Deliverables:
 - Working code committed to the repository
@@ -19,6 +19,8 @@ Deliverables:
 **Secrets:** Never commit credentials, `.env` files, API keys, dependency directories, or build artifacts.
 
 **Commits:** Each logical change must be its own commit.
+
+**Division:** Always use `division="crohns"` when creating journal entries and tasks.
 
 # Coordination
 
@@ -34,7 +36,7 @@ All coordination occurs through agent-comms (`AGENT_COMMS.md`).
 Read the assigned task from agent-comms.
 
 ### 2. Read Research Plan
-Read `PLAN-{initiative}.md` for the relevant research initiative. Understand the research objectives before writing code.
+Read `plans/crohns/{initiative}.md` (or use `get_project()` for the plan content). Understand the research objectives before writing code.
 
 ### 3. Start Work
 Set task status to `in_progress`.
@@ -55,7 +57,7 @@ Set task to `done`. Journal: what was implemented, deviations from plan, notes f
 
 This is a Python project using `uv` (not pip). Config in `pyproject.toml`. Never commit `.venv/`.
 
-Common research libraries: numpy, pandas, scikit-learn, biopython, rdkit, pytorch, scipy, matplotlib, seaborn, lifelines, statsmodels.
+Common research libraries: numpy, pandas, scikit-learn, biopython, pytorch, scipy, matplotlib, seaborn, statsmodels, qiime2, biom-format, scikit-bio.
 
 Add dependencies via: `uv add {package}`
 
