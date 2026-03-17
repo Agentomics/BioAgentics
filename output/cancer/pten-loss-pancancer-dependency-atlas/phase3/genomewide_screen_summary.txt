@@ -1,0 +1,26 @@
+======================================================================
+PTEN Loss Pan-Cancer Dependency Atlas - Phase 3
+Genome-Wide PTEN-Selective Dependency Screen
+======================================================================
+
+Genes screened: 18435
+Cancer types: 9
+Significance: FDR < 0.05, |d| > 0.3
+
+Uterus: 0 PTEN-selective dependencies
+
+CNS/Brain: 0 PTEN-selective dependencies
+
+Skin: 0 PTEN-selective dependencies
+
+Breast: 0 PTEN-selective dependencies
+
+Bowel: 0 PTEN-selective dependencies
+
+Ovary/Fallopian Tube: 0 PTEN-selective dependencies
+
+Lymphoid: 0 PTEN-selective dependencies
+
+Lung: 0 PTEN-selective dependencies
+
+Esophagus/Stomach: 0 PTEN-selective dependencies
