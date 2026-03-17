@@ -1,0 +1,51 @@
+============================================================
+WRN-MSI Pan-Cancer Atlas — Phase 4: DDR Drug Validation
+============================================================
+
+DRUG AVAILABILITY IN PRISM 24Q2
+--------------------------------------------------
+  AZD0156 (ATM inhibitor): AVAILABLE
+  AZD1390 (ATM inhibitor (brain-penetrant)): AVAILABLE
+  AZD-7648 (DNA-PK inhibitor): AVAILABLE
+  AZD4573 (CDK9 inhibitor): AVAILABLE
+  AZD5582 (IAP antagonist/SMAC mimetic): AVAILABLE
+  ceralasertib (ATR inhibitor (AZD6738)): NOT FOUND
+  berzosertib (ATR inhibitor (VX-970)): NOT FOUND
+  adavosertib (WEE1 inhibitor (AZD1775)): NOT FOUND
+  olaparib (PARP inhibitor): NOT FOUND
+  talazoparib (PARP inhibitor (trapping)): NOT FOUND
+  rucaparib (PARP inhibitor): NOT FOUND
+  niraparib (PARP inhibitor): NOT FOUND
+  prexasertib (CHK1 inhibitor (LY2606368)): NOT FOUND
+  temozolomide (Alkylating agent (MMR-dependent)): NOT FOUND
+  cisplatin (Platinum crosslinker): NOT FOUND
+
+NOTE: WRN-specific inhibitors (VVD-214/VVD-130037, HRO-761)
+are NOT in PRISM 24Q2. This is a critical data gap.
+
+DDR DRUG SENSITIVITY (MSI-H vs MSS)
+--------------------------------------------------
+  Uterus / AZD-7648: d=-1.012 FDR=8.377e-02
+  Uterus / AZD0156: d=-0.906 FDR=1.446e-01
+  Bowel / AZD5582: d=-0.745 FDR=1.283e-01
+  Pan-cancer (pooled) / AZD-7648: d=-0.526 FDR=1.847e-02 *
+  Bowel / AZD-7648: d=-0.501 FDR=3.549e-01
+  Bowel / AZD0156: d=-0.479 FDR=4.212e-01
+  Bowel / AZD1390: d=-0.372 FDR=3.560e-01
+  Pan-cancer (pooled) / AZD0156: d=-0.347 FDR=2.294e-01
+  Bowel / AZD4573: d=-0.044 FDR=4.825e-01
+  Pan-cancer (pooled) / AZD1390: d=-0.003 FDR=7.452e-01
+  Pan-cancer (pooled) / AZD5582: d=0.043 FDR=9.757e-01
+  Pan-cancer (pooled) / AZD4573: d=0.097 FDR=7.452e-01
+  Uterus / AZD4573: d=0.359 FDR=4.212e-01
+  Uterus / AZD5582: d=0.574 FDR=1.673e-01
+  Uterus / AZD1390: d=0.632 FDR=2.346e-01
+  (* = FDR < 0.05)
+
+CRISPR-PRISM CONCORDANCE
+--------------------------------------------------
+  AZD0156 vs ATM (pan-cancer): r=0.017 p=6.564e-01 n=712
+  AZD1390 vs ATM (pan-cancer): r=0.120 p=1.335e-03 n=716
+  AZD-7648 vs PRKDC (pan-cancer): r=0.133 p=5.081e-01 n=27
+  AZD4573 vs CDK9 (pan-cancer): r=0.005 p=8.876e-01 n=712
+  AZD5582 vs BIRC2 (pan-cancer): r=0.191 p=2.558e-07 n=714

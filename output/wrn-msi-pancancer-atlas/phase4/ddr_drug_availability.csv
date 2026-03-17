@@ -1,0 +1,16 @@
+drug_name,mechanism,crispr_gene,in_prism
+AZD0156,ATM inhibitor,ATM,True
+AZD1390,ATM inhibitor (brain-penetrant),ATM,True
+AZD-7648,DNA-PK inhibitor,PRKDC,True
+AZD4573,CDK9 inhibitor,CDK9,True
+AZD5582,IAP antagonist/SMAC mimetic,BIRC2,True
+ceralasertib,ATR inhibitor (AZD6738),ATR,False
+berzosertib,ATR inhibitor (VX-970),ATR,False
+adavosertib,WEE1 inhibitor (AZD1775),WEE1,False
+olaparib,PARP inhibitor,PARP1,False
+talazoparib,PARP inhibitor (trapping),PARP1,False
+rucaparib,PARP inhibitor,PARP1,False
+niraparib,PARP inhibitor,PARP1,False
+prexasertib,CHK1 inhibitor (LY2606368),CHEK1,False
+temozolomide,Alkylating agent (MMR-dependent),,False
+cisplatin,Platinum crosslinker,,False

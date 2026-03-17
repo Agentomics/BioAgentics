@@ -1,0 +1,6 @@
+drug,gene,mechanism,spearman_r,p_value,n_lines,context
+AZD0156,ATM,ATM inhibitor,0.0167,0.6563936099583221,712,pan-cancer
+AZD1390,ATM,ATM inhibitor (brain-penetrant),0.1197,0.0013353722730458208,716,pan-cancer
+AZD-7648,PRKDC,DNA-PK inhibitor,0.1331,0.5081110077005591,27,pan-cancer
+AZD4573,CDK9,CDK9 inhibitor,0.0053,0.8876321021869064,712,pan-cancer
+AZD5582,BIRC2,IAP antagonist/SMAC mimetic,0.1914,2.558212033946995e-07,714,pan-cancer
