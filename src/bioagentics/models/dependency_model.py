@@ -18,7 +18,7 @@ import joblib
 import numpy as np
 import pandas as pd
 from scipy.stats import pearsonr
-from sklearn.linear_model import ElasticNetCV
+from sklearn.linear_model import ElasticNet, ElasticNetCV
 from sklearn.model_selection import KFold
 
 logger = logging.getLogger(__name__)
@@ -44,37 +44,14 @@ def _train_single_gene(
 ) -> dict:
     """Train ElasticNetCV for a single target gene and compute CV metrics.
 
+    Uses ElasticNetCV to select hyperparameters on full data, then evaluates
+    with OOF predictions using fixed hyperparameters (cheap ElasticNet fits).
+    This matches the TCGADEPMAP approach and is ~6x faster than nested CV.
+
     Returns dict with cv_r, rmse, alpha, l1_ratio, model.
     """
-    kf = KFold(n_splits=n_folds, shuffle=True, random_state=random_state)
-
-    # Collect out-of-fold predictions for CV correlation
-    oof_pred = np.full(len(y), np.nan)
-    for train_idx, val_idx in kf.split(X):
-        X_train, X_val = X[train_idx], X[val_idx]
-        y_train = y[train_idx]
-
-        model = ElasticNetCV(
-            l1_ratio=[0.1, 0.5, 0.7, 0.9, 0.95, 0.99, 1.0],
-            alphas=50,
-            cv=3,  # inner CV for hyperparameter selection
-            n_jobs=1,  # parallelism at outer level instead
-            max_iter=5000,
-            random_state=random_state,
-        )
-        model.fit(X_train, y_train)
-        oof_pred[val_idx] = model.predict(X_val)
-
-    # Compute CV Pearson r from out-of-fold predictions
-    valid_mask = ~np.isnan(oof_pred) & ~np.isnan(y)
-    if valid_mask.sum() < 5:
-        return {"cv_r": 0.0, "rmse": np.inf, "alpha": np.nan, "l1_ratio": np.nan, "model": None}
-
-    r, _ = pearsonr(y[valid_mask], oof_pred[valid_mask])
-    rmse = np.sqrt(np.mean((y[valid_mask] - oof_pred[valid_mask]) ** 2))
-
-    # Refit on all data for the final model
-    final_model = ElasticNetCV(
+    # Fit ElasticNetCV on all data to select best alpha/l1_ratio
+    model = ElasticNetCV(
         l1_ratio=[0.1, 0.5, 0.7, 0.9, 0.95, 0.99, 1.0],
         alphas=50,
         cv=n_folds,
@@ -82,14 +59,32 @@ def _train_single_gene(
         max_iter=5000,
         random_state=random_state,
     )
-    final_model.fit(X, y)
+    model.fit(X, y)
+
+    # OOF predictions with fixed hyperparameters for CV correlation
+    kf = KFold(n_splits=n_folds, shuffle=True, random_state=random_state)
+    oof_pred = np.full(len(y), np.nan)
+    for train_idx, val_idx in kf.split(X):
+        m = ElasticNet(
+            alpha=model.alpha_, l1_ratio=model.l1_ratio_,
+            max_iter=5000, random_state=random_state,
+        )
+        m.fit(X[train_idx], y[train_idx])
+        oof_pred[val_idx] = m.predict(X[val_idx])
+
+    valid_mask = ~np.isnan(oof_pred) & ~np.isnan(y)
+    if valid_mask.sum() < 5:
+        return {"cv_r": 0.0, "rmse": np.inf, "alpha": np.nan, "l1_ratio": np.nan, "model": None}
+
+    r, _ = pearsonr(y[valid_mask], oof_pred[valid_mask])
+    rmse = np.sqrt(np.mean((y[valid_mask] - oof_pred[valid_mask]) ** 2))
 
     return {
         "cv_r": float(r),
         "rmse": float(rmse),
-        "alpha": float(final_model.alpha_),
-        "l1_ratio": float(final_model.l1_ratio_),
-        "model": final_model,
+        "alpha": float(model.alpha_),
+        "l1_ratio": float(model.l1_ratio_),
+        "model": model,
     }
 
 
