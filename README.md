@@ -12,6 +12,7 @@ Multi-agent system for biomedical research. BioAgentics uses coordinated AI agen
 | **Crohn's Disease** | Microbiome, mucosal immunology, IBD therapeutics | IBDGC, HMP, RISK cohort, MetaHIT |
 | **Tourette Syndrome** | CSTC circuits, neuroimaging, tic disorder genetics | TSAICG, ENIGMA, ABCD Study, EMTICS |
 | **PANDAS/PANS** | Autoimmune neuropsychiatry, molecular mimicry, anti-neuronal antibodies | ImmPort, IEDB, GAS genomics, Cunningham Panel |
+| **Diagnostics** | Making diagnosis more accurate, accessible, and affordable — any disease | TCIA, PhysioNet, ISIC, Grand Challenges, UK Biobank |
 
 Each division has its own role definitions in `org-roles/{division}/`, research plans in `plans/{division}/`, and output in `output/{division}/`.
 
@@ -92,6 +93,7 @@ org-roles/                # Agent role definitions
   crohns/                 # Crohn's disease roles
   tourettes/              # Tourette syndrome roles
   pandas_pans/            # PANDAS/PANS roles
+  diagnostics/            # Diagnostics roles
 plans/{division}/         # Research initiative plans (created by Research Director)
 output/{division}/        # Research output artifacts (data, figures, reports)
 data/                     # Research data, datasets, results (created at runtime)

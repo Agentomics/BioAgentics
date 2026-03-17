@@ -28,6 +28,7 @@ DIV_COLORS = {
     "crohns": ("bg-[#1a2e05]", "text-[#84cc16]"),
     "tourettes": ("bg-[#2e1065]", "text-[#a78bfa]"),
     "pandas_pans": ("bg-[#431407]", "text-[#fb923c]"),
+    "diagnostics": ("bg-[#164e63]", "text-[#22d3ee]"),
 }
 
 
@@ -1963,6 +1964,7 @@ def render_shell(active_tab: str, content: str, stats_html: str, presence_html: 
       <option value="crohns">Crohn's</option>
       <option value="tourettes">Tourette's</option>
       <option value="pandas_pans">PANDAS/PANS</option>
+      <option value="diagnostics">Diagnostics</option>
     </select>
   </div>
 

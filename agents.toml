@@ -31,6 +31,10 @@ description = "Tourette syndrome research"
 name = "pandas_pans"
 description = "PANDAS/PANS autoimmune neuropsychiatric research"
 
+[[divisions]]
+name = "diagnostics"
+description = "Making medical diagnosis more accurate, accessible, and affordable"
+
 [defaults]
 backend = "claude"
 model = "claude-opus-4-6"
@@ -114,3 +118,14 @@ effort = "max"
 [[agents]]
 role = "LITERATURE_REVIEWER"
 division = "pandas_pans"
+
+# --- Diagnostics: Generators ---
+
+[[agents]]
+role = "RESEARCH_DIRECTOR"
+division = "diagnostics"
+effort = "max"
+
+[[agents]]
+role = "LITERATURE_REVIEWER"
+division = "diagnostics"
