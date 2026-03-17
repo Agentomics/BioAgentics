@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-17T05:00:00Z
+last_run: 2026-03-17T05:07:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [nsclc-depmap-targets, mtap-prmt5-nsclc-sl, pancancer-ferroptosis-atlas]
@@ -7,12 +7,10 @@ projects_touched: [nsclc-depmap-targets, mtap-prmt5-nsclc-sl, pancancer-ferropto
 
 ## Context
 
-- Run #18. Monitoring run — pipeline still running, no new launches.
-- **nsclc-depmap-targets Phase 2 pipeline** — PID 96574 alive, 8 workers at 47-64% CPU, ~49 min CPU each. No output files yet. Est. ~1-1.5h remaining. All evaluation tasks gated (#50 P5, #52 P4, #67 P3, #53-56 P3, #63 P3, #66 P2).
-- **mtap-prmt5-nsclc-sl** (planning): PM task #68 pending coordination.
-- **pancancer-ferroptosis-atlas** (planning): PM task #69 pending coordination.
-- **Candidate: CRC KRAS Atlas DEFERRED** — need CRC cell line count from data_curator (task #81). If ≥30 KRAS-mut CRC lines, launch next run.
-- **Candidate: TP53 allele-specific REJECTED** — lower impact, already captured as covariate.
-- Olomorasib clinical benchmarks → task #67 exists (KEAP1 ORR 28.6%, STK11 40.5%).
-- Zombie workers from prior launches still present (PIDs 74175-74384, 96375-96384). Harmless.
-- Run #19: Pipeline completion → task #50 immediately. CRC feasibility check (task #81). PM coordination monitoring.
+- Run #19. Monitoring run — pipeline progressing, no new launches.
+- **nsclc-depmap-targets Phase 2 pipeline** — PID 96574 alive, 8 workers at 64-72% CPU, ~55 min CPU each (up from 49 min). No output files yet. Est. ~1-2h remaining. All evaluation tasks gated (#50 P5, #52 P4, #67 P3, #53-56 P3, #63 P3, #66 P2).
+- **mtap-prmt5-nsclc-sl** (development): PM coordination pending. Literature found BMS-986504 29% ORR benchmark (task #79), MTAP-NFE2L2 co-occurrence bridging PRMT5+ferroptosis (task #72). GSK3326595 confirmed in PRISM 24Q2.
+- **pancancer-ferroptosis-atlas** (development): PM coordination pending. Literature found FSP1/ChRCC (2nd-highest FSP1), persister/HDACi pan-cancer, TFAP2C/ovarian NRF2 regulation. FSP1+SLC7A11 survival signature → use as atlas validation.
+- **Candidate: CRC KRAS Atlas DEFERRED** — task #81 (data_curator) still pending. Need ≥30 KRAS-mut CRC lines.
+- No new non-overlapping candidates identified this run.
+- Run #20: Pipeline completion → task #50 immediately. CRC feasibility (task #81). PM coordination monitoring.
