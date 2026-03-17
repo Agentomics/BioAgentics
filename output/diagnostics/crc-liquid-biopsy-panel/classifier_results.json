@@ -1,0 +1,102 @@
+{
+  "mean_auc": 0.8706973581973582,
+  "std_auc": 0.057122601436454645,
+  "ci95_auc": [
+    0.8147172087896326,
+    0.9266775076050837
+  ],
+  "mean_sensitivity_at_95spec": 0.47727272727272724,
+  "std_sensitivity_at_95spec": 0.19474265470375304,
+  "mean_specificity": 0.8717948717948719,
+  "fold_details": [
+    {
+      "fold": 1,
+      "auc": 0.8333333333333334,
+      "sensitivity_at_95spec": 0.3333333333333333,
+      "best_sensitivity": 0.9166666666666666,
+      "best_specificity": 0.7692307692307692,
+      "lr_best_C": 10.0,
+      "gbm_best_params": {
+        "learning_rate": 0.05,
+        "max_depth": 2,
+        "n_estimators": 50
+      },
+      "n_train": 96,
+      "n_test": 25
+    },
+    {
+      "fold": 2,
+      "auc": 0.9020979020979021,
+      "sensitivity_at_95spec": 0.6363636363636364,
+      "best_sensitivity": 0.8181818181818182,
+      "best_specificity": 0.9230769230769231,
+      "lr_best_C": 10.0,
+      "gbm_best_params": {
+        "learning_rate": 0.1,
+        "max_depth": 2,
+        "n_estimators": 100
+      },
+      "n_train": 97,
+      "n_test": 24
+    },
+    {
+      "fold": 3,
+      "auc": 0.9583333333333334,
+      "sensitivity_at_95spec": 0.6666666666666666,
+      "best_sensitivity": 0.9166666666666666,
+      "best_specificity": 0.9166666666666666,
+      "lr_best_C": 0.01,
+      "gbm_best_params": {
+        "learning_rate": 0.05,
+        "max_depth": 2,
+        "n_estimators": 100
+      },
+      "n_train": 97,
+      "n_test": 24
+    },
+    {
+      "fold": 4,
+      "auc": 0.7916666666666667,
+      "sensitivity_at_95spec": 0.16666666666666666,
+      "best_sensitivity": 0.6666666666666666,
+      "best_specificity": 0.8333333333333334,
+      "lr_best_C": 0.01,
+      "gbm_best_params": {
+        "learning_rate": 0.1,
+        "max_depth": 2,
+        "n_estimators": 100
+      },
+      "n_train": 97,
+      "n_test": 24
+    },
+    {
+      "fold": 5,
+      "auc": 0.8680555555555556,
+      "sensitivity_at_95spec": 0.5833333333333334,
+      "best_sensitivity": 0.75,
+      "best_specificity": 0.9166666666666666,
+      "lr_best_C": 10.0,
+      "gbm_best_params": {
+        "learning_rate": 0.05,
+        "max_depth": 2,
+        "n_estimators": 50
+      },
+      "n_train": 97,
+      "n_test": 24
+    }
+  ],
+  "n_outer_folds": 5,
+  "n_inner_folds": 5,
+  "n_samples": 121,
+  "n_positive": 59,
+  "n_negative": 62,
+  "feature_names": [
+    "prot_MMP9",
+    "prot_CXCL8",
+    "prot_S100A4",
+    "prot_TIMP1",
+    "prot_SEPT9",
+    "prot_ERBB2",
+    "prot_SPP1"
+  ]
+}
