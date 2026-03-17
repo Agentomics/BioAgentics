@@ -681,10 +681,10 @@ def _search_input(name: str, value: str, placeholder: str, path: str) -> str:
     active_border = " !border-[#3b82f6]" if value else ""
     return f"""<div class="relative w-full sm:w-[220px]">
   <span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#52525b] pointer-events-none">{ICONS["search"]}</span>
-  <input name="{name}" value="{esc(value)}" placeholder="{placeholder}" autocomplete="off"
+  <input id="filter-{name}" name="{name}" value="{esc(value)}" placeholder="{placeholder}" autocomplete="off"
          class="{INPUT_CLS} w-full !pl-8{active_border}"
-         hx-get="{path}" hx-target="#tab-content" hx-trigger="input changed delay:300ms"
-         hx-include="closest form" hx-push-url="true" />
+         hx-get="{path}" hx-target="#tab-content" hx-trigger="input changed delay:500ms"
+         hx-include="closest form" hx-push-url="true" hx-sync="closest form:replace" />
 </div>"""
 
 
@@ -710,10 +710,10 @@ def _text_input(
     dl = f' list="{datalist}"' if datalist else ""
     extra = ' data-1p-ignore data-lpignore="true" data-form-type="other"' if name in ("username",) else ""
     active_border = " !border-[#3b82f6]" if value else ""
-    return f"""<input name="{name}" value="{esc(value)}" placeholder="{placeholder}" autocomplete="off"
+    return f"""<input id="filter-{name}" name="{name}" value="{esc(value)}" placeholder="{placeholder}" autocomplete="off"
        class="{INPUT_CLS}{active_border}"{dl}{extra}
-       hx-get="{path}" hx-target="#tab-content" hx-trigger="input changed delay:300ms"
-       hx-include="closest form" hx-push-url="true" />"""
+       hx-get="{path}" hx-target="#tab-content" hx-trigger="input changed delay:500ms"
+       hx-include="closest form" hx-push-url="true" hx-sync="closest form:replace" />"""
 
 
 def _clear_filters_btn(path: str, has_filters: bool) -> str:
@@ -1588,16 +1588,17 @@ function toggleSidebar() {
 // Restore focus to the active input after htmx swaps (prevents search losing focus)
 var _pendingFocus = null;
 document.addEventListener('htmx:beforeSwap', function(evt) {
+  if (evt.detail.target.id !== 'tab-content') return;
   var ae = document.activeElement;
-  if (ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA') && ae.name && evt.detail.target.id === 'tab-content') {
-    _pendingFocus = { name: ae.name, pos: ae.selectionStart, end: ae.selectionEnd };
+  if (ae && (ae.tagName === 'INPUT' || ae.tagName === 'SELECT' || ae.tagName === 'TEXTAREA') && ae.id) {
+    _pendingFocus = { id: ae.id, pos: ae.selectionStart, end: ae.selectionEnd };
   } else {
     _pendingFocus = null;
   }
 });
 document.addEventListener('htmx:afterSettle', function(evt) {
   if (_pendingFocus && evt.detail.target.id === 'tab-content') {
-    var el = document.querySelector('#tab-content [name="' + _pendingFocus.name + '"]');
+    var el = document.getElementById(_pendingFocus.id);
     if (el) {
       el.focus();
       try { el.setSelectionRange(_pendingFocus.pos, _pendingFocus.end); } catch(e) {}
@@ -1959,7 +1960,7 @@ def render_shell(active_tab: str, content: str, stats_html: str, presence_html: 
   <div class="px-3 py-3 border-t border-[#27272a]">
     <div class="text-xs text-[#52525b] font-medium mb-2">Agents</div>
     <div id="presence-bar" class="space-y-0 max-h-[180px] overflow-y-auto"
-         hx-get="/ui/partials/presence" hx-trigger="every 5s" hx-swap="innerHTML">
+         hx-get="/ui/partials/presence" hx-trigger="every 10s" hx-swap="innerHTML">
       {presence_html}
     </div>
   </div>
@@ -1991,7 +1992,7 @@ def render_shell(active_tab: str, content: str, stats_html: str, presence_html: 
 <!-- Main content -->
 <main class="lg:ml-60 min-h-screen transition-[margin] duration-200">
   <div class="px-4 sm:px-6 py-6 max-w-[1600px]">
-    <div id="stats-bar" class="mb-6" hx-get="/ui/partials/stats" hx-trigger="every 5s" hx-swap="innerHTML">
+    <div id="stats-bar" class="mb-6" hx-get="/ui/partials/stats" hx-trigger="every 10s" hx-swap="innerHTML">
       {stats_html}
     </div>
 
