@@ -29,11 +29,13 @@ from bioagentics.data.gene_ids import (
 DEPMAP_DIR = REPO_ROOT / "data" / "depmap" / "25q3"
 OUTPUT_DIR = REPO_ROOT / "output" / "cdkn2a-pancancer-dependency-atlas" / "phase1"
 
-# CN threshold for deep deletion (log2 scale)
-HOMDEL_CN_THRESHOLD = -1.0
+# CN threshold for deep deletion in PortalOmicsCNGeneLog2.csv.
+# Data is in log2(relative CN) format but floored at ~0; values near 0 = deep deletion.
+# Empirically: 330 CDKN2A deletions cluster at <=0.01, natural gap before 0.35+.
+HOMDEL_CN_THRESHOLD = 0.3
 
-# CN threshold for amplification (log2 scale, ~4 copies)
-AMP_CN_THRESHOLD = 1.0
+# CN threshold for amplification (~4+ copies, value ~1.5+ in this scale)
+AMP_CN_THRESHOLD = 1.5
 
 # Minimum samples per group for powered analysis
 MIN_DELETED = 5
