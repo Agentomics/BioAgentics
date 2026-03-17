@@ -1,0 +1,225 @@
+{
+  "validation_date": "2026-03-17",
+  "analyst": "analyst",
+  "project": "pancancer-mtap-prmt5-atlas",
+  "q1_robustness": {
+    "Breast": {
+      "cancer_type": "Breast",
+      "original_d": -1.72754962697287,
+      "n_deleted": 8,
+      "n_intact": 45,
+      "loo_range": 0.5164410647959377,
+      "loo_max_change": 0.3432525413196361,
+      "loo_sign_consistent": true,
+      "most_influential_line": {
+        "removed_line": "HCC1806",
+        "removed_value": -0.9186125220942266,
+        "d_without": -2.070802168292506,
+        "d_change": -0.3432525413196361
+      },
+      "permutation_p": 0.0,
+      "robust": true
+    },
+    "Lung": {
+      "cancer_type": "Lung",
+      "original_d": -1.2287485993869063,
+      "n_deleted": 26,
+      "n_intact": 100,
+      "loo_range": 0.19699740977357227,
+      "loo_max_change": 0.15068896422965317,
+      "loo_sign_consistent": true,
+      "most_influential_line": {
+        "removed_line": "NCI-H647",
+        "removed_value": -0.5034437133544089,
+        "d_without": -1.3794375636165594,
+        "d_change": -0.15068896422965317
+      },
+      "permutation_p": 0.0,
+      "robust": true
+    },
+    "Soft Tissue": {
+      "cancer_type": "Soft Tissue",
+      "original_d": -1.0519284544339038,
+      "n_deleted": 9,
+      "n_intact": 37,
+      "loo_range": 0.3000824586623906,
+      "loo_max_change": 0.1638289015265878,
+      "loo_sign_consistent": true,
+      "most_influential_line": {
+        "removed_line": "NRH-UPS1",
+        "removed_value": -1.9803705739054975,
+        "d_without": -0.888099552907316,
+        "d_change": 0.1638289015265878
+      },
+      "permutation_p": 0.009,
+      "robust": true
+    },
+    "Esophagus/Stomach": {
+      "cancer_type": "Esophagus/Stomach",
+      "original_d": -0.9655391129984308,
+      "n_deleted": 10,
+      "n_intact": 59,
+      "loo_range": 0.40854187929897645,
+      "loo_max_change": 0.21847099900149836,
+      "loo_sign_consistent": true,
+      "most_influential_line": {
+        "removed_line": "MKN-45",
+        "removed_value": -0.8436716660843594,
+        "d_without": -1.1840101119999291,
+        "d_change": -0.21847099900149836
+      },
+      "permutation_p": 0.005,
+      "robust": true
+    },
+    "CNS/Brain": {
+      "cancer_type": "CNS/Brain",
+      "original_d": -0.6776185282756915,
+      "n_deleted": 37,
+      "n_intact": 52,
+      "loo_range": 0.10555201871851772,
+      "loo_max_change": 0.05647652213369703,
+      "loo_sign_consistent": true,
+      "most_influential_line": {
+        "removed_line": "Onda 9",
+        "removed_value": -0.6384168606005284,
+        "d_without": -0.7340950504093885,
+        "d_change": -0.05647652213369703
+      },
+      "permutation_p": 0.0,
+      "robust": true
+    },
+    "Pancreas": {
+      "cancer_type": "Pancreas",
+      "original_d": -0.45328668643320197,
+      "n_deleted": 17,
+      "n_intact": 31,
+      "loo_range": 0.12276743270401153,
+      "loo_max_change": 0.06661909117913445,
+      "loo_sign_consistent": true,
+      "most_influential_line": {
+        "removed_line": "DAN-G",
+        "removed_value": -1.8954267350599956,
+        "d_without": -0.3866675952540675,
+        "d_change": 0.06661909117913445
+      },
+      "permutation_p": 0.067,
+      "robust": false
+    }
+  },
+  "q2_breast": {
+    "n_deleted": 8,
+    "n_intact": 45,
+    "del_mean": -1.6617322075690306,
+    "del_median": -1.821631458390971,
+    "del_std": 0.4469725956292167,
+    "int_mean": -0.9950429184749475,
+    "int_median": -1.0351618720113993,
+    "cohens_d": -1.72754962697287,
+    "outliers": [],
+    "power_warning": true,
+    "subtype_counts": {
+      "Breast Invasive Ductal Carcinoma": 5,
+      "Invasive Breast Carcinoma": 2,
+      "Breast Ductal Carcinoma In Situ": 1
+    }
+  },
+  "q3_mat2a": {
+    "prmt5_stronger_fraction": 0.75,
+    "mat2a_strong_types": [
+      "Head and Neck",
+      "Liver",
+      "Skin"
+    ],
+    "mat2a_fdr_significant": [],
+    "dual_candidates": [
+      "Head and Neck",
+      "Liver"
+    ],
+    "spearman_r": -0.10588235294117648,
+    "spearman_p": 0.6963341050381158,
+    "consistent": "True"
+  },
+  "q4_pancreas": {
+    "n_deleted": 17,
+    "n_intact": 31,
+    "cohens_d": -0.45328668643320197,
+    "del_std": 0.27656973258772605,
+    "int_std": 0.515994460999312,
+    "n_pdac_deleted": 17,
+    "n_non_pdac_deleted": 0,
+    "n_intact_prmt5_dependent": 11
+  },
+  "q5_tcga_ccat": {
+    "spearman_r": 0.6586944440522925,
+    "spearman_p": 0.07568968784163856,
+    "n_discordant": 1,
+    "discordant_types": [
+      "Bladder/Urinary Tract"
+    ]
+  },
+  "q6_underexplored": {
+    "n_underexplored": 6,
+    "breast_is_top": true,
+    "ranking": [
+      {
+        "cancer_type": "Breast",
+        "d": -1.72754962697287,
+        "patients_yr": 10163
+      },
+      {
+        "cancer_type": "Kidney",
+        "d": -0.8516199077336305,
+        "patients_yr": 1344
+      },
+      {
+        "cancer_type": "Soft Tissue",
+        "d": -1.0519284544339038,
+        "patients_yr": 1289
+      },
+      {
+        "cancer_type": "Liver",
+        "d": -0.6176797861673837,
+        "patients_yr": 1134
+      },
+      {
+        "cancer_type": "Ovary/Fallopian Tube",
+        "d": -0.8982070005283117,
+        "patients_yr": 516
+      },
+      {
+        "cancer_type": "Myeloid",
+        "d": -0.6417156519187834,
+        "patients_yr": 124
+      }
+    ]
+  },
+  "q7_gbm": {
+    "note": "Initial search used OncotreePrimaryDisease='Diffuse Glioma' — GBM is under OncotreeSubtype='Glioblastoma'",
+    "n_gbm_total": 50,
+    "n_gbm_deleted": 25,
+    "n_gbm_intact": 25,
+    "qualifies": true,
+    "cohens_d": -0.7394,
+    "ci_lower": -1.41,
+    "ci_upper": -0.19,
+    "p_value": 0.007,
+    "permutation_p": 0.005,
+    "robust": true,
+    "tng456_supported": true
+  },
+  "overall_assessment": {
+    "developer_conclusions_upheld": true,
+    "notes": "Core conclusions confirmed with caveats. Pancreas FDR-significant but permutation-marginal (p=0.067). Breast is strongest SL but underpowered (N=8). GBM qualifies and supports TNG456.",
+    "caveats": [
+      "Q1: Breast has only 8 MTAP-deleted lines — large effect (d=-1.73) but underpowered",
+      "Q1: Soft Tissue has only 9 MTAP-deleted lines — low statistical power",
+      "Q1: Pancreas (d=-0.45) is FDR-significant (0.037) but permutation-marginal (p=0.067) — weakest of the 6",
+      "Q4: Pancreas weak SL explained by 11/31 intact lines also being PRMT5-dependent — PRMT5 broadly important in PDAC regardless of MTAP",
+      "Q5: Bladder TCGA-CCAT discordant (26% vs 11%) — C-CAT likely more accurate; population estimate may be inflated"
+    ],
+    "flags": [
+      "Q4: NOVEL FINDING — Pancreas intact lines show high baseline PRMT5 dependency, explaining weak differential SL despite clinical ORR 25%",
+      "Q7: CORRECTION — GBM qualifies (25 del + 25 intact by OncotreeSubtype), d=-0.74, p=0.007. Supports TNG456 development"
+    ]
+  }
+}
