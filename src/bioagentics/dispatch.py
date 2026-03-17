@@ -466,7 +466,14 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
                     ],
                     capture_output=True, cwd=REPO_ROOT,
                 )
-                subprocess.run(["git", "push"], capture_output=True, cwd=REPO_ROOT)
+                push = subprocess.run(
+                    ["git", "push"], capture_output=True, cwd=REPO_ROOT,
+                )
+                if push.returncode != 0:
+                    print(
+                        f"  warning: git push failed for {config.role} summary "
+                        f"(exit {push.returncode})"
+                    )
             return 0
 
         # Determine retry strategy
