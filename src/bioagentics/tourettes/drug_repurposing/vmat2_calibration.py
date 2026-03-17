@@ -18,8 +18,6 @@ import argparse
 import csv
 from pathlib import Path
 
-import pandas as pd
-
 from bioagentics.config import REPO_ROOT
 
 OUTPUT_DIR = REPO_ROOT / "output" / "tourettes" / "ts-drug-repurposing-network"
