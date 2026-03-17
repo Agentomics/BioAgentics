@@ -659,11 +659,11 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
     # Execute all agents in parallel (respecting project locks)
     print(f"  dispatching {len(work_queue)} agent/project pair(s)...")
 
-    # Track (role, project) pairs claimed this cycle to prevent the same
-    # agent from running twice on the same project.  Different agents CAN
-    # work on the same project concurrently — they operate on separate tasks
-    # and coordinate through the API.
-    claimed: set[tuple[str, str]] = set()
+    # Track (role, project, division) triples claimed this cycle to prevent
+    # the same agent from running twice on the same project.  Different
+    # agents CAN work on the same project concurrently — they operate on
+    # separate tasks and coordinate through the API.
+    claimed: set[tuple[str, str, str | None]] = set()
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=_dispatch.max_workers) as executor:
         futures: dict[concurrent.futures.Future, str] = {}
@@ -675,8 +675,9 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
             role = config.role.lower()
 
             if proj:
-                # Same role already claimed this project this cycle
-                if (role, proj) in claimed:
+                # Same role+division already claimed this project this cycle
+                claim_key = (role, proj, config.division)
+                if claim_key in claimed:
                     print(f"  SKIP: {label} (already dispatched)")
                     continue
                 # Same role already running on this project from a prior cycle
@@ -685,7 +686,7 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
                     print(f"  SKIP: {label} (already running)")
                     journal(f"skipped {label} — already running on this project", proj, config.division)
                     continue
-                claimed.add((role, proj))
+                claimed.add(claim_key)
 
             future = executor.submit(run_agent, config, proj)
             futures[future] = label
