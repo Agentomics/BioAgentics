@@ -120,25 +120,25 @@ def reset_stuck_tasks():
     journal(f"startup cleanup: reset {len(stuck)} stuck in_progress task(s) to pending: {labels}")
 
 
-def has_work(username: str) -> bool:
-    for status in ("pending", "in_progress"):
-        resp = api("GET", f"/tasks?username={username}&status={status}&limit=1")
-        if resp and resp.ok and resp.json().get("total", 0) > 0:
-            return True
-    return False
+def get_work(username: str) -> list[str] | None:
+    """Return projects with pending/in_progress work, or None if no work at all.
 
-
-def get_pending_projects(username: str) -> list[str]:
-    """Return unique projects with pending/in_progress tasks for this agent."""
-    found: set[str] = set()
+    Returns sorted project list (may be empty if tasks have no project field).
+    Returns None when no pending/in_progress tasks exist for this agent.
+    """
+    projects: set[str] = set()
+    has_any = False
     for status in ("pending", "in_progress"):
         resp = api("GET", f"/tasks?username={username}&status={status}&limit=100")
         if resp and resp.ok:
             for task in resp.json().get("items", []):
+                has_any = True
                 proj = task.get("project")
                 if proj:
-                    found.add(proj)
-    return sorted(found)
+                    projects.add(proj)
+    if not has_any:
+        return None
+    return sorted(projects)
 
 
 def project_locked_by(project: str) -> str | None:
@@ -542,11 +542,11 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
             continue
 
         username = config.role.lower()
-        if not has_work(username):
+        projects = get_work(username)
+        if projects is None:
             print(f"  SKIP: {config.role} (no pending tasks)")
             continue
 
-        projects = get_pending_projects(username)
         if projects:
             for proj in projects:
                 work_queue.append((config, proj))
