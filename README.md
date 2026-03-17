@@ -52,7 +52,9 @@ Research initiatives are tagged with labels for tracking significance:
 - `biomarker` — diagnostic/prognostic marker candidate
 - `high-priority` — results warrant urgent follow-up
 - `promising` — early positive signals
-- Domain-specific: `genomic`, `microbiome`, `immunology`, `neuroimaging`, `autoimmune`, `clinical`, `multi-omics`
+- `cost-reduction`, `accessibility` — cheaper or more accessible diagnostic/therapeutic approaches
+- `ai-diagnostic`, `point-of-care`, `screening`, `imaging` — diagnostic modality
+- Domain-specific: `genomic`, `microbiome`, `immunology`, `neuroimaging`, `autoimmune`, `comorbidity`, `clinical`, `multi-omics`
 
 ## Getting Started
 
