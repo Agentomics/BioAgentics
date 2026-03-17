@@ -1,0 +1,40 @@
+============================================================
+WRN-MSI Pan-Cancer Atlas — Phase 3: Genome-Wide MSI-H Screen
+============================================================
+
+Total tests: 53793
+Gained dependencies (FDR<0.05, d<-0.5): 186
+Lost dependencies (FDR<0.05, d>0.5): 98
+
+TOP GAINED DEPENDENCIES IN MSI-H
+--------------------------------------------------
+  Bowel / PELO: d=-2.876 FDR=6.248e-03
+  Bowel / WRN: d=-2.844 FDR=4.998e-03
+  Pan-cancer (pooled) / WRN: d=-2.833 FDR=1.236e-07
+  Bowel / RPL22L1: d=-2.602 FDR=1.011e-02
+  Pan-cancer (pooled) / RPL22L1: d=-1.900 FDR=2.066e-07
+  Bowel / DHX9: d=-1.682 FDR=4.515e-02
+  Bowel / SMAP1: d=-1.320 FDR=4.515e-02
+  Pan-cancer (pooled) / PELO: d=-1.108 FDR=1.095e-03
+  Pan-cancer (pooled) / RPL6: d=-0.949 FDR=2.326e-02
+  Pan-cancer (pooled) / DHX9: d=-0.933 FDR=4.485e-03
+  Pan-cancer (pooled) / CCDC102A: d=-0.901 FDR=5.322e-03
+  Pan-cancer (pooled) / TFAM: d=-0.866 FDR=1.350e-02
+  Pan-cancer (pooled) / IGBP1: d=-0.829 FDR=1.095e-03
+  Pan-cancer (pooled) / MAGIX: d=-0.829 FDR=8.898e-05
+  Pan-cancer (pooled) / UNC119: d=-0.819 FDR=1.161e-03
+  Pan-cancer (pooled) / ALDOC: d=-0.817 FDR=4.426e-03
+  Pan-cancer (pooled) / TRNAU1AP: d=-0.813 FDR=2.651e-03
+  Pan-cancer (pooled) / PRRC1: d=-0.787 FDR=9.053e-03
+  Pan-cancer (pooled) / ZMYM5: d=-0.786 FDR=1.899e-02
+  Pan-cancer (pooled) / OGDH: d=-0.772 FDR=6.677e-03
+  Pan-cancer (pooled) / PM20D1: d=-0.767 FDR=1.186e-02
+  Pan-cancer (pooled) / C1QTNF9: d=-0.749 FDR=9.053e-03
+  Pan-cancer (pooled) / ZRSR2: d=-0.743 FDR=1.287e-02
+  Pan-cancer (pooled) / SEBOX: d=-0.742 FDR=3.706e-03
+  Pan-cancer (pooled) / OR5AU1: d=-0.742 FDR=9.053e-03
+  Pan-cancer (pooled) / MIS18BP1: d=-0.740 FDR=9.587e-03
+  Pan-cancer (pooled) / SDHC: d=-0.735 FDR=2.630e-03
+  Pan-cancer (pooled) / PRPF39: d=-0.734 FDR=8.152e-03
+  Pan-cancer (pooled) / MALSU1: d=-0.731 FDR=2.731e-03
+  Pan-cancer (pooled) / TMEM147: d=-0.727 FDR=4.568e-04
