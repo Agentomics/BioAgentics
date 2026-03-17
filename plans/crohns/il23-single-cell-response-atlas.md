@@ -1,10 +1,10 @@
 # IL-23/Th17 Single-Cell Response Atlas
 
 ## Objective
-Build a single-cell transcriptomic atlas of the IL-23/Th17 axis in Crohn's disease mucosa to identify cell-type-specific gene programs predictive of response to IL-23-targeting biologics (ustekinumab, risankizumab).
+Build a single-cell transcriptomic atlas of the IL-23/Th17 axis in Crohn's disease mucosa to identify cell-type-specific gene programs predictive of response to the IL-23 inhibitor mechanism class (risankizumab, guselkumab, ustekinumab), enabling patient stratification across the expanding IL-23p19 therapeutic landscape.
 
 ## Background
-The IL-23/Th17 pathway is a validated therapeutic target — ustekinumab and risankizumab are first-line biologics for moderate-severe CD with response rates of 40-60%. No validated biomarkers exist to predict which patients will respond. Single-cell RNA-seq of CD mucosa is now available from multiple studies but hasn't been systematically analyzed for IL-23 pathway biology or treatment response prediction. Most IL-23 studies focus on bulk tissue or animal models, missing the cell-type-specific resolution needed to understand heterogeneous responses. Understanding which cell populations express IL-23 pathway genes and how they differ between responders and non-responders could enable precision biologic selection.
+The IL-23/Th17 pathway is a validated therapeutic target with multiple biologics now in clinical use. The SEQUENCE trial (NEJM 2024) confirmed risankizumab superiority over ustekinumab (endoscopic remission 31.8% vs 16.2%), but ~2/3 of risankizumab-treated patients still do NOT achieve endoscopic remission — this non-remission rate is the concrete clinical gap. J&J has initiated a guselkumab vs risankizumab head-to-head trial, and guselkumab received FDA approval for subcutaneous induction in UC. With multiple IL-23p19 inhibitors now available and 2025 ACG guidelines no longer requiring anti-TNF failure before IL-23 inhibitors, predicting which patients respond to this drug class (vs other mechanisms) is clinically urgent. This atlas targets the shared IL-23/Th17 pathway signature rather than drug-specific features, aiming to predict mechanism-class response. Single-cell RNA-seq of CD mucosa is now available from multiple studies but hasn't been systematically analyzed for IL-23 pathway biology or treatment response prediction. Most IL-23 studies focus on bulk tissue or animal models, missing the cell-type-specific resolution needed to understand heterogeneous responses.
 
 ## Data Sources
 - **GSE134809** (Kong et al.) — Single-cell RNA-seq of CD ileal tissue, inflamed and non-inflamed
@@ -12,6 +12,7 @@ The IL-23/Th17 pathway is a validated therapeutic target — ustekinumab and ris
 - **GSE207617** — Single-cell CD with clinical/treatment annotations
 - **Single Cell Portal** (Broad Institute) — Additional IBD single-cell datasets
 - **CellxGene** — Curated single-cell datasets with standardized annotations
+- **IBDverse** (1.1M cells, 111 CD + 232 controls) — Largest scRNA-seq resource for ileal CD. Candidate primary cell-type reference for annotation (pending data_curator evaluation, task #231)
 
 ## Methodology
 1. **Data acquisition & QC**: Download raw count matrices from 3-4 single-cell studies. Filter cells (>500 genes, <20% mito), filter genes (expressed in >10 cells). Doublet removal (Scrublet).
@@ -26,7 +27,7 @@ The IL-23/Th17 pathway is a validated therapeutic target — ustekinumab and ris
 - Annotated multi-study single-cell atlas of IL-23/Th17 pathway in CD mucosa
 - Cell-type-specific gene programs associated with active inflammation vs remission
 - Ranked list of cell types by IL-23 pathway activity and inflammatory contribution
-- Candidate biomarker signatures for IL-23 blockade response (if treatment data sufficient)
+- Candidate biomarker signatures for IL-23 mechanism-class response (if treatment data sufficient) — framed as pathway-level predictors applicable across risankizumab, guselkumab, and future IL-23p19 inhibitors
 - Transcription factor regulon analysis of IL-23-responsive cells
 - Visualizations: UMAP plots, gene module heatmaps, cell proportion bar charts, pathway activity scores
 
