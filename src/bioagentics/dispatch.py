@@ -698,18 +698,19 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
     check_published_missing_reports()
 
     # Build the full work queue: generators + task-driven agents
-    work_queue: list[tuple[AgentConfig, str | None]] = []
+    generator_queue: list[tuple[AgentConfig, str | None]] = []
+    task_queue: list[tuple[AgentConfig, str | None]] = []
 
-    # Add generators (unscoped — they decide their own work)
+    # Collect generators (unscoped — they decide their own work)
     for config in agents:
         if config.role not in GENERATORS:
             continue
         if config.role == "RESEARCH_DIRECTOR" and not allow_research_director:
-            print(f"  SKIP: {config.role} (disabled)")
+            print(f"  SKIP: {config.role}/{config.division} (disabled)")
             continue
-        work_queue.append((config, None))
+        generator_queue.append((config, None))
 
-    # Add task-driven agents (scoped to projects with pending work)
+    # Collect task-driven agents (scoped to projects with pending work)
     for config in agents:
         if config.role in GENERATORS:
             continue
@@ -717,15 +718,19 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
         username = config.role.lower()
         projects = get_work(username, config.division)
         if projects is None:
-            print(f"  SKIP: {config.role} (no pending tasks)")
+            print(f"  SKIP: {config.role}/{config.division} (no pending tasks)")
             continue
 
         if projects:
             for proj in projects:
-                work_queue.append((config, proj))
+                task_queue.append((config, proj))
         else:
             # Tasks exist but no project field — run unscoped
-            work_queue.append((config, None))
+            task_queue.append((config, None))
+
+    # Interleave: task-driven agents first (they do concrete work),
+    # then generators (they create new work for future cycles)
+    work_queue: list[tuple[AgentConfig, str | None]] = task_queue + generator_queue
 
     if not work_queue:
         print("  no work queued")
