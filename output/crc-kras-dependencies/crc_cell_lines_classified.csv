@@ -1,0 +1,97 @@
+ModelID,CellLineName,StrippedCellLineName,OncotreeSubtype,OncotreeCode,Sex,PrimaryOrMetastasis,KRAS_mutated,KRAS_protein_change,APC_mutated,APC_protein_change,TP53_mutated,TP53_protein_change,PIK3CA_mutated,PIK3CA_protein_change,BRAF_mutated,BRAF_protein_change,SMAD4_mutated,SMAD4_protein_change,BRAF_V600E,KRAS_allele,MSI_status
+ACH-000003,CACO2,CACO2,Colon Adenocarcinoma,COAD,Male,Primary,False,,False,,False,,False,,False,,False,,False,WT,MSS
+ACH-000007,LS513,LS513,Colon Adenocarcinoma,COAD,Male,Primary,True,p.G12D,False,,False,,False,,True,p.E204L,False,,False,G12D,MSS
+ACH-000009,C2BBe1,C2BBE1,Colon Adenocarcinoma,COAD,Male,Primary,False,,True,p.Q1367Ter,True,p.E204Ter,False,,False,,True,p.D351H,False,WT,MSS
+ACH-000089,NCI-H684,NCIH684,Colon Adenocarcinoma,COAD,Male,Metastatic,True,p.G12D,True,p.E1317Ter,True,p.G245S,False,,False,,False,,False,G12D,MSS
+ACH-000202,COLO-320,COLO320,Colon Adenocarcinoma,COAD,Female,Primary,False,,True,p.S811Ter,True,p.R248W;p.R379PfsTer45,False,,False,,False,,False,WT,MSS
+ACH-000236,SW1417,SW1417,Colon Adenocarcinoma,COAD,Female,Primary,False,,True,p.R1450Ter,True,p.C238HfsTer21,False,,True,p.V600E,False,,True,WT,MSS
+ACH-000249,CL-11,CL11,Colon Adenocarcinoma,COAD,Male,Primary,True,p.Q61H;p.V14I,True,p.S1344Ter,True,p.S215N,False,,False,,False,,False,Q61H,MSS
+ACH-000252,LS1034,LS1034,Colon Adenocarcinoma,COAD,Male,Primary,True,p.A146T,True,p.E1309DfsTer4,True,p.G245S,False,,False,,False,,False,A146T,MSS
+ACH-000253,COLO 201,COLO201,Colon Adenocarcinoma,COAD,Male,Metastatic,False,,True,p.T1556NfsTer3,True,p.Y107Ter;p.Y103LfsTer42,False,,True,p.V600E,False,,True,WT,MSS
+ACH-000286,SNU-1033,SNU1033,Rectal Adenocarcinoma,READ,Female,Primary,True,p.G12D,True,p.K1030Ter,True,p.P190L,False,,False,,False,,False,G12D,MSS
+ACH-000296,OUMS-23,OUMS23,Colon Adenocarcinoma,COAD,Male,Metastatic,False,,True,p.N659QfsTer14;p.T1556NfsTer3,True,p.Y234C,False,,True,p.V600E,False,,True,WT,MSS
+ACH-000342,CL-14,CL14,Colon Adenocarcinoma,COAD,Male,Primary,False,,True,p.S1032Ter;p.S1044L;p.S1068Ter,True,p.R273C,False,,False,,False,,False,WT,MSS
+ACH-000350,COLO-678,COLO678,Colon Adenocarcinoma,COAD,Male,Metastatic,True,p.G12D,True,p.T1556NfsTer3,False,,False,,False,,False,,False,G12D,MSS
+ACH-000360,NCI-H508,NCIH508,Colon Adenocarcinoma,COAD,Male,Metastatic,False,,False,,True,p.R273H,True,p.E545K,True,p.G596R,False,,False,WT,MSS
+ACH-000381,T84,T84,Colon Adenocarcinoma,COAD,Male,Metastatic,True,p.G13D,True,p.L1488FfsTer19,True,,True,p.E542K,False,,True,p.K340N,False,G13D,MSS
+ACH-000400,SK-CO-1,SKCO1,Colon Adenocarcinoma,COAD,Male,Metastatic,True,p.G12V,True,p.F1089SfsTer37;p.P1443LfsTer30,False,,False,,False,,False,,False,G12V,MSS
+ACH-000403,NCI-H747,NCIH747,Colon Adenocarcinoma,COAD,Male,Metastatic,True,p.G13D,True,p.Q161Ter;p.Q1429Ter,True,p.R158L,False,,False,,False,,False,G13D,MSS
+ACH-000412,SNU-1197,SNU1197,Colon Adenocarcinoma,COAD,Male,Primary,True,p.G12D,True,p.R232Ter;p.E1309DfsTer4,True,p.R175H,False,,False,,False,,False,G12D,MSS
+ACH-000421,SW837,SW837,Rectal Adenocarcinoma,READ,Male,Primary,True,p.G12C,True,p.R213Ter;p.R1450Ter,True,p.R248W,False,,False,,False,,False,G12C,MSS
+ACH-000467,HCC-56,HCC56,Colon Adenocarcinoma,COAD,Unknown,Primary,True,p.G12V,False,,True,p.R196P,False,,False,,False,,False,G12V,MSS
+ACH-000470,SW1463,SW1463,Rectal Adenocarcinoma,READ,Female,Primary,True,p.G12C,True,p.V452SfsTer7,True,p.R248Q,False,,False,,True,p.R361G,False,G12C,MSS
+ACH-000489,SW1116,SW1116,Colon Adenocarcinoma,COAD,Male,Primary,True,p.G12A,True,p.Q264Ter;p.Q1429HfsTer41,True,p.A159D,False,,False,,False,,False,G12A,MSS
+ACH-000491,NCI-H716,NCIH716,Colon Adenocarcinoma,COAD,Male,Metastatic,False,,False,,True,p.E224D,False,,False,,False,,False,WT,MSS
+ACH-000501,LS123,LS123,Colon Adenocarcinoma,COAD,Female,Primary,True,p.G12S,True,p.M431I;p.Q625Ter;p.R1450Ter,True,p.R175H,False,,False,,True,p.E330Ter,False,KRAS_other,MSS
+ACH-000532,SNU-61,SNU61,Rectal Adenocarcinoma,READ,Male,Metastatic,True,p.G12D,True,p.R1450Ter,True,p.R175H,False,,False,,False,,False,G12D,MSS
+ACH-000552,HT-29,HT29,Colon Adenocarcinoma,COAD,Female,Primary,False,,True,p.E853Ter;p.T1556NfsTer3,True,p.R273H,True,p.P449T,True,p.V600E;p.T119S,True,p.Q311Ter,True,WT,MSS
+ACH-000565,RCM-1,RCM1,Rectal Adenocarcinoma,READ,Female,Primary,True,p.G12V,True,p.R216Ter,True,p.R306Ter,False,,False,,True,p.R361H,False,G12V,MSS
+ACH-000651,SW 620,SW620,Colon Adenocarcinoma,COAD,Male,Metastatic,True,p.G12V,True,p.Q1338Ter,True,p.P309S;p.R273H,False,,False,,False,,False,G12V,MSS
+ACH-000680,SW948,SW948,Colon Adenocarcinoma,COAD,Female,Primary,True,p.Q61L,True,p.R1114Ter;p.Q1429Ter,True,p.T118QfsTer5,True,p.E542K,False,,True,p.D537Y,False,KRAS_other,MSS
+ACH-000683,SNU-503,SNU503,Rectal Adenocarcinoma,READ,Male,Metastatic,False,,True,p.K1543Ter,True,p.R273L,False,,False,,False,,False,WT,MSS
+ACH-000708,SNU-283,SNU283,Rectal Adenocarcinoma,READ,Female,Metastatic,False,,True,p.N1815K,False,,False,,False,,True,p.D355G,False,WT,MSS
+ACH-000710,NCI-H854,NCIH854,Colon Adenocarcinoma,COAD,Male,Primary,False,,False,,False,,False,,False,,False,,False,WT,MSS
+ACH-000722,SNU-C1,SNUC1,Colon Adenocarcinoma,COAD,Male,Metastatic,False,,False,,True,p.S166Ter,False,,False,,False,,False,WT,MSS
+ACH-000798,CL-40,CL40,Colon Adenocarcinoma,COAD,Female,Primary,True,p.G12D,True,p.R876Ter;p.S1465RfsTer8,True,p.R248Q,True,p.E110del,False,,False,,False,G12D,MSS
+ACH-000820,SW403,SW403,Colon Adenocarcinoma,COAD,Female,Primary,True,p.G12V,True,p.N125K;p.S1198QfsTer67;p.S1198L;p.S1278Ter,True,p.E51Ter,True,p.Q546K,False,,False,,False,G12V,MSS
+ACH-000842,SW 480,SW480,Colon Adenocarcinoma,COAD,Male,Primary,True,p.G12V,True,p.Q1338Ter,True,p.P309S;p.R273H,False,,False,,False,,False,G12V,MSS
+ACH-000895,CL-34,CL34,Colon Adenocarcinoma,COAD,Female,Primary,False,,True,p.E418Ter;p.T1556NfsTer3,True,p.K382NfsTer40;p.S127P,False,,True,p.V600E,False,,True,WT,MSS
+ACH-000926,HT-55,HT55,Colon Adenocarcinoma,COAD,Unknown,Primary,False,,True,p.Q1131Ter;p.Q1303Ter;p.R1463S,True,p.R213L,False,,True,p.N581Y,False,,False,WT,MSS
+ACH-000935,MDST8,MDST8,Colon Adenocarcinoma,COAD,Unknown,Primary,False,,True,p.T1556NfsTer3,False,,False,,True,p.V600K,False,,False,WT,MSS
+ACH-000943,RKO,RKO,Colon Adenocarcinoma,COAD,Unknown,Primary,False,,False,,False,,True,p.H1047R,True,p.V600E,False,,True,WT,MSI-H
+ACH-000950,LoVo,LOVO,Colon Adenocarcinoma,COAD,Male,Metastatic,True,p.G13D,True,p.R1114Ter;p.M1431CfsTer42;p.R2816Q,False,,False,,False,,False,,False,G13D,MSI-H
+ACH-000955,SNU-407,SNU407,Colon Adenocarcinoma,COAD,Male,Metastatic,True,p.G12D,False,,True,p.S90PfsTer33,True,p.H1047R,True,p.R726C,False,,False,G12D,MSI-H
+ACH-000957,LS 180,LS180,Colon Adenocarcinoma,COAD,Female,Primary,True,p.G12D,False,,False,,True,p.H1047R,True,p.D211G,False,,False,G12D,MSS
+ACH-000958,SW48,SW48,Colon Adenocarcinoma,COAD,Female,Primary,False,,True,p.R2714C,False,,True,p.G914R,False,,False,,False,WT,MSI-H
+ACH-000959,SNU-C4,SNUC4,Colon Adenocarcinoma,COAD,Male,Primary,False,,True,p.H325R;p.F801LfsTer19;p.T1556LfsTer9,True,p.G245S,True,p.E545G,False,,False,,False,WT,MSI-H
+ACH-000963,CCK-81,CCK81,Colon Adenocarcinoma,COAD,Female,Metastatic,False,,True,p.Y159C,True,p.P278H,True,p.C420R;p.C472Y,True,p.S273N,False,,False,WT,MSS
+ACH-000967,SNU-C2A,SNUC2A,Colon Adenocarcinoma,COAD,Female,Primary,True,p.G12D,True,p.K2051EfsTer9,True,p.R273H;p.R273C,False,,False,,False,,False,G12D,MSS
+ACH-000969,KM12,KM12,Colon Adenocarcinoma,COAD,Unknown,Primary,False,,True,p.G471E;p.N1818KfsTer2,True,p.H179R;p.V73WfsTer50,False,,True,p.A404CfsTer9,False,,False,WT,MSI-H
+ACH-000970,SNU-C5,SNUC5,Colon Adenocarcinoma,COAD,Female,Primary,False,,True,p.N1792KfsTer7,True,p.R248W;p.V218L,True,p.H1047R,True,p.V600E,False,,True,WT,MSS
+ACH-000971,HCT 116,HCT116,Colon Adenocarcinoma,COAD,Male,Primary,True,p.G13D,False,,False,,True,p.H1047R,False,,False,,False,G13D,MSI-H
+ACH-000982,GP2d,GP2D,Colon Adenocarcinoma,COAD,Female,Primary,True,p.G12D,True,p.T1445LfsTer27;p.L2384I;p.S2562G,False,,True,p.H1047L,True,p.T529A,False,,False,G12D,MSS
+ACH-000985,LS411N,LS411N,Colon Adenocarcinoma,COAD,Male,Primary,False,,True,p.Q789Ter;p.T1556NfsTer3,True,p.Y126Ter,False,,True,p.V600E,False,,True,WT,MSI-H
+ACH-000986,HT115,HT115,Colon Adenocarcinoma,COAD,Unknown,Primary,False,,True,p.S331L;p.S1196Ter;p.T1556NfsTer3,True,p.R213Ter,True,p.R88Q;p.E321D,True,p.R354Q,False,,False,WT,MSS
+ACH-000989,SNU-175,SNU175,Mucinous Adenocarcinoma of the Colon and Rectum,MACR,Female,Metastatic,True,p.A59T,True,p.R232Ter;p.N1455IfsTer18;p.G1499Ter,False,,False,,False,,True,p.R361C;p.G386S;p.A406T,False,KRAS_other,MSS
+ACH-000991,SNU-81,SNU81,Colon Adenocarcinoma,COAD,Male,Primary,True,p.A146T,True,p.L360Ter;p.S1392Ter;p.R1450Ter;p.R2204Ter,True,p.R213Ter;p.K132T,False,,False,,False,,False,A146T,MSS
+ACH-000997,HCT-15,HCT15,Colon Adenocarcinoma,COAD,Male,Primary,True,p.G13D,True,p.R727M;p.K993N;p.I1417LfsTer2;p.K1561N;p.R2166Ter;p.E2550Q,True,p.S241F;p.G154D,True,p.E545K;p.D549N,False,,False,,False,G13D,MSI-H
+ACH-000998,CW-2,CW2,Colon Adenocarcinoma,COAD,Female,Primary,True,p.P140H,True,p.R302Ter;p.A528V;p.S1465WfsTer3;p.E2737G,False,,True,p.P283S,False,,False,,False,KRAS_other,MSS
+ACH-000999,SNU-1040,SNU1040,Colon Adenocarcinoma,COAD,Male,Primary,False,,True,p.R94C;p.Q188Ter;p.R232Ter;p.R414H;p.A759S;p.E1309Ter;p.G2070D;p.G2250AfsTer29,True,p.R248W;p.V73RfsTer76;p.D48N,True,p.L632Ter,True,p.V120I;p.S76P,True,p.D52RfsTer2,False,WT,MSS
+ACH-001039,COLO 205,COLO205,Colon Adenocarcinoma,COAD,Male,Metastatic,False,,True,p.T1556NfsTer3,True,p.Y107Ter;p.Y103LfsTer42,False,,True,p.V600E,False,,True,WT,MSS
+ACH-001061,DLD-1,DLD1,Colon Adenocarcinoma,COAD,Male,Primary,True,p.G13D,True,p.R727M;p.K993N;p.I1417LfsTer2;p.R2166Ter,True,p.S241F,True,p.E545K;p.D549N,False,,False,,False,G13D,MSI-H
+ACH-001081,HCC2998,HCC2998,Colon Adenocarcinoma,COAD,Unknown,Primary,True,p.A146T,True,p.R168I;p.L665Ter;p.R1450Ter;p.S1864Y;p.I2167S;p.N2720K,True,p.R213Ter,False,,False,,False,,False,A146T,MSS
+ACH-001084,HCT-8,HCT8,Colon Adenocarcinoma,COAD,Male,,False,,False,,False,,False,,False,,False,,False,WT,MSS
+ACH-001091,HRT18,HRT18,Colon Adenocarcinoma,COAD,Male,Primary,False,,False,,False,,False,,False,,False,,False,WT,MSS
+ACH-001199,SNUC2B,SNUC2B,Colon Adenocarcinoma,COAD,Female,Primary,True,p.G12D,False,,True,p.R273H;p.R273C,False,,False,,False,,False,G12D,MSS
+ACH-001345,GP5d,GP5D,Colon Adenocarcinoma,COAD,Female,Primary,True,p.G12D,True,p.T1445LfsTer27;p.D2729G,False,,True,p.H1047L,True,p.T529A,False,,False,G12D,MSI-H
+ACH-001399,SW 626,SW626,Colon Adenocarcinoma,COAD,Female,Metastatic,True,p.G12V,True,p.R976KfsTer9,True,p.G262V,False,,False,,True,p.D351H,False,G12V,MSS
+ACH-001454,C10,C10,Colon Adenocarcinoma,COAD,Male,Primary,False,,False,,False,,False,,False,,False,,False,WT,MSS
+ACH-001456,C125PM,C125PM,Colorectal Adenocarcinoma,COADREAD,Unknown,Primary,True,p.K117N,True,p.Q1367Ter,True,p.G245S,False,,False,,False,,False,KRAS_other,MSS
+ACH-001458,C75,C75,Colon Adenocarcinoma,COAD,Male,Primary,False,,True,p.S943QfsTer12;p.Q1204Ter;p.L1488FfsTer23,True,p.R249S,False,,False,,False,,False,WT,MSS
+ACH-001459,C80,C80,Rectal Adenocarcinoma,READ,Male,Primary,True,p.A146V,True,p.L629Ter,True,p.Q52Ter,False,,False,,True,p.D351H,False,KRAS_other,MSS
+ACH-001460,C84,C84,Colon Adenocarcinoma,COAD,Male,Primary,True,p.G12A,True,p.R283Ter;p.R640W;p.R1450Ter,True,p.R342Ter,False,,False,,False,,False,G12A,MSS
+ACH-001461,C99,C99,Rectal Adenocarcinoma,READ,Male,Primary,False,,False,,False,,False,,False,,True,,False,WT,MSS
+ACH-001786,SNU-1544,SNU1544,Colon Adenocarcinoma,COAD,Female,Primary,True,p.M170T,True,p.R499Ter;p.T1556NfsTer3;p.V2194FfsTer5;p.E2655GfsTer7,False,,True,p.T229LfsTer11;p.H1047R,False,,False,,False,KRAS_other,MSS
+ACH-001825,SW527,SW527,Colon Adenocarcinoma,COAD,Male,Metastatic,False,,False,,False,,False,,False,,False,,False,WT,MSS
+ACH-002024,ECC4,ECC4,Rectal Adenocarcinoma,READ,Male,Primary,True,p.Q61R,True,p.G53E,True,,True,p.S332T,False,,False,,False,KRAS_other,MSS
+ACH-002025,TT1TKB,TT1TKB,Rectal Adenocarcinoma,READ,Male,Primary,True,p.G12C,True,p.R232Ter;p.S1392Ter,True,p.C141Y,False,,False,,True,p.T266A,False,G12C,MSS
+ACH-002219,COLO-320-HSR,COLO320HSR,Colon Adenocarcinoma,COAD,Female,,False,,False,,False,,False,,False,,False,,False,WT,MSS
+ACH-002233,DIFI,DIFI,Colorectal Adenocarcinoma,COADREAD,Female,Metastatic,False,,True,p.E443AfsTer16;p.E1151Ter,True,p.K132R,False,,False,,False,,False,WT,MSS
+ACH-002287,NCI-H630,NCIH630,Colorectal Adenocarcinoma,COADREAD,Unknown,Primary,False,,True,p.Q1367Ter,True,p.R342Ter,False,,False,,False,,False,WT,MSS
+ACH-002345,CaR-1,CAR1,Rectal Adenocarcinoma,READ,Male,Metastatic,False,,False,,True,p.V272M,False,,False,,False,,False,WT,MSS
+ACH-002530,SNU-977,SNU977,Rectal Adenocarcinoma,READ,Female,Primary,False,,True,p.G637VfsTer10;p.S1355FfsTer20,True,p.R175H,False,,False,,False,,False,WT,MSS
+ACH-002532,SNU-1411,SNU1411,Rectal Adenocarcinoma,READ,Male,Primary,True,p.G12C,False,,True,p.S94Ter,False,,True,p.K601N,False,,False,G12C,MSS
+ACH-002535,SNU-254,SNU254,Rectal Adenocarcinoma,READ,Female,Primary,True,p.G12D,True,p.R302Ter;p.L1488YfsTer19,True,p.E286K,True,p.E545A,False,,False,,False,G12D,MSS
+ACH-002538,SNU-1235,SNU1235,Colon Adenocarcinoma,COAD,Female,,False,,True,p.E853RfsTer8;p.T1556NfsTer3,True,p.R213Ter,False,,True,p.V600E,True,p.L495P,True,WT,MSS
+ACH-002539,SNU-1460,SNU1460,Colon Adenocarcinoma,COAD,Male,Primary,False,,False,,True,,False,,False,,False,,False,WT,MSS
+ACH-002543,SNU-1406,SNU1406,Colon Adenocarcinoma,COAD,Female,Primary,False,,False,,True,p.E326WfsTer12,False,,True,p.P731S;p.L485W,False,,False,WT,MSS
+ACH-002654,JVE-015,JVE015,Colon Adenocarcinoma,COAD,Female,Primary,True,p.G12C,True,p.R1114Ter;p.P1424QfsTer49,True,p.R306Ter,True,p.H1047R,False,,False,,False,G12C,MSS
+ACH-002659,JVE-127,JVE127,Mucinous Adenocarcinoma of the Colon and Rectum,MACR,Male,Primary,False,,False,,True,p.K132Q,False,,True,p.V600E,True,p.A486_V492del,True,WT,MSS
+ACH-002660,JVE-187,JVE187,Colon Adenocarcinoma,COAD,Female,Metastatic,True,p.K117N,True,p.K993Ter;p.I1557Ter,True,p.I254_L257delinsM,True,p.Q546K,False,,True,p.R361H,False,KRAS_other,MSS
+ACH-002662,JVE-207,JVE207,Colon Adenocarcinoma,COAD,Male,Primary,False,,True,p.T1556NfsTer3,True,p.C176Y,False,,True,p.V600E,False,,True,WT,MSS
+ACH-002664,JVE-253,JVE253,Mucinous Adenocarcinoma of the Colon and Rectum,MACR,Female,Metastatic,True,p.G12V,True,p.D1571Ter,True,p.R248W,False,,False,,True,,False,G12V,MSS
+ACH-002667,JVE-528,JVE528,Colon Adenocarcinoma,COAD,Female,,True,p.G13D,True,p.R1450Ter,True,p.R342Ter,False,,False,,False,,False,G13D,MSS
+ACH-002669,KP-363T,KP363T,Colon Adenocarcinoma,COAD,Male,Primary,False,,False,,True,p.R306Ter,True,p.E545K,True,p.V600E,False,,True,WT,MSS
+ACH-002839,CCLF_CORE_0002_T,CCLFCORE0002T,Colon Adenocarcinoma,COAD,Unknown,Primary,False,,False,,False,,False,,False,,False,,False,WT,MSS
+ACH-002886,VACO 432,VACO432,Colon Adenocarcinoma,COAD,Male,,False,,True,p.T1438HfsTer35;p.T1556LfsTer9,False,,True,p.P124T,True,p.V600E,True,p.G231AfsTer10;p.R361H,True,WT,MSS
+ACH-002932,CCLF_NEURO_0001_T,CCLFNEURO0001T,Colorectal Adenocarcinoma,COADREAD,Female,Metastatic,False,,False,,True,p.R213Ter,False,,True,p.V600E;p.A145TfsTer13;p.V144AfsTer39,True,p.E538Ter,True,WT,MSS
