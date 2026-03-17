@@ -2,6 +2,8 @@
 
 Multi-agent system for cancer research and drug discovery. BioAgentics uses coordinated AI agents to identify research opportunities, build computational tools, analyze genomic data, screen drug candidates, and advance our understanding of cancer biology.
 
+**Live dashboard:** [bioagentics.mtingers.com](https://bioagentics.mtingers.com/)
+
 ## Architecture
 
 BioAgentics is a single system with specialized agents that coordinate through a shared API:
