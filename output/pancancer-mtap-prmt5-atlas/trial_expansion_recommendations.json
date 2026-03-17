@@ -1,0 +1,46 @@
+{
+  "recommendations": [
+    {
+      "cancer_type": "Breast",
+      "rationale": "Strong PRMT5 SL (d=-1.73, FDR=0.003) with no PRMT5i clinical data. Eligible patients: 10163/year.",
+      "priority": "high",
+      "cohens_d": -1.72754962697287,
+      "eligible_patients_year": 10163
+    },
+    {
+      "cancer_type": "Kidney",
+      "rationale": "Strong PRMT5 SL (d=-0.85, FDR=0.193) with no PRMT5i clinical data. Eligible patients: 1344/year.",
+      "priority": "medium",
+      "cohens_d": -0.8516199077336305,
+      "eligible_patients_year": 1344
+    },
+    {
+      "cancer_type": "Soft Tissue",
+      "rationale": "Strong PRMT5 SL (d=-1.05, FDR=0.040) with no PRMT5i clinical data. Eligible patients: 1289/year.",
+      "priority": "high",
+      "cohens_d": -1.0519284544339038,
+      "eligible_patients_year": 1289
+    },
+    {
+      "cancer_type": "Liver",
+      "rationale": "Strong PRMT5 SL (d=-0.62, FDR=0.353) with no PRMT5i clinical data. Eligible patients: 1134/year.",
+      "priority": "medium",
+      "cohens_d": -0.6176797861673837,
+      "eligible_patients_year": 1134
+    },
+    {
+      "cancer_type": "Ovary/Fallopian Tube",
+      "rationale": "Strong PRMT5 SL (d=-0.90, FDR=0.123) with no PRMT5i clinical data. Eligible patients: 516/year.",
+      "priority": "medium",
+      "cohens_d": -0.8982070005283117,
+      "eligible_patients_year": 516
+    },
+    {
+      "cancer_type": "Myeloid",
+      "rationale": "Strong PRMT5 SL (d=-0.64, FDR=0.105) with no PRMT5i clinical data. Eligible patients: 124/year.",
+      "priority": "medium",
+      "cohens_d": -0.6417156519187834,
+      "eligible_patients_year": 124
+    }
+  ]
+}

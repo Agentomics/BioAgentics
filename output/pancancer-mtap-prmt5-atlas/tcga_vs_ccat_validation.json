@@ -1,0 +1,62 @@
+{
+  "spearman_r": 0.6586944440522925,
+  "spearman_p": 0.07568968784163856,
+  "comparisons": [
+    {
+      "cancer_type": "Pancreas",
+      "tcga_homdel_pct": 21.9,
+      "ccat_homdel_pct": 18.4,
+      "difference_pct": 3.5,
+      "discrepant": false
+    },
+    {
+      "cancer_type": "Biliary Tract",
+      "tcga_homdel_pct": 11.1,
+      "ccat_homdel_pct": 15.6,
+      "difference_pct": 4.5,
+      "discrepant": false
+    },
+    {
+      "cancer_type": "Lung",
+      "tcga_homdel_pct": 15.7,
+      "ccat_homdel_pct": 14.3,
+      "difference_pct": 1.4,
+      "discrepant": false
+    },
+    {
+      "cancer_type": "Esophagus/Stomach",
+      "tcga_homdel_pct": 12.7,
+      "ccat_homdel_pct": 9.0,
+      "difference_pct": 3.7,
+      "discrepant": false
+    },
+    {
+      "cancer_type": "Bladder/Urinary Tract",
+      "tcga_homdel_pct": 26.0,
+      "ccat_homdel_pct": 11.0,
+      "difference_pct": 15.0,
+      "discrepant": true
+    },
+    {
+      "cancer_type": "Head and Neck",
+      "tcga_homdel_pct": 14.5,
+      "ccat_homdel_pct": 10.0,
+      "difference_pct": 4.5,
+      "discrepant": false
+    },
+    {
+      "cancer_type": "Breast",
+      "tcga_homdel_pct": 3.3,
+      "ccat_homdel_pct": 3.0,
+      "difference_pct": 0.3,
+      "discrepant": false
+    },
+    {
+      "cancer_type": "Ovary/Fallopian Tube",
+      "tcga_homdel_pct": 2.6,
+      "ccat_homdel_pct": 3.0,
+      "difference_pct": 0.4,
+      "discrepant": false
+    }
+  ]
+}
