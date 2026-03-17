@@ -28,9 +28,10 @@ ALLELE_FREQUENCIES = {
     "G12V": 0.22,
     "G13D": 0.18,
     "G12C": 0.08,
+    "G12A": 0.04,
     "A146T": 0.07,
     "Q61H": 0.05,
-    "other": 0.07,
+    "other": 0.03,
 }
 
 # 3-tier clinical agent framework
@@ -289,7 +290,7 @@ def build_strategy_matrix(output_dir: str | Path = DEFAULT_OUTPUT_DIR) -> dict:
     matrix = {"allele_strategies": {}, "cross_allele_insights": {}, "crc_vs_nsclc": {}}
 
     # Per-allele strategies
-    alleles = ["G12D", "G13D", "G12V", "G12C", "Q61H", "A146T"]
+    alleles = ["G12D", "G13D", "G12V", "G12C", "G12A", "Q61H", "A146T"]
     for allele in alleles:
         print(f"\nBuilding strategy for {allele}...")
         matrix["allele_strategies"][allele] = _build_allele_strategy(

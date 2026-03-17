@@ -26,7 +26,7 @@ DEFAULT_DEST = REPO_ROOT / "output" / "crc-kras-dependencies" / "allele_dependen
 # Allele groups with enough lines for statistical testing (>=5)
 TESTABLE_ALLELES = ["G12D", "G13D", "G12V", "G12C"]
 # Allele groups for descriptive statistics only
-DESCRIPTIVE_ALLELES = ["Q61H", "A146T"]
+DESCRIPTIVE_ALLELES = ["G12A", "Q61H", "A146T"]
 
 
 def _cohens_d(group1: np.ndarray, group2: np.ndarray) -> float:
