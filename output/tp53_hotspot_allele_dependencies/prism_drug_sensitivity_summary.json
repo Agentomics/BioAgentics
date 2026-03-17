@@ -1,0 +1,55 @@
+{
+  "n_cell_lines": 915,
+  "n_drugs": 6790,
+  "n_mutant": 617,
+  "n_wt": 298,
+  "n_structural": 52,
+  "n_contact": 117,
+  "screens": {
+    "mutant_vs_wt": {
+      "n_tested": 6790,
+      "n_fdr05": 107,
+      "top_hit": {
+        "drug_id": "BRD:BRD-K00003406-001-01-9",
+        "drug_name": "milademetan",
+        "n_group1": 600,
+        "n_group2": 288,
+        "median_group1": -0.1588,
+        "median_group2": -2.8223,
+        "cohens_d": 1.8972,
+        "mannwhitney_U": 146230.0,
+        "pvalue": 9.09177572865396e-63,
+        "fdr": 6.1733157197560385e-59
+      }
+    },
+    "structural_vs_contact": {
+      "n_tested": 6790,
+      "n_fdr05": 0,
+      "top_hit": {
+        "drug_id": "BRD:BRD-K17641316-001-04-8",
+        "drug_name": "",
+        "n_group1": 39,
+        "n_group2": 70,
+        "median_group1": -0.2117,
+        "median_group2": -0.439,
+        "cohens_d": 0.847,
+        "mannwhitney_U": 1962.0,
+        "pvalue": 0.00016278221143776033,
+        "fdr": 0.8780445286956382
+      }
+    },
+    "allele_specific": {
+      "alleles_tested": [
+        "R175H",
+        "R248W",
+        "R273H",
+        "G245S",
+        "R249S",
+        "Y220C",
+        "R282W"
+      ],
+      "total_tests": 45952,
+      "n_fdr05": 0
+    }
+  }
+}
