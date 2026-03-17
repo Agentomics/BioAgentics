@@ -1433,27 +1433,38 @@ def render_stats_html(db: Session, division: str = "") -> str:
 </div>"""
 
 
-def render_presence_html(db: Session) -> str:
-    rows = db.execute(
-        select(agents).order_by(agents.c.updated_at.desc())
-    ).fetchall()
+def render_presence_html(db: Session, division: str = "") -> str:
+    query = select(agents).order_by(agents.c.updated_at.desc())
+    if division:
+        query = query.where(agents.c.division == division)
+    rows = db.execute(query).fetchall()
 
     if not rows:
         return '<div class="text-xs text-[#a1a1aa] italic py-1">no agents online</div>'
+
+    DIV_COLORS = {
+        "cancer": ("bg-[#172554]", "text-[#3b82f6]"),
+        "crohns": ("bg-[#1a2e05]", "text-[#84cc16]"),
+    }
 
     items = []
     for row in rows:
         m = row._mapping
         dot_cls = "bg-[#22c55e] shadow-[0_0_4px_#22c55e]" if m["status"] == "running" else "bg-[#71717a]"
-        project_html = ""
+        meta_parts = []
+        div_val = m["division"] or ""
+        if div_val:
+            bg, fg = DIV_COLORS.get(div_val, ("bg-[#27272a]", "text-[#a1a1aa]"))
+            meta_parts.append(f'<span class="{bg} {fg} text-[10px] font-medium px-1.5 py-0.5 rounded-full">{esc(div_val)}</span>')
         if m["project"]:
-            project_html = f'<div class="text-[11px] text-[#a1a1aa] truncate">{esc(m["project"])}</div>'
+            meta_parts.append(f'<span class="text-[11px] text-[#a1a1aa] truncate">{esc(m["project"])}</span>')
+        meta_html = f'<div class="flex items-center gap-1.5 mt-0.5">{"".join(meta_parts)}</div>' if meta_parts else ""
         items.append(
             f'<div class="flex items-center gap-2 py-1.5">'
             f'<span class="w-2 h-2 rounded-full shrink-0 {dot_cls}"></span>'
             f'<div class="min-w-0 flex-1">'
             f'<div class="text-xs font-medium truncate">{esc(agent_display_name(m["username"]))}</div>'
-            f'{project_html}'
+            f'{meta_html}'
             f'</div>'
             f'</div>'
         )
@@ -1522,8 +1533,9 @@ function setDivision(val) {
   if (val) { url.searchParams.set('division', val); } else { url.searchParams.delete('division'); }
   var qs = url.pathname + '?' + url.searchParams.toString();
   htmx.ajax('GET', qs, {target: '#tab-content', swap: 'innerHTML', headers: {'HX-Request': 'true'}}).then(function() {
-    var statsUrl = '/ui/partials/stats' + (val ? '?division=' + val : '');
-    htmx.ajax('GET', statsUrl, {target: '#stats-bar', swap: 'innerHTML'});
+    var dq = val ? '?division=' + val : '';
+    htmx.ajax('GET', '/ui/partials/stats' + dq, {target: '#stats-bar', swap: 'innerHTML'});
+    htmx.ajax('GET', '/ui/partials/presence' + dq, {target: '#presence-bar', swap: 'innerHTML'});
   });
   history.pushState(null, '', qs);
 }
@@ -2335,8 +2347,8 @@ def ui_partials_stats(division: str = Query(default=""), db: Session = Depends(g
 
 
 @router.get("/ui/partials/presence", response_class=HTMLResponse)
-def ui_partials_presence(db: Session = Depends(get_db)):
-    return HTMLResponse(render_presence_html(db))
+def ui_partials_presence(division: str = Query(default=""), db: Session = Depends(get_db)):
+    return HTMLResponse(render_presence_html(db, division))
 
 
 # ── JSON Endpoints (backward compat) ─────────────────────────────────
