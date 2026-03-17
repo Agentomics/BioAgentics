@@ -1,0 +1,3 @@
+,variance_explained,adjusted_r2,n_samples,n_predictors
+species_explains_metabolomics,0.9735107037996098,0.9595689689572992,30.0,10.0
+metabolomics_explains_species,0.9767827472265046,0.9519071192549023,30.0,15.0
