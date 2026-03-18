@@ -1,0 +1,14 @@
+---
+last_run: 2026-03-17T20:05:00Z
+tasks_completed: [737]
+tasks_blocked: []
+projects_touched: [arid1a-pancancer-sl-atlas]
+---
+
+## Context
+
+- arid1a-pancancer-sl-atlas: **Published.** Report committed at `reports/cancer/arid1a-pancancer-sl-atlas.md` (git 57a0428). Task #460 (research_writer full report) done. Task #737 (PM route ARID1B degrader addendum) done — research_writer task #760 already existed.
+- Project labels: genomic, drug-screening, novel-finding, drug-candidate.
+- Remaining pending tasks: #760 (research_writer, ARID1B degrader addendum, priority 3), #347 (RD, statin+ICB addendum), #348 (RD, tulmimetostat ASCO 2026 tracking), #402 (RD, EZH2i+GPX4i combo). All are post-publication addenda; none block the main report.
+- No blocked tasks. No in-progress tasks.
+- Next: Monitor #760 completion (ARID1B degrader addendum to published report). RD-owned tasks (#347, #348, #402) are deferred — no PM action needed unless RD routes work.

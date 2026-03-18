@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-17T19:11:00Z
+tasks_completed: [245, 327]
+tasks_blocked: []
+projects_touched: [transcriptomic-biomarker-panel]
+---
+
+## Context
+
+- transcriptomic-biomarker-panel: Moved from planning -> development. Created 9 developer tasks (#642-650) covering full ML pipeline (GEO loader, batch correction, DE analysis, WGCNA, gene sets, ML classifier, pathway enrichment, validation, figures).
+- All research_director feature decisions (M1/M2 markers, KIR+CD8+ T cell genes, AE classifier features, MHC/HLA from OCD GWAS) incorporated into gene set loader task #646.
+- Critical path: data_curator must complete #303 (GSE293230 download) to unblock most dev tasks. Developer can start #642 (GEO loader) and #646 (gene set loader) immediately.
+- Pending data_curator tasks: #303 (GSE293230, P5), #278 (OCD monocyte dataset, P4), #279 (anti-NMDAR scRNA-seq, P4), #395 (Rahman data check, P3), #421 (Keating NTI164 monitor, P4).
+- Next: Monitor data_curator progress on #303. When data is ready, transition developer tasks from GEO loader -> DE analysis -> WGCNA -> classifier -> validation pipeline.
+- Journal entry #917 documents launch actions.

@@ -1,0 +1,13 @@
+---
+last_run: 2026-03-17T12:58:00Z
+tasks_completed: [120, 121, 122, 123, 124, 125, 185, 243]
+tasks_blocked: []
+projects_touched: [pancancer-mtap-prmt5-atlas]
+---
+
+## Context
+
+- Phases 1a-7 complete. Scripts in `src/pancancer_mtap_prmt5_atlas/01-07*.py`.
+- Task #243: Fixed Bladder population estimate — C-CAT 11% override replaces TCGA 26% for eligible patient calculation. General mechanism: auto-overrides when TCGA-CCAT discrepancy >5pp. New columns `pop_freq_pct` and `pop_freq_source` in population CSV.
+- Bladder eligible patients corrected: ~21,629 → 9,150/year. All other lineages unchanged.
+- Prior context: 16 qualifying lineages, 6 FDR-sig at lineage level, 4 FDR-sig subtypes (Breast IDC, LUAD, GBM, PDAC), MAT2A uncorrelated, TCGA-CCAT r=0.66.

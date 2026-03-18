@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-17T20:44:00Z
+tasks_completed: [460, 760]
+tasks_blocked: []
+projects_touched: [arid1a-pancancer-sl-atlas]
+---
+
+## Context
+
+- arid1a-pancancer-sl-atlas: Full research report at `reports/cancer/arid1a-pancancer-sl-atlas.md` (493 lines, 10 sections)
+- Task #460 (prior run): Wrote initial report (452 lines). Committed 57a0428.
+- Task #760 (this run): Expanded Section 8.2 ARID1B degrader from 8-line mention to 4-subsection clinical concordance addendum (mechanism, target tumor types, timeline, EZH2i comparison table). Updated caveats #7 and findings_content for dashboard.
+- Journal entry #995 logged for addendum work
+- Report covers: ARID1B>EZH2 central finding (6/11 types), novel targets (HMGCR/statin, ADCK5, MDM2), PIK3CA negative result, PRISM concordance (3/12 drugs), TCGA population estimates (~157K pts/yr), ARID1B degrader clinical concordance (Foghorn, in vivo PoC 2026)
+- Pending addenda (deferred per RD #781): statin+ICB analysis (#347), EZH2i+GPX4i combo (#402), tulmimetostat tracking (#348)

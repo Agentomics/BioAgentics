@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-17T18:00:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [ts-rare-variant-convergence]
+---
+
+## Context
+
+- Phase 1 code exists: `src/bioagentics/tourettes/rare_variant_convergence/rare_variant_genes.py` (20 genes curated, 16 strong/moderate — target met)
+- Outputs generated to `data/results/ts-rare-variant-convergence/phase1/` (JSON, CSV, report)
+- No tasks currently assigned to developer for this project
+- Pending tasks: #2 (research_director — evaluate Zhan exome trio), #3 (data_curator — download Zhan supplementary data)
+- Next developer work likely: Phase 2 (gnomAD constraint analysis), Phase 3 (STRING PPI network), Phase 4 (pathway convergence), Phase 5 (cross-disorder specificity)
+- Awaiting task creation from project_manager once upstream data curation tasks complete

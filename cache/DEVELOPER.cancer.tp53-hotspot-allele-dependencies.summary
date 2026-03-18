@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-17T13:40:00Z
+tasks_completed: [253, 255]
+tasks_blocked: []
+projects_touched: [tp53-hotspot-allele-dependencies]
+---
+
+## Context
+
+- All 4 phases complete. No remaining pending tasks for developer on this project.
+- Phase 1 (Task #248): TP53 allele classifier. 795 mutant lines with CRISPR data. Output: tp53_classified_lines.csv
+- Phase 2a (Task #250): Mutant vs WT screen. MDM2 positive control validated (d=1.915, FDR=3.39e-87). 616 significant genes.
+- Phase 2b (Task #251): Allele-specific dependencies. 0 FDR-significant genes. Legitimate null — TP53 LOF dominates.
+- Phase 3 (Task #253): PRISM drug sensitivity. 107 FDR<0.05 drugs for mutant-vs-WT (milademetan MDM2i top hit). 0 allele-specific drug hits.
+- Phase 4 (Task #255): TCGA integration. ~88K annual US hotspot patients. Y220C rezatapopt-addressable: ~7.7K/yr. R249S/HCC aflatoxin validated. Co-mutation landscape analyzed.
+- CN data file uses log2 scale; LOH threshold = -0.5
+- Key conclusion: TP53 allele-specific GOF does not create distinct dependencies or drug sensitivities in DepMap/PRISM. Binary mutant-vs-WT is the dominant signal.

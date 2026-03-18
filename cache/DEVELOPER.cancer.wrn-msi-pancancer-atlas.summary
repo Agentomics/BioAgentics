@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-17T16:41:00Z
+tasks_completed: [332, 333, 340, 334, 336, 312, 339]
+tasks_blocked: []
+projects_touched: [wrn-msi-pancancer-atlas]
+---
+
+## Context
+
+- All 5 phases of WRN-MSI Pan-Cancer Dependency Atlas now complete
+- Phase 1: Tiered MSI classifier → 70 MSI-H lines, 2 qualifying types (Bowel, Uterus)
+- Phase 2: WRN ROBUST SL in Bowel (d=-2.844) and Uterus (d=-1.086). TP53-GOF hotspots reduce WRN dependency (resistance biomarker)
+- Phase 3: 186 gained / 98 lost dependencies. Novel: PELO (d=-2.876), RPL22L1 (d=-2.602), DHX9 (d=-1.682)
+- Phase 4: AZD-7648 (DNA-PK inh) MSI-H selective (d=-0.526, FDR=0.018). WRN inhibitors not in PRISM.
+- Phase 5: ~61,854 US MSI-H patients/yr. COADREAD top priority (score=28.6). 13 tumor types lack WRN trial enrollment. PAAD lowest pembro ORR (18%) — strongest WRN inhibitor combination case.
+- All code in src/wrn_msi_pancancer_atlas/, outputs in output/wrn-msi-pancancer-atlas/
+- No remaining developer tasks for this project — atlas ready for analyst validation

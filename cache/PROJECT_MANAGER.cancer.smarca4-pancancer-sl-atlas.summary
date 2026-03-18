@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-17T18:41:00Z
+tasks_completed: [441]
+tasks_blocked: []
+projects_touched: [smarca4-pancancer-sl-atlas]
+---
+
+## Context
+
+- smarca4-pancancer-sl-atlas: Project status is **published**. All 5 dev phases complete.
+- Pipeline was auto-advanced by dispatcher (analysis → validation → documentation → published) with no analyst/validation_scientist tasks created. Developer journals (#506-512) contain thorough statistical findings.
+- **Report missing:** reports/cancer/smarca4-pancancer-sl-atlas.md does not exist. Task #429 (research_writer, pending) to write it.
+- **Clinical landscape update:** Routed to research_writer as task #475 (pending). Key corrections from lit reviewer journal #817:
+  - PRT7732: PAUSED (Prelude pivoted to JAK2V617F)
+  - FHD-609: NOT SMARCA2 — it's a BRD9 degrader on clinical hold
+  - FHD-909 (Foghorn/Lilly): ONLY active SMARCA2 inhibitor program
+- Labels current: genomic, drug-screening, novel-finding, drug-candidate
+- findings_content is null — research_writer should populate via update_project() when writing report
+- Next: monitor research_writer tasks #429 and #475

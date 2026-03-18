@@ -1,0 +1,11 @@
+---
+last_run: 2026-03-17T16:44:00Z
+tasks_completed: [358]
+tasks_blocked: []
+projects_touched: [pancancer-mtap-prmt5-atlas]
+---
+
+## Context
+
+- pancancer-mtap-prmt5-atlas: Wrote full research report at `reports/cancer/pancancer-mtap-prmt5-atlas.md` (task #358, P5). Report covers PRMT5 SL rankings (16 cancer types), 5 ROBUST + 1 MARGINAL classification, MAT2A analysis, 9p21 co-deletion landscape, patient population estimates, clinical concordance, competitive landscape (6 PRMT5i), and trial expansion recommendations. All 7 required caveats prominently stated per validation scientist (journal #507). Updated project findings_content for dashboard. Committed.
+- No remaining tasks assigned. Pending RD tasks (#186, #141, #131, #212, #263, #260, #288, #187) may trigger future addendum work.

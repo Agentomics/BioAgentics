@@ -1,0 +1,16 @@
+---
+last_run: 2026-03-17T13:02:00Z
+tasks_completed: [244]
+tasks_blocked: []
+projects_touched: [pancancer-mtap-prmt5-atlas]
+---
+
+## Context
+
+- pancancer-mtap-prmt5-atlas: Full validation review APPROVED (journal #507)
+- Reviewed all 7 pipeline scripts (01–07), analyst validation report, effect sizes CSVs, subtype analysis
+- All 7 validation items PASS: statistical methodology, robustness (5 ROBUST + 1 MARGINAL confirmed), clinical concordance framing, pancreas mechanism, GBM subtype, population estimates, caveats compiled
+- No blocking issues, no methodology errors found
+- 7 required caveats specified for documentation (small sample sizes, DepMap 2D limits, monotherapy vs combo, N=2 clinical ORR, C-CAT cross-population, PDAC biomarker weakness, breast subtype gap)
+- Code quality notes: duplicated utility functions across scripts, minor JSON serialization issue in analyst report
+- Handoff: PM should create research_writer task to produce final report with required caveats

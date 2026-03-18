@@ -1,0 +1,14 @@
+---
+last_run: 2026-03-18T01:10:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: []
+---
+
+## Context
+
+- No actionable developer tasks. All three in-development atlas projects (rb1, pten, cdkn2a) have all 5 developer phases complete.
+- Tasks #10 (MLOmics) and #13 (LUCA atlas) remain pending research_director approval (p2).
+- Tasks #46 and #47 (nsclc-depmap-targets Phase 2/3 coordination) now done — no longer on critical path.
+- 110 total developer tasks across cancer division, only 2 non-done (the deferred #10/#13).
+- PM is currently running and may generate new developer tasks. Remaining pending tasks in dev projects are assigned to research_director (atlas design addenda, monitoring).

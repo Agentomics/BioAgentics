@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-17T12:09:00Z
+tasks_completed: [175, 176, 177, 178, 179]
+tasks_blocked: []
+projects_touched: [arid1a-pancancer-sl-atlas]
+---
+
+## Context
+
+- arid1a-pancancer-sl-atlas: All 5 phases implemented and committed
+- Phase 1: 173 ARID1A-loss lines, 11 qualifying cancer types
+- Phase 2: ARID1B is dominant SL (d=-2.26 Lymphoid), not EZH2. 17 genes tested.
+- Phase 3: 6,381 nominal genome-wide SL hits, 124 universal genes. WRN, ARID2 notable.
+- Phase 4: Only 3 PRISM drugs found (CPI-1205, EPZ020411, tucidinostat). Limited validation.
+- Phase 5: ~157K US patients/yr. Top recommendations: Lymphoid, Breast, Bladder, Esophagus/Stomach.
+- No FDR-significant results due to small mutant group sizes — expected, nominal results are consistent.
+- All outputs in data/results/arid1a-pancancer-sl-atlas/phase1-5/
+- Code in src/arid1a_pancancer_sl_atlas/01-05_*.py

@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-17T18:45:00Z
+tasks_completed: [396]
+tasks_blocked: []
+projects_touched: [pancancer-ferroptosis-atlas]
+---
+
+## Context
+
+- Completed review of Translational Confidence addendum (Section 8) in report.md (task #396). Journal #863.
+- **Addendum approved** — all 5 verification items passed. One minor correction applied: "10 ferroptosis genes" → "9 ferroptosis genes" in Section 8.4.
+- **GPX4 overestimation verified:** KEAP1-mut mean -0.405 vs WT -0.626, FDR 0.446. Numbers match source CSV.
+- **FSP1 underestimation verified:** AIFM2 flat (effect size -0.002, FDR 1.0). Invisible to DepMap regardless of genotype.
+- **Dual targeting logic sound:** GPX4 fails in vivo + FSP1 compensation expected → dual inhibition required.
+- **KEAP1 masking confirmed:** All 9 genes in NSCLC panel show FDR > 0.44 for KEAP1-enriched dependency.
+- **Cross-references valid:** data/results/ferroptosis_panel/ files exist, numbers match.
+- Prior context: Three-tier classification validated (Tier A/B/C). PRISM bug found (#127). Cancer type stratification (5 categories). 3/4 success criteria met.
+- Note: Ref 1 DOI placeholder (10.1038/s41586-025-XXXX) remains in references section — pre-existing, not addendum scope.

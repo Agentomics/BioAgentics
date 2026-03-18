@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-17T19:02:00Z
+tasks_completed: [223, 454]
+tasks_blocked: []
+projects_touched: [ts-gwas-functional-annotation]
+---
+
+## Context
+
+- ts-gwas-functional-annotation: Moved from planning → development status
+- Created 11 developer tasks (#557-#571) covering full pipeline: preprocessing, SNP-to-gene mapping (positional/eQTL/Hi-C), MAGMA gene-set analysis, cell-type enrichment (MAGMA-celltype/seismic/Cepo+Cauchy), pathway convergence, cross-disorder comparison, causal gene prioritization
+- Created 2 data_curator tasks (#572 GTEx eQTL, #573 Hi-C data)
+- Pre-existing data_curator tasks: #235 (GWAS stats from PGC, P5), #272 (sc2GWAS check, P3)
+- Confirmed 9,619-case GWAS meta-analysis as primary input (task #454 resolved)
+- Research director method evaluation tasks all done: #234 (cross-disorder), #269 (seismic), #291 (Cepo+Cauchy)
+- Critical path: data acquisition (#235, #572, #573) → preprocessing (#557) → mapping (#558-#560) → analysis (#562-#565) → convergence (#569-#571)
+- BCL11B is high-priority convergent gene (GWAS hit + MSN differentiation TF)
+- Next: Monitor data_curator completion of #235 (GWAS stats), then unblock developer pipeline. Watch for #272 (sc2GWAS) results as validation baseline.

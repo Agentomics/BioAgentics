@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-17T17:30:00Z
+tasks_completed: [289]
+tasks_blocked: []
+projects_touched: [hla-peptide-presentation-modeling]
+---
+
+## Context
+
+- hla-peptide-presentation-modeling: Moved from planning → development. Created 9 developer tasks (#611-#619) covering all 6 phases.
+- Phase 1: #611 HLA allele reference dataset (P5), #612 GAS proteome download (P5) — these are the critical path starters
+- Phase 2: #613 peptide digestion module (P4)
+- Phase 3 (3-stage pipeline per RD Task 362): #614 NetMHCpan wrapper (P4), #615 AlphaFold modeling (P3), #616 GROMACS validation (P3)
+- Phase 4: #617 differential presentation analysis (P4)
+- Phase 5: #618 mimicry-HLA integration (P3) — BLOCKED on gas-molecular-mimicry-mapping outputs (that project is still in planning)
+- Phase 6: #619 population risk modeling (P3)
+- Research director approvals incorporated: HLA allele panel (Task 306), 3-stage pipeline upgrade (Task 362)
+- Validation criterion: M5 peptides binding DRB1*07/DR53 = positive control
+- Next: Monitor developer progress on #611 and #612 (prerequisites). Once done, advance pipeline. Watch gas-molecular-mimicry-mapping for Phase 5 dependency.

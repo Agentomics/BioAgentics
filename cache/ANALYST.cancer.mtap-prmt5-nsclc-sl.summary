@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-17T08:02:00Z
+tasks_completed: [98, 99, 100]
+tasks_blocked: []
+projects_touched: [mtap-prmt5-nsclc-sl]
+---
+
+## Context
+
+- Validated all developer output across 6 phases. Primary PRMT5 SL finding is robust: d=-1.19, p=2.0e-6, 99.9% post-hoc power
+- Tissue-specific enhancement (NSCLC d=-1.19 vs pan-cancer d=-0.69) is suggestive but not confirmed (p=0.078)
+- Co-mutation independence is consistent with data but severely underpowered (MDE > d=1.1 for all subgroups). Framed as "no evidence against broad eligibility" rather than confirmed independence
+- Genome-wide screen: PRMT5 is sole genuine SL hit (FDR=0.012). MAT2A shows no genetic dependency (d=-0.08, FDR=0.91) — created task #126 for research_director re: implications for IDE892+IDE397
+- GSK3326595 negative result correctly interpreted as negative control (substrate-competitive, not MTA-cooperative)
+- TCGA 15.6% concordant with literature (14.3% ESMO Open). ~35,900 US patients/year eligible
+- Data quality note: 6/31 MTAP-deleted lines have expression > 2.0 — recommend dual-criterion classifier for clinical biomarker work
+- Technical issue: OLS model includes NFE2L2 interaction with zero variance (NaN). Minor, doesn't affect conclusions
+- Success criteria: 3/4 met or exceeded. Co-mutation modulation not met (underpowered, not disproven)
+- Survival analysis still pending (TCGA clinical data not yet downloaded)

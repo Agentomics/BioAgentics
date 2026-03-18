@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-17T13:54:00Z
+tasks_completed: [108, 112, 114, 115, 116, 117, 118, 168, 211, 277, 309, 310, 311]
+tasks_blocked: []
+projects_touched: [crc-kras-dependencies]
+---
+
+## Context
+
+- All phases complete: 1a-1b (DepMap), 2a-2b (allele dependencies), 3 (drug sensitivity), 4 (TCGA validation), 5 (strategy matrix)
+- All outputs regenerated with G12A in commit 57b5264 (08:36), committed and clean
+- Tasks #309/#310/#311 were created from stale state — files already existed and were correct; marked done with verification
+- G12A: 2 DepMap lines (descriptive only), 10 TCGA patients (4.6%), ~3,167 US cases/yr
+- KRAS_other correctly at 14.2% (down from 18.8% pre-G12A)
+- MEK inhibitors (trametinib, selumetinib) confirmed absent from PRISM 24Q2 — data limitation
+- Output in `output/crc-kras-dependencies/` — all 6 files present and committed
+- No remaining pending tasks for this project

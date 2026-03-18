@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-17T22:13:00Z
+tasks_completed: [224]
+tasks_blocked: [774, 775]
+projects_touched: [cstc-circuit-expression-atlas]
+---
+
+## Context
+
+- cstc-circuit-expression-atlas: Moved project from planning → development. Created 9 developer tasks (IDs 769-777).
+- Task 769 (gene sets module, priority 5) is PREREQUISITE — developer must start here.
+- Tasks 770-773 (priority 4): AHBA spatial mapping, BrainSpan trajectories, iron pathway profiling, WGCNA. Can proceed in parallel once 769 is done. All use publicly available data.
+- Task 774 (striatal scRNA-seq, priority 3): BLOCKED on data_curator task 237 (Wang et al. + GSE151761/GSE152058 downloads).
+- Task 775 (mesoscale striatal zones, priority 3): BLOCKED on data_curator task 414 (GSE303705 download).
+- Task 776 (DBS fiber tracts, priority 3): depends on task 770 (AHBA mapping).
+- Task 777 (circuit vulnerability scoring, priority 2): capstone integration, depends on all preceding modules.
+- 5 data_curator tasks pending (237, 380, 414, 455, 458): cover TS snRNA-seq, mesoscale atlas, HMBA BG atlas, spatial transcriptomics evaluation.
+- Task 359 (research_director: DBS tract evaluation) is done.
+- Next: Monitor developer task 769 completion → unblock 770-773. Monitor data_curator tasks 237/414 → unblock 774/775. Once dev tasks done, create analyst tasks.

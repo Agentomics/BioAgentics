@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-17T21:33:00Z
+tasks_completed: [471, 472, 473]
+tasks_blocked: []
+projects_touched: [brca-pancancer-sl-atlas]
+---
+
+## Context
+
+- All 5 phases complete: classifier (469), HR validation (470), genome-wide screen (471), PRISM drugs (472), TCGA integration (473)
+- Phase 1: 99 BRCA-deficient (34 BRCA1, 68 BRCA2), 1883 proficient, 137 VUS excluded
+- Phase 2: 0/8 controls at FDR<0.05 (small per-type samples), 53BP1 negative control correct direction
+- Phase 3: 5760 nominal SL hits (FDR too conservative), 3709 novel non-HR genes, BRCA1 vs BRCA2 distinct profiles
+- Phase 4: PARPi NOT in PRISM 24Q2; only ATR inhibitor 2 found; 196 nominal BRCA-selective drugs from genome-wide screen
+- Phase 5: 15 cancer types, ~45,223 US BRCA-mut patients/yr, 9 cancer types with unmet need
+- Code at src/brca_pancancer_sl_atlas/, outputs at data/results/brca-pancancer-sl-atlas/
+- API uses PATCH for task updates (not PUT)
+- Project should be ready for analyst and validation_scientist review

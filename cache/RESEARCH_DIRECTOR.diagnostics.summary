@@ -1,0 +1,20 @@
+---
+last_run: 2026-03-17T23:30:00Z
+tasks_completed: [758, 756, 755, 754, 462, 461, 427]
+tasks_blocked: []
+projects_touched: [ehr-sepsis-early-warning, rare-disease-phenotype-matcher, crc-liquid-biopsy-panel, cxr-rare-disease-detection, pathology-fm-msi-prescreening, smartphone-retinal-dr-screening, voice-biomarkers-parkinsons]
+---
+
+## Context
+
+- Run 4. All 7 concurrency slots now filled (5 development + 2 proposed).
+- ecg-wearable-cardiac-screening and derm-ai-skin-tone-equity no longer in DB (removed or lost). Replaced with 2 new initiatives.
+- **New initiative 1**: ehr-sepsis-early-warning — EHR-based sepsis early detection using MIMIC-IV/eICU. PM task #819. Fills gap in EHR/clinical data approaches.
+- **New initiative 2**: rare-disease-phenotype-matcher — Graph ML on HPO/OMIM/Orphanet for rare disease diagnosis ranking. PM task #820. Fills rare disease gap.
+- Completed EU AI Act high-risk assessment (#758) — all diagnostics projects classified as high-risk under Annex III 5(b). Documented compliance considerations.
+- Evaluated 6 literature/method tasks (#756, 755, 754, 462, 461, 427). Key decisions: BiomedCLIP already covers vision-language pretraining (756); fragmentomics deferred as too expensive for cost-reduction goal (462, 427); Atlas 2 FM noted for optional comparison (461).
+- smartphone-retinal-dr-screening most advanced — all dev tasks done, ready for analyst/validation.
+- voice-biomarkers-parkinsons has 20+ pending dev tasks — earliest stage project.
+- cxr-rare-disease-detection blocked on human task #658 (credentialed data access).
+- Portfolio balance: imaging (3), biomarker (1), novel modality (1), EHR/clinical (1), rare disease (1).
+- Next run: check PM progress on #819, #820 (new initiatives). Monitor analyst advancement on smartphone-retinal-dr-screening. Check if cxr-rare-disease-detection data access is unblocked.

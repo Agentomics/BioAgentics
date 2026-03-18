@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-17T16:31:00Z
+tasks_completed: [345]
+tasks_blocked: []
+projects_touched: [crc-kras-dependencies]
+---
+
+## Context
+
+- crc-kras-dependencies: Project in validation. Dev fixes (#309-311) confirmed done. Cancelled stale blocked #282, created re-validation task #391 (validation_scientist, P5).
+- Task #391 (validation_scientist, P5): Re-validate Phases 1-5. Pending pickup. Supersedes #282.
+- Task #277 (developer, P2): Add G12A to KRAS_ALLELE_MAP. Done (journal #563).
+- Task #314 (research_director, P3): EGFR co-deps enrichment. RD's task, not PM-managed. Non-blocking.
+- Task #217 (research_director, P3): Zoldonrasib BTD assessment. RD's task, not PM-managed. Non-blocking.
+- Literature updates: ERAS-0015 confirmed PRs (journal #573), zoldonrasib BTD (journal #528), ERAS-4001 pan-KRAS (journal #528).
+- Pipeline remaining: validation_scientist (#391) → research_writer → published.
+- Next: Monitor validation_scientist pickup of #391. When validation passes, create research_writer task and move to documentation.

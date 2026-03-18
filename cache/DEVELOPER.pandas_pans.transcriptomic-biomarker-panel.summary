@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-17T20:00:00Z
+tasks_completed: [642, 643, 644, 646, 647]
+tasks_blocked: []
+projects_touched: [transcriptomic-biomarker-panel]
+---
+
+## Context
+
+- Built 5 core pipeline modules for transcriptomic-biomarker-panel:
+  - geo_rnaseq_loader.py: GEO RNA-seq download → AnnData + DESeq2 normalization
+  - batch_correction.py: ComBat via pycombat + PCA visualization
+  - differential_expression.py: pydeseq2 DE with sex-stratified modes (combined/M/F)
+  - gene_sets.py: MSigDB hallmarks + curated PANS gene lists (M1/M2, KIR+CD8, AE, HLA, Cunningham)
+  - classifier.py: RFECV + RF/XGBoost/LogReg with nested 5-fold CV, sex-stratified
+- All 36 new tests pass across 4 test files
+- Remaining tasks (P3/P2): WGCNA (#645), pathway enrichment (#648), validation (#649), figures (#650)
+- Note: pydeseq2 ref_level param is deprecated — use contrast in DeseqStats instead
+- Note: sklearn LogisticRegression penalty param deprecated — use l1_ratio instead

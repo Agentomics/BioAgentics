@@ -1,0 +1,21 @@
+---
+last_run: 2026-03-17T22:30:00Z
+tasks_completed: [531, 532, 533, 534, 535, 536, 537, 538]
+tasks_blocked: []
+projects_touched: [nod2-variant-functional-impact]
+---
+
+## Context
+
+- nod2-variant-functional-impact: All 8 tasks COMPLETED. Full pipeline implemented:
+  - Task 531: ClinVar + gnomAD variant collection (4474 merged variants)
+  - Task 532: AlphaFold v6 structural features (1040 residues, pLDDT/rSASA/domain/active_site_distance)
+  - Task 533: dbNSFP predictor scores via MyVariant.info (hg38, CADD/REVEL/SIFT/PhyloP/GERP/phastCons/AlphaMissense)
+  - Task 534: VarMeter2 features (nSASA, Grantham-based ddG proxy, 708 missense variants)
+  - Task 535: Girdin binding domain features (990-1040 LRR, L1007fs correctly abolishes)
+  - Task 536: GOF/neutral/LOF training set (5 GOF, 5 LOF, 301 neutral)
+  - Task 537: GB+LR ensemble classifier (macro AUC=0.779, top features: AlphaMissense, girdin_distance)
+  - Task 538: VUS classification (665 VUS, 440 high-confidence, GOF=125/neutral=493/LOF=47)
+- Code in src/bioagentics/data/nod2/ (7 modules), tests in tests/test_nod2_*.py (91 tests)
+- Key finding: girdin_interface_distance is 2nd most important feature — novel validation of Ghosh et al. mechanism
+- Note: AUC below 0.90 target due to extreme class imbalance (5:301:5). Analyst should consider augmenting training set.

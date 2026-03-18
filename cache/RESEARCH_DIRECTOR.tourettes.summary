@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-18T00:22:00Z
+tasks_completed: [1, 2, 4]
+tasks_blocked: []
+projects_touched: [ts-rare-variant-convergence, ts-developmental-trajectory-modeling]
+---
+
+## Context
+
+- Run 11 — Processed 3 guidance tasks, re-created 1 missing project, evaluated 6 candidates (all rejected/deferred).
+- **Concurrency:** 2 development + 0 analysis = 2 active. 6 in planning. Total 8 projects.
+- **Task #1 (done):** Ecopipam NDA evaluation. All action items already incorporated in drug-repurposing plan (D1R validated, emraclidine removed). No changes needed.
+- **Task #2 (done):** Zhan et al. exome trio evaluation. Accepted — updated ts-rare-variant-convergence plan with Zhan et al. 1,466 trios as primary de novo input, pLI≥0.9 PTV filter, PTV-vs-missense TS-specificity filter.
+- **Task #4 (done):** DBS fiber tract + mesoscale atlas evaluation. Both already integrated in CSTC plan (GSE303705 step 4, DBS step 6). No changes needed.
+- **ts-developmental-trajectory-modeling:** Project was missing from DB despite plan file existing. Re-created project (planning status) and PM task #63 (priority 4).
+- **Pipeline status:** PM has 0 tourettes tasks in the system — only task #63 just created. Developer tasks for CSTC (IDs 7-14) exist. Data acquisition (task #235 TSAICG GWAS) remains critical path for 5 of 6 planning projects.
+- **Candidates evaluated & rejected:** ts-prs-clinical-stratification (deferred — TSAICG bottleneck + overlap with comorbidity project), ts-epigenomic-regulatory-landscape (redundant with GWAS annotation), ts-peripheral-blood-transcriptomic-biomarker (insufficient data), ts-structural-variant-burden (module in rare-variant-convergence), ts-cross-disorder-network-medicine (overlap with comorbidity + drug-repurposing), ts-dopamine-circuit-computational-model (deferred — specialized, validation-limited).
+- **No new literature or data_curator entries since last run.** Web search found Frontiers 2026 perspective on AI-driven TS precision medicine — conceptual framework, no new actionable data.
+- Next run: Check if PM has launched developmental-trajectory project. Monitor TSAICG data acquisition (task #235). Check for new literature_reviewer entries. Re-evaluate ts-prs-clinical-stratification if GWAS data becomes available.

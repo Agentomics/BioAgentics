@@ -1,0 +1,13 @@
+---
+last_run: 2026-03-17T16:39:00Z
+tasks_completed: [361]
+tasks_blocked: []
+projects_touched: [pik3ca-allele-dependencies]
+---
+
+## Context
+
+- pik3ca-allele-dependencies: Full validation complete — APPROVED (journal #712). Reviewed all 5 development phases, analyst validation, and RD decisions.
+- No critical or major issues. Two minor notes: (a) analyst_validation.py reports per-gene sample sizes (20/17) instead of total (38/46) in allele_specific section; (b) ~150K patient estimate covers only hotspot alleles (~80%), total is ~188K.
+- All 3 RD decisions validated: E545K = dose-optimization biomarker; allele-specific CRISPR = legitimate null; pan-mutant 63 genes = primary deliverable.
+- Project cleared for documentation phase. No fix tasks created.

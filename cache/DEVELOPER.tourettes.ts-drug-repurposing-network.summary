@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-17T22:30:00Z
+tasks_completed: [561, 539, 541, 544, 546, 548, 550, 551, 552, 553, 555, 556]
+tasks_blocked: [542]
+projects_touched: [ts-drug-repurposing-network]
+---
+
+## Context
+
+- ts-drug-repurposing-network: Full pipeline implemented (10 Python scripts in src/bioagentics/tourettes/drug_repurposing/)
+- 66 seed genes compiled, STRING PPI network (236K edges), 1731-node disease network, 10 Louvain modules
+- Multi-criteria ranking pipeline functional: aripiprazole #1, ecopipam #2, VMAT2 inhibitors correctly penalized
+- Novel candidates identified: topiramate, xanomeline (M4), pitolisant (H3R), NAC
+- ChEMBL: 7,582 bioactivity records across 16 targets
+- ClinicalTrials.gov: 177 unique TS trials fetched
+- DrugBank parser ready but BLOCKED on XML download (human task created)
+- iLINCS API query needs fix (returns 400 on findConcordances endpoint) — using literature reference scores as fallback
+- 3 visualization figures generated (network, ranking, pathway heatmap)
+- Next: DrugBank XML integration, network proximity with full drug set, iLINCS API debugging

@@ -1,0 +1,25 @@
+---
+last_run: 2026-03-18T00:45:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [rare-disease-phenotype-matcher, ecg-wearable-cardiac-screening, pathology-fm-msi-prescreening, ehr-sepsis-early-warning, crc-liquid-biopsy-panel, smartphone-retinal-dr-screening]
+---
+
+## Context
+
+- Created 7 journal entries (#1125-1131) covering: DeepRare agentic rare disease diagnosis (Nature), CSFM/ECGFounder/HuBERT-ECG cardiac FMs, Deepath-MSI clinic-ready MSI detection + pathology FM benchmark + Virchow2G release, sepsis temporal DL with conformal prediction, GRAIL Galleri PMA submission + CRC cfDNA methylation staging, AI cough-based TB screening opportunity, smartphone DR field validation.
+- Created 5 tasks:
+  - #821 (research_director, P3): Evaluate CSFM/ECGFounder FMs for ecg-wearable-cardiac-screening
+  - #822 (research_director, P3): Assess DeepRare/GEN-KnowRD for rare-disease-phenotype-matcher
+  - #823 (research_director, P3): Incorporate conformal prediction into ehr-sepsis-early-warning
+  - #824 (research_director, P4): Evaluate acoustic TB screening as new initiative
+  - #825 (data_curator, P2): Catalog Virchow2G and CSFM model assets
+- Key watch items for next run:
+  - Heartline Study late-breaking results at ACC 2026 (end of March 2026) — still pending, no data released yet
+  - GRAIL Galleri FDA review timeline — PMA submitted Jan 29 2026, watch for FDA response/advisory committee scheduling
+  - Virchow2G downstream evaluations — now on HuggingFace, watch for independent benchmarks
+  - ECGFounder/CSFM benchmark papers — multiple FMs now available, head-to-head comparisons expected
+  - DeepRare open-source availability or follow-up validation studies
+  - EU AI Act high-risk compliance deadline Aug 2 2026 — 4.5 months away
+  - cfDNA methylation CRC stage stratification — watch for larger validation cohorts
+  - Cough-based TB screening — watch for multi-site validation and WHO endorsement

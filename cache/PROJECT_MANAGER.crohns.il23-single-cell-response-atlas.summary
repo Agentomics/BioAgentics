@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-17T18:30:00Z
+tasks_completed: [202]
+tasks_blocked: []
+projects_touched: [il23-single-cell-response-atlas]
+---
+
+## Context
+
+- il23-single-cell-response-atlas: Launched initiative from planning → development status.
+- Created 7 developer tasks (#522-#528) covering full scRNA-seq pipeline: QC, integration, annotation, pathway scoring, differential analysis, SCENIC regulons, GEO data loading.
+- Incorporated FCGR1A (CD64) into pathway gene module per literature_reviewer finding (journal #741, Bhol et al. guselkumab dual mechanism).
+- Data curator tasks pending: #231 (IBDverse evaluation), #411 (GSE134809 registration). Developer can start pipeline code in parallel.
+- Next: Monitor developer progress on #522-#528. When done, create analyst tasks for running the pipeline on acquired data. Watch for data_curator completion to unblock dataset-dependent work.
+- Research director task #227 (mechanism-class framing) already incorporated and marked done.

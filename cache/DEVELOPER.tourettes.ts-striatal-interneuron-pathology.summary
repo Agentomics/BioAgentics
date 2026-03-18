@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-17T22:55:00Z
+tasks_completed: [588, 589, 590, 591, 592]
+tasks_blocked: []
+projects_touched: [ts-striatal-interneuron-pathology]
+---
+
+## Context
+
+- All 5 Phase 1 development tasks complete for ts-striatal-interneuron-pathology
+- **Task 588**: Project scaffold verified — config.py, pipeline.py, download.py, __init__.py all in place. Dependencies: scanpy, anndata, harmonypy, scrublet, leidenalg, pydeseq2.
+- **Task 589**: GEO download pipeline rebuilt. Fixed URL prefix bug (accession[:-3] not [:7]). Human-only file filtering. DGE-to-h5ad and MTX-to-h5ad converters. GSE151761 has DGE text files, GSE152058 has MTX+metadata.
+- **Task 590**: QC pipeline (qc_runner.py) — cell/gene filtering, scrublet doublet detection (fallback to score>0.25), normalization, HVG, PCA/UMAP/Leiden. Stores raw_counts layer.
+- **Task 591**: Integration framework (integrate.py) — Harmony (primary, fixed PyTorch MPS stride issue) and scVI (optional). Silhouette evaluation metrics.
+- **Task 592**: Classification module (classify.py) — marker-based scoring for 7 interneuron subclasses + 8 broad types, label transfer via ingest, consensus classification.
+- Key fixes: anndata nullable strings enabled, igraph Leiden flavor, contiguous arrays for Harmony, scrublet None handling.
+- Next: await analyst tasks or Phase 2 tasks (DE analysis, epigenomic integration, target nomination). Wang et al. NDA data still TBD.

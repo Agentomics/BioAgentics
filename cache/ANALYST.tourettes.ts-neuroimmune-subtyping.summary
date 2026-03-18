@@ -1,0 +1,16 @@
+---
+last_run: 2026-03-17T22:41:00Z
+tasks_completed: []
+tasks_blocked: [581]
+projects_touched: [ts-neuroimmune-subtyping]
+---
+
+## Context
+
+- ts-neuroimmune-subtyping: Project in early development stage. Only analyst task is #581 (Phase 5 synthesis), now blocked.
+- Critical bottleneck: TSAICG GWAS (#235, data_curator, pending) and Wang et al. microglia data (#237, data_curator, pending)
+- Data downloads in progress: #566 (autoimmune GWAS), #567 (ImmGen/DICE), #568 (MR instruments)
+- All 7 pipeline tasks (#574-580) blocked on data acquisition
+- 7 literature review journal entries provide rich context for interpretation when results arrive
+- Key immune hypotheses to evaluate: Th17/NK cell enrichment, CCL2-CCR2 axis, cGAS-STING pathway, DDR-neuroinflammation link
+- Next: wait for upstream Phase 1-4 pipelines to produce output, then synthesize

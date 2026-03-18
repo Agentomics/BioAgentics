@@ -1,0 +1,20 @@
+---
+last_run: 2026-03-17T19:15:00Z
+tasks_completed: [417]
+tasks_blocked: []
+projects_touched: [pathology-fm-msi-prescreening]
+---
+
+## Context
+
+- pathology-fm-msi-prescreening: Initial planning complete. Broke research plan into 16 developer tasks across 5 phases.
+- Phase 1 Data Prep: #666 GDC API client, #667 MSI label curation, #668 WSI tiling, #669 stratified splits
+- Phase 2 Feature Extraction: #670 UNI 2, #671 CONCH, #672 ResNet-50
+- Phase 3 Slide-Level Classification: #673 ABMIL, #674 CLAM, #675 TransMIL, #676 nested CV training pipeline
+- Phase 4 Cross-Cancer Generalization: #677 leave-one-cancer-out eval
+- Phase 5 Validation & Clinical Utility: #678 CPTAC validation, #679 calibration, #680 operating point/cost model, #681 attention heatmaps
+- Critical path (priority 4): #666, #667, #668, #670, #673, #676
+- Project status: development. All tasks assigned to developer, all pending.
+- Task #461 (research_director): evaluate Atlas 2 FM as additional comparison extractor — awaiting RD guidance on access terms and whether to add.
+- Journal entry #921 recorded planning summary.
+- Next: monitor developer progress on Phase 1 tasks, advance to analyst tasks when development completes.

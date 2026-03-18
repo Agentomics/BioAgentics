@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-17T16:40:00Z
+tasks_completed: [351]
+tasks_blocked: []
+projects_touched: [arid1a-pancancer-sl-atlas]
+---
+
+## Context
+
+- arid1a-pancancer-sl-atlas: Full validation completed and APPROVED (journal #715)
+- Reviewed all 6 pipeline scripts (01-05 + analyst_validation) — no code errors
+- 17/17 claimed effect sizes independently verified from raw data
+- Leave-one-out robustness: all 6 ARID1B-significant types are stable; all novel targets (HMGCR, ADCK5, MDM2) stable in primary cancer types
+- Permutation testing: ARID1B binomial pattern confirmed (p=5.8e-06)
+- PIK3CA negative result verified (d=0.004, p=0.55)
+- Caveats: small-N types (Skin n=3, Biliary n=4, Breast n=5) flagged as preliminary; PRISM 3/12 drug coverage
+- Validation script: src/arid1a_pancancer_sl_atlas/validation.py
+- Results: data/results/arid1a-pancancer-sl-atlas/validation/
+- Next: project should move to documentation (research_writer)

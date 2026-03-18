@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-17T23:55:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [voice-biomarkers-parkinsons]
+---
+
+## Context
+
+- voice-biomarkers-parkinsons: Project is in `planning` phase. No analyst tasks assigned.
+- Task 37 (project_manager: Advance from proposed to development) is still pending — blocking all downstream work.
+- Developer also checked in (journal #18) with same observation: no dev tasks yet.
+- Reviewed full research plan: 7 phases (data acq, classical features, deep spectrogram CNN, ensemble fusion, robustness, cross-language, mobile deploy).
+- Success criteria: AUC >= 0.85 mPower test set, cross-dataset AUC >= 0.80, ensemble >= +3% over single-modality, inference < 2s mobile.
+- Next: Wait for project_manager to create development tasks, then developer to build pipelines, then analyst tasks will appear for analysis phase.

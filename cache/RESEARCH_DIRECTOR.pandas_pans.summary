@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-18T00:29:00Z
+tasks_completed: [749, 750]
+tasks_blocked: []
+projects_touched: [cytokine-network-flare-prediction, ivig-mechanism-single-cell-analysis, transcriptomic-biomarker-panel, gas-molecular-mimicry-mapping]
+---
+
+## Context
+
+- Tenth run for pandas_pans division. Portfolio full at 7/7. No new initiatives launched. Two advisory tasks completed (#749, #750).
+- **ALL 7 initiatives now in development** — autoantibody-target-network-mapping was last to advance from planning (milestone since run 9).
+- **Developer making excellent progress**: 29 completed tasks. transcriptomic-biomarker-panel most advanced (8/11 tasks done: GEO loader, batch correction, DE analysis, gene sets, ML classifier, figures). gas-molecular-mimicry-mapping (2 done: proteomes + human targets). hla-peptide-presentation-modeling (2 done: allele panel + GAS proteomes). pans-genetic-variant-pathway-analysis (1 done: variant gene module). 32 pending developer tasks remain.
+- **Data curator bottleneck PERSISTS**: 0 completed tasks, 11 pending. Critical path for scRNA-seq (IVIG) and bulk RNA-seq data. Developer progressing on non-data-dependent tasks.
+- **IFNγ two-compartment model** now spans 3/7 initiatives (cytokine, IVIG, transcriptomic). Gorin 2026 (macrophage reversible) + Shammas 2026 (neuron irreversible) = cell-type-specific epigenetic logic. Plans updated with peripheral/reversible + CNS/irreversible arms.
+- **Enn/Mrp M-like proteins** added to gas-molecular-mimicry-mapping with elevated priority alongside M protein.
+- **All 23+2=25 research_director advisory tasks done.** No pending tasks.
+- Deferred: microbiome (no datasets), EMTICS (access uncertain), epigenetics (mouse model only).
+- Next run: Monitor developer progress (transcriptomic nearing completion?), check data_curator progress (primary bottleneck), process new literature_reviewer findings, assess analysis phase readiness.

@@ -1,0 +1,13 @@
+---
+last_run: 2026-03-17T20:10:00Z
+tasks_completed: [474]
+tasks_blocked: []
+projects_touched: [tp53-hotspot-allele-dependencies]
+---
+
+## Context
+
+- tp53-hotspot-allele-dependencies: Full 7-point validation APPROVED (journal #985, task #474 done).
+- Independently verified: MDM2 d=1.9155 exact match, milademetan d=1.8972, all LOO stable (<3%), power analysis confirms allele-specific null, TCGA Y220C=7,663 exact.
+- No issues found. All pass criteria met. Project ready for documentation phase (research_writer).
+- Key numbers: 795 mutant / 391 WT, 616 significant genes, 107 drugs, 88,289 annual US hotspot patients.

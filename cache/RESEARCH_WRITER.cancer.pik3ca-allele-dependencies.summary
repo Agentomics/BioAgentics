@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-17T20:51:00Z
+tasks_completed: [466]
+tasks_blocked: []
+projects_touched: [pik3ca-allele-dependencies]
+---
+
+## Context
+
+- pik3ca-allele-dependencies: Wrote comprehensive research report at reports/cancer/pik3ca-allele-dependencies.md (345 lines, 14 references).
+- Key findings documented: 63 pan-mutant dependencies, E545K inavolisib dose-optimization biomarker, allele-specific CRISPR null, ~188K annual US patients.
+- Findings summary stored in project record (update_project findings_content).
+- Report committed to main branch. Task #466 set to done. Journal entry #1002 created.
+- Project status was at "documentation" when report was written.
+- All validation approved (VS journal #712, RD journal #722). No issues.

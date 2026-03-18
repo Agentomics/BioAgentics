@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-17T23:20:00Z
+tasks_completed: [611, 612, 613, 614, 617]
+tasks_blocked: []
+projects_touched: [hla-peptide-presentation-modeling]
+---
+
+## Context
+
+- hla-peptide-presentation-modeling: Implemented core Phase 1-4 pipeline modules
+  - HLA allele panel (hla_allele_panel.json): 9 alleles, 3 susceptibility, 2 protective, 2 control, 2 Class I
+  - GAS proteome manifest: symlinked 6 serotypes from gas-molecular-mimicry-mapping. M5/M18 from UniParc (no VF annotation)
+  - Peptide digestion (peptide_digestion.py): ~12.2M MHC-I, ~3M MHC-II peptides. VF flagging works for 4/6 serotypes
+  - IEDB binding wrapper (netmhcpan_predict.py): NetMHCpan not local, uses IEDB REST API. Tested with 20 peptides x 7 alleles
+  - Differential presentation (differential_presentation.py): fold-change analysis, Fisher exact VF enrichment, serotype comparison
+- Data files are gitignored (data/*), only source code committed
+- Remaining tasks: 615 (AlphaFold, P3), 616 (GROMACS, P3), 618 (mimicry integration, P3), 619 (population risk, P3)
+- Note: full prediction run needs ~500K unique peptides x 7 alleles via IEDB API — significant time/resources needed
+- Note: DQA1*03:01 pairing with DQB1 may need investigation for accurate MHC-II heterodimer predictions

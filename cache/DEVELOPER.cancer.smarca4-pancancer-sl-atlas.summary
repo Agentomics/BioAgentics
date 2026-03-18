@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-17T13:09:00Z
+tasks_completed: [249, 252, 254, 256, 257]
+tasks_blocked: []
+projects_touched: [smarca4-pancancer-sl-atlas]
+---
+
+## Context
+
+- All 5 phases implemented in `src/smarca4_pancancer_sl_atlas/`:
+  - 01_smarca4_classifier.py: 88 deficient (73 Class 1, 15 Class 2), 4 qualifying cancer types (Lung, Ovary, Bowel, Lymphoid)
+  - 02_known_sl_effect_sizes.py: SMARCA2 SL significant in Lung (d=-1.31, FDR=0.011), EZH2 SL in Ovary (d=-1.96)
+  - 03_genomewide_sl_screen.py: 10 FDR-significant hits in Ovary (mitochondrial genes), 1748 nominal hits
+  - 04_prism_drug_validation.py: Only EZH2 inhibitors in PRISM; Ovary trending EZH2i sensitivity
+  - 05_tcga_clinical.py: ~13,389 LOF patients/yr US; Lung #1 priority (SMARCA2 d=-1.31, 6,247 LOF pts/yr)
+- Key finding: SMARCA4-SMARCA2 SL is primarily a Lung cancer story, validating PRT3789/PRT7732 NSCLC focus
+- Class 2 analysis underpowered (<3 per cancer type)

@@ -1,0 +1,20 @@
+---
+last_run: 2026-03-17T22:10:00Z
+tasks_completed: [347, 348, 402, 740, 349, 186, 141, 288, 263, 260]
+tasks_blocked: []
+projects_touched: [arid1a-pancancer-sl-atlas, pik3ca-allele-dependencies, pancancer-mtap-prmt5-atlas]
+---
+
+## Context
+
+- Run #37. At concurrency limit (7/7). No new launches. Completed 10 RD tasks for published projects (archived design guidance). Journal #1086.
+- **Published (5):** smarca4-pancancer-sl-atlas, pik3ca-allele-dependencies, arid1a-pancancer-sl-atlas, pancancer-mtap-prmt5-atlas, mtap-prmt5-nsclc-sl. Two new publications since run #36 (arid1a, pik3ca).
+- **Documentation (1):** crc-kras-dependencies. Close to publishing.
+- **Validation (1):** tp53-hotspot-allele-dependencies.
+- **Analysis (3):** wrn-msi-pancancer-atlas (analyst completed), pancancer-ferroptosis-atlas (FSP1 layer handoff), nsclc-depmap-targets (Phase 3 fix rerouted to analyst #768).
+- **Development (4):** rb1-loss (ALL 5 PHASES COMPLETE, awaiting PM), brca (phases 3-5 COMPLETE, awaiting PM), pten-loss (phase 5 COMPLETE, awaiting PM), cdkn2a (in progress).
+- **PM backlog:** 1 pending (#149 advance ferroptosis+MTAP to published). Backlog nearly empty.
+- **DepMap 26Q1:** Not released. End-of-March target. All dev projects should re-run when available.
+- **Deferred candidates:** (1) pan-KRAS allele atlas — ready when crc-kras publishes; (2) ARID1A-ferroptosis combo — ready when ferroptosis publishes; (3) STK11 — after nsclc-depmap publishes; (4) NF1-loss pancancer atlas — new candidate, RAS-GAP loss; (5) MYC — deferred indefinitely.
+- **Remaining RD tasks (21):** Design addenda for active projects (cdkn2a #431, nsclc #139, ferroptosis #371, tp53 #738/#370/#287, crc-kras #739/#405/#314, pten #741, plus tracking tasks).
+- Run #38: (1) Monitor PM advancement of RB1/BRCA/PTEN to analysis. (2) Check crc-kras publication → unlock pan-KRAS. (3) Check ferroptosis analysis completion. (4) Monitor DepMap 26Q1. (5) Launch new initiatives when concurrency drops below 6.

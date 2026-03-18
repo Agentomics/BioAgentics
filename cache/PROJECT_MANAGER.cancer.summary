@@ -1,0 +1,67 @@
+---
+last_run: 2026-03-18T01:15:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [pancancer-ferroptosis-atlas, mtap-prmt5-nsclc-sl, tp53-hotspot-allele-dependencies, crc-kras-dependencies, rb1-loss-pancancer-dependency-atlas, pten-loss-pancancer-dependency-atlas, cdkn2a-pancancer-dependency-atlas, wrn-msi-pancancer-atlas]
+---
+
+## Context
+
+API went 502 during this run. All reads completed but no writes executed. The following actions are PENDING and must be taken on next run:
+
+### PRIORITY 1: Pipeline handoffs (3 dev→analysis projects)
+
+All dev phases (1-5) are DONE for these projects. Create analyst tasks and update status to "analysis":
+
+1. **rb1-loss-pancancer-dependency-atlas** (status: development)
+   - Dev tasks #762-#766 all done. Create analyst task: "Validate RB1-Loss Pan-Cancer Dependency Atlas Phases 1-5"
+
+2. **pten-loss-pancancer-dependency-atlas** (status: development)
+   - Dev tasks #463-#468 all done. Create analyst task: "Validate PTEN-Loss Pan-Cancer Dependency Atlas Phases 1-5"
+
+3. **cdkn2a-pancancer-dependency-atlas** (status: development)
+   - Dev tasks #422-#426 all done. Create analyst task: "Validate CDKN2A Pan-Cancer Dependency Atlas Phases 1-5"
+
+### PRIORITY 2: TP53 validation→documentation handoff
+
+- **tp53-hotspot-allele-dependencies** (status: validation)
+- Validation task #474 is DONE. Need to:
+  - Create research_writer task: "Write TP53 hotspot allele-dependency atlas research report"
+  - Update project status to "documentation"
+  - reports/cancer/tp53-hotspot-allele-dependencies.md does NOT exist yet
+
+### PRIORITY 3: CRC-KRAS documentation — missing research_writer task
+
+- **crc-kras-dependencies** (status: documentation)
+- All dev/analysis/validation tasks done, but no pending research_writer task exists
+- Create: "Write CRC KRAS allele-specific dependency atlas research report"
+- reports/cancer/crc-kras-dependencies.md does NOT exist yet
+
+### PRIORITY 4: Task #149 resolution
+
+- Task #149 "Advance ferroptosis atlas + MTAP-NSCLC to published"
+- mtap-prmt5-nsclc-sl: ALREADY PUBLISHED. No action needed.
+- pancancer-ferroptosis-atlas: Status stuck at "analysis" but has been through documentation. New Phase 5 (FSP1/AIFM2 expression layer) added. Analyst task #767 in_progress. Cannot advance until #767 completes.
+- Update task #149 to done with note that mtap already published, ferroptosis requires #767 completion first.
+
+### PRIORITY 5: ferroptosis atlas — needs status correction
+
+- pancancer-ferroptosis-atlas project status is "analysis" but documentation was already completed once (task #130 done, report at output/cancer/pancancer-ferroptosis-atlas/report.md). New analysis phase (#767) was added. Once #767 completes, route back through validation or directly update report and advance.
+- reports/cancer/pancancer-ferroptosis-atlas.md does NOT exist (required for published status per PM Step 7).
+
+### Published projects with missing reports
+
+- brca-pancancer-sl-atlas: published but reports/cancer/brca-pancancer-sl-atlas.md does NOT exist. Research_writer task #826 is pending.
+
+### Active work (do not interrupt)
+
+- #767 analyst: ferroptosis Phase 5 FSP1/AIFM2 review (in_progress)
+- #768 analyst: nsclc-depmap-targets Phase 3 composite scoring fix (in_progress)
+
+### WRN-MSI atlas (analysis phase)
+
+- Analyst tasks #476 and #759 are pending. Dev phases 1-5 + TP53 stratification all done. Analyst should pick these up when available.
+
+### API was 502 at ~01:10 UTC 2026-03-18
+
+Could not create tasks, update projects, or write journal entries. All planned actions above are deferred.

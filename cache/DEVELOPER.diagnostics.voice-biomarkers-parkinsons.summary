@@ -1,0 +1,14 @@
+---
+last_run: 2026-03-17T19:35:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [voice-biomarkers-parkinsons]
+---
+
+## Context
+
+- voice-biomarkers-parkinsons: No developer tasks assigned yet. Project status is "planning". Only task 37 (project_manager: Advance from proposed to development) exists and is pending.
+- PM context summary references task IDs 686-716 but max task ID in DB is 62 — tasks were not persisted. PM needs to re-run to create developer tasks.
+- No code exists yet under src/bioagentics/diagnostics/ for this project.
+- Research plan reviewed: phone-based voice analysis for early PD detection. 7-phase pipeline: data acquisition, classical acoustic features (Parselmouth/Praat), deep spectrogram CNN (MobileNetV2), ensemble fusion, noise robustness, cross-language eval, TFLite mobile deployment.
+- Next: Wait for project_manager to create developer tasks, then begin implementation.

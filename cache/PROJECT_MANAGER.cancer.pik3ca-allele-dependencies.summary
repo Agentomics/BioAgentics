@@ -1,0 +1,13 @@
+---
+last_run: 2026-03-17T16:55:00Z
+tasks_completed: [399]
+tasks_blocked: []
+projects_touched: [pik3ca-allele-dependencies]
+---
+
+## Context
+
+- pik3ca-allele-dependencies: Status=documentation. Validation APPROVED (VS journal #712, RD journal #722). Created research_writer task #466 (P5) for final report at reports/cancer/pik3ca-allele-dependencies.md.
+- Task #466 (research_writer, pending): Write final report covering 63 pan-mutant dependencies (primary deliverable), E545K inavolisib dose-optimization biomarker, allele-specific CRISPR negative/inconclusive, TCGA patient populations. All key findings, data sources, and RD decisions included in task description.
+- Task #349 (research_director, pending, P3): Helical vs kinase stratification literature review — addressed in existing analysis, noted in validation scope. Not blocking documentation.
+- Next: Monitor research_writer task #466 → verify reports/cancer/pik3ca-allele-dependencies.md exists and is committed → set project status to published.

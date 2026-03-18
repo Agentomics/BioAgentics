@@ -1,0 +1,27 @@
+---
+last_run: 2026-03-17T20:45:00Z
+tasks_completed: [82, 83, 84, 85, 127, 302, 761]
+tasks_blocked: []
+projects_touched: [pancancer-ferroptosis-atlas]
+---
+
+## Context
+
+- All 5 phases implemented and running in `pipelines/pancancer-ferroptosis-atlas/`
+- Phase 1: 1186 lines, 20 genes, 30 cancer types ranked. Top: Lymphoid, Bone, Myeloid, PNS
+- Phase 2: 48 NRF2-active lines. FSP1/NRF2 independence confirmed. No FDR-significant results (power-limited)
+- Phase 3: TCGA NRF2-WT fractions integrated, FSP1 2x weighted. PRISM: 0 ferroptosis compounds in 24Q2. Expression signature for 33 lineages
+- Phase 4: NSCLC KEAP1-mut reference from 11 lines. Top analogs: Bowel, Biliary, Breast. 8 divergent types identified
+- Phase 5 (Task #761): FSP1/AIFM2 expression layer + defense profile classification
+  - 1699 lines with expression, 1112 with expression+dependency
+  - 4 defense profiles: GPX4-dependent (292), FSP1-dependent (292), dual-high (264), dual-low (264)
+  - Top dual-high: Liver 67%, Eye 60%, Cervix 56%, Biliary Tract 53%, Pancreas 48%
+  - KEAP1→FSP1 upregulation confirmed in Lung (d=0.91, p=0.005). Other types lack KEAP1-mut sample size.
+  - KEAP1 boxplot skipped (only Lung has ≥3 KEAP1-mut lines)
+- Task #127: Fixed PRISM substring match bug. Added word boundary regex. Added auranofin to compound list.
+- Task #302: Added Translational Confidence addendum (Section 8) to report.md.
+- DepMap data path: data/depmap/25q3/ (not data/depmap/)
+- GLS1 = GLS in DepMap column names
+- Results in data/results/pancancer-ferroptosis-atlas/phase{1-5}/
+- Report at output/cancer/pancancer-ferroptosis-atlas/report.md
+- Run script as: uv run python "pipelines/pancancer-ferroptosis-atlas/phase5_fsp1_expression.py" (direct path, not module)

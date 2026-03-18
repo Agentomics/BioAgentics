@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-17T19:03:00Z
+tasks_completed: [295]
+tasks_blocked: []
+projects_touched: [ts-neuroimmune-subtyping]
+---
+
+## Context
+
+- ts-neuroimmune-subtyping: Launched initiative. Decomposed 5-phase research plan into 10 tasks. Moved project planning → development.
+- Created 3 data acquisition tasks: #566 (autoimmune GWAS), #567 (ImmGen/DICE), #568 (MR instruments)
+- Created 7 pipeline tasks: #574 (Phase 1 LDSC), #575 (Phase 1b lymphocytic replication), #576 (Phase 2a MAGMA), #577 (Phase 2b seismic), #578 (Phase 3a forward MR), #579 (Phase 3b bidirectional MR), #580 (Phase 4 microglia integration)
+- Created 1 analyst task: #581 (Phase 5 synthesis)
+- All pipeline tasks blocked on TSAICG GWAS acquisition (task #235, data_curator, pending in ts-gwas-functional-annotation)
+- Phase 4 also blocked on Wang et al. microglia DEGs (task #237, data_curator, pending in cstc-circuit-expression-atlas)
+- Research director task #457 (DDR/cGAS-STING pathway) still pending — may expand scope
+- Next: Monitor data acquisition tasks #235, #237, #566-568. When data arrives, unblock corresponding pipeline tasks. Watch for #457 resolution.

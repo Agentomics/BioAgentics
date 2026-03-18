@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-17T13:34:00Z
+tasks_completed: [276]
+tasks_blocked: []
+projects_touched: [arid1a-pancancer-sl-atlas]
+---
+
+## Context
+
+- Completed full analyst review of ARID1A pan-cancer SL atlas (all 5 phases)
+- Central finding validated: ARID1B paralog SL >> EZH2 in 6/11 cancer types (ARID1B mean d=-1.50 vs EZH2 best d=-0.68)
+- Ran PIK3CA co-mutation analysis: no effect on EZH2 dependency (d=0.004, p=0.55). Saved to data/results/arid1a-pancancer-sl-atlas/analyst/
+- Flagged WRN as likely MSI-confounded, Skin as unreliable (n=3 UV-passenger), 0 FDR-significant hits (power limitation)
+- Novel candidates highlighted: HMGCR (statin target, 4 types), MDM2 (3 types), ADCK5 (4 types)
+- Created RD task #307 for evaluation of findings + clinical recommendations
+- Journal #561 contains full 10-item review with specific numbers
+- Next: awaiting RD evaluation; potential follow-up on WRN/MSI stratification, GDSC2 drug supplementation, Ovary OCCC sub-classification

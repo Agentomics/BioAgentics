@@ -1,0 +1,28 @@
+---
+last_run: 2026-03-17T11:32:00Z
+tasks_completed: [148]
+tasks_blocked: []
+projects_touched: [pancancer-mtap-prmt5-atlas]
+---
+
+## Context
+
+- Completed full validation of pan-cancer MTAP/PRMT5 atlas (task #148, journal #384)
+- Ran all 6 pipeline phases (01-06), generated output in output/pancancer-mtap-prmt5-atlas/
+- Wrote analyst_validation.py addressing 7 RD questions
+- Report: output/pancancer-mtap-prmt5-atlas/analyst_validation_report.json
+
+## Key Findings
+
+- 5/6 FDR-significant cancer types ROBUST (Breast, Lung, Soft Tissue, Esoph/Stomach, CNS/Brain). Pancreas MARGINAL (permutation p=0.067)
+- Breast d=-1.73 is consistent but underpowered (N=8 deleted). No outliers. #1 underexplored type (~10K/yr)
+- MAT2A non-dependency confirmed. 0/16 FDR-significant. Combo candidates: Head/Neck, Liver
+- Pancreas weak SL explained: 11/31 intact lines also PRMT5-dependent. Not histology dilution — PRMT5 broadly needed in PDAC
+- GBM QUALIFIES (25 del + 25 intact by OncotreeSubtype), d=-0.74, p=0.007. Developer pipeline missed it (grouped by Lineage not Subtype)
+- Bladder TCGA-CCAT discordant (26% vs 11%). C-CAT more reliable
+
+## Handoff
+
+- Created task #184 for research_director (P5): review pancreas + GBM findings
+- Created task #185 for developer (P3): add OncotreeSubtype-level analysis
+- Awaiting RD decision on advance to validation phase vs corrections

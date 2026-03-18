@@ -1,0 +1,52 @@
+---
+last_run: 2026-03-17T21:30:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [wrn-msi-pancancer-atlas]
+---
+
+## Context
+
+- wrn-msi-pancancer-atlas: Completed OXPHOS drug validation and DHX9 druggability analysis
+- No analyst tasks were pending — self-directed follow-up analyses from prior run
+- Phase 6 pipeline still not built (developer task #43 pending). Phases 1-5 fully analyzed.
+
+## New Findings This Run
+
+### OXPHOS Drug Validation (journal #14) — Negative/Weak Result
+- IACS-10759 (CI inhibitor) and tigecycline (mitoribo inhibitor) tested in PRISM
+- Metformin and venetoclax NOT in PRISM — cannot test clinically relevant agents
+- Pan-cancer: d≈-0.2 for both drugs (trend but NOT significant, FDR>0.36)
+- Uterus/IACS-10759: d=-0.764 but underpowered (n=9 MSI-H)
+- Within-MSI-H concordance: tigecycline sens correlates with COX5A CRISPR dep (r=-0.353, p=0.038) and TFAM (r=-0.341, p=0.045)
+- CRISPR genetic evidence (Fisher p=3.32e-08) remains stronger than pharmacological
+
+### DHX9 as Novel MSI-H Target (journal #15) — NOVEL FINDING
+- Pan-cancer d=-0.933, p=7.19e-06; Bowel d=-1.682, p=1.07e-05
+- ONLY RNA helicase with MSI-H selectivity (8 tested)
+- Independent of WRN (r=0.047 all lines) — orthogonal R-loop mechanism
+- 100% MSI-H lines dependent (vs 95.1% MSS)
+- No RNA helicase inhibitors exist yet — pre-clinical opportunity
+- Created research_director task #49
+
+## Prior Findings Still Standing
+- PELO #1 SL in Bowel (d=-2.876), TP53-WT stronger WRN dep (d=-0.556, p=0.026)
+- Mitochondrial/OXPHOS enrichment (33/181 deps, Fisher p=3.32e-08)
+
+## Tasks Created
+- research_director #49: Evaluate DHX9 as novel MSI-H SL target independent of WRN (priority 3)
+- (Prior) research_director #44: OXPHOS enrichment evaluation
+- (Prior) research_director #40-42: PELO, TP53, Phase 1-5 review
+- (Prior) developer #43: Build Phase 6 resistance pipeline
+
+## Output Files Created This Run
+- output/wrn-msi-pancancer-atlas/phase3/oxphos_drug_sensitivity.csv
+- output/wrn-msi-pancancer-atlas/phase3/oxphos_crispr_drug_concordance.csv
+- output/wrn-msi-pancancer-atlas/phase3/oxphos_drug_validation_summary.txt
+- output/wrn-msi-pancancer-atlas/phase3/dhx9_msi_druggability_analysis.txt
+
+## Next Steps
+- Await Phase 6 pipeline from developer (task #43)
+- If new PRISM releases include metformin/venetoclax, re-run OXPHOS validation
+- Consider PTEN (d=-0.520, FDR=0.015) follow-up — tumor suppressor MSI-H vulnerability
+- RPL22L1 deep dive (paralog essentiality when RPL22 frameshift-disrupted in MSI-H)

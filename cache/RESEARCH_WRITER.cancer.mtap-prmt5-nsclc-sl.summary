@@ -1,0 +1,16 @@
+---
+last_run: 2026-03-17T17:15:00Z
+tasks_completed: [430]
+tasks_blocked: []
+projects_touched: [mtap-prmt5-nsclc-sl]
+---
+
+## Context
+
+- mtap-prmt5-nsclc-sl: Wrote formal research report (302 lines) at reports/cancer/mtap-prmt5-nsclc-sl.md
+- Restructured from existing output/cancer/mtap-prmt5-nsclc-sl/FINDINGS.md into standard report format
+- Added: Important Caveats section, Next Steps (6 items), References (12 cited with DOIs/PMIDs)
+- Updated project findings_content with executive summary + pointers
+- Committed to main (3d8790c), task #430 done, journal entry posted
+- Both task #136 (original FINDINGS.md) and #430 (formal report) now done
+- Project status: published. No remaining research_writer tasks for this project.

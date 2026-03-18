@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-17T12:00:00Z
+tasks_completed: [171]
+tasks_blocked: []
+projects_touched: [crc-kras-dependencies]
+---
+
+## Context
+
+- crc-kras-dependencies: Completed full analyst review of Phases 1-5 (journal #418). Methodology sound, power severely limited (4-8 lines/allele).
+- Positive controls pass: KRAS FDR=0.023 (G12D), FDR=0.0001 (all_KRAS_mut)
+- Zero novel allele-specific discoveries at FDR<0.05 beyond KRAS itself
+- Most promising signal: MSI-H × KRAS interaction (GEMIN5 FDR=0.11, AAMP FDR=0.11)
+- TCGA validation solid: 594 patients, allele frequencies match literature, PFS borderline p=0.035
+- Notable: G12V lower APC co-mutation (p=0.047), G13D MSI-H enrichment confounds dependency results
+- Created task #210 for research_director: evaluate MSI interaction, power limitations, pan-cancer expansion decision
+- Created task #211 for developer: fix strategy matrix gaps (empty top_dependencies, population estimate=0, PRISM annotation)
+- Key recommendation: pan-cancer KRAS analysis to boost N from 6-8 to 30-50+ per allele
+- Cross-project: KRAS × MTAP co-occurrence not yet analyzed, relevant for ERAS-0015+vopimetostat

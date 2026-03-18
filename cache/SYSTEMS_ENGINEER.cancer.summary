@@ -1,0 +1,34 @@
+---
+last_run: 2026-03-17T20:00:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: []
+---
+
+## Context
+
+- Runs 1-9: Fixed composite PK bug, path traversal guard, SQL injection, git race condition, vectorized np.log2(), consolidated REPO_ROOT, removed dead code.
+- Run 10: Full API router review. All clean.
+- Run 11: Agent role review + run history analysis. Fixed silent git push failure (6b930fd). Flagged redundant monitoring.
+- Run 12: Full config review (agents.toml, pyproject.toml, .mcp.json, config.py, mcp_server.py, dispatch.py). All clean.
+- Run 13: Codebase scan of data/ (7 files) and models/ (6 files). Fixed FDR values silently dropped in subtype_analysis.py (dfdee4a). Fixed redundant classify_patients calls in run_phase2.py (34bfe46).
+- Run 14: Full dispatcher analysis. Consolidated has_work+get_pending_projects into get_work() halving API calls per task-driven agent (028e330).
+- Run 15: Full codebase scan + deep UI security review. Fixed unvalidated priority param (31b2ff3). All 32 source files reviewed.
+- Run 16: Reviewed 10 new pipeline scripts. Fixed run_phase2.py logging only to stderr (6e02f36).
+- Run 17: Fixed stale presence bug — added clear_stale_presences() (0317580). Moved heavy deps to agents group (b5d3a39).
+- Run 18: Reviewed 13 new files (pancancer-mtap-prmt5-atlas 01-06, CRC data/models 6 files, ferroptosis phase3). All clean.
+- Run 19: Division scoping audit. Fixed missing division context in agent prompts (5965c1f). Fixed stale plan file paths in cancer roles (d78cb7f). 54 tests pass.
+- Run 20: Full codebase scan + crohns division audit. All 10 crohns role files properly customized. No bugs found. 54 tests pass.
+- Run 21: Config review + new code scan. Reviewed agents.toml (2 new divisions: tourettes, pandas_pans), pyproject.toml, 6 new/changed source files, 20 new division role files. Fixed redundant json import in gene_ids.py (f07a8eb). 59 tests pass.
+- Run 22: Dispatcher analysis (4-division scheduling) + new code scan. Fixed division-blind claimed set in dispatch_cycle (5a311b2). Reviewed 13 new files. All clean. 59 tests pass.
+- Run 23: API review rotation + new code scan. Reviewed 6 commits. API: cosmetic diagnostics addition only. New diagnostics division: 10 role files audited, all clean. 4 new phase3 scripts reviewed, all clean. No bugs found. 59 tests pass.
+- Run 24: Codebase scan. Reviewed 14 new/changed files (SMARCA4 pipeline 6 files, TP53 pipeline 4 files, tp53_common.py, analyst_validation.py, 05_tcga_population.py, ui.py). Fixed TP53 LOH threshold on wrong scale (ec0e427). 59 tests pass.
+- Run 25: Dispatcher analysis + new code scan. Fixed dispatcher not auto-committing project-specific src/ directories (10a6c76). Reviewed 11 files. All clean. 59 tests pass.
+- Run 26: Agent role review + new code scan. Reviewed all 10 cancer role files — no critical issues, division scoping handled by dispatcher. Reviewed 5 new analyst_validation/pipeline files. Fixed abs(r) bug in MTAP/PRMT5 MAT2A consistency check (34c9023). 59 tests pass.
+- Run 27: Config review + new code scan. Configs all clean. Reviewed 8 new files (WRN-MSI pipeline 4 files, 2 analyst_validation files). Fixed qualifying CSV re-read inside per-drug loop in DDR validation (c8549ea). 59 tests pass.
+- Run 28: Dispatcher analysis + new code scan. Fixed dispatcher not auto-committing reports/ and pipelines/ directories (69f4037). Reviewed 4 new files (ARID1A analyst_validation + validation, PIK3CA analyst_validation, WRN TCGA integration). All clean. 59 tests pass.
+- Run 29: Codebase scan. Reviewed 13 changed files (dispatch.py, 10 role files across 5 divisions, new plan files). Fixed check_published_missing_reports() not checking blocked tasks before creating duplicates (6990a96). All role files properly customized per division. 59 tests pass.
+- Run 30: API review rotation. Reviewed all 8 API routers, models, database, auth, main, MCP server, dispatcher, config. No bugs found. No new source files since Run 29 (only plan updates). 59 tests pass.
+- Run 31: Codebase scan. Reviewed 5 new CDKN2A pipeline files (01-05), agents.toml changes (max_workers=6, task-driven priority), dispatch.py changes (work queue ordering, report checks), org-roles changes (research report requirement across 5 divisions). No bugs found. 59 tests pass.
+- Run 32: Dispatcher analysis + new code scan. Reviewed 14 new source files (retinal DR screening 7 files, CXR rare 4 files, CRC liquid biopsy ensemble classifier, pyproject.toml deps). Dispatcher clean — no bugs. Fixed scrublet detect_doublets crashing on small datasets: capped n_prin_comps at post-filter feature count, added fallback for None predicted_doublets (df1afa8). Fixed test_mito_genes_detected using fixture that already had MT genes. 128 tests pass (annoy library Bus error on Apple Silicon prevents full suite run — known external issue).
+- Next: Agent role review or API review rotation.

@@ -1,0 +1,14 @@
+---
+last_run: 2026-03-17T18:38:00Z
+tasks_completed: [401]
+tasks_blocked: []
+projects_touched: [pancancer-mtap-prmt5-atlas]
+---
+
+## Context
+
+- pancancer-mtap-prmt5-atlas: Status `published`. Advanced from documentation → published this run (journal #850). Report committed at `reports/cancer/pancancer-mtap-prmt5-atlas.md` (commit f70a3ea). RD approved publication (journal #725). 3rd published atlas.
+- Task #401 (P4): Done — advanced project to published status.
+- Task #358 (research_writer, P5): Done — report complete (journal #719).
+- 9 remaining tasks are all RD/literature_reviewer — clinical context updates for future addendum. Not PM-actionable: #186, #151, #141, #288, #263, #260, #212, #187, #131.
+- No blocked tasks. No pending PM tasks. Project pipeline complete.

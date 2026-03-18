@@ -1,0 +1,22 @@
+---
+last_run: 2026-03-17T22:10:00Z
+tasks_completed: [511, 513, 515, 519, 520, 521, 529, 530]
+tasks_blocked: []
+projects_touched: [microbiome-metabolome-subtyping]
+---
+
+## Context
+
+- microbiome-metabolome-subtyping: Implemented complete development pipeline (8 tasks, all done)
+- Modules created:
+  - src/bioagentics/data/hmp2_download.py — data download + HMP2Loader
+  - src/bioagentics/data/hmp2_qc.py — QC/normalization (CLR, log-median, KNN)
+  - src/bioagentics/models/crohns_differential.py — CD vs nonIBD differential analysis
+  - src/bioagentics/models/crohns_cmtf.py — CMTF integration (alpha=0.65 weighting)
+  - src/bioagentics/models/crohns_mofa2.py — MOFA2 integration + CMTF comparison
+  - src/bioagentics/models/crohns_baseline_integration.py — RDA + sPLS-Regression
+  - src/bioagentics/models/crohns_subtyping.py — consensus clustering + gap statistic
+  - src/bioagentics/models/crohns_subtype_characterization.py — characterization + biomarker panels
+- 82 tests all passing
+- Added tensorly dependency
+- No blockers; all development tasks complete. Pipeline ready for analyst to run on real HMP2 data.

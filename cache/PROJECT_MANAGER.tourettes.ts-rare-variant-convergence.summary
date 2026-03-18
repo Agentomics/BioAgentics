@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-17T19:04:00Z
+tasks_completed: [296]
+tasks_blocked: []
+projects_touched: [ts-rare-variant-convergence]
+---
+
+## Context
+
+- ts-rare-variant-convergence: Launched initiative, moved planning → development
+- Created 6 developer tasks: #582 (Phase 1 gene curation, P5), #583 (Phase 1b cross-validation, P4), #584 (Phase 2 constraint, P4), #585 (Phase 3 PPI network, P3), #586 (Phase 4 pathway convergence, P3), #587 (Phase 5 cross-disorder, P3)
+- Dependencies: 582 → 583/584 → 585/586 → 587
+- Developer should start with #582 (Phase 1: rare variant gene curation)
+- Literature reviewer scans done (journals #600, #753): WWC1/Hippo pathway validated, Costa Rica pedigree pathways, clinical exome cohort
+- Research director tasks #330 and #416 done — plan updated with WWC1 and Costa Rica pedigree info
+- Next: Monitor developer progress on #582. When Phase 1 done, create analyst tasks and advance pipeline.
+- Journal #899 records the launch decision

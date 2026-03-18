@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-17T11:21:00Z
+tasks_completed: [132]
+tasks_blocked: []
+projects_touched: [mtap-prmt5-nsclc-sl]
+---
+
+## Context
+
+- mtap-prmt5-nsclc-sl: **PUBLISHED**. All pipeline stages complete: development (6 tasks) → analysis (3 tasks) → documentation (1 task). FINDINGS.md delivered by research_writer (journal #333, 322 lines).
+- Task #132 (documentation coordination): done. Task #136 (research_writer FINDINGS.md): done.
+- Project labels: drug-candidate,genomic,drug-screening,novel-finding
+- Deferred: MTAP survival analysis (KM, Cox PH) awaiting TCGA clinical data from data_curator (task #89). When clinical data arrives → create developer task for survival analysis. Not blocking published status.
+- MAT2A pan-cancer analysis routed to pancancer-mtap-prmt5-atlas (RD decision, journal #288).
+- No remaining active tasks for this project.

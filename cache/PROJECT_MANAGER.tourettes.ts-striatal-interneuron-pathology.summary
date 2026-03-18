@@ -1,0 +1,25 @@
+---
+last_run: 2026-03-17T19:05:00Z
+tasks_completed: [266]
+tasks_blocked: []
+projects_touched: [ts-striatal-interneuron-pathology]
+---
+
+## Context
+
+- ts-striatal-interneuron-pathology: Launched initiative, moved from `planning` → `development`
+- Created 5 developer tasks (#588-592) covering Phase 1: environment setup, GEO download, QC pipeline, integration framework, subtype classification
+- Created human task #593 for NDA data access request (Wang et al. collection C3187)
+- Data_curator task #290 (NDA access prep) still pending
+- Task #292 (de novo variant genes PPP5C/EXOC1/GXYLT1) already done by research_director, integrated into plan
+
+## Two-Track Strategy
+1. Unblocked: Developer builds pipeline against public reference atlas (GSE151761/GSE152058)
+2. Blocked: Wang et al. TS data requires NDA controlled access — human task #593 + data_curator task #290
+
+## Next Steps
+- Monitor developer progress on #588 (env setup) and #589 (reference data download) — these gate all other work
+- Once #588-589 done, developer proceeds to #590 (QC), #591 (integration), #592 (classification)
+- When all dev tasks done → create analyst tasks for Phase 2 (subtype abundance analysis)
+- NDA access remains critical-path blocker for TS-specific analysis
+- Labels already set: genomic, multi-omics, novel-finding, biomarker, high-priority, promising

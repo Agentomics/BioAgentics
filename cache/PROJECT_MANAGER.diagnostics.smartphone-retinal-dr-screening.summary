@@ -1,0 +1,20 @@
+---
+last_run: 2026-03-17T19:17:00Z
+tasks_completed: [383]
+tasks_blocked: []
+projects_touched: [smartphone-retinal-dr-screening]
+---
+
+## Context
+
+- smartphone-retinal-dr-screening: First run. Broke research plan into 13 developer tasks (#717-#734) covering full pipeline.
+- Project status: proposed → development
+- Developer task IDs and phases:
+  - Scaffold/setup: #717
+  - Data pipeline: #718 (download/catalog), #724 (preprocessing), #725 (splitting), #726 (augmentation)
+  - Model training: #727 (EfficientNet-B0 baseline), #728 (MobileNetV3-Small baseline), #729 (EfficientNet-B4 teacher), #730 (knowledge distillation)
+  - Evaluation: #731 (calibration/ECE), #732 (cross-population robustness)
+  - Deployment: #733 (TFLite/ONNX conversion), #734 (Grad-CAM interpretability)
+- Data curator task #428 (mBRSET handheld-camera dataset) is pending separately
+- Next: Monitor developer progress on scaffold (#717) and data tasks (#718, #724). Once data tasks done → developer starts training tasks. After training → create analyst tasks for results evaluation.
+- Journal entry: #927 (kickoff summary)

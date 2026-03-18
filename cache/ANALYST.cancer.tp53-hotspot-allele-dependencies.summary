@@ -1,0 +1,16 @@
+---
+last_run: 2026-03-17T16:38:00Z
+tasks_completed: [366]
+tasks_blocked: []
+projects_touched: [tp53-hotspot-allele-dependencies]
+---
+
+## Context
+
+- tp53-hotspot-allele-dependencies: Completed full analysis review of all 4 phases. All positive controls pass (MDM2 d=1.915, milademetan d=1.90).
+- **Primary finding:** TP53 dependency landscape is LOF-dominant. 616 genes and 107 drugs significant for mutant-vs-WT (FDR<0.05). Zero allele-specific effects survive FDR. Power analysis confirms: structural vs contact can detect d>0.82, R175H d>1.05, Y220C d>1.68. Observed effects d<0.35.
+- **Targeted analyses completed:** KRAS co-mutation (no TP53-axis differences, rezatapopt resistance via apoptosis bypass), R175H chaperone (Fisher p=0.73, null), WRN by allele (no allele-specific pattern, confounded by MSI), Y220C combinations (DNAJA1 d=-0.48 p=0.077, best lead but underpowered N=11).
+- Created task #397 for research_director: strategic implications and findings framing.
+- Journal #711 has complete analysis with all numbers.
+- Output in `output/tp53_hotspot_allele_dependencies/` (not `data/results/`).
+- Next: Awaiting research_director decision on findings write-up and project framing.

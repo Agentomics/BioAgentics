@@ -1,0 +1,38 @@
+---
+last_run: 2026-03-17T23:45:00Z
+tasks_completed: [567]
+tasks_blocked: []
+projects_touched: [ts-neuroimmune-subtyping]
+---
+
+## Context
+
+### Completed
+- **Task #567**: DICE immune cell expression references fully processed
+  - 20,098 genes x 25 cell types (166 samples from GSE118165)
+  - 9 grouped cell type specificity matrices (CD4_T, Th17, NK, Treg, CD8_T, B_cell, Monocyte, DC, Gamma_delta_T)
+  - MAGMA gene-covar and gene-set files generated
+  - Priority Th17 and NK cell types confirmed available
+
+### In Progress (downloads running in background)
+- **Task #566**: Autoimmune GWAS — 3 LDSC-converted: RA (12.6M SNPs), SLE (7.1M), MS (8.7M)
+  - Graves, PBC, vitiligo, AA, MG, HT downloading with correct URLs
+  - Re-run needed for: t1d, ibd, cd, uc, cel, pso, as (run `--disease <abbr>`)
+- **Task #568**: MR instruments — 6 complete: CRP (47617, F=50.0), IL-6 (152, F=53.1), TNF-α (117, F=20.7), IgG (181, F=30.8), CCL2 (85, F=71.9), IL-17 (166, F=21.0)
+  - Lymphocyte downloading; remaining: mono, neut, nk, cd4 (run `--biomarker <abbr>`)
+
+### Code Structure
+- Module: `src/bioagentics/data/tourettes/neuroimmune/`
+  - `download_autoimmune_gwas.py` — 16 diseases, LDSC conversion, manifest
+  - `download_immune_references.py` — DICE parsing, specificity scores, MAGMA inputs
+  - `download_mr_instruments.py` — 11 biomarkers, instrument extraction, F-statistics
+- Tests: `tests/test_neuroimmune_downloads.py` — 11 tests all passing
+
+### Blocking dependencies
+- Task #235 (data_curator): TSAICG GWAS summary stats — still pending, blocks Phase 1-4
+- Task #237 (data_curator): Wang et al. microglia DEGs — still pending, blocks Phase 4
+
+### Next steps
+1. Finish downloads: re-run failed autoimmune GWAS and MR instruments with corrected URLs
+2. Once #235 completes: unblock LDSC (#574), lymphocytic replication (#575), MAGMA (#576), seismic (#577), MR (#578/#579)
+3. Once #237 completes: unblock microglia DEG cross-reference (#580)

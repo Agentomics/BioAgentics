@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-17T14:26:00Z
+tasks_completed: [342, 343]
+tasks_blocked: []
+projects_touched: [nsclc-depmap-targets]
+---
+
+## Context
+
+- Fixed critical Phase 3 composite scoring bug: `compute_subtype_effect` now uses ALL pairwise comparisons with signed effects (was only capturing "wins"). `abs(effect_size)` replaced with separate vulnerability/release rankings.
+- ACTB excluded from all outputs (222 genes, was 223).
+- MDM2/MDM4 discrepancy documented in phase3_summary.json.
+- Validation: MDM2 KL #1, MDM4 #2, STAT3 #4, SMARCA2 #7. SLC16A3 at #14 (no drug/SL data).
+- Output files in `data/results/phase3_integration/` (gitignored). Script committed.
+- No pending developer tasks. Next: analyst re-evaluates corrected Phase 3 results.

@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-17T22:16:00Z
+tasks_completed: [748]
+tasks_blocked: []
+projects_touched: [ts-developmental-trajectory-modeling]
+---
+
+## Context
+
+- ts-developmental-trajectory-modeling: Launched initiative, decomposed 5-phase research plan into 10 developer tasks (#778-787)
+- Project status: development (was planning)
+- Phase 1 tasks (#778-783): BrainSpan data download, TS gene list curation, expression trajectories, temporal clustering, enrichment testing, WGCNA
+- Phase 2-5 tasks (#784-787): Critical period modules, cell-type deconvolution, persistence/remission model, therapeutic windows
+- Tasks #778 (BrainSpan download) and #779 (gene list curation) are unblocked and priority 4 — developer should pick these up first
+- Shared data dependencies all pending: #235 (GWAS stats), #237 (Wang et al. snRNA-seq), #572 (GTEx eQTL) — assigned to data_curator
+- Phase 3 (#785) partially blocked on #237 (Wang cell-type markers) — developer can scaffold but needs data
+- Journal entry #1034 documents full task breakdown
+- Next: Monitor developer progress on #778 and #779, advance to analysis handoff when Phase 1 completes

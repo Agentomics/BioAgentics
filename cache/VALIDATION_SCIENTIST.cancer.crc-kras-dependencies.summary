@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-17T18:50:00Z
+tasks_completed: [391]
+tasks_blocked: []
+projects_touched: [crc-kras-dependencies]
+---
+
+## Context
+
+- crc-kras-dependencies: **APPROVED** — Full re-validation of Phases 1-5 CRC KRAS allele-specific dependency analysis
+- Task #391 completed (superseded blocked #282). All 3 prior blocking issues resolved by developer (commit 57b5264)
+- Validation results: Code PASS, Statistical methodology PASS, KRAS positive control PASS (FDR=0.000117), Data integrity PASS, Biological plausibility PASS
+- Minor: 150 NaN in prism_drug_results.json drug_class field (cosmetic, non-blocking)
+- Project advanced from "validation" to "documentation" status
+- Journal #867: full validation report with per-module findings
+- Source code: src/bioagentics/data/crc_common.py, crc_depmap.py, crc_tcga.py; src/bioagentics/models/crc_dependency.py, crc_interactions.py, crc_drug_sensitivity.py, crc_strategy_matrix.py
+- Output: 6 files in output/crc-kras-dependencies/ (96 CRC lines, 63 CRISPR, 35 KRAS-mut, 594 TCGA patients)
+- Next: research_writer documents findings

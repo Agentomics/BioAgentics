@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-17T19:10:00Z
+tasks_completed: [326]
+tasks_blocked: []
+projects_touched: [ivig-mechanism-single-cell-analysis]
+---
+
+## Context
+
+- ivig-mechanism-single-cell-analysis: Launched initiative, moved from planning → development.
+- Created 11 tasks: data_curator (#626 scRNA-seq download P5, #628 PBMCpedia ref P4, #629 bulk RNA-seq P3), developer (#630 QC pipeline P4, #631 cell annotation P4, #632 diff abundance P3, #633 pseudobulk DE P3, #634 pathway enrichment + autophagy/S100A12 P3, #635 cell communication P3, #636 treatment signatures P3, #637 deconvolution P2).
+- CRITICAL PATH: Task #626 (scRNA-seq data download) blocks all developer tasks. If data not on GEO, human contact to authors needed.
+- Research director task #393 (autophagy ATG7/UVRAG + S100A12-TLR4-MYD88 pathways) already done and incorporated into task #634.
+- Next: Monitor data_curator tasks. When #626 done → unblock #630. Pipeline: data → QC → annotation → DE/abundance → pathways/communication → signatures → deconvolution.
+- No report exists yet. Report needed at documentation stage.

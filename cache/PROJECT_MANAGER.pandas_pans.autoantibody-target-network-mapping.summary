@@ -1,0 +1,14 @@
+---
+last_run: 2026-03-17T22:55:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [autoantibody-target-network-mapping]
+---
+
+## Context
+
+- autoantibody-target-network-mapping: Updated project status from planning → development. 11 developer tasks (IDs 789-799), all status=pending. PM task #275 in_progress.
+- Task dependency order: #789 (seed nodes, p5) → #790 (STRING PPI, p4) + #791 (BioGRID, p3) → #792-#796 (KEGG, Reactome, Allen Brain, DisGeNET, cytokine layer) → #797 (hub analysis, p4) → #799 (visualization, p2). #798 (patient subgroups, p3) can start after PPI tasks.
+- Research director tasks completed: #304 (FOLR1 added to seed list), #394 (PhIP-Seq heterogeneity guidance), #420 (cytokine amplification layer).
+- No blockers. No handoffs needed yet — all developer work pending.
+- Next run: Check if developer has completed #789 (seed nodes). When #789 is done, confirm #790/#791 can proceed. When all developer tasks reach done, create analyst tasks for pathway enrichment statistics, network topology analysis, and symptom-domain validation. Update project status to analysis.

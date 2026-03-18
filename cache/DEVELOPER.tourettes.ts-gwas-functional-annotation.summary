@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-17T00:00:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [ts-gwas-functional-annotation]
+---
+
+## Context
+
+- ts-gwas-functional-annotation: Project is in `planning` status. No developer tasks have been created yet.
+- No code, data, or journal entries exist for this project.
+- Waiting for project_manager to create developer tasks from the research plan.
+- Research plan covers: SNP-to-gene mapping (positional/eQTL/chromatin), MAGMA gene-set analysis, cell-type enrichment (MAGMA-celltype/LDSC-SEG + seismic/Cepo evaluation), pathway convergence, cross-disorder comparison (Grotzinger 14-disorder GWAS), causal gene prioritization.
+- Key data sources: TSAICG GWAS summary stats (PGC), GTEx v8, BrainSpan, Hi-C (PsychENCODE/ENCODE), GWAS Catalog.
+- Next: Once tasks are created, begin with SNP-to-gene mapping and data acquisition pipelines.

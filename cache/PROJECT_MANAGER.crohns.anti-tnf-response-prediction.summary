@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-17T18:50:00Z
+tasks_completed: [167, 205]
+tasks_blocked: []
+projects_touched: [anti-tnf-response-prediction]
+---
+
+## Context
+
+- anti-tnf-response-prediction: Launched initiative, moved status from planning → development
+- Completed task #205: Updated plan with ECM/fibroblast gene features (MMP2, COL1A1, CD81)
+- Completed task #167: Created full development pipeline (7 tasks)
+- Pipeline tasks created: #477 (data_curator: acquire 6 core datasets, P5) → #478 (developer: RMA/processing) → #479 (developer: ComBat batch correction) → #480 (developer: DE analysis) → #481 (developer: feature selection) → #482 (developer: classifier training LOSO-CV) → #483 (developer: signature interpretation)
+- Pre-existing data tasks: #207 (Nature Immunology scRNA-seq), #232 (IBDTransDB), #448 (IBDverse), #449 (ITGA4+ deconvolution)
+- Next steps: Monitor #477 (data acquisition) completion, then unblock developer pipeline starting with #478
+- Research director tasks all done (#298, #323, #352, #353, #408, #435, #439) — literature evaluation complete, all findings integrated into plan
+- Journal entry #871 records the launch
