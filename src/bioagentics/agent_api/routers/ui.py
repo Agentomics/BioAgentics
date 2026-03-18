@@ -245,7 +245,7 @@ def render_task_card(row) -> str:
         desc_html = f'<div class="text-sm whitespace-pre-wrap break-words mt-1.5 text-[#a1a1aa] line-clamp-3">{esc(m["description"])}</div>'
 
     return f"""<div class="bg-[#0c0c0e] border border-[#27272a] rounded-lg p-4
-                    hover:border-[#3f3f46] transition-colors flex flex-col" id="task-{m['id']}">
+                    hover:border-[#3f3f46] transition-colors flex flex-col overflow-hidden" id="task-{m['id']}">
   <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
     <span class="text-[#71717a] text-xs font-mono cursor-pointer hover:text-[#3b82f6] transition-colors"
           onclick="navigator.clipboard.writeText('#{m['id']}')">#{m['id']}</span>
@@ -272,8 +272,8 @@ def render_task_compact(row) -> str:
     m = row._mapping
     project_html = ""
     if m["project"]:
-        project_html = f'<span class="text-[#a1a1aa]">{esc(m["project"])}</span>'
-    return f"""<a class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
+        project_html = f'<span class="text-[#a1a1aa] truncate max-w-[120px]" title="{esc(m["project"])}">{esc(m["project"])}</span>'
+    return f"""<a class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors min-w-0"
    hx-get="/ui/tasks/{m['id']}" hx-target="#tab-content" hx-push-url="true">
   <span class="text-[#a1a1aa] text-xs font-mono shrink-0">#{m['id']}</span>
   {division_pill(m.get('division'))}
@@ -294,16 +294,16 @@ def render_journal_card(row) -> str:
                hx-get="/ui/journal?{pq}" hx-target="#tab-content" hx-push-url="true">{esc(m['project'])}</a>"""
 
     return f"""<div class="bg-[#0c0c0e] border border-[#27272a] rounded-lg p-4
-                    flex flex-col hover:border-[#3f3f46] transition-colors cursor-pointer"
+                    flex flex-col hover:border-[#3f3f46] transition-colors cursor-pointer overflow-hidden"
                     hx-get="/ui/journal/{m['id']}" hx-target="#tab-content" hx-push-url="true">
-  <div class="flex items-center gap-2 mb-1.5 text-xs text-[#71717a] flex-wrap">
-    <span class="font-mono">#{m['id']}</span>
+  <div class="flex items-center gap-2 mb-1.5 text-xs text-[#71717a] flex-wrap min-w-0">
+    <span class="font-mono shrink-0">#{m['id']}</span>
     {division_pill(m.get('division'))}
-    <span class="text-[#a78bfa] font-medium">{esc(agent_display_name(m['username']))}</span>
+    <span class="text-[#a78bfa] font-medium shrink-0">{esc(agent_display_name(m['username']))}</span>
     {project_html}
     <span class="ml-auto shrink-0">{time_tag(m['created_at'])}</span>
   </div>
-  <div class="text-sm whitespace-pre-wrap break-words line-clamp-6 flex-1 text-[#d4d4d8]">{esc(m['content'])}</div>
+  <div class="text-sm whitespace-pre-wrap break-words line-clamp-6 flex-1 text-[#d4d4d8] overflow-hidden">{esc(m['content'])}</div>
 </div>"""
 
 
@@ -312,13 +312,13 @@ def render_journal_compact(row) -> str:
     m = row._mapping
     project_html = ""
     if m["project"]:
-        project_html = f'<span class="text-[#a1a1aa]">{esc(m["project"])}</span>'
+        project_html = f'<span class="text-[#a1a1aa] truncate max-w-[120px]" title="{esc(m["project"])}">{esc(m["project"])}</span>'
     # Truncate content to first line
     content = str(m["content"] or "")
     first_line = content.split("\n")[0][:120]
     if len(first_line) < len(content):
         first_line += "..."
-    return f"""<a class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors"
+    return f"""<a class="flex items-center gap-3 py-2 border-b border-[#27272a] last:border-b-0 no-underline hover:bg-[#18181b] px-2 -mx-2 rounded cursor-pointer transition-colors min-w-0"
    hx-get="/ui/journal/{m['id']}" hx-target="#tab-content" hx-push-url="true">
   <span class="text-[#a1a1aa] text-xs font-mono shrink-0">#{m['id']}</span>
   {division_pill(m.get('division'))}
@@ -704,16 +704,16 @@ def render_project_row(p, task_counts: dict, journal_count: int) -> str:
         row_cls = "bg-[#1a1400] hover:bg-[#262000] border-l-2 border-l-[#fbbf24]"
 
     return f"""<tr class="{row_cls}">
-  <td class="px-2.5 py-2 border-b border-[#27272a] align-middle">
-    <div class="flex items-center gap-2">
-      <a class="font-semibold text-[#3b82f6] text-sm no-underline hover:underline cursor-pointer"
-         hx-get="/ui/projects/{quote(name)}" hx-target="#tab-content" hx-push-url="true">{esc(name)}</a>
+  <td class="px-2.5 py-2 border-b border-[#27272a] align-middle max-w-[260px]">
+    <div class="flex items-center gap-2 min-w-0">
+      <a class="font-semibold text-[#3b82f6] text-sm no-underline hover:underline cursor-pointer truncate"
+         hx-get="/ui/projects/{quote(name)}" hx-target="#tab-content" hx-push-url="true" title="{esc(name)}">{esc(name)}</a>
       {div_html}
       {ib_html}
     </div>
     {desc_html}
   </td>
-  <td class="px-2.5 py-2 border-b border-[#27272a] align-middle">{labels_tags(m.get('labels', ''))}</td>
+  <td class="px-2.5 py-2 border-b border-[#27272a] align-middle max-w-[180px]">{labels_tags(m.get('labels', ''))}</td>
   <td class="px-2.5 py-2 border-b border-[#27272a] align-middle">{project_status_badge(m['status'])}</td>
   <td class="px-2.5 py-2 border-b border-[#27272a] align-middle">{tc_html}</td>
   <td class="px-2.5 py-2 border-b border-[#27272a] align-middle">{jc_html}</td>
