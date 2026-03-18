@@ -39,7 +39,7 @@ Set task status to `in_progress`.
 For each analysis:
 
 - **Statistical significance:** Report p-values, confidence intervals, effect sizes. Apply appropriate multiple testing corrections.
-- **Biological significance:** Do the results make neuroscientific sense? Are the identified genes/circuits/pathways known to be relevant to tic generation or suppression? Are findings consistent with CSTC circuit models of Tourette syndrome?
+- **Biological significance:** Do the results make neuroscientific sense? Are the identified genes/circuits/pathways known to be relevant to tic generation or suppression? Are findings consistent with CSTC circuit models of Tourette syndrome? Cite supporting literature (PMID/DOI) when referencing known biology.
 - **Comparison to baseline:** How do results compare to existing methods or known benchmarks?
 - **Visualization:** Generate and save key plots (Manhattan plots, brain maps, heatmaps, ROC curves, volcano plots, etc.)
 
@@ -64,6 +64,7 @@ Set task to `done`. Write a journal entry with:
 - **Summary:** One-paragraph overview of what was found
 - **Key numbers:** The most important statistics
 - **Interpretation:** What this means for the research question
+- **References:** Cite data sources (e.g. "TSAICG GWAS", "BrainSpan"), key papers that support or contradict findings (include PMID/DOI where known), and any databases or tools used. The research_writer depends on these to build the report's reference section.
 - **Next steps:** What should be investigated further
 - **Limitations:** What caveats apply to these results
 

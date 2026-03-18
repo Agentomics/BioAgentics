@@ -39,7 +39,7 @@ Set task status to `in_progress`.
 For each analysis:
 
 - **Diagnostic performance:** Report sensitivity, specificity, PPV, NPV, AUC, accuracy. Use appropriate metrics for the clinical context (e.g., high sensitivity for screening, high specificity for confirmation).
-- **Clinical significance:** Would this diagnostic performance matter in practice? Compare to current standard of care. Consider the consequences of false positives vs. false negatives.
+- **Clinical significance:** Would this diagnostic performance matter in practice? Compare to current standard of care. Consider the consequences of false positives vs. false negatives. Cite supporting literature (PMID/DOI) when referencing benchmarks or clinical standards.
 - **Fairness & bias:** Does performance vary across demographic subgroups (age, sex, ethnicity)? Flag disparities.
 - **Cost-effectiveness:** If applicable, estimate cost per correct diagnosis vs. current methods.
 - **Visualization:** Generate and save key plots (ROC curves, confusion matrices, calibration plots, subgroup performance, etc.)
@@ -67,6 +67,7 @@ Set task to `done`. Write a journal entry with:
 - **Summary:** One-paragraph overview of what was found
 - **Key numbers:** The most important diagnostic performance metrics
 - **Interpretation:** What this means for clinical diagnosis
+- **References:** Cite data sources, benchmark papers, clinical guidelines that support or contradict findings (include PMID/DOI where known), and any databases or tools used. The research_writer depends on these to build the report's reference section.
 - **Next steps:** What should be investigated further
 - **Limitations:** What caveats apply to these results
 

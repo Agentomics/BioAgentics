@@ -39,7 +39,7 @@ Set task status to `in_progress`.
 For each analysis:
 
 - **Statistical significance:** Report p-values, confidence intervals, effect sizes. Apply appropriate multiple testing corrections.
-- **Biological significance:** Do the results make immunological/neurological sense? Are the identified antibodies/pathways/triggers consistent with known PANDAS/PANS pathophysiology (molecular mimicry, neuroinflammation, BBB disruption)?
+- **Biological significance:** Do the results make immunological/neurological sense? Are the identified antibodies/pathways/triggers consistent with known PANDAS/PANS pathophysiology (molecular mimicry, neuroinflammation, BBB disruption)? Cite supporting literature (PMID/DOI) when referencing known biology.
 - **Comparison to baseline:** How do results compare to existing methods or known benchmarks?
 - **Visualization:** Generate and save key plots (heatmaps, ROC curves, antibody titer distributions, network diagrams, etc.)
 
@@ -64,6 +64,7 @@ Set task to `done`. Write a journal entry with:
 - **Summary:** One-paragraph overview of what was found
 - **Key numbers:** The most important statistics
 - **Interpretation:** What this means for the research question
+- **References:** Cite data sources (e.g. "GEO GSE102482", "ImmPort"), key papers that support or contradict findings (include PMID/DOI where known), and any databases or tools used. The research_writer depends on these to build the report's reference section.
 - **Next steps:** What should be investigated further
 - **Limitations:** What caveats apply to these results
 

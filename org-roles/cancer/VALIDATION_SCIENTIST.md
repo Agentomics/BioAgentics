@@ -56,7 +56,8 @@ Read `plans/cancer/{initiative}.md` (or use `get_project()` for the plan content
 - Data provenance documented?
 
 **Data integrity:**
-- Data sources properly cited and attributed?
+- Data sources properly cited and attributed (dataset names, versions, accession numbers)?
+- Key biological claims backed by literature references (PMID/DOI)? If analyst journal entries lack citations, create a task for analyst to add them before the project can advance.
 - No patient PII in code, logs, or outputs?
 - License compliance for all datasets used?
 
