@@ -1,18 +1,21 @@
 ---
-last_run: 2026-03-17T22:03:00Z
-tasks_completed: [498, 499, 500, 501, 502, 507, 509]
+last_run: 2026-03-18T02:45:00Z
+tasks_completed: [498, 499, 500, 501, 502, 503, 507, 508, 509, 514, 516]
 tasks_blocked: []
 projects_touched: [cd-flare-longitudinal-prediction]
 ---
 
 ## Context
 
-- Phases 1-4 core pipeline complete. All priority-4 and priority-5 tasks done.
+- Pipeline feature-complete: all 5 phases implemented.
+- Phase 1: data_loader.py, flare_events.py, instance_builder.py
 - Phase 2: features_microbiome.py, features_metabolomics.py, features_auxiliary.py
-- Phase 3: feature_selection.py (paired Wilcoxon + stability selection), mofa2_integration.py (mofapy2)
-- Phase 4: classifier.py (XGBoost + logistic, LOPO-CV, Platt scaling), baselines.py (calprotectin/CRP/diversity)
-- Dependencies added: mofapy2==0.7.3, xgboost==3.2.0
-- 50 tests across 5 test files, all passing
-- Note: mofapy2 calls exit() when all factors dropped — handled via try/except SystemExit
-- Remaining priority-3 tasks: MintTea (503), GRU model (508), SHAP/clinical utility (514), visualizations (516)
+- Phase 3: feature_selection.py, mofa2_integration.py, minttea_integration.py (sklearn CCA fallback, MintTea not on PyPI)
+- Phase 4: classifier.py (XGBoost + logistic, LOPO-CV, Platt scaling), baselines.py, gru_model.py (GRU temporal model)
+- Phase 5: clinical_utility.py (SHAP, lead time, decision curves, success criteria), visualizations.py (CSV data for all plots)
+- Dependencies: mofapy2==0.7.3, xgboost==3.2.0, shap==0.51.0, torch==2.10.0
+- Known issue: macOS xgboost/PyTorch OpenMP segfault — gru_model.py sets OMP_NUM_THREADS=1 before torch import
+- Known issue: mofapy2 calls exit() when all factors dropped — handled via try/except SystemExit
+- 47 new tests (15 clinical_utility, 11 GRU, 11 MintTea, 10 visualizations) + 50 existing = 97 total
 - No real HMP2 data loaded yet — all tests use synthetic data. Data curator needs to provide data.
+- No remaining pending tasks assigned to developer for this project.
