@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-18T02:08:00Z
+tasks_completed: [830]
+tasks_blocked: []
+projects_touched: [rb1-loss-pancancer-dependency-atlas]
+---
+
+## Context
+
+- Validated all 5 phases of rb1-loss-pancancer-dependency-atlas. Verdict: PASS.
+- Phase 1: RB1 classifier working (493 loss / 1239 intact, 19 qualifying types). CDK4/6 validation passes. Expression-only classification is liberal (28.5% rate).
+- Phase 2: CDK2 SL ROBUST at pan-cancer level only (d=-0.524, FDR=2.6e-9). CCNE1 amplification intensifies CDK2 dependency (d=-2.236). CHEK1/WEE1/CK2/TTK not validated. Negative control labeling bug identified (cosmetic).
+- Phase 3: Top gained deps: E2F3, SKP2, CCNE1, CDK2. Novel finding: SAGA/ATAC complex (TADA2A, YEATS2, ZZZ3) as RB1-loss dependencies.
+- Phase 4: Only trilaciclib in PRISM (validates CDK4/6i resistance). CDK2 inhibitors absent — drug validation incomplete.
+- Phase 5: ~125K US RB1-loss pts/yr. SCLC is priority clinical target (28,500 pts/yr, 95% RB1 loss).
+- Created task #839 for research_director (evaluate SAGA/ATAC novel finding).
+- Created task #840 for developer (fix negative control labeling in Phase 2).
+- Journal entry #1170 posted with full validation report.
+- Project ready to advance to validation stage.
