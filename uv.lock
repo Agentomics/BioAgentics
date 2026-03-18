@@ -149,6 +149,17 @@ name = "bioagentics"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "pyyaml" },
+    { name = "requests" },
+]
+
+[package.optional-dependencies]
+api = [
+    { name = "fastapi" },
+    { name = "sqlalchemy" },
+    { name = "uvicorn" },
+]
+research = [
     { name = "albumentations" },
     { name = "anndata" },
     { name = "biopython" },
@@ -174,8 +185,6 @@ dependencies = [
     { name = "pyarrow" },
     { name = "pydeseq2" },
     { name = "python-louvain" },
-    { name = "pyyaml" },
-    { name = "requests" },
     { name = "scanpy" },
     { name = "scikit-learn" },
     { name = "scipy" },
@@ -192,67 +201,59 @@ dependencies = [
 ]
 
 [package.dev-dependencies]
-api = [
-    { name = "fastapi" },
-    { name = "pyyaml" },
-    { name = "sqlalchemy" },
-    { name = "uvicorn" },
-]
 dev = [
     { name = "pytest" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "albumentations", specifier = ">=2.0.8" },
-    { name = "anndata", specifier = ">=0.12.6" },
-    { name = "biopython", specifier = ">=1.86" },
-    { name = "combat", specifier = ">=0.3.3" },
-    { name = "geoparse", specifier = ">=2.0.4" },
-    { name = "gseapy", specifier = ">=1.1.12" },
-    { name = "harmonypy", specifier = ">=0.2.0" },
-    { name = "joblib", specifier = ">=1.5.3" },
-    { name = "leidenalg", specifier = ">=0.11.0" },
-    { name = "lifelines", specifier = ">=0.30.0" },
-    { name = "matplotlib", specifier = ">=3.10.8" },
-    { name = "mcp", specifier = ">=1.26.0" },
-    { name = "mofapy2", specifier = ">=0.7.3" },
-    { name = "networkx", specifier = ">=3.6.1" },
-    { name = "onnx", specifier = ">=1.20.1" },
-    { name = "onnxruntime", specifier = ">=1.24.4" },
-    { name = "onnxscript", specifier = ">=0.6.2" },
-    { name = "opencv-python-headless", specifier = ">=4.13.0.92" },
-    { name = "openpyxl", specifier = ">=3.1.5" },
-    { name = "openslide-python", specifier = ">=1.4.3" },
-    { name = "pandas", specifier = ">=3.0.1" },
-    { name = "pillow", specifier = ">=12.1.1" },
-    { name = "pyarrow", specifier = ">=23.0.1" },
-    { name = "pydeseq2", specifier = ">=0.5.4" },
-    { name = "python-louvain", specifier = ">=0.16" },
+    { name = "albumentations", marker = "extra == 'research'", specifier = ">=2.0.8" },
+    { name = "anndata", marker = "extra == 'research'", specifier = ">=0.12.6" },
+    { name = "biopython", marker = "extra == 'research'", specifier = ">=1.86" },
+    { name = "combat", marker = "extra == 'research'", specifier = ">=0.3.3" },
+    { name = "fastapi", marker = "extra == 'api'", specifier = ">=0.135.1" },
+    { name = "geoparse", marker = "extra == 'research'", specifier = ">=2.0.4" },
+    { name = "gseapy", marker = "extra == 'research'", specifier = ">=1.1.12" },
+    { name = "harmonypy", marker = "extra == 'research'", specifier = ">=0.2.0" },
+    { name = "joblib", marker = "extra == 'research'", specifier = ">=1.5.3" },
+    { name = "leidenalg", marker = "extra == 'research'", specifier = ">=0.11.0" },
+    { name = "lifelines", marker = "extra == 'research'", specifier = ">=0.30.0" },
+    { name = "matplotlib", marker = "extra == 'research'", specifier = ">=3.10.8" },
+    { name = "mcp", marker = "extra == 'research'", specifier = ">=1.26.0" },
+    { name = "mofapy2", marker = "extra == 'research'", specifier = ">=0.7.3" },
+    { name = "networkx", marker = "extra == 'research'", specifier = ">=3.6.1" },
+    { name = "onnx", marker = "extra == 'research'", specifier = ">=1.20.1" },
+    { name = "onnxruntime", marker = "extra == 'research'", specifier = ">=1.24.4" },
+    { name = "onnxscript", marker = "extra == 'research'", specifier = ">=0.6.2" },
+    { name = "opencv-python-headless", marker = "extra == 'research'", specifier = ">=4.13.0.92" },
+    { name = "openpyxl", marker = "extra == 'research'", specifier = ">=3.1.5" },
+    { name = "openslide-python", marker = "extra == 'research'", specifier = ">=1.4.3" },
+    { name = "pandas", marker = "extra == 'research'", specifier = ">=3.0.1" },
+    { name = "pillow", marker = "extra == 'research'", specifier = ">=12.1.1" },
+    { name = "pyarrow", marker = "extra == 'research'", specifier = ">=23.0.1" },
+    { name = "pydeseq2", marker = "extra == 'research'", specifier = ">=0.5.4" },
+    { name = "python-louvain", marker = "extra == 'research'", specifier = ">=0.16" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "requests", specifier = ">=2.32.5" },
-    { name = "scanpy", specifier = ">=1.12" },
-    { name = "scikit-learn", specifier = ">=1.8.0" },
-    { name = "scipy", specifier = ">=1.17.1" },
-    { name = "scrublet", specifier = ">=0.2.3" },
-    { name = "seaborn", specifier = ">=0.13.2" },
-    { name = "shap", specifier = ">=0.51.0" },
-    { name = "statsmodels", specifier = ">=0.14.6" },
-    { name = "tensorly", specifier = ">=0.9.0" },
-    { name = "timm", specifier = ">=1.0.25" },
-    { name = "torch", specifier = ">=2.10.0" },
-    { name = "torchvision", specifier = ">=0.25.0" },
-    { name = "tqdm", specifier = ">=4.67.3" },
-    { name = "xgboost", specifier = ">=3.2.0" },
+    { name = "scanpy", marker = "extra == 'research'", specifier = ">=1.12" },
+    { name = "scikit-learn", marker = "extra == 'research'", specifier = ">=1.8.0" },
+    { name = "scipy", marker = "extra == 'research'", specifier = ">=1.17.1" },
+    { name = "scrublet", marker = "extra == 'research'", specifier = ">=0.2.3" },
+    { name = "seaborn", marker = "extra == 'research'", specifier = ">=0.13.2" },
+    { name = "shap", marker = "extra == 'research'", specifier = ">=0.51.0" },
+    { name = "sqlalchemy", marker = "extra == 'api'", specifier = ">=2.0.48" },
+    { name = "statsmodels", marker = "extra == 'research'", specifier = ">=0.14.6" },
+    { name = "tensorly", marker = "extra == 'research'", specifier = ">=0.9.0" },
+    { name = "timm", marker = "extra == 'research'", specifier = ">=1.0.25" },
+    { name = "torch", marker = "extra == 'research'", specifier = ">=2.10.0" },
+    { name = "torchvision", marker = "extra == 'research'", specifier = ">=0.25.0" },
+    { name = "tqdm", marker = "extra == 'research'", specifier = ">=4.67.3" },
+    { name = "uvicorn", marker = "extra == 'api'", specifier = ">=0.42.0" },
+    { name = "xgboost", marker = "extra == 'research'", specifier = ">=3.2.0" },
 ]
+provides-extras = ["api", "research"]
 
 [package.metadata.requires-dev]
-api = [
-    { name = "fastapi", specifier = ">=0.135.1" },
-    { name = "pyyaml", specifier = ">=6.0.3" },
-    { name = "sqlalchemy", specifier = ">=2.0.48" },
-    { name = "uvicorn", specifier = ">=0.42.0" },
-]
 dev = [{ name = "pytest", specifier = ">=9.0.2" }]
 
 [[package]]
