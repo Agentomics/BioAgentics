@@ -57,6 +57,7 @@ research = [
     "torchvision>=0.25.0",
     "tqdm>=4.67.3",
     "xgboost>=3.2.0",
+    "decoupler>=2.1.4",
 ]
 
 [build-system]
