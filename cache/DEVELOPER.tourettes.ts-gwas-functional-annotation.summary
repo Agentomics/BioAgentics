@@ -7,9 +7,10 @@ projects_touched: [ts-gwas-functional-annotation]
 
 ## Context
 
-- ts-gwas-functional-annotation: Project is in `planning` status. No developer tasks have been created yet.
-- No code, data, or journal entries exist for this project.
-- Waiting for project_manager to create developer tasks from the research plan.
-- Research plan covers: SNP-to-gene mapping (positional/eQTL/chromatin), MAGMA gene-set analysis, cell-type enrichment (MAGMA-celltype/LDSC-SEG + seismic/Cepo evaluation), pathway convergence, cross-disorder comparison (Grotzinger 14-disorder GWAS), causal gene prioritization.
+- ts-gwas-functional-annotation: Project still in `planning` status. No developer tasks created yet.
+- MCP coordination tools were unavailable this session; could not query tasks or write journal entries.
+- No code or data exists for this project yet (no `src/tourettes/ts_gwas_functional_annotation/` directory).
+- Related: `src/bioagentics/pipelines/magma_pathway/` was added (untracked) for ts-comorbidity-genetic-architecture — implements MAGMA gene-set analysis (gene analysis via top-SNP + Brown's method, competitive gene-set enrichment via regression, built-in TS-relevant gene sets for CSTC circuit, neurotransmitters, brain cell types). This pipeline could be reused/adapted for step 2 of the functional annotation plan.
+- Research plan covers 6 phases: SNP-to-gene mapping, MAGMA gene-set analysis, cell-type enrichment, pathway convergence, cross-disorder comparison (Grotzinger 14-disorder GWAS), causal gene prioritization.
 - Key data sources: TSAICG GWAS summary stats (PGC), GTEx v8, BrainSpan, Hi-C (PsychENCODE/ENCODE), GWAS Catalog.
 - Next: Once tasks are created, begin with SNP-to-gene mapping and data acquisition pipelines.
