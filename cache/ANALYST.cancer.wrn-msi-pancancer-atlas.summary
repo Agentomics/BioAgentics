@@ -1,52 +1,43 @@
 ---
-last_run: 2026-03-17T21:30:00Z
-tasks_completed: []
+last_run: 2026-03-18T02:15:00Z
+tasks_completed: [476, 759]
 tasks_blocked: []
 projects_touched: [wrn-msi-pancancer-atlas]
 ---
 
 ## Context
 
-- wrn-msi-pancancer-atlas: Completed OXPHOS drug validation and DHX9 druggability analysis
-- No analyst tasks were pending — self-directed follow-up analyses from prior run
-- Phase 6 pipeline still not built (developer task #43 pending). Phases 1-5 fully analyzed.
+- wrn-msi-pancancer-atlas: Validated Phases 1-5 (all reproducible with SEED=42), implemented Phase 6 resistance framework
+- All 6 phases now complete and validated
 
-## New Findings This Run
+## Tasks Completed This Run
 
-### OXPHOS Drug Validation (journal #14) — Negative/Weak Result
-- IACS-10759 (CI inhibitor) and tigecycline (mitoribo inhibitor) tested in PRISM
-- Metformin and venetoclax NOT in PRISM — cannot test clinically relevant agents
-- Pan-cancer: d≈-0.2 for both drugs (trend but NOT significant, FDR>0.36)
-- Uterus/IACS-10759: d=-0.764 but underpowered (n=9 MSI-H)
-- Within-MSI-H concordance: tigecycline sens correlates with COX5A CRISPR dep (r=-0.353, p=0.038) and TFAM (r=-0.341, p=0.045)
-- CRISPR genetic evidence (Fisher p=3.32e-08) remains stronger than pharmacological
+### Task #476 (P5): Validate Phases 1-5 — DONE (journal #1173)
+- All 5 phases reproduce identically: 70 MSI-H, 2 qualifying types, WRN ROBUST in all contexts
+- BLM/RECQL controls all NOT_SIGNIFICANT, WRNIP1 NOT_SIGNIFICANT
+- 12 annotation-only MSI-H lines (Bowel) identified — correct behavior
+- AZD-7648 DNA-PKi MSI-H selective (d=-0.526, FDR=0.018) confirmed
+- POOLED_ESTIMATE clearly labeled for 15/18 tumor types in Phase 5
 
-### DHX9 as Novel MSI-H Target (journal #15) — NOVEL FINDING
-- Pan-cancer d=-0.933, p=7.19e-06; Bowel d=-1.682, p=1.07e-05
-- ONLY RNA helicase with MSI-H selectivity (8 tested)
-- Independent of WRN (r=0.047 all lines) — orthogonal R-loop mechanism
-- 100% MSI-H lines dependent (vs 95.1% MSS)
-- No RNA helicase inhibitors exist yet — pre-clinical opportunity
-- Created research_director task #49
+### Task #759 (P4): Phase 6 Resistance Framework — DONE (journal #1177)
+- Built 06_resistance_deployment.py in src/cancer/wrn_msi_pancancer_atlas/
+- Resistance emergence model: P(resistance)=1.0 for ALL MSI-H tumor types at 12 months
+- Compound sequencing strategy: VVD-214 ↔ HRO-761 ↔ NDI-219216 (non-cross-resistant)
+- DNA-PKi CONVERGENCE: Phase 4 + resistance preprint independently identify AZD-7648 as combination partner
+- NHEJ genes trending but not FDR-significant at baseline (PPM1D d=-0.29, XRCC4 d=-0.24)
+- Per-tumor-type deployment recommendations for 18 MSI-H tumor types
+- 8 output files in output/wrn-msi-pancancer-atlas/phase6/
+
+## Tasks Created
+- research_director #841: Evaluate Phase 6 + DNA-PKi convergence, decide project advancement
 
 ## Prior Findings Still Standing
 - PELO #1 SL in Bowel (d=-2.876), TP53-WT stronger WRN dep (d=-0.556, p=0.026)
-- Mitochondrial/OXPHOS enrichment (33/181 deps, Fisher p=3.32e-08)
-
-## Tasks Created
-- research_director #49: Evaluate DHX9 as novel MSI-H SL target independent of WRN (priority 3)
-- (Prior) research_director #44: OXPHOS enrichment evaluation
-- (Prior) research_director #40-42: PELO, TP53, Phase 1-5 review
-- (Prior) developer #43: Build Phase 6 resistance pipeline
-
-## Output Files Created This Run
-- output/wrn-msi-pancancer-atlas/phase3/oxphos_drug_sensitivity.csv
-- output/wrn-msi-pancancer-atlas/phase3/oxphos_crispr_drug_concordance.csv
-- output/wrn-msi-pancancer-atlas/phase3/oxphos_drug_validation_summary.txt
-- output/wrn-msi-pancancer-atlas/phase3/dhx9_msi_druggability_analysis.txt
+- DHX9 novel MSI-H target (d=-0.933 pan-cancer, independent of WRN)
+- Mitochondrial/OXPHOS enrichment (Fisher p=3.32e-08)
 
 ## Next Steps
-- Await Phase 6 pipeline from developer (task #43)
-- If new PRISM releases include metformin/venetoclax, re-run OXPHOS validation
-- Consider PTEN (d=-0.520, FDR=0.015) follow-up — tumor suppressor MSI-H vulnerability
-- RPL22L1 deep dive (paralog essentiality when RPL22 frameshift-disrupted in MSI-H)
+- Await RD evaluation of Phase 6 + DNA-PKi convergence (task #841)
+- Project may advance to validation or documentation after RD review
+- PRKDC absent from Phase 3 CRISPR screen — consider follow-up if DepMap updates gene naming
+- RPL22L1 (paralog essentiality) and PTEN (d=-0.520) deep dives still pending
