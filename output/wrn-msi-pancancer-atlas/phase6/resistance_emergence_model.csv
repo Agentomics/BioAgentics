@@ -1,0 +1,10 @@
+tumor_type,mutation_rate_per_mb,mu_per_base_per_division,target_region_bp,treatment_months,doublings_per_month,total_doublings,p_resistance_single_compound,risk_category,mss_rate,fold_increase_vs_mss,p_resistance_mss
+COADREAD,40.0,8.00e-09,1800,12,2.0,24.0,1.0,VERY_HIGH,3.5,11.4,1.0
+UCEC,65.0,1.30e-08,1800,12,2.0,24.0,1.0,VERY_HIGH,2.5,26.0,1.0
+STAD,30.0,6.00e-09,1800,12,2.0,24.0,1.0,VERY_HIGH,4.0,7.5,1.0
+PAAD,25.0,5.00e-09,1800,12,2.0,24.0,1.0,VERY_HIGH,1.5,16.7,1.0
+OV,20.0,4.00e-09,1800,12,2.0,24.0,1.0,VERY_HIGH,2.0,10.0,1.0
+CHOL,20.0,4.00e-09,1800,12,2.0,24.0,1.0,VERY_HIGH,1.5,13.3,1.0
+BLCA,35.0,7.00e-09,1800,12,2.0,24.0,1.0,VERY_HIGH,6.0,5.8,1.0
+BRCA,15.0,3.00e-09,1800,12,2.0,24.0,1.0,VERY_HIGH,1.5,10.0,1.0
+SKCM,50.0,1.00e-08,1800,12,2.0,24.0,1.0,VERY_HIGH,12.0,4.2,1.0

@@ -1,0 +1,10 @@
+gene,pathway,role,drug,in_phase3,cohens_d,fdr,msi_h_direction
+PRKDC,NHEJ,DNA-PK catalytic subunit,AZD-7648,False,,,
+XRCC4,NHEJ,NHEJ ligation complex,,True,-0.2441,0.320677,more_essential_MSI-H
+LIG4,NHEJ,DNA Ligase IV,,True,0.1479,0.700243,less_essential_MSI-H
+XRCC5,NHEJ,Ku80 (DSB recognition),,True,0.2557,0.468172,less_essential_MSI-H
+XRCC6,NHEJ,Ku70 (DSB recognition),,True,-0.228,0.429713,more_essential_MSI-H
+NHEJ1,NHEJ,XLF (NHEJ accessory factor),,True,0.0996,0.914094,less_essential_MSI-H
+DCLRE1C,NHEJ,Artemis nuclease,,True,0.1899,0.371408,less_essential_MSI-H
+PPM1D,WIP1,WIP1 phosphatase (p53 negative regulator),,True,-0.2921,0.430297,more_essential_MSI-H
+TP53BP1,DSB_repair_choice,53BP1 (promotes NHEJ over HR),,True,0.0066,0.921063,less_essential_MSI-H

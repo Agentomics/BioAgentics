@@ -1,0 +1,4 @@
+compound,sponsor,mechanism,binding_site,warhead,trial,phase,status,resistance_class
+VVD-214,Vividion/Roche/Bayer,Covalent allosteric,C727 allosteric pocket,Vinyl sulfone,NCT06004245,Phase 1,Dose escalation + expansion; PRs reported (AACR 2025),covalent_allosteric
+HRO-761,Novartis,Non-covalent allosteric,Allosteric pocket (non-covalent),None (reversible),NCT05838768,Phase 1/1b,"Mono + combos (irinotecan, tislelizumab)",noncovalent_allosteric
+NDI-219216,Nimbus,Non-covalent (distinct binding mode),Distinct from HRO-761 and VVD-214,None (reversible),NCT06898450,Phase 1/2,Part A dose escalation COMPLETE (Dec 2025); no DLTs,noncovalent_distinct

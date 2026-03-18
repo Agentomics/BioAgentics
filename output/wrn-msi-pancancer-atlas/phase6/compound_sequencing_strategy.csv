@@ -1,0 +1,5 @@
+scenario,first_line,resistance_type,switch_to,rationale,combination_partner
+First-line VVD-214 → C727 resistance,VVD-214,VVD-214_specific,HRO-761 or NDI-219216,Non-covalent inhibitors bind different pocket; C727 mutations don't affect their binding,AZD-7648 (DNA-PKi) — NHEJ dependency in WRN-inhibited cells
+First-line HRO-761 → allosteric pocket resistance,HRO-761,HRO-761_specific,VVD-214 or NDI-219216,Covalent mechanism (VVD-214) or distinct binding site (NDI-219216) unaffected,AZD-7648 (DNA-PKi) — NHEJ dependency in WRN-inhibited cells
+First-line NDI-219216 → distinct-site resistance,NDI-219216,NDI-219216_specific,VVD-214 or HRO-761,Distinct binding mode means resistance mutations are non-overlapping,AZD-7648 (DNA-PKi) — NHEJ dependency in WRN-inhibited cells
+Pan-resistance (all WRN inhibitors),Any WRN inhibitor,pan_resistance,None (WRN pathway exhausted),Structural changes affect all binding modes — must target downstream vulnerabilities,DNA-PKi + immunotherapy; target NHEJ pathway or WIP1 phosphatase

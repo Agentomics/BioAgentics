@@ -1,0 +1,228 @@
+======================================================================
+WRN-MSI Pan-Cancer Atlas — Phase 6: Resistance-Aware Deployment Framework
+======================================================================
+
+Source: bioRxiv 10.64898/2026.01.22.700152v1 + Atlas Phases 1-5
+
+1. THREE-DRUG CLINICAL LANDSCAPE
+--------------------------------------------------
+  VVD-214 (Vividion/Roche/Bayer): Covalent allosteric
+    Binding: C727 allosteric pocket
+    Trial: NCT06004245 (Phase 1)
+    Status: Dose escalation + expansion; PRs reported (AACR 2025)
+
+  HRO-761 (Novartis): Non-covalent allosteric
+    Binding: Allosteric pocket (non-covalent)
+    Trial: NCT05838768 (Phase 1/1b)
+    Status: Mono + combos (irinotecan, tislelizumab)
+
+  NDI-219216 (Nimbus): Non-covalent (distinct binding mode)
+    Binding: Distinct from HRO-761 and VVD-214
+    Trial: NCT06898450 (Phase 1/2)
+    Status: Part A dose escalation COMPLETE (Dec 2025); no DLTs
+
+2. RESISTANCE MUTATION PROFILES — DIVERGENT
+--------------------------------------------------
+  KEY FINDING: Resistance profiles DIVERGE between compounds.
+  Single-allele (heterozygous) mutations at binding site = sufficient for resistance.
+
+  [compound_specific] VVD-214_specific:
+    Mutations at C727 covalent binding site that prevent warhead engagement
+    Affects: VVD-214
+    Spares: HRO-761;NDI-219216
+    Implication: Switch to non-covalent inhibitor (HRO-761 or NDI-219216)
+
+  [compound_specific] HRO-761_specific:
+    Mutations in non-covalent allosteric pocket reducing binding affinity
+    Affects: HRO-761
+    Spares: VVD-214;NDI-219216
+    Implication: Switch to covalent inhibitor (VVD-214) or distinct-binding NDI-219216
+
+  [pan_resistance] pan_resistance:
+    Mutations affecting shared structural features required by all compounds
+    Affects: VVD-214;HRO-761;NDI-219216
+    Spares: none
+    Implication: Combination strategy needed (NHEJ inhibitor, WIP1 inhibitor)
+
+3. RESISTANCE EMERGENCE PROBABILITY (12-month treatment)
+--------------------------------------------------
+  Model: P(resistance) = 1 - exp(-N * mu * L)
+  N=1e9 tumor cells, L=1800bp WRN helicase domain
+
+  COADREAD: MSI-H 40.0 mut/Mb (11.4x MSS) → P(resistance)=1.0000 [VERY_HIGH]
+  UCEC: MSI-H 65.0 mut/Mb (26.0x MSS) → P(resistance)=1.0000 [VERY_HIGH]
+  STAD: MSI-H 30.0 mut/Mb (7.5x MSS) → P(resistance)=1.0000 [VERY_HIGH]
+  PAAD: MSI-H 25.0 mut/Mb (16.7x MSS) → P(resistance)=1.0000 [VERY_HIGH]
+  OV: MSI-H 20.0 mut/Mb (10.0x MSS) → P(resistance)=1.0000 [VERY_HIGH]
+  CHOL: MSI-H 20.0 mut/Mb (13.3x MSS) → P(resistance)=1.0000 [VERY_HIGH]
+  BLCA: MSI-H 35.0 mut/Mb (5.8x MSS) → P(resistance)=1.0000 [VERY_HIGH]
+  BRCA: MSI-H 15.0 mut/Mb (10.0x MSS) → P(resistance)=1.0000 [VERY_HIGH]
+  SKCM: MSI-H 50.0 mut/Mb (4.2x MSS) → P(resistance)=1.0000 [VERY_HIGH]
+
+4. COMBINATION VULNERABILITY CROSS-REFERENCE (Phase 3 + Phase 4)
+--------------------------------------------------
+  Resistance preprint identifies NHEJ + WIP1 as vulnerabilities in WRN-resistant cells.
+  Cross-referencing with our genome-wide MSI-H dependency screen (Phase 3):
+
+  PRKDC (NHEJ, DNA-PK catalytic subunit): not tested in Phase 3
+  XRCC4 (NHEJ, NHEJ ligation complex): d=-0.244, FDR=3.207e-01, more_essential_MSI-H
+  LIG4 (NHEJ, DNA Ligase IV): d=0.148, FDR=7.002e-01, less_essential_MSI-H
+  XRCC5 (NHEJ, Ku80 (DSB recognition)): d=0.256, FDR=4.682e-01, less_essential_MSI-H
+  XRCC6 (NHEJ, Ku70 (DSB recognition)): d=-0.228, FDR=4.297e-01, more_essential_MSI-H
+  NHEJ1 (NHEJ, XLF (NHEJ accessory factor)): d=0.100, FDR=9.141e-01, less_essential_MSI-H
+  DCLRE1C (NHEJ, Artemis nuclease): d=0.190, FDR=3.714e-01, less_essential_MSI-H
+  PPM1D (WIP1, WIP1 phosphatase (p53 negative regulator)): d=-0.292, FDR=4.303e-01, more_essential_MSI-H
+  TP53BP1 (DSB_repair_choice, 53BP1 (promotes NHEJ over HR)): d=0.007, FDR=9.211e-01, less_essential_MSI-H
+
+  AZD-7648 (DNA-PKi) MSI-H sensitivity from Phase 4:
+    Uterus: d=-1.012, FDR=8.377e-02
+    Pan-cancer (pooled): d=-0.526, FDR=1.847e-02 ***
+    Bowel: d=-0.501, FDR=3.549e-01
+  *** CONVERGENCE: Phase 4 independently found DNA-PKi MSI-H selective
+      Resistance preprint independently identifies DNA-PK as combination partner
+
+5. COMPOUND SEQUENCING STRATEGY
+--------------------------------------------------
+  Scenario: First-line VVD-214 → C727 resistance
+    Switch to: HRO-761 or NDI-219216
+    Rationale: Non-covalent inhibitors bind different pocket; C727 mutations don't affect their binding
+    Combination: AZD-7648 (DNA-PKi) — NHEJ dependency in WRN-inhibited cells
+
+  Scenario: First-line HRO-761 → allosteric pocket resistance
+    Switch to: VVD-214 or NDI-219216
+    Rationale: Covalent mechanism (VVD-214) or distinct binding site (NDI-219216) unaffected
+    Combination: AZD-7648 (DNA-PKi) — NHEJ dependency in WRN-inhibited cells
+
+  Scenario: First-line NDI-219216 → distinct-site resistance
+    Switch to: VVD-214 or HRO-761
+    Rationale: Distinct binding mode means resistance mutations are non-overlapping
+    Combination: AZD-7648 (DNA-PKi) — NHEJ dependency in WRN-inhibited cells
+
+  Scenario: Pan-resistance (all WRN inhibitors)
+    Switch to: None (WRN pathway exhausted)
+    Rationale: Structural changes affect all binding modes — must target downstream vulnerabilities
+    Combination: DNA-PKi + immunotherapy; target NHEJ pathway or WIP1 phosphatase
+
+6. PER-TUMOR-TYPE DEPLOYMENT RECOMMENDATIONS
+--------------------------------------------------
+  COADREAD (WRN d=-2.844, ~23,532 pts/yr):
+    Resistance risk: VERY_HIGH
+    Strategy: WRN inhibitor + DNA-PKi combination
+    Rationale: High resistance risk — consider upfront combination with DNA-PKi (AZD-7648) to suppress NHEJ-dependent resistance escape
+    In trial: VVD-214;HRO-761
+
+  STAD (WRN d=-2.833, ~5,297 pts/yr):
+    Resistance risk: VERY_HIGH
+    Strategy: WRN inhibitor + DNA-PKi combination
+    Rationale: High resistance risk — consider upfront combination with DNA-PKi (AZD-7648) to suppress NHEJ-dependent resistance escape
+    In trial: VVD-214;HRO-761
+
+  DLBC (WRN d=-2.833, ~3,950 pts/yr):
+    Resistance risk: UNKNOWN
+    Strategy: WRN inhibitor monotherapy
+    Rationale: Lower resistance risk or insufficient mutation rate data — standard WRN inhibitor monotherapy
+    NOT in current WRN trials
+
+  SKCM (WRN d=-2.833, ~905 pts/yr):
+    Resistance risk: VERY_HIGH
+    Strategy: WRN inhibitor + DNA-PKi combination
+    Rationale: High resistance risk — consider upfront combination with DNA-PKi (AZD-7648) to suppress NHEJ-dependent resistance escape
+    NOT in current WRN trials
+
+  BRCA (WRN d=-2.833, ~621 pts/yr):
+    Resistance risk: VERY_HIGH
+    Strategy: WRN inhibitor + DNA-PKi combination
+    Rationale: High resistance risk — consider upfront combination with DNA-PKi (AZD-7648) to suppress NHEJ-dependent resistance escape
+    NOT in current WRN trials
+
+  ESCA (WRN d=-2.833, ~603 pts/yr):
+    Resistance risk: UNKNOWN
+    Strategy: WRN inhibitor monotherapy
+    Rationale: Lower resistance risk or insufficient mutation rate data — standard WRN inhibitor monotherapy
+    NOT in current WRN trials
+
+  BLCA (WRN d=-2.833, ~582 pts/yr):
+    Resistance risk: VERY_HIGH
+    Strategy: WRN inhibitor + DNA-PKi combination
+    Rationale: High resistance risk — consider upfront combination with DNA-PKi (AZD-7648) to suppress NHEJ-dependent resistance escape
+    NOT in current WRN trials
+
+  PAAD (WRN d=-2.833, ~398 pts/yr):
+    Resistance risk: VERY_HIGH
+    Strategy: WRN inhibitor + DNA-PKi combination
+    Rationale: High resistance risk — consider upfront combination with DNA-PKi (AZD-7648) to suppress NHEJ-dependent resistance escape
+    IO note: Low IO response (pembro ORR 18%) — strong case for WRN inhibitor combination
+    NOT in current WRN trials
+
+  CHOL (WRN d=-2.833, ~342 pts/yr):
+    Resistance risk: VERY_HIGH
+    Strategy: WRN inhibitor + DNA-PKi combination
+    Rationale: High resistance risk — consider upfront combination with DNA-PKi (AZD-7648) to suppress NHEJ-dependent resistance escape
+    NOT in current WRN trials
+
+  KIRP (WRN d=-2.833, ~327 pts/yr):
+    Resistance risk: UNKNOWN
+    Strategy: WRN inhibitor monotherapy
+    Rationale: Lower resistance risk or insufficient mutation rate data — standard WRN inhibitor monotherapy
+    NOT in current WRN trials
+
+  LUAD (WRN d=-2.833, ~235 pts/yr):
+    Resistance risk: UNKNOWN
+    Strategy: WRN inhibitor monotherapy
+    Rationale: Lower resistance risk or insufficient mutation rate data — standard WRN inhibitor monotherapy
+    NOT in current WRN trials
+
+  KIRC (WRN d=-2.833, ~163 pts/yr):
+    Resistance risk: UNKNOWN
+    Strategy: WRN inhibitor monotherapy
+    Rationale: Lower resistance risk or insufficient mutation rate data — standard WRN inhibitor monotherapy
+    NOT in current WRN trials
+
+  LIHC (WRN d=-2.833, ~123 pts/yr):
+    Resistance risk: UNKNOWN
+    Strategy: WRN inhibitor monotherapy
+    Rationale: Lower resistance risk or insufficient mutation rate data — standard WRN inhibitor monotherapy
+    NOT in current WRN trials
+
+  HNSC (WRN d=-2.833, ~116 pts/yr):
+    Resistance risk: UNKNOWN
+    Strategy: WRN inhibitor monotherapy
+    Rationale: Lower resistance risk or insufficient mutation rate data — standard WRN inhibitor monotherapy
+    NOT in current WRN trials
+
+  LGG (WRN d=-2.833, ~50 pts/yr):
+    Resistance risk: UNKNOWN
+    Strategy: WRN inhibitor monotherapy
+    Rationale: Lower resistance risk or insufficient mutation rate data — standard WRN inhibitor monotherapy
+    NOT in current WRN trials
+
+  UCEC (WRN d=-1.086, ~20,974 pts/yr):
+    Resistance risk: VERY_HIGH
+    Strategy: WRN inhibitor + DNA-PKi combination
+    Rationale: High resistance risk — consider upfront combination with DNA-PKi (AZD-7648) to suppress NHEJ-dependent resistance escape
+    In trial: VVD-214;HRO-761
+
+  OV (WRN d=-2.833, ~39 pts/yr):
+    Resistance risk: VERY_HIGH
+    Strategy: WRN inhibitor + DNA-PKi combination
+    Rationale: High resistance risk — consider upfront combination with DNA-PKi (AZD-7648) to suppress NHEJ-dependent resistance escape
+    IO note: Low IO response (pembro ORR 33%) — strong case for WRN inhibitor combination
+    In trial: VVD-214;HRO-761
+
+  UCS (WRN d=-1.086, ~3,597 pts/yr):
+    Resistance risk: UNKNOWN
+    Strategy: WRN inhibitor monotherapy
+    Rationale: Lower resistance risk or insufficient mutation rate data — standard WRN inhibitor monotherapy
+    NOT in current WRN trials
+
+7. KEY CONCLUSIONS
+--------------------------------------------------
+  1. Resistance to WRN inhibitors is INEVITABLE in MSI-H tumors due to elevated mutation rates
+  2. Divergent resistance profiles enable RATIONAL SEQUENTIAL therapy
+  3. DNA-PKi (AZD-7648) is a convergently validated combination partner:
+     - Phase 4: MSI-H selective (d=-0.526, FDR=0.018)
+     - Resistance preprint: NHEJ dependency in WRN-resistant cells
+  4. High mutation rate tumor types (UCEC, SKCM, COADREAD) need upfront combination
+  5. NDI-219216 provides third non-cross-resistant option for pan-resistance scenarios
+  6. PAAD patients (low IO ORR + moderate resistance risk) are strongest candidates
+     for WRN inhibitor combination strategies

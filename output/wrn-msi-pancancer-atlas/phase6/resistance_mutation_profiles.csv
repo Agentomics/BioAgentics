@@ -1,0 +1,4 @@
+mutation_class,description,type,compounds_affected,compounds_spared,mechanism,clinical_implication
+VVD-214_specific,Mutations at C727 covalent binding site that prevent warhead engagement,compound_specific,VVD-214,HRO-761;NDI-219216,Loss of covalent target residue or steric occlusion of vinyl sulfone,Switch to non-covalent inhibitor (HRO-761 or NDI-219216)
+HRO-761_specific,Mutations in non-covalent allosteric pocket reducing binding affinity,compound_specific,HRO-761,VVD-214;NDI-219216,Altered pocket geometry disrupts reversible binding,Switch to covalent inhibitor (VVD-214) or distinct-binding NDI-219216
+pan_resistance,Mutations affecting shared structural features required by all compounds,pan_resistance,VVD-214;HRO-761;NDI-219216,none,Structural changes in WRN helicase domain affecting all binding modes,"Combination strategy needed (NHEJ inhibitor, WIP1 inhibitor)"

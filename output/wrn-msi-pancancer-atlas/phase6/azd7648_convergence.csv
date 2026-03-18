@@ -1,0 +1,4 @@
+cancer_type,drug,mechanism,cohens_d,p_value,n_msi,n_mss,median_sens_msi,median_sens_mss,fdr
+Uterus,AZD-7648,DNA-PK inhibitor,-1.0121,0.0111698353100141,9,25,-0.8572,-0.6023,0.083773764825106
+Pan-cancer (pooled),AZD-7648,DNA-PK inhibitor,-0.5258,0.0012310819275578,47,821,-0.6178,-0.4859,0.0184662289133681
+Bowel,AZD-7648,DNA-PK inhibitor,-0.5015,0.1892739422695046,15,26,-0.5123,-0.3937,0.3548886417553212
