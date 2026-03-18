@@ -17,6 +17,7 @@ The TSAICG GWAS (journal #446) found enrichment in loss-of-function intolerant g
   - Candidate: CELSR3, **WWC1 [upgraded — functionally validated via W88C knock-in mouse, Science Advances Mar 2025]**, ASH1L, OPRK1, FN1
   - TS-associated CNV regions (16p13.11, 22q11.2, NRXN1 deletions)
   - De novo variant genes from trio studies
+  - **Zhan et al. 2025 (bioRxiv)** — Largest TS WES study (1,466 trios vs 6,714 ASD + 5,880 controls). Significant PTV de novo enrichment in pLI ≥ 0.9 genes. PTV-biased signal distinct from ASD missense-biased pattern. Provides primary de novo variant input for convergence analysis [NEW]
 - **gnomAD v4** — pLI, LOEUF, missense Z-scores
 - **STRING v12** — PPI network
 - **Gene Ontology, KEGG, Reactome** — Pathway databases
@@ -31,6 +32,8 @@ Systematic literature review to compile all TS-implicated rare variant genes. Fo
 - Evidence strength: strong (replicated, functional validation — **WWC1 now qualifies as strong**), moderate (multiple independent reports), suggestive (single report, no functional data)
 - Variant type: LoF, missense, structural
 - Pathway membership
+
+**Zhan et al. integration [NEW]:** Incorporate Zhan et al. de novo gene list as primary input. Key analytical approach: (1) filter Zhan PTV-hit genes by pLI ≥ 0.9 (their most significant enrichment signal), (2) test overlap with GWAS convergence genes and existing rare variant list (SLITRK1, HDC, NRXN1, CNTN6), (3) use PTV-biased (vs ASD missense-biased) pattern as TS-specificity filter in Phase 5 cross-disorder analysis. Source: bioRxiv 10.1101/2025.11.04.686570v1
 
 ### Phase 1b — Costa Rica Pedigree & Clinical Exome Cross-Validation [NEW]
 Integrate additional convergence evidence streams: (1) Costa Rica pedigree IBD analysis (Mol Psychiatry 2022) found neuronal development and signal transduction pathway enrichment — provides a third convergence evidence stream alongside rare and common variants; (2) stratify convergence analysis by gene function (synaptic, chromatin remodeling, signaling) based on clinical exome dual model; (3) note PPP5C/EXOC1/GXYLT1 have no functional characterization — PPI network analysis in Phase 3 could predict their mechanisms [task #330].
