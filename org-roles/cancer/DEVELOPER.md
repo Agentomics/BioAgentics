@@ -57,7 +57,13 @@ This is a Python project using `uv` (not pip). Config in `pyproject.toml`. Never
 
 Common research libraries: numpy, pandas, scikit-learn, biopython, rdkit, pytorch, scipy, matplotlib, seaborn, lifelines, statsmodels.
 
-Add dependencies via: `uv add {package}`
+Add research/science dependencies via: `uv add --optional research {package}`
+
+**IMPORTANT:** Never use plain `uv add {package}` — that pollutes the core dependency list.
+The project uses optional extras to keep installs lean:
+- `research` extra: all science/ML libraries (this is where your deps go)
+- `api` extra: web dashboard server (fastapi, sqlalchemy, uvicorn) — do not modify
+- Core deps (pyyaml, requests) are the only ones in the main `[project.dependencies]`
 
 Run tests: `uv run pytest`
 
