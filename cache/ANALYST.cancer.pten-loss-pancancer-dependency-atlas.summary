@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-18T02:06:00Z
+tasks_completed: [831]
+tasks_blocked: []
+projects_touched: [pten-loss-pancancer-dependency-atlas]
+---
+
+## Context
+
+- pten-loss-pancancer-dependency-atlas: Completed full 5-phase validation (task #831). PASS with caveats.
+- PIK3CB positive control validated: ROBUST in Breast (d=-2.23) and Skin (d=-1.50). Isoform switch confirmed by convergent CRISPR + PRISM evidence.
+- Afuresertib (AKT inhibitor) strongly PTEN-selective: Uterus d=-1.97, Ovary d=-1.68.
+- Genome-wide screen: 0 hits at FDR<0.05 (power limitation, not biological negative). TTK most suggestive priority target.
+- Critical PRISM gaps: capivasertib, AZD8186, GSK2636771 not available.
+- Project findings_content and plain_summary updated. Impact score set to "high".
+- Created task #838 for research_director to evaluate findings and advance to validation stage.
+- Journal entry #1167 has detailed phase-by-phase validation with all statistics.
+- Next: awaiting RD evaluation. No pending analyst tasks remain.
