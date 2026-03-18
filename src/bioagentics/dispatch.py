@@ -252,6 +252,95 @@ def _advance_projects(from_status: str, to_status: str):
             print(f"  WARNING: failed to advance {name} to {to_status}")
 
 
+def _project_has_no_tasks(name: str, division: str | None = None) -> bool:
+    """True if project has zero tasks in any status."""
+    div_filter = f"&division={division}" if division else ""
+    for status in ("pending", "in_progress", "blocked", "done", "cancelled"):
+        resp = api("GET", f"/tasks?project={name}&status={status}&limit=1{div_filter}")
+        if resp and resp.ok and resp.json().get("total", 0) > 0:
+            return False
+    return True
+
+
+def _has_active_task_for(username: str, project: str, division: str | None = None) -> bool:
+    """True if an active (pending/in_progress/blocked) task exists for this agent+project."""
+    div_filter = f"&division={division}" if division else ""
+    for st in ("pending", "in_progress", "blocked"):
+        resp = api(
+            "GET",
+            f"/tasks?username={username}&project={project}&status={st}&limit=1{div_filter}",
+        )
+        if resp and resp.ok and resp.json().get("total", 0) > 0:
+            return True
+    return False
+
+
+def check_planning_projects():
+    """Create project_manager tasks for projects stuck in planning with no PM task."""
+    resp = api("GET", "/projects?status=planning&limit=100")
+    if not resp or not resp.ok:
+        return
+
+    for proj in resp.json().get("items", []):
+        name = proj["name"]
+        div = proj.get("division") or "cancer"
+        if _has_active_task_for("project_manager", name, div):
+            continue
+
+        print(f"  STUCK PLANNING: {name} — creating project_manager task")
+        api(
+            "POST",
+            "/tasks",
+            json={
+                "username": "project_manager",
+                "title": f"Create development tasks for {name}",
+                "description": (
+                    f"Project {name} is in planning but has no project_manager task.\n\n"
+                    f"Read the research plan at plans/{div}/{name}.md (or via get_project()) "
+                    f"and create developer tasks to implement it."
+                ),
+                "project": name,
+                "division": div,
+                "priority": 3,
+            },
+        )
+        journal(
+            f"auto-created project_manager task — project stuck in planning with no PM task",
+            name,
+            div,
+        )
+
+
+# Expected agent role for each pipeline stage
+_STAGE_AGENTS = {
+    "development": "developer",
+    "analysis": "analyst",
+    "validation": "validation_scientist",
+    "documentation": "research_writer",
+}
+
+
+def check_orphaned_pipeline_projects():
+    """Warn about projects in an active pipeline stage with zero tasks."""
+    for stage, expected_agent in _STAGE_AGENTS.items():
+        resp = api("GET", f"/projects?status={stage}&limit=100")
+        if not resp or not resp.ok:
+            continue
+        for proj in resp.json().get("items", []):
+            name = proj["name"]
+            div = proj.get("division")
+            if not _project_has_no_tasks(name, div) or _project_is_idle(name, div):
+                continue
+            # Project is in an active stage but has no tasks at all
+            print(f"  ORPHANED: {name} in '{stage}' with no tasks")
+            journal(
+                f"orphaned project: status is '{stage}' but no tasks exist — "
+                f"expected {expected_agent} tasks. May need project_manager intervention.",
+                name,
+                div,
+            )
+
+
 def check_stale_pipeline_projects():
     """Advance projects through the research pipeline when their tasks complete.
 
@@ -698,6 +787,10 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
 
     # Advance projects through the research pipeline
     check_stale_pipeline_projects()
+
+    # Recover stuck projects
+    check_planning_projects()
+    check_orphaned_pipeline_projects()
 
     # Create tasks for published projects missing research reports
     check_published_missing_reports()
