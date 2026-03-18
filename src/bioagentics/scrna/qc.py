@@ -106,9 +106,18 @@ def detect_doublets(
         X = np.asarray(X.todense())
 
     scrub = scr.Scrublet(X, expected_doublet_rate=expected_doublet_rate, random_state=random_state)
+    min_gene_variability_pctl = 85
+    # Estimate genes remaining after scrublet's variability filter
+    n_variable_genes = max(1, int(X.shape[1] * (100 - min_gene_variability_pctl) / 100))
+    n_prin_comps = min(30, n_variable_genes - 1, X.shape[0] - 1)
     doublet_scores, predicted_doublets = scrub.scrub_doublets(
-        min_counts=2, min_cells=3, min_gene_variability_pctl=85, n_prin_comps=30
+        min_counts=2, min_cells=3, min_gene_variability_pctl=min_gene_variability_pctl,
+        n_prin_comps=n_prin_comps,
     )
+
+    # scrublet returns predicted_doublets=None when it cannot find a threshold
+    if predicted_doublets is None:
+        predicted_doublets = scrub.call_doublets(threshold=0.25)
 
     return predicted_doublets, doublet_scores
 

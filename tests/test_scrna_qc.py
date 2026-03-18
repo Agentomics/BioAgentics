@@ -59,8 +59,8 @@ class TestComputeQCMetrics:
 
     def test_mito_genes_detected(self):
         adata = make_synthetic_adata(n_cells=100, n_genes=50)
-        # Add MT- genes to gene names
-        gene_names = list(adata.var_names)
+        # Override all gene names so exactly 2 are MT- prefixed
+        gene_names = [f"GENE{i}" for i in range(len(adata.var_names))]
         gene_names[-2] = "MT-ND1"
         gene_names[-1] = "MT-CO1"
         adata.var_names = pd.Index(gene_names)
@@ -106,13 +106,13 @@ class TestRunQC:
         assert adata_filtered.n_vars == stats.genes_after
 
     def test_stats_summary(self):
-        adata = make_synthetic_adata(n_cells=200, n_genes=100)
+        adata = make_synthetic_adata(n_cells=300, n_genes=150)
         _, stats = run_qc(adata, min_genes=50, min_cells=5)
         summary = stats.summary()
         assert "QC Summary" in summary
         assert "Cells:" in summary
 
     def test_preserves_sparse(self):
-        adata = make_synthetic_adata(n_cells=200, n_genes=100)
+        adata = make_synthetic_adata(n_cells=300, n_genes=150)
         adata_filtered, _ = run_qc(adata, min_genes=50, min_cells=5)
         assert sp.issparse(adata_filtered.X)
