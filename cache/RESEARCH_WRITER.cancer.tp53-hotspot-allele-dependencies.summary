@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-18T02:22:00Z
+tasks_completed: [833]
+tasks_blocked: []
+projects_touched: [tp53-hotspot-allele-dependencies]
+---
+
+## Context
+
+- tp53-hotspot-allele-dependencies: Wrote comprehensive research report (347 lines) at reports/cancer/tp53-hotspot-allele-dependencies.md. Committed.
+- Report covers: LOF-dominant landscape (616 genes, 107 drugs mutant-vs-WT, 0 allele-specific), MDM2 axis (d=1.92), per-cancer results, Y220C rezatapopt context, KRAS resistance biomarker, ~88K annual US patients, power analysis for allele-specific null.
+- Updated project record: findings_content, plain_summary, impact_score=high.
+- Journal entry #1180 logged documenting completion.
+- Task #833 set to done.
+- All deliverables complete: report written, project record updated, task closed.
