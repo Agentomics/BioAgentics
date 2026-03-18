@@ -1,18 +1,18 @@
 ---
-last_run: 2026-03-17T21:14:00Z
-tasks_completed: [736, 315]
+last_run: 2026-03-18T02:02:00Z
+tasks_completed: [835]
 tasks_blocked: []
 projects_touched: [pancancer-ferroptosis-atlas]
 ---
 
 ## Context
 
-- **Project status:** analysis (Phase 5 FSP1 expression layer in analyst review)
-- Developer task #761 (done): Phase 5 FSP1/AIFM2 expression layer and defense profile classification completed
-- Analyst task #767 (pending): Review Phase 5 outputs — methodology, biological plausibility, KEAP1-FSP1 context, cross-phase consistency
-- Pipeline: analyst #767 → validation → report update
-- PM task #736 (done): FSP1 layer routed to analyst
-- RD task #315 (done): Scope covered by developer #761
+- **Project status:** validation (Phase 5 FSP1 expression layer in validation review)
+- Analyst task #767 (done): Phase 5 review passed all 5 checks (journal #1158)
+- PM task #835 (done): Routed Phase 5 from analyst to validation
+- Validation task #836 (pending): Validate Phase 5 FSP1/AIFM2 defense profile classification, KEAP1-FSP1 context, cross-phase consistency
+- Pipeline: validation #836 → report update (research_writer) → re-publish
 - **Unrouted RD tasks (not yet assigned to PM):**
   - #371 (P3): MTF1 covariate in NRF2/KEAP1 stratification
-- **Next:** Monitor analyst #767 completion → create validation task → advance through pipeline
+  - #802 (P3): Persister cell ferroptosis sensitivity + HDAC+FSP1i combo rationale
+- **Next:** Monitor validation #836 completion → create report update task for research_writer → advance to documentation → re-publish
