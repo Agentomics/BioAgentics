@@ -8,7 +8,7 @@ projects_touched: [pik3ca-allele-dependencies]
 ## Context
 
 - Completed full analyst validation of all 5 development phases (task #283, journal #565)
-- Created validation script: `src/pik3ca_allele_dependencies/analyst_validation.py`
+- Created validation script: `src/cancer/pik3ca_allele_dependencies/analyst_validation.py`
 - Results saved: `data/results/pik3ca_allele_dependencies/analyst_validation_results.json`
 
 ## Key Findings

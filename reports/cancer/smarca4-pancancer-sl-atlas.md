@@ -4,7 +4,7 @@
 **Division:** Cancer
 **Date:** March 17, 2026
 **Data Sources:** DepMap 25Q3 (CRISPR, mutations, copy number, expression), PRISM 24Q2, TCGA pan-cancer
-**Pipeline:** `src/smarca4_pancancer_sl_atlas/01–05_*.py`
+**Pipeline:** `src/cancer/smarca4_pancancer_sl_atlas/01–05_*.py`
 **Validation Status:** Published (auto-advanced through pipeline; analyst and validation scientist tasks not separately assigned)
 
 ---
@@ -74,7 +74,7 @@ Lines were further stratified by mutation class:
 
 **Inclusion criteria:** Cancer types required ≥5 deficient and ≥10 intact lines to be included in downstream analysis.
 
-**Implementation:** `src/smarca4_pancancer_sl_atlas/01_smarca4_classifier.py`
+**Implementation:** `src/cancer/smarca4_pancancer_sl_atlas/01_smarca4_classifier.py`
 
 ### Phase 2: Known SL Effect Sizes
 
@@ -85,7 +85,7 @@ Lines were further stratified by mutation class:
 - **Multiple testing correction:** Benjamini-Hochberg FDR across all cancer type × gene combinations
 - **Mutation class comparison:** Separate analysis for all-deficient and Class 1-only cohorts
 
-**Implementation:** `src/smarca4_pancancer_sl_atlas/02_known_sl_effect_sizes.py`
+**Implementation:** `src/cancer/smarca4_pancancer_sl_atlas/02_known_sl_effect_sizes.py`
 
 ### Phase 3: Genome-Wide SL Screen
 
@@ -96,7 +96,7 @@ Lines were further stratified by mutation class:
 - Novel SL candidates cross-referenced against known SWI/SNF genes
 - Universal SL genes defined as significant in ≥3 cancer types
 
-**Implementation:** `src/smarca4_pancancer_sl_atlas/03_genomewide_sl_screen.py`
+**Implementation:** `src/cancer/smarca4_pancancer_sl_atlas/03_genomewide_sl_screen.py`
 
 ### Phase 4: PRISM Drug Sensitivity Validation
 
@@ -104,7 +104,7 @@ Lines were further stratified by mutation class:
 
 **Target drugs searched (13):** CPI-1205, EPZ020411, tazemetostat (EZH2i); JQ1, OTX015, I-BET-762 (BETi); vorinostat, panobinostat, entinostat (HDACi); berzosertib, ceralasertib (ATRi); palbociclib, ribociclib (CDK4/6i).
 
-**Implementation:** `src/smarca4_pancancer_sl_atlas/04_prism_drug_validation.py`
+**Implementation:** `src/cancer/smarca4_pancancer_sl_atlas/04_prism_drug_validation.py`
 
 ### Phase 5: TCGA Clinical Integration
 
@@ -115,7 +115,7 @@ Lines were further stratified by mutation class:
 - LOF-specific population estimates (Class 1, most relevant for SMARCA2 therapy response)
 - Priority score combining SL effect size and patient population
 
-**Implementation:** `src/smarca4_pancancer_sl_atlas/05_tcga_clinical.py`
+**Implementation:** `src/cancer/smarca4_pancancer_sl_atlas/05_tcga_clinical.py`
 
 ---
 

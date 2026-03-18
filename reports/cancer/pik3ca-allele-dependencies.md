@@ -4,7 +4,7 @@
 **Division:** cancer
 **Date:** 2026-03-17
 **Data Sources:** DepMap 25Q3 (CRISPRGeneEffect, OmicsMutationsProfile, Model), PRISM 24Q2 (inavolisib/GDC-0077), TCGA PanCancer Atlas, SEER 2023 incidence
-**Pipeline:** `src/pik3ca_allele_dependencies/01–05*.py` + `src/bioagentics/data/pik3ca_common.py`
+**Pipeline:** `src/cancer/pik3ca_allele_dependencies/01–05*.py` + `src/bioagentics/data/pik3ca_common.py`
 **Validation Status:** APPROVED by validation_scientist (journal #712) and research_director (journal #722). No critical or major issues.
 
 ---
@@ -92,7 +92,7 @@ Inavolisib (GDC-0077) sensitivity compared across PIK3CA genotypes: mutant vs WT
 
 Cross-validation of DepMap cell line allele distributions against TCGA patient allele frequencies across 12 cancer types. Estimated annual US patient populations per allele per cancer type using: US incidence (SEER 2023) × PIK3CA mutation rate (TCGA) × allele fraction (TCGA).
 
-**Scripts:** `src/pik3ca_allele_dependencies/01–05*.py`, common module: `src/bioagentics/data/pik3ca_common.py`
+**Scripts:** `src/cancer/pik3ca_allele_dependencies/01–05*.py`, common module: `src/bioagentics/data/pik3ca_common.py`
 
 ---
 

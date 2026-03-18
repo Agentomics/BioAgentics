@@ -696,7 +696,7 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
                     for p in output_dir.rglob("*"):
                         if p.is_file() and p.name != ".DS_Store":
                             artifact_paths.append(str(p))
-                # Project-specific pipeline scripts (not the core bioagentics package)
+                # Project-specific pipeline scripts under src/{division}/{project}/
                 src_dir = REPO_ROOT / "src"
                 if src_dir.is_dir():
                     for child in src_dir.iterdir():

@@ -95,9 +95,10 @@ def _extract_gse16879(gse) -> pd.DataFrame:
 
     df = pd.DataFrame(records)
     # Keep only pre-treatment CD patients with known response
+    cd_pattern = r"(?i)(crohn|^cd$)"
     mask = (
         (df["timepoint"] == "pre_treatment")
-        & (df["disease"].str.contains("crohn", case=False, na=False))
+        & (df["disease"].str.contains(cd_pattern, regex=True, na=False))
         & (df["response_status"].isin(["responder", "non_responder"]))
     )
     filtered = df[mask].copy()
@@ -265,26 +266,22 @@ def get_platform_annotation(gse: GEOparse.GEOTypes.GSE) -> pd.DataFrame | None:
         if table is None or table.empty:
             continue
 
-        # Find the gene symbol column
+        # Find the gene symbol column (check in priority order)
         gene_col = None
-        for col in table.columns:
-            col_lower = col.lower()
-            if col_lower in ("gene symbol", "gene_symbol", "symbol"):
-                gene_col = col
-                break
-            if "gene" in col_lower and "symbol" in col_lower:
-                gene_col = col
-                break
-            if col_lower == "gene assignment":
-                gene_col = col
+        for candidate in ["Gene Symbol", "gene_symbol", "Symbol", "gene symbol"]:
+            if candidate in table.columns:
+                gene_col = candidate
                 break
 
         if gene_col is None:
-            # Try ILMN platforms that use "Symbol"
             for col in table.columns:
-                if col.lower() == "symbol":
+                cl = col.lower()
+                if "gene" in cl and "symbol" in cl:
                     gene_col = col
                     break
+
+        if gene_col is None and "gene_assignment" in table.columns:
+            gene_col = "gene_assignment"
 
         if gene_col is None:
             logger.warning("No gene symbol column found in %s. Columns: %s", gpl_name, list(table.columns))
@@ -298,8 +295,8 @@ def get_platform_annotation(gse: GEOparse.GEOTypes.GSE) -> pd.DataFrame | None:
         annotation = table[[id_col, gene_col]].copy()
         annotation.columns = ["probe_id", "gene_symbol"]
 
-        # Parse gene symbol from "Gene Assignment" format if needed
-        if gene_col.lower() == "gene assignment":
+        # Parse gene symbol from gene_assignment format if needed
+        if gene_col.lower().replace("_", " ") == "gene assignment":
             def _parse_gene_assignment(val):
                 if pd.isna(val) or val == "---":
                     return ""
@@ -431,9 +428,6 @@ def process_dataset(
         metadata["response_status"].value_counts().to_dict(),
     )
 
-    # Filter to pre-treatment samples
-    metadata = filter_pre_treatment(metadata, accession)
-
     # Keep only samples in both expression and metadata
     common_samples = list(set(expr.columns) & set(metadata["sample_id"]))
     if not common_samples:
@@ -515,7 +509,7 @@ def run_pipeline(
         combined_metadata: merged clinical metadata for all studies
     """
     if accessions is None:
-        accessions = list(DATASETS.keys())
+        accessions = list(USABLE_DATASETS)
 
     study_expressions: dict[str, pd.DataFrame] = {}
     all_metadata: list[pd.DataFrame] = []

@@ -7,7 +7,7 @@ projects_touched: [smarca4-pancancer-sl-atlas]
 
 ## Context
 
-- All 5 phases implemented in `src/smarca4_pancancer_sl_atlas/`:
+- All 5 phases implemented in `src/cancer/smarca4_pancancer_sl_atlas/`:
   - 01_smarca4_classifier.py: 88 deficient (73 Class 1, 15 Class 2), 4 qualifying cancer types (Lung, Ovary, Bowel, Lymphoid)
   - 02_known_sl_effect_sizes.py: SMARCA2 SL significant in Lung (d=-1.31, FDR=0.011), EZH2 SL in Ovary (d=-1.96)
   - 03_genomewide_sl_screen.py: 10 FDR-significant hits in Ovary (mitochondrial genes), 1748 nominal hits

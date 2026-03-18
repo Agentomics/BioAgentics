@@ -4,7 +4,7 @@
 **Division:** cancer
 **Date:** 2026-03-17
 **Data Sources:** DepMap 25Q3, PRISM 24Q2, TCGA LUAD/LUSC (ASCAT3)
-**Pipeline:** `src/mtap_prmt5_nsclc_sl/01–06*.py`
+**Pipeline:** `src/cancer/mtap_prmt5_nsclc_sl/01–06*.py`
 **Validation Status:** All primary analyses validated by analyst (journal #278, #280, #281)
 
 ---
@@ -299,4 +299,4 @@ Three of four criteria met or exceeded. The co-mutation criterion was not met, b
 
 ---
 
-*Full output data, figures, and scripts are available at `output/cancer/mtap-prmt5-nsclc-sl/` and `src/mtap_prmt5_nsclc_sl/`.*
+*Full output data, figures, and scripts are available at `output/cancer/mtap-prmt5-nsclc-sl/` and `src/cancer/mtap_prmt5_nsclc_sl/`.*

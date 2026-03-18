@@ -15,4 +15,4 @@ projects_touched: [arid1a-pancancer-sl-atlas]
 - Phase 5: ~157K US patients/yr. Top recommendations: Lymphoid, Breast, Bladder, Esophagus/Stomach.
 - No FDR-significant results due to small mutant group sizes — expected, nominal results are consistent.
 - All outputs in data/results/arid1a-pancancer-sl-atlas/phase1-5/
-- Code in src/arid1a_pancancer_sl_atlas/01-05_*.py
+- Code in src/cancer/arid1a_pancancer_sl_atlas/01-05_*.py

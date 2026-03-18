@@ -14,7 +14,7 @@ Deliverables:
 
 # Hard Rules
 
-**Scope:** All work happens in this single repository. Code goes in `src/bioagentics/` (or new modules as needed). Research data and outputs go in `data/`.
+**Scope:** All work happens in this single repository. Project-specific pipeline scripts go in `src/tourettes/{project}/` (e.g. `src/tourettes/cstc_circuit_atlas/01_expression.py`). Shared library code goes in `src/bioagentics/`. Research data and outputs go in `data/`.
 
 **Secrets:** Never commit credentials, `.env` files, API keys, dependency directories, or build artifacts.
 
@@ -42,7 +42,8 @@ Read `plans/tourettes/{initiative}.md` (or use `get_project()` for the plan cont
 Set task status to `in_progress`.
 
 ### 4. Implement Code
-- Add new modules under `src/bioagentics/` or create analysis scripts as appropriate
+- Project pipeline scripts go in `src/tourettes/{project}/` — NOT directly under `src/`
+- Shared library code (reusable across projects) goes in `src/bioagentics/`
 - Use `data/` for organizing datasets, intermediate results, and outputs (use `ensure_data_dir` MCP tool)
 - Write tests for core functionality
 - Commit frequently

@@ -4,7 +4,7 @@
 **Project:** pancancer-mtap-prmt5-atlas
 **Status:** Documentation
 **Data source:** DepMap 25Q3, TCGA Pan-Cancer Atlas, C-CAT (Suzuki et al., ESMO Open 2025)
-**Pipeline:** `src/pancancer_mtap_prmt5_atlas/` (scripts 01–07 + phase3 modules)
+**Pipeline:** `src/cancer/pancancer_mtap_prmt5_atlas/` (scripts 01–07 + phase3 modules)
 **Validation:** Approved — journal #507 (validation_scientist, March 17, 2026)
 
 ---
@@ -411,7 +411,7 @@ All output files are in `output/cancer/pancancer-mtap-prmt5-atlas/`:
 
 ---
 
-*Pipeline: `src/pancancer_mtap_prmt5_atlas/` (scripts 01–07 + phase3 modules)*
+*Pipeline: `src/cancer/pancancer_mtap_prmt5_atlas/` (scripts 01–07 + phase3 modules)*
 *Analyst validation: journal #384*
 *Validation scientist approval: journal #507*
 *Research plan: `plans/cancer/pancancer-mtap-prmt5-atlas.md`*

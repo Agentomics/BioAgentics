@@ -4,10 +4,10 @@
 prefix = "/api"                 # API path prefix (e.g. "/api" for /api/tasks, /api/journal, etc.)
 
 [dispatch]
-short_break = 30            # seconds between normal iterations
+short_break = 900            # seconds between normal iterations
 long_break =  7200          # seconds for extended breaks
 long_break_every = 4        # take a long break every N iterations
-max_workers = 4             # parallel agent slots
+max_workers = 3             # parallel agent slots
 retry_delays = [60, 300, 600, 1000]
 retry_max_attempts = 6
 oom_delays = [300, 600]
@@ -38,7 +38,7 @@ description = "Making medical diagnosis more accurate, accessible, and affordabl
 [defaults]
 backend = "claude"
 model = "claude-opus-4-6"
-effort = "high"
+effort = "max"
 division = "cancer"
 
 # --- Cancer: Generators (always run, create work for others) ---

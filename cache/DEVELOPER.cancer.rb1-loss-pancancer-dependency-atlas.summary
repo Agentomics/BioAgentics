@@ -7,7 +7,7 @@ projects_touched: [rb1-loss-pancancer-dependency-atlas]
 
 ## Context
 
-- All 5 phases complete. Source code in src/rb1_loss_pancancer_dependency_atlas/, outputs in output/cancer/rb1-loss-pancancer-dependency-atlas/phase{1-5}/.
+- All 5 phases complete. Source code in src/cancer/rb1_loss_pancancer_dependency_atlas/, outputs in output/cancer/rb1-loss-pancancer-dependency-atlas/phase{1-5}/.
 - Phase 1: Multi-modal RB1-loss classifier. 493 RB1-loss, 1239 intact lines, 19 qualifying cancer types. CDK4/6 dependency validation passed.
 - Phase 2: CDK2 strongest ROBUST SL (d=-0.524). AURKA, MYBL2 also ROBUST. CCNE1-amp subgroup extreme CDK2 dependency (d=-2.236). CDK4/6 negative controls validated.
 - Phase 3: Genome-wide screen found 23 gained, 33 lost dependencies. 16 priority targets including novel ATAC complex hits (TADA2A, YEATS2, ZZZ3). 9 shared with CDKN2A, 30 RB1-unique.

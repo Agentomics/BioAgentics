@@ -4,7 +4,7 @@
 **Project:** arid1a-pancancer-sl-atlas
 **Status:** Documentation
 **Data source:** DepMap 25Q3, PRISM 24Q2, TCGA Pan-Cancer Atlas
-**Pipeline:** `src/arid1a_pancancer_sl_atlas/` (scripts 01–05 + analyst_validation + validation)
+**Pipeline:** `src/cancer/arid1a_pancancer_sl_atlas/` (scripts 01–05 + analyst_validation + validation)
 **Validation:** Approved — journal #715 (validation_scientist), RD approval journal #721 (March 17, 2026)
 
 ---
@@ -484,7 +484,7 @@ All output files are in `data/results/arid1a-pancancer-sl-atlas/`:
 
 ---
 
-*Pipeline: `src/arid1a_pancancer_sl_atlas/` (scripts 01–05 + analyst_validation + validation)*
+*Pipeline: `src/cancer/arid1a_pancancer_sl_atlas/` (scripts 01–05 + analyst_validation + validation)*
 *Analyst review: journal #561*
 *RD evaluation: journal #576*
 *Validation scientist approval: journal #715*

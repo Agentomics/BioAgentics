@@ -13,5 +13,5 @@ projects_touched: [pik3ca-allele-dependencies]
 - Phase 2b: 969 nominal allele-specific hits but 0 FDR-significant (underpowered at N=38 vs 46)
 - PRISM: Inavolisib shows strong PIK3CA-mutant selectivity (d=-0.72); minimal kinase-vs-helical differential (p=0.31)
 - TCGA: ~150K annual US PIK3CA-mutant patients, H1047R/L 40.4%, E545K 31.5%
-- All scripts in src/pik3ca_allele_dependencies/ (01-05), common module in src/bioagentics/data/pik3ca_common.py
+- All scripts in src/cancer/pik3ca_allele_dependencies/ (01-05), common module in src/bioagentics/data/pik3ca_common.py
 - All outputs in output/pik3ca_allele_dependencies/ with figures/

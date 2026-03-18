@@ -57,45 +57,48 @@ DICE_SUPP_URL = (
     "GSE118165_RNA_gene_abundance.txt.gz"
 )
 
-# Cell type mapping: DICE sample names -> standardized cell type names
-# DICE uses specific sorted population names in their columns
+# Cell type mapping: DICE sample column cell type substrings -> standardized names
+# Samples named as DONOR-CELLTYPE-CONDITION (e.g. "1001-Th17_precursors-U")
+# We extract the cell type part and map it.
 DICE_CELLTYPE_MAP = {
-    "CD4_naive": "CD4_T_naive",
-    "CD4_N": "CD4_T_naive",
-    "CD4_memory": "CD4_T_memory",
-    "CD4_TEM": "CD4_T_memory",
-    "TH1": "Th1",
-    "TH2": "Th2",
-    "TH17": "Th17",
-    "TH1_17": "Th1_17",
-    "TFH": "Tfh",
-    "TREG_naive": "Treg_naive",
-    "TREG_memory": "Treg_memory",
-    "TREG_MEM": "Treg_memory",
-    "CD8_naive": "CD8_T_naive",
-    "CD8_N": "CD8_T_naive",
-    "CD8_memory": "CD8_T_memory",
-    "CD8_TEM": "CD8_T_memory",
-    "NK": "NK",
-    "B_naive": "B_naive",
-    "B_N": "B_naive",
-    "B_memory": "B_memory",
-    "B_MEM": "B_memory",
-    "MONOCYTE_classical": "Monocyte_classical",
-    "MONOCYTES_C": "Monocyte_classical",
-    "MONOCYTE_non_classical": "Monocyte_non_classical",
-    "MONOCYTES_NC": "Monocyte_non_classical",
+    "Naive_Teffs": "CD4_T_naive",
+    "Effector_CD4pos_T": "CD4_T_effector",
+    "Memory_Teffs": "CD4_T_memory",
+    "Th1_precursors": "Th1",
+    "Th2_precursors": "Th2",
+    "Th17_precursors": "Th17",
+    "Follicular_T_Helper": "Tfh",
+    "Naive_Tregs": "Treg_naive",
+    "Memory_Tregs": "Treg_memory",
+    "Regulatory_T": "Treg",
+    "Naive_CD8_T": "CD8_T_naive",
+    "CD8pos_T": "CD8_T",
+    "Central_memory_CD8pos_T": "CD8_T_central_memory",
+    "Effector_memory_CD8pos_T": "CD8_T_effector_memory",
+    "Gamma_delta_T": "Gamma_delta_T",
+    "Mature_NK": "NK_mature",
+    "Immature_NK": "NK_immature",
+    "Memory_NK": "NK_memory",
+    "Naive_B": "B_naive",
+    "Mem_B": "B_memory",
+    "Bulk_B": "B_bulk",
+    "Plasmablasts": "Plasmablasts",
+    "Monocytes": "Monocyte",
+    "Myeloid_DCs": "Myeloid_DC",
+    "pDCs": "Plasmacytoid_DC",
 }
 
 # Aggregated cell type groups for MAGMA analysis
 CELLTYPE_GROUPS = {
-    "CD4_T": ["CD4_T_naive", "CD4_T_memory", "Th1", "Th2", "Th17", "Th1_17", "Tfh"],
+    "CD4_T": ["CD4_T_naive", "CD4_T_effector", "CD4_T_memory", "Th1", "Th2", "Th17", "Tfh"],
     "Th17": ["Th17"],
-    "NK": ["NK"],
-    "Treg": ["Treg_naive", "Treg_memory"],
-    "CD8_T": ["CD8_T_naive", "CD8_T_memory"],
-    "B_cell": ["B_naive", "B_memory"],
-    "Monocyte": ["Monocyte_classical", "Monocyte_non_classical"],
+    "NK": ["NK_mature", "NK_immature", "NK_memory"],
+    "Treg": ["Treg_naive", "Treg_memory", "Treg"],
+    "CD8_T": ["CD8_T_naive", "CD8_T", "CD8_T_central_memory", "CD8_T_effector_memory"],
+    "B_cell": ["B_naive", "B_memory", "B_bulk", "Plasmablasts"],
+    "Monocyte": ["Monocyte"],
+    "DC": ["Myeloid_DC", "Plasmacytoid_DC"],
+    "Gamma_delta_T": ["Gamma_delta_T"],
 }
 
 
@@ -150,31 +153,36 @@ def parse_dice_expression(raw_path: Path, data_dir: Path) -> pd.DataFrame | None
 
     logger.info("  Parsing DICE expression data...")
     try:
-        df = pd.read_csv(raw_path, index_col=0, low_memory=False)
+        df = pd.read_csv(raw_path, sep="\t", index_col=0, low_memory=False)
     except Exception as e:
         logger.error("  Failed to parse DICE data: %s", e)
         return None
 
     logger.info("  Raw DICE matrix: %d genes x %d samples", df.shape[0], df.shape[1])
 
-    # Map sample columns to cell types by matching patterns
-    celltype_cols: dict[str, list[str]] = {}
-    for col in df.columns:
-        col_upper = col.upper().replace(" ", "_").replace("-", "_")
-        matched = False
-        for pattern, celltype in DICE_CELLTYPE_MAP.items():
-            if pattern.upper() in col_upper:
-                celltype_cols.setdefault(celltype, []).append(col)
-                matched = True
-                break
-        if not matched:
-            logger.debug("  Unmapped column: %s", col)
+    # DICE columns are DONOR-CELLTYPE-CONDITION (e.g. "1001-Th17_precursors-U")
+    # Extract cell type by stripping donor prefix and condition suffix
+    def _extract_celltype(col_name: str) -> str | None:
+        parts = col_name.split("-")
+        if len(parts) < 2:
+            return None
+        # Cell type is everything between first and last dash
+        celltype = "-".join(parts[1:-1]) if len(parts) >= 3 else parts[1]
+        return celltype
 
-    if not celltype_cols:
-        logger.warning("  No cell types matched. Columns: %s", list(df.columns)[:10])
-        # Fallback: try to use columns directly as cell types
-        for col in df.columns:
-            celltype_cols[col] = [col]
+    # Map sample columns to standardized cell types
+    celltype_cols: dict[str, list[str]] = {}
+    unmapped = []
+    for col in df.columns:
+        raw_ct = _extract_celltype(col)
+        if raw_ct and raw_ct in DICE_CELLTYPE_MAP:
+            std_ct = DICE_CELLTYPE_MAP[raw_ct]
+            celltype_cols.setdefault(std_ct, []).append(col)
+        else:
+            unmapped.append(col)
+
+    if unmapped:
+        logger.debug("  Unmapped columns (%d): %s", len(unmapped), unmapped[:5])
 
     logger.info("  Matched %d cell types: %s", len(celltype_cols), list(celltype_cols.keys()))
 

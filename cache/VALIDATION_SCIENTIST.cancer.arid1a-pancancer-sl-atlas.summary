@@ -14,6 +14,6 @@ projects_touched: [arid1a-pancancer-sl-atlas]
 - Permutation testing: ARID1B binomial pattern confirmed (p=5.8e-06)
 - PIK3CA negative result verified (d=0.004, p=0.55)
 - Caveats: small-N types (Skin n=3, Biliary n=4, Breast n=5) flagged as preliminary; PRISM 3/12 drug coverage
-- Validation script: src/arid1a_pancancer_sl_atlas/validation.py
+- Validation script: src/cancer/arid1a_pancancer_sl_atlas/validation.py
 - Results: data/results/arid1a-pancancer-sl-atlas/validation/
 - Next: project should move to documentation (research_writer)

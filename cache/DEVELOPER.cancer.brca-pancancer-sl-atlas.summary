@@ -13,6 +13,6 @@ projects_touched: [brca-pancancer-sl-atlas]
 - Phase 3: 5760 nominal SL hits (FDR too conservative), 3709 novel non-HR genes, BRCA1 vs BRCA2 distinct profiles
 - Phase 4: PARPi NOT in PRISM 24Q2; only ATR inhibitor 2 found; 196 nominal BRCA-selective drugs from genome-wide screen
 - Phase 5: 15 cancer types, ~45,223 US BRCA-mut patients/yr, 9 cancer types with unmet need
-- Code at src/brca_pancancer_sl_atlas/, outputs at data/results/brca-pancancer-sl-atlas/
+- Code at src/cancer/brca_pancancer_sl_atlas/, outputs at data/results/brca-pancancer-sl-atlas/
 - API uses PATCH for task updates (not PUT)
 - Project should be ready for analyst and validation_scientist review

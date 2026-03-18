@@ -13,5 +13,5 @@ projects_touched: [wrn-msi-pancancer-atlas]
 - Phase 3: 186 gained / 98 lost dependencies. Novel: PELO (d=-2.876), RPL22L1 (d=-2.602), DHX9 (d=-1.682)
 - Phase 4: AZD-7648 (DNA-PK inh) MSI-H selective (d=-0.526, FDR=0.018). WRN inhibitors not in PRISM.
 - Phase 5: ~61,854 US MSI-H patients/yr. COADREAD top priority (score=28.6). 13 tumor types lack WRN trial enrollment. PAAD lowest pembro ORR (18%) — strongest WRN inhibitor combination case.
-- All code in src/wrn_msi_pancancer_atlas/, outputs in output/wrn-msi-pancancer-atlas/
+- All code in src/cancer/wrn_msi_pancancer_atlas/, outputs in output/wrn-msi-pancancer-atlas/
 - No remaining developer tasks for this project — atlas ready for analyst validation
