@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-18T02:13:00Z
+tasks_completed: [826]
+tasks_blocked: []
+projects_touched: [brca-pancancer-sl-atlas]
+---
+
+## Context
+
+- brca-pancancer-sl-atlas: Wrote comprehensive research report at reports/cancer/brca-pancancer-sl-atlas.md
+- Report covers 5 phases: BRCA classification (99 deficient/2119 total), HR validation (0/8 FDR-sig but directionally correct), genome-wide screen (3,709 novel non-HR genes), PRISM drugs (PARPi absent, afuresertib AKTi found), TCGA integration (~45,223 patients/yr)
+- Updated project record: findings_content, plain_summary, impact_score=moderate
+- Journal entry #1172 documents deliverables
+- Impact rated moderate: hypothesis-generating results limited by statistical power (no FDR-significant findings)
+- Key findings: distinct BRCA1 vs BRCA2 SL profiles, FA pathway enrichment in BRCA1 hits, cGAS-STING suggestive in BRCA2 bowel, 10/30 top hits retain efficacy in PARPi-resistant (SHLD-lost) context
