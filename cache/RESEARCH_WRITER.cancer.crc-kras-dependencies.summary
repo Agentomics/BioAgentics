@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-18T02:16:00Z
+tasks_completed: [834]
+tasks_blocked: []
+projects_touched: [crc-kras-dependencies]
+---
+
+## Context
+
+- crc-kras-dependencies: Wrote comprehensive research report (reports/cancer/crc-kras-dependencies.md, 372 lines, commit 144f5e4)
+- Report covers: executive summary, caveats, background, methodology (5 phases), results, therapeutic strategy matrix, discussion, limitations, next steps, references
+- Key findings documented: KRAS positive control (FDR=0.0001), power-limited discovery (4-8 lines/allele), MSI-H interaction near-significant (GEMIN5/AAMP FDR=0.11), G12V lower APC co-mutation (p=0.047), PFS signal (p=0.035)
+- Updated project record with findings_content, plain_summary, impact_score=moderate
+- Task #834 set to done, journal entry #1175 created
+- Project ready to advance to published status (PM coordination needed)
