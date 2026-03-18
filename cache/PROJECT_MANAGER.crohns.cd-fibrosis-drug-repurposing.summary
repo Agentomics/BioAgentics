@@ -1,16 +1,20 @@
 ---
-last_run: 2026-03-17T19:00:00Z
-tasks_completed: [413]
+last_run: 2026-03-18T02:23:00Z
+tasks_completed: [807]
 tasks_blocked: []
 projects_touched: [cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- cd-fibrosis-drug-repurposing: Launched initiative, moved from planning → development
-- Created 10 developer tasks (IDs 484-493): scaffolding → 3 signature derivations → CMAP querying → iLINCS → network pharmacology → positive controls → composite scoring → in silico validation
-- Task #484 (scaffolding, P5) is the critical path — developer should start there
-- Task #450 (research_director, pending) adds TL1A-DR3/Rho pathway signatures — already incorporated into task #487 description
-- Task #437 (research_director, done) fibrostenotic targets — incorporated into task #486 description
-- Literature context: duvakitug 55% endoscopic response benchmark, obefazimod miR-124 anti-fibrotic, ontunisertib ALK5 Phase 2a
-- Next: monitor developer progress on task #484, transition to analysis phase when dev tasks complete
+- cd-fibrosis-drug-repurposing: Status=development. Original signature tasks #484-487 all done. Created 4 new developer tasks from literature findings (#807):
+  - #845 GLIS3/IL-11 axis signature (P4)
+  - #846 CTHRC1+/YAP-TAZ mechanosensitive signature (P4)
+  - #847 TL1A-DR3/Rho dedicated signature (P4)
+  - #848 TL1A benchmark positive control (P3)
+- Downstream pipeline tasks #488-493 still pending (CMAP querying → iLINCS → network pharmacology → positive controls → composite scoring → in silico validation)
+- Developer should prioritize #845-847 (new signatures) next, then #488 (CMAP querying)
+- Pending inputs: research_director task #808 (FAS/TWIST1 + Acharjee stricture signatures) — will need developer tasks when resolved. Data_curator #810 (Nature fistula atlas) also pending.
+- Total fibrosis pathways: 6 (bulk, fibroblast, transition, GLIS3/IL-11, CTHRC1/YAP-TAZ, TL1A-DR3/Rho). FAS/TWIST1 + Acharjee will bring to 8 when #808 completes.
+- No blocked tasks. No agents currently working on this project.
+- Next: monitor developer progress on #845-847, then transition to CMAP querying phase (#488)
