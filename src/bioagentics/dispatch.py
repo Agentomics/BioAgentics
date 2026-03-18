@@ -227,16 +227,42 @@ def _project_is_idle(name: str, division: str | None = None) -> bool:
     )
 
 
+# Required role that must have a done task before a stage can advance
+_STAGE_REQUIRED_ROLE = {
+    "development": "developer",
+    "analysis": "analyst",
+    "validation": "validation_scientist",
+    "documentation": "research_writer",
+}
+
+
+def _has_done_task_from(username: str, project: str, division: str | None = None) -> bool:
+    """True if at least one done task exists for this agent+project."""
+    div_filter = f"&division={division}" if division else ""
+    resp = api("GET", f"/tasks?username={username}&project={project}&status=done&limit=1{div_filter}")
+    return resp is not None and resp.ok and resp.json().get("total", 0) > 0
+
+
 def _advance_projects(from_status: str, to_status: str):
-    """Advance projects from one status to the next when all tasks are done."""
+    """Advance projects from one status to the next when all tasks are done.
+
+    Only advances if the project is idle (no active tasks, at least one done)
+    AND the required role for this stage has at least one completed task.
+    """
     resp = api("GET", f"/projects?status={from_status}&limit=100")
     if not resp or not resp.ok:
         return
+
+    required_role = _STAGE_REQUIRED_ROLE.get(from_status)
 
     for proj in resp.json().get("items", []):
         name = proj["name"]
         div = proj.get("division")
         if not _project_is_idle(name, div):
+            continue
+
+        # Verify the expected role actually completed work for this stage
+        if required_role and not _has_done_task_from(required_role, name, div):
             continue
 
         patch_resp = api("PATCH", f"/projects/{name}", json={"status": to_status})
