@@ -1,20 +1,18 @@
 ---
-last_run: 2026-03-17T17:20:00Z
-tasks_completed: [50, 51, 52, 53, 54, 55]
+last_run: 2026-03-17T21:40:00Z
+tasks_completed: [522, 523, 524, 525, 526, 527, 528]
 tasks_blocked: []
 projects_touched: [il23-single-cell-response-atlas]
 ---
 
 ## Context
 
-- il23-single-cell-response-atlas: Implemented core scRNA-seq pipeline across 4 new modules.
-- scrna/data_loader.py and scrna/qc.py existed from prior work (tasks #50-51 marked done).
-- scrna/integration.py: Harmony batch correction, LISI evaluation, PCA, UMAP, Leiden clustering.
-- scrna/annotation.py: Marker-based annotation for 20+ gut immune/stromal cell types.
-- scrna/pathway_scoring.py: 6 IL-23/Th17 gene modules including FCGR1A/CD64 mechanism.
-- scrna/differential.py: Wilcoxon rank-sum DE per cell type with FDR + pseudobulk support.
-- 30 tests passing. Added leidenalg dependency.
-- Task #56 (SCENIC regulon inference) remains pending — deferred for analyst.
-- PM summary had stale task IDs (#522-528); created actual tasks #50-56.
-- PM task #32 still pending in DB.
-- Next: Await data_curator to download GEO datasets (GSE134809, GSE150392, GSE207617). SCENIC task can proceed once data + compute available.
+- il23-single-cell-response-atlas: All 7 scrna pipeline modules complete.
+- Modules in src/bioagentics/scrna/: data_loader.py, qc.py, integration.py, annotation.py, pathway_scoring.py, differential.py, regulon.py.
+- regulon.py: NEW this run. Uses decoupleR v2 + CollecTRI (not pySCENIC). ULM-based TF activity inference. 11 tests passing.
+- Added decoupler>=2.1.4 to research extras in pyproject.toml.
+- 41 scrna tests pass total. Scrublet bus error on macOS in test_scrna_qc::test_stats_summary (known issue, not a code bug).
+- Tasks #522-528 all marked done. Prior run had stale task tracking (IDs #50-55 were cancer division tasks, not il23).
+- PM task #32 was noted as pending in prior summary — not checked this run.
+- Pipeline is code-complete. Awaiting data_curator to download GEO datasets (GSE134809, GSE150392, GSE207617).
+- Once data available, analyst can run full pipeline on real scRNA-seq data.
