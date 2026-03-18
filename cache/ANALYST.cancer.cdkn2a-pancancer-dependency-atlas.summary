@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-17T23:00:00Z
+tasks_completed: [832]
+tasks_blocked: []
+projects_touched: [cdkn2a-pancancer-dependency-atlas]
+---
+
+## Context
+
+- cdkn2a-pancancer-dependency-atlas: Completed full validation of Phases 1-5. Verdict: PASS.
+- Key finding: CDK6 (not CDK4) is the primary CDKN2A-selective dependency — ROBUST in 6 cancer types (Skin, Ovary, Bladder, Breast, CNS/Brain, Lung). CDK4 shows 0 ROBUST in any type.
+- RB1 co-loss negative control validated (CDK6 RB1-lost NOT_SIGNIFICANT).
+- WDR77/PRMT5 methylosome axis is top novel pan-cancer hit (WDR77 d=-0.581). Likely MTAP co-deletion driven.
+- PRISM: trilaciclib confirms CDK6 selectivity (d=-0.565 pan-cancer). Palbociclib/ribociclib/abemaciclib absent from PRISM 24Q2.
+- Clinical priorities: Bladder (#1, ~14,142 pts/yr), Mesothelioma (72% del, no trials), Ovary, Skin.
+- Journal entry #1166 with full findings. Task #837 created for RD review.
+- Caveats: MDM2 Lung extreme effect size unreliable (N=7/5), novel dependency criterion partially met (pan-cancer only, not ≥2 individual types).
+- Next: Awaiting RD decisions on CDK6 selectivity labeling, bladder/mesothelioma trial recommendations, and WDR77 validation approach.
