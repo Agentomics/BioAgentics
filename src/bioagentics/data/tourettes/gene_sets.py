@@ -7,9 +7,11 @@ iron pathway profiling, circuit vulnerability scoring).
 Gene sets:
 1. tsaicg_gwas — TSAICG GWAS risk loci (Yu 2019, Willsey 2024)
 2. rare_variant — Established rare variant genes with strong TS evidence
-3. iron_homeostasis — Iron metabolism pathway (7T MRI iron depletion study)
-4. hippo_signaling — Hippo/WWC1 pathway (Chen 2025 functional validation)
-5. ts_combined — Union of all above
+3. de_novo_variant — De novo variant genes from exome studies
+4. iron_homeostasis — Iron metabolism pathway (7T MRI iron depletion study)
+5. hippo_signaling — Hippo/WWC1 pathway (Chen 2025 functional validation)
+6. hormone_receptors — Gonadal steroid hormone receptors (developmental modulation)
+7. ts_combined — Union of all above
 
 Usage:
     from bioagentics.data.tourettes.gene_sets import get_gene_set, list_gene_sets
@@ -43,6 +45,9 @@ TSAICG_GWAS: dict[str, str] = {
     "NEGR1": "1p31 — neuronal growth regulator 1 (Willsey 2024)",
     "LHX6": "9q33 — LIM homeobox 6, striatal interneuron specification",
     "RBFOX1": "16p13 — RNA-binding Fox-1, neuronal splicing regulator",
+    "BCL11B": "14q32 — BAF chromatin remodeling, striatal MSN differentiation (TSAICG 2024)",
+    "NDFIP2": "13q31 — Nedd4 family interacting protein 2, ubiquitin signaling (TSAICG 2024)",
+    "RBM26": "13q31 — RNA-binding motif protein 26, post-transcriptional regulation (TSAICG 2024)",
 }
 
 # ---------------------------------------------------------------------------
@@ -54,6 +59,15 @@ RARE_VARIANT: dict[str, str] = {
     "NRXN1": "2p16 — neurexin 1; recurrent exonic deletions (Fernandez 2012 PNAS)",
     "CNTN6": "3p26 — contactin-6, neural circuit formation (Paschou 2014)",
     "WWC1": "5q34 — KIBRA/Hippo pathway; W88C functional validation (Chen 2025)",
+}
+
+# ---------------------------------------------------------------------------
+# De novo variant genes — from TS exome sequencing studies
+# ---------------------------------------------------------------------------
+DE_NOVO_VARIANT: dict[str, str] = {
+    "PPP5C": "19q13 — protein phosphatase 5C; de novo missense in TS trio studies",
+    "EXOC1": "4q12 — exocyst complex component 1; de novo variant, vesicle trafficking",
+    "GXYLT1": "12q12 — glucoside xylosyltransferase 1; de novo variant, Notch glycosylation",
 }
 
 # ---------------------------------------------------------------------------
@@ -90,13 +104,26 @@ HIPPO_SIGNALING: dict[str, str] = {
 }
 
 # ---------------------------------------------------------------------------
+# Gonadal steroid hormone receptors
+# For developmental trajectory modeling: hormonal modulation of dopamine
+# signaling during puberty (Phase 4 persistence/remission model).
+# ---------------------------------------------------------------------------
+HORMONE_RECEPTORS: dict[str, str] = {
+    "AR": "Xq12 — androgen receptor; pubertal modulation of dopamine signaling",
+    "ESR1": "6q25 — estrogen receptor alpha; neuromodulatory effects on CSTC",
+    "ESR2": "14q23 — estrogen receptor beta; neuroprotective, GABAergic modulation",
+}
+
+# ---------------------------------------------------------------------------
 # Registry
 # ---------------------------------------------------------------------------
 _GENE_SETS: dict[str, dict[str, str]] = {
     "tsaicg_gwas": TSAICG_GWAS,
     "rare_variant": RARE_VARIANT,
+    "de_novo_variant": DE_NOVO_VARIANT,
     "iron_homeostasis": IRON_HOMEOSTASIS,
     "hippo_signaling": HIPPO_SIGNALING,
+    "hormone_receptors": HORMONE_RECEPTORS,
 }
 
 

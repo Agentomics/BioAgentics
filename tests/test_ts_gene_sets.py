@@ -12,10 +12,12 @@ def test_list_gene_sets_returns_all():
     names = list_gene_sets()
     assert "tsaicg_gwas" in names
     assert "rare_variant" in names
+    assert "de_novo_variant" in names
     assert "iron_homeostasis" in names
     assert "hippo_signaling" in names
+    assert "hormone_receptors" in names
     assert "ts_combined" in names
-    assert len(names) == 5
+    assert len(names) == 7
 
 
 def test_get_gene_set_gwas():
