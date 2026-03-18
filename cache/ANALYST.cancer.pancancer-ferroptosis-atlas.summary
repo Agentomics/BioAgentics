@@ -1,18 +1,17 @@
 ---
-last_run: 2026-03-17T18:45:00Z
-tasks_completed: [396]
+last_run: 2026-03-18T01:54:00Z
+tasks_completed: [767]
 tasks_blocked: []
 projects_touched: [pancancer-ferroptosis-atlas]
 ---
 
 ## Context
 
-- Completed review of Translational Confidence addendum (Section 8) in report.md (task #396). Journal #863.
-- **Addendum approved** — all 5 verification items passed. One minor correction applied: "10 ferroptosis genes" → "9 ferroptosis genes" in Section 8.4.
-- **GPX4 overestimation verified:** KEAP1-mut mean -0.405 vs WT -0.626, FDR 0.446. Numbers match source CSV.
-- **FSP1 underestimation verified:** AIFM2 flat (effect size -0.002, FDR 1.0). Invisible to DepMap regardless of genotype.
-- **Dual targeting logic sound:** GPX4 fails in vivo + FSP1 compensation expected → dual inhibition required.
-- **KEAP1 masking confirmed:** All 9 genes in NSCLC panel show FDR > 0.44 for KEAP1-enriched dependency.
-- **Cross-references valid:** data/results/ferroptosis_panel/ files exist, numbers match.
-- Prior context: Three-tier classification validated (Tier A/B/C). PRISM bug found (#127). Cancer type stratification (5 categories). 3/4 success criteria met.
-- Note: Ref 1 DOI placeholder (10.1038/s41586-025-XXXX) remains in references section — pre-existing, not addendum scope.
+- Completed review of Phase 5 FSP1/AIFM2 expression layer (task #767). Journal #1158.
+- **Phase 5 approved** — all 5 verification items passed. Pipeline cleared to advance to validation → report update.
+- **Defense profiles:** 292 GPX4-dep, 292 FSP1-dep, 264 dual-high, 264 dual-low (N=1112). Median-split methodology approved with noted limitation (exploratory, boundary-arbitrary).
+- **Top dual-high types (need combination FSP1i+GPX4i):** Liver 67%, Eye 60%, Cervix 56%, Biliary Tract 53%, Pancreas 48%.
+- **KEAP1-FSP1 confirmed:** Cohen d=0.907, p=0.00465 in Lung (only testable type, 11 mut / 108 WT). 67% of KEAP1-mut lines are FSP1-dependent.
+- **Cross-reference with Phase 1-4 consistent.** GPX4-dep lines show strongest CRISPR dependency (-0.819). AIFM2 invisible to DepMap (~-0.05). Dual-low show strongest GPX4 dep (-0.841).
+- Created follow-up task #835 for project_manager to advance pipeline.
+- Prior context: Phase 1-4 complete, three-tier classification validated (Tier A/B/C), Section 8 translational confidence addendum approved, 3/4 success criteria met.
