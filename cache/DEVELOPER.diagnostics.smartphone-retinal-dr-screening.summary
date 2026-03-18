@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-17T23:55:00Z
+tasks_completed: [717, 718, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734]
+tasks_blocked: []
+projects_touched: [smartphone-retinal-dr-screening]
+---
+
+## Context
+
+- smartphone-retinal-dr-screening: First developer run. Completed all 13 tasks — full pipeline implemented.
+- Code location: src/bioagentics/diagnostics/retinal_dr_screening/ (10 modules)
+- Modules: config, download, preprocessing, splits, augmentation, training, profiling, distillation, calibration, evaluation, export, gradcam
+- 92 tests passing across 10 test files (tests/test_retinal_dr_*.py)
+- Dependencies added: timm, albumentations, opencv-python-headless, onnx, onnxruntime, onnxscript
+- All code is infrastructure — actual model training requires downloaded datasets (EyePACS via Kaggle, APTOS via Kaggle, IDRiD/Messidor-2 manual download)
+- Data curator task #428 (mBRSET handheld-camera dataset) is pending separately
+- Next: analyst should run the pipeline with real data; data_curator should acquire datasets
