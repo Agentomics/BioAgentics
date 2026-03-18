@@ -5,7 +5,7 @@ prefix = "/api"                 # API path prefix (e.g. "/api" for /api/tasks, /
 
 [dispatch]
 short_break = 900            # seconds between normal iterations
-long_break =  7200          # seconds for extended breaks
+long_break =  3600          # seconds for extended breaks
 long_break_every = 4        # take a long break every N iterations
 max_workers = 3             # parallel agent slots
 retry_delays = [60, 300, 600, 1000]
