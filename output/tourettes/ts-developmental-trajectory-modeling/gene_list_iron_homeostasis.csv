@@ -1,0 +1,9 @@
+gene_symbol,description,gene_set
+ACO1,9p21 — aconitase 1 / IRP1; iron-responsive element binding,iron_homeostasis
+FTH1,11q13 — ferritin heavy chain 1; intracellular iron storage,iron_homeostasis
+FTL,19q13 — ferritin light chain; intracellular iron storage,iron_homeostasis
+HAMP,19q13 — hepcidin; master regulator of systemic iron homeostasis,iron_homeostasis
+IREB2,15q25 — iron-responsive element binding protein 2 (IRP2),iron_homeostasis
+SLC40A1,2q32 — ferroportin; sole cellular iron exporter,iron_homeostasis
+TF,3q22 — transferrin; serum iron transport protein,iron_homeostasis
+TFRC,3q29 — transferrin receptor 1 (TFR1); cellular iron uptake,iron_homeostasis

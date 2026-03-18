@@ -1,0 +1,20 @@
+gene_symbol,description,gene_set
+ASH1L,1q22 — histone methyltransferase H3K36; also de novo variants,tsaicg_gwas
+BCL11B,"14q32 — BAF chromatin remodeling, striatal MSN differentiation (TSAICG 2024)",tsaicg_gwas
+CADPS2,"7q31 — Ca2+-dependent secretion activator, synaptic vesicle",tsaicg_gwas
+CELSR3,"3p21 — planar cell polarity, axon guidance; also de novo variants",tsaicg_gwas
+CNTNAP2,"7q35 — contactin-associated protein-like 2, axon-glial",tsaicg_gwas
+COL27A1,"9q32 — collagen XXVII alpha-1, neural ECM (Scharf 2013)",tsaicg_gwas
+FLT3,13q12 — receptor tyrosine kinase; first GWS locus (Yu 2019),tsaicg_gwas
+LHX6,"9q33 — LIM homeobox 6, striatal interneuron specification",tsaicg_gwas
+MAOA,"Xp11 — monoamine oxidase A, monoamine catabolism",tsaicg_gwas
+MEIS1,"2p14 — homeobox TF, dopamine neuron development (Yu 2019)",tsaicg_gwas
+NDFIP2,"13q31 — Nedd4 family interacting protein 2, ubiquitin signaling (TSAICG 2024)",tsaicg_gwas
+NEGR1,1p31 — neuronal growth regulator 1 (Willsey 2024),tsaicg_gwas
+NRXN1,"2p16 — neurexin 1, synaptic adhesion; also rare deletions",tsaicg_gwas
+NTN4,"12q22 — netrin-4, axon guidance (Scharf 2013, Yu 2019)",tsaicg_gwas
+OPRD1,1p36 — delta opioid receptor (Yu 2019),tsaicg_gwas
+PTPRD,9p24 — receptor protein tyrosine phosphatase delta; also ADHD GWAS,tsaicg_gwas
+RBFOX1,"16p13 — RNA-binding Fox-1, neuronal splicing regulator",tsaicg_gwas
+RBM26,"13q31 — RNA-binding motif protein 26, post-transcriptional regulation (TSAICG 2024)",tsaicg_gwas
+SEMA6D,"15q21 — semaphorin, axon guidance in CSTC circuits",tsaicg_gwas

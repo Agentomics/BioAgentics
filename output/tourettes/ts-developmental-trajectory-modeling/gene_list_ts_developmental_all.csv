@@ -1,0 +1,44 @@
+gene_symbol,description,gene_set
+ACO1,9p21 — aconitase 1 / IRP1; iron-responsive element binding,ts_developmental_all
+AR,Xq12 — androgen receptor; pubertal modulation of dopamine signaling,ts_developmental_all
+ASH1L,1q22 — histone methyltransferase H3K36; also de novo variants,ts_developmental_all
+BCL11B,"14q32 — BAF chromatin remodeling, striatal MSN differentiation (TSAICG 2024)",ts_developmental_all
+CADPS2,"7q31 — Ca2+-dependent secretion activator, synaptic vesicle",ts_developmental_all
+CELSR3,"3p21 — planar cell polarity, axon guidance; also de novo variants",ts_developmental_all
+CNTN6,"3p26 — contactin-6, neural circuit formation (Paschou 2014)",ts_developmental_all
+CNTNAP2,"7q35 — contactin-associated protein-like 2, axon-glial",ts_developmental_all
+COL27A1,"9q32 — collagen XXVII alpha-1, neural ECM (Scharf 2013)",ts_developmental_all
+ESR1,6q25 — estrogen receptor alpha; neuromodulatory effects on CSTC,ts_developmental_all
+ESR2,"14q23 — estrogen receptor beta; neuroprotective, GABAergic modulation",ts_developmental_all
+EXOC1,"4q12 — exocyst complex component 1; de novo variant, vesicle trafficking",ts_developmental_all
+FLT3,13q12 — receptor tyrosine kinase; first GWS locus (Yu 2019),ts_developmental_all
+FTH1,11q13 — ferritin heavy chain 1; intracellular iron storage,ts_developmental_all
+FTL,19q13 — ferritin light chain; intracellular iron storage,ts_developmental_all
+GXYLT1,"12q12 — glucoside xylosyltransferase 1; de novo variant, Notch glycosylation",ts_developmental_all
+HAMP,19q13 — hepcidin; master regulator of systemic iron homeostasis,ts_developmental_all
+HDC,15q21 — histidine decarboxylase; W317X (Ercan-Sencicek 2010 NEJM),ts_developmental_all
+IREB2,15q25 — iron-responsive element binding protein 2 (IRP2),ts_developmental_all
+LATS1,6q25 — large tumor suppressor kinase 1; core Hippo kinase,ts_developmental_all
+LATS2,13q12 — large tumor suppressor kinase 2; core Hippo kinase,ts_developmental_all
+LHX6,"9q33 — LIM homeobox 6, striatal interneuron specification",ts_developmental_all
+MAOA,"Xp11 — monoamine oxidase A, monoamine catabolism",ts_developmental_all
+MEIS1,"2p14 — homeobox TF, dopamine neuron development (Yu 2019)",ts_developmental_all
+NDFIP2,"13q31 — Nedd4 family interacting protein 2, ubiquitin signaling (TSAICG 2024)",ts_developmental_all
+NEGR1,1p31 — neuronal growth regulator 1 (Willsey 2024),ts_developmental_all
+NRXN1,2p16 — neurexin 1; recurrent exonic deletions (Fernandez 2012 PNAS),ts_developmental_all
+NTN4,"12q22 — netrin-4, axon guidance (Scharf 2013, Yu 2019)",ts_developmental_all
+OPRD1,1p36 — delta opioid receptor (Yu 2019),ts_developmental_all
+PPP5C,19q13 — protein phosphatase 5C; de novo missense in TS trio studies,ts_developmental_all
+PTPRD,9p24 — receptor protein tyrosine phosphatase delta; also ADHD GWAS,ts_developmental_all
+RBFOX1,"16p13 — RNA-binding Fox-1, neuronal splicing regulator",ts_developmental_all
+RBM26,"13q31 — RNA-binding motif protein 26, post-transcriptional regulation (TSAICG 2024)",ts_developmental_all
+SEMA6D,"15q21 — semaphorin, axon guidance in CSTC circuits",ts_developmental_all
+SLC40A1,2q32 — ferroportin; sole cellular iron exporter,ts_developmental_all
+SLITRK1,13q31 — axon guidance; first TS gene (Abelson 2005 Science),ts_developmental_all
+STK3,11p15 — serine/threonine kinase 3 (MST2); upstream Hippo kinase,ts_developmental_all
+STK4,20q13 — serine/threonine kinase 4 (MST1); upstream Hippo kinase,ts_developmental_all
+TF,3q22 — transferrin; serum iron transport protein,ts_developmental_all
+TFRC,3q29 — transferrin receptor 1 (TFR1); cellular iron uptake,ts_developmental_all
+WWC1,"5q34 — KIBRA; Hippo pathway scaffold, TS functional validation",ts_developmental_all
+WWTR1,"3q25 — TAZ; YAP1 paralog, Hippo effector",ts_developmental_all
+YAP1,11q22 — Yes-associated protein 1; Hippo effector transcription coactivator,ts_developmental_all

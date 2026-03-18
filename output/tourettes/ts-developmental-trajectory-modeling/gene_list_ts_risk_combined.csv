@@ -1,0 +1,27 @@
+gene_symbol,description,gene_set
+ASH1L,1q22 — histone methyltransferase H3K36; also de novo variants,ts_risk_combined
+BCL11B,"14q32 — BAF chromatin remodeling, striatal MSN differentiation (TSAICG 2024)",ts_risk_combined
+CADPS2,"7q31 — Ca2+-dependent secretion activator, synaptic vesicle",ts_risk_combined
+CELSR3,"3p21 — planar cell polarity, axon guidance; also de novo variants",ts_risk_combined
+CNTN6,"3p26 — contactin-6, neural circuit formation (Paschou 2014)",ts_risk_combined
+CNTNAP2,"7q35 — contactin-associated protein-like 2, axon-glial",ts_risk_combined
+COL27A1,"9q32 — collagen XXVII alpha-1, neural ECM (Scharf 2013)",ts_risk_combined
+EXOC1,"4q12 — exocyst complex component 1; de novo variant, vesicle trafficking",ts_risk_combined
+FLT3,13q12 — receptor tyrosine kinase; first GWS locus (Yu 2019),ts_risk_combined
+GXYLT1,"12q12 — glucoside xylosyltransferase 1; de novo variant, Notch glycosylation",ts_risk_combined
+HDC,15q21 — histidine decarboxylase; W317X (Ercan-Sencicek 2010 NEJM),ts_risk_combined
+LHX6,"9q33 — LIM homeobox 6, striatal interneuron specification",ts_risk_combined
+MAOA,"Xp11 — monoamine oxidase A, monoamine catabolism",ts_risk_combined
+MEIS1,"2p14 — homeobox TF, dopamine neuron development (Yu 2019)",ts_risk_combined
+NDFIP2,"13q31 — Nedd4 family interacting protein 2, ubiquitin signaling (TSAICG 2024)",ts_risk_combined
+NEGR1,1p31 — neuronal growth regulator 1 (Willsey 2024),ts_risk_combined
+NRXN1,2p16 — neurexin 1; recurrent exonic deletions (Fernandez 2012 PNAS),ts_risk_combined
+NTN4,"12q22 — netrin-4, axon guidance (Scharf 2013, Yu 2019)",ts_risk_combined
+OPRD1,1p36 — delta opioid receptor (Yu 2019),ts_risk_combined
+PPP5C,19q13 — protein phosphatase 5C; de novo missense in TS trio studies,ts_risk_combined
+PTPRD,9p24 — receptor protein tyrosine phosphatase delta; also ADHD GWAS,ts_risk_combined
+RBFOX1,"16p13 — RNA-binding Fox-1, neuronal splicing regulator",ts_risk_combined
+RBM26,"13q31 — RNA-binding motif protein 26, post-transcriptional regulation (TSAICG 2024)",ts_risk_combined
+SEMA6D,"15q21 — semaphorin, axon guidance in CSTC circuits",ts_risk_combined
+SLITRK1,13q31 — axon guidance; first TS gene (Abelson 2005 Science),ts_risk_combined
+WWC1,5q34 — KIBRA/Hippo pathway; W88C functional validation (Chen 2025),ts_risk_combined

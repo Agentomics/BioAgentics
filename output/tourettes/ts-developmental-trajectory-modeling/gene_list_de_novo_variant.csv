@@ -1,0 +1,4 @@
+gene_symbol,description,gene_set
+EXOC1,"4q12 — exocyst complex component 1; de novo variant, vesicle trafficking",de_novo_variant
+GXYLT1,"12q12 — glucoside xylosyltransferase 1; de novo variant, Notch glycosylation",de_novo_variant
+PPP5C,19q13 — protein phosphatase 5C; de novo missense in TS trio studies,de_novo_variant

@@ -1,0 +1,4 @@
+gene_symbol,description,gene_set
+AR,Xq12 — androgen receptor; pubertal modulation of dopamine signaling,hormone_receptors
+ESR1,6q25 — estrogen receptor alpha; neuromodulatory effects on CSTC,hormone_receptors
+ESR2,"14q23 — estrogen receptor beta; neuroprotective, GABAergic modulation",hormone_receptors

@@ -1,0 +1,23 @@
+{
+  "gene_sets": {
+    "tsaicg_gwas": 19,
+    "rare_variant": 5,
+    "de_novo_variant": 3,
+    "ts_risk_combined": 26,
+    "iron_homeostasis": 8,
+    "hippo_signaling": 7,
+    "hormone_receptors": 3,
+    "ts_developmental_all": 43
+  },
+  "exported_files": [
+    "/Users/matth/git/BioAgentics/output/tourettes/ts-developmental-trajectory-modeling/gene_list_tsaicg_gwas.csv",
+    "/Users/matth/git/BioAgentics/output/tourettes/ts-developmental-trajectory-modeling/gene_list_rare_variant.csv",
+    "/Users/matth/git/BioAgentics/output/tourettes/ts-developmental-trajectory-modeling/gene_list_de_novo_variant.csv",
+    "/Users/matth/git/BioAgentics/output/tourettes/ts-developmental-trajectory-modeling/gene_list_ts_risk_combined.csv",
+    "/Users/matth/git/BioAgentics/output/tourettes/ts-developmental-trajectory-modeling/gene_list_iron_homeostasis.csv",
+    "/Users/matth/git/BioAgentics/output/tourettes/ts-developmental-trajectory-modeling/gene_list_hippo_signaling.csv",
+    "/Users/matth/git/BioAgentics/output/tourettes/ts-developmental-trajectory-modeling/gene_list_hormone_receptors.csv",
+    "/Users/matth/git/BioAgentics/output/tourettes/ts-developmental-trajectory-modeling/gene_list_ts_developmental_all.csv",
+    "/Users/matth/git/BioAgentics/output/tourettes/ts-developmental-trajectory-modeling/gene_set_membership.csv"
+  ]
+}

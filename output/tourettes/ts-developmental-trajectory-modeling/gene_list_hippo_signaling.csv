@@ -1,0 +1,8 @@
+gene_symbol,description,gene_set
+LATS1,6q25 — large tumor suppressor kinase 1; core Hippo kinase,hippo_signaling
+LATS2,13q12 — large tumor suppressor kinase 2; core Hippo kinase,hippo_signaling
+STK3,11p15 — serine/threonine kinase 3 (MST2); upstream Hippo kinase,hippo_signaling
+STK4,20q13 — serine/threonine kinase 4 (MST1); upstream Hippo kinase,hippo_signaling
+WWC1,"5q34 — KIBRA; Hippo pathway scaffold, TS functional validation",hippo_signaling
+WWTR1,"3q25 — TAZ; YAP1 paralog, Hippo effector",hippo_signaling
+YAP1,11q22 — Yes-associated protein 1; Hippo effector transcription coactivator,hippo_signaling
