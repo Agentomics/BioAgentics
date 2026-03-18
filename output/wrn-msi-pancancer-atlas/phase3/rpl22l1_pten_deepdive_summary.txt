@@ -1,0 +1,80 @@
+============================================================
+RPL22L1 & PTEN Deep-Dive Analysis — MSI-H Dependency Follow-Up
+============================================================
+
+ANALYSIS DATE: 2026-03-17
+
+=== RPL22L1: PARALOG ESSENTIALITY — NOVEL FINDING ===
+
+HYPOTHESIS: RPL22 has a coding A8 mononucleotide repeat that is recurrently
+frameshift-mutated in MSI-H tumors. When RPL22 is lost, cells become dependent
+on its paralog RPL22L1.
+
+Pan-cancer Effect:
+  d=-1.900, p=2.30e-11, 95% CI=[-2.602, -1.339] — ROBUST
+  Median dep: MSI-H=-0.595, MSS=-0.217
+  59.1% MSI-H dependent (dep<-0.5) vs 9.2% MSS
+
+Per Cancer Type:
+  Bowel:  d=-2.602, p=1.69e-06, n_MSI=12, n_MSS=51 — STRONGEST
+  Uterus: d=-0.833, p=7.71e-02, n_MSI=8, n_MSS=26 — underpowered
+
+Paralog Essentiality Evidence:
+  RPL22 frameshift in MSI-H: 56.8% (25/44) vs MSS: 2.0% (23/1142)
+  Fisher p=8.49e-27 — massively enriched
+  
+  RPL22L1 dependency STRATIFIED by RPL22 frameshift (MSI-H lines):
+    RPL22-FS: median dep=-0.864, n=25
+    RPL22-WT: median dep=-0.276, n=19
+    d=-1.031, p=0.0001 — CONFIRMS paralog essentiality mechanism
+  
+  RPL22L1 dependency across ALL lines by RPL22 FS:
+    RPL22-FS: median=-0.648, n=48
+    RPL22-WT: median=-0.214, n=1138
+    d=-2.089, p<1e-16
+
+Independence from WRN:
+  Spearman r=0.558, p=0.0001 — CORRELATED with WRN dependency
+  Not fully orthogonal. Both may be downstream of shared MSI-H biology.
+
+RPL22L1 vs RPL22 correlation:
+  All lines: r=-0.014 (no co-regulation)
+  MSI-H: r=0.046 (no co-regulation)
+
+Druggability: RPL22L1 is a ribosomal protein — difficult to drug directly.
+However, paralog essentiality creates a therapeutic window. Antisense
+oligonucleotide or PROTAC approaches could be explored.
+
+CLASSIFICATION: NOVEL FINDING — confirmed paralog essentiality mechanism
+  RPL22 frameshift (MSI-H) → RPL22L1 dependency
+  Strongest MSI-H-specific dependency in Bowel (d=-2.602, exceeds even PELO)
+
+=== PTEN: TUMOR SUPPRESSOR MSI-H VULNERABILITY ===
+
+Pan-cancer Effect:
+  d=-0.520, p=8.89e-05, 95% CI=[-0.770, -0.277] — MARGINAL
+  Median dep: MSI-H=0.170, MSS=0.365
+  Only 2.3% MSI-H lines deeply dependent
+
+Per Cancer Type:
+  Uterus: d=-0.912, p=0.039, n_MSI=8, n_MSS=26
+  Bowel:  d=-0.939, p=0.009, n_MSI=12, n_MSS=51
+
+PTEN LoF Mutation Enrichment:
+  MSI-H: 27.3% (12/44) vs MSS: 3.1% (35/1142)
+  Fisher p=2.93e-08 — PTEN has coding microsatellite repeat
+
+PTEN Dependency by Mutation Status (MSI-H):
+  PTEN-mut: median dep=0.028, n=12
+  PTEN-WT:  median dep=0.214, n=32
+  d=-0.926, p=0.005 — mutation-driven dependency
+
+Independence from WRN:
+  Spearman r=0.229, p=0.135 — INDEPENDENT
+
+CLASSIFICATION: BIOMARKER (not drug target)
+  PTEN itself is a tumor suppressor, not druggable.
+  PTEN loss in MSI-H creates PI3K/AKT/mTOR pathway vulnerability.
+  May predict response to PI3K/mTOR inhibitors in MSI-H patients.
+  Clinical implication: stratify MSI-H patients by PTEN status for
+  combination trials (WRN inhibitor + PI3K/mTOR inhibitor).
