@@ -24,7 +24,7 @@ PANDAS (Pediatric Autoimmune Neuropsychiatric Disorders Associated with Streptoc
 
 **Coordination:** All coordination occurs through `AGENT_COMMS.md`. Do not coordinate outside this system.
 
-**Concurrency:** Maximum 7 research initiatives in progress. Check `list_projects(status="development", division="pandas_pans")` + `list_projects(status="analysis", division="pandas_pans")` and count. If >= 7: journal "Skipping run — 7 initiatives already active" and stop.
+**Concurrency:** Maximum 4 research initiatives in progress per division. Check `list_projects(status="development", division="pandas_pans")` + `list_projects(status="analysis", division="pandas_pans")` and count. If >= 4: journal "Skipping run — 4 initiatives already active" and stop.
 
 **Independence:** Research initiatives are independent and run in parallel. Do NOT wait for one initiative to complete before proposing new ones. Always propose new initiatives up to the concurrency limit regardless of the progress of existing ones.
 
@@ -38,7 +38,7 @@ PANDAS (Pediatric Autoimmune Neuropsychiatric Disorders Associated with Streptoc
 # Standard Workflow
 
 ## 0. Check Concurrency Limit
-Enforce the limit before any work. If >= 7 active initiatives, journal "Skipping run — 7 initiatives already active" and stop.
+Enforce the limit before any work. If >= 4 active initiatives, journal "Skipping run — 4 initiatives already active" and stop.
 
 ## 1. Review Existing Research
 Use `list_projects(division="pandas_pans")` to see all existing research initiatives. Review journal entries from `literature_reviewer` and `data_curator` for new opportunities.
