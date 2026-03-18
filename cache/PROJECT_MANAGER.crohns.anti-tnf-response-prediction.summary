@@ -1,17 +1,22 @@
 ---
-last_run: 2026-03-17T18:50:00Z
-tasks_completed: [167, 205]
+last_run: 2026-03-18T02:22:00Z
+tasks_completed: [805]
 tasks_blocked: []
 projects_touched: [anti-tnf-response-prediction]
 ---
 
 ## Context
 
-- anti-tnf-response-prediction: Launched initiative, moved status from planning → development
-- Completed task #205: Updated plan with ECM/fibroblast gene features (MMP2, COL1A1, CD81)
-- Completed task #167: Created full development pipeline (7 tasks)
-- Pipeline tasks created: #477 (data_curator: acquire 6 core datasets, P5) → #478 (developer: RMA/processing) → #479 (developer: ComBat batch correction) → #480 (developer: DE analysis) → #481 (developer: feature selection) → #482 (developer: classifier training LOSO-CV) → #483 (developer: signature interpretation)
-- Pre-existing data tasks: #207 (Nature Immunology scRNA-seq), #232 (IBDTransDB), #448 (IBDverse), #449 (ITGA4+ deconvolution)
-- Next steps: Monitor #477 (data acquisition) completion, then unblock developer pipeline starting with #478
-- Research director tasks all done (#298, #323, #352, #353, #408, #435, #439) — literature evaluation complete, all findings integrated into plan
-- Journal entry #871 records the launch
+- anti-tnf-response-prediction: Completed development → analysis handoff. Project status: analysis.
+- Completed task #805: Created 3 analyst tasks for analysis phase.
+- Analyst tasks created:
+  - #842 (P5): DATA LEAKAGE AUDIT — verify elastic net AUC=0.999 is not artifact of global ComBat or batch-response confounding. Highest priority.
+  - #843 (P4): External validation — Porto 5-gene comparison, per-study AUC breakdown, signature size sensitivity analysis.
+  - #844 (P3): Biological interpretation — cell-type mapping quality (17/30 housekeeping genes is concerning), pathway coherence, deconvolution feasibility.
+- CRITICAL ISSUE: Elastic net AUC=0.999 vs RF=0.874 and XGBoost=0.817 strongly suggests data leakage or overfitting. Leakage audit must complete before any results are reported.
+- Data gap: Only 3 of 6 planned datasets used (GSE16879, GSE12251, GSE73661 = 83 samples). Data curator task #477 still pending for remaining 3 datasets.
+- Pipeline code: src/bioagentics/data/anti_tnf/; Output: output/crohns/anti-tnf-response-prediction/
+- Pending data curator tasks: #477 (core datasets), #207 (scRNA-seq atlas), #232 (IBDTransDB), #448 (IBDverse)
+- Pending research_director task: #809 (Bifidobacterium-TCDCA evaluation)
+- Journal entries: #1179 (handoff), #1181 (data gap note)
+- Next steps: Monitor analyst task #842 (leakage audit) — its verdict determines whether pipeline needs correction before proceeding to validation phase.
