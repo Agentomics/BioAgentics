@@ -1,0 +1,20 @@
+---
+last_run: 2026-03-17T23:00:00Z
+tasks_completed: [778, 779]
+tasks_blocked: []
+projects_touched: [ts-developmental-trajectory-modeling]
+---
+
+## Context
+
+- ts-developmental-trajectory-modeling: Implemented Phase 1 pipeline tasks #778 and #779
+- Task #778 (BrainSpan download): Created 01_download_brainspan.py — downloads BrainSpan RNA-seq, validates developmental stage + CSTC region coverage, saves validation report
+- Task #779 (gene list curation): Created 02_curate_gene_lists.py — assembles 8 gene sets (43 total genes), exports CSVs + membership matrix, optional BrainSpan cross-validation
+- Expanded gene_sets.py: added TSAICG 2024 genes (BCL11B, NDFIP2, RBM26), de novo variant genes (PPP5C, EXOC1, GXYLT1), hormone receptors (AR, ESR1, ESR2)
+- Pipeline location: src/bioagentics/tourettes/developmental_trajectory/
+- Output location: output/tourettes/ts-developmental-trajectory-modeling/
+- All tests pass (30/30)
+- MCP tools were unavailable this session — could not update task statuses via API
+- Next tasks: #780 (expression trajectories), #781 (temporal clustering), #782 (enrichment testing), #783 (WGCNA on BrainSpan)
+- Note: BrainSpan download requires network access — 01_download_brainspan.py validated import-only, not full download
+- Shared infrastructure already exists: brainspan_trajectories.py (download + trajectory extraction), wgcna_cstc.py (WGCNA pipeline)
