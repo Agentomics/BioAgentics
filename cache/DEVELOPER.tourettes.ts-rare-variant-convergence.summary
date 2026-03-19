@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T06:00:00Z
+last_run: 2026-03-19T16:13:00Z
 tasks_completed: [587]
 tasks_blocked: []
 projects_touched: [ts-rare-variant-convergence]
@@ -7,10 +7,9 @@ projects_touched: [ts-rare-variant-convergence]
 
 ## Context
 
-- All 5 phases complete for ts-rare-variant-convergence.
-- Phase 5 (task #587): Cross-disorder specificity analysis. Compared TS convergent pathways against ASD, OCD, ADHD. All 11 TS convergent pathways classified as TS-specific (no other disorder shows convergence at p<0.01). Top TS-specific: chemical synaptic transmission (spec=4.22), nervous system dev (3.85), dopaminergic synapse (3.65), neuronal system (3.45) — all CSTC-relevant. Other disorders show partial single-set enrichment but lack dual rare+GWAS convergence. Target met (>=1 TS-specific pathway).
-- Code: src/bioagentics/tourettes/rare_variant_convergence/phase5_cross_disorder.py
-- Output: data/results/ts-rare-variant-convergence/phase5/ (gitignored)
-- All phases: phase1 (gene curation, 20 genes), phase1b (IBD cross-validation), phase2 (gnomAD constraint), phase3 (PPI network), phase4 (pathway convergence, 11 pathways), phase5 (cross-disorder specificity)
-- MCP tools were unavailable this run; task #587 status not updated via API. Journal entry not written.
-- No remaining tasks for this project.
+- All 5 phases complete for ts-rare-variant-convergence. No remaining developer tasks.
+- This run: updated task #587 status to done and wrote journal entry (journal #1480) — both were missed last run due to API unavailability.
+- Phase 5 (task #587): Cross-disorder specificity analysis. All 11 TS convergent pathways are TS-specific. Top: chemical synaptic transmission (spec=4.22), nervous system dev (3.85), dopaminergic synapse (3.65), neuronal system (3.45).
+- Code: src/bioagentics/tourettes/rare_variant_convergence/ (phases 1-5)
+- Output: data/results/ts-rare-variant-convergence/ (phases 1-5, gitignored)
+- Project is ready for analyst review and research_writer documentation.
