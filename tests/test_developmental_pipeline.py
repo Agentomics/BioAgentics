@@ -556,3 +556,224 @@ class TestPathwayEnrichment:
         bg = [f"G{i}" for i in range(50)]
         results = step07.test_pathway_enrichment([], bg)
         assert results == []
+
+
+# ===========================================================================
+# Step 08 — Cell-type developmental dynamics (Phase 3)
+# ===========================================================================
+
+step08 = _import_step("08_celltype_deconvolution")
+
+
+def _make_celltype_trajectory_df(
+    include_markers: bool = True,
+    seed: int = 42,
+) -> pd.DataFrame:
+    """Create synthetic trajectory data with cell-type marker genes.
+
+    If include_markers is True, includes canonical marker genes that step 08
+    will recognise. Generates expression patterns that mimic expected biology:
+    - Cholinergic markers peak in late_childhood
+    - PV markers peak in adolescence
+    - D1/D2 markers are present across stages
+    """
+    rng = np.random.default_rng(seed)
+
+    if include_markers:
+        genes = [
+            # D1-MSN markers
+            "DRD1", "TAC1", "PDYN", "CHRM4", "ISL1",
+            # D2-MSN markers
+            "DRD2", "PENK", "ADORA2A", "GPR6", "SP9",
+            # Cholinergic markers
+            "CHAT", "SLC5A7", "SLC18A3", "LHX8", "GBX2",
+            # PV markers
+            "PVALB", "KCNC1", "KCNC2", "EYA1", "TAC3",
+            # Microglia markers
+            "CX3CR1", "P2RY12", "TMEM119", "AIF1", "CSF1R",
+            # Background genes
+            "BG1", "BG2", "BG3", "BG4", "BG5",
+        ]
+    else:
+        genes = [f"GENE{i}" for i in range(30)]
+
+    records = []
+    for gene in genes:
+        for stage in STAGE_ORDER:
+            for region in REGION_LIST:
+                rpkm = rng.lognormal(3, 1)
+                records.append({
+                    "gene_symbol": gene,
+                    "dev_stage": stage,
+                    "cstc_region": region,
+                    "mean_rpkm": rpkm,
+                    "mean_log2_rpkm": np.log2(rpkm + 1),
+                    "n_samples": rng.integers(2, 6),
+                })
+    return pd.DataFrame(records)
+
+
+class TestComputeCelltypeScores:
+    """Tests for 08_celltype_deconvolution.compute_celltype_scores."""
+
+    def test_returns_expected_columns(self):
+        df = _make_celltype_trajectory_df()
+        result = step08.compute_celltype_scores(df)
+        assert not result.empty
+        for col in ("celltype", "dev_stage", "cstc_region", "score",
+                     "n_markers_found", "n_markers_total", "stage_order"):
+            assert col in result.columns, f"missing column: {col}"
+
+    def test_all_celltypes_with_markers_present(self):
+        df = _make_celltype_trajectory_df()
+        result = step08.compute_celltype_scores(df)
+        celltypes = set(result["celltype"].unique())
+        # Should find at least D1, D2, cholinergic, PV, microglia
+        for expected in ["d1_msn", "d2_msn", "cholinergic_interneuron",
+                          "pv_interneuron", "microglia"]:
+            assert expected in celltypes, f"missing celltype: {expected}"
+
+    def test_stage_order_monotonic(self):
+        df = _make_celltype_trajectory_df()
+        result = step08.compute_celltype_scores(df)
+        for ct in result["celltype"].unique():
+            for region in result["cstc_region"].unique():
+                sub = result[
+                    (result["celltype"] == ct) & (result["cstc_region"] == region)
+                ]
+                orders = sub["stage_order"].tolist()
+                assert orders == sorted(orders), (
+                    f"stage_order not sorted for {ct}/{region}"
+                )
+
+    def test_empty_input(self):
+        result = step08.compute_celltype_scores(pd.DataFrame())
+        assert result.empty
+
+    def test_no_marker_genes_returns_empty(self):
+        df = _make_celltype_trajectory_df(include_markers=False)
+        result = step08.compute_celltype_scores(df)
+        assert result.empty
+
+    def test_custom_markers(self):
+        df = _make_celltype_trajectory_df()
+        custom = {"test_type": {"DRD1": "test", "DRD2": "test"}}
+        result = step08.compute_celltype_scores(df, celltype_markers=custom)
+        assert set(result["celltype"].unique()) == {"test_type"}
+
+
+class TestComputeMsnRatio:
+    """Tests for 08_celltype_deconvolution.compute_msn_ratio."""
+
+    def test_returns_expected_columns(self):
+        df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(df)
+        ratio = step08.compute_msn_ratio(scores)
+        assert not ratio.empty
+        for col in ("dev_stage", "d1_score", "d2_score", "d2_d1_ratio",
+                     "stage_order"):
+            assert col in ratio.columns, f"missing column: {col}"
+
+    def test_ratio_positive(self):
+        df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(df)
+        ratio = step08.compute_msn_ratio(scores)
+        assert (ratio["d2_d1_ratio"] > 0).all()
+
+    def test_empty_input(self):
+        result = step08.compute_msn_ratio(pd.DataFrame())
+        assert result.empty
+
+
+class TestOnsetCholinergicPeak:
+    """Tests for 08_celltype_deconvolution.test_onset_cholinergic_peak."""
+
+    def test_returns_expected_fields(self):
+        df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(df)
+        result = step08.test_onset_cholinergic_peak(scores)
+        for key in ("hypothesis", "celltype", "window_mean", "other_mean",
+                     "effect_size", "elevated_in_window", "p_value"):
+            assert key in result, f"missing key: {key}"
+
+    def test_celltype_is_cholinergic(self):
+        df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(df)
+        result = step08.test_onset_cholinergic_peak(scores)
+        assert result["celltype"] == "cholinergic_interneuron"
+
+    def test_empty_scores(self):
+        result = step08.test_onset_cholinergic_peak(pd.DataFrame())
+        assert "error" in result
+
+
+class TestRemissionPvIncrease:
+    """Tests for 08_celltype_deconvolution.test_remission_pv_increase."""
+
+    def test_returns_expected_fields(self):
+        df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(df)
+        result = step08.test_remission_pv_increase(scores)
+        for key in ("hypothesis", "celltype", "window_mean", "other_mean",
+                     "effect_size", "p_value"):
+            assert key in result, f"missing key: {key}"
+
+    def test_celltype_is_pv(self):
+        df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(df)
+        result = step08.test_remission_pv_increase(scores)
+        assert result["celltype"] == "pv_interneuron"
+
+
+class TestMicrogliaDevelopmental:
+    """Tests for 08_celltype_deconvolution.test_microglia_developmental_component."""
+
+    def test_returns_expected_fields(self):
+        df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(df)
+        result = step08.test_microglia_developmental_component(scores)
+        for key in ("hypothesis", "spearman_rho", "spearman_p",
+                     "peak_stage", "trough_stage"):
+            assert key in result, f"missing key: {key}"
+
+    def test_empty_scores(self):
+        result = step08.test_microglia_developmental_component(pd.DataFrame())
+        assert "error" in result
+
+
+class TestMsnRatioTrajectory:
+    """Tests for 08_celltype_deconvolution.test_msn_ratio_trajectory."""
+
+    def test_returns_expected_fields(self):
+        df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(df)
+        result = step08.test_msn_ratio_trajectory(scores)
+        for key in ("hypothesis", "spearman_rho", "spearman_p",
+                     "peak_ratio_stage", "trajectory"):
+            assert key in result, f"missing key: {key}"
+
+    def test_trajectory_has_stages(self):
+        df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(df)
+        result = step08.test_msn_ratio_trajectory(scores)
+        assert len(result["trajectory"]) > 0
+
+    def test_empty_scores(self):
+        result = step08.test_msn_ratio_trajectory(pd.DataFrame())
+        assert "error" in result
+
+
+class TestRunAllHypotheses:
+    """Tests for 08_celltype_deconvolution.run_all_hypotheses."""
+
+    def test_returns_four_results(self):
+        df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(df)
+        results = step08.run_all_hypotheses(scores)
+        assert len(results) == 4
+
+    def test_each_result_has_hypothesis(self):
+        df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(df)
+        results = step08.run_all_hypotheses(scores)
+        assert all("hypothesis" in r for r in results)

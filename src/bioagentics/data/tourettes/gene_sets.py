@@ -1,10 +1,10 @@
-"""TS risk gene sets for the CSTC circuit expression atlas.
+"""TS risk gene sets and striatal cell-type markers.
 
 Curated gene sets used across all downstream analyses (AHBA spatial mapping,
 BrainSpan developmental trajectories, single-cell deconvolution, WGCNA,
 iron pathway profiling, circuit vulnerability scoring).
 
-Gene sets:
+Gene sets (TS risk):
 1. tsaicg_gwas — TSAICG GWAS risk loci (Yu 2019, Willsey 2024)
 2. rare_variant — Established rare variant genes with strong TS evidence
 3. de_novo_variant — De novo variant genes from exome studies
@@ -13,11 +13,24 @@ Gene sets:
 6. hormone_receptors — Gonadal steroid hormone receptors (developmental modulation)
 7. ts_combined — Union of all above
 
+Cell-type markers (for deconvolution):
+- d1_msn — D1 medium spiny neurons (direct pathway)
+- d2_msn — D2 medium spiny neurons (indirect pathway)
+- cholinergic_interneuron — Striatal cholinergic interneurons (ChAT+)
+- pv_interneuron — Parvalbumin+ GABAergic interneurons
+- sst_interneuron — Somatostatin+ GABAergic interneurons
+- microglia — Microglial markers
+- astrocyte — Astrocyte markers
+- oligodendrocyte — Oligodendrocyte markers
+
 Usage:
     from bioagentics.data.tourettes.gene_sets import get_gene_set, list_gene_sets
     genes = get_gene_set("tsaicg_gwas")
     for symbol, desc in genes.items():
         print(f"{symbol}: {desc}")
+
+    from bioagentics.data.tourettes.gene_sets import get_celltype_markers
+    markers = get_celltype_markers("pv_interneuron")
 """
 
 from __future__ import annotations
@@ -114,8 +127,123 @@ HORMONE_RECEPTORS: dict[str, str] = {
     "ESR2": "14q23 — estrogen receptor beta; neuroprotective, GABAergic modulation",
 }
 
+# ===========================================================================
+# Striatal cell-type marker genes
+# Canonical markers from literature for bulk RNA-seq deconvolution.
+# Can be supplemented with Wang et al. 2025 snRNA-seq markers when available.
+# ===========================================================================
+
 # ---------------------------------------------------------------------------
-# Registry
+# D1-MSN (direct / striatonigral pathway)
+# Markers: Gerfen & Surmeier (2011) Annu Rev Neurosci; Lobo et al. (2006)
+# ---------------------------------------------------------------------------
+D1_MSN_MARKERS: dict[str, str] = {
+    "DRD1": "D1 dopamine receptor — defining D1-MSN marker",
+    "TAC1": "tachykinin/substance P precursor — D1-MSN neuropeptide",
+    "PDYN": "prodynorphin — D1-MSN neuropeptide",
+    "CHRM4": "muscarinic M4 receptor — enriched in D1-MSNs",
+    "ISL1": "ISL1 transcription factor — striatonigral identity",
+}
+
+# ---------------------------------------------------------------------------
+# D2-MSN (indirect / striatopallidal pathway)
+# Markers: Gerfen & Surmeier (2011); Lobo et al. (2006)
+# ---------------------------------------------------------------------------
+D2_MSN_MARKERS: dict[str, str] = {
+    "DRD2": "D2 dopamine receptor — defining D2-MSN marker",
+    "PENK": "proenkephalin — D2-MSN neuropeptide",
+    "ADORA2A": "adenosine A2a receptor — D2-MSN enriched",
+    "GPR6": "G protein-coupled receptor 6 — D2-MSN enriched",
+    "SP9": "Sp9 transcription factor — striatopallidal identity",
+}
+
+# ---------------------------------------------------------------------------
+# Cholinergic interneurons (ChAT+)
+# Markers: Muñoz-Manchado et al. (2018) Cell Reports
+# ---------------------------------------------------------------------------
+CHOLINERGIC_INTERNEURON_MARKERS: dict[str, str] = {
+    "CHAT": "choline acetyltransferase — defining cholinergic marker",
+    "SLC5A7": "high-affinity choline transporter (CHT)",
+    "SLC18A3": "vesicular acetylcholine transporter (VAChT)",
+    "LHX8": "LIM homeobox 8 — cholinergic interneuron TF",
+    "GBX2": "gastrulation brain homeobox 2 — cholinergic specification",
+}
+
+# ---------------------------------------------------------------------------
+# Parvalbumin+ GABAergic interneurons (PV+)
+# Markers: Muñoz-Manchado et al. (2018); Kepecs & Bhatt (2019)
+# ---------------------------------------------------------------------------
+PV_INTERNEURON_MARKERS: dict[str, str] = {
+    "PVALB": "parvalbumin — defining PV+ interneuron marker",
+    "KCNC1": "Kv3.1 potassium channel — fast-spiking phenotype",
+    "KCNC2": "Kv3.2 potassium channel — fast-spiking phenotype",
+    "EYA1": "EYA transcriptional coactivator 1 — PV+ identity",
+    "TAC3": "tachykinin 3 (neurokinin B) — PV+ interneuron marker",
+}
+
+# ---------------------------------------------------------------------------
+# SST+ GABAergic interneurons
+# Markers: Muñoz-Manchado et al. (2018)
+# ---------------------------------------------------------------------------
+SST_INTERNEURON_MARKERS: dict[str, str] = {
+    "SST": "somatostatin — defining SST+ interneuron marker",
+    "NPY": "neuropeptide Y — SST+ co-expressed",
+    "NOS1": "neuronal nitric oxide synthase — SST+ co-expressed",
+    "CALB2": "calretinin — subset of SST+ interneurons",
+}
+
+# ---------------------------------------------------------------------------
+# Microglia
+# Markers: Butovsky et al. (2014) Nat Neurosci; Bennett et al. (2016)
+# ---------------------------------------------------------------------------
+MICROGLIA_MARKERS: dict[str, str] = {
+    "CX3CR1": "fractalkine receptor — microglial homeostatic marker",
+    "P2RY12": "purinergic receptor P2Y12 — homeostatic microglia",
+    "TMEM119": "transmembrane protein 119 — microglia-specific",
+    "AIF1": "allograft inflammatory factor 1 (Iba1) — microglia/macrophage",
+    "CSF1R": "colony stimulating factor 1 receptor — microglial survival",
+}
+
+# ---------------------------------------------------------------------------
+# Astrocytes
+# Markers: Cahoy et al. (2008) J Neurosci; Zhang et al. (2016)
+# ---------------------------------------------------------------------------
+ASTROCYTE_MARKERS: dict[str, str] = {
+    "GFAP": "glial fibrillary acidic protein — astrocyte marker",
+    "AQP4": "aquaporin 4 — astrocyte endfeet, water channel",
+    "ALDH1L1": "aldehyde dehydrogenase 1L1 — pan-astrocyte marker",
+    "S100B": "S100 calcium-binding protein B — astrocyte marker",
+    "SLC1A2": "GLT-1/EAAT2 — astrocytic glutamate transporter",
+}
+
+# ---------------------------------------------------------------------------
+# Oligodendrocytes
+# Markers: Zhang et al. (2014) J Neurosci
+# ---------------------------------------------------------------------------
+OLIGODENDROCYTE_MARKERS: dict[str, str] = {
+    "MBP": "myelin basic protein — mature oligodendrocyte marker",
+    "PLP1": "proteolipid protein 1 — myelin structural protein",
+    "MOG": "myelin oligodendrocyte glycoprotein — mature OL marker",
+    "OLIG2": "oligodendrocyte transcription factor 2 — OL lineage",
+    "CNP": "2',3'-cyclic nucleotide 3' phosphodiesterase — OL marker",
+}
+
+# ---------------------------------------------------------------------------
+# Cell-type marker registry
+# ---------------------------------------------------------------------------
+_CELLTYPE_MARKERS: dict[str, dict[str, str]] = {
+    "d1_msn": D1_MSN_MARKERS,
+    "d2_msn": D2_MSN_MARKERS,
+    "cholinergic_interneuron": CHOLINERGIC_INTERNEURON_MARKERS,
+    "pv_interneuron": PV_INTERNEURON_MARKERS,
+    "sst_interneuron": SST_INTERNEURON_MARKERS,
+    "microglia": MICROGLIA_MARKERS,
+    "astrocyte": ASTROCYTE_MARKERS,
+    "oligodendrocyte": OLIGODENDROCYTE_MARKERS,
+}
+
+# ---------------------------------------------------------------------------
+# TS risk gene registry
 # ---------------------------------------------------------------------------
 _GENE_SETS: dict[str, dict[str, str]] = {
     "tsaicg_gwas": TSAICG_GWAS,
@@ -165,3 +293,29 @@ def _build_combined() -> dict[str, str]:
 def gene_symbols(name: str) -> list[str]:
     """Return sorted gene symbols for a given set (convenience helper)."""
     return sorted(get_gene_set(name).keys())
+
+
+# ---------------------------------------------------------------------------
+# Cell-type marker accessors
+# ---------------------------------------------------------------------------
+
+
+def get_celltype_markers(name: str) -> dict[str, str]:
+    """Return cell-type marker genes by name (gene symbol -> description).
+
+    Raises
+    ------
+    KeyError
+        If *name* is not a recognised cell-type marker set.
+    """
+    if name not in _CELLTYPE_MARKERS:
+        raise KeyError(
+            f"Unknown cell-type marker set {name!r}. "
+            f"Available: {', '.join(list_celltype_markers())}"
+        )
+    return dict(_CELLTYPE_MARKERS[name])
+
+
+def list_celltype_markers() -> list[str]:
+    """Return the names of all available cell-type marker sets."""
+    return sorted(_CELLTYPE_MARKERS.keys())
