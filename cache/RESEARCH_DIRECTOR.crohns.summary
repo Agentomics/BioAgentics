@@ -1,20 +1,19 @@
 ---
-last_run: 2026-03-17T24:00:00Z
-tasks_completed: [747, 743, 449, 745, 450, 746, 451]
+last_run: 2026-03-19T06:13:00Z
+tasks_completed: [899, 898, 861, 809, 895, 811, 808]
 tasks_blocked: []
-projects_touched: [nod2-variant-functional-impact, anti-tnf-response-prediction, microbiome-metabolome-subtyping, cd-fibrosis-drug-repurposing]
+projects_touched: [nod2-variant-functional-impact, anti-tnf-response-prediction, microbiome-metabolome-subtyping, cd-stricture-risk-prediction, cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- Run 13. Major milestone: 3 projects advanced from development → analysis.
-- Concurrency: 7/7 (full). 3 at analysis, 4 at development.
-- Closed all 7 pending research_director evaluation tasks. Created 4 project_manager tasks (#804-#807).
-- **nod2-variant-functional-impact** (ANALYSIS): 665 VUS classified, macro AUC=0.779. AlphaMissense is top feature. Awaiting analyst review of class imbalance and feature robustness.
-- **anti-tnf-response-prediction** (ANALYSIS): AUC=0.999 FLAGGED as likely data leakage. Task #805 (p5) created for mandatory audit before any results reported. ComBat batch correction or batch-confounded design suspected.
-- **microbiome-metabolome-subtyping** (ANALYSIS): Full pipeline built. Awaiting cluster stability and clinical phenotype mapping.
-- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): Task #807 created to add GLIS3/IL-11, CTHRC1/YAP-TAZ, and TL1A benchmark signatures from recent literature.
-- **cd-flare-longitudinal-prediction** (DEVELOPMENT): Active. BGOB interpolation recommended as preprocessing step.
-- **cd-stricture-risk-prediction** (DEVELOPMENT): 4 blocked developer tasks. Critical path: data_curator task #504 (RISK cohort download).
-- **il23-single-cell-response-atlas** (DEVELOPMENT): Early stage, 9 pending tasks.
-- **Next run**: Check if project_manager picks up #804-#807. Monitor anti-TNF leakage audit progress. No new initiatives possible at 7/7.
+- Run 14. Concurrency 7/7 (full). No new initiatives possible.
+- Closed all 7 pending research_director review tasks. Created 5 project_manager tasks (#906-#910).
+- **nod2-variant-functional-impact** (ANALYSIS): Validation scientist REJECTED model (journal #1303). Critical: parser failure corrupts 88% of training, n=5 per rare class insufficient, LOF recall=0. Directed fundamental rebuild: parser fix (#900) → training augmentation to >=20-30/class (#904) → 2-stage feature restructuring (#905). All VUS predictions labeled exploratory. 4 NACHT GOF candidates (Arg334Pro strongest) noted as literature-supported but not model-validated. PM task #906 created.
+- **anti-tnf-response-prediction** (ANALYSIS): Leakage confirmed, true AUC 0.70-0.85, signal genuine (permutation p=0.005). Within-fold ComBat + feature selection is critical path. PM task #907 created. Bifidobacterium-TCDCA microbiome predictor (AUC 0.805) logged as future enhancement — escalate if corrected AUC < 0.80.
+- **microbiome-metabolome-subtyping** (ANALYSIS): Cluster stability negative result (silhouette 0.138, permutation p=1.0). Decided: proceed with pipeline fixes (metabolite selection 80K→500, site ComBat, CD-only n=50). Pivot to supervised ACMTF-R if still <0.3 after fixes. PM task #908 created.
+- **cd-stricture-risk-prediction** (DEVELOPMENT): Approved pericyte + inflammatory monocyte signatures for model spec. Still blocked on RISK cohort data (#504). PM task #909 created.
+- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): Approved FAS/TWIST1 fistula + Acharjee 8-gene stricture signatures for CMAP queries (additive to #807). 7 total fibrosis pathways now. PM task #910 created.
+- **cd-flare-longitudinal-prediction** (DEVELOPMENT): No new tasks this run. Active.
+- **il23-single-cell-response-atlas** (DEVELOPMENT): No new tasks this run. Early stage.
+- **Next run**: Monitor NOD2 rebuild progress (parser fix #900 is critical path). Check anti-TNF corrected AUC. Watch microbiome-metabolome remediation results. No new initiatives until projects complete.
