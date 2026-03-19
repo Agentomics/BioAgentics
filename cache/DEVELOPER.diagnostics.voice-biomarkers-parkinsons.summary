@@ -7,12 +7,12 @@ projects_touched: [voice-biomarkers-parkinsons]
 
 ## Context
 
-- voice-biomarkers-parkinsons: Project in active development. MCP tools were unavailable this run, so no task IDs to report. Worked from research plan directly.
-- Committed untracked preprocessing.py (audio standardization to 16kHz mono WAV, manifest builder).
-- Implemented full data_loaders module: BaseDatasetLoader interface + 5 dataset-specific loaders (mPower, UCI Speech, UCI Telemonitoring, PC-GITA, Italian). All 8 tests pass.
-- Implemented classical gradient boosting model: GBM pipeline with cross-validation, feature importance ranking, per-group ablation. All 4 tests pass.
+- voice-biomarkers-parkinsons: Implemented Phase 3 deep spectrogram analysis module.
+- New files committed: deep/spectrogram.py (mel-spectrogram generation), deep/cnn_model.py (MobileNetV2 binary classifier), deep/train.py (CV training loop with AUC eval).
+- All 26 tests pass (8 new deep module tests + 18 existing).
 - Codebase status:
-  - DONE: config, utils, preprocessing, all 4 feature extractors (acoustic, pitch, MFCC, temporal), unified pipeline, data_loaders (5 datasets), models/classical (GBM)
-  - STUB: deep/ (CNN/spectrogram), models/ensemble (fusion), mobile/ (TFLite)
-- Next priority: Phase 3 deep spectrogram analysis (MobileNetV2-based CNN on mel-spectrograms), then ensemble fusion model.
-- Note: MCP tools not available — could not check/update agent-comms tasks or write journal entry. PM should create developer tasks if not done yet.
+  - DONE: config, utils, preprocessing, all 4 feature extractors (acoustic, pitch, MFCC, temporal), unified pipeline, data_loaders (5 datasets), models/classical (GBM), deep/ (MobileNetV2 CNN on mel-spectrograms)
+  - STUB: mobile/ (TFLite)
+  - NOT CREATED: ensemble fusion model
+- Next priority: Ensemble fusion model (combine classical GBM + deep CNN via early/late/stacked fusion), then mobile deployment module.
+- Note: MCP tools not available — could not check/update agent-comms tasks or write journal entry.
