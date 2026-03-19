@@ -22,6 +22,7 @@ MAGMA_DIR = OUTPUT_DIR / "magma_results"
 GENE_ANALYSIS_DIR = OUTPUT_DIR / "gene_analysis"
 ENRICHMENT_DIR = OUTPUT_DIR / "enrichment"
 CELLTYPE_DIR = OUTPUT_DIR / "celltype_enrichment"
+CROSS_DISORDER_DIR = OUTPUT_DIR / "cross_disorder"
 FIGURES_DIR = OUTPUT_DIR / "figures"
 
 
@@ -30,7 +31,7 @@ def ensure_dirs() -> None:
     for d in [
         DATA_DIR, RAW_DIR, GWAS_DIR, EQTL_DIR, HIC_DIR, GENE_ANNOT_DIR, GENE_SETS_DIR,
         OUTPUT_DIR, MAPPING_DIR, MAGMA_DIR, GENE_ANALYSIS_DIR, ENRICHMENT_DIR,
-        CELLTYPE_DIR, FIGURES_DIR,
+        CELLTYPE_DIR, CROSS_DISORDER_DIR, FIGURES_DIR,
     ]:
         d.mkdir(parents=True, exist_ok=True)
 
