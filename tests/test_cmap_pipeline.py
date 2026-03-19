@@ -14,13 +14,15 @@ from bioagentics.data.cd_fibrosis.cmap_pipeline import (
 
 class TestSignatureLoading:
     def test_signature_files_defined(self):
-        assert len(SIGNATURE_FILES) == 6
+        assert len(SIGNATURE_FILES) == 8
         assert "bulk" in SIGNATURE_FILES
         assert "celltype" in SIGNATURE_FILES
         assert "transition" in SIGNATURE_FILES
         assert "glis3_il11" in SIGNATURE_FILES
         assert "cthrc1_yaptaz" in SIGNATURE_FILES
         assert "tl1a_dr3_rho" in SIGNATURE_FILES
+        assert "acharjee_stricture" in SIGNATURE_FILES
+        assert "fas_twist1_fistula" in SIGNATURE_FILES
 
     def test_load_all_signatures(self):
         """Load all real signatures from the output directory."""
