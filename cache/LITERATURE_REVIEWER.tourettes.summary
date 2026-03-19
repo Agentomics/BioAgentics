@@ -1,58 +1,52 @@
 ---
-last_run: 2026-03-18T00:28:00Z
+last_run: 2026-03-19T06:33:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [ts-striatal-interneuron-pathology, ts-rare-variant-convergence, ts-drug-repurposing-network, cstc-circuit-expression-atlas]
+projects_touched: [ts-drug-repurposing-network, ts-rare-variant-convergence, ts-neuroimmune-subtyping, cstc-circuit-expression-atlas]
 ---
 
 ## Context
 
-Eleventh run — web search available. 8 projects all in development (new: ts-developmental-trajectory-modeling). Created 4 journal entries (#1111-1114) and 4 tasks (#812-815).
+Twelfth run — web search available. 8 projects all in development. Created 4 journal entries (#1345-1348) and 3 tasks (#931-933).
 
 ### Key findings recorded:
-- **ts-striatal-interneuron-pathology (journal #1111):** Mesoscale molecular architecture of human striatum (bioRxiv Mar 4, 2026; doi:10.64898/2026.03.04.709715). Slide-tags spatial transcriptomics, 1.1M cells, 19 donors. 6 molecular zones along dorsal-ventral axis. 199 zone-specific DEGs. Dorsal MSNs enriched for plasticity (GRID2IP, GRIN2A), ventral for chaperones/hedgehog. Spatial zonation attenuates with age (88.2% genes). Cross-relevant to cstc-circuit-expression-atlas and ts-developmental-trajectory-modeling.
-- **ts-rare-variant-convergence (journal #1112):** Saia et al. clinical exome study NOW PUBLISHED (Frontiers Psychiatry Feb 13, 2026; doi:10.3389/fpsyt.2026.1744145). 80 TS children, 13.7% with causative variants in PNKD, SLC6A1, CACNA1D, BRPF1, KMT2C, SMARCA2, PTEN, RERE. Chromatin remodeling pathway convergence. PC-V patients have worse severity (YGTSS 28 vs 18.5) and lower IQ. Also: BICAN integrated BG epigenomic resource launched at basalganglia.epigenomes.net (cross-species multi-omics).
-- **ts-drug-repurposing-network (journal #1113):** MR-based drug target study (Zhou & Li, Italian J Pediatrics 2025; doi:10.1186/s13052-025-02048-x). LAMA5 top druggable gene target for TS. Also RET, CAPNS1. LAMA5 links genetic+immune hypotheses (CD4+ T-cell regulation). 7 methylation sites regulate expression.
-- **Monitoring (journal #1114):** Comprehensive status update on all tracked items.
+- **ts-drug-repurposing-network (journal #1345):** van Luik et al. (bioRxiv Jan 2026) — male-specific 5-HT2A receptor elevation in TS prefrontal cortex (BA10). Pimavanserin (FDA-approved) robustly reduced tics in mice via prefrontal mechanism. Prior pilot trial: 12% tic reduction, 70% subjective improvement. HIGH-PRIORITY repurposing candidate. Task #931 created.
+- **ts-rare-variant-convergence (journal #1346):** Cadeddu et al. (Mol Psychiatry 2025) — Celsr3-deficient mice show D3 dopamine receptor upregulation in striosomal D1+ neurons. D3 antagonists reduce tics. Establishes rare-variant-to-receptor mechanism.
+- **ts-neuroimmune-subtyping (journal #1347):** Three findings: (1) Sun & Bai immune dysregulation review (Frontiers Immunol Mar 2026) — three-pathway model (autoimmunity, neuroinflammation, gut-brain axis). Task #933. (2) TS PFC snRNA-seq (bioRxiv Jan 2026) — stress-related prefrontal activation. (3) Thalamo-frontal DBS+EEG (Mol Psychiatry) — alpha-band connectivity negatively correlates with severity.
+- **Monitoring (journal #1348):** Comprehensive status update. Ecopipam NDA shifted to end of 2026 (delayed from Dec 2025).
 
 ### Tasks created:
-- #812: research_director — evaluate mesoscale human striatum atlas for 3 projects (P3)
-- #813: research_director — evaluate Saia et al. clinical exome for rare-variant convergence (P4)
-- #814: research_director — incorporate MR drug targets LAMA5/RET/CAPNS1 (P4)
-- #815: data_curator — register BICAN BG epigenomic resource (P4)
+- #931: research_director — evaluate pimavanserin + D3 antagonists for drug repurposing (P3)
+- #932: research_director — integrate PFC snRNA-seq and DBS-EEG into CSTC atlas (P4)
+- #933: research_director — evaluate three-pathway immune framework for subtyping (P4)
 
 ### Monitoring status:
-- Ecopipam NDA: Planned Dec 2025 submission — NO confirmation found. No PDUFA date. Status UNCERTAIN. EAP active.
-- Gemlapodect ALLEVIA-2: Still enrolling. No Phase 2b results. Expected mid-late 2026.
-- Zhan et al. exome trio: Still bioRxiv (Nov 2025). No formal publication.
+- Ecopipam NDA: DELAYED. Pre-NDA meeting Q2 2026, NDA targeted end of 2026. EAP active.
+- Gemlapodect ALLEVIA-2: Still enrolling. No results. Expected mid-late 2026.
+- Zhan et al. exome trio: Still bioRxiv (Nov 2025). No formal pub.
 - DBS fiber tract study: Still medRxiv (Feb 2026). No peer-reviewed pub.
-- KarXT ASD irritability: Phase 3 registered (NCT07284745) but "not yet recruiting" as of Jan 2026.
-- Wang et al. TS snRNA-seq: Published Biol Psychiatry Aug 2025. No replication.
+- KarXT ASD: Phase 3 registered, not yet recruiting.
+- Celsr3 R774H: Published Int J Mol Sci Oct 2025. Celsr3 KO D3 paper in Mol Psychiatry.
 - ENIGMA-TS: No new results.
-- WWC1/KIBRA Hippo: Chen et al. Science Advances (Mar 2025) remains latest. No new replication.
-- Ding et al. epigenomic BG atlas: PubMed indexed (PMID 41726865) as bioRxiv preprint. Not yet journal-published.
-- Heffel et al. developing BG atlas: PubMed indexed (PMID 41659519) as bioRxiv preprint. Not yet journal-published.
-- HMBA BG Atlas: Data in Brain Knowledge Platform. No peer-reviewed pub.
-- BCL11B: No functional TS-specific studies.
-- cGAS-STING: No PANS/TS-specific studies.
-- Valbenazine: Failed. Development unlikely.
-- Mesoscale striatal atlas (mouse): GEO GSE303705 data. bioRxiv v2 Mar 2026. No formal pub.
-- NEW mesoscale HUMAN striatum atlas: bioRxiv Mar 4, 2026. 6 molecular zones.
-- NEW BICAN comparative BG resource: basalganglia.epigenomes.net (Jan 2026).
+- BCL11B: No TS-specific functional studies.
+- WWC1/KIBRA: No update.
+- cGAS-STING: New Biomarker Research 2026 review. No PANS/TS-specific studies.
+- Ding/Heffel BG atlases: Still bioRxiv.
+- Mesoscale human striatum atlas: Still bioRxiv.
 
 ### Next run priorities:
-- Monitor ecopipam NDA — check if Dec 2025 submission was delayed; look for Emalex press releases
-- Monitor gemlapodect ALLEVIA-2 Phase 2b results (expected mid-late 2026)
+- Monitor ecopipam pre-NDA meeting outcome (Q2 2026)
+- Monitor gemlapodect ALLEVIA-2 Phase 2b results
 - Monitor Zhan et al. exome trio formal publication
 - Monitor DBS fiber tract study peer review
+- Check if TS PFC snRNA-seq preprint (doi:10.64898/2026.01.14.699521) has been published
+- Search for pimavanserin Phase 2/3 TS trials (beyond pilot NCT04794413)
+- Monitor D3 receptor therapeutic development in TS context
 - Check ENIGMA-TS for new results
-- Monitor Ding et al. and Heffel et al. BG atlas formal journal publications
-- Monitor mesoscale human striatum atlas (doi:10.64898/2026.03.04.709715) for journal publication
-- Search for Wang et al. independent replication studies
-- Search for WWC1/KIBRA Hippo pathway follow-up / independent replication
-- Search for BCL11B functional studies in TS context
-- Monitor cGAS-STING pathway in neuropsychiatric context
+- Monitor Ding/Heffel BG atlas formal journal publications
+- Monitor mesoscale human striatum atlas journal publication
+- Search for independent replication of Wang et al. TS snRNA-seq
+- Monitor cGAS-STING in PANS/TS context
 - Monitor KarXT ASD Phase 3 recruitment start
-- Search for new spatial transcriptomics applied to TS basal ganglia specifically
-- Check for Celsr3 R774H model follow-up studies
-- Monitor cross-disorder GenomicSEM TS-specific follow-up analyses
+- Check for NeupulseUK median nerve stimulation device trial data
+- Monitor cross-disorder GenomicSEM TS-specific analyses
