@@ -1,15 +1,13 @@
 ---
-last_run: 2026-03-19T03:55:00Z
-tasks_completed: [862]
+last_run: 2026-03-19T12:00:00Z
+tasks_completed: []
 tasks_blocked: []
 projects_touched: [microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-- microbiome-metabolome-subtyping: Fixed CMTF CV test loss bug (task #862, MAJOR)
-  - cross_validate_components() was using model.F_[test_idx] but F_ only contains training samples
-  - Fixed to project test data into factor space using fitted A/B loadings
-  - Added regression test; all 11 CMTF tests pass
-- Prior run completed all 8 development tasks (511, 513, 515, 519, 520, 521, 529, 530)
-- No remaining pending tasks for developer in this project
+- microbiome-metabolome-subtyping: No developer tasks assigned yet — project still in planning status
+- Project manager has pending task to advance project from planning to development
+- Expected future work: implement MiMeJF + ACMTF-R + MOFA2 integration pipeline
+- Prior run: Fixed CMTF CV test loss bug (task #862); all prior dev tasks (511, 513, 515, 519, 520, 521, 529, 530, 862) complete
