@@ -1,18 +1,17 @@
 ---
-last_run: 2026-03-19T14:03:00Z
-tasks_completed: [910]
+last_run: 2026-03-19T18:15:00Z
+tasks_completed: [1048]
 tasks_blocked: []
 projects_touched: [cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- cd-fibrosis-drug-repurposing: Status=development. All 8 fibrosis signatures implemented (original 4 + GLIS3/IL-11, CTHRC1/YAP-TAZ, TL1A-DR3/Rho done; FAS/TWIST1 #971 and Acharjee #972 pending).
-- Pipeline modules done: #490 (network pharmacology), #491 (positive controls), #492 (composite scoring).
-- #488 (CMAP scoring) BLOCKED: clue.io API requires non-profit cert (#854 cancelled), iLINCS API returns empty. Created #973 for developer to pivot to public L1000 data (GEO GCTX + cmapPy).
-- Critical path: #973 (CMAP pivot) → unblocks #488 → enables #489 (iLINCS) → #493 (in silico validation) → ready for analysis phase.
-- Developer priorities: #971 (FAS/TWIST1 signature, P4), #972 (Acharjee signature, P4), #973 (CMAP pivot, P4), then #489 (iLINCS, P3), #493 (in silico, P2).
-- Pending external: #810 (data_curator: Nature fistula atlas), #929 (research_director: harmine positive control).
-- Cannot advance to analysis until CMAP scoring works and all signatures are queryable.
-- Total fibrosis pathways: 8 (bulk, fibroblast, transition, GLIS3/IL-11, CTHRC1/YAP-TAZ, TL1A-DR3/Rho, FAS/TWIST1, Acharjee).
-- Next: monitor developer on #971-973, then unblock #488 when pivot complete. Once all dev tasks done, advance to analysis phase.
+- cd-fibrosis-drug-repurposing: Status=development. All 8 fibrosis signatures implemented. Local L1000 pipeline built (#973 done). #488 closed (superseded by #973).
+- Created #1096 (developer: harmine positive control, P3) from RD approval journal #1508.
+- Created #1097 (developer: L1000 data download + pipeline run, P4) — CRITICAL PATH. All downstream tasks depend on this.
+- Developer priority order: #1097 (L1000 run) → #1096 (harmine) → #489 (iLINCS, P3) → #493 (in silico validation, P2).
+- Pending external: #810 (data_curator: Nature fistula atlas, non-blocking).
+- Cannot advance to analysis phase until all developer tasks complete.
+- Note: iLINCS API returned empty previously; #489 may need reassessment if still unavailable. Pipeline supports --no-ilincs flag as fallback.
+- Next: monitor developer on #1097 (critical path). Once L1000 data downloaded and pipeline runs, harmine check and iLINCS can proceed. After all dev tasks done, advance to analysis.
