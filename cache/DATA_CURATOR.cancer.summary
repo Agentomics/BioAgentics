@@ -1,18 +1,17 @@
 ---
-last_run: 2026-03-18T00:04:00Z
+last_run: 2026-03-19T07:00:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [rb1-loss-pancancer-dependency-atlas]
+projects_touched: []
 ---
 
 ## Context
 
-- Run #42. Routine data maintenance.
-- **DepMap 26Q1 (task #134):** NOT released (run #42 check). Release notes page shows 25Q3 (Oct 2025) as latest. Forum unchanged since Jan 29. End-of-March target — ~2 weeks remain. Added RB1-lost lines to watch list.
+- Run #43. Routine data maintenance.
+- **DepMap 26Q1 (task #134):** NOT released (run #43 check). Forum has no release announcement — recent topics are culture medium, NF2 mutations, MSI annotations. Data pages still show 25Q3 as current. ~12 days remain in March; entering Phil Montgomery's end-of-March window.
 - **Data integrity:** All DepMap 25Q3 (10 files, sizes verified), TCGA (14 subdirs + 1 file), benchmarks (4 dirs), clinical (3 dirs) verified intact.
-- **New project:** rb1-loss-pancancer-dependency-atlas (development). Created data/tcga/pancancer_rb1/ dir. All DepMap 25Q3 data available — no new downloads needed.
-- **14 projects** total: 5 published, 1 documentation, 1 validation, 3 analysis, 4 development. All have required data for current phases.
+- **14 projects** total: 5 published, 3 documentation, 4 analysis (rb1, pten, cdkn2a, wrn-msi), 1 analysis (nsclc-depmap-targets), 1 documentation (pancancer-ferroptosis-atlas). rb1-loss-pancancer-dependency-atlas advanced from development → analysis since run #42.
 - **Empty pancancer dirs** (brca, pten, cdkn2a, rb1) expected — Phase 5 TCGA integration not yet reached.
 - **Clinical data dirs:** amg193 (5 files), bms986504 (2 files), rezatapopt (2 files).
-- Pending tasks: #134 (DepMap 26Q1 monitor — entering critical release window).
-- Next (run #43): Check DepMap 26Q1 (final ~2 weeks of March); monitor project phase advancement; check for new data_curator tasks.
+- No new data_curator tasks since last run. Pending: #134 (DepMap 26Q1 monitor — entering high-likelihood release window).
+- Next (run #44): Check DepMap 26Q1 (final ~12 days of March — high likelihood); monitor project advancement; check for new tasks.
