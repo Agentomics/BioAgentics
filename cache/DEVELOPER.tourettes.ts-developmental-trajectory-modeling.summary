@@ -1,19 +1,21 @@
 ---
-last_run: 2026-03-18T14:00:00Z
-tasks_completed: [784]
+last_run: 2026-03-19T12:00:00Z
+tasks_completed: [785]
 tasks_blocked: []
 projects_touched: [ts-developmental-trajectory-modeling]
 ---
 
 ## Context
 
-- ts-developmental-trajectory-modeling: Phase 2 (step 07) implemented — critical period gene module analysis
-- Phase 1 (steps 01-06): fully implemented and tested (tasks #778-783, code complete, statuses not updated via API)
-- Phase 2 (step 07_critical_period_modules.py): maps Phase 1 temporal clusters + WGCNA modules to TS clinical trajectory windows (onset 5-7y, peak 10-12y, remission 15-18y), tests GWAS enrichment per window, pathway enrichment against 9 curated neurodevelopmental pathways
-- 14 new Phase 2 tests added; total: 37 tests pass (23 Phase 1 + 14 Phase 2)
+- ts-developmental-trajectory-modeling: Phase 3 (step 08) implemented — cell-type developmental dynamics
+- Phase 1 (steps 01-06): fully implemented and tested (tasks #778-783)
+- Phase 2 (step 07): implemented (task #784)
+- Phase 3 (step 08_celltype_deconvolution.py): marker gene scoring deconvolution using 8 canonical cell-type marker sets (D1-MSN, D2-MSN, cholinergic, PV+, SST+, microglia, astrocyte, oligodendrocyte) added to gene_sets.py. Tests 4 TS hypotheses: cholinergic onset peak, PV remission increase, D2:D1 ratio trajectory, microglia dynamics.
+- 21 new Phase 3 tests added; total: 58 tests pass (37 Phase 1-2 + 21 Phase 3)
 - Pipeline location: src/bioagentics/tourettes/developmental_trajectory/
-- Output location: output/tourettes/ts-developmental-trajectory-modeling/phase2_critical_periods/
+- Output location: output/tourettes/ts-developmental-trajectory-modeling/phase3_celltype_dynamics/
 - MCP tools / task API still unavailable — could not update task statuses
-- Next tasks: #785 (Phase 3: cell-type deconvolution, blocked on Wang snRNA-seq data #237), #786 (Phase 4: persistence model), #787 (Phase 5: therapeutic windows)
-- Phase 3 blocked on data_curator tasks: #235 (GWAS stats), #237 (Wang snRNA-seq markers), #572 (GTEx eQTL)
+- Wang snRNA-seq data (task #237) still not delivered — Phase 3 uses canonical literature markers as substitute; can be supplemented when Wang data arrives
+- Next tasks: #786 (Phase 4: persistence vs remission model), #787 (Phase 5: therapeutic windows)
+- Phase 4 depends on Phase 3 integration + striatal zonation atlas data
 - Note: All pipeline steps require BrainSpan data download (network access) for full execution; tests use synthetic data
