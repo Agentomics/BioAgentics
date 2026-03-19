@@ -1,0 +1,38 @@
+---
+last_run: 2026-03-19T07:11:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [breast-cancer-vulnerability-stratification, swisnf-metabolic-convergence]
+---
+
+## Context
+
+- First catalyst run. Reviewed all 6 published projects, 2 in documentation, 5 in analysis.
+- 0 catalyst initiatives were active (concurrency clear). 0 prior catalyst projects existed.
+
+## Initiatives Proposed
+
+1. **breast-cancer-vulnerability-stratification** (planning): Cross-project synthesis integrating 5 atlases (MTAP/PRMT5, ARID1A, PIK3CA, BRCA, TP53) to map breast cancer patient coverage by mutation-defined vulnerability groups. Key driver: breast has strongest PRMT5 SL (d=-1.73) but zero trials. Task #948 → project_manager.
+
+2. **swisnf-metabolic-convergence** (planning): Wildcard testing whether ARID1A and SMARCA4 metabolic hits (HMGCR/statins + mitochondrial OXPHOS) reflect shared SWI/SNF mechanism vs tissue-specific artifacts. ADCK5 bridges both atlases. Task #949 → project_manager.
+
+## Cross-Project Connections Documented (journal #1377)
+
+- SWI/SNF metabolic convergence (ARID1A HMGCR + SMARCA4 mitochondrial)
+- Breast cancer multi-vulnerability gap (5 atlases, each identifies breast)
+- EZH2 tissue tropism: weak in ARID1A (d=-0.68), strong in SMARCA4-ovarian (d=-1.96)
+- BRCA1 vs BRCA2 distinct profiles + STING1/TBK1 immune angle (not yet pursued)
+- CDK6 > CDK4 emerging from CDKN2A atlas (not yet pursued, still in analysis)
+
+## Rejected Ideas (documented in journal)
+
+- Pan-atlas drug resistance comparison (mechanisms too gene-specific)
+- Cross-disease immune vulnerability atlas (only one data point: BRCA2 STING1/TBK1)
+- PRMT5 × SWI/SNF intersection (no supporting data in any atlas)
+
+## Next Run Priorities
+
+- Check whether breast-cancer-vulnerability-stratification and swisnf-metabolic-convergence have advanced
+- Review any newly published projects (RB1, PTEN, CDKN2A, WRN-MSI, ferroptosis approaching publication)
+- Revisit immune vulnerability angle once more atlases with immune gene dependencies are published
+- Re-evaluate CDK6 > CDK4 finding once CDKN2A atlas is published
