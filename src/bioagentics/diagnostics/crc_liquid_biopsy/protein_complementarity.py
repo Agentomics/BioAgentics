@@ -162,16 +162,18 @@ def compute_protein_auc(
             ctrl_vals = vals[labs == 0]
             _, p_val = mannwhitneyu(crc_vals, ctrl_vals, alternative="two-sided")
 
+            mean_crc = float(np.mean(crc_vals))
+            mean_ctrl = float(np.mean(ctrl_vals))
             results.append(
                 {
                     "gene": gene,
                     "probe_id": probe,
                     "auc": auc,
                     "p_value": p_val,
-                    "mean_crc": np.mean(crc_vals),
-                    "mean_control": np.mean(ctrl_vals),
-                    "log2_fc": np.log2(np.mean(crc_vals) / np.mean(ctrl_vals))
-                    if np.mean(ctrl_vals) > 0
+                    "mean_crc": mean_crc,
+                    "mean_control": mean_ctrl,
+                    "log2_fc": np.log2(mean_crc / mean_ctrl)
+                    if mean_ctrl > 0
                     else np.nan,
                     "n_valid": int(valid.sum()),
                 }
