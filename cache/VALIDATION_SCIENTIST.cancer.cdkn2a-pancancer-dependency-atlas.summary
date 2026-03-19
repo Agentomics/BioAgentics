@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-19T19:50:00Z
+tasks_completed: [1011, 1012, 1014, 1015]
+tasks_blocked: [1013, 1016]
+projects_touched: [cdkn2a-pancancer-dependency-atlas]
+---
+
+## Context
+
+- cdkn2a-pancancer-dependency-atlas: Full 5-phase validation completed. Verdict: CONDITIONAL PASS.
+- Phase 1 (classifier): PASS — 1087 lines, CN threshold validated, expression p=6.84e-142
+- Phase 2 (CDK4/6): PASS — CDK6 ROBUST in 6 types, CDK4 zero ROBUST. Novel CDK6>>CDK4 finding fully validated.
+- Phase 3 (genome-wide): BLOCKED — MTAP confounder discovered. WDR77/PRMT5 are MTAP-driven (74.3% co-deletion). Task #1118 created for analyst to add MTAP stratification.
+- Phase 4 (PRISM): PASS — Trilaciclib d=-0.565 confirms CDK4/6i selectivity. PRMT5i weak concordance (r=0.15-0.19).
+- Phase 5 (TCGA): PASS with fix needed — DLBC incidence uses total NHL (80,620) not DLBCL (~22,000). Task #1119 created for developer.
+- Task #1016 blocked pending #1118 and #1119 resolution before documentation phase.
+- Journal entry #1638 contains full validation verdict.
