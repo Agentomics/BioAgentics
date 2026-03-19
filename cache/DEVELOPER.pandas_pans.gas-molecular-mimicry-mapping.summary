@@ -1,16 +1,20 @@
 ---
-last_run: 2026-03-17T18:10:00Z
-tasks_completed: [601, 602, 603]
+last_run: 2026-03-19T12:00:00Z
+tasks_completed: [607, 609, 620, 622, 624]
 tasks_blocked: []
 projects_touched: [gas-molecular-mimicry-mapping]
 ---
 
 ## Context
 
-- gas-molecular-mimicry-mapping: Completed data assembly + initial mimicry screen.
-- Task 601: GAS proteomes downloaded for 6 serotypes (M1,M3,M5,M12,M18,M49) — 10,691 proteins. M5/M18 required UniParc fallback (redundant proteomes). Code: src/bioagentics/data/pandas_pans/gas_proteomes.py
-- Task 602: Human targets curated — 328 proteins (8 known PANDAS targets + 320 UniProt basal ganglia). HPA API returned 0 (may need investigation). Code: src/bioagentics/data/pandas_pans/human_targets.py
-- Task 603: DIAMOND screen — 45 filtered hits, 8 human targets. Known mimicry recovered: GAPDH (46.3%), DnaK/HSPA6 (49.3%), enolase/ENO2 (49.1%). Novel: PSMC6, AK9, MCCC1, NFS1, HSD17B7. DRD1/DRD2/tubulin NOT found (structural mimicry for task 609). Code: src/bioagentics/data/pandas_pans/mimicry_screen.py
-- Remaining tasks: 604 (FasBCAX weighting), 606 (BepiPred), 607 (NetMHCIIpan), 609 (structural), 620 (serotype comparison), 622 (scoring), 624 (visualization) — all still pending.
-- Dependencies: tasks 606-609 depend on 603 results (now available). Task 604 integrates with 622.
+- gas-molecular-mimicry-mapping: ALL development tasks complete. Pipeline fully built.
+- Previously completed: 601 (proteomes), 602 (human targets), 603 (DIAMOND screen), 604 (FasBCAX weighting), 606 (B-cell epitopes)
+- Task 607: MHC-II predictions run — 120 entries, 31/40 pairs with cross-reactive binding per allele. Code: mhc_prediction.py (existed, just ran it)
+- Task 620: Serotype comparison — 6/8 targets conserved across all 6 serotypes, 2 PANDAS-specific. Code: serotype_comparison.py
+- Task 622: Target scoring — composite score integrating all modules. Top: B4DHP5 (0.845), ENO2 (0.784), GAPDH #4 (0.624, positive control). Code: target_scoring.py
+- Task 609: Structural mimicry — AlphaFold v6 structures + TM-score. 7 pairs with TM≥0.5: enolase (0.55-0.66) and GAPDH (0.63-0.66). Code: structural_mimicry.py
+- Task 624: Network visualization — 48 nodes, 40 edges, publication-quality figure. Code: mimicry_network.py
+- All 10 tasks done (601-604, 606-607, 609, 620, 622, 624). No remaining developer tasks.
+- Project ready for analyst phase.
+- Note: AlphaFold API now at model v6 (was v4). Biopython Superimposer uses set_atoms() not set().
 - Note: API journal field is 'content' not 'body'. API task update uses PATCH not PUT.
