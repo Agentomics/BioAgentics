@@ -205,10 +205,25 @@ _VALID_AA = set("ACDEFGHIKLMNPQRSTVWY")
 def _parse_protein_change(hgvs_p: str) -> tuple[str, int, str] | None:
     """Parse protein change notation into (ref_aa, position, alt_aa).
 
-    Handles both single-letter (R702W) and three-letter (p.Arg702Trp) notation.
-    Returns None for non-missense changes (frameshifts, stop gains, etc.).
+    Handles missense (R702W, p.Arg702Trp) and synonymous (p.His10=, p.H10=)
+    notation. For synonymous variants, ref_aa == alt_aa.
+    Returns None for frameshifts, stop gains, and other non-parseable changes.
     """
     import re
+
+    # Try three-letter synonymous notation: p.His10=
+    m = re.match(r"p\.([A-Z][a-z]{2})(\d+)=$", hgvs_p)
+    if m:
+        ref = _AA3TO1.get(m.group(1))
+        if ref:
+            return ref, int(m.group(2)), ref
+
+    # Try single-letter synonymous notation: p.H10=
+    m = re.match(r"p\.([A-Z])(\d+)=$", hgvs_p)
+    if m:
+        ref = m.group(1)
+        if ref in _VALID_AA:
+            return ref, int(m.group(2)), ref
 
     # Try three-letter notation: p.Arg702Trp
     m = re.match(r"p\.([A-Z][a-z]{2})(\d+)([A-Z][a-z]{2})$", hgvs_p)

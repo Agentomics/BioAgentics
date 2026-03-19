@@ -69,8 +69,18 @@ class TestParseProteinChange:
     def test_stop_gain_returns_none(self):
         assert _parse_protein_change("p.Arg702*") is None
 
-    def test_synonymous_returns_none(self):
+    def test_synonymous_duplicate_aa_returns_none(self):
         assert _parse_protein_change("p.Arg702Arg") is None
+
+    def test_synonymous_equals_three_letter(self):
+        assert _parse_protein_change("p.His10=") == ("H", 10, "H")
+
+    def test_synonymous_equals_single_letter(self):
+        assert _parse_protein_change("p.H10=") == ("H", 10, "H")
+
+    def test_synonymous_equals_various_positions(self):
+        assert _parse_protein_change("p.Glu266=") == ("E", 266, "E")
+        assert _parse_protein_change("p.Val793=") == ("V", 793, "V")
 
     def test_empty_returns_none(self):
         assert _parse_protein_change("") is None
