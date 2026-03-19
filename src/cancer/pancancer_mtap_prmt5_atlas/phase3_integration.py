@@ -147,17 +147,29 @@ def composite_scoring(kw, pairwise, sig_genes, predictable, sl_hits, gene_drugs)
     )
 
 
-def top_targets_per_subtype(scores_df, n=20):
-    """Extract top N vulnerability and release targets per subtype."""
+def top_targets_per_subtype(scores_df, n=20, filter_direction=True):
+    """Extract top N vulnerability and release targets per subtype.
+
+    When filter_direction=True (default), vulnerability rankings only include
+    genes with negative effect_size (genuinely MORE dependent) and release
+    rankings only include genes with positive effect_size (genuinely LESS
+    dependent). This prevents high druggability/significance/SL scores from
+    pushing wrong-direction genes into the top rankings.
+    """
     tops = []
     for ranking_type, score_col in [
         ("vulnerability", "vulnerability_score"),
         ("release", "release_score"),
     ]:
         for subtype in SUBTYPES:
+            sub = scores_df[scores_df["subtype"] == subtype]
+            if filter_direction:
+                if ranking_type == "vulnerability":
+                    sub = sub[sub["effect_size"] < 0]
+                else:
+                    sub = sub[sub["effect_size"] > 0]
             sub = (
-                scores_df[scores_df["subtype"] == subtype]
-                .sort_values(score_col, ascending=False)
+                sub.sort_values(score_col, ascending=False)
                 .head(n)
                 .copy()
             )
@@ -245,15 +257,16 @@ def build_summary(scores_df, sl_hits, sl_enrich, anticorr, gene_drugs, ferro_enr
     }
 
     for subtype in SUBTYPES:
+        sub = scores_df[scores_df["subtype"] == subtype]
         vuln = (
-            scores_df[scores_df["subtype"] == subtype]
+            sub[sub["effect_size"] < 0]
             .sort_values("vulnerability_score", ascending=False)
             .head(10)
         )
         summary["top_vulnerability_targets"][subtype] = vuln["gene"].tolist()
 
         release = (
-            scores_df[scores_df["subtype"] == subtype]
+            sub[sub["effect_size"] > 0]
             .sort_values("release_score", ascending=False)
             .head(10)
         )
@@ -280,11 +293,12 @@ def main():
     scores_df = composite_scoring(kw, pairwise, sig_genes, predictable, sl_hits, gene_drugs)
     print(f"  Total scored: {len(scores_df)} (gene x subtype)")
 
-    top_df = top_targets_per_subtype(scores_df, n=20)
+    top_df = top_targets_per_subtype(scores_df, n=20, filter_direction=True)
+    top_unfiltered_df = top_targets_per_subtype(scores_df, n=20, filter_direction=False)
 
     for ranking_type in ["vulnerability", "release"]:
         score_col = f"{ranking_type}_score"
-        print(f"\nTop {ranking_type} targets per subtype:")
+        print(f"\nTop {ranking_type} targets per subtype (direction-filtered):")
         for subtype in SUBTYPES:
             sub = top_df[
                 (top_df["subtype"] == subtype) & (top_df["ranking_type"] == ranking_type)
@@ -303,6 +317,7 @@ def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     scores_df.to_csv(OUT_DIR / "composite_target_scores.csv", index=False)
     top_df.to_csv(OUT_DIR / "top_targets_per_subtype.csv", index=False)
+    top_unfiltered_df.to_csv(OUT_DIR / "top_targets_per_subtype_unfiltered.csv", index=False)
     with open(OUT_DIR / "phase3_summary.json", "w") as f:
         json.dump(summary, f, indent=2)
 
