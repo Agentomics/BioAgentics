@@ -1,0 +1,116 @@
+{
+  "full": {
+    "auc": 0.7682337017494337,
+    "gof_recall": 0.4,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.9867109634551495
+  },
+  "alphamissense_only": {
+    "auc": 0.47380264767405683,
+    "gof_recall": 0.6,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.9601328903654485
+  },
+  "no_alphamissense": {
+    "auc": 0.8195267771191164,
+    "gof_recall": 0.6,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.9833887043189369
+  },
+  "without_structure": {
+    "auc": 0.8698043558508676,
+    "gof_recall": 0.2,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.9800664451827242
+  },
+  "without_predictors": {
+    "auc": 0.6431524547803616,
+    "gof_recall": 0.4,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.9667774086378738
+  },
+  "without_varmeter2": {
+    "auc": 0.8233376037753602,
+    "gof_recall": 0.4,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.9900332225913622
+  },
+  "without_girdin": {
+    "auc": 0.8628601828328231,
+    "gof_recall": 0.2,
+    "lof_recall": 0.2,
+    "neutral_recall": 0.9767441860465116
+  },
+  "without_domain": {
+    "auc": 0.7272989816081471,
+    "gof_recall": 0.4,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.9867109634551495
+  },
+  "only_structure": {
+    "auc": 0.8118797906759604,
+    "gof_recall": 0.4,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.9767441860465116
+  },
+  "only_predictors": {
+    "auc": 0.42418807316208135,
+    "gof_recall": 0.2,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.9900332225913622
+  },
+  "only_varmeter2": {
+    "auc": 0.7828675656309034,
+    "gof_recall": 0.4,
+    "lof_recall": 0.2,
+    "neutral_recall": 0.973421926910299
+  },
+  "only_girdin": {
+    "auc": 0.6301435302803292,
+    "gof_recall": 0.4,
+    "lof_recall": 0.2,
+    "neutral_recall": 0.9568106312292359
+  },
+  "only_domain": {
+    "auc": 0.8805969933192914,
+    "gof_recall": 0.8,
+    "lof_recall": 1.0,
+    "neutral_recall": 0.9136212624584718
+  },
+  "only_alphamissense": {
+    "auc": 0.47380264767405683,
+    "gof_recall": 0.6,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.9601328903654485
+  },
+  "only_girdin_interface_distance": {
+    "auc": 0.7301319494205952,
+    "gof_recall": 0.4,
+    "lof_recall": 0.8,
+    "neutral_recall": 0.9435215946843853
+  },
+  "only_revel": {
+    "auc": 0.4640624208339667,
+    "gof_recall": 0.6,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.973421926910299
+  },
+  "only_plddt": {
+    "auc": 0.8211227643512186,
+    "gof_recall": 0.4,
+    "lof_recall": 0.4,
+    "neutral_recall": 0.9435215946843853
+  },
+  "only_ripk2_interface_distance": {
+    "auc": 0.5857135619105523,
+    "gof_recall": 0.4,
+    "lof_recall": 0.6,
+    "neutral_recall": 0.9700996677740864
+  },
+  "only_active_site_distance": {
+    "auc": 0.6122402449351833,
+    "gof_recall": 0.6,
+    "lof_recall": 0.0,
+    "neutral_recall": 0.9534883720930233
+  }
+}

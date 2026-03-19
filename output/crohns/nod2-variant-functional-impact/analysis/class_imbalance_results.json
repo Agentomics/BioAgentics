@@ -1,0 +1,173 @@
+{
+  "three_class": {
+    "macro_auc": 0.8420008830405546,
+    "classification_report": {
+      "GOF": {
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1-score": 0.5714285714285714,
+        "support": 5.0
+      },
+      "LOF": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 5.0
+      },
+      "neutral": {
+        "precision": 0.9739413680781759,
+        "recall": 0.9933554817275747,
+        "f1-score": 0.9835526315789473,
+        "support": 301.0
+      },
+      "accuracy": 0.9678456591639871,
+      "macro avg": {
+        "precision": 0.6579804560260586,
+        "recall": 0.46445182724252493,
+        "f1-score": 0.5183270676691729,
+        "support": 311.0
+      },
+      "weighted avg": {
+        "precision": 0.9587020957927039,
+        "recall": 0.9678456591639871,
+        "f1-score": 0.9611140995575757,
+        "support": 311.0
+      }
+    },
+    "calibration_stats": {
+      "GOF": {
+        "n_samples": 5,
+        "mean_predicted_prob": 0.009366287932131574,
+        "max_predicted_prob": 0.6250634152047362,
+        "min_predicted_prob": 6.219724080963941e-06
+      },
+      "LOF": {
+        "n_samples": 5,
+        "mean_predicted_prob": 0.01208261094257599,
+        "max_predicted_prob": 0.5650090812870933,
+        "min_predicted_prob": 4.846826144851724e-06
+      },
+      "neutral": {
+        "n_samples": 301,
+        "mean_predicted_prob": 0.9785511011252926,
+        "max_predicted_prob": 0.9999889334497741,
+        "min_predicted_prob": 0.3331563739524577
+      }
+    },
+    "prediction_distribution": {
+      "GOF": 2,
+      "LOF": 2,
+      "neutral": 307
+    }
+  },
+  "binary_ovr": {
+    "GOF": {
+      "auc": 0.5836601307189542,
+      "avg_precision": 0.26861859098870694,
+      "n_positive": 5,
+      "n_negative": 306
+    },
+    "LOF": {
+      "auc": 0.6607843137254902,
+      "avg_precision": 0.11597382843622492,
+      "n_positive": 5,
+      "n_negative": 306
+    }
+  },
+  "loo_results": {
+    "GOF": [
+      {
+        "variant": "p.Arg334Gln",
+        "true_class": "GOF",
+        "predicted": "neutral",
+        "correct": false,
+        "prob_GOF": 0.14546209523928388,
+        "prob_neutral": 0.8177453968712711,
+        "prob_LOF": 0.036792507889444895
+      },
+      {
+        "variant": "p.Arg334Trp",
+        "true_class": "GOF",
+        "predicted": "GOF",
+        "correct": true,
+        "prob_GOF": 0.9999890156648296,
+        "prob_neutral": 1.013998401088322e-05,
+        "prob_LOF": 8.443511595616914e-07
+      },
+      {
+        "variant": "p.Leu469Phe",
+        "true_class": "GOF",
+        "predicted": "LOF",
+        "correct": false,
+        "prob_GOF": 0.00010246520453310404,
+        "prob_neutral": 0.003680849933253933,
+        "prob_LOF": 0.9962166848622129
+      },
+      {
+        "variant": "p.Glu383Lys",
+        "true_class": "GOF",
+        "predicted": "neutral",
+        "correct": false,
+        "prob_GOF": 0.00036143785840899,
+        "prob_neutral": 0.9996303120540067,
+        "prob_LOF": 8.25008758443614e-06
+      },
+      {
+        "variant": "p.Pro268Ser",
+        "true_class": "GOF",
+        "predicted": "LOF",
+        "correct": false,
+        "prob_GOF": 5.387671311289316e-06,
+        "prob_neutral": 0.025011706621259924,
+        "prob_LOF": 0.974982905707429
+      }
+    ],
+    "LOF": [
+      {
+        "variant": "p.Arg702Trp",
+        "true_class": "LOF",
+        "predicted": "neutral",
+        "correct": false,
+        "prob_GOF": 3.1067734889070584e-06,
+        "prob_neutral": 0.9998145362854093,
+        "prob_LOF": 0.00018235694110176566
+      },
+      {
+        "variant": "p.Gly908Arg",
+        "true_class": "LOF",
+        "predicted": "neutral",
+        "correct": false,
+        "prob_GOF": 0.022465658993058274,
+        "prob_neutral": 0.9545988015707739,
+        "prob_LOF": 0.022935539436167825
+      },
+      {
+        "variant": "p.Leu1007fs",
+        "true_class": "LOF",
+        "predicted": "neutral",
+        "correct": false,
+        "prob_GOF": 5.785624548022299e-06,
+        "prob_neutral": 0.9995688091015805,
+        "prob_LOF": 0.0004254052738713506
+      },
+      {
+        "variant": "p.Leu682Phe",
+        "true_class": "LOF",
+        "predicted": "neutral",
+        "correct": false,
+        "prob_GOF": 0.11003748030106697,
+        "prob_neutral": 0.8306414805555149,
+        "prob_LOF": 0.059321039143417985
+      },
+      {
+        "variant": "p.Arg587Cys",
+        "true_class": "LOF",
+        "predicted": "neutral",
+        "correct": false,
+        "prob_GOF": 3.208332296482384e-05,
+        "prob_neutral": 0.9999247752947353,
+        "prob_LOF": 4.314138229979267e-05
+      }
+    ]
+  }
+}
