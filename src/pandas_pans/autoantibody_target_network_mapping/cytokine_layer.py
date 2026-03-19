@@ -314,15 +314,12 @@ def build_extended_network(
     for _, row in ppi_df.iterrows():
         ppi_keys.add(tuple(sorted([str(row["source"]), str(row["target"])])))
 
-    seed_symbols = set(get_gene_symbols())
-    cytokine_symbols = set(get_cytokine_gene_symbols())
-
     new_rows = []
     upgraded_keys: set[tuple[str, str]] = set()
     for _, row in cytokine_df.iterrows():
-        key = tuple(sorted([str(row["source"]), str(row["target"])]))
+        a, b = sorted([str(row["source"]), str(row["target"])])
+        key = (a, b)
         if key in ppi_keys:
-            # Edge already in PPI network — mark as cross-layer
             upgraded_keys.add(key)
         else:
             new_rows.append(row.to_dict())
