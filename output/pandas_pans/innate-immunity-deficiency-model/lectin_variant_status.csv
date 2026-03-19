@@ -1,0 +1,23 @@
+gene_symbol,pathway_axis,variant_type,functional_annotation,is_lectin_complement,lectin_pathway_fdr
+CUX1,DDR-cGAS-STING/AIM2 inflammasome,LP,Transcription factor; DDR regulation; haploinsufficiency linked to myeloid malignancy,False,
+USP45,DDR-cGAS-STING/AIM2 inflammasome,LP,Deubiquitinase in base excision repair; CADD>20 damaging,False,
+PARP14,DDR-cGAS-STING/AIM2 inflammasome,LP,ADP-ribosyltransferase; macrophage polarization and STAT6 signaling; immune-DDR crosstalk,False,
+UVSSA,DDR-cGAS-STING/AIM2 inflammasome,P,Transcription-coupled nucleotide excision repair; UV-sensitive syndrome,False,
+EP300,DDR-cGAS-STING/AIM2 inflammasome,LP,Histone acetyltransferase; DDR signaling; PolyPhen-2 probably damaging,False,
+TREX1,DDR-cGAS-STING/AIM2 inflammasome,P,3'-5' exonuclease; degrades cytosolic DNA; loss activates cGAS-STING type I IFN; Aicardi-Goutieres,False,
+SAMHD1,DDR-cGAS-STING/AIM2 inflammasome,P,dNTPase; innate immunity restrictor; loss activates cGAS-STING; Aicardi-Goutieres,False,
+STK19,DDR-cGAS-STING/AIM2 inflammasome,LP,Serine/threonine kinase; NRAS signaling; DDR-associated; CADD>15,False,
+PIDD1,DDR-cGAS-STING/AIM2 inflammasome,LP,p53-induced death domain protein; PIDDosome activates caspase-2 in DDR,False,
+FANCD2,DDR-cGAS-STING/AIM2 inflammasome,LP,Fanconi anemia pathway; interstrand crosslink repair; SIFT deleterious,False,
+RAD54L,DDR-cGAS-STING/AIM2 inflammasome,LP,Homologous recombination repair; SWI/SNF helicase; CADD>20,False,
+PRKN,Mitochondrial-innate immunity,LP,E3 ubiquitin ligase; mitophagy; PINK1/Parkin pathway; mitochondrial DAMPs regulation,False,
+POLG,Mitochondrial-innate immunity,LP,Mitochondrial DNA polymerase gamma; mtDNA maintenance; mitochondrial dysfunction,False,
+LGALS4,Gut-immune,VUS,Galectin-4; intestinal epithelial integrity; gut mucosal immunity,False,
+DUOX2,Gut-immune,LP,Dual oxidase 2; gut mucosal ROS defense; IBD-associated; antimicrobial barrier,False,
+CCR9,Gut-immune,VUS,Chemokine receptor; gut-homing T cell trafficking; mucosal immune surveillance,False,
+MBL2,Lectin complement,LP,Mannose-binding lectin; lectin complement pathway initiator; GAS opsonization,True,1.121449252278141e-05
+MASP1,Lectin complement,VUS,MBL-associated serine protease 1; lectin complement activation,True,1.121449252278141e-05
+MASP2,Lectin complement,VUS,MBL-associated serine protease 2; cleaves C4/C2 to form C3 convertase,True,1.121449252278141e-05
+MYT1L,Chromatin/neuroprotection,P,Neuronal transcription factor; chromatin remodeling; neurodevelopmental disorders,False,
+TEP1,Chromatin/neuroprotection,LP,Telomerase-associated protein 1; vault complex; telomere maintenance,False,
+ADNP,Chromatin/neuroprotection,P,Activity-dependent neuroprotective protein; chromatin remodeling (SWI/SNF); Helsmoortel-Van der Aa syndrome,False,

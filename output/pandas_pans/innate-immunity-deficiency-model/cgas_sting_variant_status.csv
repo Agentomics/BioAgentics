@@ -1,0 +1,3 @@
+gene_symbol,pathway_axis,variant_type,functional_annotation
+TREX1,DDR-cGAS-STING/AIM2 inflammasome,P,3'-5' exonuclease; degrades cytosolic DNA; loss activates cGAS-STING type I IFN; Aicardi-Goutieres
+SAMHD1,DDR-cGAS-STING/AIM2 inflammasome,P,dNTPase; innate immunity restrictor; loss activates cGAS-STING; Aicardi-Goutieres

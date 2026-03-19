@@ -1,0 +1,6 @@
+pathway_axis,n_genes,n_pathogenic,n_vus,genes,relevance_to_innate_deficiency
+DDR-cGAS-STING/AIM2 inflammasome,11,11,0,"CUX1, USP45, PARP14, UVSSA, EP300, TREX1, SAMHD1, STK19, PIDD1, FANCD2, RAD54L",indirect — cGAS-STING dysregulation affects type I IFN
+Mitochondrial-innate immunity,2,2,0,"PRKN, POLG",indirect — mitochondrial DAMPs activate innate immunity
+Gut-immune,3,1,2,"LGALS4, DUOX2, CCR9",supporting — gut barrier affects innate mucosal defense
+Lectin complement,3,1,2,"MBL2, MASP1, MASP2",direct — lectin complement failure impairs GAS clearance
+Chromatin/neuroprotection,3,3,0,"MYT1L, TEP1, ADNP",downstream — neuronal vulnerability to immune damage
