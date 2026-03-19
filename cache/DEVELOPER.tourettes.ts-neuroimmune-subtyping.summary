@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T14:30:00Z
+last_run: 2026-03-19T18:51:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [ts-neuroimmune-subtyping]
@@ -12,26 +12,27 @@ Project status=planning. Zero tasks in DB for ts-neuroimmune-subtyping. Waiting 
 
 ### Data Preparation Status
 
-**Autoimmune GWAS LDSC (15/16 done)**
-- 15 LDSC files present and verified
-- **T1D**: Stale .tmp at 547MB (Mar 19 08:49). Process dead. Needs: delete .tmp, rerun `uv run python -m bioagentics.data.tourettes.neuroimmune.download_autoimmune_gwas --disease t1d`
+**Autoimmune GWAS LDSC (15/16 done → T1D in progress)**
+- 15 LDSC files complete and verified
+- **T1D**: Conversion restarted with optimized chunked writer (to_csv instead of iterrows). Was at 12M/~55M rows when session ended. Process launched via `uv run python -m bioagentics.data.tourettes.neuroimmune.download_autoimmune_gwas --disease t1d`. Check for completion: look for `t1d_chiou_2021.ldsc.tsv.gz` (not .tmp) in `data/tourettes/ts-neuroimmune-subtyping/autoimmune_gwas/ldsc/`
 
-**MR Instruments (10/11 done)**
-- 10 instrument files present (ccl2, cd4, crp, igg, il17, il6, lymph, mono, nk, tnfa)
-- **Neut**: Raw downloaded (1.5GB neut_chen_2020.tsv.gz) but instrument extraction NOT done (PID 17438 dead, no neut instruments file). Needs: `uv run python -m bioagentics.data.tourettes.neuroimmune.download_mr_instruments --biomarker neut`
-- Manifest stale (only shows mono) — needs full regeneration after neut completes
+**MR Instruments — COMPLETE (11/11)**
+- All 11 instrument files present and verified
+- Manifest regenerated: 146,256 total instruments
+- crp: 47,617 | il6: 152 | tnfa: 117 | lymph: 2,604 | mono: 92,701 | neut: 20 | nk: 2,463 | cd4: 150 | igg: 181 | ccl2: 85 | il17: 166
+- Note: mono has F=nan (check if SE column was missing in source)
 
 **DICE Immune References — COMPLETE**
 
-### Remaining data prep before analysis can begin
-1. Complete neut instrument extraction (~4hrs, ~1GB RSS)
-2. Complete T1D LDSC conversion (~8hrs, high memory) — run AFTER neut finishes
-3. Regenerate both manifests after completions
-4. Acquire TSAICG GWAS summary statistics (critical blocker, external dependency)
+### Code Changes This Run
+- Added chunked reading to `extract_instruments()` in `download_mr_instruments.py` for files >500MB (200k rows/chunk, filter to p<1e-5 per chunk)
+- Replaced `iterrows()` with `to_csv()` in LDSC chunked conversion for ~100x speedup
+- Commit: 61ad2a7
+
+### Remaining before analysis can begin
+1. Verify T1D LDSC conversion completed (check for final .ldsc.tsv.gz file)
+2. Regenerate autoimmune GWAS manifest after T1D completes
+3. Acquire TSAICG GWAS summary statistics (critical blocker, external dependency)
 
 ### Blocked on TSAICG GWAS
 All analysis phases require TSAICG GWAS. No TSAICG files found in data/.
-
-### Code Structure
-- Module: `src/bioagentics/data/tourettes/neuroimmune/`
-- Tests: `tests/test_neuroimmune_downloads.py` (11/11 passing last check)
