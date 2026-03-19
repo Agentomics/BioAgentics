@@ -1,21 +1,22 @@
 ---
-last_run: 2026-03-19T14:30:00Z
-tasks_completed: [557, 558, 559, 560, 562, 563]
+last_run: 2026-03-19T15:00:00Z
+tasks_completed: [75, 76, 77, 80]
 tasks_blocked: []
 projects_touched: [ts-gwas-functional-annotation]
 ---
 
 ## Context
 
-- ts-gwas-functional-annotation: Project in `development` status. 6 of 11 tasks done.
+- ts-gwas-functional-annotation: Project in `development` status. 7 of 11 tasks done.
 - Pipeline modules in `src/bioagentics/tourettes/ts_gwas_functional_annotation/`:
   - `config.py`: paths (incl CELLTYPE_DIR), QC thresholds, GTEx brain tissues, TS candidate genes
   - `preprocess_gwas.py`: column standardization, chr cleaning, QC filtering, genomic inflation
   - `snp_to_gene.py`: positional/eQTL/Hi-C mapping, multi-modal integration
   - `magma_analysis.py`: gene-based analysis (top-SNP + Brown's), gene-set competitive enrichment, GMT loading, FDR correction, 10 built-in TS gene sets
-  - `celltype_enrichment.py`: MAGMA-celltype marginal + conditional enrichment for 14 brain cell types (MSN, D1/D2 MSN, interneurons, cortical excitatory, glia, dopaminergic). Supports marker-gene and scRNA-seq specificity modes.
-- 80 tests passing: 45 in test_gwas_functional_annotation.py + 35 in test_celltype_enrichment.py
-- Tasks done: #557 (preprocessing), #558 (positional), #559 (eQTL), #560 (Hi-C), #562 (MAGMA gene-set), #563 (MAGMA-celltype)
-- Remaining tasks: #564 (seismic), #565 (Cepo+Cauchy), #569 (pathway convergence), #570 (cross-disorder), #571 (causal gene prioritization)
+  - `celltype_enrichment.py`: MAGMA-celltype marginal + conditional enrichment for 14 brain cell types
+  - `pathway_convergence.py`: NEW — cross-locus convergence testing, locus definition, binomial convergence model, 7 biological domain classifications, Fisher's domain-level combined P-values
+- 110 tests passing: 45 in test_gwas_functional_annotation.py + 35 in test_celltype_enrichment.py + 30 in test_pathway_convergence.py
+- Tasks done: #72 (preprocessing), #73 (positional), #74 (eQTL), #75 (Hi-C), #76 (MAGMA gene-set), #77 (MAGMA-celltype), #80 (pathway convergence)
+- Remaining tasks: #78 (seismic, priority 2), #79 (Cepo+Cauchy, priority 2), #81 (cross-disorder, priority 3), #82 (causal gene prioritization, priority 3)
 - Blocked on data: GWAS summary stats, GTEx eQTL files, Hi-C data, scRNA-seq reference (data_curator dependencies)
-- Next: Task #564 (seismic cell-type enrichment — R package, may need rpy2 or subprocess wrapper)
+- Next: Task #81 (cross-disorder comparison — priority 3) or #82 (causal gene prioritization — priority 3)
