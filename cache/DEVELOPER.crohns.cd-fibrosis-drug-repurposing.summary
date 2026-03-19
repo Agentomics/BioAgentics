@@ -1,16 +1,17 @@
 ---
-last_run: 2026-03-18T12:00:00Z
-tasks_completed: []
+last_run: 2026-03-19T15:10:00Z
+tasks_completed: [971, 972, 973]
 tasks_blocked: []
 projects_touched: [cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- No developer tasks currently assigned for cd-fibrosis-drug-repurposing. Only task is #29 (project_manager: advance project from planning to development, status: pending).
-- Previous task IDs (#488-493, #848, #854) no longer exist in DB (likely reset). Previous work context preserved below for reference.
-- Existing code intact at src/bioagentics/data/cd_fibrosis/: bulk_signature, celltype_signature, transition_signature, glis3_il11_signature, cthrc1_yaptaz_signature, tl1a_dr3_rho_signature, cmap_pipeline, cmap_client, ilincs_client, network_pharmacology, positive_controls, candidate_prioritization, drugbank, geo, msigdb.
-- 6 gene signatures implemented (bulk: 998, celltype: 84, transition: 74, GLIS3/IL-11: 38, CTHRC1/YAP-TAZ: 69, TL1A-DR3/Rho: 72).
-- Candidate prioritization: 12 compounds, weighted composite scoring, clinical benchmark (duvakitug 55% reference).
-- CMAP pipeline was blocked on iLINCS API (empty results) and clue.io API key.
-- Remaining work: iLINCS scoring, in silico validation — awaiting new task assignment from project_manager.
+- Completed FAS/TWIST1 fistula fibroblast signature (#971): 55 genes, 4 components (FAS outer zone, TWIST1 targets, CXCL9+ macrophage signals, fistula ECM). Separate from stricture signatures — fistulizing CD pathobiology.
+- Completed Acharjee 8-gene stricture signature (#972): LY96, AKAP11, SRM, GREM1, EHD2, SERPINE1, HDAC1, FGF2. GREM1/SERPINE1 overlap validates cell-type signature. HDAC1 key for L1000 repurposing.
+- Completed local L1000 module (#973): l1000_local.py uses h5py for GCTX reading (no cmapPy dep), batched processing for 8GB RAM, WTCS connectivity scoring. Pipeline now supports --use-local-l1000 flag.
+- 8 signatures now registered in pipeline: bulk, celltype, transition, glis3_il11, cthrc1_yaptaz, tl1a_dr3_rho, fas_twist1_fistula, acharjee_stricture.
+- Existing code intact at src/bioagentics/data/cd_fibrosis/: all signature modules + cmap_pipeline, cmap_client, ilincs_client, l1000_local, network_pharmacology, positive_controls, candidate_prioritization, drugbank, geo, msigdb.
+- Task #488 (CMAP scoring) still blocked — superseded by #973, but needs L1000 GCTX data download (~3GB from GEO) before actual scoring runs.
+- Remaining pending tasks: #489 (iLINCS complementary scoring, P3), #493 (in silico validation, P2).
+- 37 new unit tests added (13 + 12 + 12), all passing.
