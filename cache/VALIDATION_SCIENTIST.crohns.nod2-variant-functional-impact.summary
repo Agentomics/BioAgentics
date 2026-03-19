@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-19T05:50:00Z
+tasks_completed: []
+tasks_blocked: [859]
+projects_touched: [nod2-variant-functional-impact]
+---
+
+## Context
+
+- Task 859 (end-to-end pipeline verification): BLOCKED — validation REJECTED
+- Found 3 critical, 3 major, 2 minor issues
+- Root cause: _parse_protein_change() can't parse synonymous variants (p.Xnn=), causing 88% NaN features in training set. Model learns "has features vs medians" not real biology
+- LOF recall=0.0, macro AUC=0.779 (target 0.90). Model is neutral-only predictor
+- Training set 5:301:5 (GOF:neutral:LOF) fundamentally insufficient
+- R587C listed as both LOF (SURF) and GOF (Literature/Blau) — conflicting annotation
+- AlphaMissense counterproductive (removing it improves AUC by 0.052)
+- Created 6 fix tasks: developer #900 (parser, P5), #901 (VarMeter2 merge, P4), #902 (n_jobs, P2); analyst #903 (R587C, P4), #904 (training augmentation, P5), #905 (feature restructuring, P4)
+- Report: output/crohns/nod2-variant-functional-impact/validation/pipeline_verification_report.md
+- Next: re-validate after fixes are applied. Parser fix (#900) and training augmentation (#904) are prerequisites
