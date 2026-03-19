@@ -7,14 +7,26 @@ from pathlib import Path
 import numpy as np
 
 from bioagentics.diagnostics.acoustic_multi_disease_panel.config import SAMPLE_RATE
+from bioagentics.diagnostics.acoustic_multi_disease_panel.data_loader import (
+    participant_stratified_split,
+)
 from bioagentics.diagnostics.acoustic_multi_disease_panel.features.cough import (
     _segment_cough_events,
     extract_cough_features_from_array,
+)
+from bioagentics.diagnostics.acoustic_multi_disease_panel.features.foundation import (
+    _embedding_to_dict,
+    _empty_features as _empty_foundation,
 )
 from bioagentics.diagnostics.acoustic_multi_disease_panel.features.pipeline import (
     extract_all_features,
     extract_features,
     process_manifest,
+)
+from bioagentics.diagnostics.acoustic_multi_disease_panel.features.spectral import (
+    extract_chroma_features_from_array,
+    extract_melspec_features_from_array,
+    extract_spectral_features_from_array,
 )
 
 
@@ -113,11 +125,12 @@ class TestMultiDiseasePipeline:
             wav_path = Path(tmp) / "vowel.wav"
             _save_wav(_synthetic_vowel(), wav_path)
             feats = extract_features(wav_path, recording_type="sustained_vowel")
-            # Should have acoustic + pitch + mfcc features (no temporal, no cough)
+            # Should have acoustic + pitch + mfcc + spectral (no temporal, no cough)
             assert "local_jitter" in feats
             assert "f0_mean" in feats
             assert "mfcc_1_mean" in feats
-            assert "spectral_centroid_mean" not in feats
+            assert "melspec_global_mean" in feats
+            assert "chroma_0_mean" in feats
             assert "phonation_ratio" not in feats
 
     def test_extract_features_cough(self):
@@ -125,9 +138,10 @@ class TestMultiDiseasePipeline:
             wav_path = Path(tmp) / "cough.wav"
             _save_wav(_synthetic_cough(), wav_path)
             feats = extract_features(wav_path, recording_type="cough")
-            # Should have cough + mfcc features (no acoustic, no temporal)
+            # Should have cough + mfcc + spectral (no acoustic, no temporal)
             assert "spectral_centroid_mean" in feats
             assert "mfcc_1_mean" in feats
+            assert "melspec_global_mean" in feats
             assert "local_jitter" not in feats
 
     def test_extract_features_reading(self):
@@ -135,11 +149,13 @@ class TestMultiDiseasePipeline:
             wav_path = Path(tmp) / "reading.wav"
             _save_wav(_synthetic_vowel(duration=3.0), wav_path)
             feats = extract_features(wav_path, recording_type="reading_passage")
-            # Should have acoustic + pitch + mfcc + temporal
+            # Should have acoustic + pitch + mfcc + temporal + spectral
             assert "local_jitter" in feats
             assert "f0_mean" in feats
             assert "mfcc_1_mean" in feats
             assert "phonation_ratio" in feats
+            assert "melspec_global_mean" in feats
+            assert "chroma_deviation" in feats
 
     def test_extract_all_features(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -194,3 +210,127 @@ class TestMultiDiseasePipeline:
                 assert len(reader) == 2
                 ids = {r["recording_id"] for r in reader}
                 assert ids == {"v1", "c1"}
+
+
+class TestSpectralFeatures:
+    def test_melspec_returns_expected_keys(self):
+        y = _synthetic_vowel()
+        feats = extract_melspec_features_from_array(y)
+        assert "melspec_global_mean" in feats
+        assert "melspec_global_std" in feats
+        assert "melspec_global_skew" in feats
+        assert "melspec_global_kurt" in feats
+        assert "melspec_low_high_ratio" in feats
+        # Check subsampled band features exist
+        assert "melspec_b0_mean" in feats
+
+    def test_melspec_values_not_none(self):
+        y = _synthetic_vowel()
+        feats = extract_melspec_features_from_array(y)
+        assert feats["melspec_global_mean"] is not None
+        assert isinstance(feats["melspec_global_mean"], float)
+
+    def test_chroma_returns_12_bins(self):
+        y = _synthetic_vowel()
+        feats = extract_chroma_features_from_array(y)
+        for i in range(12):
+            assert f"chroma_{i}_mean" in feats
+            assert f"chroma_{i}_std" in feats
+            assert feats[f"chroma_{i}_mean"] is not None
+        assert "chroma_deviation" in feats
+
+    def test_combined_spectral_feature_count(self):
+        y = _synthetic_vowel()
+        feats = extract_spectral_features_from_array(y)
+        # 16 bands x 4 stats + 4 global + 1 ratio + 12 chroma x 4 stats + 1 deviation
+        assert len(feats) == 118
+
+    def test_short_audio_returns_none(self):
+        y = np.zeros(int(SAMPLE_RATE * 0.01))
+        feats = extract_melspec_features_from_array(y)
+        assert all(v is None for v in feats.values())
+
+    def test_pure_tone_chroma(self):
+        """A pure 440Hz tone (A4) should show chroma energy at bin 9 (A)."""
+        t = np.arange(SAMPLE_RATE) / SAMPLE_RATE
+        y = np.sin(2 * np.pi * 440 * t)
+        feats = extract_chroma_features_from_array(y)
+        # A is chroma bin 9; it should have notable energy
+        assert feats["chroma_9_mean"] is not None
+        assert feats["chroma_9_mean"] > 0
+
+
+class TestFoundationModel:
+    def test_empty_features_has_768_keys(self):
+        feats = _empty_foundation()
+        assert len(feats) == 768
+        assert all(v is None for v in feats.values())
+        assert "fm_emb_0" in feats
+        assert "fm_emb_767" in feats
+
+    def test_embedding_to_dict(self):
+        emb = np.random.randn(768).astype(np.float32)
+        d = _embedding_to_dict(emb)
+        assert len(d) == 768
+        assert all(isinstance(v, float) for v in d.values())
+        assert d["fm_emb_0"] == float(emb[0])
+
+    def test_none_embedding(self):
+        d = _embedding_to_dict(None)
+        assert len(d) == 768
+        assert all(v is None for v in d.values())
+
+
+class TestDataLoader:
+    def test_stratified_split_no_leakage(self):
+        records = []
+        for i in range(60):
+            cond = ["parkinsons", "respiratory", "mci"][i % 3]
+            records.append({
+                "audio_path": f"/fake/{i}.wav",
+                "participant_id": f"P{i:03d}",
+                "condition": cond,
+                "recording_type": "sustained_vowel",
+                "dataset": "test",
+            })
+        splits = participant_stratified_split(records, random_state=42)
+
+        train_pids = {r["participant_id"] for r in splits["train"]}
+        val_pids = {r["participant_id"] for r in splits["val"]}
+        test_pids = {r["participant_id"] for r in splits["test"]}
+
+        assert len(train_pids & val_pids) == 0
+        assert len(train_pids & test_pids) == 0
+        assert len(val_pids & test_pids) == 0
+
+    def test_stratified_split_preserves_all_records(self):
+        records = [
+            {"audio_path": f"/f/{i}.wav", "participant_id": f"P{i}",
+             "condition": "parkinsons", "recording_type": "vowel", "dataset": "t"}
+            for i in range(30)
+        ]
+        splits = participant_stratified_split(records)
+        total = len(splits["train"]) + len(splits["val"]) + len(splits["test"])
+        assert total == len(records)
+
+    def test_multi_recording_per_participant(self):
+        """Multiple recordings per participant should all go to the same split."""
+        records = []
+        for pid in range(10):
+            for rec in range(5):
+                records.append({
+                    "audio_path": f"/f/{pid}_{rec}.wav",
+                    "participant_id": f"P{pid}",
+                    "condition": "parkinsons",
+                    "recording_type": "sustained_vowel",
+                    "dataset": "test",
+                })
+        splits = participant_stratified_split(records)
+
+        for split_name, split_records in splits.items():
+            pids_in_split = {r["participant_id"] for r in split_records}
+            for other_name, other_records in splits.items():
+                if other_name == split_name:
+                    continue
+                other_pids = {r["participant_id"] for r in other_records}
+                assert len(pids_in_split & other_pids) == 0
