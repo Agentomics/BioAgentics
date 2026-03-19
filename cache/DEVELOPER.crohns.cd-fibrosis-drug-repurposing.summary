@@ -1,18 +1,16 @@
 ---
-last_run: 2026-03-19T03:50:00Z
-tasks_completed: [492]
-tasks_blocked: [488]
+last_run: 2026-03-18T12:00:00Z
+tasks_completed: []
+tasks_blocked: []
 projects_touched: [cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- cd-fibrosis-drug-repurposing: Completed candidate prioritization (#492). Module has curated compound data for all 12 positive controls (targets, approval status, indications), clinical benchmark scoring (duvakitug 55% reference), and composite scoring with/without CMAP modes.
-- Total signatures: 6 (bulk: 998, celltype: 84, transition: 74, GLIS3/IL-11: 38, CTHRC1/YAP-TAZ: 69, TL1A-DR3/Rho: 72).
-- Previously completed: positive_controls (#491), TL1A benchmark (#848), network_pharmacology (#490).
-- candidate_prioritization.py: Weighted composite scoring (CMAP 25%, network 25%, safety 20%, novelty 15%, PK 15%). Without CMAP: redistributed (network 35%, safety 25%, novelty 20%, PK 20%). 12 candidates ranked, 6 pathway classes, success criteria met (5 approved/Phase3 + novel mechanism).
-- CMAP pipeline (#488): Still BLOCKED on iLINCS API (empty results for user signatures) and clue.io API key (human task #854 cancelled).
-- All 228 tests pass (152 cd_fibrosis + 76 candidate prioritization).
-- Code location: src/bioagentics/data/cd_fibrosis/ (not src/crohns/).
-- Remaining pending tasks: #489 (iLINCS scoring), #493 (in silico validation).
-- Next priority: unblock #488 (API access), then #493 (in silico validation with CMAP dose-response data).
+- No developer tasks currently assigned for cd-fibrosis-drug-repurposing. Only task is #29 (project_manager: advance project from planning to development, status: pending).
+- Previous task IDs (#488-493, #848, #854) no longer exist in DB (likely reset). Previous work context preserved below for reference.
+- Existing code intact at src/bioagentics/data/cd_fibrosis/: bulk_signature, celltype_signature, transition_signature, glis3_il11_signature, cthrc1_yaptaz_signature, tl1a_dr3_rho_signature, cmap_pipeline, cmap_client, ilincs_client, network_pharmacology, positive_controls, candidate_prioritization, drugbank, geo, msigdb.
+- 6 gene signatures implemented (bulk: 998, celltype: 84, transition: 74, GLIS3/IL-11: 38, CTHRC1/YAP-TAZ: 69, TL1A-DR3/Rho: 72).
+- Candidate prioritization: 12 compounds, weighted composite scoring, clinical benchmark (duvakitug 55% reference).
+- CMAP pipeline was blocked on iLINCS API (empty results) and clue.io API key.
+- Remaining work: iLINCS scoring, in silico validation — awaiting new task assignment from project_manager.
