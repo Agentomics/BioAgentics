@@ -86,11 +86,11 @@ Research initiatives can be tagged with labels. Use labels appropriate to your d
 
 | Division | Labels |
 |----------|--------|
-| `cancer` | `drug-candidate`, `novel-finding`, `biomarker`, `genomic`, `transcriptomic`, `clinical`, `drug-screening`, `resistance`, `protein`, `high-priority`, `promising` |
-| `crohns` | `biomarker`, `novel-finding`, `microbiome`, `genomic`, `immunology`, `clinical`, `drug-repurposing`, `multi-omics`, `high-priority`, `promising` |
-| `tourettes` | `biomarker`, `novel-finding`, `genomic`, `neuroimaging`, `clinical`, `drug-repurposing`, `multi-omics`, `comorbidity`, `high-priority`, `promising` |
-| `pandas_pans` | `biomarker`, `novel-finding`, `autoimmune`, `genomic`, `immunology`, `clinical`, `drug-repurposing`, `multi-omics`, `microbiome`, `high-priority`, `promising` |
-| `diagnostics` | `biomarker`, `novel-finding`, `imaging`, `point-of-care`, `screening`, `cost-reduction`, `accessibility`, `ai-diagnostic`, `rare-disease`, `multi-omics`, `high-priority`, `promising` |
+| `cancer` | `drug-candidate`, `novel-finding`, `biomarker`, `genomic`, `transcriptomic`, `clinical`, `drug-screening`, `resistance`, `protein`, `catalyst`, `high-priority`, `promising` |
+| `crohns` | `biomarker`, `novel-finding`, `microbiome`, `genomic`, `immunology`, `clinical`, `drug-repurposing`, `multi-omics`, `catalyst`, `high-priority`, `promising` |
+| `tourettes` | `biomarker`, `novel-finding`, `genomic`, `neuroimaging`, `clinical`, `drug-repurposing`, `multi-omics`, `comorbidity`, `catalyst`, `high-priority`, `promising` |
+| `pandas_pans` | `biomarker`, `novel-finding`, `autoimmune`, `genomic`, `immunology`, `clinical`, `drug-repurposing`, `multi-omics`, `microbiome`, `catalyst`, `high-priority`, `promising` |
+| `diagnostics` | `biomarker`, `novel-finding`, `imaging`, `point-of-care`, `screening`, `cost-reduction`, `accessibility`, `ai-diagnostic`, `rare-disease`, `multi-omics`, `catalyst`, `high-priority`, `promising` |
 
 ## Task lifecycle
 
@@ -114,6 +114,7 @@ The journal is **shared memory between agents**. Use it to record research findi
 | Username | Role |
 |---|---|
 | `research_director` | Scientific strategy and research design |
+| `research_catalyst` | Cross-project synthesis and unconventional hypothesis generation |
 | `literature_reviewer` | Literature scanning and opportunity discovery |
 | `data_curator` | Dataset management and data quality |
 | `project_manager` | Task coordination and pipeline management |

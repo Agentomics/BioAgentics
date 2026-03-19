@@ -61,6 +61,11 @@ role = "SYSTEMS_ENGINEER"
 division = "cancer"
 effort = "max"
 
+[[agents]]
+role = "RESEARCH_CATALYST"
+division = "cancer"
+effort = "max"
+
 # --- Cancer: Task-driven agents (run when they have tasks) ---
 
 [[agents]]
@@ -96,6 +101,11 @@ effort = "max"
 [[agents]]
 role = "LITERATURE_REVIEWER"
 division = "crohns"
+
+[[agents]]
+role = "RESEARCH_CATALYST"
+division = "crohns"
+effort = "max"
 
 # --- Crohn's: Task-driven agents ---
 
@@ -133,6 +143,11 @@ effort = "max"
 role = "LITERATURE_REVIEWER"
 division = "tourettes"
 
+[[agents]]
+role = "RESEARCH_CATALYST"
+division = "tourettes"
+effort = "max"
+
 # --- Tourette's: Task-driven agents ---
 
 [[agents]]
@@ -169,6 +184,11 @@ effort = "max"
 role = "LITERATURE_REVIEWER"
 division = "pandas_pans"
 
+[[agents]]
+role = "RESEARCH_CATALYST"
+division = "pandas_pans"
+effort = "max"
+
 # --- PANDAS/PANS: Task-driven agents ---
 
 [[agents]]
@@ -204,6 +224,11 @@ effort = "max"
 [[agents]]
 role = "LITERATURE_REVIEWER"
 division = "diagnostics"
+
+[[agents]]
+role = "RESEARCH_CATALYST"
+division = "diagnostics"
+effort = "max"
 
 # --- Diagnostics: Task-driven agents ---
 
