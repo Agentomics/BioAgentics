@@ -326,7 +326,10 @@ def check_planning_projects():
 
     for proj in resp.json().get("items", []):
         name = proj["name"]
-        div = proj.get("division") or "cancer"
+        div = proj.get("division")
+        if not div:
+            log.warning("SKIP: project %s has no division set — cannot create PM task", name)
+            continue
         if _has_active_task_for("project_manager", name, div):
             continue
 
@@ -405,7 +408,10 @@ def check_published_missing_reports():
 
     for proj in resp.json().get("items", []):
         name = proj["name"]
-        div = proj.get("division") or "cancer"
+        div = proj.get("division")
+        if not div:
+            log.warning("SKIP: project %s has no division set — cannot check report", name)
+            continue
         report_path = Path(f"reports/{div}/{name}.md")
         if report_path.exists():
             continue
