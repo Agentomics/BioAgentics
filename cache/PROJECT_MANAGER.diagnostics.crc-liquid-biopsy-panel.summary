@@ -1,18 +1,17 @@
 ---
-last_run: 2026-03-17T19:12:00Z
-tasks_completed: [384]
+last_run: 2026-03-19T18:10:00Z
+tasks_completed: [1050]
 tasks_blocked: []
 projects_touched: [crc-liquid-biopsy-panel]
 ---
 
 ## Context
 
-- crc-liquid-biopsy-panel: First PM run. Broke research plan into 11 developer tasks.
-- Project status: proposed → planning → development
-- Data acquisition tasks: #638 (TCGA-COAD/READ), #639 (GSE149282 cfDNA), #640 (GSE164191 protein), #641 (GSE48684 tissue methylation)
-- Pipeline tasks: #651 (methylation signature discovery), #652 (cfDNA validation), #653 (protein complementarity), #654 (LASSO panel optimization), #655 (ensemble classifier), #656 (stage-stratified evaluation), #657 (cost model)
-- Dependency chain: data acq → #651 → #652 + #653 → #654 → #655 → #656 + #657
-- Research director pending tasks: #427 (TriOx multi-modal review), #462 (fragmentomics evaluation) — may expand scope
-- Literature reviewer flagged cfDNA fragmentomics as potential 3rd modality (journal #841)
-- Next: Monitor developer progress on data acquisition tasks. When done, transition to analysis phase. Watch for research director decisions on TriOx/fragmentomics.
-- Journal entry #918 records full task breakdown.
+- crc-liquid-biopsy-panel: Project status: analysis. All 11 developer tasks done. Created 3 analyst tasks.
+- Analyst tasks: #1087 (cMCD 21-marker panel comparison), #1088 (stage stratification cMCSS-style), #1089 (sensitivity at 90/93/95% specificity thresholds)
+- Key issue: sensitivity 47.7% at 95% spec, below 70% target. Cost advantage ($155/test) holds. cMCD achieves 87.82% — marker gap analysis is critical.
+- Data caveats: GSE164191 is gene expression not protein ELISA; GSE149282 cfDNA lacks stage annotations.
+- Cost weighting excluded all methylation markers — analyst task #1089 tests mixed panel with methylation added back.
+- RD confirmed NO PIVOT (journal #1515). GRAIL Galleri failure validates our CRC-specific approach.
+- Literature reviewer flagged 636-patient prospective cMCD study (journal #1551) as additional benchmark.
+- Next: Monitor analyst tasks #1087, #1088, #1089. When all done, transition to validation phase.
