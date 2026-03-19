@@ -1,0 +1,23 @@
+gene_symbol,pathway_axis,variant_type,log2fc,pvalue,padj,mouse_symbol,de_status,is_ddr_gene
+CUX1,DDR-cGAS-STING/AIM2 inflammasome,LP,,,,,not_detected,False
+USP45,DDR-cGAS-STING/AIM2 inflammasome,LP,,,,,not_detected,False
+PARP14,DDR-cGAS-STING/AIM2 inflammasome,LP,,,,,not_detected,False
+UVSSA,DDR-cGAS-STING/AIM2 inflammasome,P,,,,,not_detected,False
+EP300,DDR-cGAS-STING/AIM2 inflammasome,LP,,,,,not_detected,True
+TREX1,DDR-cGAS-STING/AIM2 inflammasome,P,,,,,not_detected,True
+SAMHD1,DDR-cGAS-STING/AIM2 inflammasome,P,,,,,not_detected,True
+STK19,DDR-cGAS-STING/AIM2 inflammasome,LP,,,,,not_detected,False
+PIDD1,DDR-cGAS-STING/AIM2 inflammasome,LP,,,,,not_detected,False
+FANCD2,DDR-cGAS-STING/AIM2 inflammasome,LP,,,,,not_detected,True
+RAD54L,DDR-cGAS-STING/AIM2 inflammasome,LP,,,,,not_detected,True
+PRKN,Mitochondrial-innate immunity,LP,,,,,not_detected,False
+POLG,Mitochondrial-innate immunity,LP,,,,,not_detected,False
+LGALS4,Gut-immune,VUS,,,,,not_detected,False
+DUOX2,Gut-immune,LP,,,,,not_detected,False
+CCR9,Gut-immune,VUS,,,,,not_detected,False
+MBL2,Lectin complement,LP,,,,,not_detected,False
+MASP1,Lectin complement,VUS,,,,,not_detected,False
+MASP2,Lectin complement,VUS,,,,,not_detected,False
+MYT1L,Chromatin/neuroprotection,P,,,,,not_detected,False
+TEP1,Chromatin/neuroprotection,LP,,,,,not_detected,False
+ADNP,Chromatin/neuroprotection,P,,,,,not_detected,True

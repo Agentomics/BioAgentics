@@ -1,0 +1,246 @@
+{
+  "nodes": [
+    {
+      "gene_symbol": "CUX1",
+      "pathway_axis": "DDR-cGAS-STING/AIM2 inflammasome",
+      "module": 5,
+      "degree": 0,
+      "degree_centrality": 0.0,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "USP45",
+      "pathway_axis": "DDR-cGAS-STING/AIM2 inflammasome",
+      "module": 6,
+      "degree": 0,
+      "degree_centrality": 0.0,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "PARP14",
+      "pathway_axis": "DDR-cGAS-STING/AIM2 inflammasome",
+      "module": 7,
+      "degree": 0,
+      "degree_centrality": 0.0,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "UVSSA",
+      "pathway_axis": "DDR-cGAS-STING/AIM2 inflammasome",
+      "module": 8,
+      "degree": 0,
+      "degree_centrality": 0.0,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "EP300",
+      "pathway_axis": "DDR-cGAS-STING/AIM2 inflammasome",
+      "module": 0,
+      "degree": 2,
+      "degree_centrality": 0.09523809523809523,
+      "betweenness_centrality": 0.004761904761904762
+    },
+    {
+      "gene_symbol": "TREX1",
+      "pathway_axis": "DDR-cGAS-STING/AIM2 inflammasome",
+      "module": 2,
+      "degree": 1,
+      "degree_centrality": 0.047619047619047616,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "SAMHD1",
+      "pathway_axis": "DDR-cGAS-STING/AIM2 inflammasome",
+      "module": 2,
+      "degree": 1,
+      "degree_centrality": 0.047619047619047616,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "STK19",
+      "pathway_axis": "DDR-cGAS-STING/AIM2 inflammasome",
+      "module": 9,
+      "degree": 0,
+      "degree_centrality": 0.0,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "PIDD1",
+      "pathway_axis": "DDR-cGAS-STING/AIM2 inflammasome",
+      "module": 10,
+      "degree": 0,
+      "degree_centrality": 0.0,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "FANCD2",
+      "pathway_axis": "DDR-cGAS-STING/AIM2 inflammasome",
+      "module": 3,
+      "degree": 1,
+      "degree_centrality": 0.047619047619047616,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "RAD54L",
+      "pathway_axis": "DDR-cGAS-STING/AIM2 inflammasome",
+      "module": 3,
+      "degree": 1,
+      "degree_centrality": 0.047619047619047616,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "PRKN",
+      "pathway_axis": "Mitochondrial-innate immunity",
+      "module": 4,
+      "degree": 1,
+      "degree_centrality": 0.047619047619047616,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "POLG",
+      "pathway_axis": "Mitochondrial-innate immunity",
+      "module": 4,
+      "degree": 1,
+      "degree_centrality": 0.047619047619047616,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "LGALS4",
+      "pathway_axis": "Gut-immune",
+      "module": 0,
+      "degree": 1,
+      "degree_centrality": 0.047619047619047616,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "DUOX2",
+      "pathway_axis": "Gut-immune",
+      "module": 11,
+      "degree": 0,
+      "degree_centrality": 0.0,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "CCR9",
+      "pathway_axis": "Gut-immune",
+      "module": 12,
+      "degree": 0,
+      "degree_centrality": 0.0,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "MBL2",
+      "pathway_axis": "Lectin complement",
+      "module": 1,
+      "degree": 2,
+      "degree_centrality": 0.09523809523809523,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "MASP1",
+      "pathway_axis": "Lectin complement",
+      "module": 1,
+      "degree": 2,
+      "degree_centrality": 0.09523809523809523,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "MASP2",
+      "pathway_axis": "Lectin complement",
+      "module": 1,
+      "degree": 2,
+      "degree_centrality": 0.09523809523809523,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "MYT1L",
+      "pathway_axis": "Chromatin/neuroprotection",
+      "module": 13,
+      "degree": 0,
+      "degree_centrality": 0.0,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "TEP1",
+      "pathway_axis": "Chromatin/neuroprotection",
+      "module": 14,
+      "degree": 0,
+      "degree_centrality": 0.0,
+      "betweenness_centrality": 0.0
+    },
+    {
+      "gene_symbol": "ADNP",
+      "pathway_axis": "Chromatin/neuroprotection",
+      "module": 0,
+      "degree": 1,
+      "degree_centrality": 0.047619047619047616,
+      "betweenness_centrality": 0.0
+    }
+  ],
+  "edges": [
+    {
+      "source": "EP300",
+      "target": "ADNP",
+      "combined_score": 0.427
+    },
+    {
+      "source": "EP300",
+      "target": "LGALS4",
+      "combined_score": 0.479
+    },
+    {
+      "source": "TREX1",
+      "target": "SAMHD1",
+      "combined_score": 0.921
+    },
+    {
+      "source": "FANCD2",
+      "target": "RAD54L",
+      "combined_score": 0.667
+    },
+    {
+      "source": "PRKN",
+      "target": "POLG",
+      "combined_score": 0.548
+    },
+    {
+      "source": "MBL2",
+      "target": "MASP1",
+      "combined_score": 0.998
+    },
+    {
+      "source": "MBL2",
+      "target": "MASP2",
+      "combined_score": 0.999
+    },
+    {
+      "source": "MASP1",
+      "target": "MASP2",
+      "combined_score": 0.986
+    }
+  ],
+  "modules": {
+    "ADNP": 0,
+    "EP300": 0,
+    "LGALS4": 0,
+    "MASP1": 1,
+    "MBL2": 1,
+    "MASP2": 1,
+    "SAMHD1": 2,
+    "TREX1": 2,
+    "RAD54L": 3,
+    "FANCD2": 3,
+    "PRKN": 4,
+    "POLG": 4,
+    "CUX1": 5,
+    "USP45": 6,
+    "PARP14": 7,
+    "UVSSA": 8,
+    "STK19": 9,
+    "PIDD1": 10,
+    "DUOX2": 11,
+    "CCR9": 12,
+    "MYT1L": 13,
+    "TEP1": 14
+  }
+}

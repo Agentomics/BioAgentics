@@ -1,0 +1,72 @@
+{
+  "pipeline": "pans-genetic-variant-pathway-analysis",
+  "timestamp": "2026-03-19T05:59:46.269306+00:00",
+  "steps": {
+    "gene_data": {
+      "status": "done",
+      "gene_count": 22,
+      "pathway_axes": 5,
+      "genes": [
+        "CUX1",
+        "USP45",
+        "PARP14",
+        "UVSSA",
+        "EP300",
+        "TREX1",
+        "SAMHD1",
+        "STK19",
+        "PIDD1",
+        "FANCD2",
+        "RAD54L",
+        "PRKN",
+        "POLG",
+        "LGALS4",
+        "DUOX2",
+        "CCR9",
+        "MBL2",
+        "MASP1",
+        "MASP2",
+        "MYT1L",
+        "TEP1",
+        "ADNP"
+      ]
+    },
+    "pathway_enrichment": {
+      "status": "done",
+      "total_terms": 0,
+      "significant_terms": 0
+    },
+    "geo_expression": {
+      "status": "done",
+      "total_genes": 28846,
+      "significant_de": 6032
+    },
+    "neuroinflammation_xref": {
+      "status": "done",
+      "gene_count": 22,
+      "de_status_counts": {
+        "not_detected": 22
+      }
+    },
+    "ppi_network": {
+      "status": "done",
+      "nodes": 22,
+      "edges": 8,
+      "hub_genes": [
+        "MASP2",
+        "MASP1",
+        "EP300",
+        "MBL2",
+        "PRKN"
+      ]
+    },
+    "mtor_convergence": {
+      "status": "done",
+      "direct_overlap": 0,
+      "ppi_connections": 0
+    }
+  },
+  "completed_steps": 6,
+  "errored_steps": 0,
+  "total_steps": 6
+}

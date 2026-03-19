@@ -1,0 +1,6 @@
+gene_symbol,pathway_axis,degree,degree_centrality,betweenness_centrality,clustering_coefficient
+EP300,DDR-cGAS-STING/AIM2 inflammasome,2,0.09523809523809523,0.004761904761904762,0.0
+MASP2,Lectin complement,2,0.09523809523809523,0.0,1.0
+MASP1,Lectin complement,2,0.09523809523809523,0.0,1.0
+MBL2,Lectin complement,2,0.09523809523809523,0.0,1.0
+TREX1,DDR-cGAS-STING/AIM2 inflammasome,1,0.047619047619047616,0.0,0.0

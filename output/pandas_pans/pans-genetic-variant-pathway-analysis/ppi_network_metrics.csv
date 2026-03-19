@@ -1,0 +1,23 @@
+gene_symbol,pathway_axis,degree,degree_centrality,betweenness_centrality,clustering_coefficient
+MASP2,Lectin complement,2,0.09523809523809523,0.0,1.0
+MASP1,Lectin complement,2,0.09523809523809523,0.0,1.0
+EP300,DDR-cGAS-STING/AIM2 inflammasome,2,0.09523809523809523,0.004761904761904762,0.0
+MBL2,Lectin complement,2,0.09523809523809523,0.0,1.0
+PRKN,Mitochondrial-innate immunity,1,0.047619047619047616,0.0,0.0
+FANCD2,DDR-cGAS-STING/AIM2 inflammasome,1,0.047619047619047616,0.0,0.0
+LGALS4,Gut-immune,1,0.047619047619047616,0.0,0.0
+POLG,Mitochondrial-innate immunity,1,0.047619047619047616,0.0,0.0
+RAD54L,DDR-cGAS-STING/AIM2 inflammasome,1,0.047619047619047616,0.0,0.0
+ADNP,Chromatin/neuroprotection,1,0.047619047619047616,0.0,0.0
+SAMHD1,DDR-cGAS-STING/AIM2 inflammasome,1,0.047619047619047616,0.0,0.0
+TREX1,DDR-cGAS-STING/AIM2 inflammasome,1,0.047619047619047616,0.0,0.0
+PIDD1,DDR-cGAS-STING/AIM2 inflammasome,0,0.0,0.0,0.0
+USP45,DDR-cGAS-STING/AIM2 inflammasome,0,0.0,0.0,0.0
+STK19,DDR-cGAS-STING/AIM2 inflammasome,0,0.0,0.0,0.0
+DUOX2,Gut-immune,0,0.0,0.0,0.0
+CCR9,Gut-immune,0,0.0,0.0,0.0
+UVSSA,DDR-cGAS-STING/AIM2 inflammasome,0,0.0,0.0,0.0
+PARP14,DDR-cGAS-STING/AIM2 inflammasome,0,0.0,0.0,0.0
+MYT1L,Chromatin/neuroprotection,0,0.0,0.0,0.0
+TEP1,Chromatin/neuroprotection,0,0.0,0.0,0.0
+CUX1,DDR-cGAS-STING/AIM2 inflammasome,0,0.0,0.0,0.0
