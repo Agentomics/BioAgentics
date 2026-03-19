@@ -326,8 +326,8 @@ def build_extended_network(
 
     # Update layer annotation for cross-layer edges
     def classify_layer(row: pd.Series) -> str:
-        key = tuple(sorted([str(row["source"]), str(row["target"])]))
-        if key in upgraded_keys:
+        a, b = sorted([str(row["source"]), str(row["target"])])
+        if (a, b) in upgraded_keys:
             return "cross_layer"
         return str(row.get("layer", "autoantibody_ppi"))
 
@@ -340,11 +340,9 @@ def build_extended_network(
             if col not in cytokine_only.columns:
                 cytokine_only[col] = None
         cytokine_only = cytokine_only[ppi_df.columns]
-        extended = pd.concat([ppi_df, cytokine_only], ignore_index=True)
-    else:
-        extended = ppi_df
+        return pd.concat([ppi_df, cytokine_only], ignore_index=True)
 
-    return extended
+    return ppi_df
 
 
 def compute_extended_stats(
