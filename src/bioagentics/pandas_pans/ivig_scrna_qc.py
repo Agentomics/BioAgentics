@@ -161,7 +161,7 @@ def detect_doublets(
 
     X = adata.X
     if sp.issparse(X):
-        X = X.toarray()
+        X = sp.csc_matrix(X)  # Scrublet accepts sparse; CSC is efficient for column ops
 
     scrub = scr.Scrublet(
         X, expected_doublet_rate=expected_doublet_rate, random_state=random_state
@@ -255,6 +255,9 @@ def correct_ambient_rna(
     - Estimate ambient profile from low-count droplets
     - Subtract fraction * total_counts * ambient_profile from each cell
     - Floor at zero (counts can't be negative)
+
+    Memory-safe: processes in row chunks to avoid materializing the full
+    dense matrix on 8GB machines.
     """
     ambient_profile = estimate_ambient_profile(adata)
     if ambient_profile is None:
@@ -267,19 +270,32 @@ def correct_ambient_rna(
 
     X = adata.X
     is_sparse = sp.issparse(X)
-    if is_sparse:
-        X = X.toarray()
-
-    total_counts = np.asarray(X.sum(axis=1)).ravel()
-    ambient_contribution = (
-        contamination_fraction * total_counts[:, np.newaxis] * ambient_profile[np.newaxis, :]
-    )
-    X_corrected = np.maximum(X - ambient_contribution, 0)
+    chunk_size = 2000  # rows per chunk to limit peak memory
 
     if is_sparse:
-        adata.X = sp.csr_matrix(X_corrected)
+        X_csr = sp.csr_matrix(X)
+        total_counts = np.asarray(X_csr.sum(axis=1)).ravel()
+        corrected_chunks = []
+        for start in range(0, X_csr.shape[0], chunk_size):
+            end = min(start + chunk_size, X_csr.shape[0])
+            chunk_dense = X_csr[start:end].toarray()
+            contrib = (
+                contamination_fraction
+                * total_counts[start:end, np.newaxis]
+                * ambient_profile[np.newaxis, :]
+            )
+            corrected_chunks.append(sp.csr_matrix(np.maximum(chunk_dense - contrib, 0)))
+        adata.X = sp.vstack(corrected_chunks, format="csr")
     else:
-        adata.X = X_corrected
+        total_counts = np.asarray(X.sum(axis=1)).ravel()
+        for start in range(0, X.shape[0], chunk_size):
+            end = min(start + chunk_size, X.shape[0])
+            contrib = (
+                contamination_fraction
+                * total_counts[start:end, np.newaxis]
+                * ambient_profile[np.newaxis, :]
+            )
+            X[start:end] = np.maximum(X[start:end] - contrib, 0)
 
     adata.uns["ambient_correction"] = {
         "method": "soupx_simplified",
