@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T03:30:00Z
+last_run: 2026-03-19T04:22:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [autoantibody-target-network-mapping]
@@ -7,9 +7,9 @@ projects_touched: [autoantibody-target-network-mapping]
 
 ## Context
 
-- autoantibody-target-network-mapping: Status=development. PM task #275 in_progress. 2/11 developer tasks done: #789 (seed nodes) and #790 (STRING PPI) completed. 9 developer tasks remain pending.
-- Unblocked and ready for developer: #791 (BioGRID PPI, p3) and #798 (patient heterogeneity subgroups, p3). Both depend only on #789+#790 which are done.
-- Blocked on #791 completion: #792 (KEGG), #793 (Reactome), #794 (Allen Brain), #795 (DisGeNET), #796 (cytokine layer) — all need combined PPI edge list from #791.
-- Blocked on downstream: #797 (hub analysis, p4) needs all PPI+pathway tasks. #799 (visualization, p2) needs everything.
+- autoantibody-target-network-mapping: Status=development. PM task #275 in_progress. 4/11 developer tasks done: #789 (seed nodes), #790 (STRING PPI), #791 (BioGRID/IntAct PPI), #796 (cytokine layer). 7 developer tasks remain.
+- Unblocked and ready for developer (5 parallel tasks): #792 (KEGG, p3), #793 (Reactome, p3), #794 (Allen Brain Atlas, p3), #795 (DisGeNET, p3), #798 (patient heterogeneity, p3). All depend only on completed PPI tasks.
+- Blocked on downstream: #797 (hub analysis, p4) needs all PPI+pathway tasks done. #799 (visualization, p2) needs everything done.
+- Network stats: 1721 nodes, 6889 edges (including cytokine layer). IntAct added 1281 supplementary-only edges.
 - No blockers reported. No handoffs needed — all remaining work is developer tasks.
-- Next run: Check if #791 (BioGRID) and/or #798 (patient heterogeneity) are done. When #791 completes, #792-#796 become unblocked (5 parallel pathway tasks). When ALL 11 developer tasks reach done, create analyst tasks for pathway enrichment statistics, network topology analysis, and symptom-domain validation. Update project status to analysis.
+- Next run: Check if any of #792-#795 or #798 are done. When ALL 11 developer tasks reach done, create analyst tasks for pathway enrichment statistics, network topology analysis, and symptom-domain validation. Update project status to analysis.
