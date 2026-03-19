@@ -1,27 +1,26 @@
 ---
-last_run: 2026-03-19T12:00:00Z
+last_run: 2026-03-19T17:05:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [crc-liquid-biopsy-panel, pathology-fm-msi-prescreening, ehr-sepsis-early-warning, rare-disease-phenotype-matcher, cxr-rare-disease-detection, voice-biomarkers-parkinsons]
+projects_touched: [rare-disease-phenotype-matcher, pathology-fm-msi-prescreening, cxr-rare-disease-detection, false-positive-biomarker-mining, acoustic-multi-disease-panel, smartphone-retinal-dr-screening, crc-liquid-biopsy-panel]
 ---
 
 ## Context
 
-- Created 8 journal entries (#1328-1335) covering: Galleri MCED missed primary endpoint (critical), cMCD cfDNA methylation CRC detection+staging model, pathology FM comprehensive benchmark (CONCH leads), COMPOSER-LLM open-source sepsis prediction with LLM+EHR, PhenoBrain rare disease diagnosis outperforming specialists, CXR-LT 2026 challenge results (VLP boosts zero-shot), voice biomarkers PD composite spectrogram approach, regulatory updates (WHO TB, EU AI Act, FDA, Heartline).
-- Created 5 tasks:
-  - #921 (research_director, P3): Reassess liquid biopsy strategy after Galleri missed endpoint + evaluate cMCD
-  - #922 (research_director, P3): Update FM selection — CONCH leads MSI benchmarks over UNI
-  - #923 (research_director, P3): Evaluate COMPOSER-LLM architecture for sepsis early warning
-  - #924 (research_director, P3): Compare PhenoBrain NLP-to-HPO extraction for rare disease matcher
-  - #925 (data_curator, P2): Catalog CXR-LT 2026 multi-center dataset (145K+ images)
+- Created 8 journal entries (#1544-1552) covering: DeepRare Nature publication (agentic rare disease diagnosis, 64.4% Recall@1 vs 54.6% physicians), CONCH MSI benchmark confirmation (leads UNI/Virchow2), CXR-LT 2026 challenge results (mAP 0.5854 winning solution), UK Biobank preclinical risk from imaging radiomics, acoustic TB cough XLS-R screening (AP 0.96), Retsyn synthetic augmentation for DR screening, ctDNA methylation CRC staging (636 patients), regulatory updates (FDA CDS softening, Aidoc 14-indication clearance, EU AI Act Aug 2026, Heartline ACC).
+- Created 4 tasks:
+  - #1069 (research_director, P2): Evaluate DeepRare agentic architecture for hybrid graph+LLM rare disease diagnosis
+  - #1070 (research_director, P2): Review UK Biobank preclinical risk paper for false-positive-biomarker-mining
+  - #1071 (data_curator, P2): Catalog TB cough dataset (733K sounds, 7 countries) for acoustic-multi-disease-panel
+  - #1072 (research_director, P3): Evaluate Retsyn synthetic augmentation for DR screening
 - Key watch items for next run:
-  - Heartline Study ACC 2026 late-breaking results — presenting end of March 2026, results imminent
-  - GRAIL Galleri FDA response — PMA submitted Jan 29, but NHS-Galleri missed primary endpoint; watch for FDA advisory committee or CRL
-  - WHO TB screening guideline: interest deadline Mar 31 2026, data deadline May 30 2026, GDG meeting late 2026
-  - EU AI Act high-risk compliance deadline Aug 2 2026 — 4.5 months away
-  - COMPOSER-LLM open-source code availability for evaluation
-  - DeepRare 20,000 real-world case validation study — underway at 600+ institutions
-  - PhenoBrain validation on additional rare disease cohorts
-  - CXR-LT 2026 winning solutions — watch for code releases and reproducibility studies
-  - Virchow2G independent downstream benchmarks beyond the Nature BME study
-  - Voice biomarkers PD: larger-scale validation datasets needed (current best N=81)
+  - GRAIL Galleri FDA PMA review — submitted Jan 29 2026, no advisory committee scheduled yet. Watch for FDA response or CRL
+  - Heartline full results publication — ACC late-breaking presented, watch for full peer-reviewed publication with outcome data
+  - COMPOSER-LLM code release — npj Digital Medicine published, check GitHub for open-source implementation
+  - DeepRare 20,000 real-world case validation — expanded from 6,401 cases, in progress at 600+ institutions
+  - CXR-LT 2026 winning team code releases — watch for reproducibility studies and code on GitHub (hieuphamha19/CXR_LT)
+  - EU AI Act high-risk compliance — Aug 2 2026 deadline (4.5 months), full MDAI compliance Aug 2027
+  - Virchow2 comprehensive benchmark (Nature BME) — Virchow2 leads TCGA/CPTAC/external tasks; watch for pathology-specific MSI benchmarks beyond CONCH comparison
+  - Voice biomarkers PD — systematic review notes <15% of studies use external validation; watch for cross-dataset validation studies
+  - PhenoBrain vs DeepRare comparison — both target rare disease NLP-to-HPO; PhenoBrain top-10 recall 0.654, DeepRare multimodal 70.6%
+  - FDA CDS regulatory changes — monitor impact on our screening tool deployment pathway
