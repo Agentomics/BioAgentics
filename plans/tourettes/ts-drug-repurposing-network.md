@@ -23,7 +23,8 @@ Current TS pharmacotherapy is limited — antipsychotics (haloperidol, pimozide,
 3. **Signature matching**: Query LINCS L1000 with TS-associated expression signatures (inverse correlation = therapeutic candidate)
 4. **Target pathway analysis**: Map drug targets to TS-relevant pathways:
    - Dopamine: D2R modulation, **D1R antagonism [validated — ecopipam FDA breakthrough therapy; add D1 pathway as confirmed mechanism]** [task #273]
-   - Serotonin: 5-HT2A/2C
+   - Serotonin: 5-HT2A/2C. **Pimavanserin (FDA-approved for PD psychosis, selective 5-HT2A inverse agonist)** — van Luik et al. (bioRxiv 2026) showed male-specific 5-HT2A receptor elevation in TS prefrontal cortex (BA10); pimavanserin robustly reduced tics in two mouse models via *prefrontal*, not striatal, mechanism. Prior pilot clinical trial showed 12% tic reduction. Novel mechanism of action (cortical 5-HT2A vs. conventional striatal D2) makes this a top-tier repurposing candidate. Prioritize in multi-criteria ranking [task #931]
+   - **Dopamine D3 receptor antagonism** — Celsr3 KO mice (Mol Psychiatry 2025) show striosomal D3 receptor upregulation; D3 antagonists reduce tics. Represents a compartment-specific dopaminergic mechanism distinct from pan-striatal D2 blockade. Screen FDA-approved D3-preferring antagonists. Cross-reference with ts-striosomal-matrix-subtypes for compartment-specificity data [task #931]
    - GABA/glutamate balance
    - Histamine: H3R
    - Cannabinoid: CB1
