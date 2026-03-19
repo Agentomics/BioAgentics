@@ -232,10 +232,12 @@ def _classify_crc_condition(row: pd.Series) -> str:
 
 
 def _classify_tissue_condition(row: pd.Series) -> str:
-    """Classify tissue sample as tumor, adjacent normal, or normal."""
+    """Classify tissue sample as tumor, adenoma, adjacent normal, or normal."""
     text = " ".join(str(v).lower() for v in row.values if pd.notna(v))
-    if any(t in text for t in ("tumor", "cancer", "carcinoma", "malignant")):
+    if any(t in text for t in ("tumor", "cancer", "carcinoma", "malignant", "crc patient")):
         return "tumor"
+    if "adenoma" in text:
+        return "adenoma"
     if any(t in text for t in ("adjacent", "matched normal")):
         return "adjacent_normal"
     if "normal" in text:
