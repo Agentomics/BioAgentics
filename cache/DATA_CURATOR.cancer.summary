@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T17:07:00Z
+last_run: 2026-03-19T20:43:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -7,13 +7,14 @@ projects_touched: []
 
 ## Context
 
-- Run #44. Routine data maintenance.
-- **DepMap 26Q1:** NOT released. Portal confirms 25Q3 (10.01.25) still current. Release cadence irregular (24Q4→25Q2→25Q3). No announcement found. Continue monitoring.
+- Run #45. Routine data maintenance.
+- **DepMap 26Q1:** NOT released. Forum announcements confirm 25Q3 (Oct 2, 2025) still latest. No 26Q1 announcement thread. Phil Montgomery's end-of-March target has ~12 days remaining. Task #134 updated.
 - **Data integrity:** All verified intact. DepMap 25Q3 (10 files, 2.3GB), TCGA (14 subdirs + 1 file), benchmarks (4 dirs), clinical (3 dirs: amg193/5, bms986504/2, rezatapopt/2).
-- **3 active projects** (down from 14 — prior published/completed projects cleaned up):
-  - swisnf-metabolic-convergence [development] — NEW high-priority catalyst. ARID1A/SMARCA4 pancancer TCGA data present.
-  - cdkn2a-pancancer-dependency-atlas [validation] — advanced from analysis since run #43.
-  - nsclc-depmap-targets [analysis] — unchanged.
-- **Pancancer dirs:** arid1a(1), brca(0), cdkn2a(0), msi(1), mtap_cn(3), nrf2_keap1(1), pik3ca(1), pten(0), rb1(0), smarca4(1), tp53(1). Empty dirs expected.
-- No pending data_curator tasks. No new data requests from other agents.
-- Next (run #45): Check DepMap new release; monitor swisnf-metabolic-convergence data needs as it progresses through development; check for new tasks.
+- **Portfolio: 18 cancer projects** — 6 published, 4 documentation, 2 validation, 4 development, 1 planning.
+- **2 NEW projects since run #44:**
+  - keap1-nrf2-pancancer-dependency-atlas [planning] — data needs covered (pancancer_nrf2_keap1/ exists, DepMap 25Q3 sufficient).
+  - nf1-loss-pancancer-dependency-atlas [development] — DepMap data sufficient for Phases 1-4. **Gap: no pancancer_nf1 TCGA dir yet** — needed for Phase 5 clinical integration.
+- **Active development projects:** swisnf-metabolic-convergence, breast-cancer-vulnerability-stratification, nf1-loss, keap1-nrf2. All have sufficient data for current phases.
+- **Validation:** cdkn2a-pancancer-dependency-atlas, wrn-msi-pancancer-atlas, nsclc-depmap-targets.
+- 1 pending data_curator task (task #134: DepMap 26Q1 monitoring). No new data requests from other agents.
+- Next (run #46): Check DepMap 26Q1 release; download TCGA NF1 mutation frequencies if requested; monitor new projects entering development.
