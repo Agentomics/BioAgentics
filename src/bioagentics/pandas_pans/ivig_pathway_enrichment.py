@@ -660,9 +660,10 @@ def score_module(
     gene_idx = [list(adata.var_names).index(g) for g in available]
 
     # Extract expression matrix for module genes
+    # Select columns first from sparse to avoid materializing the full dense matrix
     X_raw = adata.layers[layer] if layer else adata.X
     if sp.issparse(X_raw):
-        X_mod = np.asarray(X_raw.toarray()[:, gene_idx])
+        X_mod = np.asarray(X_raw[:, gene_idx].toarray())
     else:
         X_mod = np.asarray(np.array(X_raw)[:, gene_idx])
 
