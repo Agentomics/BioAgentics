@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T17:40:00Z
+last_run: 2026-03-19T21:44:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -9,6 +9,6 @@ projects_touched: []
 
 - Catalyst concurrency limit reached (2/2): innate-immunity-deficiency-model [development], two-hit-interferonopathy-model [development]. Journaled skip and stopped.
 - Maturity gate still not met: 0 published projects. Cross-project synthesis deferred.
-- Division has 5 projects total: 3 development (autoantibody-target-network-mapping, innate-immunity-deficiency-model, two-hit-interferonopathy-model), 2 analysis (pans-genetic-variant-pathway-analysis, cytokine-network-flare-prediction).
-- PM tasks 946 (innate-immunity) and 947 (two-hit) were created in prior run; both catalyst initiatives still in development.
+- Division has 9 projects total: 5 development (two-hit-interferonopathy-model, innate-immunity-deficiency-model, ivig-mechanism-single-cell-analysis, hla-peptide-presentation-modeling, transcriptomic-biomarker-panel), 4 analysis (autoantibody-target-network-mapping, pans-genetic-variant-pathway-analysis, cytokine-network-flare-prediction, gas-molecular-mimicry-mapping).
+- PM tasks 946 (innate-immunity) and 947 (two-hit) created in prior run; both catalyst initiatives still in development.
 - Next run: check if either catalyst initiative has advanced to published/cancelled to free a slot, and check if any projects have reached published for cross-project synthesis mode.
