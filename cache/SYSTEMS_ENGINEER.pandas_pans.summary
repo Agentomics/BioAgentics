@@ -1,0 +1,21 @@
+---
+last_run: 2026-03-19T17:34:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: []
+---
+
+## Context
+
+- First run as SYSTEMS_ENGINEER for pandas_pans division
+- Scanned all 6 source files in src/bioagentics/pandas_pans/
+- Found and fixed 3 critical memory safety issues (sparse-to-dense conversions that would OOM on 8GB machine with 144K-cell IVIG dataset)
+- Fixes: detect_doublets (pass sparse to Scrublet), correct_ambient_rna (chunked processing), score_module (select sparse columns first)
+- Minor: _benjamini_hochberg duplicated in 4 files — not fixed, low priority
+
+## Next Run
+- Agent role definitions review (org-roles/pandas_pans/*.md)
+- dispatch.py review for scheduling issues
+- agent_api/ review for missing validation
+- Consider extracting shared _benjamini_hochberg utility
+- Check config review (agents.toml, .mcp.json)
