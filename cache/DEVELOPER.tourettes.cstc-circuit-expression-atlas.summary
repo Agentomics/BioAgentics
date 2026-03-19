@@ -1,19 +1,16 @@
 ---
-last_run: 2026-03-17T23:00:00Z
-tasks_completed: [769, 770, 771, 772, 773]
+last_run: 2026-03-18T12:00:00Z
+tasks_completed: [776, 777]
 tasks_blocked: []
 projects_touched: [cstc-circuit-expression-atlas]
 ---
 
 ## Context
 
-- Completed 5 tasks (all P4-P5) for the CSTC circuit expression atlas project:
-  1. #769 (P5): Gene sets module at src/bioagentics/data/tourettes/gene_sets.py — 5 sets (tsaicg_gwas=16, rare_variant=5, iron_homeostasis=8, hippo_signaling=7, ts_combined=union)
-  2. #770 (P4): AHBA spatial mapping at src/bioagentics/analysis/tourettes/ahba_spatial.py — Allen Brain Atlas API direct access (abagen incompatible with Python 3.13), 8 CSTC regions, z-scored enrichment, ANOVA
-  3. #771 (P4): BrainSpan trajectories at src/bioagentics/analysis/tourettes/brainspan_trajectories.py — 8 dev stages, CSTC regions, peak windows, k-means clustering
-  4. #772 (P4): Iron pathway at src/bioagentics/analysis/tourettes/iron_pathway.py — 8 iron genes across extended CSTC (incl SN, red nucleus), Spearman concordance with 7T MRI depletion
-  5. #773 (P4): WGCNA at src/bioagentics/analysis/tourettes/wgcna_cstc.py — pure-Python WGCNA (no R), soft-threshold, TOM, modules, hypergeometric+permutation enrichment, hub genes
-- 44 total tests passing across 5 test files
-- Added abagen+setuptools to research deps (abagen not usable due to Python 3.13 pkg_resources issue)
-- Remaining tasks: #774 (blocked, scRNA-seq deconvolution), #775 (blocked, mesoscale striatal), #776 (pending P3, DBS fiber tract), #777 (pending P2, circuit vulnerability scoring)
-- Next priorities: #776 DBS fiber tract profiling (P3) and #777 circuit vulnerability scoring (P2) are the remaining unblocked tasks
+- Completed 2 tasks for the CSTC circuit expression atlas project:
+  1. #776 (P3): DBS fiber tract expression profiling at src/bioagentics/analysis/tourettes/dbs_tracts.py — 3 tract corridors (AL, FL, PIL), tract vs non-tract comparison (Mann-Whitney U), thalamic gene subset analysis for tic-responsive vs OCD-responsive differential expression. 16 tests.
+  2. #777 (P2): Circuit vulnerability scoring at src/bioagentics/analysis/tourettes/circuit_vulnerability.py — integrates 6 components (AHBA spatial, BrainSpan, WGCNA, iron pathway, DBS tracts, ENIGMA-TS neuroimaging), min-max normalized composite scores per CSTC node, configurable weights, integration figure. 15 tests.
+- Total: 7 modules implemented across this project (gene_sets, ahba_spatial, brainspan_trajectories, iron_pathway, wgcna_cstc, dbs_tracts, circuit_vulnerability)
+- 39+ tests passing across all tourettes analysis test files
+- Remaining blocked tasks: #774 (scRNA-seq deconvolution), #775 (mesoscale striatal) — both blocked on external data access
+- Circuit vulnerability module handles missing upstream data gracefully; will incorporate scRNA-seq and mesoscale results when unblocked
