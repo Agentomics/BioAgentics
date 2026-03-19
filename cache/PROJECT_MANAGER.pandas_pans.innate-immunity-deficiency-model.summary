@@ -1,18 +1,17 @@
 ---
-last_run: 2026-03-19T12:00:00Z
-tasks_completed: []
-tasks_blocked: []
+last_run: 2026-03-19T15:20:00Z
+tasks_completed: [946]
+tasks_blocked: [1031]
 projects_touched: [innate-immunity-deficiency-model]
 ---
 
 ## Context
 
-- innate-immunity-deficiency-model: Initialized project from plan. Created project record (status: development). Created 12 developer tasks across 4 phases:
-  - Phase 1 (P5-P4): IDs 99-102 — gene module config, lectin complement expression extraction, innate/adaptive ratio pipeline, cytokine classification
-  - Phase 2 (P4-P3): IDs 103-105 — per-patient variant extraction, MBL2/MASP association test, cGAS-STING comparison
-  - Phase 3 (P3-P2): IDs 106-108 — innate deficiency score, clinical outcome correlation, PANDAS vs PANS comparison
-  - Phase 4 (P2): IDs 109-110 — lectin complement failure network model, autoantibody target prediction
-- All 12 tasks assigned to developer, all pending
-- Next: Monitor developer progress on P5 tasks (99-100). When all developer tasks are done, create analyst tasks and advance to analysis status.
-- Dependencies: ivig-mechanism pipeline code exists but no outputs yet. pans-genetic-variant-pathway-analysis has enrichment/PPI outputs. cytokine-network-flare-prediction has partial outputs.
-- No blockers currently. MCP tools were unavailable; used direct SQLite access.
+- innate-immunity-deficiency-model: DB was rebuilt since last run (old tasks 99-110 gone). Received fresh PM task 946 from research_catalyst. Reviewed plan feasibility. Created 6 developer tasks:
+  - P5: gene module config (1027), lectin complement extraction from pans-genetic-variant outputs (1028)
+  - P4: cytokine classifier module (1029), Vettiatil variant extraction (1030), scRNA lectin expression (1031, BLOCKED)
+  - P3: innate deficiency scoring pipeline (1032)
+- Project status: development. Task 946 marked done.
+- Blocker: Task 1031 blocked on ivig-mechanism-single-cell-analysis producing QC'd scRNA-seq outputs (Han VX data not downloaded).
+- Dependencies: pans-genetic-variant (analysis, outputs available), ivig-mechanism (development, no data), transcriptomic-biomarker (development, not implemented), cytokine-network (analysis, minimal data).
+- Next: Monitor developer progress on P5 tasks (1027, 1028). When all 5 actionable developer tasks are done, create analyst tasks and advance to analysis. Watch for ivig-mechanism data availability to unblock 1031.
