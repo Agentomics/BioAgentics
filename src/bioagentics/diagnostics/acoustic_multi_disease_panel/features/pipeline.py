@@ -50,6 +50,7 @@ _EXTRACTORS = {
 def extract_features(
     audio_path: str | Path,
     recording_type: str = "reading_passage",
+    include_foundation: bool = False,
 ) -> dict[str, float | None]:
     """Extract features from a single audio file, adapting to recording type.
 
@@ -57,6 +58,8 @@ def extract_features(
         audio_path: Path to a WAV file (16kHz mono expected).
         recording_type: One of 'sustained_vowel', 'cough', 'counting',
                         'reading_passage'. Determines which extractors run.
+        include_foundation: If True, also extract foundation model embeddings
+                            (requires transformers + torch; slow on CPU).
 
     Returns:
         Flat dict of all extracted features. Features from non-applicable
@@ -68,12 +71,17 @@ def extract_features(
         )
         extractor_names = list(_EXTRACTORS.keys())
     else:
-        extractor_names = _EXTRACTOR_MAP[recording_type]
+        extractor_names = list(_EXTRACTOR_MAP[recording_type])
+
+    if include_foundation and "foundation" not in extractor_names:
+        extractor_names.append("foundation")
 
     features: dict[str, float | None] = {}
 
     for name in extractor_names:
-        extractor = _EXTRACTORS[name]
+        extractor = _get_extractor(name)
+        if extractor is None:
+            continue
         try:
             features.update(extractor(audio_path))
         except Exception:
@@ -82,6 +90,22 @@ def extract_features(
             )
 
     return features
+
+
+def _get_extractor(name: str):
+    """Get extractor function by name, with lazy loading for foundation."""
+    if name in _EXTRACTORS:
+        return _EXTRACTORS[name]
+    if name == "foundation":
+        try:
+            from bioagentics.diagnostics.acoustic_multi_disease_panel.features.foundation import (
+                extract_foundation_embedding,
+            )
+            return extract_foundation_embedding
+        except ImportError:
+            log.warning("Foundation model requires transformers + torch")
+            return None
+    return None
 
 
 def extract_all_features(audio_path: str | Path) -> dict[str, float | None]:
