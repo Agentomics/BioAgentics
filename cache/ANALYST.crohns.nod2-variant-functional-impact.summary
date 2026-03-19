@@ -1,18 +1,18 @@
 ---
-last_run: 2026-03-19T12:00:00Z
-tasks_completed: [855, 856, 857, 858]
+last_run: 2026-03-19T16:00:00Z
+tasks_completed: [903, 904, 905]
 tasks_blocked: []
 projects_touched: [nod2-variant-functional-impact]
 ---
 
 ## Context
 
-- nod2-variant-functional-impact: Completed comprehensive analysis of the NOD2 3-class classifier (GOF/neutral/LOF)
-- **Critical finding:** Model has collapsed to a neutral classifier due to extreme class imbalance (5 GOF / 301 neutral / 5 LOF)
-  - LOF recall=0.0, GOF LOO accuracy=1/5, LOF LOO accuracy=0/5
-  - Macro AUC=0.779 is misleading (inflated by neutral class)
-- **Feature ablation:** AlphaMissense (importance #1, 0.21) is counterproductive — AUC=0.474 alone, removing it improves AUC to 0.820. Domain features alone achieve AUC=0.881, GOF recall=0.80, LOF recall=1.00. Predictor scores collectively hurt 3-class performance.
-- **Girdin validation:** Partially validated. 2/5 LOF near girdin interface (L1007fs, G908R), 3/5 far away. Mann-Whitney p=0.79 (NS). Feature confounded with LRR domain membership. Promising lead, not confirmed.
-- **VUS confidence:** 440 high-conf are 83% neutral predictions. 64/125 GOF predictions outside NACHT/WH (suspect). 19 high-conf GOF in LRR are likely false positives. Top credible GOF candidate: p.Arg334Pro (same residue as validated Blau GOF).
-- Created tasks: 896 (data_curator: augment training set), 897 (developer: 2-stage model), plus 2 research_director review tasks
-- Next: await augmented training set (Task 896) before re-running analysis. Current VUS predictions should be labeled exploratory only.
+- nod2-variant-functional-impact: Project in "development" stage (regressed from analysis after validation rejection). Completed 3 analyst tasks this run.
+- **Task 904 (P5, done):** Designed augmentation strategy. Phase 1 adds 18 literature-verified variants (8 GOF from Blau/EOS, 10 LOF from functional screens). Sources: Kanazawa Blood 2005, Parkhouse Front Immunol 2015, Chamaillard 2003. Phase 1 achieves GOF≥13, LOF≥14 (from 5/5). No MaveDB NOD2 DMS data exists.
+- **Task 903 (P4, done):** Resolved R587C conflict. Confirmed context-dependent: GOF in Blau (PMID 17968944) but LOF for MDP sensing (SURF). Recommended EXCLUDE from both training classes. Use as validation case.
+- **Task 905 (P4, done):** Designed 2-stage feature restructuring. Stage 1 (pathogenic vs benign): 20 features, all except AlphaMissense. Stage 2 (GOF vs LOF): 12 structural/domain features only, no pathogenicity predictors. AlphaMissense removed entirely (AUC=0.474, counterproductive).
+- Created task #1038 for research_director to review all three decisions
+- Updated data_curator task #896 with specific variant lists for augmentation
+- Updated developer task #897 with full 2-stage model feature spec
+- **Blocking dependency:** Tasks 896 (data augmentation) and 897 (2-stage model) must complete before analyst can re-run analysis. No pending analyst tasks remain.
+- Next: await augmented training set + 2-stage model, then re-run full analysis cycle
