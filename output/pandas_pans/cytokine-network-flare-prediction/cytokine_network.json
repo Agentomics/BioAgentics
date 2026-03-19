@@ -1,0 +1,365 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "node_type": "th1",
+      "meta_effect": 1.0941299705487901,
+      "meta_p": 0.0,
+      "meta_direction": "up",
+      "meta_color": "red",
+      "id": "IFN-\u03b3"
+    },
+    {
+      "node_type": "innate",
+      "meta_effect": 1.110492291838719,
+      "meta_p": 0.0,
+      "meta_direction": "up",
+      "meta_color": "red",
+      "id": "TNF-\u03b1"
+    },
+    {
+      "node_type": "th2",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "IL-4"
+    },
+    {
+      "node_type": "th2",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "IL-13"
+    },
+    {
+      "node_type": "th17",
+      "meta_effect": 1.0464764055488418,
+      "meta_p": 7.045475314271243e-13,
+      "meta_direction": "up",
+      "meta_color": "red",
+      "id": "IL-17A"
+    },
+    {
+      "node_type": "th17",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "IL-22"
+    },
+    {
+      "node_type": "th17",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "IL-23"
+    },
+    {
+      "node_type": "regulatory",
+      "meta_effect": -0.8202891310866685,
+      "meta_p": 5.197100305665003e-09,
+      "meta_direction": "down",
+      "meta_color": "blue",
+      "id": "IL-10"
+    },
+    {
+      "node_type": "regulatory",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "TGF-\u03b2"
+    },
+    {
+      "node_type": "innate",
+      "meta_effect": 1.5171673120309808,
+      "meta_p": 0.0,
+      "meta_direction": "up",
+      "meta_color": "red",
+      "id": "IL-1\u03b2"
+    },
+    {
+      "node_type": "innate",
+      "is_hub": true,
+      "meta_effect": 1.456130485746798,
+      "meta_p": 0.0,
+      "meta_direction": "up",
+      "meta_color": "red",
+      "id": "IL-6"
+    },
+    {
+      "node_type": "innate",
+      "meta_effect": 1.1311896968607702,
+      "meta_p": 1.5765166949677223e-14,
+      "meta_direction": "up",
+      "meta_color": "red",
+      "id": "IL-8"
+    },
+    {
+      "node_type": "innate",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "GM-CSF"
+    },
+    {
+      "node_type": "inflammasome",
+      "is_independent_arm": true,
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "NLRP3"
+    },
+    {
+      "node_type": "cirs",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "TGF-\u03b21"
+    },
+    {
+      "node_type": "cirs",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "MMP-9"
+    },
+    {
+      "node_type": "cirs",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "C4a"
+    },
+    {
+      "node_type": "cirs",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "\u03b1-MSH"
+    },
+    {
+      "node_type": "cirs",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "C3"
+    },
+    {
+      "node_type": "bbb",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "BBB_disruption"
+    },
+    {
+      "node_type": "bbb",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "S100B"
+    },
+    {
+      "node_type": "epigenetic",
+      "timescale": "weeks-months",
+      "mechanism": "chromatin_closing_neurons",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "IFN\u03b3_epigenetic_persistence"
+    }
+  ],
+  "edges": [
+    {
+      "type": "inhibition",
+      "module": "cross_regulation",
+      "source": "IFN-\u03b3",
+      "target": "IL-4"
+    },
+    {
+      "type": "synergy",
+      "module": "th1",
+      "source": "IFN-\u03b3",
+      "target": "TNF-\u03b1"
+    },
+    {
+      "type": "epigenetic_damage",
+      "module": "epigenetic",
+      "timescale": "weeks-months",
+      "mechanism": "chromatin_closing",
+      "source": "IFN-\u03b3",
+      "target": "IFN\u03b3_epigenetic_persistence"
+    },
+    {
+      "type": "induction",
+      "module": "innate",
+      "source": "TNF-\u03b1",
+      "target": "IL-6"
+    },
+    {
+      "type": "amplification",
+      "module": "innate",
+      "source": "TNF-\u03b1",
+      "target": "IL-1\u03b2"
+    },
+    {
+      "type": "disruption",
+      "module": "bbb",
+      "source": "TNF-\u03b1",
+      "target": "BBB_disruption"
+    },
+    {
+      "type": "inhibition",
+      "module": "cross_regulation",
+      "source": "IL-4",
+      "target": "IFN-\u03b3"
+    },
+    {
+      "type": "induction",
+      "module": "th17",
+      "source": "IL-17A",
+      "target": "IL-6"
+    },
+    {
+      "type": "induction",
+      "module": "th17",
+      "source": "IL-17A",
+      "target": "IL-8"
+    },
+    {
+      "type": "disruption",
+      "module": "bbb",
+      "source": "IL-17A",
+      "target": "BBB_disruption"
+    },
+    {
+      "type": "differentiation",
+      "module": "th17",
+      "source": "IL-23",
+      "target": "IL-17A"
+    },
+    {
+      "type": "inhibition",
+      "module": "regulatory",
+      "source": "IL-10",
+      "target": "IL-6"
+    },
+    {
+      "type": "inhibition",
+      "module": "regulatory",
+      "source": "IL-10",
+      "target": "TNF-\u03b1"
+    },
+    {
+      "type": "inhibition",
+      "module": "regulatory",
+      "source": "IL-10",
+      "target": "IL-1\u03b2"
+    },
+    {
+      "type": "modulation",
+      "module": "regulatory",
+      "source": "TGF-\u03b2",
+      "target": "IL-17A"
+    },
+    {
+      "type": "induction",
+      "module": "innate",
+      "source": "IL-1\u03b2",
+      "target": "IL-6"
+    },
+    {
+      "type": "amplification",
+      "module": "hub",
+      "source": "IL-6",
+      "target": "IL-1\u03b2"
+    },
+    {
+      "type": "amplification",
+      "module": "hub",
+      "source": "IL-6",
+      "target": "TNF-\u03b1"
+    },
+    {
+      "type": "induction",
+      "module": "hub",
+      "source": "IL-6",
+      "target": "IL-17A"
+    },
+    {
+      "type": "induction",
+      "module": "hub",
+      "source": "IL-6",
+      "target": "IL-8"
+    },
+    {
+      "type": "feedback",
+      "module": "hub",
+      "source": "IL-6",
+      "target": "IL-10"
+    },
+    {
+      "type": "modulation",
+      "module": "hub",
+      "source": "IL-6",
+      "target": "IL-4"
+    },
+    {
+      "type": "cross-regulation",
+      "module": "hub",
+      "source": "IL-6",
+      "target": "IFN-\u03b3"
+    },
+    {
+      "type": "induction",
+      "module": "hub",
+      "source": "IL-6",
+      "target": "IL-22"
+    },
+    {
+      "type": "induction",
+      "module": "hub",
+      "source": "IL-6",
+      "target": "GM-CSF"
+    },
+    {
+      "type": "induction",
+      "module": "th17",
+      "source": "IL-6",
+      "target": "IL-23"
+    },
+    {
+      "type": "induction",
+      "module": "cirs",
+      "source": "IL-6",
+      "target": "C3"
+    },
+    {
+      "type": "activation",
+      "module": "inflammasome",
+      "source": "NLRP3",
+      "target": "IL-1\u03b2"
+    },
+    {
+      "type": "induction",
+      "module": "cirs",
+      "source": "TGF-\u03b21",
+      "target": "MMP-9"
+    },
+    {
+      "type": "activation",
+      "module": "cirs",
+      "source": "C4a",
+      "target": "MMP-9"
+    },
+    {
+      "type": "inhibition",
+      "module": "cirs",
+      "source": "\u03b1-MSH",
+      "target": "IL-6"
+    },
+    {
+      "type": "inhibition",
+      "module": "cirs",
+      "source": "\u03b1-MSH",
+      "target": "TNF-\u03b1"
+    },
+    {
+      "type": "complement_cascade",
+      "module": "cirs",
+      "source": "C3",
+      "target": "C4a"
+    },
+    {
+      "type": "release",
+      "module": "bbb",
+      "source": "BBB_disruption",
+      "target": "S100B"
+    }
+  ]
+}

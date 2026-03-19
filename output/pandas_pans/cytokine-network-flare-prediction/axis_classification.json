@@ -1,0 +1,63 @@
+{
+  "dominant_axis": "Innate",
+  "dominant_score": 1.3612633632054993,
+  "axes": {
+    "Th1": {
+      "composite_score": 1.1023111311937546,
+      "n_measured": 2,
+      "n_significant": 2,
+      "member_effects": {
+        "IFN-\u03b3": 1.0941299705487901,
+        "TNF-\u03b1": 1.110492291838719
+      },
+      "member_p_values": {
+        "IFN-\u03b3": 0.0,
+        "TNF-\u03b1": 0.0
+      }
+    },
+    "Th2": {
+      "composite_score": 0.0,
+      "n_measured": 0,
+      "n_significant": 0,
+      "member_effects": {},
+      "member_p_values": {}
+    },
+    "Th17": {
+      "composite_score": 1.0464764055488418,
+      "n_measured": 1,
+      "n_significant": 1,
+      "member_effects": {
+        "IL-17A": 1.0464764055488418
+      },
+      "member_p_values": {
+        "IL-17A": 7.045475314271243e-13
+      }
+    },
+    "Regulatory": {
+      "composite_score": -0.8202891310866685,
+      "n_measured": 1,
+      "n_significant": 1,
+      "member_effects": {
+        "IL-10": -0.8202891310866685
+      },
+      "member_p_values": {
+        "IL-10": 5.197100305665003e-09
+      }
+    },
+    "Innate": {
+      "composite_score": 1.3612633632054993,
+      "n_measured": 3,
+      "n_significant": 3,
+      "member_effects": {
+        "IL-1\u03b2": 1.5171673120309808,
+        "IL-6": 1.456130485746798,
+        "TNF-\u03b1": 1.110492291838719
+      },
+      "member_p_values": {
+        "IL-1\u03b2": 0.0,
+        "IL-6": 0.0,
+        "TNF-\u03b1": 0.0
+      }
+    }
+  }
+}

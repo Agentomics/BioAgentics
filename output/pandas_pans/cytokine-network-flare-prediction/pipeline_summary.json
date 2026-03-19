@@ -1,0 +1,143 @@
+{
+  "pipeline": "cytokine-network-flare-prediction",
+  "outputs": {
+    "meta_analysis_csv": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/meta_analysis_summary.csv",
+    "network_image": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/cytokine_network.png",
+    "network_json": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/cytokine_network.json",
+    "axis_radar": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/immune_axis_radar.png",
+    "axis_json": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/axis_classification.json",
+    "roc_curves": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/flare_roc_curves.png",
+    "prediction_csv": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/prediction_summary.csv",
+    "feature_importance": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/feature_importance_LogisticRegression.png",
+    "treatment_heatmap": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/treatment_response_heatmap.png",
+    "treatment_csv": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/treatment_response_summary.csv"
+  },
+  "dataset": {
+    "n_records": 132,
+    "n_studies": 12,
+    "n_analytes": 10,
+    "analytes": [
+      "IFN-\u03b3",
+      "IL-10",
+      "IL-12",
+      "IL-17A",
+      "IL-1\u03b2",
+      "IL-6",
+      "IL-8",
+      "S100B",
+      "TGF-\u03b21",
+      "TNF-\u03b1"
+    ],
+    "conditions": [
+      "flare",
+      "healthy_control",
+      "remission"
+    ],
+    "sample_types": [
+      "serum"
+    ]
+  },
+  "meta_analysis": {
+    "n_analytes_analyzed": 8,
+    "significant_analytes": [
+      "IFN-\u03b3",
+      "IL-1\u03b2",
+      "IL-6",
+      "TNF-\u03b1",
+      "IL-8",
+      "IL-17A",
+      "IL-12",
+      "IL-10"
+    ]
+  },
+  "network": {
+    "n_nodes": 22,
+    "n_edges": 34
+  },
+  "axis_classification": {
+    "dominant_axis": "Innate",
+    "dominant_score": 1.3612633632054993
+  },
+  "prediction": {
+    "models": [
+      {
+        "name": "LogisticRegression",
+        "auc": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 1.0
+      },
+      {
+        "name": "RandomForestClassifier",
+        "auc": 1.0,
+        "sensitivity": 1.0,
+        "specificity": 1.0
+      }
+    ]
+  },
+  "treatment_response": {
+    "treatments_analyzed": [
+      "IVIG",
+      "plasmapheresis",
+      "antibiotics",
+      "corticosteroids",
+      "rituximab"
+    ],
+    "responder_cytokines": {
+      "IVIG": [
+        "IL-6",
+        "TNF-\u03b1",
+        "IL-8",
+        "IL-17A",
+        "IL-1\u03b2",
+        "IFN-\u03b3",
+        "IL-10",
+        "IL-12",
+        "TGF-\u03b21"
+      ],
+      "plasmapheresis": [
+        "IL-6",
+        "TNF-\u03b1",
+        "IL-8",
+        "IL-17A",
+        "IL-1\u03b2",
+        "IFN-\u03b3",
+        "IL-10",
+        "IL-12",
+        "TGF-\u03b21"
+      ],
+      "antibiotics": [
+        "IL-6",
+        "TNF-\u03b1",
+        "IL-8",
+        "IL-17A",
+        "IL-1\u03b2",
+        "IFN-\u03b3",
+        "IL-10",
+        "IL-12",
+        "TGF-\u03b21"
+      ],
+      "corticosteroids": [
+        "IL-6",
+        "TNF-\u03b1",
+        "IL-8",
+        "IL-17A",
+        "IL-1\u03b2",
+        "IFN-\u03b3",
+        "IL-10",
+        "IL-12",
+        "TGF-\u03b21"
+      ],
+      "rituximab": [
+        "IL-6",
+        "TNF-\u03b1",
+        "IL-8",
+        "IL-17A",
+        "IL-1\u03b2",
+        "IFN-\u03b3",
+        "IL-10",
+        "IL-12",
+        "TGF-\u03b21"
+      ]
+    }
+  }
+}

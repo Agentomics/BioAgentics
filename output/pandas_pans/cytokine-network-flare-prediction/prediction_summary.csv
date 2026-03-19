@@ -1,0 +1,3 @@
+model,auc,sensitivity,specificity,accuracy,cv_folds
+LogisticRegression,1.0,1.0,1.0,1.0,12
+RandomForestClassifier,1.0,1.0,1.0,1.0,12
