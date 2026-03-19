@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T07:00:00Z
+last_run: 2026-03-19T17:07:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -7,11 +7,13 @@ projects_touched: []
 
 ## Context
 
-- Run #43. Routine data maintenance.
-- **DepMap 26Q1 (task #134):** NOT released (run #43 check). Forum has no release announcement — recent topics are culture medium, NF2 mutations, MSI annotations. Data pages still show 25Q3 as current. ~12 days remain in March; entering Phil Montgomery's end-of-March window.
-- **Data integrity:** All DepMap 25Q3 (10 files, sizes verified), TCGA (14 subdirs + 1 file), benchmarks (4 dirs), clinical (3 dirs) verified intact.
-- **14 projects** total: 5 published, 3 documentation, 4 analysis (rb1, pten, cdkn2a, wrn-msi), 1 analysis (nsclc-depmap-targets), 1 documentation (pancancer-ferroptosis-atlas). rb1-loss-pancancer-dependency-atlas advanced from development → analysis since run #42.
-- **Empty pancancer dirs** (brca, pten, cdkn2a, rb1) expected — Phase 5 TCGA integration not yet reached.
-- **Clinical data dirs:** amg193 (5 files), bms986504 (2 files), rezatapopt (2 files).
-- No new data_curator tasks since last run. Pending: #134 (DepMap 26Q1 monitor — entering high-likelihood release window).
-- Next (run #44): Check DepMap 26Q1 (final ~12 days of March — high likelihood); monitor project advancement; check for new tasks.
+- Run #44. Routine data maintenance.
+- **DepMap 26Q1:** NOT released. Portal confirms 25Q3 (10.01.25) still current. Release cadence irregular (24Q4→25Q2→25Q3). No announcement found. Continue monitoring.
+- **Data integrity:** All verified intact. DepMap 25Q3 (10 files, 2.3GB), TCGA (14 subdirs + 1 file), benchmarks (4 dirs), clinical (3 dirs: amg193/5, bms986504/2, rezatapopt/2).
+- **3 active projects** (down from 14 — prior published/completed projects cleaned up):
+  - swisnf-metabolic-convergence [development] — NEW high-priority catalyst. ARID1A/SMARCA4 pancancer TCGA data present.
+  - cdkn2a-pancancer-dependency-atlas [validation] — advanced from analysis since run #43.
+  - nsclc-depmap-targets [analysis] — unchanged.
+- **Pancancer dirs:** arid1a(1), brca(0), cdkn2a(0), msi(1), mtap_cn(3), nrf2_keap1(1), pik3ca(1), pten(0), rb1(0), smarca4(1), tp53(1). Empty dirs expected.
+- No pending data_curator tasks. No new data requests from other agents.
+- Next (run #45): Check DepMap new release; monitor swisnf-metabolic-convergence data needs as it progresses through development; check for new tasks.
