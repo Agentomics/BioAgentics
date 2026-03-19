@@ -35,6 +35,10 @@ from bioagentics.data.cd_fibrosis.cmap_client import (
     load_signature_tsv,
 )
 from bioagentics.data.cd_fibrosis.ilincs_client import IlincsClient
+from bioagentics.data.cd_fibrosis.l1000_local import (
+    DATA_DIR as L1000_DATA_DIR,
+    run_local_scoring,
+)
 
 OUTPUT_DIR = REPO_ROOT / "output" / "crohns" / "cd-fibrosis-drug-repurposing"
 SIGNATURES_DIR = OUTPUT_DIR / "signatures"
@@ -47,6 +51,8 @@ SIGNATURE_FILES = {
     "glis3_il11": "glis3_il11_signature.tsv",
     "cthrc1_yaptaz": "cthrc1_yaptaz_signature.tsv",
     "tl1a_dr3_rho": "tl1a_dr3_rho_signature.tsv",
+    "fas_twist1_fistula": "fas_twist1_fistula_signature.tsv",
+    "acharjee_stricture": "acharjee_stricture_signature.tsv",
 }
 
 # Fibroblast-relevant cell line identifiers in iLINCS
@@ -225,6 +231,8 @@ def run_pipeline(
     which_signatures: list[str] | None = None,
     use_ilincs: bool = True,
     use_cmap: bool = False,
+    use_local_l1000: bool = False,
+    l1000_data_dir: Path | None = None,
     ilincs_library: str = "LIB_5",
     top_n: int = 200,
     delay_between_queries: float = 5.0,
@@ -237,6 +245,8 @@ def run_pipeline(
         which_signatures: Subset of signatures to query (default: all).
         use_ilincs: Query iLINCS (default: True, no API key needed).
         use_cmap: Query clue.io CMAP (requires CLUE_API_KEY).
+        use_local_l1000: Use local L1000 GCTX data (requires download).
+        l1000_data_dir: Directory containing L1000 GCTX + metadata.
         ilincs_library: iLINCS library to query.
         top_n: Number of top compounds to return.
         delay_between_queries: Seconds between API calls (rate limiting).
@@ -252,7 +262,7 @@ def run_pipeline(
     print("=" * 60)
 
     # Step 1: Load signatures
-    print("\n[1/4] Loading fibrosis signatures...")
+    print("\n[1/5] Loading fibrosis signatures...")
     signatures = load_all_signatures(signatures_dir, which_signatures)
     if not signatures:
         print("  ERROR: No signatures loaded. Aborting.")
@@ -262,7 +272,7 @@ def run_pipeline(
 
     # Step 2: Query iLINCS
     if use_ilincs:
-        print(f"\n[2/4] Querying iLINCS ({ilincs_library})...")
+        print(f"\n[2/5] Querying iLINCS ({ilincs_library})...")
         ilincs = IlincsClient()
 
         for sig_name, (up_genes, down_genes) in signatures.items():
@@ -295,11 +305,11 @@ def run_pipeline(
                 print(f"    ERROR: {e}")
                 continue
     else:
-        print("\n[2/4] iLINCS: skipped")
+        print("\n[2/5] iLINCS: skipped")
 
     # Step 3: Query CMAP (if API key available)
     if use_cmap:
-        print(f"\n[3/4] Querying CMAP/clue.io...")
+        print(f"\n[3/5] Querying CMAP/clue.io...")
         cmap = CmapClient()
         if not cmap.api_key:
             print("  WARNING: No CLUE_API_KEY set. Skipping CMAP queries.")
@@ -320,10 +330,55 @@ def run_pipeline(
                     print(f"    ERROR: {e}")
                     continue
     else:
-        print("\n[3/4] CMAP: skipped")
+        print("\n[3/5] CMAP: skipped")
 
-    # Step 4: Rank compounds
-    print(f"\n[4/4] Ranking compounds (top {top_n})...")
+    # Step 4: Local L1000 scoring (alternative to clue.io API)
+    if use_local_l1000:
+        data_dir = l1000_data_dir or L1000_DATA_DIR
+        gctx_files = list(data_dir.glob("*.gctx"))
+        siginfo_files = list(data_dir.glob("*sig_info*"))
+        geneinfo_files = list(data_dir.glob("*gene_info*"))
+
+        if not gctx_files or not siginfo_files or not geneinfo_files:
+            print(f"\n[4/5] Local L1000: data files not found in {data_dir}")
+            print("  Run: uv run python -m bioagentics.data.cd_fibrosis.l1000_local --download")
+        else:
+            print(f"\n[4/5] Local L1000 scoring ({gctx_files[0].name})...")
+            for sig_name, (up_genes, down_genes) in signatures.items():
+                print(f"\n  Scoring: {sig_name} ({len(up_genes)} up, {len(down_genes)} down)...")
+                try:
+                    local_df = run_local_scoring(
+                        gctx_path=gctx_files[0],
+                        siginfo_path=siginfo_files[0],
+                        geneinfo_path=geneinfo_files[0],
+                        up_genes=up_genes,
+                        down_genes=down_genes,
+                        top_n=top_n,
+                    )
+                    if len(local_df) > 0:
+                        # Convert to standard format for ranking
+                        local_results = pd.DataFrame({
+                            "signature_id": "",
+                            "compound": local_df["compound"],
+                            "concordance": local_df["mean_score"],
+                            "cell_line": local_df["cell_lines"],
+                            "concentration": "",
+                            "time": "",
+                            "query_signature": sig_name,
+                        })
+                        all_results[f"l1000_{sig_name}"] = local_results
+                        print(f"    Got {len(local_df)} compound scores")
+
+                        per_sig_path = output_dir / f"l1000_{sig_name}_hits.tsv"
+                        local_df.to_csv(per_sig_path, sep="\t", index=False)
+                except Exception as e:
+                    print(f"    ERROR: {e}")
+                    continue
+    else:
+        print("\n[4/5] Local L1000: skipped")
+
+    # Step 5: Rank compounds
+    print(f"\n[5/5] Ranking compounds (top {top_n})...")
     ranked = rank_compounds_across_signatures(all_results, top_n)
 
     if len(ranked) == 0:
@@ -378,6 +433,17 @@ def main(argv: list[str] | None = None) -> None:
         help="Enable CMAP/clue.io queries (requires CLUE_API_KEY)",
     )
     parser.add_argument(
+        "--use-local-l1000",
+        action="store_true",
+        help="Use local L1000 GCTX data (requires prior download via l1000_local.py)",
+    )
+    parser.add_argument(
+        "--l1000-data-dir",
+        type=Path,
+        default=None,
+        help="Directory containing L1000 GCTX + metadata files",
+    )
+    parser.add_argument(
         "--library",
         default="LIB_5",
         help="iLINCS library (default: LIB_5 = LINCS chemical perturbagens)",
@@ -407,6 +473,8 @@ def main(argv: list[str] | None = None) -> None:
         which_signatures=args.signatures,
         use_ilincs=not args.no_ilincs,
         use_cmap=args.use_cmap,
+        use_local_l1000=args.use_local_l1000,
+        l1000_data_dir=args.l1000_data_dir,
         ilincs_library=args.library,
         top_n=args.top_n,
         delay_between_queries=args.delay,
