@@ -65,7 +65,7 @@ For each dataset:
 
 ## 4. Organize Data
 Use `ensure_data_dir` to create organized directories:
-- `data/{source}/{dataset}/` — e.g., `data/geo/GSE12345/`, `data/imm port/SDY1234/`, `data/ncbi/gas_genomes/`
+- `data/{source}/{dataset}/` — e.g., `data/geo/GSE12345/`, `data/immport/SDY1234/`, `data/ncbi/gas_genomes/`
 - Create download scripts or document download procedures
 - Ensure data provenance is recorded
 
