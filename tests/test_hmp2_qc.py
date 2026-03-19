@@ -7,11 +7,14 @@ import pytest
 from bioagentics.data.hmp2_qc import (
     HMP2QCPipeline,
     clr_transform,
+    combat_correct,
     compute_pcoa,
     filter_low_prevalence,
     handle_metagenomics_zeros,
     impute_knn,
     log_median_normalize,
+    select_features_by_spls,
+    select_features_by_variance,
     summarize_qc,
 )
 
@@ -185,3 +188,128 @@ def test_summarize_qc(species_df):
     assert stats["name"] == "species"
     assert stats["processed_nan_frac"] == 0.0
     assert "clr_max_row_deviation" in stats
+
+
+# ── Metabolite Feature Selection ──
+
+
+@pytest.fixture
+def large_metab_df():
+    """Metabolomics matrix with many features to test selection."""
+    rng = np.random.default_rng(42)
+    n_samples, n_metab = 20, 200
+    data = rng.random((n_samples, n_metab)) * 1000
+    # Make some features high-variance
+    data[:, :10] *= 100
+    cols = [f"mb_{i}" for i in range(n_metab)]
+    return pd.DataFrame(data, index=[f"S{i}" for i in range(n_samples)], columns=cols)
+
+
+def test_variance_selection_reduces_features(large_metab_df):
+    result = select_features_by_variance(large_metab_df, max_features=50)
+    assert result.shape[1] == 50
+    assert result.shape[0] == large_metab_df.shape[0]
+
+
+def test_variance_selection_noop_when_small():
+    df = pd.DataFrame({"a": [1.0, 2.0], "b": [3.0, 4.0]})
+    result = select_features_by_variance(df, max_features=10)
+    assert result.shape[1] == 2
+
+
+def test_variance_selection_keeps_high_variance(large_metab_df):
+    result = select_features_by_variance(large_metab_df, max_features=15)
+    # High-variance features (mb_0 to mb_9) should be in the result
+    for i in range(10):
+        assert f"mb_{i}" in result.columns
+
+
+def test_spls_selection_with_valid_file(large_metab_df, tmp_path):
+    # Create a mock sPLS pairs file with enough metabolites (>10 threshold)
+    metab_names = [f"mb_{i}" for i in range(50, 65)]
+    pairs = pd.DataFrame({
+        "species": [f"sp_{i}" for i in range(15)],
+        "metabolite": metab_names,
+        "component": ["PLS_1"] * 8 + ["PLS_2"] * 7,
+        "score": [0.9 - i * 0.05 for i in range(15)],
+    })
+    pairs_path = tmp_path / "spls_top_pairs.csv"
+    pairs.to_csv(pairs_path, index=False)
+
+    result = select_features_by_spls(large_metab_df, pairs_path, max_features=20)
+    assert result.shape[1] == 20
+    # sPLS metabolites should be present
+    assert "mb_50" in result.columns
+    assert "mb_55" in result.columns
+    assert "mb_60" in result.columns
+
+
+def test_spls_selection_falls_back_on_missing_file(large_metab_df):
+    result = select_features_by_spls(large_metab_df, "/nonexistent/path.csv", max_features=50)
+    assert result.shape[1] == 50
+
+
+# ── ComBat Batch Correction ──
+
+
+def test_combat_correct_basic(species_df):
+    batch = pd.Series(
+        ["site_A"] * 5 + ["site_B"] * 5,
+        index=species_df.index,
+        name="site",
+    )
+    result = combat_correct(species_df.iloc[:, :6], batch)
+    assert result.shape == species_df.iloc[:, :6].shape
+    assert result.isna().sum().sum() == 0
+
+
+def test_combat_correct_single_batch(species_df):
+    batch = pd.Series(
+        ["site_A"] * 10,
+        index=species_df.index,
+        name="site",
+    )
+    result = combat_correct(species_df.iloc[:, :6], batch)
+    # Should skip correction and return original
+    pd.testing.assert_frame_equal(result, species_df.iloc[:, :6])
+
+
+def test_combat_correct_partial_labels(species_df):
+    # Only provide batch for half the samples
+    batch = pd.Series(
+        ["site_A"] * 3 + ["site_B"] * 3,
+        index=species_df.index[:6],
+        name="site",
+    )
+    result = combat_correct(species_df.iloc[:, :6], batch)
+    assert result.shape == species_df.iloc[:, :6].shape
+
+
+# ── Pipeline with Feature Selection and Batch Correction ──
+
+
+def test_pipeline_process_all_with_feature_selection(species_df, metabolomics_df):
+    qc = HMP2QCPipeline()
+    pathways = species_df.copy()
+    s_qc, p_qc, m_qc = qc.process_all(
+        species_df, pathways, metabolomics_df,
+        max_metabolite_features=5,
+    )
+    assert m_qc.shape[1] <= 5
+    assert s_qc.isna().sum().sum() == 0
+
+
+def test_pipeline_process_all_with_batch_correction(species_df, metabolomics_df):
+    qc = HMP2QCPipeline()
+    pathways = species_df.copy()
+    metadata = pd.DataFrame({
+        "Participant ID": species_df.index,
+        "site_name": ["site_A"] * 5 + ["site_B"] * 5,
+    })
+    s_qc, p_qc, m_qc = qc.process_all(
+        species_df, pathways, metabolomics_df,
+        metadata=metadata,
+        batch_column="site_name",
+    )
+    assert s_qc.isna().sum().sum() == 0
+    assert m_qc.isna().sum().sum() == 0

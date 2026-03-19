@@ -10,6 +10,8 @@ Steps:
 4. Log-transform + median normalization for metabolomics
 5. Missing value handling (KNN imputation for metabolomics, zero-handling for metagenomics)
 6. Batch effect assessment (PCoA visualization)
+7. Metabolite feature selection (variance-based or sPLS-guided)
+8. Site batch correction (ComBat)
 
 Usage::
 
@@ -22,6 +24,11 @@ Usage::
     qc = HMP2QCPipeline()
     species_qc = qc.process_metagenomics(species)
     metab_qc = qc.process_metabolomics(metabolomics)
+
+    # With feature selection and batch correction:
+    metab_qc = qc.select_metabolite_features(metab_qc, max_features=1000)
+    species_qc = qc.batch_correct(species_qc, metadata["site_name"])
+    metab_qc = qc.batch_correct(metab_qc, metadata["site_name"])
 """
 
 from __future__ import annotations
@@ -253,6 +260,180 @@ def handle_metagenomics_zeros(
     return df
 
 
+# ── Metabolite Feature Selection ──
+
+
+def select_features_by_variance(
+    df: pd.DataFrame,
+    max_features: int = 1000,
+) -> pd.DataFrame:
+    """Select top metabolite features by variance.
+
+    Addresses the overcomplete problem (80K metabolites vs 76 samples)
+    by keeping only the most variable features.
+
+    Parameters
+    ----------
+    df : DataFrame
+        Normalized metabolomics matrix (samples x metabolites).
+    max_features : int
+        Maximum number of features to retain (default: 1000).
+
+    Returns
+    -------
+    DataFrame with top-variance features only.
+    """
+    if df.shape[1] <= max_features:
+        logger.info(
+            "Feature selection: %d features <= max %d, keeping all",
+            df.shape[1], max_features,
+        )
+        return df
+
+    variances = df.var(axis=0)
+    top_features = variances.nlargest(max_features).index
+    logger.info(
+        "Variance-based feature selection: %d → %d metabolites (min var=%.4f)",
+        df.shape[1], max_features, variances[top_features[-1]],
+    )
+    return df[top_features]
+
+
+def select_features_by_spls(
+    df: pd.DataFrame,
+    spls_pairs_path: Path | str,
+    max_features: int = 1000,
+) -> pd.DataFrame:
+    """Select metabolite features guided by sPLS species-metabolite correlations.
+
+    Uses the top species-metabolite pairs from sPLS-Regression to retain
+    metabolites with known cross-omic signal.
+
+    Parameters
+    ----------
+    df : DataFrame
+        Normalized metabolomics matrix (samples x metabolites).
+    spls_pairs_path : Path
+        Path to spls_top_pairs.csv with columns: species, metabolite, component, score.
+    max_features : int
+        Maximum number of features to retain.
+
+    Returns
+    -------
+    DataFrame with sPLS-selected features (falls back to variance if insufficient).
+    """
+    spls_path = Path(spls_pairs_path)
+    if not spls_path.exists():
+        logger.warning("sPLS pairs file not found: %s — falling back to variance selection", spls_path)
+        return select_features_by_variance(df, max_features)
+
+    pairs = pd.read_csv(spls_path)
+    if "metabolite" not in pairs.columns:
+        logger.warning("sPLS pairs file missing 'metabolite' column — falling back to variance")
+        return select_features_by_variance(df, max_features)
+
+    # Get unique metabolites from sPLS, keeping order by score
+    spls_metabolites = pairs.sort_values("score", ascending=False)["metabolite"].unique()
+    # Keep only those present in our data
+    spls_in_data = [m for m in spls_metabolites if m in df.columns]
+
+    if len(spls_in_data) < 10:
+        logger.warning(
+            "Only %d sPLS metabolites found in data — falling back to variance",
+            len(spls_in_data),
+        )
+        return select_features_by_variance(df, max_features)
+
+    # If sPLS gives fewer than max_features, supplement with high-variance features
+    if len(spls_in_data) < max_features:
+        remaining = df.drop(columns=spls_in_data, errors="ignore")
+        variances = remaining.var(axis=0)
+        n_extra = max_features - len(spls_in_data)
+        extra = variances.nlargest(n_extra).index.tolist()
+        selected = spls_in_data + extra
+    else:
+        selected = spls_in_data[:max_features]
+
+    logger.info(
+        "sPLS-guided feature selection: %d → %d metabolites (%d from sPLS, %d from variance)",
+        df.shape[1], len(selected), len(spls_in_data), len(selected) - len(spls_in_data),
+    )
+    return df[selected]
+
+
+# ── Site Batch Correction ──
+
+
+def combat_correct(
+    df: pd.DataFrame,
+    batch: pd.Series,
+) -> pd.DataFrame:
+    """Apply ComBat batch correction.
+
+    Removes batch effects (e.g., collection site) from omics data while
+    preserving biological variation.
+
+    Parameters
+    ----------
+    df : DataFrame
+        Normalized omics matrix (samples x features). Must not contain NaN.
+    batch : Series
+        Batch labels indexed by sample ID (e.g., site_name).
+        Must cover all samples in df.
+
+    Returns
+    -------
+    Batch-corrected DataFrame with same shape as input.
+    """
+    from combat.pycombat import pycombat
+
+    # Align batch to df index
+    common = df.index.intersection(batch.index)
+    if len(common) < len(df):
+        logger.warning(
+            "Batch labels missing for %d / %d samples — using available only",
+            len(df) - len(common), len(df),
+        )
+    if len(common) < 3:
+        logger.warning("Too few samples with batch labels (%d) — skipping ComBat", len(common))
+        return df
+
+    df_aligned = df.loc[common]
+    batch_aligned = batch.loc[common]
+
+    # ComBat needs at least 2 batches
+    n_batches = batch_aligned.nunique()
+    if n_batches < 2:
+        logger.info("Only 1 batch found — skipping ComBat correction")
+        return df
+
+    # pycombat expects features x samples (transposed) and integer batch labels
+    batch_codes = batch_aligned.astype("category").cat.codes.values
+
+    logger.info(
+        "ComBat correction: %d samples, %d features, %d batches",
+        len(common), df_aligned.shape[1], n_batches,
+    )
+
+    # pycombat(data, batch): data is features x samples
+    corrected = pycombat(df_aligned.T, batch_codes)
+
+    result = pd.DataFrame(
+        corrected.T,
+        index=df_aligned.index,
+        columns=df_aligned.columns,
+    )
+
+    # If some samples were dropped, add them back uncorrected
+    if len(common) < len(df):
+        missing = df.index.difference(common)
+        result = pd.concat([result, df.loc[missing]])
+        result = result.loc[df.index]
+
+    logger.info("ComBat correction complete: shape %s", result.shape)
+    return result
+
+
 # ── Batch Effect Assessment ──
 
 
@@ -461,19 +642,100 @@ class HMP2QCPipeline:
         logger.info("Output: %d samples × %d metabolites", *df.shape)
         return df
 
+    def select_metabolite_features(
+        self,
+        df: pd.DataFrame,
+        max_features: int = 1000,
+        method: str = "variance",
+        spls_pairs_path: Path | str | None = None,
+    ) -> pd.DataFrame:
+        """Select top metabolite features for integration.
+
+        Parameters
+        ----------
+        df : DataFrame
+            Normalized metabolomics matrix.
+        max_features : int
+            Maximum features to retain.
+        method : str
+            "variance" for variance-based, "spls" for sPLS-guided selection.
+        spls_pairs_path : Path, optional
+            Path to spls_top_pairs.csv (required for method="spls").
+        """
+        if method == "spls" and spls_pairs_path is not None:
+            return select_features_by_spls(df, spls_pairs_path, max_features)
+        return select_features_by_variance(df, max_features)
+
+    def batch_correct(
+        self,
+        df: pd.DataFrame,
+        batch: pd.Series,
+    ) -> pd.DataFrame:
+        """Apply ComBat batch correction to an omic layer.
+
+        Parameters
+        ----------
+        df : DataFrame
+            Normalized omics matrix (samples x features).
+        batch : Series
+            Batch labels (e.g., site_name) indexed by sample ID.
+        """
+        return combat_correct(df, batch)
+
     def process_all(
         self,
         species: pd.DataFrame,
         pathways: pd.DataFrame,
         metabolomics: pd.DataFrame,
+        metadata: pd.DataFrame | None = None,
+        max_metabolite_features: int = 1000,
+        feature_selection_method: str = "variance",
+        spls_pairs_path: Path | str | None = None,
+        batch_column: str | None = None,
     ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
         """Run full QC pipeline on all omic layers.
+
+        Parameters
+        ----------
+        metadata : DataFrame, optional
+            Clinical metadata with batch info. Required if batch_column set.
+        max_metabolite_features : int
+            Max metabolite features (default: 1000). Set 0 to disable.
+        feature_selection_method : str
+            "variance" or "spls" for metabolite selection.
+        spls_pairs_path : Path, optional
+            Path to spls_top_pairs.csv for sPLS-guided selection.
+        batch_column : str, optional
+            Column in metadata for batch correction (e.g., "site_name").
 
         Returns (species_qc, pathways_qc, metabolomics_qc).
         """
         species_qc = self.process_metagenomics(species)
         pathways_qc = self.process_pathways(pathways)
         metabolomics_qc = self.process_metabolomics(metabolomics)
+
+        # Feature selection on metabolomics
+        if max_metabolite_features > 0:
+            metabolomics_qc = self.select_metabolite_features(
+                metabolomics_qc,
+                max_features=max_metabolite_features,
+                method=feature_selection_method,
+                spls_pairs_path=spls_pairs_path,
+            )
+
+        # Batch correction
+        if batch_column and metadata is not None and batch_column in metadata.columns:
+            # Build per-participant batch series
+            if "Participant ID" in metadata.columns:
+                batch_series = metadata.drop_duplicates(
+                    subset=["Participant ID"]
+                ).set_index("Participant ID")[batch_column]
+            else:
+                batch_series = metadata[batch_column]
+
+            species_qc = self.batch_correct(species_qc, batch_series)
+            metabolomics_qc = self.batch_correct(metabolomics_qc, batch_series)
+            logger.info("Batch correction applied using '%s'", batch_column)
 
         return species_qc, pathways_qc, metabolomics_qc
 

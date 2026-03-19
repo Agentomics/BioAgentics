@@ -193,3 +193,37 @@ def test_map_to_metabolic_axes(synthetic_data, tmp_path):
     # Should return a dict mapping factor indices to axis names
     assert isinstance(axes, dict)
     assert all(isinstance(v, list) for v in axes.values())
+
+
+# ── Auto Component Selection ──
+
+
+def test_auto_component_selection(synthetic_data, tmp_path):
+    """Test n_components='auto' selects via cross-validation."""
+    species_df, metab_df, _, _ = synthetic_data
+    integration = CMTFIntegration(
+        n_components="auto",
+        cv_folds=3,
+        cv_component_range=range(2, 6),
+    )
+    results = integration.fit(species_df, metab_df, output_dir=tmp_path)
+
+    # Should have selected a component count
+    assert isinstance(results["n_components"], int)
+    assert 2 <= results["n_components"] <= 5
+    # CV results should be stored
+    assert "cv_results" in results
+    assert len(results["cv_results"]["n_components"]) == 4
+    # Factors shape should match selected components
+    assert results["factors"].shape[1] == results["n_components"]
+
+
+def test_explicit_components_no_cv(synthetic_data, tmp_path):
+    """Test that explicit n_components skips CV."""
+    species_df, metab_df, _, _ = synthetic_data
+    integration = CMTFIntegration(n_components=3)
+    results = integration.fit(species_df, metab_df, output_dir=tmp_path)
+
+    assert results["n_components"] == 3
+    assert "cv_results" not in results
+    assert results["factors"].shape[1] == 3

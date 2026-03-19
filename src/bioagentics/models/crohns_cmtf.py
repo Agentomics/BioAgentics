@@ -284,14 +284,62 @@ class CMTFIntegration:
 
     def __init__(
         self,
-        n_components: int = 10,
+        n_components: int | str = 10,
         alpha: float = 0.65,
         random_state: int = 42,
+        cv_folds: int = 5,
+        cv_component_range: range | None = None,
     ) -> None:
+        """
+        Parameters
+        ----------
+        n_components : int or "auto"
+            Number of latent factors. Use "auto" to select via cross-validation.
+        alpha : float
+            Weight for species vs metabolites (default: 0.65).
+        cv_folds : int
+            Number of CV folds when n_components="auto" (default: 5).
+        cv_component_range : range, optional
+            Range of components to test in CV (default: range(2, min(n_samples//3, 16))).
+        """
         self.n_components = n_components
         self.alpha = alpha
         self.random_state = random_state
+        self.cv_folds = cv_folds
+        self.cv_component_range = cv_component_range
         self.model: CMTFModel | None = None
+        self.cv_results_: dict[str, list[float]] | None = None
+
+    def _select_n_components(
+        self,
+        X_species: np.ndarray,
+        X_metab: np.ndarray,
+    ) -> int:
+        """Select optimal n_components via cross-validation."""
+        n_samples = X_species.shape[0]
+        comp_range = self.cv_component_range or range(2, min(n_samples // 3, 16))
+
+        logger.info(
+            "CMTF CV: selecting n_components from %s (n=%d, %d folds)",
+            list(comp_range), n_samples, self.cv_folds,
+        )
+
+        self.cv_results_ = cross_validate_components(
+            X_species,
+            X_metab,
+            component_range=comp_range,
+            n_folds=self.cv_folds,
+            alpha=self.alpha,
+            random_state=self.random_state,
+        )
+
+        # Select component count with minimum mean loss
+        best_idx = int(np.argmin(self.cv_results_["mean_loss"]))
+        best_n = int(self.cv_results_["n_components"][best_idx])
+        best_loss = self.cv_results_["mean_loss"][best_idx]
+
+        logger.info("CMTF CV: best n_components=%d (loss=%.4f)", best_n, best_loss)
+        return best_n
 
     def fit(
         self,
@@ -325,17 +373,23 @@ class CMTFIntegration:
         species = species.loc[shared]
         metabolomics = metabolomics.loc[shared]
 
-        logger.info(
-            "CMTF fit: %d participants, %d species, %d metabolites, %d components",
-            len(shared), species.shape[1], metabolomics.shape[1], self.n_components,
-        )
-
         X_sp = species.values.astype(float)
         X_mb = metabolomics.values.astype(float)
 
+        # Select n_components via CV if "auto"
+        if self.n_components == "auto":
+            self.n_components = self._select_n_components(X_sp, X_mb)
+
+        n_comp = int(self.n_components)
+
+        logger.info(
+            "CMTF fit: %d participants, %d species, %d metabolites, %d components",
+            len(shared), species.shape[1], metabolomics.shape[1], n_comp,
+        )
+
         # Fit CMTF
         self.model = CMTFModel(
-            n_components=self.n_components,
+            n_components=n_comp,
             alpha=self.alpha,
             random_state=self.random_state,
         )
@@ -345,17 +399,17 @@ class CMTFIntegration:
         factors = pd.DataFrame(
             self.model.F_,
             index=species.index,
-            columns=[f"CMTF_{i}" for i in range(self.n_components)],
+            columns=[f"CMTF_{i}" for i in range(n_comp)],
         )
         species_loadings = pd.DataFrame(
             self.model.A_,
             index=species.columns,
-            columns=[f"CMTF_{i}" for i in range(self.n_components)],
+            columns=[f"CMTF_{i}" for i in range(n_comp)],
         )
         metabolite_loadings = pd.DataFrame(
             self.model.B_,
             index=metabolomics.columns,
-            columns=[f"CMTF_{i}" for i in range(self.n_components)],
+            columns=[f"CMTF_{i}" for i in range(n_comp)],
         )
 
         var_explained = self.model.variance_explained(X_sp, X_mb)
@@ -363,7 +417,7 @@ class CMTFIntegration:
         # Top features per factor
         top_species = {}
         top_metabolites = {}
-        for i in range(self.n_components):
+        for i in range(n_comp):
             sp_load = species_loadings.iloc[:, i].abs().sort_values(ascending=False)
             mb_load = metabolite_loadings.iloc[:, i].abs().sort_values(ascending=False)
             top_species[i] = list(sp_load.head(10).index)
@@ -376,7 +430,10 @@ class CMTFIntegration:
             "variance_explained": var_explained,
             "top_species_per_factor": top_species,
             "top_metabolites_per_factor": top_metabolites,
+            "n_components": n_comp,
         }
+        if self.cv_results_ is not None:
+            results["cv_results"] = self.cv_results_
 
         # Save outputs
         output_dir.mkdir(parents=True, exist_ok=True)
