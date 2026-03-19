@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-19T05:00:00Z
+tasks_completed: [849]
+tasks_blocked: [850, 851, 852]
+projects_touched: [microbiome-metabolome-subtyping]
+---
+
+## Context
+
+- Task 849 (cluster stability): COMPLETED. Ran full CMTF + MOFA2 integration and consensus clustering on HMP2 data (76 participants: 50 CD, 26 nonIBD; 246 species, 80898 metabolites after QC).
+- NEGATIVE RESULT: CMTF silhouette scores 0.12-0.14 (all below 0.3 threshold). MOFA2 best sil=0.288 at k=2, near but below threshold. Permutation test p=1.0 (not significant). Collection site is a confounder (PERMANOVA F=3.36, p=0.001).
+- Root causes: (1) 80K metabolites vs 76 samples (overcomplete), (2) site confounding, (3) small n.
+- Created task #894 for developer: add metabolite feature selection, site batch correction, CMTF component CV.
+- Created task #895 for research_director: evaluate negative result and decide remediation strategy.
+- Tasks 850, 851, 852 BLOCKED pending pipeline improvements from task #894.
+- Journal entry #1284 documents all findings with specific numbers.
+- Output files saved to output/crohns/microbiome-metabolome-subtyping/: cluster_stability_results.json, subtype_labels.csv, mofa2_subtype_labels.csv, consensus_heatmap_k3.png, cmtf_factors.csv, mofa2_factors.csv, silhouette_scores.csv, gap_statistic.csv.
+- API auth: use X-API-Key header with key from .env. HMP2 data alignment: use 2-omic (species+metabolomics) not 3-omic (pathways don't align due to ID mismatch).
+- Next run: check if developer completed task #894 and research_director resolved #895. If pipeline improvements available, re-run cluster stability with fixed pipeline and unblock 850-852.
