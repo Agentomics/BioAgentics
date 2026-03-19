@@ -19,6 +19,9 @@ from bioagentics.diagnostics.acoustic_multi_disease_panel.config import (
 from bioagentics.diagnostics.acoustic_multi_disease_panel.features.cough import (
     extract_cough_features,
 )
+from bioagentics.diagnostics.acoustic_multi_disease_panel.features.spectral import (
+    extract_spectral_features,
+)
 from bioagentics.voice_pd.features.acoustic import extract_acoustic_features
 from bioagentics.voice_pd.features.mfcc import extract_mfcc_features
 from bioagentics.voice_pd.features.pitch import extract_pitch_features
@@ -28,10 +31,10 @@ log = logging.getLogger(__name__)
 
 # Which extractors apply to which recording types
 _EXTRACTOR_MAP: dict[str, list[str]] = {
-    "sustained_vowel": ["acoustic", "pitch", "mfcc"],
-    "cough": ["cough", "mfcc"],
-    "counting": ["acoustic", "pitch", "mfcc", "temporal"],
-    "reading_passage": ["acoustic", "pitch", "mfcc", "temporal"],
+    "sustained_vowel": ["acoustic", "pitch", "mfcc", "spectral"],
+    "cough": ["cough", "mfcc", "spectral"],
+    "counting": ["acoustic", "pitch", "mfcc", "temporal", "spectral"],
+    "reading_passage": ["acoustic", "pitch", "mfcc", "temporal", "spectral"],
 }
 
 _EXTRACTORS = {
@@ -40,6 +43,7 @@ _EXTRACTORS = {
     "mfcc": extract_mfcc_features,
     "temporal": extract_temporal_features,
     "cough": extract_cough_features,
+    "spectral": extract_spectral_features,
 }
 
 
