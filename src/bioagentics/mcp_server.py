@@ -295,6 +295,8 @@ def update_project(
     findings_content: str = "",
     plain_summary: str = "",
     impact_score: str = "",
+    novelty_summary: str = "",
+    blind_spots: str = "",
 ) -> str:
     """Update a research initiative's status, description, and/or labels.
 
@@ -312,6 +314,12 @@ def update_project(
         treatment approaches, 'high' for promising results with strong
         therapeutic potential, 'moderate' for useful contributions to the field,
         'incremental' for confirmatory or small-step results.
+    novelty_summary: what makes this research novel or important — what gap does
+        it fill, what hasn't been done before, why should anyone care about
+        these results. 2-4 sentences highlighting the unique contribution.
+    blind_spots: known limitations, blind spots, and directions for further
+        research. What questions remain unanswered? What could invalidate
+        the findings? What follow-up studies are needed? 2-4 sentences.
     """
     payload: dict = {}
     if status:
@@ -328,6 +336,10 @@ def update_project(
         payload["plain_summary"] = plain_summary
     if impact_score:
         payload["impact_score"] = impact_score
+    if novelty_summary:
+        payload["novelty_summary"] = novelty_summary
+    if blind_spots:
+        payload["blind_spots"] = blind_spots
     if not payload:
         return json.dumps({"error": "no fields to update"})
     return json.dumps(

@@ -181,6 +181,8 @@ class ProjectCreate(BaseModel):
         default=None,
         pattern=r"^(breakthrough|high|moderate|incremental)$",
     )
+    novelty_summary: str | None = Field(default=None, max_length=5_000)
+    blind_spots: str | None = Field(default=None, max_length=5_000)
 
 
 class ProjectUpdate(BaseModel):
@@ -194,6 +196,8 @@ class ProjectUpdate(BaseModel):
         default=None,
         pattern=r"^(breakthrough|high|moderate|incremental)$",
     )
+    novelty_summary: str | None = Field(default=None, max_length=5_000)
+    blind_spots: str | None = Field(default=None, max_length=5_000)
 
 
 class ProjectSummary(BaseModel):
@@ -204,6 +208,8 @@ class ProjectSummary(BaseModel):
     labels: str | None
     plain_summary: str | None = None
     impact_score: str | None = None
+    novelty_summary: str | None = None
+    blind_spots: str | None = None
     created_at: str
     updated_at: str
 

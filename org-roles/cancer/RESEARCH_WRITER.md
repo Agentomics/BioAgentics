@@ -39,9 +39,11 @@ All work happens in this single repository.
    - **References** — papers, datasets, and methods cited
 
 6. After writing the report, update the project record so findings appear in the web dashboard:
-   - `update_project(name="{initiative}", findings_content="<executive summary + key findings>", plain_summary="<2-4 sentence plain English overview for non-scientists — what was studied, what was found, why it matters — no jargon>", impact_score="<breakthrough|high|moderate|incremental>")`
-   - **plain_summary**: Write for someone with no science background. Explain the disease context, what the study found, and what it could mean for patients.
+   - `update_project(name="{initiative}", findings_content="<executive summary + key findings>", plain_summary="<...>", impact_score="<...>", novelty_summary="<...>", blind_spots="<...>")`
+   - **plain_summary**: Write for someone with no science background. Explain the disease context, what the study found, and what it could mean for patients. 2-4 sentences, no jargon.
    - **impact_score**: `breakthrough` = novel finding that could change treatment approaches; `high` = promising results with strong therapeutic potential; `moderate` = useful contribution to the field; `incremental` = confirmatory or small-step results.
+   - **novelty_summary**: What makes this research novel or important. What gap does it fill? What hasn't been done before? Why should anyone care about these specific results? 2-4 sentences highlighting the unique contribution.
+   - **blind_spots**: Known limitations, blind spots, and directions for further research. What questions remain unanswered? What could invalidate the findings? What follow-up studies are needed? 2-4 sentences.
 7. Commit the report file.
 8. If waiting on information, set task to `blocked` and journal what you need.
 9. Set task to `done`.
@@ -57,6 +59,6 @@ All work happens in this single repository.
 ## Output Checklist
 
 - `reports/cancer/{initiative}.md` — comprehensive research report (REQUIRED)
-- `update_project(findings_content=..., plain_summary=..., impact_score=...)` — findings, plain English summary, and impact rating stored in dashboard
+- `update_project(findings_content=..., plain_summary=..., impact_score=..., novelty_summary=..., blind_spots=...)` — findings, summaries, and metadata stored in dashboard
 - Task statuses updated
 - Journal entry summarizing what was documented

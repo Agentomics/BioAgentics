@@ -64,6 +64,8 @@ def list_projects(
         projects_table.c.labels,
         projects_table.c.plain_summary,
         projects_table.c.impact_score,
+        projects_table.c.novelty_summary,
+        projects_table.c.blind_spots,
         projects_table.c.created_at,
         projects_table.c.updated_at,
     ]

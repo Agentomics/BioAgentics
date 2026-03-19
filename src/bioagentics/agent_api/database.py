@@ -139,6 +139,8 @@ projects_table = Table(
     Column("findings_content", Text, nullable=True),
     Column("plain_summary", Text, nullable=True),
     Column("impact_score", String, nullable=True),
+    Column("novelty_summary", Text, nullable=True),
+    Column("blind_spots", Text, nullable=True),
     Column(
         "created_at",
         String,
@@ -194,6 +196,16 @@ def init_db():
             if "plain_summary" not in col_names:
                 conn.execute(text("ALTER TABLE projects ADD COLUMN plain_summary TEXT"))
                 conn.execute(text("ALTER TABLE projects ADD COLUMN impact_score TEXT"))
+                conn.commit()
+        except Exception:
+            pass
+        # Migrate projects table: add novelty_summary and blind_spots if missing
+        try:
+            cols = conn.execute(text("PRAGMA table_info(projects)")).fetchall()
+            col_names = [c[1] for c in cols]
+            if "novelty_summary" not in col_names:
+                conn.execute(text("ALTER TABLE projects ADD COLUMN novelty_summary TEXT"))
+                conn.execute(text("ALTER TABLE projects ADD COLUMN blind_spots TEXT"))
                 conn.commit()
         except Exception:
             pass
