@@ -4,6 +4,7 @@
 import concurrent.futures
 import json
 import os
+import random
 import signal
 import subprocess
 import sys
@@ -48,6 +49,17 @@ class RunStats:
     cost_usd: float = 0.0
     num_turns: int = 0
     session_id: str = ""
+
+
+def _interleave(queues: list[list]) -> list:
+    """Round-robin interleave multiple queues into one."""
+    result = []
+    max_len = max((len(q) for q in queues), default=0)
+    for i in range(max_len):
+        for q in queues:
+            if i < len(q):
+                result.append(q[i])
+    return result
 
 
 def _is_stopping() -> bool:
@@ -175,9 +187,7 @@ def clear_stale_presences():
         if not updated:
             continue
         try:
-            last_seen = datetime.strptime(updated, "%Y-%m-%dT%H:%M:%SZ").replace(
-                tzinfo=timezone.utc
-            )
+            last_seen = datetime.fromisoformat(updated.replace("Z", "+00:00"))
         except ValueError:
             continue
         age = (now - last_seen).total_seconds()
@@ -601,57 +611,60 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
         # --- Dispatcher owns presence ---
         set_presence(username, "running", project, division)
 
-        cmd = build_agent_command(config, project, division)
-        print(
-            f"  dispatch: role={config.role} backend={config.backend} "
-            f"model={config.model} effort={config.effort} "
-            f"project={project or '<all>'}"
-        )
-
         started_at = utcnow()
         start_time = time.monotonic()
-        print(f"  START: {label} (attempt {attempt})")
-
-        # Capture stdout to parse stream-json result event for stats
-        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, text=True)
-        with _children_lock:
-            _children.append(proc)
-
         stats: RunStats | None = None
+        exit_code = 1  # default to failure
+
         try:
-            # Stream stdout line by line, tee to terminal, parse result event
-            if proc.stdout is None:
-                raise RuntimeError(f"Failed to capture stdout for {label}")
-            for line in proc.stdout:
-                sys.stdout.write(line)
-                sys.stdout.flush()
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    event = json.loads(line)
-                    if event.get("type") == "result":
-                        usage = event.get("usage", {})
-                        stats = RunStats(
-                            input_tokens=usage.get("input_tokens", 0),
-                            output_tokens=usage.get("output_tokens", 0),
-                            cache_read_tokens=usage.get("cache_read_input_tokens", 0),
-                            cache_creation_tokens=usage.get("cache_creation_input_tokens", 0),
-                            cost_usd=event.get("total_cost_usd", 0.0) or 0.0,
-                            num_turns=event.get("num_turns", 0),
-                            session_id=event.get("session_id", ""),
-                        )
-                except (json.JSONDecodeError, TypeError):
-                    pass
-            proc.wait()
-            exit_code = proc.returncode
+            cmd = build_agent_command(config, project, division)
+            print(
+                f"  dispatch: role={config.role} backend={config.backend} "
+                f"model={config.model} effort={config.effort} "
+                f"project={project or '<all>'}"
+            )
+            print(f"  START: {label} (attempt {attempt})")
+
+            # Capture stdout to parse stream-json result event for stats
+            proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, text=True)
+            with _children_lock:
+                _children.append(proc)
+
+            try:
+                # Stream stdout line by line, tee to terminal, parse result event
+                if proc.stdout is None:
+                    raise RuntimeError(f"Failed to capture stdout for {label}")
+                for line in proc.stdout:
+                    sys.stdout.write(line)
+                    sys.stdout.flush()
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        event = json.loads(line)
+                        if event.get("type") == "result":
+                            usage = event.get("usage", {})
+                            stats = RunStats(
+                                input_tokens=usage.get("input_tokens", 0),
+                                output_tokens=usage.get("output_tokens", 0),
+                                cache_read_tokens=usage.get("cache_read_input_tokens", 0),
+                                cache_creation_tokens=usage.get("cache_creation_input_tokens", 0),
+                                cost_usd=event.get("total_cost_usd", 0.0) or 0.0,
+                                num_turns=event.get("num_turns", 0),
+                                session_id=event.get("session_id", ""),
+                            )
+                    except (json.JSONDecodeError, TypeError):
+                        pass
+                proc.wait()
+                exit_code = proc.returncode
+            finally:
+                with _children_lock:
+                    if proc in _children:
+                        _children.remove(proc)
         except Exception as e:
             print(f"  ERROR: {label} — {e}")
             exit_code = 1
         finally:
-            with _children_lock:
-                if proc in _children:
-                    _children.remove(proc)
             # --- Always clean up presence (must include division+project for composite PK) ---
             set_presence(username, "idle", project, division)
 
@@ -693,10 +706,12 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
             with _git_lock:
                 # 1. Commit cache summaries
                 cache_dir = REPO_ROOT / "cache"
-                subprocess.run(
-                    ["git", "add"] + [str(p) for p in cache_dir.glob("*summary")],
-                    capture_output=True, cwd=REPO_ROOT,
-                )
+                summary_files = [str(p) for p in cache_dir.glob("*summary")]
+                if summary_files:
+                    subprocess.run(
+                        ["git", "add"] + summary_files,
+                        capture_output=True, cwd=REPO_ROOT,
+                    )
                 subprocess.run(
                     [
                         "git",
@@ -852,9 +867,26 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
             # Tasks exist but no project field — run unscoped
             task_queue.append((config, None))
 
-    # Interleave: task-driven agents first (they do concrete work),
-    # then generators (they create new work for future cycles)
-    work_queue: list[tuple[AgentConfig, str | None]] = task_queue + generator_queue
+    # Interleave across divisions for fairness: round-robin ensures each
+    # division gets early access to worker slots instead of the first
+    # division in agents.toml monopolizing all slots.
+    # Task-driven agents run first (concrete work), generators second.
+    task_by_div: dict[str, list[tuple[AgentConfig, str | None]]] = {}
+    for item in task_queue:
+        task_by_div.setdefault(item[0].division, []).append(item)
+    gen_by_div: dict[str, list[tuple[AgentConfig, str | None]]] = {}
+    for item in generator_queue:
+        gen_by_div.setdefault(item[0].division, []).append(item)
+
+    # Shuffle division order each cycle to prevent alphabetical bias
+    task_divs = list(task_by_div.values())
+    random.shuffle(task_divs)
+    gen_divs = list(gen_by_div.values())
+    random.shuffle(gen_divs)
+
+    work_queue: list[tuple[AgentConfig, str | None]] = (
+        _interleave(task_divs) + _interleave(gen_divs)
+    )
 
     if not work_queue:
         print("  no work queued")
@@ -1021,13 +1053,20 @@ def main():
     print("startup: checking for stuck in_progress tasks...")
     reset_stuck_tasks()
 
-    # Signal handler only sets the stop event — actual cleanup happens in the
-    # finally block via _shutdown().  Calling _shutdown() here would risk
-    # deadlocking on _children_lock or hanging on API calls.
+    # Signal handler sets the stop event and terminates children to unblock
+    # agent threads waiting on subprocess output.  Full cleanup happens in
+    # the finally block via _shutdown().
     def handle_signal(sig, _frame):
         signame = signal.Signals(sig).name
         print(f"\n{signame} received — shutting down...")
         _stop_event.set()
+        # Terminate children to unblock agent threads (list snapshot is
+        # GIL-safe; terminate is idempotent)
+        for proc in list(_children):
+            try:
+                proc.terminate()
+            except OSError:
+                pass
 
     signal.signal(signal.SIGINT, handle_signal)
     signal.signal(signal.SIGTERM, handle_signal)

@@ -32,19 +32,24 @@ def _api(method: str, path: str, **kwargs) -> dict:
         )
         resp.raise_for_status()
         return resp.json()
-    except requests.RequestException as e:
+    except (requests.RequestException, json.JSONDecodeError) as e:
         return {"error": str(e)}
 
 
 def _gh(*args: str, cwd: str | Path | None = None) -> str:
     """Run a gh CLI command and return output."""
-    result = subprocess.run(
-        ["gh", *args],
-        capture_output=True,
-        text=True,
-        cwd=cwd or REPO_ROOT,
-        timeout=60,
-    )
+    try:
+        result = subprocess.run(
+            ["gh", *args],
+            capture_output=True,
+            text=True,
+            cwd=cwd or REPO_ROOT,
+            timeout=60,
+        )
+    except FileNotFoundError:
+        return "Error: gh CLI not installed (https://cli.github.com)"
+    except subprocess.TimeoutExpired:
+        return "Error: gh command timed out after 60s"
     output = result.stdout.strip()
     if result.returncode != 0:
         err = result.stderr.strip()
