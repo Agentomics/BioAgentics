@@ -1,0 +1,127 @@
+{
+  "clinical_only": {
+    "label": "clinical_only",
+    "n_patients": 174,
+    "n_features": 5,
+    "mean_auc": 0.6342885375494071,
+    "std_auc": 0.06184782930414832,
+    "fold_aucs": [
+      0.644927536231884,
+      0.7447552447552448,
+      0.6293706293706294,
+      0.5804195804195804,
+      0.571969696969697
+    ],
+    "mean_sensitivity": 0.782051282051282,
+    "mean_specificity": 0.5948616600790514,
+    "feature_importance": {
+      "location_ileal": 0.8448349049390117,
+      "macro_inflammation": 0.8448349049390117,
+      "paris_a1a": 0.27092122280334385,
+      "age_at_diagnosis": 0.15894274723200635,
+      "sex_male": 0.1344166852874616
+    }
+  },
+  "txn_only": {
+    "label": "transcriptomic_only",
+    "n_patients": 174,
+    "n_features": 23,
+    "mean_auc": 0.6954722813418466,
+    "std_auc": 0.06079786079373392,
+    "fold_aucs": [
+      0.7608695652173912,
+      0.6258741258741258,
+      0.6328671328671328,
+      0.6888111888111889,
+      0.7689393939393939
+    ],
+    "mean_sensitivity": 0.6333333333333333,
+    "mean_specificity": 0.7648221343873518,
+    "feature_importance": {
+      "pathway_collagen_ecm": 1.2990788300381715,
+      "gene_FGF2": 1.0976965054733065,
+      "gene_CTHRC1": 0.9377168878956086,
+      "gene_TNC": 0.8824703218653431,
+      "gene_SERPINE1": 0.7376754920297101,
+      "gene_TNFRSF25": 0.6592027773358009,
+      "gene_TNFSF15": 0.5838980200812806,
+      "gene_LY96": 0.4865289871257172,
+      "pathway_yap_taz_targets": 0.43708010257397667,
+      "pathway_wnt_signaling": 0.418455717383747,
+      "gene_HDAC1": 0.4077825762895486,
+      "gene_AKAP11": 0.4025326526020344,
+      "gene_POSTN": 0.36099880174305266,
+      "gene_GREM1": 0.31798562123240437,
+      "pathway_emt": 0.30621389022894957,
+      "gene_CD38": 0.2885948062920585,
+      "pathway_tgfb_signaling": 0.24761140970722736,
+      "gene_SRM": 0.23427222299508701,
+      "pathway_mmp_activity": 0.21483931442364343,
+      "gene_CYR61": 0.2089482705912463,
+      "pathway_inflammatory_fibroblast_module": 0.18373579274982452,
+      "gene_CPA3": 0.12225852204200201,
+      "gene_EHD2": 0.10538023498912723
+    }
+  },
+  "full": {
+    "label": "full_model",
+    "n_patients": 174,
+    "n_features": 28,
+    "mean_auc": 0.7481681362116145,
+    "std_auc": 0.05038506478920113,
+    "fold_aucs": [
+      0.8297101449275361,
+      0.7657342657342657,
+      0.6853146853146853,
+      0.7062937062937062,
+      0.7537878787878788
+    ],
+    "mean_sensitivity": 0.7730769230769232,
+    "mean_specificity": 0.6656126482213438,
+    "feature_importance": {
+      "pathway_collagen_ecm": 1.351111401302171,
+      "gene_CTHRC1": 1.12201081535389,
+      "gene_FGF2": 0.9772654480062476,
+      "location_ileal": 0.9109307656255851,
+      "macro_inflammation": 0.9109307656255851,
+      "gene_TNFSF15": 0.8446305292845577,
+      "gene_SERPINE1": 0.7667641657462705,
+      "gene_TNFRSF25": 0.6780978242755905,
+      "gene_LY96": 0.5439620331131616,
+      "gene_TNC": 0.5226968870097138,
+      "gene_HDAC1": 0.5151994229761128,
+      "gene_AKAP11": 0.49841753623077556,
+      "pathway_yap_taz_targets": 0.42325202926098404,
+      "gene_CD38": 0.39349713373602246,
+      "gene_POSTN": 0.38509407291783593,
+      "pathway_wnt_signaling": 0.3561932885593085,
+      "gene_SRM": 0.32544579070243584,
+      "gene_GREM1": 0.3020516097003679,
+      "pathway_tgfb_signaling": 0.2928441642637551,
+      "pathway_emt": 0.2707562959267715,
+      "gene_EHD2": 0.26632594500622386,
+      "pathway_mmp_activity": 0.2315348149138235,
+      "pathway_inflammatory_fibroblast_module": 0.20142665020256692,
+      "age_at_diagnosis": 0.18714682307747077,
+      "gene_CYR61": 0.17899844249077496,
+      "paris_a1a": 0.17274653894702072,
+      "gene_CPA3": 0.16035228706228438,
+      "sex_male": 0.07008534857836166
+    }
+  },
+  "risk_stratification": {
+    "low": {
+      "n": 58,
+      "event_rate": 0.0
+    },
+    "medium": {
+      "n": 58,
+      "event_rate": 0.08620689655172414
+    },
+    "high": {
+      "n": 58,
+      "event_rate": 1.0
+    },
+    "fold_difference_high_vs_low": Infinity
+  }
+}
