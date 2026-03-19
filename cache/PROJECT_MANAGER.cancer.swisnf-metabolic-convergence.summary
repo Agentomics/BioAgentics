@@ -1,0 +1,20 @@
+---
+last_run: 2026-03-19T14:48:00Z
+tasks_completed: [949]
+tasks_blocked: []
+projects_touched: [swisnf-metabolic-convergence]
+---
+
+## Context
+
+- swisnf-metabolic-convergence: Routed from planning → development. Created 6 developer tasks (#1005-#1010) for Phases 1-5.
+- Task breakdown:
+  - #1005 (p5): Phase 1a — SWI/SNF cell line classifier (ARID1A + SMARCA4 mutation/deletion)
+  - #1006 (p5): Phase 1b — KEGG metabolic gene filter + dependency screen (Cohen's d, FDR)
+  - #1007 (p4): Phase 2 — Cross-atlas validation (HMGCR in SMARCA4, mito genes in ARID1A, convergent gene identification)
+  - #1008 (p4): Phase 3 — Pathway enrichment (hypergeometric + GSEA)
+  - #1009 (p3): Phase 4 — TCGA expression analysis in SWI/SNF-mutant tumors
+  - #1010 (p3): Phase 5 — Drug repurposing (statins, metformin, PRISM validation)
+- Dependencies: 1a→1b→2→3/4/5 (Phases 3-5 can partially parallelize after Phase 2)
+- Next: Monitor developer progress on Phase 1a (#1005). When all developer tasks are done, advance to analysis.
+- Note: Extensive reusable code exists in ARID1A/SMARCA4 atlas modules and gene_ids.py data loaders.
