@@ -15,6 +15,7 @@ from bioagentics.agent_api.database import (
     api_keys,
     journal,
     projects_table,
+    runs,
     tasks,
 )
 from bioagentics.config import REPO_ROOT
@@ -1547,6 +1548,11 @@ def render_stats_html(db: Session, division: str = "") -> str:
     running_agents = db.execute(agents_q).scalar() or 0
     journal_count = db.execute(journal_q).scalar() or 0
 
+    cost_q = select(func.sum(runs.c.cost_usd))
+    if division:
+        cost_q = cost_q.where(runs.c.division == division)
+    total_cost = db.execute(cost_q).scalar() or 0.0
+
     pending = task_counts.get("pending", 0)
     in_progress = task_counts.get("in_progress", 0)
     blocked = task_counts.get("blocked", 0)
@@ -1555,7 +1561,7 @@ def render_stats_html(db: Session, division: str = "") -> str:
 
     done_pct = int(done / total_tasks * 100) if total_tasks > 0 else 0
 
-    return f"""<div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+    return f"""<div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
   <div class="bg-[#0c0c0e] border border-[#27272a] rounded-lg px-4 py-3 cursor-pointer hover:border-[#3f3f46] transition-colors"
        hx-get="/ui/tasks" hx-target="#tab-content" hx-push-url="true">
     <div class="text-xs text-[#71717a] font-medium mb-1">Tasks</div>
@@ -1583,6 +1589,11 @@ def render_stats_html(db: Session, division: str = "") -> str:
        hx-get="/ui/journal" hx-target="#tab-content" hx-push-url="true">
     <div class="text-xs text-[#71717a] font-medium mb-1">Journal</div>
     <div class="text-2xl font-semibold tabular-nums">{journal_count}</div>
+  </div>
+  <div class="bg-[#0c0c0e] border border-[#27272a] rounded-lg px-4 py-3 cursor-pointer hover:border-[#3f3f46] transition-colors"
+       hx-get="/ui/runs" hx-target="#tab-content" hx-push-url="true">
+    <div class="text-xs text-[#71717a] font-medium mb-1">Cost</div>
+    <div class="text-2xl font-semibold tabular-nums text-[#4ade80]">${total_cost:.2f}</div>
   </div>
 </div>"""
 
