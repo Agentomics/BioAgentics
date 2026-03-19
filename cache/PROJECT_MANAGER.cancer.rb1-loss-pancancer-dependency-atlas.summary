@@ -1,17 +1,18 @@
 ---
-last_run: 2026-03-19T12:00:00Z
-tasks_completed: [920]
+last_run: 2026-03-19T18:45:00Z
+tasks_completed: [1042]
 tasks_blocked: []
 projects_touched: [rb1-loss-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- rb1-loss-pancancer-dependency-atlas: Advanced analysis → validation. Project status now `validation`.
-- Completed task #920 (label update + analyst routing). Labels already had novel-finding; analyst #830 covered full scope.
-- Developer bug fix #840 (negative control labeling) confirmed resolved.
-- Created validation_scientist task #999: reproducibility, statistical rigor, classifier validity, CDK2 pooling stress test, SAGA/ATAC novelty check.
-- All dev tasks (762-766, 840) done. Analyst task #830 done (PASSED). Validation task #999 pending.
-- Open RD tasks: #937 (ATR+PKMYT1 literature), #935 (4-gene CDK2 signature), #801 (INX-315 monitoring Jun 2026). Independent of validation pipeline.
-- Next: Monitor validation_scientist #999. When done and PASS → create research_writer documentation task → advance to `documentation`. If FAIL → route issues back to developer/analyst.
-- Journal #1417 records this pipeline advancement.
+- rb1-loss-pancancer-dependency-atlas: Advanced validation → documentation. Project status now `documentation`.
+- Validation task #999 PASSED (journal #1492). No remediation needed. Code correct, stats rigorous, findings biologically plausible.
+- Completed PM task #1042 (ATR+PKMYT1 addendum routing). Created developer task #1112 for ATR/PKMYT1 Phase 2 analysis addendum (non-blocking, parallel to docs).
+- Created research_writer task #1111: write final report to reports/cancer/rb1-loss-pancancer-dependency-atlas.md.
+- All dev tasks (762-766, 840) done. Analyst #830 done (PASSED). Validation #999 done (PASSED).
+- Developer addendum #1112 (ATR+PKMYT1) pending — runs in parallel with documentation.
+- Open independent RD tasks: #935 (4-gene CDK2 signature), #801 (INX-315 monitoring Jun 2026), #1057 (INX-315 FDA Fast Track evaluation).
+- Journal #1612 records this pipeline advancement.
+- Next: Monitor research_writer #1111. When done and report committed → verify reports/cancer/rb1-loss-pancancer-dependency-atlas.md exists → advance to `published`.
