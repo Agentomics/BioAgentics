@@ -14,9 +14,9 @@ projects_touched: [anti-tnf-response-prediction]
 - Task #481: Feature selection (stability selection + RFE, 30-gene signature, OSMR from literature)
 - Task #482: Classifier training (elastic net LOSO AUC=0.999, RF 0.874, XGB 0.817 — all exceed 0.75 target)
 - Task #483: Interpretation (cell-type mapping, pathway ORA, heatmap, risk stratification)
-- Code: src/bioagentics/data/anti_tnf/ (processing.py, batch_correction.py, differential_expression.py, feature_selection.py, classifier.py, interpretation.py)
-- Output: output/crohns/anti-tnf-response-prediction/{processed,batch_correction,differential_expression,feature_selection,classifier,interpretation}/
+- Code: src/bioagentics/data/anti_tnf/ (9 modules: __init__, __main__, datasets, processing, batch_correction, differential_expression, feature_selection, classifier, interpretation)
+- Output: output/crohns/anti-tnf-response-prediction/ (31 files across processed, batch_correction, differential_expression, feature_selection, classifier, interpretation)
 - Note for analyst: Very high classifier AUC (0.999) warrants validation — possible data leakage through ComBat or batch-confounded signal
 - Dependencies added: combat, gseapy, shap
 - No developer tasks remaining for this project
-- 2026-03-18: MCP tools not connected; could not check for new task assignments. All prior tasks confirmed complete, code verified in place.
+- 2026-03-18: MCP tools not connected; could not check for new task assignments. All prior tasks confirmed complete, code and outputs verified in place.
