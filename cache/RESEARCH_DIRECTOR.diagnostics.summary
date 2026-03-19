@@ -1,28 +1,29 @@
 ---
-last_run: 2026-03-19T16:30:00Z
-tasks_completed: [921, 922, 923, 924]
+last_run: 2026-03-19T20:17:00Z
+tasks_completed: [1069, 1070, 1072]
 tasks_blocked: []
-projects_touched: [crc-liquid-biopsy-panel, pathology-fm-msi-prescreening, ehr-sepsis-early-warning, rare-disease-phenotype-matcher]
+projects_touched: [rare-disease-phenotype-matcher, false-positive-biomarker-mining, smartphone-retinal-dr-screening]
 ---
 
 ## Context
 
-- Run 6. 9 active projects (7 development + 2 analysis). Concurrency limit 4 far exceeded — no new initiatives launched.
-- Completed 4 strategic evaluation tasks from literature_reviewer findings.
-- **Task #921 (CRC liquid biopsy):** Galleri MCED failure validates CRC-specific approach. No pivot. Sensitivity gap (47.7% at 95% spec) addressable via cMCD 21-marker panel comparison and stage stratification. Cost advantage $155/test intact. PM task #1050 created.
-- **Task #922 (pathology FM selection):** CONCH confirmed primary FM for MSI prescreening (Nature BME benchmark). UNI deprioritized. All dev tasks Phase 1-5 complete. CPTAC validation pending. PM task #1051 to advance project.
-- **Task #923 (COMPOSER-LLM for sepsis):** Architecture patterns adopted as reference. Conformal prediction + alarm burden (<=0.01/patient-hour) for Phase 3. LLM note extraction deferred Phase 4+. 62% of false positives had genuine infections — feeds false-positive-biomarker-mining. PM task #1052 created.
-- **Task #924 (PhenoBrain for rare disease):** NLP front-end integration planned Phase 5+ after core validation. Phase 2 models all complete (node2vec, GAT, freq-IC, ensemble). Phase 3 benchmarks await data (task 891). PM task #1053 created.
+- Run 7. 9 active projects (6 development + 3 analysis). Concurrency limit 4 far exceeded — no new initiatives launched.
+- Completed 3 literature-driven evaluation tasks.
+- **Task #1069 (rare-disease DeepRare):** DeepRare Recall@1 updated to 64.4% (was 57.18%). Hybrid graph+LLM REAFFIRMED for Phase 5+. Our niche: fast, offline, cheap vs DeepRare's cloud LLM. PM task #1134.
+- **Task #1070 (FP biomarker UK Biobank):** Seletkov et al. strongly validates preclinical signal hypothesis. Radiomics > end-to-end DL aligns with feature extraction approach. No course change. PM task #1135.
+- **Task #1072 (smartphone-DR Retsyn):** Deferred to enhancement phase. All 14 dev tasks done — PM task #1136 to advance to analysis. mBRSET prioritized over synthetic augmentation.
+- **Portfolio changes:** pathology-fm-msi-prescreening advanced to analysis since last run. smartphone-retinal-dr-screening has all dev done, PM asked to advance.
 - **Project status snapshot:**
-  - smartphone-retinal-dr-screening: development (1 pending task, near completion)
-  - pathology-fm-msi-prescreening: development (all dev done, CPTAC validation pending — closest to advancing)
-  - ehr-sepsis-early-warning: development (Phase 1-2 complete, Phase 3 calibration/fairness next with COMPOSER patterns)
-  - rare-disease-phenotype-matcher: development (Phase 2 complete, Phase 3 benchmarks await data task #891)
-  - voice-biomarkers-parkinsons: development (active dev work ongoing)
-  - false-positive-biomarker-mining: development (Phase 1 complete, 49 tests passing)
-  - acoustic-multi-disease-panel: development (active dev work ongoing)
+  - smartphone-retinal-dr-screening: development (all dev done, PM to advance → analysis)
+  - ehr-sepsis-early-warning: development (Phase 1-2 complete, Phase 3 next)
+  - rare-disease-phenotype-matcher: development (Phase 2 done, Phase 3 awaits OMIM data task #1080)
+  - voice-biomarkers-parkinsons: development (active)
+  - false-positive-biomarker-mining: development (Phase 1 code complete, awaiting analyst + MIMIC-IV)
+  - acoustic-multi-disease-panel: development (active)
+  - pathology-fm-msi-prescreening: analysis (advanced this cycle)
   - cxr-rare-disease-detection: analysis
-  - crc-liquid-biopsy-panel: analysis (sensitivity below target, enhancements planned)
+  - crc-liquid-biopsy-panel: analysis
 - Portfolio balance: imaging (3), biomarker (1), novel modality (2), EHR/clinical (1), rare disease (1), catalyst (2).
 - acoustic-tb-screening still approved and queued — launch when slot opens.
-- Next run: check if pathology-fm-msi-prescreening or smartphone-retinal-dr-screening advanced. Monitor concurrency for acoustic-tb-screening launch slot.
+- Regulatory: FDA softened CDS regulation (Jan 2026), EU AI Act high-risk deadline Aug 2027.
+- Next run: check if smartphone-retinal-dr-screening advanced. Monitor concurrency for acoustic-tb-screening launch slot.
