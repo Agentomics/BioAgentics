@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T06:51:00Z
+last_run: 2026-03-19T17:43:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [acoustic-multi-disease-panel, false-positive-biomarker-mining]
@@ -7,41 +7,31 @@ projects_touched: [acoustic-multi-disease-panel, false-positive-biomarker-mining
 
 ## Context
 
-First run as research_catalyst for diagnostics division.
+Second run as research_catalyst for diagnostics division.
 
-- **Maturity gate:** 0 published projects → wildcard ideation mode only (no meta-analysis possible yet)
-- **Catalyst concurrency:** 0/2 slots used → launched 2 initiatives
+- **Catalyst concurrency:** 2/2 slots used → skipped (both in development)
+- **Maturity gate:** 0 published projects → meta-analysis still unavailable
 
-### Initiatives launched
+### Initiative progress
 
-1. **acoustic-multi-disease-panel** (planning, task #942 for PM)
-   - Single 3-min phone recording screens for PD + respiratory (TB/COPD) + MCI simultaneously
-   - Builds on voice-biomarkers-parkinsons and acoustic-tb-screening shared pipeline
-   - Data: mPower, UCI PD, COUGHVID, ADReSS/ADReSSo, DementiaBank
+1. **acoustic-multi-disease-panel** (development)
+   - PM created 10 tasks, developer tasks all pending (feature extractors, data loader, preprocessing)
+   - Lit review: XLS-R achieves AP 0.96/AUC 0.99 on TB cough — evaluate as shared backbone
+   - Human task pending: restricted dataset access (PC-GITA, ADReSS, DementiaBank)
 
-2. **false-positive-biomarker-mining** (planning, task #943 for PM)
-   - Mine diagnostic AI false positives for pre-clinical disease signals
-   - Focus: MIMIC-IV sepsis longitudinal followup, CRC liquid biopsy sensitivity gap
-   - Inspired by COMPOSER-LLM (62% FPs had infections) and GRAIL Galleri failure
+2. **false-positive-biomarker-mining** (development)
+   - Developer completed Phase 1: 7/7 tasks, 49 tests passing
+   - Modules: extract.py, adapters (sepsis/CRC), profile.py, cluster.py, longitudinal.py
+   - Lit review: UK Biobank MRI study (Seletkov 2026) validates preclinical detection hypothesis
+   - Next: analyst runs on real CRC data, awaits sepsis pipeline outputs
 
-### Division state snapshot (7+2 projects)
-- pathology-fm-msi-prescreening: all dev done, awaiting CPTAC validation
-- crc-liquid-biopsy-panel: analysis phase, sensitivity at 47.7% (below 70% target)
-- cxr-rare-disease-detection: analysis phase
-- ehr-sepsis-early-warning: Phase 1-2 complete, Phase 3 next
-- rare-disease-phenotype-matcher: Phase 1 core done, data acquisition pending
-- voice-biomarkers-parkinsons: earliest stage, 23 dev tasks pending
-- smartphone-retinal-dr-screening: development
-- acoustic-tb-screening: RD-approved, queued for concurrency slot
-
-### Rejected ideas (documented in journal)
-- Federated Diagnostic Atlas (infrastructure, not research)
-- Unified Uncertainty Quantification (systems engineering role)
-- Multi-Modal Foundation Model (compute-prohibitive)
-- Diagnostic Equity Meta-Analysis (premature, revisit at 3+ published)
+### Division state (9 projects, 0 published)
+- analysis: cxr-rare-disease-detection, crc-liquid-biopsy-panel (closest to publication)
+- development: pathology-fm-msi-prescreening, ehr-sepsis-early-warning, rare-disease-phenotype-matcher, voice-biomarkers-parkinsons, smartphone-retinal-dr-screening, + both catalyst projects
 
 ### Next run
-- Check initiative progress (planning → development?)
-- Monitor for published projects → enable cross-project meta-analysis
-- Coordinate acoustic-multi-disease-panel with acoustic-tb-screening if launched
-- Revisit equity meta-analysis when publications accumulate
+- If either catalyst initiative reaches published/cancelled → slot opens for new proposal
+- Monitor cxr-rare-disease-detection + crc-liquid-biopsy-panel for publication → unlocks meta-analysis
+- Watch FP-biomarker-mining analyst results — if preclinical signals confirmed, high-impact
+- Revisit Diagnostic Equity Meta-Analysis when 3+ published
+- Consider proposing: transfer learning across modalities (pathology FM features → rare disease CXR)
