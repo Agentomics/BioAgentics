@@ -10,6 +10,7 @@ Multiple converging lines of evidence implicate immune dysregulation in TS:
 3. **Elevated pro-inflammatory cytokines** — TNF-α, IL-12 documented in TS patients
 4. **Th17-mediated BBB disruption** — leading to microglial activation in basal ganglia
 5. **Frontiers in Immunology (Mar 2026)** — comprehensive review synthesizing three core immune pathophysiology pathways and identifying IL-1RN genetic variations as a susceptibility factor (journal #490)
+6. **Sun & Bai three-pathway framework (Frontiers Immunol Mar 2026; doi:10.3389/fimmu.2026.1708940)** — organizes TS immune mechanisms into three testable pathways: (1) post-infectious autoimmunity/PANDAS, (2) Th17/microglial neuroinflammation, (3) gut-brain axis dysregulation. Identifies biomarkers: CSF oligoclonal bands (20-38% of TS patients), MCP-1/CCL2, PET TSPO (microglial activation imaging), IL-1RN variants. FMT and B-cell therapies as emerging approaches [task #933]
 
 Despite this evidence, no study has systematically characterized the **genetic architecture** of immune-mediated TS or computationally determined which immune pathways are causally linked to tic pathology through genomic data. This initiative fills that gap using GWAS-based immunogenomic methods.
 
@@ -40,6 +41,13 @@ Two-sample MR for causal effects of circulating immune biomarkers on TS risk:
 - Bidirectional MR to test reverse causation (TS → immune dysregulation)
 - **CCL2/CCR2 axis**: CSF MCP-1/CCL2 elevated in TS children — links peripheral immune activation to microglial activation. Include CCL2 as MR exposure and CCR2 as druggable target candidate [task #328]
 
+### Phase 3b — Gut-Brain Axis Pathway Analysis [NEW task #933]
+The Sun & Bai framework identifies gut-brain axis dysregulation as the third immune pathway in TS, complementing PANDAS autoimmunity (Phase 1) and Th17/microglial neuroinflammation (Phase 2). This pathway involves gut microbiome-mediated immune priming, vagal nerve signaling, and microbial metabolite (SCFA) effects on BBB integrity and microglial activation.
+- Test LDSC genetic correlation between TS GWAS and IBD/IBS GWAS (complement Phase 1 autoimmune screen)
+- Test enrichment of gut-associated immune gene sets (Peyer's patch, intestinal ILC3, mucosal Treg) in TS GWAS via MAGMA
+- Evaluate MR of gut microbiome composition (using available GWAS for gut microbial taxa) on TS risk
+- Cross-reference with PANS microbiome literature for overlapping dysbiosis signatures
+
 ### Phase 4 — Microglia Transcriptomic Integration
 Cross-reference TS GWAS hits with Wang et al. microglia DEGs and published activated microglia gene signatures. Identify GWAS-supported immune genes expressed in disease-relevant microglia states. Test enrichment of TS risk genes in microglia activation modules.
 
@@ -49,6 +57,8 @@ Synthesize phases 1-4 to define an immune-genomic TS subtype profile. Cross-refe
 - Anti-IL-12/23 (ustekinumab) — FDA-approved for psoriasis, IBD
 - Anti-CD20 (rituximab) — FDA-approved for RA, MS
 - JAK inhibitors (tofacitinib) — FDA-approved for RA
+- **FMT (fecal microbiota transplant)** — emerging approach targeting gut-brain axis; if Phase 3b gut-immune pathway enrichment confirmed, FMT becomes a mechanistically grounded therapeutic option [task #933]
+- **PET TSPO imaging** as clinical biomarker endpoint — 20-38% of TS patients show CSF oligoclonal bands; TSPO PET provides non-invasive microglial activation measurement for patient stratification into immune-mediated subtype [task #933]
 
 ## Expected Outputs
 - Genetic correlation matrix: TS vs. 15+ autoimmune diseases
