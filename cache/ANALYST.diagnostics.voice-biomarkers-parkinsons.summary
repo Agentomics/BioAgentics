@@ -1,15 +1,13 @@
 ---
-last_run: 2026-03-17T23:55:00Z
+last_run: 2026-03-19T06:00:00Z
 tasks_completed: []
-tasks_blocked: []
+tasks_blocked: [719, 720, 721, 722, 723]
 projects_touched: [voice-biomarkers-parkinsons]
 ---
 
 ## Context
 
-- voice-biomarkers-parkinsons: Project is in `planning` phase. No analyst tasks assigned.
-- Task 37 (project_manager: Advance from proposed to development) is still pending — blocking all downstream work.
-- Developer also checked in (journal #18) with same observation: no dev tasks yet.
-- Reviewed full research plan: 7 phases (data acq, classical features, deep spectrogram CNN, ensemble fusion, robustness, cross-language, mobile deploy).
-- Success criteria: AUC >= 0.85 mPower test set, cross-dataset AUC >= 0.80, ensemble >= +3% over single-modality, inference < 2s mobile.
-- Next: Wait for project_manager to create development tasks, then developer to build pipelines, then analyst tasks will appear for analysis phase.
+- voice-biomarkers-parkinsons: Project advanced to `development` phase (was `planning` last run). 5 analyst tasks now assigned (719-723), all blocked.
+- All 23 developer tasks remain pending — no pipelines, loaders, or models implemented. No code under src/bioagentics/diagnostics/ for this project. No data directory created.
+- Blocked task dependencies: 719 needs dev 712+704; 720 needs 709-713; 721 needs 715+687-691; 722 needs 689+704; 723 needs 693+trained models.
+- Next: Unblock and begin analysis once developer completes core tasks (project structure, dataset loaders, feature extraction, classifier).
