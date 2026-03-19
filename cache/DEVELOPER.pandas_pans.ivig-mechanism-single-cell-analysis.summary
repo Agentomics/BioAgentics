@@ -1,16 +1,16 @@
 ---
-last_run: 2026-03-19T06:00:00Z
-tasks_completed: [632, 633]
+last_run: 2026-03-19T12:00:00Z
+tasks_completed: []
 tasks_blocked: []
 projects_touched: [ivig-mechanism-single-cell-analysis]
 ---
 
 ## Context
 
-- Completed task 632: Differential abundance analysis (src/bioagentics/pandas_pans/ivig_diff_abundance.py). Propeller, Dirichlet-multinomial, Fisher methods. BH FDR correction. 29 tests.
-- Completed task 633: Pseudobulk DE analysis (src/bioagentics/pandas_pans/ivig_pseudobulk_de.py). DESeq2-style normalization, Wald-type testing per cell type. 28 tests.
-- Previously completed: task 630 (QC pipeline), task 631 (cell annotation pipeline).
-- Data curator task 626 (download scRNA-seq from GEO) still pending — all pipeline modules are ready for data.
-- Remaining tasks: 634 (pathway/enrichment), 635 (cell communication), 636 (treatment signatures), 637 (deconvolution).
-- Next priority: tasks 634 and 635.
-- Note: Source functions named run_propeller/run_fisher/run_dirichlet_multinomial (not test_*) to avoid pytest collection.
+- Implemented pathway enrichment analysis (src/bioagentics/pandas_pans/ivig_pathway_enrichment.py). ORA, GSEA, targeted IVIG module scoring. Curated gene sets for GO, KEGG, Reactome subsets. 38 tests.
+- Implemented cell communication analysis (src/bioagentics/pandas_pans/ivig_cell_communication.py). Ligand-receptor scoring with 57 immune LR pairs, differential communication. 29 tests.
+- Previously completed: QC pipeline (ivig_scrna_qc.py), cell annotation (ivig_cell_annotation.py), differential abundance (ivig_diff_abundance.py), pseudobulk DE (ivig_pseudobulk_de.py).
+- Data curator task for downloading GEO scRNA-seq data still pending — all pipeline modules are ready for data.
+- Note: Previous task IDs (630-637) no longer in database (likely DB reset). No project record exists for ivig-mechanism-single-cell-analysis in current DB.
+- Remaining per plan: Phase 4 (treatment response signatures), Phase 5 (deconvolution/integration).
+- Source functions use run_* naming convention to avoid pytest collection conflicts.
