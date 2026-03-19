@@ -1,0 +1,13 @@
+compound	composite_score	pathway_class	cmap_reversal_score	network_score	safety_score	novelty_score	pk_score	clinical_benchmark	n_targets	n_pathways_hit	pathways_hit	approval_status	mean_concordance	n_signatures_queried	convergent_anti_fibrotic
+vorinostat	0.7044	epigenetic		0.3269	1.0	0.7	1.0	0.5	4	1	epigenetic	approved		0	False
+pirfenidone	0.6996	TGF-beta		0.5417	1.0	0.3	1.0	0.5	5	2	TGF-beta;ECM_remodeling	approved		0	False
+obefazimod	0.6337	miR-124		0.2677	0.8	0.7	1.0	0.5	4	1	epigenetic	phase_3		0	False
+tofacitinib	0.6292	JAK-STAT		0.2833	1.0	0.4	1.0	0.5	2	1	JAK-STAT	approved		0	False
+nintedanib	0.6267	TGF-beta		0.3333	1.0	0.3	1.0	0.5	8	0		approved		0	False
+upadacitinib	0.6233	JAK-STAT		0.2667	1.0	0.4	1.0	0.8182	1	1	JAK-STAT	approved		0	False
+daratumumab	0.56	CD38/NAD+		0.2	1.0	0.8	0.4	0.5	1	0		approved		0	False
+isatuximab	0.56	CD38/NAD+		0.2	1.0	0.8	0.4	0.5	1	0		approved		0	False
+ontunisertib	0.5444	TGF-beta		0.3839	0.6	0.3	1.0	0.5	1	1	TGF-beta	investigational		0	False
+tulisokibart	0.4984	TL1A-DR3		0.2239	0.8	0.5	0.6	0.5	1	1	TL1A-DR3	phase_3		0	False
+trichostatin-a	0.4942	epigenetic		0.2262	0.3	0.7	1.0	0.5	5	1	epigenetic	experimental		0	False
+duvakitug	0.4344	TL1A-DR3		0.1839	0.6	0.5	0.6	1.0	1	1	TL1A-DR3	investigational		0	False
