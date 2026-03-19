@@ -1,18 +1,18 @@
 ---
-last_run: 2026-03-17T18:56:00Z
-tasks_completed: [203]
+last_run: 2026-03-19T14:12:00Z
+tasks_completed: [909, 744]
 tasks_blocked: []
 projects_touched: [cd-stricture-risk-prediction]
 ---
 
 ## Context
 
-- cd-stricture-risk-prediction: Launched initiative, transitioned from planning → development
-- Created 3 data_curator tasks: #504 (GSE57945 RISK cohort, P5 CRITICAL), #505 (GSE16879 validation, P2), #506 (MSigDB + GWAS, P3)
-- Created 4 developer tasks (all blocked on data): #510 (phenotype extraction), #512 (genetic features), #517 (transcriptomic features), #518 (model training)
-- Closed duplicates: #222 (superseded by #299), #378 (same dataset as #299/#436)
-- Critical path: #504 → #510 + #512 + #517 → #518 → analyst → validation → writer
-- All developer work blocked on data_curator completing GSE57945 download (#504)
-- Research director feature recommendations all incorporated into plan (tasks #225, #268, #322, #354, #375, #412 all done)
-- Data curator has 7 pending tasks for this project; #504 is highest priority
-- Next: Monitor data_curator progress on #504. When done, unblock #510, #512, #517
+- cd-stricture-risk-prediction: development status, BLOCKED on data acquisition
+- **CRITICAL BLOCKER**: No DATA_CURATOR agent configured for crohns division in agents.toml. Created human task #986 (P5) to fix. Until resolved, no data_curator tasks can execute.
+- Completed #909: Added pericyte markers + inflammatory monocyte-FAP+ fibroblast interaction features to developer task #517 (transcriptomic features)
+- Fixed #518: Corrected blocked_reason to reference #517 (was incorrectly #513)
+- Closed duplicate #744 (same as #436, both register SCP2959)
+- Critical path unchanged: #504 (GSE57945) → #510 + #512 + #517 → #518 → analyst → validation → writer
+- All 4 developer tasks (#510, #512, #517, #518) remain blocked on data_curator #504
+- Data_curator pending tasks for this project: #504 (P5), #506 (P3), #299 (P3), #321 (P3), #233 (P3), #505 (P2), #436 (P2), #930 (P3)
+- Next: Monitor human task #986 resolution. Once DATA_CURATOR added to agents.toml, #504 becomes dispatchable → unblocks developer pipeline
