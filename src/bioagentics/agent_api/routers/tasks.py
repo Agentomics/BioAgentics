@@ -96,8 +96,10 @@ def list_tasks(
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=str(exc))
         cutoff = (datetime.now(timezone.utc) - delta).strftime("%Y-%m-%dT%H:%M:%SZ")
-        query = query.where(tasks.c.blocked_at < cutoff)
-        count_query = count_query.where(tasks.c.blocked_at < cutoff)
+        query = query.where(tasks.c.blocked_at.isnot(None) & (tasks.c.blocked_at < cutoff))
+        count_query = count_query.where(
+            tasks.c.blocked_at.isnot(None) & (tasks.c.blocked_at < cutoff)
+        )
 
     total = db.execute(count_query).scalar()
     date_order = tasks.c.created_at.asc() if sort == "asc" else tasks.c.created_at.desc()
