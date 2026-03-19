@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-19T06:59:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [innate-immunity-deficiency-model, two-hit-interferonopathy-model]
+---
+
+## Context
+
+- First catalyst run. 0 published projects → wildcard ideation mode only (maturity gate).
+- Division has 7 projects (3 analysis, 4 development). Key report available: pans-genetic-variant-pathway-analysis (lectin complement FDR=1.12e-5, TREX1-SAMHD1 cGAS-STING module).
+- Created 2 catalyst initiatives (now 2/2 catalyst slots used):
+  1. **innate-immunity-deficiency-model** (planning): PANS as innate immune DEFICIENCY with secondary autoimmune overshoot. PM task 946.
+  2. **two-hit-interferonopathy-model** (planning): Compound lectin complement + cGAS-STING genetic vulnerability. PM task 947.
+- Critical data dependency: Vettiatil 2026 per-patient variant calls needed for two-hit model.
+- Cross-project synthesis deferred until >=2 projects reach published status.
+- Dead ends documented: mTOR convergence negative, direct CNS infection unsupported, adult PANDAS untestable.
+- Key lit findings integrated: IVIG Phase III mixed (CY-BOCS p=0.072, CGI-I p=0.017), PANDAS vs PANS distinct oxidative profiles (Totè 2025), IFNγ neuron-vs-macrophage dichotomy.
