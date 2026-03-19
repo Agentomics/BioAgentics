@@ -1,0 +1,21 @@
+gas_protein	gas_uniprot	human_accession	human_gene	status	tm_score	rmsd	aligned_residues	surface_exposed_fraction
+sp|Q1JKD6|DNAK_STRPC	Q1JKD6	B4DHP5		no_gas_structure			0	
+sp|P0DB70|DNAK_STRP3	P0DB70	B4DHP5		no_gas_structure			0	
+UPI0000165A3D		B4DHP5		skipped_uniparc			0	
+sp|P0C0C6|DNAK_STRP1	P0C0C6	B4DHP5		no_gas_structure			0	
+sp|B5XHZ0|DNAK_STRPZ	B5XHZ0	B4DHP5		no_gas_structure			0	
+sp|P0DA94|ENO_STRP3	P0DA94	P09104	ENO2	no_gas_structure			0	
+UPI000000AFB6		P09104	ENO2	skipped_uniparc			0	
+sp|P69949|ENO_STRP1	P69949	P09104	ENO2	no_gas_structure			0	
+sp|B5XKM7|ENO_STRPZ	B5XKM7	P09104	ENO2	no_gas_structure			0	
+sp|Q1JML5|ENO_STRPC	Q1JML5	P09104	ENO2	no_gas_structure			0	
+tr|A0A0H2UWC3|A0A0H2UWC3_STRP3	A0A0H2UWC3	B4DHW5		no_gas_structure			0	
+tr|Q1JKE8|Q1JKE8_STRPC	Q1JKE8	B4DHW5		no_gas_structure			0	
+UPI00000D9AB7		B4DHW5		skipped_uniparc			0	
+tr|A0A0H3BYC7|A0A0H3BYC7_STRPZ	A0A0H3BYC7	B4DHW5		no_gas_structure			0	
+tr|Q99YD9|Q99YD9_STRP1	Q99YD9	B4DHW5		no_gas_structure			0	
+sp|P0C0G7|G3P_STRP1	P0C0G7	P04406	GAPDH	no_gas_structure			0	
+tr|Q1JNH6|Q1JNH6_STRPC	Q1JNH6	P04406	GAPDH	no_gas_structure			0	
+UPI0000001324		P04406	GAPDH	skipped_uniparc			0	
+sp|P0DB18|G3P_STRP3	P0DB18	P04406	GAPDH	no_gas_structure			0	
+tr|A0A0H3BYM9|A0A0H3BYM9_STRPZ	A0A0H3BYM9	P04406	GAPDH	no_gas_structure			0	
