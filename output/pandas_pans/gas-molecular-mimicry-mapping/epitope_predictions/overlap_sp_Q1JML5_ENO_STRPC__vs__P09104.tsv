@@ -1,0 +1,3 @@
+gas_epitope_start	gas_epitope_end	gas_epitope_seq	gas_epitope_score	human_epitope_start	human_epitope_end	human_epitope_seq	human_epitope_score	cross_reactivity_score
+249	256	FYDKERKV	0.5718133401133796	99	106	GTENKSKF	0.5886756261605977	0.5802444831369886
+249	256	FYDKERKV	0.5718133401133796	199	209	KYGKDATNVGD	0.5826906840110829	0.5772520120622313

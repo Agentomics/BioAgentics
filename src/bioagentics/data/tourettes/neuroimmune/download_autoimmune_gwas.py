@@ -360,6 +360,67 @@ def download_file(url: str, dest: Path, force: bool = False) -> bool:
         return False
 
 
+def _resolve_columns(columns: list[str]) -> dict:
+    """Resolve column names from a header, returning a mapping of roles to actual names."""
+    col_lower = {c.lower(): c for c in columns}
+
+    snp_col = None
+    for candidate in ["hm_rsid", "rsid", "snp", "variant_id", "hm_variant_id"]:
+        if candidate in col_lower:
+            snp_col = col_lower[candidate]
+            break
+
+    a1_col = col_lower.get("hm_effect_allele") or col_lower.get("effect_allele")
+    a2_col = col_lower.get("hm_other_allele") or col_lower.get("other_allele")
+    beta_col = col_lower.get("hm_beta") or col_lower.get("beta")
+    or_col = col_lower.get("hm_odds_ratio") or col_lower.get("odds_ratio") or col_lower.get("or")
+    se_col = col_lower.get("standard_error") or col_lower.get("se")
+    p_col = col_lower.get("p_value") or col_lower.get("p")
+
+    return {
+        "snp": snp_col, "a1": a1_col, "a2": a2_col,
+        "beta": beta_col, "or": or_col, "se": se_col, "p": p_col,
+    }
+
+
+def _process_chunk(chunk: pd.DataFrame, cols: dict, sample_size: int) -> pd.DataFrame:
+    """Convert a chunk of raw GWAS data to LDSC format."""
+    df_out = pd.DataFrame()
+    df_out["SNP"] = chunk[cols["snp"]]
+    df_out["A1"] = chunk[cols["a1"]].str.upper()
+    df_out["A2"] = chunk[cols["a2"]].str.upper()
+
+    if cols["beta"] and cols["se"]:
+        beta = pd.to_numeric(chunk[cols["beta"]], errors="coerce")
+        se = pd.to_numeric(chunk[cols["se"]], errors="coerce")
+        df_out["Z"] = beta / se
+    elif cols["or"] and cols["se"]:
+        odds = pd.to_numeric(chunk[cols["or"]], errors="coerce")
+        se = pd.to_numeric(chunk[cols["se"]], errors="coerce")
+        df_out["Z"] = np.log(odds) / se
+    elif cols["p"] and cols["beta"]:
+        from scipy.stats import norm
+        p = pd.to_numeric(chunk[cols["p"]], errors="coerce")
+        beta = pd.to_numeric(chunk[cols["beta"]], errors="coerce")
+        z_abs = norm.ppf(1 - p / 2)
+        df_out["Z"] = z_abs * np.sign(beta)
+    else:
+        return pd.DataFrame()
+
+    df_out["N"] = sample_size
+
+    # Clean
+    df_out = df_out.dropna(subset=["SNP", "Z"])
+    df_out = df_out[df_out["SNP"].str.startswith("rs")]
+    df_out = df_out[np.isfinite(df_out["Z"])]
+    return df_out
+
+
+# Threshold for chunked reading: files larger than this (bytes) use chunked processing
+_LARGE_FILE_THRESHOLD = 500 * 1024 * 1024  # 500 MB
+_CHUNK_ROWS = 500_000
+
+
 def convert_to_ldsc_format(
     raw_path: Path, study: GWASStudy, output_dir: Path
 ) -> Path | None:
@@ -367,6 +428,7 @@ def convert_to_ldsc_format(
 
     LDSC format columns: SNP, A1, A2, Z, N
     Where Z = BETA / SE (or log(OR) / SE for odds-ratio studies).
+    Uses chunked reading for files larger than 500 MB to avoid OOM.
     """
     ldsc_path = output_dir / raw_path.name.replace(".tsv.gz", ".ldsc.tsv.gz")
     if ldsc_path.exists():
@@ -374,82 +436,72 @@ def convert_to_ldsc_format(
         return ldsc_path
 
     logger.info("  Converting to LDSC format: %s", raw_path.name)
+    file_size = raw_path.stat().st_size
+    use_chunks = file_size > _LARGE_FILE_THRESHOLD
+
+    if use_chunks:
+        logger.info("  Large file (%.0f MB), using chunked reading", file_size / 1e6)
+
+    # Read header to resolve columns
     try:
-        df = pd.read_csv(raw_path, sep="\t", dtype=str, low_memory=False)
+        header_df = pd.read_csv(raw_path, sep="\t", nrows=0)
     except Exception as e:
-        logger.error("  Failed to read %s: %s", raw_path.name, e)
+        logger.error("  Failed to read header of %s: %s", raw_path.name, e)
         return None
 
-    # Normalize column names (lowercase for matching)
-    col_lower = {c.lower(): c for c in df.columns}
-
-    # Find SNP column
-    snp_col = None
-    for candidate in ["hm_rsid", "rsid", "snp", "variant_id", "hm_variant_id"]:
-        if candidate in col_lower:
-            snp_col = col_lower[candidate]
-            break
-    if snp_col is None:
-        logger.error("  No SNP column found in %s. Columns: %s", raw_path.name, list(df.columns))
+    cols = _resolve_columns(list(header_df.columns))
+    if cols["snp"] is None:
+        logger.error("  No SNP column found in %s. Columns: %s", raw_path.name, list(header_df.columns))
         return None
-
-    # Find allele columns
-    a1_col = col_lower.get("hm_effect_allele") or col_lower.get("effect_allele")
-    a2_col = col_lower.get("hm_other_allele") or col_lower.get("other_allele")
-    if not a1_col or not a2_col:
+    if not cols["a1"] or not cols["a2"]:
         logger.error("  Missing allele columns in %s", raw_path.name)
         return None
-
-    # Find effect size and SE
-    beta_col = col_lower.get("hm_beta") or col_lower.get("beta")
-    or_col = col_lower.get("hm_odds_ratio") or col_lower.get("odds_ratio") or col_lower.get("or")
-    se_col = col_lower.get("standard_error") or col_lower.get("se")
-    p_col = col_lower.get("p_value") or col_lower.get("p")
-
-    # Compute Z score
-    df_out = pd.DataFrame()
-    df_out["SNP"] = df[snp_col]
-    df_out["A1"] = df[a1_col].str.upper()
-    df_out["A2"] = df[a2_col].str.upper()
-
-    if beta_col and se_col:
-        beta = pd.to_numeric(df[beta_col], errors="coerce")
-        se = pd.to_numeric(df[se_col], errors="coerce")
-        df_out["Z"] = beta / se
-    elif or_col and se_col:
-        odds = pd.to_numeric(df[or_col], errors="coerce")
-        se = pd.to_numeric(df[se_col], errors="coerce")
-        df_out["Z"] = np.log(odds) / se
-    elif p_col and beta_col:
-        # Fallback: compute Z from p-value with sign from beta
-        from scipy.stats import norm
-
-        p = pd.to_numeric(df[p_col], errors="coerce")
-        beta = pd.to_numeric(df[beta_col], errors="coerce")
-        z_abs = norm.ppf(1 - p / 2)
-        df_out["Z"] = z_abs * np.sign(beta)
-    else:
-        logger.error(
-            "  Cannot compute Z score for %s (need beta+SE, OR+SE, or p+beta)",
-            raw_path.name,
-        )
+    if not ((cols["beta"] and cols["se"]) or (cols["or"] and cols["se"]) or (cols["p"] and cols["beta"])):
+        logger.error("  Cannot compute Z score for %s (need beta+SE, OR+SE, or p+beta)", raw_path.name)
         return None
 
-    df_out["N"] = study.sample_size
+    if use_chunks:
+        # Chunked processing: write directly to gzip output
+        seen_snps: set[str] = set()
+        total_written = 0
+        total_read = 0
+        tmp_path = ldsc_path.with_suffix(ldsc_path.suffix + ".tmp")
+        with gzip.open(tmp_path, "wt") as out_f:
+            out_f.write("SNP\tA1\tA2\tZ\tN\n")
+            for chunk in pd.read_csv(raw_path, sep="\t", dtype=str, chunksize=_CHUNK_ROWS):
+                total_read += len(chunk)
+                processed = _process_chunk(chunk, cols, study.sample_size)
+                if processed.empty:
+                    continue
+                # Deduplicate within and across chunks
+                mask = ~processed["SNP"].isin(seen_snps)
+                processed = processed[mask]
+                processed = processed.drop_duplicates(subset=["SNP"], keep="first")
+                seen_snps.update(processed["SNP"])
+                for _, row in processed.iterrows():
+                    out_f.write(f"{row['SNP']}\t{row['A1']}\t{row['A2']}\t{row['Z']}\t{row['N']}\n")
+                total_written += len(processed)
+                if total_read % 2_000_000 == 0:
+                    logger.info("  ... processed %d rows, %d SNPs written", total_read, total_written)
+        tmp_path.rename(ldsc_path)
+        logger.info("  LDSC output: %d SNPs (from %d rows)", total_written, total_read)
+    else:
+        # Standard in-memory processing for smaller files
+        try:
+            df = pd.read_csv(raw_path, sep="\t", dtype=str, low_memory=False)
+        except Exception as e:
+            logger.error("  Failed to read %s: %s", raw_path.name, e)
+            return None
 
-    # Clean: drop rows without valid SNP or Z
-    df_out = df_out.dropna(subset=["SNP", "Z"])
-    df_out = df_out[df_out["SNP"].str.startswith("rs")]
-    df_out = df_out[np.isfinite(df_out["Z"])]
+        df_out = _process_chunk(df, cols, study.sample_size)
+        if df_out.empty:
+            logger.error("  No valid rows after conversion for %s", raw_path.name)
+            return None
 
-    # Drop duplicates by SNP
-    df_out = df_out.drop_duplicates(subset=["SNP"], keep="first")
+        df_out = df_out.drop_duplicates(subset=["SNP"], keep="first")
+        logger.info("  LDSC output: %d SNPs (from %d rows)", len(df_out), len(df))
+        df_out.to_csv(ldsc_path, sep="\t", index=False, compression="gzip")
 
-    logger.info(
-        "  LDSC output: %d SNPs (from %d rows)", len(df_out), len(df)
-    )
-
-    df_out.to_csv(ldsc_path, sep="\t", index=False, compression="gzip")
     return ldsc_path
 
 
