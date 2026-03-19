@@ -1,17 +1,19 @@
 ---
-last_run: 2026-03-19T17:30:00Z
-tasks_completed: [124, 125]
+last_run: 2026-03-19T19:28:00Z
+tasks_completed: [1005, 1006, 1007, 1008]
 tasks_blocked: []
 projects_touched: [swisnf-metabolic-convergence]
 ---
 
 ## Context
 
-- Phase 1a (#124) done: SWI/SNF classifier — 157 ARID1A-mut, 72 SMARCA4-mut, 16 dual, 1874 WT across 2119 lines. 14 cancer types qualify for combined analysis.
-- Phase 1b (#125) done: Metabolic dependency screen — 1590 KEGG metabolic genes screened. SMARCA4-ovarian has strong OXPHOS signal (COX6C d=-2.39, NDUF* complex I genes). ARID1A has 1 hit (HDC in Lymphoid). Combined screen lacks power.
-- Tasks remaining: #126 (Phase 2 cross-validation, p4), #127 (Phase 3 pathway enrichment, p4), #128 (Phase 4 TCGA expression, p3), #129 (Phase 5 drug repurposing, p3)
-- Next priority: Phase 2 (#126) — cross-validate HMGCR in SMARCA4-mutant lines, test mito gene deps in ARID1A lines, identify convergent metabolic genes
-- Key note: HMGCR did not reach FDR significance in Phase 1b — needs targeted examination in Phase 2
-- Code: src/cancer/swisnf_metabolic_convergence/ (01_swisnf_classifier.py, 02_metabolic_dependency_screen.py)
-- Results: data/results/swisnf-metabolic-convergence/phase1a/ and phase1b/
-- KEGG gene cache: data/results/swisnf-metabolic-convergence/phase1b/kegg_metabolic_genes.json
+- Phase 1a (#1005) done: SWI/SNF classifier — 157 ARID1A-mut, 72 SMARCA4-mut, 16 dual, 1874 WT across 2119 lines.
+- Phase 1b (#1006) done: Metabolic dependency screen — 1590 KEGG metabolic genes screened. SMARCA4-ovarian has strong OXPHOS signal.
+- Phase 2 (#1007) done: Cross-atlas validation — 104 convergent metabolic genes (SL in both ARID1A & SMARCA4). 34 are OXPHOS/ETC genes. HMGCR does NOT cross-validate (ARID1A-specific). SMARCA4 mito genes (MICOS13, HIGD2A, COX6C) DO cross-validate to ARID1A.
+- Phase 3 (#1008) done: Pathway enrichment — OXPHOS is dominant (4.3x enriched, FDR=2.56e-13). Lipoic acid also enriched (5.6x, FDR=4.45e-03). Ranked analysis confirms SMARCA4 OXPHOS shift (median d=-0.905).
+- Key finding: SWI/SNF metabolic convergence is OXPHOS-driven, not cholesterol. All 5 ETC complexes vulnerable in both ARID1A and SMARCA4 mutants.
+- Tasks remaining: #1009 (Phase 4 TCGA expression, p3), #1010 (Phase 5 drug repurposing, p3)
+- Next priority: Phase 4 (#1009) — test if OXPHOS convergent genes show expression changes in SWI/SNF-mutant TCGA tumors
+- Drug angle shifted: metformin/IACS-010759/phenformin now primary candidates (not statins)
+- Code: src/cancer/swisnf_metabolic_convergence/ (01-04 scripts)
+- Results: data/results/swisnf-metabolic-convergence/phase1a/, phase1b/, phase2/, phase3/
