@@ -1085,3 +1085,344 @@ class TestGeneratePredictions:
         )
         assert isinstance(predictions, list)
         assert len(predictions) == 0
+
+
+# ===========================================================================
+# Step 10 — Therapeutic window prediction (Phase 5)
+# ===========================================================================
+
+step10 = _import_step("10_therapeutic_window_prediction")
+
+
+def _make_phase5_trajectory_df(seed: int = 42) -> pd.DataFrame:
+    """Create synthetic trajectory data with genes needed for Phase 5.
+
+    Includes all Phase 4 genes plus additional druggable targets.
+    """
+    rng = np.random.default_rng(seed)
+    genes = [
+        # PV interneuron markers
+        "PVALB", "KCNC1", "KCNC2", "EYA1", "TAC3",
+        # GABA signaling (druggable)
+        "GAD1", "GAD2", "SLC32A1", "GABRA1", "GABRG2",
+        # Excitatory / dopamine (druggable)
+        "GRIN1", "GRIN2A", "GRIN2B", "GRIA1", "DRD1", "DRD2", "TH",
+        # Druggable receptors
+        "ADORA2A", "OPRD1", "AR", "ESR1", "ESR2", "GPR6", "GRM5",
+        # Druggable ion channels
+        "CACNA1A", "KCND2",
+        # Druggable transporters
+        "SLC6A3", "SLC6A1",
+        # Druggable kinases
+        "FLT3", "MET",
+        # Druggable enzymes
+        "HDC", "MAOA",
+        # Dorsal zone markers
+        "FOXP2", "EPHA4", "SEMA3A", "GRIA3", "GRID2",
+        # TS risk genes
+        "BCL11B", "NDFIP2", "SLITRK1", "NRXN1",
+    ]
+    records = []
+    for gene in genes:
+        for stage in STAGE_ORDER:
+            for region in REGION_LIST:
+                rpkm = rng.lognormal(3, 1)
+                records.append({
+                    "gene_symbol": gene,
+                    "dev_stage": stage,
+                    "cstc_region": region,
+                    "mean_rpkm": rpkm,
+                    "mean_log2_rpkm": np.log2(rpkm + 1),
+                    "n_samples": rng.integers(2, 6),
+                })
+    return pd.DataFrame(records)
+
+
+def _make_phase5_inputs():
+    """Create all Phase 5 inputs from synthetic data."""
+    df = _make_phase5_trajectory_df()
+    remission_df = step09.compute_remission_score(df)
+    persistence_df = step09.compute_persistence_score(df)
+    return df, remission_df, persistence_df
+
+
+class TestComputeTherapeuticWindowScores:
+    """Tests for 10_therapeutic_window_prediction.compute_therapeutic_window_scores."""
+
+    def test_returns_expected_columns(self):
+        df, rem, pers = _make_phase5_inputs()
+        result = step10.compute_therapeutic_window_scores(rem, pers, df)
+        assert not result.empty
+        for col in ("dev_stage", "change_rate", "ei_imbalance",
+                     "druggable_density", "therapeutic_score",
+                     "stage_order", "clinical_window"):
+            assert col in result.columns, f"missing column: {col}"
+
+    def test_all_stages_present(self):
+        df, rem, pers = _make_phase5_inputs()
+        result = step10.compute_therapeutic_window_scores(rem, pers, df)
+        assert set(result["dev_stage"]) == set(STAGE_ORDER)
+
+    def test_stage_order_monotonic(self):
+        df, rem, pers = _make_phase5_inputs()
+        result = step10.compute_therapeutic_window_scores(rem, pers, df)
+        orders = result["stage_order"].tolist()
+        assert orders == sorted(orders)
+
+    def test_clinical_window_assigned(self):
+        df, rem, pers = _make_phase5_inputs()
+        result = step10.compute_therapeutic_window_scores(rem, pers, df)
+        postnatal = result[result["dev_stage"].isin(step10.POSTNATAL_STAGES)]
+        assert all(w != "unknown" for w in postnatal["clinical_window"])
+
+    def test_therapeutic_score_non_negative(self):
+        df, rem, pers = _make_phase5_inputs()
+        result = step10.compute_therapeutic_window_scores(rem, pers, df)
+        assert (result["therapeutic_score"] >= 0).all()
+
+    def test_empty_remission_and_persistence(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.compute_therapeutic_window_scores(
+            pd.DataFrame(), pd.DataFrame(), df,
+        )
+        assert result.empty
+
+    def test_druggable_density_bounded(self):
+        df, rem, pers = _make_phase5_inputs()
+        result = step10.compute_therapeutic_window_scores(rem, pers, df)
+        assert (result["druggable_density"] >= 0).all()
+        assert (result["druggable_density"] <= 1).all()
+
+
+class TestModelDbsEfficacyWindow:
+    """Tests for 10_therapeutic_window_prediction.model_dbs_efficacy_window."""
+
+    def test_returns_expected_fields(self):
+        _, rem, pers = _make_phase5_inputs()
+        result = step10.model_dbs_efficacy_window(rem, pers)
+        for key in ("hypothesis", "window_scores", "optimal_window",
+                     "model_predicts_pediatric_advantage",
+                     "clinical_comparison"):
+            assert key in result, f"missing key: {key}"
+
+    def test_window_scores_has_all_windows(self):
+        _, rem, pers = _make_phase5_inputs()
+        result = step10.model_dbs_efficacy_window(rem, pers)
+        expected_windows = set(step10.CLINICAL_WINDOWS.keys())
+        assert set(result["window_scores"].keys()) == expected_windows
+
+    def test_window_score_structure(self):
+        _, rem, pers = _make_phase5_inputs()
+        result = step10.model_dbs_efficacy_window(rem, pers)
+        for ws in result["window_scores"].values():
+            assert "malleability" in ws
+            assert "ei_gap" in ws
+            assert "dbs_amenability_score" in ws
+            assert "age_range" in ws
+
+    def test_clinical_comparison_present(self):
+        _, rem, pers = _make_phase5_inputs()
+        result = step10.model_dbs_efficacy_window(rem, pers)
+        cc = result["clinical_comparison"]
+        assert "pediatric_dbs_improvement" in cc
+        assert cc["pediatric_dbs_improvement"] == 70.0
+        assert cc["adult_dbs_improvement"] == 56.0
+
+    def test_empty_input(self):
+        result = step10.model_dbs_efficacy_window(
+            pd.DataFrame(), pd.DataFrame(),
+        )
+        assert "error" in result
+
+    def test_remission_only(self):
+        _, rem, _ = _make_phase5_inputs()
+        result = step10.model_dbs_efficacy_window(rem, pd.DataFrame())
+        assert "optimal_window" in result
+
+
+class TestIdentifyDruggableTargets:
+    """Tests for 10_therapeutic_window_prediction.identify_druggable_targets."""
+
+    def test_returns_expected_columns(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.identify_druggable_targets(df)
+        assert not result.empty
+        for col in ("gene_symbol", "druggable_class", "peak_stage",
+                     "peak_clinical_window", "peak_expression",
+                     "is_ts_gene", "onset_fold", "remission_fold"):
+            assert col in result.columns, f"missing column: {col}"
+
+    def test_sorted_by_peak_expression(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.identify_druggable_targets(df)
+        exprs = result["peak_expression"].tolist()
+        assert exprs == sorted(exprs, reverse=True)
+
+    def test_druggable_classes_valid(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.identify_druggable_targets(df)
+        valid_classes = set(step10.DRUGGABLE_CLASSES.keys())
+        assert set(result["druggable_class"].unique()) <= valid_classes
+
+    def test_finds_known_druggable_genes(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.identify_druggable_targets(df)
+        found = set(result["gene_symbol"])
+        # Should find at least DRD1, DRD2, GABRA1
+        assert "DRD1" in found
+        assert "DRD2" in found
+
+    def test_ts_gene_flag(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.identify_druggable_targets(df)
+        ts_rows = result[result["is_ts_gene"]]
+        assert len(ts_rows) > 0
+        # HDC, NRXN1 are both TS genes and druggable
+        ts_genes = set(ts_rows["gene_symbol"])
+        assert "HDC" in ts_genes or "NRXN1" in ts_genes
+
+    def test_fold_changes_positive(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.identify_druggable_targets(df)
+        assert (result["onset_fold"] > 0).all()
+        assert (result["remission_fold"] > 0).all()
+
+    def test_empty_input(self):
+        result = step10.identify_druggable_targets(pd.DataFrame())
+        assert result.empty
+
+    def test_no_druggable_genes(self):
+        df = _make_trajectory_df(genes=["FAKEGENE1", "FAKEGENE2"])
+        result = step10.identify_druggable_targets(df)
+        assert result.empty
+
+
+class TestAnalyzeEarlyIntervention:
+    """Tests for 10_therapeutic_window_prediction.analyze_early_intervention."""
+
+    def test_returns_expected_fields(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.analyze_early_intervention(df)
+        for key in ("hypothesis", "n_onset_peak_genes", "n_onset_druggable",
+                     "n_onset_ts_risk", "onset_druggable_genes",
+                     "onset_druggable_density", "feasibility"):
+            assert key in result, f"missing key: {key}"
+
+    def test_feasibility_valid(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.analyze_early_intervention(df)
+        assert result["feasibility"] in {"high", "moderate", "low", "not_feasible"}
+
+    def test_druggable_density_bounded(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.analyze_early_intervention(df)
+        assert 0 <= result["onset_druggable_density"] <= 1
+
+    def test_class_breakdown_valid(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.analyze_early_intervention(df)
+        breakdown = result.get("druggable_class_breakdown", {})
+        valid = set(step10.DRUGGABLE_CLASSES.keys())
+        assert set(breakdown.keys()) <= valid
+
+    def test_empty_input(self):
+        result = step10.analyze_early_intervention(pd.DataFrame())
+        assert "error" in result
+
+    def test_no_region_data(self):
+        df = _make_phase5_trajectory_df()
+        result = step10.analyze_early_intervention(df, region="nonexistent")
+        assert "error" in result
+
+
+class TestGeneratePhase5Predictions:
+    """Tests for 10_therapeutic_window_prediction.generate_phase5_predictions."""
+
+    def _run_full_pipeline(self):
+        df, rem, pers = _make_phase5_inputs()
+        scores = step10.compute_therapeutic_window_scores(rem, pers, df)
+        dbs = step10.model_dbs_efficacy_window(rem, pers)
+        targets = step10.identify_druggable_targets(df)
+        early = step10.analyze_early_intervention(df)
+        return scores, dbs, targets, early
+
+    def test_returns_list(self):
+        results = self._run_full_pipeline()
+        predictions = step10.generate_phase5_predictions(*results)
+        assert isinstance(predictions, list)
+
+    def test_prediction_structure(self):
+        results = self._run_full_pipeline()
+        predictions = step10.generate_phase5_predictions(*results)
+        for p in predictions:
+            assert "id" in p
+            assert "prediction" in p
+            assert "evidence" in p
+            assert "validation" in p
+            assert "confidence" in p
+            assert p["id"].startswith("P5.")
+
+    def test_prediction_ids_unique(self):
+        results = self._run_full_pipeline()
+        predictions = step10.generate_phase5_predictions(*results)
+        ids = [p["id"] for p in predictions]
+        assert len(ids) == len(set(ids))
+
+    def test_confidence_values_valid(self):
+        results = self._run_full_pipeline()
+        predictions = step10.generate_phase5_predictions(*results)
+        valid = {"low", "low-medium", "medium", "medium-high", "high"}
+        for p in predictions:
+            assert p["confidence"] in valid, f"invalid confidence: {p['confidence']}"
+
+    def test_empty_inputs_returns_empty(self):
+        empty_dict = {"error": "no data"}
+        predictions = step10.generate_phase5_predictions(
+            pd.DataFrame(), empty_dict, pd.DataFrame(), empty_dict,
+        )
+        assert isinstance(predictions, list)
+        assert len(predictions) == 0
+
+    def test_generates_at_least_one_prediction(self):
+        results = self._run_full_pipeline()
+        predictions = step10.generate_phase5_predictions(*results)
+        assert len(predictions) >= 1
+
+
+class TestClinicalWindows:
+    """Tests for clinical window mapping constants."""
+
+    def test_all_postnatal_stages_covered(self):
+        covered = set()
+        for window in step10.CLINICAL_WINDOWS.values():
+            covered.update(window["stages"])
+        for stage in step10.POSTNATAL_STAGES:
+            assert stage in covered, f"stage {stage} not covered by any window"
+
+    def test_window_fields(self):
+        for name, window in step10.CLINICAL_WINDOWS.items():
+            assert "stages" in window, f"{name} missing stages"
+            assert "age_range" in window, f"{name} missing age_range"
+            assert "description" in window, f"{name} missing description"
+
+
+class TestDruggableClasses:
+    """Tests for druggable gene classification constants."""
+
+    def test_all_classes_non_empty(self):
+        for cls_name, genes in step10.DRUGGABLE_CLASSES.items():
+            assert len(genes) > 0, f"empty druggable class: {cls_name}"
+
+    def test_lookup_matches_classes(self):
+        for cls_name, genes in step10.DRUGGABLE_CLASSES.items():
+            for gene in genes:
+                assert step10._DRUGGABLE_LOOKUP[gene] == cls_name
+
+    def test_no_duplicate_genes_across_classes(self):
+        seen = {}
+        for cls_name, genes in step10.DRUGGABLE_CLASSES.items():
+            for gene in genes:
+                assert gene not in seen, (
+                    f"{gene} in both {seen[gene]} and {cls_name}"
+                )
+                seen[gene] = cls_name

@@ -14,4 +14,5 @@ Pipeline steps:
   07_critical_period_modules — Phase 2: Critical period gene module analysis
   08_celltype_deconvolution  — Phase 3: Cell-type developmental dynamics
   09_persistence_remission_model — Phase 4: Persistence vs. remission model
+  10_therapeutic_window_prediction — Phase 5: Therapeutic window prediction
 """
