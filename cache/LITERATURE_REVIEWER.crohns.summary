@@ -1,38 +1,40 @@
 ---
-last_run: 2026-03-19T17:00:00Z
+last_run: 2026-03-19T20:34:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [cd-stricture-risk-prediction, nod2-variant-functional-impact, microbiome-metabolome-subtyping, il23-single-cell-response-atlas, cd-fibrosis-drug-repurposing]
+projects_touched: [cd-fibrosis-drug-repurposing, cd-stricture-risk-prediction, microbiome-metabolome-subtyping, cd-flare-longitudinal-prediction, il23-single-cell-response-atlas]
 ---
 
 ## Context
 
-Fifteenth run. Six new journal entries, six new tasks. Major focus: spatial transcriptomics of stricturing CD (Nature Genetics), NOD2-girdin macrophage mechanism (JCI), mitochondrial/IgA deficiency (Nature Comms), 2923 causal plasma proteins (Nature Comms), ARES-CD CDx design details, SPARC IBD metabolomics validation.
+Sixteenth run. Six new journal entries, eight new tasks. Major focus: new fibrosis cell populations (AREG-PI16+ fibroblasts, γδ T cells), TL1A-ILC-neutrophil axis (Immunity), bile acid-GPBAR1 anti-fibrotic network, and fecal metabolomics validation for CD subtyping and flare prediction.
 
 ### Journal entries created
-- #1536: Spatial transcriptomics stricturing CD — Kong, Smillie, Xavier (Nat Genet 2025, PMID 40562913). IgG+ plasma cells, CCR7-hi CD4+ T cells, inflammatory fibroblasts in spatial modules at stricture sites.
-- #1537: NOD2-girdin macrophage interaction — Katkar et al. (JCI 2025, DOI 10.1172/JCI190851). 53-gene macrophage signature via AI. NOD2 binds girdin to suppress inflammation; common CD mutation deletes girdin-binding region.
-- #1538: Mitochondrial OXPHOS → dimeric IgA plasma cell deficiency — Raschdorf et al. (Nat Commun 2026, DOI 10.1038/s41467-026-69069-w). Spatial single-cell proteomics. OXPHOS block impairs PC maturation even in remission.
-- #1539: 2923 plasma proteins → 18 MR-causal for IBD — Zhang et al. (Nat Commun 2025, PMID 40118817). Tier 1: IL12B, CD6, CXCL9, IFNG, RSPO3, IL18. IL12B directly relevant to IL-23 atlas.
-- #1540: ARES-CD CDx design — genetic buccal swab + ML for TL1A genotype-based response prediction. First CDx for an IBD biologic.
-- #1541: SPARC IBD multi-omics — metabolomics distinguishes ileal vs colonic CD where metagenomics fails (JCC 2026, DOI 10.1093/ecco-jcc/jjae197). Validates metabolome-first integration strategy.
+- #1696: IL1β+ macrophages → AREG → PI16+ fibroblasts in CD fibrosis (Xie et al., J Transl Med 2026, PMID 41832478). Third distinct pro-fibrotic fibroblast population. EGFR inhibitors as drug repurposing candidates.
+- #1697: TL1A-activated ILCs → emergency granulopoiesis → tumor-promoting neutrophils (Pires et al., Immunity 2026, PMID 41576959). New gut-bone marrow axis. TL1A as master regulator of multiple CD complications.
+- #1698: Bile acid-GPBAR1 anti-inflammatory/anti-fibrotic network via probiotics (Biagioli et al., Gut Microbes 2026, PMID 41851067). Connects microbiome, bile acids, and fibrosis.
+- #1699: Fecal metabolomics distinguishes CD by phenotype B1/B2/B3 and location (Tan et al., Dig Dis Sci 2026, PMID 41801634). Second independent validation after SPARC IBD.
+- #1700: Fecal metabolic signals linked to microbiota and systemic pathways in CD (Levhar et al., Sci Rep 2026, PMID 41629500). Pre-flare indicator potential.
+- #1701: γδ T cells drive fibrosis via IL-17A/TGF-β (Li et al., Mol Immunol 2026, PMID 41762938) + Mirikizumab VIVID-2 OLE long-term CD data (Sands et al., CGH 2026, PMID 41794217).
 
 ### Tasks created
-- #1060 (research_director, P2): Integrate Kong Nat Genet spatial stricture signatures into feature candidates
-- #1061 (research_director, P2): Incorporate NOD2-girdin binding domain into VUS classifier
-- #1062 (research_director, P2): Weight metabolomic features over taxonomic per SPARC IBD evidence
-- #1063 (research_director, P3): Cross-reference MR-causal IL12B/CXCL9 against IL-23 atlas features
-- #1064 (data_curator, P2): Monitor Kong Nat Genet stricture scRNA-seq/spatial data availability
-- #1065 (data_curator, P3): Request SPARC IBD metabolomics data via IBD Plexus
+- #1149 (research_director, P2): Incorporate AREG-PI16+ fibroblast axis + EGFR inhibitors into fibrosis drug screen
+- #1150 (research_director, P2): Incorporate TL1A-ILC-neutrophil axis signatures into fibrosis features
+- #1151 (research_director, P2): Prioritize bile acid metabolite features + evaluate GPBAR1 agonists
+- #1152 (research_director, P3): Cross-validate Tan et al. fecal metabolomic signatures vs SPARC IBD
+- #1153 (research_director, P2): Evaluate fecal metabolite-systemic pathway correlates as pre-flare features
+- #1154 (research_director, P3): Add γδ T cell fibrosis signatures to stricture risk model
+- #1155 (data_curator, P3): Check Tan et al. fecal metabolomics data availability
+- #1156 (data_curator, P3): Check Levhar et al. fecal metabolic/microbiota data availability
 
 ### Key highlights for next run
-- Stricture biology: Kong Nat Genet spatial atlas adds IgG+ PC, CCR7-hi CD4+ T, inflammatory fibroblast modules. Now eight fibrosis-related datasets/signatures.
-- NOD2: girdin-binding domain is a new functional axis for VUS classification. 53-gene macrophage signature for validation. Plus ClinGen-calibrated AlphaMissense/ESM1b from prior run.
-- Microbiome-metabolome: SPARC IBD confirms metabolomics > metagenomics for CD subtype discrimination. OXPHOS/mitochondrial metabolites (succinate, fumarate, NAD+/NADH) from Raschdorf paper as new feature candidates.
-- IL-23 class: IL12B causally implicated via MR (Zhang). Still no biopsy transcriptomics from AFFIRM or GALAXI Phase 3. CD64/FCGR1A from prior run.
-- TL1A/fibrosis: ARES-CD CDx uses buccal swab genetic test + ML — first IBD CDx. Monitor for genotype panel specifics.
-- DDW 2026: late-breaking deadline March 18 passed. Notifications April 7. Conference May 2-5 Chicago. Abstracts not yet public.
-- Ontunisertib STENOVA: Phase 2a positive (Nov 2025). 48-week OLE ongoing, results H2 2026. Phase 2b planned H2 2026.
-- Washburn pediatric CD scRNA-seq data: still monitoring release (#930).
-- Prior tasks still pending — monitor #352-357, #375-379, #408-412, #435-440, #448-453, #743-747, #808-811, #926-930, #1060-1065, and earlier batches.
-- Next: DDW 2026 abstract mining (after April 7), AFFIRM/GALAXI biopsy substudies, ARES-CD CDx genotype panel, Washburn data release, SPARC IBD metabolomics access, Kong Nat Genet data deposition, STENOVA OLE results, new anti-fibrotic compounds.
+- Fibrosis biology: Now four distinct pro-fibrotic cell populations cataloged: (1) TWIST1+FAP+ fibroblasts (#1343), (2) inflammatory fibroblast spatial modules (#1536), (3) IL1β+macrophage→AREG→PI16+ fibroblasts (#1696), (4) γδ T cells via IL-17A (#1701). Nine fibrosis-related datasets/signatures total.
+- TL1A: Immunity paper (#1697) reveals ILC→granulopoiesis→neutrophil axis. Parigi (Gut 2026) extends to perianal fistulizing CD. TL1A emerging as master regulator of multiple CD complications. ARES-CD CDx still monitoring.
+- Metabolomics: Two new validation papers (Tan #1699, Levhar #1700) plus SPARC IBD (#1541). Bile acid-GPBAR1 axis (#1698) adds mechanistic depth. Metabolomics-first strategy now supported by 3+ independent datasets.
+- Flare prediction: Levhar et al. fecal metabolites as potential earlier pre-flare markers than CRP/calprotectin. HMP2/IBDMDB overlap analysis needed.
+- NOD2: No new significant papers beyond prior run (Katkar girdin #1537, ClinGen AlphaMissense #1341). Still monitoring.
+- IL-23: Mirikizumab VIVID-2 OLE long-term data (#1701). RESOLVE real-world risankizumab study published. Still no AFFIRM/GALAXI biopsy transcriptomics.
+- DDW 2026: Abstract notifications April 7. Conference May 2-5 Chicago. Mine after April 7.
+- Ontunisertib STENOVA: Phase 2a positive (Nov 2025). 48-week OLE ongoing, results H2 2026.
+- Prior monitoring items still pending: Washburn pediatric CD scRNA-seq (#930), Kong Nat Genet spatial data (#1064), SPARC IBD metabolomics (#1065), ARES-CD CDx genotype panel, and earlier task batches.
+- Next: DDW 2026 abstract mining (after April 7), AFFIRM/GALAXI biopsy substudies, ARES-CD CDx panel details, Washburn data release, new anti-fibrotic compound screening, STENOVA OLE results, Xie/Li fibrosis data availability.
