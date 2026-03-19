@@ -69,22 +69,23 @@ def call_iedb_api(
         "allele": allele,
     }
 
-    last_error = None
+    resp = None
     for attempt in range(retries + 1):
         try:
             resp = requests.post(IEDB_API_URL, data=payload, timeout=300)
             resp.raise_for_status()
             break
         except requests.RequestException as e:
-            last_error = e
             if attempt < retries:
                 delay = RETRY_BACKOFF_BASE ** (attempt + 1)
                 print(f"    Retry {attempt + 1}/{retries} after {delay}s: {e}")
                 time.sleep(delay)
             else:
-                raise last_error  # type: ignore[misc]
+                raise
 
     results = []
+    if resp is None:
+        return results
     lines = resp.text.strip().split("\n")
     if len(lines) < 2:
         return results

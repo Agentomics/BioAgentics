@@ -121,6 +121,90 @@ class TestGASProteomeDigest:
             assert len(rows[0]["peptide"]) == 15
 
 
+class TestIEDBBindingPrediction:
+    """Tests for Phase 3: Binding prediction (non-API parts)."""
+
+    def test_classify_binding(self):
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            classify_binding,
+        )
+
+        assert classify_binding(0.1) == "strong_binder"
+        assert classify_binding(0.5) == "weak_binder"
+        assert classify_binding(1.5) == "weak_binder"
+        assert classify_binding(2.0) == "non_binder"
+        assert classify_binding(50.0) == "non_binder"
+
+    def test_load_peptides_sampled(self, tmp_path):
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            load_peptides_sampled,
+        )
+
+        tsv = tmp_path / "peptides.tsv"
+        tsv.write_text(
+            "peptide\tprotein_accession\tprotein_name\tis_virulence_factor\n"
+            "AAAAAAAAAAAAAAAA\tP001\tM protein\tTrue\n"
+            "BBBBBBBBBBBBBBBB\tP002\tC5a peptidase\tTrue\n"
+            "AAAAAAAAAAAAAAAA\tP001\tM protein\tTrue\n"  # duplicate
+            "CCCCCCCCCCCCCCCC\tP003\tHypothetical\tFalse\n"
+        )
+
+        peptides = load_peptides_sampled(tsv)
+        assert len(peptides) == 3  # deduped
+        assert peptides[0]["is_virulence_factor"] is True
+        assert peptides[2]["is_virulence_factor"] is False
+
+    def test_load_peptides_sampled_max(self, tmp_path):
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            load_peptides_sampled,
+        )
+
+        tsv = tmp_path / "peptides.tsv"
+        tsv.write_text(
+            "peptide\tprotein_accession\tprotein_name\tis_virulence_factor\n"
+            "AAAAAAAAAAAAAAAA\tP001\tM protein\tTrue\n"
+            "BBBBBBBBBBBBBBBB\tP002\tC5a peptidase\tTrue\n"
+            "CCCCCCCCCCCCCCCC\tP003\tHypothetical\tFalse\n"
+        )
+
+        peptides = load_peptides_sampled(tsv, max_peptides=2)
+        assert len(peptides) == 2
+
+    def test_merge_serotype_predictions(self, tmp_path):
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            PREDICTION_FIELDNAMES,
+            merge_serotype_predictions,
+        )
+
+        pred_dir = tmp_path / "binding_predictions"
+        pred_dir.mkdir(parents=True)
+
+        # Create two fake per-serotype-allele files
+        for serotype, pep in [("m1", "AAAAAAA"), ("m3", "BBBBBBB")]:
+            path = pred_dir / f"{serotype}_DRB1_07_01_mhc_ii.tsv"
+            with open(path, "w", newline="") as f:
+                writer = csv.DictWriter(f, fieldnames=PREDICTION_FIELDNAMES, delimiter="\t")
+                writer.writeheader()
+                writer.writerow({
+                    "peptide": pep, "allele": "DRB1*07:01", "ic50": 100.0,
+                    "percentile_rank": 0.3, "binding_class": "strong_binder",
+                    "method": "netmhciipan", "source_protein": "M protein",
+                    "source_accession": "P001", "serotype": serotype.upper(),
+                    "is_virulence_factor": True,
+                })
+
+        merged = merge_serotype_predictions(
+            serotypes=["M1", "M3"], mhc_class="II", output_base=tmp_path
+        )
+
+        assert merged.exists()
+        with open(merged) as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            rows = list(reader)
+        assert len(rows) == 2
+        assert {r["serotype"] for r in rows} == {"M1", "M3"}
+
+
 class TestDifferentialPresentation:
     """Tests for Phase 4: Differential analysis."""
 
