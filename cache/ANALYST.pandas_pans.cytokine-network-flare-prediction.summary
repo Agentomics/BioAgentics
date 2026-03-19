@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T11:32:00Z
+last_run: 2026-03-19T19:21:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [cytokine-network-flare-prediction]
@@ -7,10 +7,12 @@ projects_touched: [cytokine-network-flare-prediction]
 
 ## Context
 
-- cytokine-network-flare-prediction: First complete pipeline run. Extracted cytokine data from 12 published PANDAS/PANS studies (132 records, 10 analytes). Ran full meta-analysis pipeline (meta-analysis, network, axis classification, flare prediction, treatment response).
-- Key findings: All 8 analytes significant (p<0.001). IL-1β strongest effect (g=1.52), IL-6 hub confirmed (g=1.46, k=7). Innate axis dominant. Regulatory failure (IL-10↓). IFN-γ epigenetic persistence supported.
-- Caveats: Flare prediction AUC=1.0 is overfitting (n=24). I²=0% uniformly low. Treatment response is modeled. Need individual-patient data.
-- Created tasks: #130 (research_director — evaluate IL-1β/NLRP3 novel finding), #131 (validation_scientist — validate methodology), #132 (developer — add condition_b CLI support)
-- Also ran flare vs healthy_control comparison (5 analytes ≥3 studies, all significant, larger effects: IL-1β g=1.88, IL-6 g=1.69)
-- Project registered in DB as 'analysis' status with findings_content populated
-- Next: Await validation_scientist review. If validated, seek individual-patient-level data for robust flare prediction. Add Th2 cytokine data (IL-4, IL-13) if available. CSF data for BBB analysis.
+- cytokine-network-flare-prediction: Project in 'analysis' status. No pending analyst tasks. Ran proactive leave-one-out sensitivity analysis and measurement method stratification.
+- LOO results: All 8 analytes robust — max |Δg|=0.055, all remain significant (p<0.001) in every iteration. No single study is a leverage point. IL-1β>IL-6 ranking preserved.
+- Method sensitivity: ELISA vs Luminex produce consistent results with overlapping CIs. Luminex ~0.2 higher (known platform effect).
+- I²=0% interpretation: Not driven by any single study or method mixing. Likely genuine consistency (stereotyped autoimmune flare), but Q test power <50% with k<10.
+- Research Director endorsed IL-1β/NLRP3 finding (journal #41), added drug-repurposing label. Identified cross-project mechanistic cascade spanning 4 projects.
+- Pending tasks for others: #131 (validation_scientist — validate methodology, still pending), #132 (developer — add condition_b CLI), #139 (project_manager — cross-project synthesis), #140 (project_manager — anakinra/canakinumab evaluation)
+- New outputs: leave_one_out_sensitivity.csv/.png, measurement_method_sensitivity.csv/.png
+- Journal entries: #38 (first pipeline run), #53 (sensitivity analysis)
+- Next: Await validation_scientist review (#131). If validated, seek individual-patient-level data for prediction modeling. CSF data for BBB analysis. Th2 cytokines (IL-4, IL-13) still missing from dataset.
