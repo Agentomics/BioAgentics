@@ -149,8 +149,28 @@ def run_mofa(
         # mofapy2 calls exit() when all factors are dropped
         logger.warning("MOFA2 dropped all factors — no shared structure found")
 
-    # Extract results
-    expectations = ent.model.getExpectations()
+    # Extract results — model may be uninitialised if run() aborted
+    try:
+        expectations = ent.model.getExpectations()
+    except (AttributeError, RuntimeError):
+        logger.warning("MOFA2 model has no expectations — returning zero factors")
+        return {
+            "factors": np.zeros((n_samples, 1)),
+            "weights": {v: np.zeros((1, 1)) for v in view_names},
+            "variance_explained": {v: [0.0] for v in view_names},
+            "view_names": view_names,
+            "n_factors": 1,
+        }
+
+    if expectations is None or "Z" not in expectations:
+        logger.warning("MOFA2 expectations missing Z — returning zero factors")
+        return {
+            "factors": np.zeros((n_samples, 1)),
+            "weights": {v: np.zeros((1, 1)) for v in view_names},
+            "variance_explained": {v: [0.0] for v in view_names},
+            "view_names": view_names,
+            "n_factors": 1,
+        }
 
     # Z: factors matrix — either ndarray directly or dict with 'E' key
     Z_raw = expectations["Z"]
