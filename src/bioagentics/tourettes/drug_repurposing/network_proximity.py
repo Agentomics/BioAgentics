@@ -113,28 +113,33 @@ def compute_module_distance(
     G: nx.Graph,
     drug_targets: set[str],
     module_genes: set[str],
+    network_nodes: set[str] | None = None,
 ) -> float:
     """Compute closest shortest-path distance between drug targets and module genes.
 
     Uses the 'closest' measure: d_c(S,T) = 1/|T| * sum_{t in T} min_{s in S} d(s,t)
+
+    Parameters
+    ----------
+    network_nodes : set[str] | None
+        Pre-computed set(G.nodes()) to avoid recomputing in hot loops.
     """
-    # Only consider targets and module genes present in the network
-    targets_in_net = drug_targets & set(G.nodes())
-    module_in_net = module_genes & set(G.nodes())
+    if network_nodes is None:
+        network_nodes = set(G.nodes())
+
+    targets_in_net = drug_targets & network_nodes
+    module_in_net = module_genes & network_nodes
 
     if not targets_in_net or not module_in_net:
         return float("inf")
 
+    # Multi-source Dijkstra from all targets at once (much faster than per-pair shortest paths)
+    distances = nx.multi_source_dijkstra_path_length(G, targets_in_net)
+
     total_dist = 0.0
     for module_gene in module_in_net:
-        min_dist = float("inf")
-        for target in targets_in_net:
-            try:
-                d = nx.shortest_path_length(G, target, module_gene)
-                min_dist = min(min_dist, d)
-            except nx.NetworkXNoPath:
-                pass
-        total_dist += min_dist
+        d = distances.get(module_gene, float("inf"))
+        total_dist += d
 
     return total_dist / len(module_in_net)
 
@@ -150,20 +155,23 @@ def compute_proximity_zscore(
 
     Returns: (raw_distance, z_score, p_value)
     """
+    # Pre-compute node set once for the entire permutation loop
+    network_nodes = set(G.nodes())
+
     # Observed distance
-    d_obs = compute_module_distance(G, drug_targets, module_genes)
+    d_obs = compute_module_distance(G, drug_targets, module_genes, network_nodes)
     if d_obs == float("inf"):
         return float("inf"), 0.0, 1.0
 
     # Random background: sample random node sets of same size as drug targets
     rng = random.Random(seed)
     all_nodes = list(G.nodes())
-    n_targets = len(drug_targets & set(G.nodes()))
+    n_targets = len(drug_targets & network_nodes)
 
     random_distances = []
     for _ in range(n_random):
         random_targets = set(rng.sample(all_nodes, min(n_targets, len(all_nodes))))
-        d_rand = compute_module_distance(G, random_targets, module_genes)
+        d_rand = compute_module_distance(G, random_targets, module_genes, network_nodes)
         if d_rand != float("inf"):
             random_distances.append(d_rand)
 
