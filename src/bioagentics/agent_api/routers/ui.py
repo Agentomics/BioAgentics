@@ -1006,7 +1006,11 @@ def render_projects_tab(db: Session, search: str, status: str, labels: str, offs
     if division:
         query = query.where(projects_table.c.division == division)
         count_query = count_query.where(projects_table.c.division == division)
-    if status:
+    if status == "active":
+        active_cond = projects_table.c.status.notin_(["published", "cancelled"])
+        query = query.where(active_cond)
+        count_query = count_query.where(active_cond)
+    elif status:
         query = query.where(projects_table.c.status == status)
         count_query = count_query.where(projects_table.c.status == status)
     if labels:
@@ -1046,6 +1050,7 @@ def render_projects_tab(db: Session, search: str, status: str, labels: str, offs
     path = "/ui/projects"
     status_options = [
         ("", "all statuses"),
+        ("active", "active (in progress)"),
         ("proposed", "proposed"),
         ("planning", "planning"),
         ("development", "development"),
@@ -1062,6 +1067,7 @@ def render_projects_tab(db: Session, search: str, status: str, labels: str, offs
         ("biomarker", "biomarker"),
         ("genomic", "genomic"),
         ("clinical", "clinical"),
+        ("catalyst", "catalyst"),
         ("high-priority", "high-priority"),
         ("promising", "promising"),
     ]
