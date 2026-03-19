@@ -1,0 +1,9 @@
+human_accession	human_gene	in_pandas_serotypes	in_non_pandas_serotypes	category
+B4DHP5	B4DHP5	True	True	shared
+B4DHP7	B4DHP7	True	True	shared
+B4DHW5	B4DHW5	True	True	shared
+B4DHZ4	B4DHZ4	True	False	pandas_specific
+P04406	GAPDH	True	True	shared
+P09104	ENO2	True	True	shared
+P62333	PSMC6	True	True	shared
+Q5TCS8	AK9	True	False	pandas_specific
