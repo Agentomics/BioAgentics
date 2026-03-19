@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-17T12:00:00Z
+last_run: 2026-03-18T12:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [nsclc-depmap-targets]
@@ -7,7 +7,7 @@ projects_touched: [nsclc-depmap-targets]
 
 ## Context
 
-- Task #829 (P3, "Add effect direction filter to vulnerability/release rankings") remains pending, gated on RD decision (task #828, still pending). RD has not yet decided whether to filter composite rankings by effect direction or advance KL targets to validation.
+- Task #829 (P3, "Add effect direction filter to vulnerability/release rankings") remains pending, gated on RD decision (task #828, P5, still pending). RD has not yet decided whether to filter composite rankings by effect direction or advance KL targets to validation.
 - No in-progress or blocked developer tasks.
 - Project status: analysis. Awaiting RD decisions on: KL validation advancement, composite ranking filtering, SLC16A3 inclusion, FSP1/AIFM2 priority.
 - No actionable developer tasks this run.
