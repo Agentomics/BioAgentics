@@ -1,4 +1,4 @@
-"""Tests for developmental trajectory pipeline steps 03-07.
+"""Tests for developmental trajectory pipeline steps 03-09.
 
 Tests core logic functions using synthetic data (no network access required).
 """
@@ -777,3 +777,311 @@ class TestRunAllHypotheses:
         scores = step08.compute_celltype_scores(df)
         results = step08.run_all_hypotheses(scores)
         assert all("hypothesis" in r for r in results)
+
+
+# ===========================================================================
+# Step 09 — Persistence vs. remission model (Phase 4)
+# ===========================================================================
+
+step09 = _import_step("09_persistence_remission_model")
+
+
+def _make_phase4_trajectory_df(seed: int = 42) -> pd.DataFrame:
+    """Create synthetic trajectory data with genes needed for Phase 4.
+
+    Includes PV interneuron markers, GABA signaling genes, glutamate/DA genes,
+    dorsal zone markers, hormone receptors, and TS risk genes.
+    """
+    rng = np.random.default_rng(seed)
+    genes = [
+        # PV interneuron markers
+        "PVALB", "KCNC1", "KCNC2", "EYA1", "TAC3",
+        # GABA signaling
+        "GAD1", "GAD2", "SLC32A1", "GABRA1", "GABRG2",
+        # Excitatory / dopamine
+        "GRIN1", "GRIN2A", "GRIA1", "DRD1", "DRD2", "TH",
+        # Dorsal zone markers
+        "FOXP2", "EPHA4", "MET", "SEMA3A", "CACNA1A",
+        "KCND2", "GRIA3", "GRID2",
+        # Hormone receptors
+        "AR", "ESR1", "ESR2",
+        # TS risk genes
+        "BCL11B", "NDFIP2", "SLITRK1", "HDC", "NRXN1",
+    ]
+    records = []
+    for gene in genes:
+        for stage in STAGE_ORDER:
+            for region in REGION_LIST:
+                rpkm = rng.lognormal(3, 1)
+                records.append({
+                    "gene_symbol": gene,
+                    "dev_stage": stage,
+                    "cstc_region": region,
+                    "mean_rpkm": rpkm,
+                    "mean_log2_rpkm": np.log2(rpkm + 1),
+                    "n_samples": rng.integers(2, 6),
+                })
+    return pd.DataFrame(records)
+
+
+class TestComputeRemissionScore:
+    """Tests for 09_persistence_remission_model.compute_remission_score."""
+
+    def test_returns_expected_columns(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.compute_remission_score(df)
+        assert not result.empty
+        for col in ("dev_stage", "pv_score", "gaba_score",
+                     "remission_score", "stage_order"):
+            assert col in result.columns, f"missing column: {col}"
+
+    def test_all_stages_present(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.compute_remission_score(df)
+        assert set(result["dev_stage"]) == set(STAGE_ORDER)
+
+    def test_stage_order_monotonic(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.compute_remission_score(df)
+        orders = result["stage_order"].tolist()
+        assert orders == sorted(orders)
+
+    def test_empty_input(self):
+        result = step09.compute_remission_score(pd.DataFrame())
+        assert result.empty
+
+    def test_no_matching_genes(self):
+        df = _make_trajectory_df(genes=["FAKEGENE1", "FAKEGENE2"])
+        result = step09.compute_remission_score(df)
+        assert result.empty
+
+    def test_remission_score_is_average(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.compute_remission_score(df)
+        for _, row in result.iterrows():
+            expected = (row["pv_score"] + row["gaba_score"]) / 2
+            np.testing.assert_allclose(row["remission_score"], expected, atol=1e-10)
+
+
+class TestComputePersistenceScore:
+    """Tests for 09_persistence_remission_model.compute_persistence_score."""
+
+    def test_returns_expected_columns(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.compute_persistence_score(df)
+        assert not result.empty
+        for col in ("dev_stage", "excitatory_score", "inhibitory_deficit",
+                     "persistence_score", "stage_order"):
+            assert col in result.columns, f"missing column: {col}"
+
+    def test_all_stages_present(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.compute_persistence_score(df)
+        assert set(result["dev_stage"]) == set(STAGE_ORDER)
+
+    def test_persistence_score_is_average(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.compute_persistence_score(df)
+        for _, row in result.iterrows():
+            expected = (row["excitatory_score"] + row["inhibitory_deficit"]) / 2
+            np.testing.assert_allclose(row["persistence_score"], expected, atol=1e-10)
+
+    def test_empty_input(self):
+        result = step09.compute_persistence_score(pd.DataFrame())
+        assert result.empty
+
+
+class TestRemissionAdolescentIncrease:
+    """Tests for 09_persistence_remission_model.test_remission_adolescent_increase."""
+
+    def test_returns_expected_fields(self):
+        df = _make_phase4_trajectory_df()
+        rem = step09.compute_remission_score(df)
+        result = step09.test_remission_adolescent_increase(rem)
+        for key in ("hypothesis", "adolescent_mean", "pre_remission_mean",
+                     "effect_size", "increases_in_adolescence",
+                     "spearman_rho", "spearman_p", "trajectory"):
+            assert key in result, f"missing key: {key}"
+
+    def test_trajectory_has_postnatal_stages(self):
+        df = _make_phase4_trajectory_df()
+        rem = step09.compute_remission_score(df)
+        result = step09.test_remission_adolescent_increase(rem)
+        postnatal = set(step09.POSTNATAL_STAGES)
+        assert set(result["trajectory"].keys()) == postnatal
+
+    def test_empty_input(self):
+        result = step09.test_remission_adolescent_increase(pd.DataFrame())
+        assert "error" in result
+
+
+class TestPersistencePlateau:
+    """Tests for 09_persistence_remission_model.test_persistence_plateau."""
+
+    def test_returns_expected_fields(self):
+        df = _make_phase4_trajectory_df()
+        pers = step09.compute_persistence_score(df)
+        result = step09.test_persistence_plateau(pers)
+        for key in ("hypothesis", "adolescent_mean", "pre_remission_mean",
+                     "does_not_decline", "spearman_rho", "trajectory"):
+            assert key in result, f"missing key: {key}"
+
+    def test_empty_input(self):
+        result = step09.test_persistence_plateau(pd.DataFrame())
+        assert "error" in result
+
+
+class TestZonationAttenuation:
+    """Tests for 09_persistence_remission_model.compute_zonation_attenuation."""
+
+    def test_returns_expected_columns(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.compute_zonation_attenuation(df)
+        assert not result.empty
+        for col in ("dev_stage", "mean_expression", "cv", "n_markers",
+                     "stage_order"):
+            assert col in result.columns, f"missing column: {col}"
+
+    def test_cv_is_positive(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.compute_zonation_attenuation(df)
+        assert (result["cv"] >= 0).all()
+
+    def test_custom_markers(self):
+        df = _make_phase4_trajectory_df()
+        custom = {"PVALB": "test", "GAD1": "test", "GRIN1": "test"}
+        result = step09.compute_zonation_attenuation(df, dorsal_markers=custom)
+        assert not result.empty
+
+    def test_empty_input(self):
+        result = step09.compute_zonation_attenuation(pd.DataFrame())
+        assert result.empty
+
+    def test_no_matching_markers(self):
+        df = _make_trajectory_df(genes=["NOGENE1", "NOGENE2"])
+        result = step09.compute_zonation_attenuation(df)
+        assert result.empty
+
+
+class TestZonationAttenuationTrend:
+    """Tests for 09_persistence_remission_model.test_zonation_attenuation_trend."""
+
+    def test_returns_expected_fields(self):
+        df = _make_phase4_trajectory_df()
+        zon = step09.compute_zonation_attenuation(df)
+        result = step09.test_zonation_attenuation_trend(zon)
+        for key in ("hypothesis", "spearman_rho", "spearman_p",
+                     "cv_decreases", "cv_trajectory"):
+            assert key in result, f"missing key: {key}"
+
+    def test_empty_input(self):
+        result = step09.test_zonation_attenuation_trend(pd.DataFrame())
+        assert "error" in result
+
+
+class TestHormoneModulation:
+    """Tests for 09_persistence_remission_model.analyze_hormone_modulation."""
+
+    def test_returns_expected_fields(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.analyze_hormone_modulation(df)
+        for key in ("hypothesis", "hormone_genes_found",
+                     "pubertal_elevation", "pubertal_effect_size"):
+            assert key in result, f"missing key: {key}"
+
+    def test_finds_hormone_genes(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.analyze_hormone_modulation(df)
+        assert len(result["hormone_genes_found"]) > 0
+        assert "AR" in result["hormone_genes_found"]
+
+    def test_with_celltype_scores(self):
+        df = _make_phase4_trajectory_df()
+        ct_df = _make_celltype_trajectory_df()
+        scores = step08.compute_celltype_scores(ct_df)
+        result = step09.analyze_hormone_modulation(df, scores)
+        # Should attempt PV correlation
+        assert "pv_correlation" in result
+
+    def test_empty_input(self):
+        result = step09.analyze_hormone_modulation(pd.DataFrame())
+        assert "error" in result
+
+    def test_no_hormone_genes(self):
+        df = _make_trajectory_df(genes=["FAKEGENE1", "FAKEGENE2"])
+        result = step09.analyze_hormone_modulation(df)
+        assert "error" in result
+
+
+class TestScoreGenes:
+    """Tests for 09_persistence_remission_model.score_genes_persistence_remission."""
+
+    def test_returns_expected_columns(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.score_genes_persistence_remission(df)
+        assert not result.empty
+        for col in ("gene_symbol", "adolescent_change", "remission_direction",
+                     "discrimination_score", "is_ts_gene"):
+            assert col in result.columns, f"missing column: {col}"
+
+    def test_sorted_by_discrimination_score(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.score_genes_persistence_remission(df)
+        scores = result["discrimination_score"].tolist()
+        assert scores == sorted(scores, reverse=True)
+
+    def test_direction_values(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.score_genes_persistence_remission(df)
+        assert set(result["remission_direction"].unique()) <= {"remission", "persistence"}
+
+    def test_ts_gene_flag(self):
+        df = _make_phase4_trajectory_df()
+        result = step09.score_genes_persistence_remission(df)
+        ts_rows = result[result["is_ts_gene"]]
+        # BCL11B, NDFIP2, SLITRK1, HDC, NRXN1 should be flagged
+        assert len(ts_rows) > 0
+
+    def test_empty_input(self):
+        result = step09.score_genes_persistence_remission(pd.DataFrame())
+        assert result.empty
+
+
+class TestGeneratePredictions:
+    """Tests for 09_persistence_remission_model.generate_predictions."""
+
+    def _run_full_pipeline(self):
+        df = _make_phase4_trajectory_df()
+        rem = step09.compute_remission_score(df)
+        pers = step09.compute_persistence_score(df)
+        zon = step09.compute_zonation_attenuation(df)
+        rem_test = step09.test_remission_adolescent_increase(rem)
+        pers_test = step09.test_persistence_plateau(pers)
+        zon_test = step09.test_zonation_attenuation_trend(zon)
+        horm_test = step09.analyze_hormone_modulation(df)
+        genes = step09.score_genes_persistence_remission(df)
+        return rem_test, pers_test, zon_test, horm_test, genes
+
+    def test_returns_list(self):
+        results = self._run_full_pipeline()
+        predictions = step09.generate_predictions(*results)
+        assert isinstance(predictions, list)
+
+    def test_prediction_structure(self):
+        results = self._run_full_pipeline()
+        predictions = step09.generate_predictions(*results)
+        for p in predictions:
+            assert "id" in p
+            assert "prediction" in p
+            assert "evidence" in p
+            assert "validation" in p
+            assert "confidence" in p
+            assert p["id"].startswith("P4.")
+
+    def test_empty_inputs_returns_empty(self):
+        empty_test = {"error": "no data"}
+        predictions = step09.generate_predictions(
+            empty_test, empty_test, empty_test, empty_test, pd.DataFrame(),
+        )
+        assert isinstance(predictions, list)
+        assert len(predictions) == 0

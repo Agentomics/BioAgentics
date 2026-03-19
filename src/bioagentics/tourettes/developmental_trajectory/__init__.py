@@ -13,4 +13,5 @@ Pipeline steps:
   06_wgcna_brainspan         — WGCNA co-expression analysis on BrainSpan data
   07_critical_period_modules — Phase 2: Critical period gene module analysis
   08_celltype_deconvolution  — Phase 3: Cell-type developmental dynamics
+  09_persistence_remission_model — Phase 4: Persistence vs. remission model
 """
