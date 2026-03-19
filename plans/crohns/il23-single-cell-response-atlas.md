@@ -7,9 +7,9 @@ Build a single-cell transcriptomic atlas of the IL-23/Th17 axis in Crohn's disea
 The IL-23/Th17 pathway is a validated therapeutic target with multiple biologics now in clinical use. The SEQUENCE trial (NEJM 2024) confirmed risankizumab superiority over ustekinumab (endoscopic remission 31.8% vs 16.2%), but ~2/3 of risankizumab-treated patients still do NOT achieve endoscopic remission — this non-remission rate is the concrete clinical gap. J&J has initiated a guselkumab vs risankizumab head-to-head trial, and guselkumab received FDA approval for subcutaneous induction in UC. With multiple IL-23p19 inhibitors now available and 2025 ACG guidelines no longer requiring anti-TNF failure before IL-23 inhibitors, predicting which patients respond to this drug class (vs other mechanisms) is clinically urgent. This atlas targets the shared IL-23/Th17 pathway signature rather than drug-specific features, aiming to predict mechanism-class response. Single-cell RNA-seq of CD mucosa is now available from multiple studies but hasn't been systematically analyzed for IL-23 pathway biology or treatment response prediction. Most IL-23 studies focus on bulk tissue or animal models, missing the cell-type-specific resolution needed to understand heterogeneous responses.
 
 ## Data Sources
-- **GSE134809** (Kong et al.) — Single-cell RNA-seq of CD ileal tissue, inflamed and non-inflamed
-- **GSE150392** (Martin et al.) — Single-cell atlas of inflamed human gut with treatment metadata
-- **GSE207617** — Single-cell CD with clinical/treatment annotations
+- **GSE134809** (Martin et al. Cell 2019, PMID 31474370) — Single-cell RNA-seq of inflamed human ileum, 31 samples, Illumina NextSeq 500. Primary dataset for IL-23 pathway mapping.
+- **GSE282122** (Thomas et al. Nature Immunology 2024) — Longitudinal scRNA-seq of anti-TNF in IBD, ~1M cells, 216 biopsies, 41 subjects. Replacement for GSE207617 (which was incorrectly listed — actually mouse breast tumor data).
+- ~~GSE150392~~ **REMOVED** — Verified as SARS-CoV-2 iPSC-cardiomyocytes (not IBD). Previously misattributed to Martin et al.
 - **Single Cell Portal** (Broad Institute) — Additional IBD single-cell datasets
 - **CellxGene** — Curated single-cell datasets with standardized annotations
 - **IBDverse** (1.1M cells, 111 CD + 232 controls) — Largest scRNA-seq resource for ileal CD. Candidate primary cell-type reference for annotation (pending data_curator evaluation, task #231)
