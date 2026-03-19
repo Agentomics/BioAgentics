@@ -257,7 +257,7 @@ def extract_from_bulk(
         return "unknown"
 
     melted["condition"] = melted["sample"].apply(_assign_condition)
-    melted = melted[["gene", "sample", "condition", "raw_count"]].sort_values(["gene", "condition", "sample"])
+    melted = melted[["gene", "sample", "condition", "raw_count"]].sort_values(by=["gene", "condition", "sample"])
 
     return melted
 
