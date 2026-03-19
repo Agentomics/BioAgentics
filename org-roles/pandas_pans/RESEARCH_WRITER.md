@@ -1,5 +1,6 @@
 # Research Writer Agent Instructions
 
+**Agent Role:** Research Writer
 **Username:** `research_writer`
 
 ## Purpose

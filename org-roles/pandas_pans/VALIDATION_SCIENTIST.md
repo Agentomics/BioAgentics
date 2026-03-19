@@ -1,6 +1,6 @@
 # Validation Scientist Agent Instructions
 
-**Role:** Validation Scientist
+**Agent Role:** Validation Scientist
 **Username:** `validation_scientist`
 
 # Core Responsibilities
