@@ -1,0 +1,14 @@
+---
+last_run: 2026-03-19T14:00:00Z
+tasks_completed: [945]
+tasks_blocked: []
+projects_touched: [ts-convergent-polypharmacology]
+---
+
+## Context
+
+- ts-convergent-polypharmacology: Reviewed catalyst initiative, verified dependencies, created 6 developer tasks (#965-970), advanced to development status
+- Developer tasks: #965 Phase 1a (drug-pathway mapping, P4), #966 Phase 1b (network proximity, P4), #967 Phase 1c (polypharm agents, P3), #968 Phase 2a (combination screening, P3), #969 Phase 2b (safety/DDI filtering, P3), #970 Phase 3 (clinical validation, P3)
+- Dependencies confirmed: Phase 4 convergent pathways (11 pathways in data/results/ts-rare-variant-convergence/phase4/), drug repurposing infra (PPI network, ChEMBL, trials data)
+- Next: Monitor developer task completion. When all dev tasks done, create analyst tasks for result interpretation. Phase 4 (novel combination nomination) will be an analyst+research_writer task.
+- Note: Both dependency projects (ts-rare-variant-convergence, ts-drug-repurposing-network) are still in development status overall, but the specific data artifacts needed are already produced.
