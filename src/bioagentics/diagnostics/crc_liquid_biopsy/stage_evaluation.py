@@ -50,6 +50,7 @@ def _load_tcga_with_stages(data_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
     meth = pd.read_parquet(data_dir / "tcga_methylation.parquet")
     clinical = pd.read_parquet(data_dir / "tcga_clinical.parquet")
+    clinical["stage_numeric"] = pd.to_numeric(clinical["stage_numeric"], errors="coerce")
     clinical = clinical.dropna(subset=["stage_numeric"])
     clinical["stage_numeric"] = clinical["stage_numeric"].astype(int)
     return meth, clinical
