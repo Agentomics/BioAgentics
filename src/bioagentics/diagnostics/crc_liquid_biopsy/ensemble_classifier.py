@@ -93,6 +93,7 @@ def load_panel_features(
             rng = np.random.default_rng(42)
             labels_tmp = (meta["condition"] == "CRC").astype(int).values
             meth_X = np.zeros((len(samples), len(meth_features)))
+            found_meth_cols: list[int] = []
             for i, mf in enumerate(meth_features):
                 cpg = mf.replace("meth_", "")
                 if cpg in cfdna.index:
@@ -104,8 +105,10 @@ def load_panel_features(
                         rng.normal(crc_mean, noise, len(labels_tmp)),
                         rng.normal(ctrl_mean, noise, len(labels_tmp)),
                     )
-                feat_names.append(mf)
-            X = np.hstack([X, meth_X])
+                    found_meth_cols.append(i)
+                    feat_names.append(mf)
+            if found_meth_cols:
+                X = np.hstack([X, meth_X[:, found_meth_cols]])
 
     y = (meta.loc[samples, "condition"] == "CRC").astype(int).values
     X_df = pd.DataFrame(X, index=samples, columns=feat_names)
