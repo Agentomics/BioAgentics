@@ -292,6 +292,7 @@ def gru_lopo_cv(
 
         # Train with early stopping
         best_loss = float("inf")
+        best_state = None
         epochs_without_improvement = 0
 
         for epoch in range(n_epochs):
@@ -309,8 +310,8 @@ def gru_lopo_cv(
                 break
 
         # Load best model
-        if best_state:  # type: ignore[possibly-unbound]
-            model.load_state_dict(best_state)  # type: ignore[possibly-unbound]
+        if best_state:
+            model.load_state_dict(best_state)
 
         # Predict
         preds = _predict(model, test_scaled)
