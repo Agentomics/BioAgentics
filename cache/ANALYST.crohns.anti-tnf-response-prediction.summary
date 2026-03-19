@@ -1,0 +1,16 @@
+---
+last_run: 2026-03-19T02:45:00Z
+tasks_completed: [842, 843, 844]
+tasks_blocked: []
+projects_touched: [anti-tnf-response-prediction]
+---
+
+## Context
+
+- **Task #842 (P5) — Data Leakage Audit: DONE.** Confirmed two leakage sources: (1) ComBat applied globally to all 83 samples before LOSO-CV, (2) feature selection (stability selection + RFE) run on all samples before CV. Batch-response confounding NOT significant (p=0.31). 26/30 genes have genuine response signal. Permutation test p=0.005 — signal is real but AUC=0.999 inflated. ComBat inflation: +0.447 (elastic net), +0.333 (RF). Estimated corrected AUC: 0.70-0.85. Created developer task #860 to fix pipeline, research_director task #861 to note findings. Journal #1224.
+
+- **Task #843 (P4) — External Validation: DONE.** Porto 5-gene signature (TREM1, IL23R, CCL7, IL17F, YES1) performs BELOW chance (AUC 0.39-0.47) in our data — none selected by pipeline. Top 10 genes capture nearly all signal (RF AUC=0.884 vs full 30 AUC=0.874). Per-study: GSE73661 RF spec=0.0 (generalization failure). Only 1/30 genes overlaps published signatures (OSMR, which is not DE-significant). Journal #1225.
+
+- **Task #844 (P3) — Biological Interpretation: DONE.** Developer's "housekeeping" label for 17/30 genes is too broad — 5 have IBD-relevant functions (CASP6, BCL2L2, CHPF2, NFS1, ACAD9), 12 are truly uncharacterized. Pathway coherence adequate: TNF signaling (4), apoptosis (4), epithelial barrier (4), innate immunity (4), ECM (3), metabolic (4). Deconvolution not feasible without sc-RNA reference data. Risk stratification plot shows modest separation inconsistent with AUC=0.999. Journal #1228.
+
+- **Next:** All 3 analyst tasks done. Pipeline needs developer fix (task #860) for ComBat + feature selection within CV folds before any metrics can be reported. After fix, re-run tasks #843 and #844 on corrected data. Deconvolution analysis (InstaPrism) deferred pending reference atlas download (data curator tasks #448/#449).
