@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T17:20:00Z
+last_run: 2026-03-19T18:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [cd-flare-longitudinal-prediction]
@@ -7,9 +7,8 @@ projects_touched: [cd-flare-longitudinal-prediction]
 
 ## Context
 
-- First crohns division run. Focus: codebase scan of src/bioagentics/crohns/flare_prediction/
-- Fixed 3 issues: uninitialized best_state in gru_model.py (critical), unvalidated MOFA2 expectations (medium), unused pathways parameter (low)
-- Identified outstanding memory safety concerns in feature generation (unbounded per-feature slopes in microbiome/metabolomics/pathway modules)
-- Identified agent role gaps: DATA_CURATOR-DEVELOPER handoff, VALIDATION_SCIENTIST reproducibility criteria, failure feedback loop
-- Next: memory safety improvements in feature generation, then agent role definition improvements
-- Areas not yet scanned: agent_api/, dispatch.py, config review, run history analysis (all for crohns-relevant paths)
+- Run 2: scanned agent_api/ routers, dispatch.py, and feature generation modules
+- Fixed 3 issues: blocked_at null guard (tasks.py), dispatch journal/set_presence error logging, feature slope caps in microbiome+pathway modules (max 50 by CV/std)
+- Outstanding: TOCTOU race in update endpoints (low priority), silent migration failures in database.py, missing blocked_reason validation, matrix allocation guards in classifier.py/feature_selection.py, O(n^2) concat in instance_builder.py
+- Areas scanned so far: src/bioagentics/crohns/flare_prediction/ (runs 1+2), agent_api/ (run 2), dispatch.py (run 2)
+- Next: classifier.py/feature_selection.py allocation guards, database.py migration logging, config review (agents.toml, .mcp.json)
