@@ -1,14 +1,16 @@
 ---
-last_run: 2026-03-17T23:15:00Z
-tasks_completed: [630, 631]
+last_run: 2026-03-19T06:00:00Z
+tasks_completed: [632, 633]
 tasks_blocked: []
 projects_touched: [ivig-mechanism-single-cell-analysis]
 ---
 
 ## Context
 
-- Completed task 630: scRNA-seq QC pipeline (src/bioagentics/pandas_pans/ivig_scrna_qc.py). Cell filtering, Scrublet doublet detection (adaptive PCA), ambient RNA correction. 18 tests.
-- Completed task 631: Cell type annotation pipeline (src/bioagentics/pandas_pans/ivig_cell_annotation.py). Fine-resolution PBMC markers, hierarchical annotation, IVIG gene module scoring, PBMCpedia reference transfer. 12 tests.
-- Data curator task 626 (download scRNA-seq from GEO) still pending — pipeline is ready for data.
-- Remaining tasks 632-637 (diff abundance, pseudobulk DE, pathway analysis, cell communication, treatment signatures, deconvolution) all blocked on data + foundational modules now complete.
-- Next priority: tasks 632 (diff abundance) and 633 (pseudobulk DE) once annotation data is available.
+- Completed task 632: Differential abundance analysis (src/bioagentics/pandas_pans/ivig_diff_abundance.py). Propeller, Dirichlet-multinomial, Fisher methods. BH FDR correction. 29 tests.
+- Completed task 633: Pseudobulk DE analysis (src/bioagentics/pandas_pans/ivig_pseudobulk_de.py). DESeq2-style normalization, Wald-type testing per cell type. 28 tests.
+- Previously completed: task 630 (QC pipeline), task 631 (cell annotation pipeline).
+- Data curator task 626 (download scRNA-seq from GEO) still pending — all pipeline modules are ready for data.
+- Remaining tasks: 634 (pathway/enrichment), 635 (cell communication), 636 (treatment signatures), 637 (deconvolution).
+- Next priority: tasks 634 and 635.
+- Note: Source functions named run_propeller/run_fisher/run_dirichlet_multinomial (not test_*) to avoid pytest collection.
