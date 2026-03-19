@@ -10,6 +10,7 @@ Current TS pharmacotherapy is limited — antipsychotics (haloperidol, pimozide,
 
 ## Data Sources
 - **TS gene/protein set** — TSAICG GWAS genes, rare variant genes, differentially expressed genes from TS transcriptome studies
+- **MR-validated drug targets** — Zhou & Li (Italian J Pediatrics 2025; doi:10.1186/s13052-025-02048-x): Two-sample MR using cis-eQTLs identified LAMA5 (top candidate — regulates CD4+ T-cell differentiation, links genetic and immune hypotheses), RET (neurotrophic signaling), CAPNS1 (calpain, synaptic plasticity). 7 critical methylation sites regulate LAMA5 expression. Cross-reference with LINCS L1000 for compounds affecting these pathways [NEW]
 - **STRING/BioGRID** — Protein-protein interaction (PPI) networks for building TS-relevant subnetworks
 - **DrugBank** — Drug-target interaction database
 - **LINCS L1000 (CMap)** — Gene expression signatures of drug perturbations for signature-based matching. **NOTE:** CMap reproducibility is limited — use as hypothesis-generating, not definitive. Cross-validate top hits with independent perturbation data where available [task #239]
@@ -29,6 +30,8 @@ Current TS pharmacotherapy is limited — antipsychotics (haloperidol, pimozide,
    - Synaptic adhesion
    - **PDE10A/cAMP-cGMP intracellular signaling** [validated by gemlapodect Phase 2a]
    - **Muscarinic cholinergic: CHRM4/M4 receptor** — M4 activation reduces tic-like behaviors via cholinergic interneuron pathway. **KarXT/Cobenfy (xanomeline-trospium, orthosteric M1/M4 agonist)** is FDA-approved for schizophrenia (Sep 2024) with robust Phase 3 efficacy — high-priority repurposing candidate. **NOTE:** Emraclidine (M4 PAM) FAILED both Phase 2 trials (EMPOWER 1 & 2, Nov 2024) — PAM vs orthosteric distinction may explain divergent results; downgrade PAMs, prioritize orthosteric agonists [tasks #294, #329]
+   - **Glutamatergic modulation: NMDA/AMPA targets** — D-serine and riluzole are emerging TS candidates from Phase III trials (Medicine 2025; PMC12151041). Glutamatergic modulators represent a distinct mechanism from dopaminergic approaches. Prioritize FDA-approved glutamatergic drugs for repurposing [NEW]
+   - **MR-validated targets: LAMA5/RET/CAPNS1** — MR evidence provides stronger causal support than purely correlational targets. LAMA5 bridges genetic-immune axis (CD4+ T-cell regulation), RET enables neurotrophic signaling intervention, CAPNS1 targets synaptic plasticity. Weight MR-validated targets higher in multi-criteria ranking [NEW]
    - **Immune/neuroinflammatory module**: Include TNF, IL-12/23, JAK-STAT, CCL2/CCR2 as TS-relevant immune targets. Cross-reference with ts-neuroimmune-subtyping project for immune gene targets. Anti-TNF, anti-IL-12/23, JAK inhibitors as immunomodulatory candidates [task #270]
 5. **VMAT2 negative control**: VMAT2 inhibitors (valbenazine, deutetrabenazine) showed disappointing TS trial results despite mechanistic rationale — use as negative control to calibrate scoring. Drugs scoring similarly to VMAT2 inhibitors should be penalized [task #239]
 6. **Safety and feasibility filtering**: Filter candidates by: FDA-approved, acceptable CNS safety profile, blood-brain barrier penetrance, no overlapping major contraindications with TS comorbidities (ADHD, OCD)

@@ -53,6 +53,7 @@ Using Wang et al. 2025 cell-type markers (MSN, cholinergic interneuron, parvalbu
 Integrate Phases 1-3 to build a computational model predicting molecular features of persistent vs. remitting TS:
 - **Remission model:** PV interneuron maturation + cortical GABA strengthening → increased inhibitory control over CSTC circuit
 - **Persistence model:** Disrupted PV interneuron development (consistent with ts-striatal-interneuron-pathology findings) → failure of compensatory inhibition
+- **Striatal zonation attenuation model [NEW]:** Mesoscale striatal atlas (bioRxiv Mar 2026; doi:10.64898/2026.03.04.709715; 1.1M cells, 19 donors) shows 6 molecular zones with age-dependent spatial attenuation — 88.2% of zone-specific genes lose spatial differentiation in older donors. Dorsal zones (CSTC-relevant) show greatest age-related change. This spatial attenuation may provide a molecular substrate for tic remission: dorsal-zone MSN transcriptomic convergence during adolescence could reduce aberrant CSTC circuit activity. Test whether dorsal-zone gene attenuation trajectory correlates with remission-window timing.
 - Identify specific genes whose developmental trajectories are most predictive of the persistence/remission boundary
 - Cross-reference with gonadal steroid hormone receptor expression (AR, ESR1, ESR2) to test hormonal modulation hypothesis
 
