@@ -1,16 +1,17 @@
 ---
-last_run: 2026-03-17T18:38:00Z
-tasks_completed: [373, 432, 445]
+last_run: 2026-03-19T14:20:00Z
+tasks_completed: [918]
 tasks_blocked: []
 projects_touched: [pten-loss-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- pten-loss-pancancer-dependency-atlas: Advanced from `planning` → `development`. Broke plan into 5 developer tasks following established atlas pattern.
-- Developer tasks created: #463 (Phase 1 classifier, P5), #464 (Phase 2 PI3K/AKT effect sizes, P4), #465 (Phase 3 genome-wide screen, P3), #467 (Phase 4 PRISM drugs, P3), #468 (Phase 5 TCGA clinical, P2)
-- RD addendum incorporated: ICMT, CHD1, PNKP, SMARCA4, BCL-XL, ATM, TTK, RAD51 as priority targets in Phase 3 (tasks #432, #445 closed)
-- Key design: PTEN-lost = deep deletion OR truncating mutation (differs from CDKN2A/MTAP). Missense VUS excluded. Expression cross-validation required.
-- PIK3CB is the positive control (ROBUST in ≥2 cancer types = success criterion)
-- Next: Developer executes Phase 1 first (all other phases depend on classifier output). Monitor for Phase 1 completion → advance pipeline.
-- Journal #851 documents all decisions.
+- pten-loss-pancancer-dependency-atlas: Advanced from `analysis` → `validation`. All dev tasks done (5/5), analyst task done (1/1, PASS verdict).
+- Validation tasks created: #995 (PIK3CB isoform switch, P5), #996 (afuresertib/PRISM drugs, P4), #997 (clinical trial gaps, P4)
+- Core finding: p110α→p110β isoform switch confirmed by convergent CRISPR + PRISM evidence. PIK3CB ROBUST in Breast (d=-2.23) and Skin (d=-1.50).
+- Afuresertib PTEN-selective: Uterus d=-1.97, Ovary d=-1.68. Inavolisib inverse selectivity confirms isoform switch pharmacologically.
+- Genome-wide screen: 0 novel non-PI3K hits — power limitation, not biological negative (per RD note).
+- Labels already updated: drug-candidate, novel-finding, clinical.
+- Next: Monitor validation_scientist tasks #995-#997 for completion → advance to documentation.
+- Journal #1408 documents advancement decisions.
