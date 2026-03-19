@@ -1,24 +1,19 @@
 ---
-last_run: 2026-03-19T05:00:00Z
-tasks_completed: []
+last_run: 2026-03-19T06:00:00Z
+tasks_completed: [121, 122, 123]
 tasks_blocked: []
 projects_touched: [ehr-sepsis-early-warning]
 ---
 
 ## Context
 
-- ehr-sepsis-early-warning: Phase 1 + Phase 2 + Phase 3 complete
+- ehr-sepsis-early-warning: Phase 1-4 code complete
   - Phase 1 (data pipeline): config, data_extraction, labeling, features, dataset
   - Phase 2 (models): lr_baseline.py, gbm.py, temporal.py, ensemble.py
   - Phase 3 (calibration & fairness): calibration.py, fairness.py, alarm_burden.py
-    - Calibration: CV-based Platt scaling + isotonic regression, ECE computation
-    - Fairness: AUROC/sens/spec/PPV by age/sex/ethnicity, max disparity check (<0.05)
-    - Alarm burden: FPR at 80%/90%/95% sensitivity, false alarm ratio (target <2:1)
-- 75 unit tests passing (25 new Phase 3 + 50 Phase 1-2)
-- Next: Phase 4 tasks (temporal validation, eICU external validation, SHAP explainability)
-  - Temporal validation on MIMIC-IV holdout (last 20% by admission date)
-  - External validation on eICU multi-center dataset
-  - SHAP feature importance stability analysis
-- Blocker: data_curator task #863 (PhysioNet MIMIC-IV/eICU data acquisition) still pending
-- Note: ehr-sepsis-early-warning project not yet registered in db.sqlite — tasks exist only in PM cache
-- No MCP tools available in current environment; used sqlite3 directly for queries
+  - Phase 4 (validation): temporal_validation.py, external_validation.py, explainability.py
+- 101 unit tests passing (26 new Phase 4 + 75 Phase 1-3)
+- Registered project in db.sqlite; created and completed tasks #121-123
+- Code at src/bioagentics/diagnostics/sepsis/validation/
+- Blocker: data_curator task for PhysioNet MIMIC-IV/eICU data acquisition still pending
+- Next: analyst can run pipeline once data arrives; may need operating point recommendation module
