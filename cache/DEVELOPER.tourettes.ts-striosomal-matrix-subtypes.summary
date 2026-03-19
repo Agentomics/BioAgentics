@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-19T19:02:00Z
+tasks_completed: [1021, 1022]
+tasks_blocked: [1017, 1018, 1019, 1020, 1023, 1024]
+projects_touched: [ts-striosomal-matrix-subtypes]
+---
+
+## Context
+
+- **CRITICAL BLOCKER:** GSE303705 is wrong accession. It points to "A Spatial and Temporal Transcriptomic Atlas of Mouse Intestinal Regeneration" (mouse, Visium HD), NOT the mesoscale human striatum atlas. Created P5 task 1113 for project_manager to fix. All Phase 1 tasks (1017-1020) blocked. Tasks 1023-1024 also blocked (depend on Phase 1 zone compartment scores).
+- Task 1021 done: Compiled 35 TS risk genes (19 GWAS, 20 rare, 3 de novo, 7 multi-source). Output: output/tourettes/ts-striosomal-matrix-subtypes/ts_risk_genes.csv. Wang et al. DE genes not included (NDA-restricted, DE analysis pending).
+- Task 1022 done: Enrichment testing module with Fisher exact + permutation (10K) + BH FDR. 13 tests passing.
+- Proactively wrote compartment_scoring.py (Task 1018 code) with 9 tests — ready for real data.
+- Module path: src/bioagentics/tourettes/striosomal_matrix/
+- Next: Once correct GEO accession identified, unblock Phase 1 tasks. All code modules are ready.
