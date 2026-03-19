@@ -279,29 +279,81 @@ def extract_instruments(
     }
 
     logger.info("  Extracting instruments for %s...", exposure.biomarker)
+
+    # Use chunked reading for large files (>500MB compressed) to stay within RAM
+    file_size_mb = raw_path.stat().st_size / (1024 * 1024)
+    use_chunked = file_size_mb > 500
+
+    if use_chunked:
+        logger.info("  Large file (%.0f MB) — using chunked reading", file_size_mb)
+
     try:
-        df = pd.read_csv(raw_path, sep="\t", dtype=str, low_memory=False)
+        if use_chunked:
+            # Read in chunks, filter to significant SNPs in each chunk
+            sig_chunks = []
+            col_lower = None
+            snp_col = a1_col = a2_col = beta_col = or_col = se_col = p_col = eaf_col = None
+            total_rows = 0
+
+            for chunk in pd.read_csv(
+                raw_path, sep="\t", dtype=str, chunksize=200_000
+            ):
+                total_rows += len(chunk)
+
+                # Determine column names from first chunk
+                if col_lower is None:
+                    col_lower = {c.lower(): c for c in chunk.columns}
+                    snp_col = col_lower.get("hm_rsid") or col_lower.get("rsid") or col_lower.get("snp")
+                    a1_col = col_lower.get("hm_effect_allele") or col_lower.get("effect_allele")
+                    a2_col = col_lower.get("hm_other_allele") or col_lower.get("other_allele")
+                    beta_col = col_lower.get("hm_beta") or col_lower.get("beta")
+                    or_col = col_lower.get("hm_odds_ratio") or col_lower.get("odds_ratio")
+                    se_col = col_lower.get("standard_error") or col_lower.get("se")
+                    p_col = col_lower.get("p_value") or col_lower.get("p")
+                    eaf_col = col_lower.get("hm_effect_allele_frequency") or col_lower.get("effect_allele_frequency")
+
+                    if not all([snp_col, a1_col, a2_col, p_col]):
+                        logger.error("  Missing required columns in %s", raw_path.name)
+                        result["status"] = "missing_columns"
+                        return result
+
+                # Filter this chunk to suggestive threshold (keep superset, refine later)
+                p_vals = pd.to_numeric(chunk[p_col], errors="coerce")
+                mask = p_vals < 1e-5
+                if mask.any():
+                    sig_chunks.append(chunk[mask].copy())
+
+            logger.info("  Scanned %d rows in chunks", total_rows)
+            if not sig_chunks:
+                logger.warning("  No significant SNPs found")
+                result["status"] = "no_instruments"
+                return result
+            df = pd.concat(sig_chunks, ignore_index=True)
+            del sig_chunks
+        else:
+            df = pd.read_csv(raw_path, sep="\t", dtype=str, low_memory=False)
     except Exception as e:
         logger.error("  Failed to read %s: %s", raw_path.name, e)
         result["status"] = "read_failed"
         return result
 
-    # Find columns
-    col_lower = {c.lower(): c for c in df.columns}
+    if not use_chunked:
+        # Find columns (already done for chunked path)
+        col_lower = {c.lower(): c for c in df.columns}
 
-    snp_col = col_lower.get("hm_rsid") or col_lower.get("rsid") or col_lower.get("snp")
-    a1_col = col_lower.get("hm_effect_allele") or col_lower.get("effect_allele")
-    a2_col = col_lower.get("hm_other_allele") or col_lower.get("other_allele")
-    beta_col = col_lower.get("hm_beta") or col_lower.get("beta")
-    or_col = col_lower.get("hm_odds_ratio") or col_lower.get("odds_ratio")
-    se_col = col_lower.get("standard_error") or col_lower.get("se")
-    p_col = col_lower.get("p_value") or col_lower.get("p")
-    eaf_col = col_lower.get("hm_effect_allele_frequency") or col_lower.get("effect_allele_frequency")
+        snp_col = col_lower.get("hm_rsid") or col_lower.get("rsid") or col_lower.get("snp")
+        a1_col = col_lower.get("hm_effect_allele") or col_lower.get("effect_allele")
+        a2_col = col_lower.get("hm_other_allele") or col_lower.get("other_allele")
+        beta_col = col_lower.get("hm_beta") or col_lower.get("beta")
+        or_col = col_lower.get("hm_odds_ratio") or col_lower.get("odds_ratio")
+        se_col = col_lower.get("standard_error") or col_lower.get("se")
+        p_col = col_lower.get("p_value") or col_lower.get("p")
+        eaf_col = col_lower.get("hm_effect_allele_frequency") or col_lower.get("effect_allele_frequency")
 
-    if not all([snp_col, a1_col, a2_col, p_col]):
-        logger.error("  Missing required columns in %s", raw_path.name)
-        result["status"] = "missing_columns"
-        return result
+        if not all([snp_col, a1_col, a2_col, p_col]):
+            logger.error("  Missing required columns in %s", raw_path.name)
+            result["status"] = "missing_columns"
+            return result
 
     # Convert numeric columns
     df["_p"] = pd.to_numeric(df[p_col], errors="coerce")

@@ -478,8 +478,7 @@ def convert_to_ldsc_format(
                 processed = processed[mask]
                 processed = processed.drop_duplicates(subset=["SNP"], keep="first")
                 seen_snps.update(processed["SNP"])
-                for _, row in processed.iterrows():
-                    out_f.write(f"{row['SNP']}\t{row['A1']}\t{row['A2']}\t{row['Z']}\t{row['N']}\n")
+                processed.to_csv(out_f, sep="\t", index=False, header=False)
                 total_written += len(processed)
                 if total_read % 2_000_000 == 0:
                     logger.info("  ... processed %d rows, %d SNPs written", total_read, total_written)
