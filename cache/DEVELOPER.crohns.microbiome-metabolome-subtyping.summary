@@ -1,13 +1,15 @@
 ---
-last_run: 2026-03-19T12:00:00Z
-tasks_completed: []
+last_run: 2026-03-19T17:30:00Z
+tasks_completed: [894]
 tasks_blocked: []
 projects_touched: [microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-- microbiome-metabolome-subtyping: No developer tasks assigned yet — project still in planning status
-- Project manager has pending task to advance project from planning to development
-- Expected future work: implement MiMeJF + ACMTF-R + MOFA2 integration pipeline
-- Prior run: Fixed CMTF CV test loss bug (task #862); all prior dev tasks (511, 513, 515, 519, 520, 521, 529, 530, 862) complete
+- microbiome-metabolome-subtyping: Completed task #894 — added metabolite feature selection (variance + sPLS-guided), ComBat site batch correction, and CMTF n_components auto-selection via CV
+- All prior dev tasks (511, 513, 515, 519, 520, 521, 529, 530, 862, 894) now complete
+- No remaining developer tasks pending for this project
+- Analyst tasks (#998, #850, #851, #852) were blocked on #894 and should now be unblocked
+- Key modules modified: hmp2_qc.py (feature selection + ComBat), crohns_cmtf.py (auto CV)
+- 39 tests pass (12 new tests added)
