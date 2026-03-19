@@ -462,7 +462,10 @@ def convert_to_ldsc_format(
 
     if use_chunks:
         # Chunked processing: write directly to gzip output
-        seen_snps: set[str] = set()
+        # Only deduplicate within each chunk (not across chunks) to avoid
+        # O(n*m) memory/time scaling from a cross-chunk seen_snps set.
+        # GWAS Catalog harmonized files rarely have cross-chunk duplicates,
+        # and LDSC handles them gracefully.
         total_written = 0
         total_read = 0
         tmp_path = ldsc_path.with_suffix(ldsc_path.suffix + ".tmp")
@@ -473,11 +476,7 @@ def convert_to_ldsc_format(
                 processed = _process_chunk(chunk, cols, study.sample_size)
                 if processed.empty:
                     continue
-                # Deduplicate within and across chunks
-                mask = ~processed["SNP"].isin(seen_snps)
-                processed = processed[mask]
                 processed = processed.drop_duplicates(subset=["SNP"], keep="first")
-                seen_snps.update(processed["SNP"])
                 processed.to_csv(out_f, sep="\t", index=False, header=False)
                 total_written += len(processed)
                 if total_read % 2_000_000 == 0:
