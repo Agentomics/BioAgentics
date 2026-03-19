@@ -170,7 +170,13 @@ def main() -> None:
 
     # Summary
     unique_compounds = {r["chembl_id"] for r in all_rows}
-    clinical_compounds = {r["chembl_id"] for r in all_rows if r.get("max_phase") and str(r["max_phase"]) >= "3"}
+    clinical_compounds = set()
+    for r in all_rows:
+        try:
+            if r.get("max_phase") and float(r["max_phase"]) >= 3:
+                clinical_compounds.add(r["chembl_id"])
+        except (ValueError, TypeError):
+            pass
     print(f"Unique compounds: {len(unique_compounds)}")
     print(f"Clinical-stage compounds (Phase 3+): {len(clinical_compounds)}")
 
