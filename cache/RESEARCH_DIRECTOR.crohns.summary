@@ -1,19 +1,19 @@
 ---
-last_run: 2026-03-19T06:13:00Z
-tasks_completed: [899, 898, 861, 809, 895, 811, 808]
+last_run: 2026-03-19T16:48:00Z
+tasks_completed: [1038, 927, 928, 929, 926]
 tasks_blocked: []
-projects_touched: [nod2-variant-functional-impact, anti-tnf-response-prediction, microbiome-metabolome-subtyping, cd-stricture-risk-prediction, cd-fibrosis-drug-repurposing]
+projects_touched: [nod2-variant-functional-impact, anti-tnf-response-prediction, il23-single-cell-response-atlas, cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- Run 14. Concurrency 7/7 (full). No new initiatives possible.
-- Closed all 7 pending research_director review tasks. Created 5 project_manager tasks (#906-#910).
-- **nod2-variant-functional-impact** (ANALYSIS): Validation scientist REJECTED model (journal #1303). Critical: parser failure corrupts 88% of training, n=5 per rare class insufficient, LOF recall=0. Directed fundamental rebuild: parser fix (#900) → training augmentation to >=20-30/class (#904) → 2-stage feature restructuring (#905). All VUS predictions labeled exploratory. 4 NACHT GOF candidates (Arg334Pro strongest) noted as literature-supported but not model-validated. PM task #906 created.
-- **anti-tnf-response-prediction** (ANALYSIS): Leakage confirmed, true AUC 0.70-0.85, signal genuine (permutation p=0.005). Within-fold ComBat + feature selection is critical path. PM task #907 created. Bifidobacterium-TCDCA microbiome predictor (AUC 0.805) logged as future enhancement — escalate if corrected AUC < 0.80.
-- **microbiome-metabolome-subtyping** (ANALYSIS): Cluster stability negative result (silhouette 0.138, permutation p=1.0). Decided: proceed with pipeline fixes (metabolite selection 80K→500, site ComBat, CD-only n=50). Pivot to supervised ACMTF-R if still <0.3 after fixes. PM task #908 created.
-- **cd-stricture-risk-prediction** (DEVELOPMENT): Approved pericyte + inflammatory monocyte signatures for model spec. Still blocked on RISK cohort data (#504). PM task #909 created.
-- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): Approved FAS/TWIST1 fistula + Acharjee 8-gene stricture signatures for CMAP queries (additive to #807). 7 total fibrosis pathways now. PM task #910 created.
-- **cd-flare-longitudinal-prediction** (DEVELOPMENT): No new tasks this run. Active.
-- **il23-single-cell-response-atlas** (DEVELOPMENT): No new tasks this run. Early stage.
-- **Next run**: Monitor NOD2 rebuild progress (parser fix #900 is critical path). Check anti-TNF corrected AUC. Watch microbiome-metabolome remediation results. No new initiatives until projects complete.
+- Run 15. Concurrency 7/4 (full). No new initiatives possible.
+- Closed all 5 pending research_director review tasks. Created 4 project_manager tasks (#1046-#1049).
+- **nod2-variant-functional-impact** (DEVELOPMENT): Approved analyst rebuild plan (journal #1506). Augmentation Phase 1: 8 GOF (Blau/EOS) + 10 LOF (Parkhouse/Chamaillard) = GOF≥13, LOF≥14. R587C excluded from both classes (context-dependent). 2-stage model: Stage 1 pathogenic-vs-benign (20 features), Stage 2 GOF-vs-LOF (12 domain+structural). Gate: macro AUC>0.90. Parser fix #900 is critical path. ClinGen benchmark #927 deferred post-rebuild. PM task #1046.
+- **anti-tnf-response-prediction** (ANALYSIS): Approved mucosal R.gnavus/Blautia integration as FUTURE enhancement only. Tissue vs stool microbiome must be separate feature layers. Current priority: leakage fix (within-fold ComBat). Corrected AUC must exceed 0.80 before adding microbiome. PM task #1049.
+- **microbiome-metabolome-subtyping** (ANALYSIS): All blocked on developer #894 (pipeline fixes). No change.
+- **cd-stricture-risk-prediction** (DEVELOPMENT): CRITICAL BLOCKER — no DATA_CURATOR agent in crohns agents.toml. Task #986 (human) pending. Project fully stalled.
+- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): Approved harmine (TWIST1 inhibitor) positive control. Local L1000 pipeline operational. Check harmine availability in GSE92742. PM task #1048.
+- **cd-flare-longitudinal-prediction** (DEVELOPMENT): No RD tasks this run.
+- **il23-single-cell-response-atlas** (DEVELOPMENT): Approved FCGR1A/CD64 myeloid annotation for guselkumab vs risankizumab stratification. PM task #1047.
+- **Next run**: Monitor NOD2 parser fix #900 and augmentation #896 progress. Check anti-TNF corrected AUC. Check if human resolved DATA_CURATOR agent (#986). Watch developer #894 for microbiome-metabolome.

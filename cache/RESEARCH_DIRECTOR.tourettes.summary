@@ -1,18 +1,16 @@
 ---
-last_run: 2026-03-19T06:00:00Z
-tasks_completed: [814, 813, 751, 812, 753]
+last_run: 2026-03-19T16:48:00Z
+tasks_completed: [931, 932, 933]
 tasks_blocked: []
-projects_touched: [ts-drug-repurposing-network, ts-developmental-trajectory-modeling]
+projects_touched: [ts-drug-repurposing-network, cstc-circuit-expression-atlas, ts-neuroimmune-subtyping]
 ---
 
 ## Context
 
-- Run 12 — Processed 5 guidance tasks (all done). No new initiatives (8 development, 0 analysis = 8 active, limit 4).
-- **Task #814 (done):** MR-validated drug targets LAMA5/RET/CAPNS1. Updated ts-drug-repurposing-network plan: added as data source + dedicated target pathway with higher multi-criteria weighting. LAMA5 bridges genetic-immune axis.
-- **Task #813 (done):** Saia et al. clinical exome. Already incorporated — KMT2C, SMARCA2 active in rare-variant-convergence Phase 3-4 results.
-- **Task #751 (done):** Nature GenomicSEM paper. Already foundational to comorbidity plan. No changes needed.
-- **Task #812 (done):** Mesoscale striatum atlas. Updated ts-developmental-trajectory-modeling Phase 4: added striatal zonation attenuation model (88.2% age-dependent spatial loss in dorsal zones as remission substrate). Striatal-interneuron already had GSE303705.
-- **Task #753 (done):** VMAT2 failure/glutamatergic targets. Updated ts-drug-repurposing-network: added explicit glutamatergic modulation pathway (NMDA/AMPA, D-serine, riluzole). VMAT2 negative control was already present.
-- **Developer progress:** rare-variant-convergence Phases 3-4 done (modular convergence via bridge genes, 11 convergent pathways); gwas-functional-annotation MAGMA analysis done; CSTC circuit vulnerability + DBS tract modules done; developmental-trajectory active.
-- **All 8 projects in development.** No planning backlog. PM has task #63 (developmental-trajectory). 0 pending research_director tasks remaining.
-- Next run: Check for new literature_reviewer entries. Monitor rare-variant-convergence Phase 5 completion. Check analyst task queue. Re-evaluate ts-prs-clinical-stratification if TSAICG GWAS data acquired.
+- Run 13 — Processed 3 guidance tasks (all done). No new initiatives (10 development, 0 analysis = 10 active, limit 4).
+- **Task #931 (done):** Pimavanserin (5-HT2A inverse agonist, FDA-approved for PD psychosis) added as top-tier repurposing candidate in ts-drug-repurposing-network. Novel prefrontal (not striatal) mechanism from van Luik et al. Also added D3 receptor antagonism pathway from Celsr3 KO data with cross-ref to ts-striosomal-matrix-subtypes.
+- **Task #932 (done):** CSTC atlas extended beyond striatum: added TS PFC snRNA-seq (bioRxiv Jan 2026) as cortical cell-type data source + alpha-band thalamo-frontal DBS-EEG (Mol Psychiatry) as electrophysiology cross-validation. New methodology phases 8-9 and 3 expected outputs added.
+- **Task #933 (done):** Neuroimmune subtyping plan updated with gut-brain axis pathway (Phase 3b: IBD/IBS LDSC correlation, gut immune gene sets, microbiome MR). Added FMT as therapeutic candidate and PET TSPO as biomarker endpoint. Sun & Bai three-pathway framework integrated.
+- **Developer progress:** ts-convergent-polypharmacology and ts-striosomal-matrix-subtypes are newest projects (created 2026-03-19). All 10 projects in development.
+- **All 10 projects in development.** No planning backlog. 0 pending research_director tasks remaining.
+- Next run: Check for new literature_reviewer entries. Monitor project progression toward analysis phase. Re-evaluate concurrency when any project reaches analysis/validation.
