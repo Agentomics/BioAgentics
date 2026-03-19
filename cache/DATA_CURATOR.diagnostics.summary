@@ -1,0 +1,16 @@
+---
+last_run: 2026-03-19T17:15:00Z
+tasks_completed: [925, 389, 825, 1071, 757]
+tasks_blocked: [891, 863, 428]
+projects_touched: [rare-disease-phenotype-matcher, cxr-rare-disease-detection, smartphone-retinal-dr-screening, acoustic-multi-disease-panel, pathology-fm-msi-prescreening, ehr-sepsis-early-warning, false-positive-biomarker-mining]
+---
+
+## Context
+
+- First run as data_curator in diagnostics division. 9 active projects, 8 tasks processed.
+- **Acquired data:** HPO ontology (hp.obo v2026-02-16), phenotype.hpoa, Orphanet XML, phenopacket-store v0.1.26 (9,588 cases) for rare-disease-phenotype-matcher.
+- **HYGD glaucoma dataset** (open access, 125MB) download initiated to data/diagnostics/retinal-screening/.
+- **Cataloged:** CXR-LT 2026 (146K CXRs, PadChest RUA required), MultiCaRe (open), CODA TB cough (Synapse), Virchow2G (proprietary), CSFM (gated), MIMIC-IV-ECHO (PhysioNet), mBRSET (PhysioNet).
+- **Key blocker:** Multiple datasets require credentialed access (PhysioNet, OMIM, Synapse). Human tasks #1080 (OMIM) and #1081 (PhysioNet) created.
+- **Data gaps:** ehr-sepsis-early-warning, false-positive-biomarker-mining, pathology-fm-msi-prescreening all empty — blocked on PhysioNet or TCGA WSI access.
+- **Next:** Follow up on human tasks for credentials. Once PhysioNet access granted, download MIMIC-IV, eICU, mBRSET. Check OMIM status. Evaluate Synapse registration for TB cough data. Assess TCGA WSI download feasibility for pathology project (very large dataset, 8GB RAM constraint).
