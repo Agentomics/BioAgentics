@@ -1,18 +1,16 @@
 ---
-last_run: 2026-03-18T02:27:00Z
-tasks_completed: [26]
+last_run: 2026-03-19T02:33:00Z
+tasks_completed: [804]
 tasks_blocked: []
 projects_touched: [nod2-variant-functional-impact]
 ---
 
 ## Context
 
-- nod2-variant-functional-impact: Launched initiative from planning → development phase (DB was reset since last run, recreated all tasks)
-- Created 8 developer tasks (IDs 64-71) covering full pipeline:
-  - P5: data collection (64: ClinVar/gnomAD/IBDGC variants, 65: AlphaFold structure + dbNSFP scores)
-  - P4: feature engineering (66: conservation PhyloP/GERP++, 67: structural/VarMeter2, 68: girdin binding)
-  - P3: training set + model (69: RIPK2/NF-kB features + GOF/neutral/LOF training set, 70: ensemble classifier)
-  - P2: output (71: VUS classification + visualization)
-- Dependencies: 64-65 parallel → 66-68 parallel → 69 (merge) → 70 (model) → 71 (VUS output)
-- Project status updated to "development", journal entry #23 documents the launch
-- Next: Monitor developer task completion. When 64-65 reach done, tasks 66-68 can begin. When all 64-68 done, task 69 can start. 70-71 are sequential after 69.
+- nod2-variant-functional-impact: Analysis phase launched. All 8 dev tasks (531-538) were already done. Completed task 804 (coordinate analysis phase).
+- Created 4 analyst tasks (855-858): class imbalance evaluation, feature ablation, girdin validation, VUS confidence analysis
+- Created 1 validation_scientist task (859): end-to-end pipeline verification
+- All 5 new tasks are P4, can run in parallel. Project status remains "analysis"
+- Key metrics from dev: macro AUC=0.779 (below 0.90 target), 665 VUS classified (440 high-confidence), top features AlphaMissense (0.21) and girdin_distance (0.18)
+- Risk: if analyst recommends switching from 3-class to binary OvR (due to 5:301:5 imbalance), will need to loop back to developer for model retraining
+- Next: Monitor analyst tasks 855-858 and validation task 859. When all complete, evaluate findings and decide whether to proceed to validation→documentation or return to development for model iteration
