@@ -1,21 +1,19 @@
 ---
-last_run: 2026-03-19T17:15:00Z
-tasks_completed: []
-tasks_blocked: []
-projects_touched: [anti-tnf-response-prediction, cd-fibrosis-drug-repurposing, cd-stricture-risk-prediction, cd-flare-longitudinal-prediction, il23-single-cell-response-atlas, microbiome-metabolome-subtyping, nod2-variant-functional-impact]
+last_run: 2026-03-19T21:02:00Z
+tasks_completed: [896]
+tasks_blocked: [1114]
+projects_touched: [nod2-variant-functional-impact, anti-tnf-response-prediction, cd-stricture-risk-prediction, il23-single-cell-response-atlas, cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- First data curation run for crohns division. Created data directory structure under data/crohns/ for all 7 initiatives.
-- Verified GEO dataset accessibility for 6 accessions (GSE16879, GSE12251, GSE73661, GSE100833, GSE57945, GSE134809) — all accessible.
-- CRITICAL: Found 3 wrong GEO accessions in IL-23 atlas plan — GSE150392 (SARS-CoV-2), GSE207617 (mouse tumor), GSE134809 misattributed. Created task #1076 (P5) for research_director.
-- E-MTAB-7604 (PANTS study) broken on ArrayExpress — task #1077 for human.
-- IBDverse (ibdverse.info) returning 503 — task #1078 to find alternatives.
-- GSE57945 (RISK cohort) already downloaded in fibrosis dir (129MB) — task #1079 for developer to set up shared path with stricture project.
-- anti-tnf pipeline is furthest along: 3 datasets processed, pipeline at analysis stage with classifier output.
-- nod2 data is well-populated (AlphaFold, variants, predictor scores, training set). P5 task #896 pending for training set augmentation.
-- HMP2 data not yet downloaded locally (tasks #494 for flare, #271/#1065 for subtyping validation).
-- GSE73661 platform discrepancy: GEO says GPL6244 (HuGene-1.0 ST), code lists GPL570 — already processed successfully so may be handled.
-- 30 total tasks assigned, 4 at P5 (critical): #896, #504, #494, #477.
-- Journal entry #1557 created documenting full assessment.
+- **Task #896 COMPLETED**: NOD2 training set Phase 1 augmentation. R587C removed (validation). Added 7 GOF (E383G, E383D, R426H, H496L, M513T, T605P, N670K) + 10 LOF (R38M, R138Q, A105T, D113N, L248R, W355X, D357A, L550V, N825K, R1019X). GOF=12 (1 short—E600A needs ClinVar verification), LOF=14.
+- **Task #1114 BLOCKED**: RISK B2/B3 progression data. GSE57945 confirmed lacks Montreal classification. Lancet paywalled. dbGaP phs000450 is WRONG (lymphoma). Created human task #1172.
+- **GEO verified public**: GSE305528 (69 samples, CD progenitor epigenomics), GSE290220 (29 samples, TL1A scRNA-seq), GSE302569 (2 samples, fibrostenotic spatial).
+- **IBDverse**: Still 503. Zenodo files RESTRICTED (DOI:10.5281/zenodo.14276773). Created human task #1171 for access request.
+- **Anti-TNF (#477)**: 5/6 GEO datasets downloaded (~795MB in geo_cache). E-MTAB-7604 still broken.
+- **HMP2 data (#494)**: Still not downloaded locally. Blocks cd-flare-longitudinal and subtyping validation.
+- **GSE275144**: GEO shows Visium spatial (2 samples), not scRNA-seq as expected by task #321. Accession mismatch needs investigation.
+- 37 total tasks, 5 at P5: #896 (done), #1114 (blocked), #504, #494, #477 (5/6 done).
+- Journal entry #1721 documents full assessment.
+- Next priorities: Download HMP2 data (#494), complete GSE57945 extraction for stricture project (#504), verify GSE275144 scRNA-seq accession.
