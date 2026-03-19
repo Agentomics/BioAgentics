@@ -16,7 +16,10 @@ from bioagentics.config import (
     DATA_DIR,
     HEADERS,
     REPO_ROOT,
+    setup_logging,
 )
+
+log = setup_logging("mcp_server")
 
 GITHUB_ORG = os.environ.get("GITHUB_ORG", "bioagentics")
 GITHUB_REPO = os.environ.get("GITHUB_REPO", "BioAgentics")
@@ -33,6 +36,7 @@ def _api(method: str, path: str, **kwargs) -> dict:
         resp.raise_for_status()
         return resp.json()
     except (requests.RequestException, json.JSONDecodeError) as e:
+        log.error("api error: %s %s — %s", method, path, e)
         return {"error": str(e)}
 
 

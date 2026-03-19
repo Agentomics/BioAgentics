@@ -1,8 +1,10 @@
 """Shared configuration for bioagentics — env loading, paths, agent config, API client."""
 
+import logging
 import os
 import tomllib
 from dataclasses import dataclass
+from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 import requests
@@ -115,6 +117,43 @@ def load_config(path: str = "agents.toml") -> tuple[list[AgentConfig], DispatchC
     return agents, dispatch
 
 
+LOGS_DIR = REPO_ROOT / "logs"
+LOGS_DIR.mkdir(exist_ok=True)
+
+_LOG_FORMAT = "%(asctime)s %(levelname)-8s [%(name)s] %(message)s"
+_LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
+
+
+def setup_logging(name: str, level: int = logging.INFO) -> logging.Logger:
+    """Create a logger with stdout and rotating file handlers.
+
+    Each module gets its own log file under logs/ (e.g. logs/dispatch.log).
+    """
+    logger = logging.getLogger(name)
+    if logger.handlers:
+        return logger  # already configured
+    logger.setLevel(level)
+
+    formatter = logging.Formatter(_LOG_FORMAT, datefmt=_LOG_DATE_FORMAT)
+
+    # Stdout
+    sh = logging.StreamHandler()
+    sh.setFormatter(formatter)
+    logger.addHandler(sh)
+
+    # Rotating file (10 MB, keep 5 backups)
+    fh = RotatingFileHandler(
+        LOGS_DIR / f"{name}.log", maxBytes=10 * 1024 * 1024, backupCount=5
+    )
+    fh.setFormatter(formatter)
+    logger.addHandler(fh)
+
+    return logger
+
+
+_api_logger = setup_logging("bioagentics.api")
+
+
 def api(method: str, path: str, **kwargs) -> requests.Response | None:
     """Make an API request. Returns None on connection error."""
     try:
@@ -122,5 +161,5 @@ def api(method: str, path: str, **kwargs) -> requests.Response | None:
             method, f"{API_URL}{API_PREFIX}{path}", headers=HEADERS, timeout=30, **kwargs
         )
     except requests.RequestException as e:
-        print(f"  api error: {method} {path} — {e}")
+        _api_logger.error("api error: %s %s — %s", method, path, e)
         return None
