@@ -83,10 +83,13 @@ def run_combat(
     expr: pd.DataFrame,
     metadata: pd.DataFrame,
 ) -> pd.DataFrame:
-    """Apply ComBat batch correction.
+    """Apply ComBat batch correction (global, for exploratory/DE use only).
 
     Uses study accession as batch variable and response status as biological
     covariate to preserve.
+
+    WARNING: Do NOT use for classifier training — use batch_correct_fold() instead
+    to avoid data leakage.
     """
     meta_indexed = metadata.set_index("sample_id")
     batch = meta_indexed.loc[expr.columns, "study"]
@@ -104,6 +107,69 @@ def run_combat(
 
     logger.info("ComBat complete: output shape %s", corrected.shape)
     return corrected
+
+
+def batch_correct_fold(
+    train_expr: pd.DataFrame,
+    test_expr: pd.DataFrame,
+    train_meta: pd.DataFrame,
+    test_meta: pd.DataFrame,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Within-fold batch correction for LOSO-CV (no data leakage).
+
+    Fits ComBat on training samples only, then applies the learned parameters
+    to the held-out test samples. When the test set is a single study,
+    ComBat cannot estimate batch for an unseen batch — in that case we use
+    a mean-shift approach: center the test study to the training mean.
+
+    Args:
+        train_expr: genes x train_samples expression matrix
+        test_expr: genes x test_samples expression matrix
+        train_meta: metadata for training samples (must have sample_id, study, response_status)
+        test_meta: metadata for test samples
+
+    Returns:
+        (corrected_train, corrected_test) expression matrices
+    """
+    train_meta_idx = train_meta.set_index("sample_id")
+    test_meta_idx = test_meta.set_index("sample_id")
+
+    train_batch = train_meta_idx.loc[train_expr.columns, "study"]
+    test_study = test_meta_idx.loc[test_expr.columns, "study"].iloc[0]
+
+    # Only apply ComBat if training set has >1 batch
+    if train_batch.nunique() < 2:
+        logger.info("Only 1 batch in training set — skipping ComBat for this fold")
+        return train_expr.copy(), test_expr.copy()
+
+    # Build biological covariate from training response
+    train_response = train_meta_idx.loc[train_expr.columns, "response_status"]
+    mod = pd.get_dummies(train_response, drop_first=True, dtype=float).values.T.tolist()
+
+    logger.info(
+        "Fold ComBat: training %d genes x %d samples (%d batches), test %d samples (study=%s)",
+        train_expr.shape[0], train_expr.shape[1], train_batch.nunique(),
+        test_expr.shape[1], test_study,
+    )
+
+    # Correct training batches
+    corrected_train = pycombat(train_expr, train_batch, mod=mod)
+
+    # For test set: mean-shift correction
+    # Center test samples to have the same gene-wise mean as corrected training
+    train_gene_mean = corrected_train.mean(axis=1)
+    test_gene_mean = test_expr.mean(axis=1)
+
+    # Shift test expression so its mean matches the corrected training mean
+    shift = train_gene_mean - test_gene_mean
+    corrected_test = test_expr.add(shift, axis=0)
+
+    logger.info(
+        "Fold ComBat complete: train %s, test %s",
+        corrected_train.shape, corrected_test.shape,
+    )
+
+    return corrected_train, corrected_test
 
 
 def compute_pca(expr: pd.DataFrame, n_components: int = 2) -> np.ndarray:

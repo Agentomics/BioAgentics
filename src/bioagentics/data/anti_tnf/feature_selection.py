@@ -323,6 +323,58 @@ def run_feature_selection(
     return ranked
 
 
+def select_features_fold(
+    X_train: pd.DataFrame,
+    y_train: pd.Series,
+    max_genes: int = 30,
+    n_stability_iters: int = 100,
+) -> list[str]:
+    """Within-fold feature selection for LOSO-CV (no data leakage).
+
+    Runs stability selection and RFE on training data only.
+    Returns list of selected gene names.
+
+    Args:
+        X_train: samples x genes training expression
+        y_train: binary response labels for training
+        max_genes: max number of genes to select
+        n_stability_iters: iterations for stability selection (reduced for speed in CV)
+    """
+    # Pre-filter to top variable genes for efficiency (top 2000 by variance)
+    gene_var = X_train.var(axis=0).sort_values(ascending=False)
+    keep = gene_var.head(min(2000, len(gene_var))).index.tolist()
+
+    # Always include literature candidates if present
+    candidate_genes = set()
+    for genes in CANDIDATE_SETS.values():
+        candidate_genes.update(genes)
+    keep_set = set(keep) | (candidate_genes & set(X_train.columns))
+    X_filtered = X_train[sorted(keep_set & set(X_train.columns))]
+
+    if X_filtered.shape[1] == 0:
+        logger.warning("No genes available for feature selection")
+        return []
+
+    # Stability selection on training data
+    freq = stability_selection(X_filtered, y_train, n_iterations=n_stability_iters)
+
+    # RFE with logistic regression
+    rfe_genes = rfe_selection(X_filtered, y_train, n_features=max_genes, estimator_type="logistic")
+
+    # Combine: genes selected by stability (freq > 0.3) OR RFE, up to max_genes
+    stable_genes = freq[freq > 0.3].index.tolist()
+    combined = list(dict.fromkeys(stable_genes + rfe_genes))  # preserve order, deduplicate
+
+    # Add high-priority candidates if they have any stability signal
+    for gene in sorted(candidate_genes & set(X_train.columns)):
+        if gene not in combined and freq.get(gene, 0) > 0.1:
+            combined.append(gene)
+
+    selected = combined[:max_genes]
+    logger.info("Within-fold feature selection: %d genes selected", len(selected))
+    return selected
+
+
 def _pathway_summary(signature: list[str]) -> None:
     """Log which candidate sets overlap with the final signature."""
     sig_set = set(signature)

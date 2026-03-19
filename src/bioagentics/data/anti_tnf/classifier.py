@@ -1,7 +1,8 @@
 """Classifier training with leave-one-study-out cross-validation.
 
 Trains elastic net logistic regression, random forest, and XGBoost classifiers
-to predict anti-TNF response using the selected gene signature.
+to predict anti-TNF response. All preprocessing (batch correction, feature
+selection) is applied WITHIN each CV fold to prevent data leakage.
 
 Usage:
     uv run python -m bioagentics.data.anti_tnf.classifier
@@ -36,32 +37,49 @@ from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
 
 from bioagentics.config import REPO_ROOT
+from bioagentics.data.anti_tnf.batch_correction import (
+    batch_correct_fold,
+    load_processed_data,
+)
+from bioagentics.data.anti_tnf.feature_selection import select_features_fold
 
 logger = logging.getLogger(__name__)
 
+DEFAULT_PROCESSED_DIR = REPO_ROOT / "output" / "crohns" / "anti-tnf-response-prediction" / "processed"
+DEFAULT_OUTPUT = REPO_ROOT / "output" / "crohns" / "anti-tnf-response-prediction" / "classifier"
+
+# Keep for backward compat with interpretation module
 DEFAULT_BATCH_DIR = REPO_ROOT / "output" / "crohns" / "anti-tnf-response-prediction" / "batch_correction"
 DEFAULT_FS_DIR = REPO_ROOT / "output" / "crohns" / "anti-tnf-response-prediction" / "feature_selection"
-DEFAULT_OUTPUT = REPO_ROOT / "output" / "crohns" / "anti-tnf-response-prediction" / "classifier"
+
+
+def load_raw_data(
+    processed_dir: Path,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Load uncorrected expression matrix and metadata from processed dir.
+
+    Returns (expr: genes x samples, metadata DataFrame).
+    """
+    return load_processed_data(processed_dir)
 
 
 def load_data(
     batch_dir: Path,
     fs_dir: Path,
 ) -> tuple[pd.DataFrame, pd.Series, pd.Series]:
-    """Load expression data restricted to selected features.
+    """Load pre-corrected expression data (LEGACY — has leakage).
 
-    Returns (X: samples x genes, y: labels, study: study labels).
+    Kept for backward compatibility with interpretation module.
+    For proper evaluation, use load_raw_data + loso_cv instead.
     """
     expr = pd.read_csv(batch_dir / "expression_combat.csv", index_col=0)
     metadata = pd.read_csv(batch_dir / "metadata.csv")
     ranked = pd.read_csv(fs_dir / "ranked_genes.csv")
 
-    # Get selected genes
     signature = ranked[ranked["selected"]]["gene"].tolist()
     available = [g for g in signature if g in expr.index]
     logger.info("Using %d/%d signature genes", len(available), len(signature))
 
-    # Build X, y, study
     meta = metadata.set_index("sample_id").loc[expr.columns]
     X = expr.loc[available].T
     y = (meta["response_status"] == "non_responder").astype(int)
@@ -82,7 +100,7 @@ MODELS = {
         },
     },
     "random_forest": {
-        "estimator": RandomForestClassifier(random_state=42, n_jobs=-1),
+        "estimator": RandomForestClassifier(random_state=42, n_jobs=1),
         "param_grid": {
             "n_estimators": [100, 200],
             "max_depth": [3, 5, None],
@@ -92,6 +110,7 @@ MODELS = {
     "xgboost": {
         "estimator": XGBClassifier(
             random_state=42, eval_metric="logloss", use_label_encoder=False,
+            n_jobs=1,
         ),
         "param_grid": {
             "n_estimators": [100, 200],
@@ -103,47 +122,90 @@ MODELS = {
 
 
 def loso_cv(
-    X: pd.DataFrame,
-    y: pd.Series,
-    study: pd.Series,
+    expr: pd.DataFrame,
+    metadata: pd.DataFrame,
     model_name: str,
+    max_features: int = 30,
 ) -> dict:
-    """Leave-one-study-out cross-validation with inner hyperparameter tuning.
+    """Leave-one-study-out CV with within-fold batch correction and feature selection.
+
+    All preprocessing happens inside each fold to prevent data leakage.
+
+    Args:
+        expr: genes x samples uncorrected expression matrix
+        metadata: sample metadata with sample_id, study, response_status columns
+        model_name: key into MODELS dict
+        max_features: max genes for feature selection per fold
 
     Returns dict with per-study and aggregate metrics plus predictions.
     """
     cfg = MODELS[model_name]
-    studies = study.unique()
-    scaler = StandardScaler()
+    meta = metadata.set_index("sample_id").loc[expr.columns]
+    y_all = (meta["response_status"] == "non_responder").astype(int)
+    study_all = meta["study"]
+    studies = study_all.unique()
 
     all_y_true = []
     all_y_pred = []
     all_y_prob = []
     all_studies = []
     per_study_metrics = []
+    fold_features = []
 
     for test_study in studies:
-        test_mask = study == test_study
+        test_mask = study_all == test_study
         train_mask = ~test_mask
 
-        X_train = X[train_mask].values
-        y_train = y[train_mask].values
-        X_test = X[test_mask].values
-        y_test = y[test_mask].values
+        train_samples = study_all[train_mask].index.tolist()
+        test_samples = study_all[test_mask].index.tolist()
+        train_meta = metadata[metadata["sample_id"].isin(train_samples)]
+        test_meta = metadata[metadata["sample_id"].isin(test_samples)]
 
-        # Scale
+        # Step 1: Within-fold batch correction
+        train_expr = expr[train_samples]
+        test_expr = expr[test_samples]
+        corrected_train, corrected_test = batch_correct_fold(
+            train_expr, test_expr, train_meta, test_meta,
+        )
+
+        # Step 2: Within-fold feature selection (on training data only)
+        X_train_all = corrected_train.T  # samples x genes
+        y_train = y_all[train_mask]
+        selected_genes = select_features_fold(X_train_all, y_train, max_genes=max_features)
+
+        if not selected_genes:
+            logger.warning("No features selected for fold %s — skipping", test_study)
+            continue
+
+        fold_features.append({"study": test_study, "n_features": len(selected_genes),
+                              "features": selected_genes})
+
+        # Step 3: Restrict to selected features
+        available_train = [g for g in selected_genes if g in corrected_train.index]
+        available_test = [g for g in selected_genes if g in corrected_test.index]
+        common = sorted(set(available_train) & set(available_test))
+
+        X_train = corrected_train.loc[common].T.values
+        X_test = corrected_test.loc[common].T.values
+        y_train_arr = y_train.values
+        y_test = y_all[test_mask].values
+
+        # Step 4: Scale
+        scaler = StandardScaler()
         X_train_s = scaler.fit_transform(X_train)
         X_test_s = scaler.transform(X_test)
 
-        # Inner CV for hyperparameter tuning
-        inner_cv = StratifiedKFold(n_splits=min(5, min(np.bincount(y_train))), shuffle=True, random_state=42)
+        # Step 5: Inner CV for hyperparameter tuning
+        n_min_class = min(np.bincount(y_train_arr))
+        n_splits = max(2, min(5, n_min_class))
+        inner_cv = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
         grid = GridSearchCV(
             cfg["estimator"], cfg["param_grid"],
-            cv=inner_cv, scoring="roc_auc", n_jobs=-1, refit=True,
+            cv=inner_cv, scoring="roc_auc", n_jobs=1, refit=True,
         )
-        grid.fit(X_train_s, y_train)
+        grid.fit(X_train_s, y_train_arr)
 
-        # Predict
+        # Step 6: Predict
         y_prob = grid.predict_proba(X_test_s)[:, 1]
         y_pred = (y_prob >= 0.5).astype(int)
 
@@ -159,8 +221,9 @@ def loso_cv(
         per_study_metrics.append({
             "study": test_study,
             "n_samples": len(y_test),
-            "n_responder": (y_test == 0).sum(),
-            "n_non_responder": (y_test == 1).sum(),
+            "n_responder": int((y_test == 0).sum()),
+            "n_non_responder": int((y_test == 1).sum()),
+            "n_features": len(common),
             "auc": auc,
             "balanced_accuracy": balanced_accuracy_score(y_test, y_pred),
             "sensitivity": sensitivity,
@@ -174,9 +237,9 @@ def loso_cv(
         all_studies.extend([test_study] * len(y_test))
 
         logger.info(
-            "  %s held out: AUC=%.3f, BA=%.3f, Sens=%.3f, Spec=%.3f (n=%d)",
+            "  %s held out: AUC=%.3f, BA=%.3f, Sens=%.3f, Spec=%.3f (n=%d, features=%d)",
             test_study, auc, balanced_accuracy_score(y_test, y_pred),
-            sensitivity, specificity, len(y_test),
+            sensitivity, specificity, len(y_test), len(common),
         )
 
     # Aggregate metrics
@@ -204,6 +267,7 @@ def loso_cv(
         "y_prob": all_y_prob,
         "y_pred": all_y_pred,
         "studies": np.array(all_studies),
+        "fold_features": fold_features,
     }
 
 
@@ -309,28 +373,36 @@ def run_shap_analysis(
 
 
 def run_classifier_pipeline(
-    batch_dir: Path = DEFAULT_BATCH_DIR,
-    fs_dir: Path = DEFAULT_FS_DIR,
+    processed_dir: Path = DEFAULT_PROCESSED_DIR,
     output_dir: Path = DEFAULT_OUTPUT,
+    max_features: int = 30,
 ) -> dict[str, dict]:
-    """Run the full classifier training pipeline.
+    """Run the full classifier training pipeline with within-fold preprocessing.
+
+    All batch correction and feature selection happens inside each LOSO-CV fold
+    to prevent data leakage.
 
     Returns dict of model_name -> results.
     """
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Load data
-    X, y, study = load_data(batch_dir, fs_dir)
-    logger.info("Loaded: %d samples x %d features, %d studies", X.shape[0], X.shape[1], study.nunique())
+    # Load raw (uncorrected) data
+    expr, metadata = load_raw_data(processed_dir)
+    meta = metadata.set_index("sample_id").loc[expr.columns]
+    y = (meta["response_status"] == "non_responder").astype(int)
+    logger.info(
+        "Loaded: %d genes x %d samples, %d studies",
+        expr.shape[0], expr.shape[1], meta["study"].nunique(),
+    )
     logger.info("Class balance: %d R, %d NR", (y == 0).sum(), (y == 1).sum())
 
-    # Train all models with LOSO-CV
+    # Train all models with leakage-free LOSO-CV
     results = {}
     all_metrics = []
 
     for model_name in MODELS:
-        logger.info("Training %s...", model_name)
-        res = loso_cv(X, y, study, model_name)
+        logger.info("Training %s (within-fold preprocessing)...", model_name)
+        res = loso_cv(expr, metadata, model_name, max_features=max_features)
         results[model_name] = res
 
         agg = res["aggregate"]
@@ -344,6 +416,15 @@ def run_classifier_pipeline(
         res["per_study"].to_csv(output_dir / f"{model_name}_per_study.csv", index=False)
         all_metrics.append({"model": model_name, **agg})
 
+        # Save per-fold feature lists
+        if res.get("fold_features"):
+            fold_df = pd.DataFrame([
+                {"study": f["study"], "n_features": f["n_features"],
+                 "features": ";".join(f["features"])}
+                for f in res["fold_features"]
+            ])
+            fold_df.to_csv(output_dir / f"{model_name}_fold_features.csv", index=False)
+
     # Save aggregate comparison
     metrics_df = pd.DataFrame(all_metrics)
     metrics_df.to_csv(output_dir / "aggregate_metrics.csv", index=False)
@@ -353,10 +434,26 @@ def run_classifier_pipeline(
     plot_roc_curves(results, output_dir)
     plot_calibration(results, output_dir)
 
-    # SHAP on best model
+    # SHAP on best model (trained on all data for visualization only)
     best_model = metrics_df.loc[metrics_df["auc"].idxmax(), "model"]
     logger.info("Best model by AUC: %s (%.3f)", best_model, metrics_df["auc"].max())
-    run_shap_analysis(X, y, best_model, output_dir)
+
+    # For SHAP, use globally batch-corrected data (visualization only, not for metrics)
+    try:
+        from bioagentics.data.anti_tnf.batch_correction import run_combat
+        corrected = run_combat(expr, metadata)
+        # Use union of fold-selected features
+        all_selected = set()
+        for res_val in results.values():
+            for ff in res_val.get("fold_features", []):
+                all_selected.update(ff["features"])
+        if all_selected:
+            available = sorted(all_selected & set(corrected.index))
+            X_shap = corrected.loc[available].T
+            y_shap = y.loc[X_shap.index]
+            run_shap_analysis(X_shap, y_shap, best_model, output_dir)
+    except Exception:
+        logger.warning("SHAP analysis skipped (non-critical)", exc_info=True)
 
     return results
 
@@ -365,9 +462,9 @@ def main():
     parser = argparse.ArgumentParser(
         description="Train anti-TNF response classifiers with LOSO-CV"
     )
-    parser.add_argument("--batch-dir", type=Path, default=DEFAULT_BATCH_DIR)
-    parser.add_argument("--fs-dir", type=Path, default=DEFAULT_FS_DIR)
+    parser.add_argument("--processed-dir", type=Path, default=DEFAULT_PROCESSED_DIR)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--max-features", type=int, default=30)
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args()
 
@@ -377,7 +474,9 @@ def main():
     )
 
     run_classifier_pipeline(
-        batch_dir=args.batch_dir, fs_dir=args.fs_dir, output_dir=args.output_dir,
+        processed_dir=args.processed_dir,
+        output_dir=args.output_dir,
+        max_features=args.max_features,
     )
 
 
