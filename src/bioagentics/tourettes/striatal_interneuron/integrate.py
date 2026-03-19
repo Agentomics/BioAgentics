@@ -245,6 +245,17 @@ def run_integration(
 
     print(f"Found {len(h5ad_files)} QC-passed files for integration")
 
+    # Memory safeguard: check total file size before loading (8GB machine)
+    MAX_TOTAL_MB = 2048
+    total_mb = sum(p.stat().st_size for p in h5ad_files) / 1_048_576
+    if total_mb > MAX_TOTAL_MB:
+        raise MemoryError(
+            f"Total input size {total_mb:.0f} MB exceeds {MAX_TOTAL_MB} MB limit. "
+            f"On an 8GB machine, loading all files at once risks an OOM crash. "
+            f"Consider processing a subset or using backed mode."
+        )
+    print(f"  Total input size: {total_mb:.0f} MB (limit: {MAX_TOTAL_MB} MB)")
+
     # Load all datasets
     adata_list = []
     batch_labels = []
