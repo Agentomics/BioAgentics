@@ -1,29 +1,25 @@
 ---
-last_run: 2026-03-18T00:37:00Z
+last_run: 2026-03-19T06:40:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [transcriptomic-biomarker-panel, gas-molecular-mimicry-mapping, cytokine-network-flare-prediction, hla-peptide-presentation-modeling, autoantibody-target-network-mapping, pans-genetic-variant-pathway-analysis, ivig-mechanism-single-cell-analysis]
+projects_touched: [ivig-mechanism-single-cell-analysis, gas-molecular-mimicry-mapping, hla-peptide-presentation-modeling, transcriptomic-biomarker-panel, cytokine-network-flare-prediction, autoantibody-target-network-mapping, pans-genetic-variant-pathway-analysis]
 ---
 
 ## Context
 
-- Run 9: literature searches across all 7 active initiatives (all in development) + follow-up on run 8 items
-- Created journal entry #1120 with 6 findings + negative results
-- Created 3 tasks: research_director #816 (Han VX published scRNA-seq findings for IVIG project, P5), #817 (PANDAS vs PANS stratification + NfL biomarker for transcriptomic panel, P4), #818 (JAK/STAT targetable node + oxidative stress for cytokine network, P3)
-- MAJOR: Han VX et al. scRNA-seq paper PUBLISHED (PMID 40953324, Neurology N&NI Nov 2025). 144,470 cells, 11 clusters, pre-IVIG PANS = downregulated immune pathways + aberrant NK cells, post-IVIG = reversed + histone modification pathways downregulated in neutrophils/NK cells. Authors propose PANS = epigenetic immune brain disorder. GEO data STILL NOT deposited.
-- Totè et al. 2025 (PMID 40650125): PANDAS ≠ PANS biochemically. PANDAS has elevated sNOX2-dp, isoprostanes, LPS, zonulin. PANS = controls. Gut barrier permeability implicated in PANDAS.
-- Hargarten et al. 2025 (PMID 40117367, Science Advances): Ruxolitinib first-in-human for neuroinflammation (cPIIRS). JAK/STAT dominant. 6 patients, tolerable, reduced markers. Validates Gorin IFNγ reversibility via JAK inhibition.
-- NfL biomarker: Mazowiecki 2024 (PMID 39715492, 104 pediatric anti-NMDAR: NfL OR 3.62, combined AUC 0.836) + Businaro 2025 (PMID 40561419, CASPR2/LGI1: NfL predicts cognitive outcomes). No PANS/PANDAS NfL study yet = opportunity.
-- Turowski 2025 (PMID 40407889): EMTICS underpowered for PANS/PANDAS (need ~14 cohorts for 1 patient). Being misused to deny IVIG. Strengthens biomarker urgency.
-- Kumar et al. 2025 (bioRxiv): S. pyogenes factor H recruitment crystal structures (M5, M6, FbaA). FbaA in ~50% strains, conserved binding residues. Complement evasion relevant to GAS mimicry.
-- Melamed et al. 2024 (PMID 39421743): IVIG response in PANS = reduced pro-inflammatory monocytes/DCs. 10 patients, all psychometric measures improved.
-- All research_director tasks from runs 6-8: ALL DONE (verified — 0 open tasks for any username)
-- All data_curator tasks: ALL DONE (0 open)
-- PANS epigenetics: 7th failed search. Han VX 2025 closest (immune cell epigenetics, not brain tissue). Oxford DPhil Oct 2026.
-- Cunningham Panel validation: still no new studies
+- Run 10: literature searches across all 7 active initiatives (3 development, 3 analysis, 1 development) + follow-up on run 9 items
+- Created journal entry #1357 with 9 findings + negative results
+- Created 3 tasks: research_director #939 (Panzyga Phase III IVIG RCT results, P5), #940 (MMPred/ImmunoStruct/TITANiAN tools for mimicry/HLA projects, P4), #941 (NfL biomarker study design opportunity, P3)
+- All prior tasks from runs 6-9: ALL DONE (verified — #816/#817/#818 all done, 0 open tasks for any username)
+- MAJOR: Octapharma Panzyga Phase III IVIG RCT (NCT04508530) results released. N=71, primary CY-BOCS missed (p=0.072, 31.1% vs 12.1%), secondary CGI-I significant (p=0.017). First RCT for IVIG in PANS. Mixed result — politically charged given AAP PANS Clinical Report controversy (March 2025, rebuttal filed July 2025, insurers denying IVIG).
+- Han VX companion paper in Molecular Psychiatry (PMID 40885847): reduced TNF/IL-6 TLR responses in PANS. Same group/data as Neurology N&NI paper (PMID 40953324). GEO data STILL NOT deposited — GSE278694 confirmed UNRELATED (PDAC pancreatic cancer dataset). No valid accession exists.
+- New tools: MMPred (PMID 39722794, MHC-II mimicry prediction), ImmunoStruct (Nat Mach Intell 2026, pMHC immunogenicity), TITANiAN (bioRxiv May 2025, T-cell epitope prediction). All relevant to GAS mimicry + HLA projects.
+- NfL meta-analysis in NSAE (PMID 39856041): 13 studies, SMD=0.909. No PANS NfL study exists yet — opportunity.
+- PANS symptoms systematic review (PMID 40367585): phenotyping beyond OCD/tics, diagnostic tools lacking.
+- Cunningham Panel validation: 8th consecutive negative search
 - PANDAS GWAS: still no dedicated study
 - Keating NTI164 data: still no GEO/PRIDE deposition
-- Shammas 2026 data: GSE245804 was unrelated (HMGA1). Still no accession.
-- Adult PANDAS (Marazziti): no new publications. Case report: de Vicente Blanco 2024 (PMC11862549), 24-yo woman.
-- No new PANDAS/PANS clinical trials
-- Next run: check status of research_director tasks #816/#817/#818, monitor Han VX GEO data deposition (paper published but no accession), retry PANS disease-mechanism epigenetics search, monitor Keating NTI164 data deposition, check Shammas 2026 data deposition, monitor Oxford iCASE DPhil recruitment, search for new PANDAS/PANS clinical trials, search for NfL in PANS/PANDAS specifically, search for gut microbiota-brain axis studies in PANDAS (Totè zonulin finding), look for new GAS factor H/complement evasion studies, check for IVIG mechanism studies in other autoimmune encephalitis, search for histone modification studies in pediatric neuroinflammation (Han VX epigenetic finding), monitor adult PANDAS case series
+- No new PANDAS/PANS interventional trials recruiting (post-Panzyga)
+- Adult PANDAS: no new publications
+- PANS brain tissue epigenetics: 8th failed search
+- Next run: check status of research_director tasks #939/#940/#941, monitor Han VX GEO data deposition (confirmed no valid accession), monitor Panzyga Phase III full publication (currently press release only), retry PANS brain tissue epigenetics search, monitor Keating NTI164 data deposition, search for Panzyga subgroup analyses or responder biomarker studies, search for new gut microbiota-PANDAS studies, check for IVIG coverage policy changes post-AAP controversy, monitor MMPred/ImmunoStruct/TITANiAN adoption in autoimmunity research, search for new GAS genomics studies, check Cunningham Panel, monitor adult PANDAS case series, search for NfL in PANDAS/PANS specifically
