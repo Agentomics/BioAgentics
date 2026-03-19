@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-19T17:18:00Z
+tasks_completed: [303, 626, 241, 421, 629, 459, 242]
+tasks_blocked: [1033, 278, 279, 395]
+projects_touched: [ivig-mechanism-single-cell-analysis, transcriptomic-biomarker-panel, two-hit-interferonopathy-model]
+---
+
+## Context
+
+- First data_curator run for pandas_pans division.
+- Downloaded 3 datasets: GSE293230 (IVIG scRNA-seq, 14 samples, BD Rhapsody format), GSE278678 (IVIG bulk RNA-seq, 28 samples), GSE301611 (NTI164 scRNA-seq, 12 samples).
+- Two independent PANS scRNA-seq datasets now available — major milestone for transcriptomic-biomarker-panel.
+- Shammas IFNγ encephalitis datasets verified accessible (5 accessions) but not downloaded (lower priority).
+- Blocked: Vettiatil 2026 paywalled (critical for two-hit-interferonopathy-model). Human task #1075 created for data access + Lachman lab contact.
+- Blocked: OCD monocyte data (PMID 35361798), anti-NMDARE scRNA-seq, Rahman PANS monocyte data — none found on GEO.
+- Note: GSE293230 is BD Rhapsody format (TSV gene-cell matrix), NOT 10x Chromium. Developer/analyst should handle accordingly.
+- Remaining pending: task #628 (PBMCpedia reference download for IVIG project).
+- SuperSeries GSE278680 links scRNA-seq (GSE278679) and bulk RNA-seq (GSE278678) for the Han VX IVIG study.
+- Next: download PBMCpedia reference, re-check blocked tasks if human provides access, monitor for larger Molecular Psychiatry PANS cohort (n=158) bulk RNA-seq deposition.
