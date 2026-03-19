@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-19T20:05:00Z
+tasks_completed: [1025, 1026]
+tasks_blocked: []
+projects_touched: [wrn-msi-pancancer-atlas]
+---
+
+## Context
+
+- wrn-msi-pancancer-atlas: Validated all 6 phases of WRN-MSI Pan-Cancer Dependency Atlas
+- Phases 1-5 APPROVED (journal #1647): Code correct, FDR verified, SEED=42 reproducible, all outputs present
+- Phase 6 APPROVED with caveat (journal #1648): Resistance emergence model gives P=1.0 for ALL types including MSS — model non-discriminative
+- Created analyst fix task #1121 (P4): Add resistance model caveat, acknowledge P_MSS=1.0, improve model or add caveats
+- Created developer task #1122 (P2): Refactor duplicated cohens_d/fdr_correction to shared utility
+- Key finding validated: DNA-PKi convergence (AZD-7648 PRISM + resistance preprint) is independently supported
+- PRKDC absent from Phase 3 because 0 MSI-H lines have CRISPR data (45/1186 total) — data limitation, not error
+- Project ready to advance to documentation after analyst addresses resistance model caveat (#1121)
