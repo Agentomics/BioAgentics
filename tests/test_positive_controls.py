@@ -6,12 +6,16 @@ import pytest
 from bioagentics.data.cd_fibrosis.positive_controls import (
     PATHWAY_CLASSES,
     POSITIVE_CONTROLS,
+    TL1A_BENCHMARK_COMPOUNDS,
+    TL1A_BENCHMARK_PERCENTILE,
     PositiveControl,
     check_success_criteria,
+    generate_tl1a_benchmark_report,
     generate_validation_report,
     match_compound_name,
     validate_by_pathway_class,
     validate_positive_controls,
+    validate_tl1a_benchmark,
 )
 
 
@@ -224,5 +228,99 @@ class TestGenerateReport:
             "compound", "mean_concordance", "n_signatures_queried",
             "n_negative_hits", "has_fibroblast_hit",
         ])
-        val_df, criteria = generate_validation_report(ranked, output_dir=tmp_path)
+        _, criteria = generate_validation_report(ranked, output_dir=tmp_path)
         assert criteria["overall_pass"] is False
+
+
+class TestTl1aBenchmark:
+    def _make_tl1a_results(self) -> pd.DataFrame:
+        """Mock TL1A-DR3/Rho signature query results (single-signature)."""
+        # 20 compounds, duvakitug at rank 2 (top 10%), ontunisertib at rank 4 (top 20%)
+        compounds = [
+            ("galunisertib", -0.92),       # ALK5 inhibitor (known)
+            ("duvakitug", -0.88),           # TL1A benchmark
+            ("ly-364947", -0.85),           # ALK5 inhibitor
+            ("ontunisertib", -0.82),        # ALK5 benchmark
+            ("compound-a", -0.78),
+            ("compound-b", -0.75),
+            ("compound-c", -0.70),
+            ("compound-d", -0.65),
+            ("compound-e", -0.60),
+            ("compound-f", -0.55),
+            ("compound-g", -0.50),
+            ("compound-h", -0.45),
+            ("compound-i", -0.40),
+            ("compound-j", -0.35),
+            ("compound-k", -0.30),
+            ("compound-l", -0.25),
+            ("compound-m", -0.20),
+            ("compound-n", -0.15),
+            ("compound-o", -0.10),
+            ("compound-p", 0.05),
+        ]
+        return pd.DataFrame(
+            compounds,
+            columns=["compound", "concordance"],
+        )
+
+    def test_benchmark_constants_defined(self):
+        assert len(TL1A_BENCHMARK_COMPOUNDS) >= 3
+        assert TL1A_BENCHMARK_PERCENTILE == 0.15
+
+    def test_ontunisertib_in_controls(self):
+        names = [c.name for c in POSITIVE_CONTROLS]
+        assert "ontunisertib" in names
+
+    def test_alk5_pathway_class(self):
+        assert "ALK5/TGF-beta" in PATHWAY_CLASSES
+        assert "ontunisertib" in PATHWAY_CLASSES["ALK5/TGF-beta"]
+
+    def test_benchmark_passes(self):
+        results = self._make_tl1a_results()
+        benchmark = validate_tl1a_benchmark(results)
+        assert benchmark["benchmark_pass"] is True
+        assert benchmark["n_found"] >= 2  # duvakitug + ontunisertib
+
+    def test_duvakitug_ranks_highly(self):
+        results = self._make_tl1a_results()
+        benchmark = validate_tl1a_benchmark(results)
+        duva = next(
+            r for r in benchmark["compound_results"]
+            if r["control_name"] == "duvakitug"
+        )
+        assert duva["rank"] == 2
+        assert duva["percentile"] <= TL1A_BENCHMARK_PERCENTILE
+        assert duva["passes_threshold"] is True
+
+    def test_ontunisertib_found(self):
+        results = self._make_tl1a_results()
+        benchmark = validate_tl1a_benchmark(results)
+        ont = next(
+            r for r in benchmark["compound_results"]
+            if r["control_name"] == "ontunisertib"
+        )
+        assert ont["rank"] == 4
+        assert ont["percentile"] == pytest.approx(0.2)
+
+    def test_missing_compounds_handled(self):
+        results = pd.DataFrame([
+            ("compound-a", -0.80),
+            ("compound-b", -0.60),
+        ], columns=["compound", "concordance"])
+        benchmark = validate_tl1a_benchmark(results)
+        assert benchmark["n_found"] == 0
+        assert benchmark["benchmark_pass"] is False
+
+    def test_empty_results(self):
+        results = pd.DataFrame(columns=["compound", "concordance"])
+        benchmark = validate_tl1a_benchmark(results)
+        assert benchmark["benchmark_pass"] is False
+        assert benchmark["total_compounds_in_results"] == 0
+
+    def test_benchmark_report(self, tmp_path):
+        results = self._make_tl1a_results()
+        benchmark = generate_tl1a_benchmark_report(
+            results, output_dir=tmp_path,
+        )
+        assert benchmark["benchmark_pass"] is True
+        assert (tmp_path / "tl1a_benchmark_validation.tsv").exists()

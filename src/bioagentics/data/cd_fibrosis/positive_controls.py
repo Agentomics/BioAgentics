@@ -136,6 +136,15 @@ POSITIVE_CONTROLS: list[PositiveControl] = [
         evidence="Classic HDAC inhibitor. Anti-fibrotic in hepatic and pulmonary "
         "fibrosis models. Expected strong negative CMAP connectivity.",
     ),
+    # ALK5/TGF-beta receptor inhibitor (ontunisertib — STENOVA Phase 2a)
+    PositiveControl(
+        name="ontunisertib",
+        aliases=["ontunisertib", "ly-3200882", "ly3200882"],
+        mechanism="Selective ALK5 (TGFBR1) kinase inhibitor",
+        pathway="ALK5/TGF-beta",
+        evidence="STENOVA Phase 2a met primary and key secondary endpoints in "
+        "fibrostenotic CD. Directly targets ALK5/SMAD2/3 axis in fibroblasts.",
+    ),
 ]
 
 # Group positive controls by pathway class for validation reporting
@@ -146,7 +155,13 @@ PATHWAY_CLASSES = {
     "JAK-STAT": ["upadacitinib", "tofacitinib"],
     "epigenetic/HDAC": ["vorinostat", "trichostatin-a"],
     "miR-124": ["obefazimod"],
+    "ALK5/TGF-beta": ["ontunisertib"],
 }
+
+# TL1A benchmark: compounds that should rank in top 15% against the
+# TL1A-DR3/Rho signature specifically (task #848)
+TL1A_BENCHMARK_COMPOUNDS = ["duvakitug", "tulisokibart", "ontunisertib"]
+TL1A_BENCHMARK_PERCENTILE = 0.15
 
 
 def match_compound_name(
@@ -404,6 +419,152 @@ def generate_validation_report(
     print(f"\n  Saved: {val_path}")
 
     return validation_df, criteria
+
+
+def validate_tl1a_benchmark(
+    tl1a_signature_results: pd.DataFrame,
+    compound_column: str = "compound",
+    score_column: str = "concordance",
+    benchmark_percentile: float | None = None,
+) -> dict:
+    """Validate TL1A pathway compounds against TL1A-DR3/Rho signature results.
+
+    TL1A inhibitors (duvakitug, tulisokibart) and ALK5 inhibitors (ontunisertib)
+    have strong clinical validation. If our scoring correctly identifies these
+    known modulators against the TL1A-DR3/Rho signature, it validates the
+    computational approach.
+
+    Args:
+        tl1a_signature_results: CMAP/iLINCS results for the TL1A-DR3/Rho
+            signature query specifically (single signature results, not
+            the aggregate). Should be sorted by score (most negative first).
+        compound_column: Column name for compound names.
+        score_column: Column name for concordance/connectivity scores.
+        benchmark_percentile: Required ranking percentile (default: 0.15 = top 15%).
+
+    Returns:
+        Dict with benchmark pass/fail and per-compound results.
+    """
+    threshold = benchmark_percentile or TL1A_BENCHMARK_PERCENTILE
+    total = len(tl1a_signature_results)
+
+    benchmark_controls = [
+        ctrl for ctrl in POSITIVE_CONTROLS
+        if ctrl.name in TL1A_BENCHMARK_COMPOUNDS
+    ]
+
+    compound_results = []
+    for ctrl in benchmark_controls:
+        best_rank = None
+        best_score = None
+        matched_name = None
+
+        for idx, (_, row) in enumerate(tl1a_signature_results.iterrows()):
+            name = str(row.get(compound_column, ""))
+            if match_compound_name(name, [ctrl]) is not None:
+                if best_rank is None or idx < best_rank:
+                    best_rank = idx
+                    best_score = float(row.get(score_column, 0))
+                    matched_name = name
+
+        if best_rank is not None:
+            rank = best_rank + 1
+            percentile = rank / total if total > 0 else 1.0
+            passes = percentile <= threshold
+        else:
+            rank = None
+            percentile = None
+            passes = False
+
+        compound_results.append({
+            "control_name": ctrl.name,
+            "mechanism": ctrl.mechanism,
+            "pathway": ctrl.pathway,
+            "matched_compound": matched_name,
+            "rank": rank,
+            "percentile": round(percentile, 4) if percentile is not None else None,
+            "score": round(best_score, 4) if best_score is not None else None,
+            "passes_threshold": passes,
+        })
+
+    n_passing = sum(1 for r in compound_results if r["passes_threshold"])
+    n_found = sum(1 for r in compound_results if r["matched_compound"] is not None)
+
+    return {
+        "benchmark_pass": n_passing > 0,
+        "n_compounds": len(compound_results),
+        "n_found": n_found,
+        "n_passing": n_passing,
+        "threshold_percentile": threshold,
+        "total_compounds_in_results": total,
+        "compound_results": compound_results,
+    }
+
+
+def generate_tl1a_benchmark_report(
+    tl1a_signature_results: pd.DataFrame,
+    output_dir: Path | None = None,
+    compound_column: str = "compound",
+    score_column: str = "concordance",
+) -> dict:
+    """Run TL1A benchmark validation and print report.
+
+    Args:
+        tl1a_signature_results: Results from querying the TL1A-DR3/Rho
+            signature against CMAP/iLINCS.
+        output_dir: Directory to save results.
+        compound_column: Column with compound names.
+        score_column: Column with concordance scores.
+
+    Returns:
+        Benchmark results dict.
+    """
+    output_dir = output_dir or OUTPUT_DIR
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    print("\n" + "=" * 60)
+    print("TL1A Pathway Benchmark Validation")
+    print("=" * 60)
+
+    total = len(tl1a_signature_results)
+    print(f"\n  TL1A-DR3/Rho signature results: {total} compounds")
+
+    results = validate_tl1a_benchmark(
+        tl1a_signature_results,
+        compound_column=compound_column,
+        score_column=score_column,
+    )
+
+    print(f"  Benchmark threshold: top {results['threshold_percentile']:.0%}")
+    print(f"\n  {'Compound':20s} {'Mechanism':35s} {'Rank':>6s} {'%ile':>8s} {'Score':>10s} {'Pass':>5s}")
+    print(f"  {'-'*20} {'-'*35} {'-'*6} {'-'*8} {'-'*10} {'-'*5}")
+
+    for r in results["compound_results"]:
+        rank_str = str(r["rank"]) if r["rank"] is not None else "N/F"
+        pct_str = f"{r['percentile']:.1%}" if r["percentile"] is not None else "N/F"
+        score_str = f"{r['score']:+.4f}" if r["score"] is not None else "N/F"
+        pass_str = "YES" if r["passes_threshold"] else "NO"
+
+        print(f"  {r['control_name']:20s} {r['mechanism']:35s} "
+              f"{rank_str:>6s} {pct_str:>8s} {score_str:>10s} {pass_str:>5s}")
+
+    print(f"\n  BENCHMARK: {results['n_passing']}/{results['n_compounds']} "
+          f"TL1A-class compounds in top {results['threshold_percentile']:.0%}")
+    print(f"  VERDICT: {'PASS' if results['benchmark_pass'] else 'FAIL'}")
+
+    if not results["benchmark_pass"] and results["n_found"] == 0:
+        print("\n  NOTE: No TL1A-class compounds found in results.")
+        print("  These biologics may not have L1000 signatures.")
+        print("  Consider using gene-level surrogate matching instead.")
+
+    # Save benchmark results
+    if results["compound_results"]:
+        bench_df = pd.DataFrame(results["compound_results"])
+        bench_path = output_dir / "tl1a_benchmark_validation.tsv"
+        bench_df.to_csv(bench_path, sep="\t", index=False)
+        print(f"\n  Saved: {bench_path}")
+
+    return results
 
 
 def main(argv: list[str] | None = None) -> None:
