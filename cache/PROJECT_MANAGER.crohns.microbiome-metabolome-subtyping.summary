@@ -1,17 +1,21 @@
 ---
-last_run: 2026-03-18T02:26:00Z
-tasks_completed: [806]
+last_run: 2026-03-19T14:27:00Z
+tasks_completed: [908]
 tasks_blocked: []
 projects_touched: [microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-- microbiome-metabolome-subtyping: Advanced from development → analysis phase.
-- All 8 developer tasks (511, 513, 515, 519, 520, 521, 529, 530) confirmed done. 82 tests passing.
-- Created 4 analyst tasks: #849 (P4, cluster stability/k selection), #850 (P4, biological validation/Montreal mapping), #851 (P3, clinical relevance/treatment response), #852 (P3, cross-cohort reproducibility).
-- Dependency chain: #849 → #850 → #851; #852 after #849+#850.
-- Created validation_scientist task #853 (P3, pipeline reproducibility review).
+- microbiome-metabolome-subtyping: In ANALYSIS phase, remediation cycle after negative cluster stability result.
+- Cluster stability (task #849, journal #1284) found silhouette <0.3 (CMTF 0.138, MOFA2 0.288). Root causes: 80K metabolites overcomplete, site confounding (PERMANOVA p=0.001), underpowered n=76.
+- Research director (journal #1319) decided: proceed with pipeline fixes, project stays in analysis.
+- Coordinated remediation plan (task #908 done, journal #1412):
+  - Developer task #894 (pending, P4): metabolite feature selection, site batch correction, CMTF component CV, pathway aggregation.
+  - Analyst task #998 (pending, P5): re-run cluster stability with all fixes + CD-only (n=50). Depends on #894.
+  - Fallback: if silhouette still <0.3 after fixes, pivot to supervised ACMTF-R.
+- Blocked analyst tasks: #850 (biological validation), #851 (clinical relevance), #852 (cross-cohort). Unblock when #998 achieves silhouette >0.3.
+- Validation scientist task #853 done (pipeline approved). Developer bug fix #862 done (CMTF CV).
 - 5 data_curator tasks (#172, #173, #228, #271, #453) continue in parallel for external validation datasets.
-- Project status: analysis. Labels: microbiome, multi-omics, biomarker, novel-finding, high-priority.
-- Next PM action: Monitor analyst progress on #849 (cluster stability). When analyst tasks reach done, create validation tasks for validation phase. If analyst flags significant findings, update project labels.
+- Labels: microbiome, multi-omics, biomarker, novel-finding, high-priority.
+- Next PM action: Monitor developer progress on #894. When done, ensure analyst picks up #998. If #998 succeeds, unblock #850/#851/#852. If fails, coordinate ACMTF-R pivot.
