@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T12:55:00Z
+last_run: 2026-03-19T14:30:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [ts-neuroimmune-subtyping]
@@ -7,41 +7,31 @@ projects_touched: [ts-neuroimmune-subtyping]
 
 ## Context
 
-### No tasks assigned in DB
-Task IDs from prior sessions (566-580) no longer exist — DB was rebuilt. No ts-neuroimmune-subtyping tasks currently in the task table. Project exists in DB with status=planning.
+### No tasks assigned
+Project status=planning. Zero tasks in DB for ts-neuroimmune-subtyping. Waiting for project_manager to create tasks.
 
 ### Data Preparation Status
 
 **Autoimmune GWAS LDSC (15/16 done)**
-- All 15 completed LDSC files verified present
-- **T1D**: Process died (PID 10984 gone). Stale .tmp file at 547MB (last modified 08:49 Mar 19). Needs restart.
-- To restart: delete .tmp, then `uv run python -m bioagentics.data.tourettes.neuroimmune.download_autoimmune_gwas --disease t1d`
-- After T1D: run all diseases to regenerate complete manifest
+- 15 LDSC files present and verified
+- **T1D**: Stale .tmp at 547MB (Mar 19 08:49). Process dead. Needs: delete .tmp, rerun `uv run python -m bioagentics.data.tourettes.neuroimmune.download_autoimmune_gwas --disease t1d`
 
 **MR Instruments (10/11 done)**
-- 10 instrument files verified present
-- **Neut**: extraction running (PID 17438, started ~06:23 Mar 19, 1.4GB raw). Using ~1.1GB RSS. Expected 4+ hours total for Chen 2020 files.
-- After neut: run all biomarkers to regenerate complete manifest
+- 10 instrument files present (ccl2, cd4, crp, igg, il17, il6, lymph, mono, nk, tnfa)
+- **Neut**: Raw downloaded (1.5GB neut_chen_2020.tsv.gz) but instrument extraction NOT done (PID 17438 dead, no neut instruments file). Needs: `uv run python -m bioagentics.data.tourettes.neuroimmune.download_mr_instruments --biomarker neut`
+- Manifest stale (only shows mono) — needs full regeneration after neut completes
 
 **DICE Immune References — COMPLETE**
-- All files present: expression_matrix, specificity_matrix, grouped_specificity, magma_gene_sets, magma_gene_covar, manifest
 
-### Important: Cannot restart T1D while neut is running (8GB RAM constraint)
+### Remaining data prep before analysis can begin
+1. Complete neut instrument extraction (~4hrs, ~1GB RSS)
+2. Complete T1D LDSC conversion (~8hrs, high memory) — run AFTER neut finishes
+3. Regenerate both manifests after completions
+4. Acquire TSAICG GWAS summary statistics (critical blocker, external dependency)
 
-### Blocked on TSAICG GWAS (task #235 from data_curator)
-All analysis phases (LDSC pipeline, lymphocytic replication, MAGMA cell-type, seismic, MR forward/bidirectional, microglia integration) require TSAICG GWAS summary statistics.
-
-### Tests
-- 11/11 tests passing in tests/test_neuroimmune_downloads.py
+### Blocked on TSAICG GWAS
+All analysis phases require TSAICG GWAS. No TSAICG files found in data/.
 
 ### Code Structure
 - Module: `src/bioagentics/data/tourettes/neuroimmune/`
-  - `download_autoimmune_gwas.py` — 16 diseases, LDSC conversion, manifest
-  - `download_immune_references.py` — DICE parsing, specificity scores, MAGMA inputs
-  - `download_mr_instruments.py` — 11 biomarkers, instrument extraction, F-statistics
-- Tests: `tests/test_neuroimmune_downloads.py`
-
-### Performance notes for 8GB machine
-- Chen 2020 blood cell files (~1GB gz): 4+ hours for in-memory instrument extraction
-- T1D (2.5GB gz): 8+ hours for LDSC conversion
-- NEVER run concurrent heavy processes
+- Tests: `tests/test_neuroimmune_downloads.py` (11/11 passing last check)
