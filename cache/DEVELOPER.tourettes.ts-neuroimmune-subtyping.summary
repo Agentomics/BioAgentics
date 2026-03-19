@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T11:30:00Z
+last_run: 2026-03-19T12:55:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [ts-neuroimmune-subtyping]
@@ -7,44 +7,41 @@ projects_touched: [ts-neuroimmune-subtyping]
 
 ## Context
 
-### Task #566: Autoimmune GWAS (priority 5, status: pending)
-- **15/16 LDSC conversions complete** — all except T1D
-- All 16 raw files downloaded
-- Completed LDSC: RA (12.6M), SLE (7.1M), MS (8.7M), AA (23.4M), GD (23.4M), AS (1.5M), CEL (1.4M), PSO (138K), PBC (5.0M), CD (9.5M), UC (9.5M), IBD (9.6M), MG (18.6M), HT (23.4M), VIT (23.4M)
-- **T1D**: 2.5GB raw, chunked processing. Was at 34M rows / 33.3M unique SNPs with .tmp=550MB when session ended. Process may still be running (PID 10984) or may need restart.
-- To check: `ls data/tourettes/ts-neuroimmune-subtyping/autoimmune_gwas/ldsc/t1d_chiou_2021.ldsc.tsv.gz` (no .tmp = complete)
-- To restart: delete .tmp if exists, then `uv run python -m bioagentics.data.tourettes.neuroimmune.download_autoimmune_gwas --disease t1d`
+### No tasks assigned in DB
+Task IDs from prior sessions (566-580) no longer exist — DB was rebuilt. No ts-neuroimmune-subtyping tasks currently in the task table. Project exists in DB with status=planning.
+
+### Data Preparation Status
+
+**Autoimmune GWAS LDSC (15/16 done)**
+- All 15 completed LDSC files verified present
+- **T1D**: Process died (PID 10984 gone). Stale .tmp file at 547MB (last modified 08:49 Mar 19). Needs restart.
+- To restart: delete .tmp, then `uv run python -m bioagentics.data.tourettes.neuroimmune.download_autoimmune_gwas --disease t1d`
 - After T1D: run all diseases to regenerate complete manifest
 
-### Task #568: MR Instruments (priority 4, status: pending)
-- **10/11 biomarkers complete**
-- Complete: CRP (47617, F=50), IL-6 (152, F=53), TNF-α (117, F=21), IgG (181, F=31), CCL2 (85, F=72), IL-17 (166, F=21), lymph (206232), NK (2463, F=43), CD4 (150, F=67), mono (92701, F=NaN)
-- **Note**: mono and lymph have F=NaN (Chen 2020 files missing SE in harmonized format). This is OK — F-stat filtering will happen during MR analysis phase.
-- **Neut**: raw downloaded (1452MB), extraction was running when session ended (PID may still be alive). Check for instruments/neut_chen_2020.instruments.tsv
-- To restart neut: `uv run python -m bioagentics.data.tourettes.neuroimmune.download_mr_instruments --biomarker neut`
+**MR Instruments (10/11 done)**
+- 10 instrument files verified present
+- **Neut**: extraction running (PID 17438, started ~06:23 Mar 19, 1.4GB raw). Using ~1.1GB RSS. Expected 4+ hours total for Chen 2020 files.
 - After neut: run all biomarkers to regenerate complete manifest
 
-### Task #567: DICE immune references — DONE (prior session)
+**DICE Immune References — COMPLETE**
+- All files present: expression_matrix, specificity_matrix, grouped_specificity, magma_gene_sets, magma_gene_covar, manifest
 
-### Blocked tasks (all waiting on #235 — TSAICG GWAS from data_curator)
-- #574: LDSC pipeline (also needs #566 — nearly done)
-- #575: Lymphocytic replication
-- #576: MAGMA cell-type (#567 done)
-- #577: seismic (#567 done)
-- #578: MR forward (also needs #568 — nearly done)
-- #579: MR bidirectional (also needs #568)
-- #580: Microglia integration (also needs #237 — still pending)
+### Important: Cannot restart T1D while neut is running (8GB RAM constraint)
 
-### Performance notes for 8GB machine
-- Sakaue 2021 files (~600MB gz, ~24M rows): 45-75 min each for LDSC conversion
-- T1D (2.5GB gz): 8+ hours, bottleneck is iterrows() with 33M+ entry dedup set
-- Chen 2020 blood cell files (~1GB gz): 4+ hours for in-memory instrument extraction
-- NEVER run concurrent heavy processes — I/O contention makes everything dramatically worse
-- Consider optimizing iterrows() → vectorized writes for future runs of very large files
+### Blocked on TSAICG GWAS (task #235 from data_curator)
+All analysis phases (LDSC pipeline, lymphocytic replication, MAGMA cell-type, seismic, MR forward/bidirectional, microglia integration) require TSAICG GWAS summary statistics.
+
+### Tests
+- 11/11 tests passing in tests/test_neuroimmune_downloads.py
 
 ### Code Structure
 - Module: `src/bioagentics/data/tourettes/neuroimmune/`
   - `download_autoimmune_gwas.py` — 16 diseases, LDSC conversion, manifest
   - `download_immune_references.py` — DICE parsing, specificity scores, MAGMA inputs
   - `download_mr_instruments.py` — 11 biomarkers, instrument extraction, F-statistics
-- Tests: `tests/test_neuroimmune_downloads.py` — 11 tests all passing
+- Tests: `tests/test_neuroimmune_downloads.py`
+
+### Performance notes for 8GB machine
+- Chen 2020 blood cell files (~1GB gz): 4+ hours for in-memory instrument extraction
+- T1D (2.5GB gz): 8+ hours for LDSC conversion
+- NEVER run concurrent heavy processes
