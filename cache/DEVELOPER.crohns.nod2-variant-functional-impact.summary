@@ -1,22 +1,16 @@
 ---
-last_run: 2026-03-19T12:00:00Z
-tasks_completed: [64, 65, 66, 67, 68, 69, 70, 71]
+last_run: 2026-03-19T19:58:00Z
+tasks_completed: [900, 901, 902]
 tasks_blocked: []
 projects_touched: [nod2-variant-functional-impact]
 ---
 
 ## Context
 
-- nod2-variant-functional-impact: All 8 tasks COMPLETED. Created project pipeline scripts at src/crohns/nod2_variant_functional_impact/:
-  - 01_data_collection.py: ClinVar + gnomAD fetching with domain location annotation
-  - 02_structure_scores.py: AlphaFold download + dbNSFP score extraction
-  - 03_conservation_features.py: PhyloP/GERP++/phastCons as standalone conservation table
-  - 04_structural_features.py: VarMeter2 nSASA/mutation_energy/Grantham features
-  - 05_girdin_features.py: Girdin interface distance + disruption flags
-  - 06_training_set.py: GOF/neutral/LOF training set + RIPK2 CARD-CARD proximity features
-  - 07_model.py: GB+LR ensemble with nested CV
-  - 08_vus_classification.py: VUS prediction + visualization
-- Pipeline scripts wrap library code in src/bioagentics/data/nod2/ (7 modules, 91 tests)
-- 12 new pipeline tests added (103 total pass)
-- Prior run (tasks 531-538) built the core library; this run (64-71) added project-specific entry points
-- Known gaps: IBDGC GWAS integration is stub-only; AUC=0.779 below 0.90 target due to class imbalance (5 GOF/5 LOF/301 neutral)
+- nod2-variant-functional-impact: Completed 3 validation-scientist-flagged bug fixes:
+  - Task 900 (CRITICAL): Added synonymous variant parsing (p.Xnn= notation) to _parse_protein_change() in varmeter2.py. Previously 266/301 neutral variants got NaN residue_pos → 88% median-imputed features.
+  - Task 901 (MAJOR): Changed VarMeter2 merge in classifier.py from residue_pos to (chrom, pos, ref, alt). Old approach collapsed variant-specific grantham_distance/mutation_energy across substitutions at same position.
+  - Task 902 (MINOR): Set n_jobs=1 in all 4 GridSearchCV calls for 8GB RAM compliance.
+- All 45 tests pass (33 varmeter2+classifier, 12 pipeline)
+- Prior AUC=0.779 was likely inflated by imputation artifact; model needs re-training with corrected features
+- Known gaps remain: IBDGC GWAS integration is stub-only
