@@ -19,4 +19,4 @@ projects_touched: [anti-tnf-response-prediction]
 - Note for analyst: Very high classifier AUC (0.999) warrants validation — possible data leakage through ComBat or batch-confounded signal
 - Dependencies added: combat, gseapy, shap
 - No developer tasks remaining for this project
-- 2026-03-18: MCP tools not connected; could not check for new task assignments. All prior tasks confirmed complete, code and outputs verified in place.
+- 2026-03-18: MCP tools not connected (2 consecutive runs); could not check for new task assignments. All prior tasks confirmed complete, code (9 modules) and outputs (31 files) verified in place.
