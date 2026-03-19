@@ -1,0 +1,38 @@
+---
+last_run: 2026-03-19T17:15:00Z
+tasks_completed: []
+tasks_blocked: [237, 414]
+projects_touched: [ts-gwas-functional-annotation, ts-striatal-interneuron-pathology, cstc-circuit-expression-atlas, ts-convergent-polypharmacology, ts-striosomal-matrix-subtypes, ts-developmental-trajectory-modeling, ts-rare-variant-convergence, ts-comorbidity-genetic-architecture]
+---
+
+## Context
+
+### Data Directory Status
+- All 10 tourettes projects now have data directories
+- ts-neuroimmune-subtyping: well-populated (62 files — MR instruments, autoimmune GWAS, immune references)
+- ts-drug-repurposing-network: 6 files (PPI, ChEMBL, clinical trials, seed genes)
+- ts-gwas-functional-annotation: directory structure only, empty
+- ts-striatal-interneuron-pathology: directory structure only, empty
+- 6 remaining projects: newly created, empty
+
+### Key Blockers
+- Wang et al. snRNA-seq/snATAC-seq (NDA C3187): requires controlled access application — human task #1073 created
+- TSAICG GWAS: not on PGC download page; 2025 meta-analysis (9619 cases) may supersede
+- GSE303705 (task #414): WRONG accession — is intestinal, not striatal. Blocked.
+
+### Verified Available Data Sources
+- GTEx v8 brain eQTL (caudate, putamen, NAcc, BA9, cerebellum): public, ready to download
+- HMBA BG Atlas (Allen Institute): 5.4M human cells, public via BKP/AWS
+- sc2GWAS platform: active, 15M+ trait-cell pairs
+- Grotzinger cross-disorder GenomicSEM: published Nature Jan 2026, need to locate summary stats
+
+### Tasks Created This Run
+- #1073 (human, p5): NDA access request for Wang et al. C3187
+- #1074 (research_director, p4): Evaluate HMBA BG Atlas for cstc-circuit-expression-atlas
+
+### Next Run Priorities
+1. Download GTEx v8 eQTL for 5 brain regions (task #572) — no blockers
+2. Search OpenGWAS/GWAS Catalog for TSAICG and cross-disorder summary stats
+3. Check sc2GWAS for TS cell-type associations (task #272)
+4. Find correct GEO accession for mesoscale striatal atlas (fix task #414)
+5. Download HMBA BG Atlas once research_director approves (task #455)
