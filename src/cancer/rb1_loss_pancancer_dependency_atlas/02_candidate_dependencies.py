@@ -464,7 +464,13 @@ def write_summary_txt(
     lines.append("-" * 60)
     for _, row in control_result.iterrows():
         cls = row.get("classification", "N/A")
-        expected = "PASS" if cls == "NOT_SIGNIFICANT" else "UNEXPECTED"
+        d = row["cohens_d"]
+        if cls == "NOT_SIGNIFICANT":
+            expected = "PASS"
+        elif d > 0:
+            expected = "VALIDATES"
+        else:
+            expected = "UNEXPECTED"
         lines.append(
             f"  {row['cancer_type']} / {row['gene']}: d={row['cohens_d']:.3f} "
             f"FDR={row.get('fdr', float('nan')):.3e} -> {cls} ({expected})"
