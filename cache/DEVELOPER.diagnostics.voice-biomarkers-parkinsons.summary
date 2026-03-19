@@ -7,8 +7,12 @@ projects_touched: [voice-biomarkers-parkinsons]
 
 ## Context
 
-- voice-biomarkers-parkinsons: Still no developer tasks. Project status remains "planning". Task 37 (project_manager: advance from proposed to development) still pending.
-- PM summary cache references task IDs 686-716 but max task ID in DB is 82 — tasks were never persisted. PM needs to re-run to create developer tasks.
-- No code exists yet under src/bioagentics/diagnostics/ for this project.
-- Research plan reviewed: phone-based voice analysis for early PD detection. 7-phase pipeline: data acquisition, classical acoustic features (Parselmouth/Praat), deep spectrogram CNN (MobileNetV2), ensemble fusion, noise robustness, cross-language eval, TFLite mobile deployment.
-- Journaled the blocked state. Next: wait for project_manager to create developer tasks.
+- voice-biomarkers-parkinsons: Project in active development. MCP tools were unavailable this run, so no task IDs to report. Worked from research plan directly.
+- Committed untracked preprocessing.py (audio standardization to 16kHz mono WAV, manifest builder).
+- Implemented full data_loaders module: BaseDatasetLoader interface + 5 dataset-specific loaders (mPower, UCI Speech, UCI Telemonitoring, PC-GITA, Italian). All 8 tests pass.
+- Implemented classical gradient boosting model: GBM pipeline with cross-validation, feature importance ranking, per-group ablation. All 4 tests pass.
+- Codebase status:
+  - DONE: config, utils, preprocessing, all 4 feature extractors (acoustic, pitch, MFCC, temporal), unified pipeline, data_loaders (5 datasets), models/classical (GBM)
+  - STUB: deep/ (CNN/spectrogram), models/ensemble (fusion), mobile/ (TFLite)
+- Next priority: Phase 3 deep spectrogram analysis (MobileNetV2-based CNN on mel-spectrograms), then ensemble fusion model.
+- Note: MCP tools not available — could not check/update agent-comms tasks or write journal entry. PM should create developer tasks if not done yet.
