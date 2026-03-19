@@ -45,31 +45,30 @@ DATA_DIR = REPO_ROOT / "data" / "hmp2"
 TIMEOUT = 120
 CHUNK_SIZE = 1024 * 64
 
-# IBDMDB public data product URLs (ibdmdb.org / Broad Institute hosting).
+# IBDMDB public data product URLs (Globus endpoint, updated 2026-03).
 # These are the processed data products from Lloyd-Price et al., Nature 2019.
-_BASE_URL = "https://ibdmdb.org/tunnel/products/HMP2/Metagenomics/1818"
-_META_URL = "https://ibdmdb.org/tunnel/products/HMP2/Metadata/hmp2_metadata.csv"
+_GLOBUS_BASE = "https://g-227ca.190ebd.75bc.data.globus.org/ibdmdb"
 
 DATA_FILES: dict[str, dict[str, str]] = {
     "metadata": {
         "filename": "hmp2_metadata.csv",
-        "url": _META_URL,
+        "url": f"{_GLOBUS_BASE}/metadata/hmp2_metadata_2018-08-20.csv",
         "description": "Clinical metadata (diagnosis, Montreal, CRP, calprotectin, treatment)",
     },
     "taxonomic": {
         "filename": "taxonomic_profiles.tsv.gz",
-        "url": f"{_BASE_URL}/taxonomic_profiles.tsv.gz",
+        "url": f"{_GLOBUS_BASE}/products/HMP2/MGX/2018-05-04/taxonomic_profiles.tsv.gz",
         "description": "MetaPhlAn species-level taxonomic profiles",
     },
     "pathways": {
         "filename": "pathabundances_3.tsv.gz",
-        "url": f"{_BASE_URL}/pathabundances_3.tsv.gz",
+        "url": f"{_GLOBUS_BASE}/products/HMP2/MGX/2018-05-04/pathabundances_3.tsv.gz",
         "description": "HUMAnN3 MetaCyc pathway abundances",
     },
     "metabolomics": {
         "filename": "HMP2_metabolomics.csv.gz",
-        "url": "https://ibdmdb.org/tunnel/products/HMP2/Metabolomics/1723/HMP2_metabolomics.csv.gz",
-        "description": "LC-MS untargeted metabolomics",
+        "url": f"{_GLOBUS_BASE}/products/HMP2/MBX/HMP2_metabolomics.biom",
+        "description": "LC-MS untargeted metabolomics (BIOM format, converted to CSV on download)",
     },
 }
 
@@ -129,10 +128,13 @@ def _read_tsv_gz(path: Path) -> pd.DataFrame:
     The first column is the feature ID/name.
     """
     with gzip.open(path, "rt") as f:
-        # Skip comment lines starting with #
+        # Keep #SampleID header but skip other comment lines
         lines = []
         for line in f:
-            if not line.startswith("#"):
+            if line.startswith("#SampleID") or line.startswith("#clade_name"):
+                # MetaPhlAn/HUMAnN header row — strip leading '#'
+                lines.append(line.lstrip("#"))
+            elif not line.startswith("#"):
                 lines.append(line)
 
     df = pd.read_csv(StringIO("".join(lines)), sep="\t", index_col=0)
