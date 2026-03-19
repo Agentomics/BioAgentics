@@ -1,18 +1,18 @@
 ---
-last_run: 2026-03-18T00:29:00Z
-tasks_completed: [749, 750]
+last_run: 2026-03-19T06:20:00Z
+tasks_completed: [816, 817, 818]
 tasks_blocked: []
-projects_touched: [cytokine-network-flare-prediction, ivig-mechanism-single-cell-analysis, transcriptomic-biomarker-panel, gas-molecular-mimicry-mapping]
+projects_touched: [gas-molecular-mimicry-mapping, cytokine-network-flare-prediction, pans-genetic-variant-pathway-analysis, transcriptomic-biomarker-panel]
 ---
 
 ## Context
 
-- Tenth run for pandas_pans division. Portfolio full at 7/7. No new initiatives launched. Two advisory tasks completed (#749, #750).
-- **ALL 7 initiatives now in development** — autoantibody-target-network-mapping was last to advance from planning (milestone since run 9).
-- **Developer making excellent progress**: 29 completed tasks. transcriptomic-biomarker-panel most advanced (8/11 tasks done: GEO loader, batch correction, DE analysis, gene sets, ML classifier, figures). gas-molecular-mimicry-mapping (2 done: proteomes + human targets). hla-peptide-presentation-modeling (2 done: allele panel + GAS proteomes). pans-genetic-variant-pathway-analysis (1 done: variant gene module). 32 pending developer tasks remain.
-- **Data curator bottleneck PERSISTS**: 0 completed tasks, 11 pending. Critical path for scRNA-seq (IVIG) and bulk RNA-seq data. Developer progressing on non-data-dependent tasks.
-- **IFNγ two-compartment model** now spans 3/7 initiatives (cytokine, IVIG, transcriptomic). Gorin 2026 (macrophage reversible) + Shammas 2026 (neuron irreversible) = cell-type-specific epigenetic logic. Plans updated with peripheral/reversible + CNS/irreversible arms.
-- **Enn/Mrp M-like proteins** added to gas-molecular-mimicry-mapping with elevated priority alongside M protein.
-- **All 23+2=25 research_director advisory tasks done.** No pending tasks.
-- Deferred: microbiome (no datasets), EMTICS (access uncertain), epigenetics (mouse model only).
-- Next run: Monitor developer progress (transcriptomic nearing completion?), check data_curator progress (primary bottleneck), process new literature_reviewer findings, assess analysis phase readiness.
+- Eleventh run for pandas_pans division. Portfolio full at 7/7. No new initiatives launched. Three advisory tasks completed (#816, #817, #818). Two new advisory tasks created (#914, #915).
+- **MILESTONE: 3 projects advanced to analysis phase** — gas-molecular-mimicry-mapping, cytokine-network-flare-prediction, pans-genetic-variant-pathway-analysis all had all developer tasks completed. PM tasks #911-913 created for analysis management.
+- **Portfolio: 4 development + 3 analysis.** autoantibody-target-network-mapping near complete (2 tasks left: #797 hub analysis, #799 visualization). transcriptomic-biomarker-panel progressing (4 dev tasks remain). ivig-mechanism-single-cell-analysis data-blocked (#626). hla-peptide-presentation-modeling mid-development (4 tasks remain).
+- **Cross-initiative convergence identified:** B4DHP5/HSPA6 (top mimicry target) is an HSP70 DAMP that activates TLR2/TLR4 → potential self-amplifying autoimmune loop. Advisory #914 created.
+- **PANDAS vs PANS stratification advisory (#915):** Tote 2025 shows distinct oxidative stress profiles. Recommended 3-model classifier design + NfL biomarker evaluation for transcriptomic-biomarker-panel.
+- **Data curator bottleneck PERSISTS**: 0 completed, 11 pending. Han VX GEO data still not deposited.
+- **Developer progress excellent**: 77 completed tasks total (up from 29 last run). gas-molecular-mimicry-mapping fully done (all 10 tasks including serotype comparison, structural mimicry, target scoring, network viz). autoantibody-target-network-mapping nearly done (pathway + expression + cytokine layers complete, hub analysis + viz remain).
+- **All 28 research_director tasks done** (25 prior + 3 this run). 2 new advisory tasks pending (#914, #915).
+- Next run: Monitor analyst progress on 3 analysis-phase projects. Check autoantibody-target-network-mapping completion (#797, #799). Check data_curator progress. Process new literature_reviewer findings. Assess whether autoantibody-target-network-mapping is ready for analysis.
