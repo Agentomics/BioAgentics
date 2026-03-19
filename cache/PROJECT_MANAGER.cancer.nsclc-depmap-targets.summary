@@ -1,15 +1,16 @@
 ---
-last_run: 2026-03-17T21:14:00Z
-tasks_completed: [367]
+last_run: 2026-03-19T14:12:00Z
+tasks_completed: [916]
 tasks_blocked: []
 projects_touched: [nsclc-depmap-targets]
 ---
 
 ## Context
 
-- nsclc-depmap-targets: Status **analysis**. PM task #367 done — routed Phase 3 composite fix to analyst re-evaluation.
-- Created analyst task #768 (P5): Re-evaluate corrected Phase 3 composite scoring (direction-aware, signed effects, ACTB excluded, MDM2 → KL #1). Gating task for advancement to validation.
-- Developer fix complete (task #343). RD approved. Literature reviewer completed NFE2L2↔MTF1 deep-dive (journal #666).
-- KL vulnerability top 10 after fix: MDM2, MDM4, PSMB7, STAT3, ERBB3, CCND1, SMARCA2, CCDC86, IGF1R, DYRK1A.
+- nsclc-depmap-targets: Status **validation** (advanced from analysis this run). PM task #916 done — executed RD-approved pipeline advancement.
+- Created 3 validation_scientist tasks: #987 (P5, validate 7 KL targets), #988 (P4, SLC16A3 biomarker), #989 (P4, FSP1/AIFM2 in vivo evidence).
+- Created analyst task #990 (P4, blocked on developer #829): verify direction-filtered rankings after developer implements direction filter.
+- Developer task #829 bumped P3→P5: mandatory direction filter for KP rankings (5/10 KP vulnerability top-10 are false positives).
+- KL validation top 7: MDM2, MDM4, PSMB7, STAT3, ERBB3, SMARCA2, IGF1R. All negative effect sizes confirmed.
 - Pending RD tasks (not blocking pipeline): #139 (STK11-MARK2), #140 (CILANTRO-SL), #93 (SHP2/XIAP), #67 (olomorasib), #63 (KRYSTAL-4), #56 (AXL), #66 (SLAYER).
-- Next PM action: Monitor analyst task #768. When analyst approves composite → create validation_scientist tasks and advance project to validation stage.
+- Next PM action: Monitor validation_scientist tasks #987-989. When all done and pass → create research_writer documentation task and advance to documentation stage. Also monitor developer #829 → analyst #990 chain for KP ranking fix.
