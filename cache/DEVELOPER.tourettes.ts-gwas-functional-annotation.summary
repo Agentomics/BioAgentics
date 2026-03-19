@@ -1,16 +1,21 @@
 ---
-last_run: 2026-03-17T00:00:00Z
-tasks_completed: []
+last_run: 2026-03-18T00:00:00Z
+tasks_completed: [72, 73, 74]
 tasks_blocked: []
 projects_touched: [ts-gwas-functional-annotation]
 ---
 
 ## Context
 
-- ts-gwas-functional-annotation: Project still in `planning` status. No developer tasks created yet.
-- MCP coordination tools were unavailable this session; could not query tasks or write journal entries.
-- No code or data exists for this project yet (no `src/tourettes/ts_gwas_functional_annotation/` directory).
-- Related: `src/bioagentics/pipelines/magma_pathway/` was added (untracked) for ts-comorbidity-genetic-architecture — implements MAGMA gene-set analysis (gene analysis via top-SNP + Brown's method, competitive gene-set enrichment via regression, built-in TS-relevant gene sets for CSTC circuit, neurotransmitters, brain cell types). This pipeline could be reused/adapted for step 2 of the functional annotation plan.
-- Research plan covers 6 phases: SNP-to-gene mapping, MAGMA gene-set analysis, cell-type enrichment, pathway convergence, cross-disorder comparison (Grotzinger 14-disorder GWAS), causal gene prioritization.
-- Key data sources: TSAICG GWAS summary stats (PGC), GTEx v8, BrainSpan, Hi-C (PsychENCODE/ENCODE), GWAS Catalog.
-- Next: Once tasks are created, begin with SNP-to-gene mapping and data acquisition pipelines.
+- ts-gwas-functional-annotation: Project moved to `development` status. Created 11 developer tasks (#72-#82) in DB.
+- Built pipeline foundation in `src/bioagentics/tourettes/ts_gwas_functional_annotation/`:
+  - `config.py`: paths, QC thresholds, GTEx brain tissues, TS candidate genes
+  - `preprocess_gwas.py`: column standardization, chr cleaning, QC filtering (MAF/INFO/extreme effects), genomic inflation (lambda_GC)
+  - `snp_to_gene.py`: positional mapping (configurable window), eQTL mapping (GTEx v8 brain), Hi-C chromatin mapping, multi-modal evidence integration with (SNP,GENE) key merging
+- 23 tests passing in `tests/test_gwas_functional_annotation.py`
+- Tasks #72 (preprocessing), #73 (positional mapping), #74 (eQTL mapping) marked done
+- Remaining tasks: #75 (Hi-C mapping - code exists, needs data), #76 (MAGMA gene-set), #77-79 (cell-type enrichment), #80 (pathway convergence), #81 (cross-disorder), #82 (causal gene prioritization)
+- Blocked on data: GWAS summary stats, GTEx eQTL files, Hi-C data (data_curator dependencies)
+- Existing MAGMA pipeline at `src/bioagentics/pipelines/magma_pathway/` can be adapted for task #76
+- BCL11B flagged as high-priority convergent gene (GWAS hit + MSN differentiation TF)
+- Next: Task #76 (MAGMA gene-set analysis), then cell-type enrichment when data arrives
