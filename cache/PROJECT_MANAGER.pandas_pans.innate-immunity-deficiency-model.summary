@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-19T12:00:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [innate-immunity-deficiency-model]
+---
+
+## Context
+
+- innate-immunity-deficiency-model: Initialized project from plan. Created project record (status: development). Created 12 developer tasks across 4 phases:
+  - Phase 1 (P5-P4): IDs 99-102 — gene module config, lectin complement expression extraction, innate/adaptive ratio pipeline, cytokine classification
+  - Phase 2 (P4-P3): IDs 103-105 — per-patient variant extraction, MBL2/MASP association test, cGAS-STING comparison
+  - Phase 3 (P3-P2): IDs 106-108 — innate deficiency score, clinical outcome correlation, PANDAS vs PANS comparison
+  - Phase 4 (P2): IDs 109-110 — lectin complement failure network model, autoantibody target prediction
+- All 12 tasks assigned to developer, all pending
+- Next: Monitor developer progress on P5 tasks (99-100). When all developer tasks are done, create analyst tasks and advance to analysis status.
+- Dependencies: ivig-mechanism pipeline code exists but no outputs yet. pans-genetic-variant-pathway-analysis has enrichment/PPI outputs. cytokine-network-flare-prediction has partial outputs.
+- No blockers currently. MCP tools were unavailable; used direct SQLite access.
