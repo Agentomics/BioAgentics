@@ -1,0 +1,203 @@
+{
+  "cost_estimate": {
+    "n_methylation_markers": 0,
+    "n_protein_markers": 7,
+    "methylation_assay_cost": 0.0,
+    "protein_assay_cost": 105.0,
+    "sample_collection": 20.0,
+    "lab_overhead": 30.0,
+    "total_per_test_usd": 155.0,
+    "meets_target": true
+  },
+  "panel_performance": {
+    "sensitivity_at_95spec": 0.47727272727272724,
+    "specificity": 0.95,
+    "mean_auc": 0.8706973581973582
+  },
+  "comparisons": {
+    "Colonoscopy": {
+      "cost": 2500.0,
+      "sensitivity": 0.95,
+      "specificity": 0.99,
+      "compliance": 0.6,
+      "frequency_years": 10,
+      "description": "Optical colonoscopy with polypectomy",
+      "total_cost_usd": 151920000.0,
+      "total_qalys_gained": 2297.39,
+      "qalys_per_1000_usd": 0.0151,
+      "icer_usd_per_qaly": 66127.36,
+      "cost_effective": false,
+      "population": 100000,
+      "time_horizon_years": 10
+    },
+    "Cologuard (FIT-DNA)": {
+      "cost": 650.0,
+      "sensitivity": 0.92,
+      "specificity": 0.87,
+      "compliance": 0.72,
+      "frequency_years": 3,
+      "description": "Multi-target stool DNA test",
+      "total_cost_usd": 248373326.31,
+      "total_qalys_gained": 9395.15,
+      "qalys_per_1000_usd": 0.0378,
+      "icer_usd_per_qaly": 26436.33,
+      "cost_effective": true,
+      "population": 100000,
+      "time_horizon_years": 10
+    },
+    "GRAIL Galleri": {
+      "cost": 949.0,
+      "sensitivity": 0.67,
+      "specificity": 0.995,
+      "compliance": 0.8,
+      "frequency_years": 1,
+      "description": "Multi-cancer early detection cfDNA methylation test",
+      "total_cost_usd": 679315583.51,
+      "total_qalys_gained": 18981.05,
+      "qalys_per_1000_usd": 0.0279,
+      "icer_usd_per_qaly": 35789.14,
+      "cost_effective": true,
+      "population": 100000,
+      "time_horizon_years": 10
+    },
+    "CEA alone": {
+      "cost": 25.0,
+      "sensitivity": 0.4,
+      "specificity": 0.9,
+      "compliance": 0.85,
+      "frequency_years": 1,
+      "description": "Carcinoembryonic antigen blood test",
+      "total_cost_usd": 206682229.75,
+      "total_qalys_gained": 12040.22,
+      "qalys_per_1000_usd": 0.0583,
+      "icer_usd_per_qaly": 17165.98,
+      "cost_effective": true,
+      "population": 100000,
+      "time_horizon_years": 10
+    },
+    "CRC Liquid Biopsy Panel (ours)": {
+      "cost": 155.0,
+      "sensitivity": 0.47727272727272724,
+      "specificity": 0.95,
+      "compliance": 0.8,
+      "frequency_years": 1,
+      "description": "Multi-analyte panel (7P + 0M)",
+      "total_cost_usd": 198885556.5,
+      "total_qalys_gained": 13521.1,
+      "qalys_per_1000_usd": 0.068,
+      "icer_usd_per_qaly": 14709.27,
+      "cost_effective": true,
+      "population": 100000,
+      "time_horizon_years": 10
+    }
+  },
+  "sensitivity_analysis": [
+    {
+      "scenario": "Test cost: $78",
+      "variable": "test_cost",
+      "multiplier": 0.5,
+      "icer": 10680.47,
+      "qalys_per_1000": 0.0936,
+      "cost_effective": true
+    },
+    {
+      "scenario": "Test cost: $155",
+      "variable": "test_cost",
+      "multiplier": 1.0,
+      "icer": 14709.27,
+      "qalys_per_1000": 0.068,
+      "cost_effective": true
+    },
+    {
+      "scenario": "Test cost: $232",
+      "variable": "test_cost",
+      "multiplier": 1.5,
+      "icer": 18738.07,
+      "qalys_per_1000": 0.0534,
+      "cost_effective": true
+    },
+    {
+      "scenario": "Test cost: $310",
+      "variable": "test_cost",
+      "multiplier": 2.0,
+      "icer": 22766.88,
+      "qalys_per_1000": 0.0439,
+      "cost_effective": true
+    },
+    {
+      "scenario": "Sensitivity: 50%",
+      "variable": "sensitivity",
+      "multiplier": 0.5,
+      "icer": 14049.13,
+      "qalys_per_1000": 0.0712,
+      "cost_effective": true
+    },
+    {
+      "scenario": "Sensitivity: 65%",
+      "variable": "sensitivity",
+      "multiplier": 0.65,
+      "icer": 10849.96,
+      "qalys_per_1000": 0.0922,
+      "cost_effective": true
+    },
+    {
+      "scenario": "Sensitivity: 80%",
+      "variable": "sensitivity",
+      "multiplier": 0.8,
+      "icer": 8850.48,
+      "qalys_per_1000": 0.113,
+      "cost_effective": true
+    },
+    {
+      "scenario": "Sensitivity: 90%",
+      "variable": "sensitivity",
+      "multiplier": 0.9,
+      "icer": 7887.77,
+      "qalys_per_1000": 0.1268,
+      "cost_effective": true
+    },
+    {
+      "scenario": "Compliance: 50%",
+      "variable": "compliance",
+      "multiplier": 0.5,
+      "icer": 14709.27,
+      "qalys_per_1000": 0.068,
+      "cost_effective": true
+    },
+    {
+      "scenario": "Compliance: 70%",
+      "variable": "compliance",
+      "multiplier": 0.7,
+      "icer": 14709.27,
+      "qalys_per_1000": 0.068,
+      "cost_effective": true
+    },
+    {
+      "scenario": "Compliance: 85%",
+      "variable": "compliance",
+      "multiplier": 0.85,
+      "icer": 14709.27,
+      "qalys_per_1000": 0.068,
+      "cost_effective": true
+    },
+    {
+      "scenario": "Compliance: 95%",
+      "variable": "compliance",
+      "multiplier": 0.95,
+      "icer": 14709.27,
+      "qalys_per_1000": 0.068,
+      "cost_effective": true
+    }
+  ],
+  "assumptions": {
+    "methylation_cost_per_marker": 75.0,
+    "protein_cost_per_marker": 15.0,
+    "sample_collection": 20.0,
+    "lab_overhead": 30.0,
+    "crc_incidence_45_75": 0.005,
+    "early_stage_5yr_survival": 0.91,
+    "late_stage_5yr_survival": 0.15,
+    "qaly_discount_rate": 0.03,
+    "wtp_threshold_usd": 50000
+  }
+}
