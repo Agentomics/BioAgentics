@@ -63,7 +63,7 @@ def _match_columns(df_columns: list[str], keywords: list[str]) -> list[str]:
 
 
 def _compute_pathway_features(
-    pathways: pd.DataFrame, samples: pd.DataFrame, meta_cols: set[str]
+    samples: pd.DataFrame, meta_cols: set[str]
 ) -> dict[str, float]:
     """Compute pathway dynamics features for a window's samples."""
     features: dict[str, float] = {}
@@ -188,7 +188,7 @@ def compute_auxiliary_features(
         # Pathway features
         if pathways_df is not None:
             pw_samples = _get_window_samples(pathways_df, window)
-            features.update(_compute_pathway_features(pathways_df, pw_samples, meta_cols))
+            features.update(_compute_pathway_features(pw_samples, meta_cols))
 
         # Transcriptomic features
         if tx_df is not None:
