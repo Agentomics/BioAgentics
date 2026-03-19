@@ -58,11 +58,17 @@ def load_cfdna_features(output_dir: Path, n_top: int = 100) -> pd.DataFrame:
 
     # Filter to top CpGs and transpose (samples x features)
     available = [c for c in top_cpgs if c in meth.index]
+    if not available:
+        raise ValueError(f"No top CpGs found in methylation data (requested {len(top_cpgs)})")
     features = meth.loc[available].T
     features.columns = [f"meth_{c}" for c in features.columns]
 
-    # Add condition labels
-    features["condition"] = meta.loc[features.index, "condition"]
+    # Add condition labels — intersect to avoid KeyError on mismatched indices
+    common = features.index.intersection(meta.index)
+    if common.empty:
+        raise ValueError("No shared samples between methylation data and metadata")
+    features = features.loc[common]
+    features["condition"] = meta.loc[common, "condition"]
     logger.info("cfDNA features: %d samples x %d methylation markers", len(features), len(available))
     return features
 
@@ -92,12 +98,19 @@ def load_protein_features(output_dir: Path, data_dir: Path) -> pd.DataFrame:
     meta = pd.read_parquet(meta_path)
 
     available = [p for p in probe_ids if p in expr.index]
+    if not available:
+        raise ValueError(f"No protein probes found in expression data (requested {len(probe_ids)})")
     features = expr.loc[available].T
     # Rename columns to gene names
     probe_to_gene = dict(zip(sig_proteins["probe_id"], sig_proteins.index))
     features.columns = [f"prot_{probe_to_gene.get(c, c)}" for c in features.columns]
 
-    features["condition"] = meta.loc[features.index, "condition"]
+    # Add condition labels — intersect to avoid KeyError on mismatched indices
+    common = features.index.intersection(meta.index)
+    if common.empty:
+        raise ValueError("No shared samples between expression data and metadata")
+    features = features.loc[common]
+    features["condition"] = meta.loc[common, "condition"]
     logger.info("Protein features: %d samples x %d markers", len(features), len(available))
     return features
 
