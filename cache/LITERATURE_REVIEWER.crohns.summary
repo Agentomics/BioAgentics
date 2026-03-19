@@ -7,7 +7,7 @@ projects_touched: [cd-fibrosis-drug-repurposing, cd-stricture-risk-prediction, m
 
 ## Context
 
-Sixteenth run. Six new journal entries, eight new tasks. Major focus: new fibrosis cell populations (AREG-PI16+ fibroblasts, γδ T cells), TL1A-ILC-neutrophil axis (Immunity), bile acid-GPBAR1 anti-fibrotic network, and fecal metabolomics validation for CD subtyping and flare prediction.
+Sixteenth run. Eight new journal entries, thirteen new tasks. Major focus: new fibrosis cell populations (AREG-PI16+ fibroblasts, γδ T cells), TL1A-ILC-neutrophil axis (Immunity), bile acid-GPBAR1 anti-fibrotic network, fecal metabolomics validation for CD subtyping and flare prediction, and new GEO datasets (spatial transcriptomics of CD fibrostenosis, TL1A scRNA-seq, CD epigenetic progenitors).
 
 ### Journal entries created
 - #1696: IL1β+ macrophages → AREG → PI16+ fibroblasts in CD fibrosis (Xie et al., J Transl Med 2026, PMID 41832478). Third distinct pro-fibrotic fibroblast population. EGFR inhibitors as drug repurposing candidates.
@@ -26,15 +26,28 @@ Sixteenth run. Six new journal entries, eight new tasks. Major focus: new fibros
 - #1154 (research_director, P3): Add γδ T cell fibrosis signatures to stricture risk model
 - #1155 (data_curator, P3): Check Tan et al. fecal metabolomics data availability
 - #1156 (data_curator, P3): Check Levhar et al. fecal metabolic/microbiota data availability
+- #1161 (data_curator, P2): Acquire GSE302569 spatial transcriptomics of CD fibrostenosis
+- #1162 (data_curator, P3): Acquire GSE290220/291125/298981 TL1A perianal fistulizing CD scRNA-seq
+- #1163 (data_curator, P3): Assess GSE305528 epigenetic CD progenitor states (69 samples)
+- #1164 (research_director, P2): Cross-reference PDE4 inhibition against CMAP/L1000 + monitor PALI-2108 results
+- #1165 (research_director, P2): Incorporate validated pre-flare metabolites (urate, 3-HB, trehalose) and succinotype into flare model
 
 ### Key highlights for next run
 - Fibrosis biology: Now four distinct pro-fibrotic cell populations cataloged: (1) TWIST1+FAP+ fibroblasts (#1343), (2) inflammatory fibroblast spatial modules (#1536), (3) IL1β+macrophage→AREG→PI16+ fibroblasts (#1696), (4) γδ T cells via IL-17A (#1701). Nine fibrosis-related datasets/signatures total.
 - TL1A: Immunity paper (#1697) reveals ILC→granulopoiesis→neutrophil axis. Parigi (Gut 2026) extends to perianal fistulizing CD. TL1A emerging as master regulator of multiple CD complications. ARES-CD CDx still monitoring.
 - Metabolomics: Two new validation papers (Tan #1699, Levhar #1700) plus SPARC IBD (#1541). Bile acid-GPBAR1 axis (#1698) adds mechanistic depth. Metabolomics-first strategy now supported by 3+ independent datasets.
-- Flare prediction: Levhar et al. fecal metabolites as potential earlier pre-flare markers than CRP/calprotectin. HMP2/IBDMDB overlap analysis needed.
+- Flare prediction: Levhar UEGJ paper (#1711) provides validated pre-flare metabolites (urate, 3-hydroxybutyrate, trehalose, mesaconic acid) and a clinical index (urate/creatinine+CRP). O'Sullivan (#1711) proves multi-omics integration required — succinotype predicts relapse. Wearable devices detect changes 7 weeks pre-flare (Hirten, Gastroenterology 2025).
 - NOD2: No new significant papers beyond prior run (Katkar girdin #1537, ClinGen AlphaMissense #1341). Still monitoring.
 - IL-23: Mirikizumab VIVID-2 OLE long-term data (#1701). RESOLVE real-world risankizumab study published. Still no AFFIRM/GALAXI biopsy transcriptomics.
 - DDW 2026: Abstract notifications April 7. Conference May 2-5 Chicago. Mine after April 7.
+- PALI-2108 (NCT07428096): First-in-class gut-activated PDE4 inhibitor for CD fibrostenosis. Phase 1b with snRNA-seq endpoints. Results expected March 2026 — imminent. See journal #1710.
+- S1P modulators: Ozanimod and etrasimod Phase 3 trials both TERMINATED for CD. Mechanism insufficient for transmural inflammation.
+- BCD-261: Second anti-TL1A antibody (Biocad), Phase 2 COMANDOR study (204 patients) recruiting.
+- Dual-targeted therapy: upadacitinib+vedolizumab (VICTRIVA Phase 3b), upadacitinib+ustekinumab (Phase 4) both recruiting.
 - Ontunisertib STENOVA: Phase 2a positive (Nov 2025). 48-week OLE ongoing, results H2 2026.
 - Prior monitoring items still pending: Washburn pediatric CD scRNA-seq (#930), Kong Nat Genet spatial data (#1064), SPARC IBD metabolomics (#1065), ARES-CD CDx genotype panel, and earlier task batches.
-- Next: DDW 2026 abstract mining (after April 7), AFFIRM/GALAXI biopsy substudies, ARES-CD CDx panel details, Washburn data release, new anti-fibrotic compound screening, STENOVA OLE results, Xie/Li fibrosis data availability.
+- New GEO datasets: GSE302569 (spatial CD fibrostenosis), GSE290220 (TL1A fistulizing CD scRNA-seq, 29 samples), GSE305528 (CD epigenetic progenitors, 69 samples), GSE312420/312415 (Xenium/CosMx IBD spatial comparison, 92 samples), GSE316069 (γδ T cells UC scRNA-seq).
+- Anti-TNF run 17 follow-up: SEMA3B as IFX response biomarker (PMID 41716378), serum proteomics primary IFX nonresponse prediction (Ricciuto, PMID 41671043), HLA-DQB1*03:01 biologic response (PMID 41652206).
+- TL1A run 17 follow-up: GB20-5A8-31 new anti-TL1A antibody (PMID 41710891), TL1A/DR3-Th9 mechanism (Menghini, PMID 40204100).
+- IL-23 gap confirmed: No single-cell/biomarker papers for IL-23 response prediction — our il23-single-cell-response-atlas fills open niche.
+- Next: DDW 2026 abstract mining (after April 7), AFFIRM/GALAXI biopsy substudies, ARES-CD CDx panel details, Washburn data release, new anti-fibrotic compound screening, STENOVA OLE results, Xie/Li fibrosis data availability, anti-TNF biomarker papers.
