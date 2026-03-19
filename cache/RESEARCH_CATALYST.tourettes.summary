@@ -1,0 +1,16 @@
+---
+last_run: 2026-03-19T06:58:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [ts-striosomal-matrix-subtypes, ts-convergent-polypharmacology]
+---
+
+## Context
+
+- First catalyst run. No published projects yet (maturity gate not met → wildcard ideation only).
+- Proposed 2 catalyst initiatives (now at 2/2 concurrency limit):
+  1. ts-striosomal-matrix-subtypes (planning): striosome vs matrix compartment-based TS subtyping. PM task #944.
+  2. ts-convergent-polypharmacology (planning): multi-pathway drug combination screening. PM task #945.
+- Deferred: sex-specific circuit model (needs sex-stratified GWAS data), immune cycling (needs neuroimmune results).
+- Key cross-project patterns logged: striosomal signal from 4+ projects, dual-circuit PFC/striatal model gap, developmental trajectory ↔ zonation attenuation.
+- Next: monitor PM/RD response, check for published projects, revisit deferred ideas when data matures.
