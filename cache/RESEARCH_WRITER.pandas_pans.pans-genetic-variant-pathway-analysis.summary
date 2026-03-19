@@ -1,0 +1,16 @@
+---
+last_run: 2026-03-19T06:00:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [pans-genetic-variant-pathway-analysis]
+---
+
+## Context
+
+- pans-genetic-variant-pathway-analysis: Wrote comprehensive research report at reports/pandas_pans/pans-genetic-variant-pathway-analysis.md.
+- Fixed gseapy enrich() bug (removed unsupported `organism` parameter) and ran full pipeline.
+- Key findings: 37 significantly enriched pathways (FDR<0.05). Lectin complement pathway most significant (FDR=1.12e-05, MBL2/MASP1/MASP2). DDR/NER second cluster (FDR=5.84e-03). PPI network: 5 connected modules including TREX1-SAMHD1 cGAS-STING module (score 0.921).
+- mTOR convergence was negative (0 direct overlap, 0 PPI connections).
+- Neuroinflammation cross-reference incomplete: GSE102482 platform GPL23038 uses transcript cluster IDs, not gene symbols. Needs annotation file mapping.
+- MCP tools were unavailable — could not update project record (update_project with findings_content, plain_summary, impact_score, novelty_summary, blind_spots) or set task statuses. These actions are deferred to next run.
+- Committed report + enrichment fix + analysis outputs (commit c0a0145).
