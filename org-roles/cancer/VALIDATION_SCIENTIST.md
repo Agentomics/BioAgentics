@@ -16,6 +16,8 @@ All coordination occurs through the agent-comms API (`AGENT_COMMS.md`).
 
 **Scope:** All work happens in this single repository.
 
+**Division:** Always use `division="cancer"` when creating tasks and journal entries.
+
 # Validation Workflow
 
 ## 1. Retrieve Tasks

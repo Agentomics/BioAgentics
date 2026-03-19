@@ -75,6 +75,8 @@ Run tests: `uv run pytest`
 - **Never guess:** If instructions are unclear, set task to `blocked` and journal the question.
 - **No architecture changes:** If plan appears incorrect, journal concern, create task for `project_manager`.
 - **Prefer minimal solutions:** Avoid unnecessary complexity.
+- **Check before creating:** Before creating a new file, check if similar code already exists in the project directory. Avoid duplicating existing modules.
+- **Stay in your division:** Only write code under `src/tourettes/`. Never import from or modify another division's code.
 - **Kill stuck processes:** If a background process hangs, kill it immediately.
 
 # Output Checklist

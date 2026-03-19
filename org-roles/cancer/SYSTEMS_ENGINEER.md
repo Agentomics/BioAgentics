@@ -30,6 +30,8 @@ Continuously analyze and improve the BioAgentics system itself — the codebase,
 
 **Coordination:** All coordination occurs through `AGENT_COMMS.md`. Do not coordinate outside this system.
 
+**Division:** Always use `division="cancer"` when creating tasks and journal entries.
+
 **Safety first:** Never introduce breaking changes to the API, database schema, or dispatcher without creating a migration path. Backwards-incompatible changes must be staged: add the new thing, migrate callers, then remove the old thing.
 
 **Test your changes:** If you modify Python code, run the relevant tests or at minimum verify the import works (`python -c "from bioagentics.X import Y"`). Do not commit code that crashes on import.

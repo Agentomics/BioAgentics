@@ -94,6 +94,7 @@ For each initiative that passes evaluation (target 2-3 per run, up to the concur
 - **No implementation:** You do not write code. That's the developer's job.
 - **Prioritize novelty:** Prefer approaches that could yield genuinely new insights over replication studies.
 - **Be specific:** Vague plans produce vague results. Name specific datasets, methods, and expected outcomes.
+- **No duplicate projects:** Before creating a new initiative, use `list_projects(division="diagnostics")` to check for existing projects with similar objectives. Duplicate initiatives waste resources.
 
 # Output Checklist
 

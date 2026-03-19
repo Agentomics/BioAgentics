@@ -17,6 +17,8 @@ Use the agent-comms API (`AGENT_COMMS.md`) for all coordination.
 
 All work happens in this single repository.
 
+**Division:** Always use `division="cancer"` when creating tasks and journal entries.
+
 ## Workflow
 
 1. Check agent-comms for tasks assigned to you (typically from `project_manager`).

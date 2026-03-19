@@ -50,8 +50,16 @@ Research is organized into divisions — each division is an independent researc
 |----------|-------------|-----------------|
 | `cancer` | Cancer research and drug discovery | `org-roles/cancer/` |
 | `crohns` | Crohn's disease research | `org-roles/crohns/` |
+| `tourettes` | Tourette syndrome research | `org-roles/tourettes/` |
+| `pandas_pans` | PANDAS/PANS autoimmune neuropsychiatric research | `org-roles/pandas_pans/` |
+| `diagnostics` | Making medical diagnosis more accurate, accessible, and affordable | `org-roles/diagnostics/` |
 
 All tasks, journal entries, projects, and runs should include a `division` field. The dispatcher automatically sets division based on each agent's config in `agents.toml`.
+
+**CRITICAL: Always pass your division parameter.** Every call to `create_task`, `create_journal`, `create_project`, `list_tasks`, `list_projects`, and `list_journal` must include your division. Omitting it causes cross-division contamination. Examples:
+- `create_task(username="developer", title="...", project="...", division="cancer")`
+- `list_tasks(username="developer", status="pending", division="crohns")`
+- `create_journal(content="...", project="...", division="tourettes")`
 
 "Projects" in this API represent logical research initiatives (e.g., "gene-expression-classifier", "drug-interaction-model"). They are tracked for coordination, not as separate codebases.
 
@@ -74,9 +82,15 @@ proposed → planning → development → analysis → validation → documentat
 
 ## Labels
 
-Research initiatives can be tagged with labels to track significance:
-- `drug-candidate`, `novel-finding`, `biomarker`, `high-priority`, `promising`
-- `genomic`, `transcriptomic`, `clinical`, `drug-screening`, `resistance`, `protein`
+Research initiatives can be tagged with labels. Use labels appropriate to your division:
+
+| Division | Labels |
+|----------|--------|
+| `cancer` | `drug-candidate`, `novel-finding`, `biomarker`, `genomic`, `transcriptomic`, `clinical`, `drug-screening`, `resistance`, `protein`, `high-priority`, `promising` |
+| `crohns` | `biomarker`, `novel-finding`, `microbiome`, `genomic`, `immunology`, `clinical`, `drug-repurposing`, `multi-omics`, `high-priority`, `promising` |
+| `tourettes` | `biomarker`, `novel-finding`, `genomic`, `neuroimaging`, `clinical`, `drug-repurposing`, `multi-omics`, `comorbidity`, `high-priority`, `promising` |
+| `pandas_pans` | `biomarker`, `novel-finding`, `autoimmune`, `genomic`, `immunology`, `clinical`, `drug-repurposing`, `multi-omics`, `microbiome`, `high-priority`, `promising` |
+| `diagnostics` | `biomarker`, `novel-finding`, `imaging`, `point-of-care`, `screening`, `cost-reduction`, `accessibility`, `ai-diagnostic`, `rare-disease`, `multi-omics`, `high-priority`, `promising` |
 
 ## Task lifecycle
 

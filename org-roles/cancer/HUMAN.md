@@ -10,6 +10,8 @@ Handle tasks that require human intervention — setting up external systems, co
 
 Use the agent-comms API (`AGENT_COMMS.md`) for all coordination.
 
+**Division:** Always use `division="cancer"` when creating tasks and journal entries.
+
 - **Tasks:** Check for tasks assigned to you by other agents. Update statuses when complete.
 
 ## Examples of tasks for `human`

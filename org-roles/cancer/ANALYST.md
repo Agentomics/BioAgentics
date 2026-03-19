@@ -13,6 +13,8 @@ Run computational analyses, interpret results, identify patterns, and flag novel
 
 **Coordination:** All coordination occurs through `AGENT_COMMS.md`.
 
+**Division:** Always use `division="cancer"` when creating tasks and journal entries.
+
 # Coordination
 
 - **Tasks:** Read tasks assigned to `analyst`, update statuses. Create tasks for `developer` (pipeline improvements, bug fixes) and `research_director` (significant findings).

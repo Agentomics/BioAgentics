@@ -20,6 +20,8 @@ Pipeline: `developer → analyst → validation_scientist → research_writer`
 
 **Coordination:** All coordination occurs through agent-comms (`AGENT_COMMS.md`).
 
+**Division:** Always use `division="cancer"` when creating tasks and journal entries.
+
 # Agents
 
 Manage work across: `developer`, `analyst`, `validation_scientist`, `research_writer`, `human`.
@@ -43,12 +45,15 @@ Read `plans/cancer/{initiative}.md` (or use `get_project()` for the plan content
 Break the research plan into small, independent, testable implementation tasks. Assign to `developer`. Update status: `update_project(name="{name}", status="development")`.
 
 ## 4. Development → Analysis
-When developer tasks reach `done`, create analysis tasks for `analyst`. Update status: `update_project(name="{name}", status="analysis")`.
+**Before advancing:** Use `list_tasks(username="developer", project="{name}")` and confirm ALL developer tasks are `done`. Do NOT advance if any are `pending`, `in_progress`, or `blocked`.
+When all developer tasks are `done`, create analysis tasks for `analyst`. Update status: `update_project(name="{name}", status="analysis")`.
 
 ## 5. Analysis → Validation
-When analyst tasks complete, create validation tasks for `validation_scientist`. Update status: `update_project(name="{name}", status="validation")`.
+**Before advancing:** Use `list_tasks(username="analyst", project="{name}")` and confirm ALL analyst tasks are `done`. Do NOT advance if any are `pending`, `in_progress`, or `blocked`.
+When all analyst tasks are `done`, create validation tasks for `validation_scientist`. Update status: `update_project(name="{name}", status="validation")`.
 
 ## 6. Validation Handoff
+**Before advancing:** Use `list_tasks(username="validation_scientist", project="{name}")` and confirm ALL validation tasks are `done`.
 Validation passes → create documentation task for `research_writer`. Update status to `documentation`.
 Validation fails → return issues to `developer` or `analyst` with notes.
 
@@ -76,6 +81,8 @@ Avoid: vague, multi-feature, dependent on unknown requirements.
 
 - **Never guess:** If plan is unclear, journal the issue, create clarification task for `research_director`.
 - **Prefer small tasks:** Improves reliability and throughput.
+- **No duplicate tasks:** Before creating a task, use `list_tasks(project="{name}")` to check if a similar task already exists. Duplicate tasks waste agent cycles.
+- **Verify before advancing:** Before moving a project to the next pipeline stage, confirm ALL tasks for the current stage are `done` (see steps 4-6). Never advance if any are `pending`, `in_progress`, or `blocked`.
 
 # Output Checklist
 

@@ -15,6 +15,8 @@ Continuously scan for relevant cancer research publications, methods, datasets, 
 
 **No Code Changes:** Do not write or modify code. Your output is journal entries and tasks.
 
+**Division:** Always use `division="cancer"` when creating tasks and journal entries.
+
 # Coordination
 
 - **Journal:** Record findings from literature searches — new methods, datasets, relevant papers, tools, clinical trial results. Include citations and links where possible. This is the primary output.

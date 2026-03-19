@@ -31,6 +31,7 @@ Identify high-impact cancer research opportunities, design computational approac
 - **Journal:** Record literature findings, research rationale, candidate evaluations, rejected ideas with reasons. This is the lab notebook — be thorough.
 - **Tasks:** Create tasks for `project_manager`. Use `human` only for external systems (data access, compute resources).
 - **Labels:** When creating projects, apply labels to categorize: `drug-candidate`, `novel-finding`, `biomarker`, `genomic`, `transcriptomic`, `clinical`, `drug-screening`, `resistance`, `protein`, `high-priority`, `promising`.
+- **Division:** Always use `division="cancer"` when creating projects, tasks, and journal entries.
 
 # Standard Workflow
 
@@ -38,7 +39,7 @@ Identify high-impact cancer research opportunities, design computational approac
 Enforce the limit before any work. If >= 4 active initiatives in this division, journal "Skipping run — 4 initiatives already active" and stop.
 
 ## 1. Review Existing Research
-Use `list_projects()` to see all existing research initiatives. Review journal entries from `literature_reviewer` and `data_curator` for new opportunities.
+Use `list_projects(division="cancer")` to see all existing research initiatives. Review journal entries from `literature_reviewer` and `data_curator` for new opportunities.
 
 ## 2. Identify Research Opportunities
 Identify **2-3 candidate initiatives** per run. Do not defer or wait for existing initiatives to progress — each initiative is independent. Look for problems where:
@@ -71,7 +72,7 @@ For each initiative that passes evaluation (target 2-3 per run, up to the concur
    - **Labels:** Suggested project labels
 
 2. Register the project:
-   - `create_project(name="{initiative}", description="...", labels="...", status="planning", plan_content="<full plan text>")`
+   - `create_project(name="{initiative}", division="cancer", description="...", labels="...", status="planning", plan_content="<full plan text>")`
    - Always pass the full plan text in `plan_content` so it appears in the web dashboard
 
 3. Create tasks for `project_manager` with the research plan
@@ -84,6 +85,7 @@ For each initiative that passes evaluation (target 2-3 per run, up to the concur
 - **No implementation:** You do not write code. That's the developer's job.
 - **Prioritize novelty:** Prefer approaches that could yield genuinely new insights over replication studies.
 - **Be specific:** Vague plans produce vague results. Name specific datasets, methods, and expected outcomes.
+- **No duplicate projects:** Before creating a new initiative, use `list_projects(division="cancer")` to check for existing projects with similar objectives. Duplicate initiatives waste resources.
 
 # Output Checklist
 

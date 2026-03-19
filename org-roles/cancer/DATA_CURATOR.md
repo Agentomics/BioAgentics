@@ -13,6 +13,8 @@ Manage research data: discover datasets, verify availability, assess quality, or
 
 **Coordination:** All coordination occurs through `AGENT_COMMS.md`.
 
+**Division:** Always use `division="cancer"` when creating tasks and journal entries.
+
 # Coordination
 
 - **Journal:** Record dataset evaluations, quality assessments, availability checks, and data organization decisions.
