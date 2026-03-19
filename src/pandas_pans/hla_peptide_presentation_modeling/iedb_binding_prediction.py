@@ -3,8 +3,11 @@
 Submits GAS peptides to the IEDB T-cell epitope prediction API (netmhciipan)
 for binding affinity prediction against PANDAS-associated HLA alleles.
 
-Processes peptides in batches to respect API rate limits and memory constraints.
-Reads peptide libraries from Phase 2 output via streaming to handle large files.
+Designed for production-scale runs (~500K peptides x 7 alleles):
+- Streams results to disk per-serotype/allele to stay within 8GB RAM
+- Retries transient API failures with exponential backoff
+- Supports resume from partial runs (skips completed allele+serotype combos)
+- Merges per-serotype files for downstream analysis
 """
 
 import csv
@@ -14,7 +17,7 @@ from pathlib import Path
 
 import requests
 
-from .hla_allele_panel import get_mhc_ii_alleles
+from .hla_allele_panel import get_mhc_i_alleles, get_mhc_ii_alleles
 
 DATA_DIR = Path(__file__).resolve().parents[3] / "data" / "pandas_pans" / "hla-peptide-presentation"
 
@@ -26,6 +29,16 @@ WEAK_BINDER_THRESHOLD = 2.0     # < 2.0% rank
 
 BATCH_SIZE = 100  # Peptides per API call
 API_DELAY_SECONDS = 1.0  # Rate limiting delay between calls
+MAX_RETRIES = 3
+RETRY_BACKOFF_BASE = 2.0  # Exponential backoff base (seconds)
+
+PREDICTION_FIELDNAMES = [
+    "peptide", "allele", "ic50", "percentile_rank", "binding_class",
+    "method", "source_protein", "source_accession", "serotype",
+    "is_virulence_factor",
+]
+
+ALL_SEROTYPES = ["M1", "M3", "M5", "M12", "M18", "M49"]
 
 
 def classify_binding(percentile_rank: float) -> str:
@@ -37,8 +50,15 @@ def classify_binding(percentile_rank: float) -> str:
     return "non_binder"
 
 
-def call_iedb_api(peptides: list[str], allele: str, method: str = "netmhciipan") -> list[dict]:
+def call_iedb_api(
+    peptides: list[str],
+    allele: str,
+    method: str = "netmhciipan",
+    retries: int = MAX_RETRIES,
+) -> list[dict]:
     """Submit peptides to IEDB MHC-II binding prediction API.
+
+    Retries transient failures with exponential backoff.
 
     Returns list of prediction dicts with keys:
         peptide, allele, ic50, percentile_rank, method
@@ -49,8 +69,20 @@ def call_iedb_api(peptides: list[str], allele: str, method: str = "netmhciipan")
         "allele": allele,
     }
 
-    resp = requests.post(IEDB_API_URL, data=payload, timeout=300)
-    resp.raise_for_status()
+    last_error = None
+    for attempt in range(retries + 1):
+        try:
+            resp = requests.post(IEDB_API_URL, data=payload, timeout=300)
+            resp.raise_for_status()
+            break
+        except requests.RequestException as e:
+            last_error = e
+            if attempt < retries:
+                delay = RETRY_BACKOFF_BASE ** (attempt + 1)
+                print(f"    Retry {attempt + 1}/{retries} after {delay}s: {e}")
+                time.sleep(delay)
+            else:
+                raise last_error  # type: ignore[misc]
 
     results = []
     lines = resp.text.strip().split("\n")
@@ -112,16 +144,23 @@ def load_peptides_sampled(
     return peptides
 
 
+def _serotype_allele_output_path(pred_dir: Path, serotype: str, allele: str, suffix: str) -> Path:
+    """Per-serotype-allele output file for streaming writes."""
+    safe_allele = allele.replace("*", "_").replace(":", "_")
+    return pred_dir / f"{serotype.lower()}_{safe_allele}_{suffix}.tsv"
+
+
 def run_binding_predictions(
     serotype: str = "M12",
     mhc_class: str = "II",
     max_peptides: int | None = None,
     output_base: Path | None = None,
+    resume: bool = True,
 ) -> dict:
     """Run IEDB binding predictions for a serotype's peptides against the HLA panel.
 
-    For MHC-II, submits 15mer peptides against all MHC-II alleles.
-    Writes results to binding_predictions/ directory.
+    Streams results to per-serotype-allele files to stay within memory limits.
+    When resume=True, skips alleles that already have output files.
     Returns prediction summary dict.
     """
     if output_base is None:
@@ -131,7 +170,6 @@ def run_binding_predictions(
     pred_dir = output_base / "binding_predictions"
     pred_dir.mkdir(parents=True, exist_ok=True)
 
-    # Load peptides
     suffix = "mhc_ii" if mhc_class == "II" else "mhc_i"
     peptide_file = peptide_dir / f"{serotype.lower()}_{suffix}_peptides.tsv"
     if not peptide_file.exists():
@@ -140,72 +178,164 @@ def run_binding_predictions(
     peptides = load_peptides_sampled(peptide_file, max_peptides=max_peptides)
     print(f"Loaded {len(peptides)} unique peptides from {serotype}")
 
-    # Get alleles for this MHC class
-    alleles = get_mhc_ii_alleles() if mhc_class == "II" else []
+    alleles = get_mhc_ii_alleles() if mhc_class == "II" else get_mhc_i_alleles()
     allele_names = [a.four_digit_resolution for a in alleles]
 
-    # Run predictions
-    all_results = []
     pep_sequences = [p["peptide"] for p in peptides]
     pep_meta = {p["peptide"]: p for p in peptides}
 
+    total_predictions = 0
+    binding_counts = {"strong_binder": 0, "weak_binder": 0, "non_binder": 0}
+    unique_peptides: set[str] = set()
+    alleles_completed = []
+    alleles_skipped = []
+
     for allele_name in allele_names:
+        out_path = _serotype_allele_output_path(pred_dir, serotype, allele_name, suffix)
+
+        if resume and out_path.exists() and out_path.stat().st_size > 0:
+            print(f"  Skipping {allele_name} (resume: {out_path.name} exists)")
+            alleles_skipped.append(allele_name)
+            continue
+
         print(f"  Predicting {allele_name} ({len(pep_sequences)} peptides)...")
+        allele_count = 0
 
-        for batch_start in range(0, len(pep_sequences), BATCH_SIZE):
-            batch = pep_sequences[batch_start : batch_start + BATCH_SIZE]
+        with open(out_path, "w", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=PREDICTION_FIELDNAMES, delimiter="\t")
+            writer.writeheader()
 
-            try:
-                results = call_iedb_api(batch, allele_name)
-                for r in results:
-                    meta = pep_meta.get(r["peptide"], {})
-                    r["binding_class"] = classify_binding(r["percentile_rank"])
-                    r["source_protein"] = meta.get("protein_name", "")
-                    r["source_accession"] = meta.get("protein_accession", "")
-                    r["serotype"] = serotype
-                    r["is_virulence_factor"] = meta.get("is_virulence_factor", False)
-                    all_results.append(r)
-            except requests.RequestException as e:
-                print(f"    API error for {allele_name} batch {batch_start}: {e}")
+            for batch_start in range(0, len(pep_sequences), BATCH_SIZE):
+                batch = pep_sequences[batch_start : batch_start + BATCH_SIZE]
 
-            if batch_start + BATCH_SIZE < len(pep_sequences):
-                time.sleep(API_DELAY_SECONDS)
+                try:
+                    results = call_iedb_api(batch, allele_name)
+                    for r in results:
+                        meta = pep_meta.get(r["peptide"], {})
+                        r["binding_class"] = classify_binding(r["percentile_rank"])
+                        r["source_protein"] = meta.get("protein_name", "")
+                        r["source_accession"] = meta.get("protein_accession", "")
+                        r["serotype"] = serotype
+                        r["is_virulence_factor"] = meta.get("is_virulence_factor", False)
+                        writer.writerow(r)
+                        binding_counts[r["binding_class"]] += 1
+                        unique_peptides.add(r["peptide"])
+                        allele_count += 1
+                except requests.RequestException as e:
+                    print(f"    API error for {allele_name} batch {batch_start}: {e}")
 
+                if batch_start + BATCH_SIZE < len(pep_sequences):
+                    time.sleep(API_DELAY_SECONDS)
+
+        total_predictions += allele_count
+        alleles_completed.append(allele_name)
+        print(f"    {allele_name}: {allele_count} predictions -> {out_path.name}")
         time.sleep(API_DELAY_SECONDS)
 
-    # Write predictions TSV
-    output_file = pred_dir / f"binding_predictions_{suffix}.tsv"
-    fieldnames = [
-        "peptide", "allele", "ic50", "percentile_rank", "binding_class",
-        "method", "source_protein", "source_accession", "serotype",
-        "is_virulence_factor",
-    ]
-
-    with open(output_file, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t")
-        writer.writeheader()
-        writer.writerows(all_results)
-
-    # Summary
-    binding_counts = {"strong_binder": 0, "weak_binder": 0, "non_binder": 0}
-    for r in all_results:
-        binding_counts[r["binding_class"]] += 1
-
     summary = {
+        "serotype": serotype,
         "mhc_class": mhc_class,
-        "alleles": allele_names,
-        "unique_peptides": len(set(r["peptide"] for r in all_results)),
-        "total_predictions": len(all_results),
+        "alleles_completed": alleles_completed,
+        "alleles_skipped": alleles_skipped,
+        "unique_peptides": len(unique_peptides),
+        "total_predictions": total_predictions,
         **binding_counts,
-        "output_file": output_file.name,
     }
 
-    summary_path = pred_dir / f"prediction_summary_{suffix}.json"
+    summary_path = pred_dir / f"prediction_summary_{serotype.lower()}_{suffix}.json"
     with open(summary_path, "w") as f:
         json.dump(summary, f, indent=2)
 
-    print(f"Wrote {len(all_results)} predictions to {output_file}")
+    print(f"Wrote {total_predictions} predictions for {serotype}")
     return summary
+
+
+def merge_serotype_predictions(
+    serotypes: list[str] | None = None,
+    mhc_class: str = "II",
+    output_base: Path | None = None,
+) -> Path:
+    """Merge per-serotype-allele prediction files into a single combined file.
+
+    Streams through files line-by-line to avoid loading all predictions into memory.
+    Returns the path to the merged output file.
+    """
+    if output_base is None:
+        output_base = DATA_DIR
+    if serotypes is None:
+        serotypes = ALL_SEROTYPES
+
+    pred_dir = output_base / "binding_predictions"
+    suffix = "mhc_ii" if mhc_class == "II" else "mhc_i"
+    merged_path = pred_dir / f"binding_predictions_{suffix}.tsv"
+
+    alleles = get_mhc_ii_alleles() if mhc_class == "II" else get_mhc_i_alleles()
+    allele_names = [a.four_digit_resolution for a in alleles]
+
+    row_count = 0
+    with open(merged_path, "w", newline="") as out_f:
+        writer = csv.DictWriter(out_f, fieldnames=PREDICTION_FIELDNAMES, delimiter="\t")
+        writer.writeheader()
+
+        for serotype in serotypes:
+            for allele_name in allele_names:
+                part_path = _serotype_allele_output_path(pred_dir, serotype, allele_name, suffix)
+                if not part_path.exists():
+                    continue
+
+                with open(part_path) as in_f:
+                    reader = csv.DictReader(in_f, delimiter="\t")
+                    for row in reader:
+                        writer.writerow(row)
+                        row_count += 1
+
+    print(f"Merged {row_count} predictions from {len(serotypes)} serotypes -> {merged_path.name}")
+    return merged_path
+
+
+def run_all_serotypes(
+    mhc_class: str = "II",
+    max_peptides: int | None = None,
+    output_base: Path | None = None,
+    serotypes: list[str] | None = None,
+) -> dict:
+    """Run predictions for all serotypes sequentially, then merge.
+
+    Processes one serotype at a time to stay within memory limits.
+    Supports resume — safe to restart after interruption.
+    """
+    if serotypes is None:
+        serotypes = ALL_SEROTYPES
+    if output_base is None:
+        output_base = DATA_DIR
+
+    summaries = {}
+    for serotype in serotypes:
+        peptide_dir = output_base / "peptide_libraries"
+        suffix = "mhc_ii" if mhc_class == "II" else "mhc_i"
+        peptide_file = peptide_dir / f"{serotype.lower()}_{suffix}_peptides.tsv"
+        if not peptide_file.exists():
+            print(f"Skipping {serotype}: peptide file not found")
+            continue
+
+        print(f"\n=== Serotype {serotype} ===")
+        summaries[serotype] = run_binding_predictions(
+            serotype=serotype,
+            mhc_class=mhc_class,
+            max_peptides=max_peptides,
+            output_base=output_base,
+            resume=True,
+        )
+
+    merged = merge_serotype_predictions(
+        serotypes=serotypes, mhc_class=mhc_class, output_base=output_base
+    )
+
+    return {
+        "serotype_summaries": summaries,
+        "merged_file": str(merged),
+        "serotypes_processed": list(summaries.keys()),
+    }
 
 
 if __name__ == "__main__":
