@@ -15,8 +15,10 @@ GWAS_DIR = DATA_DIR / "gwas"
 EQTL_DIR = DATA_DIR / "eqtl"
 HIC_DIR = DATA_DIR / "hic"
 GENE_ANNOT_DIR = DATA_DIR / "gene_annotations"
+GENE_SETS_DIR = DATA_DIR / "gene_sets"
 OUTPUT_DIR = REPO_ROOT / "output" / "tourettes" / PROJECT
 MAPPING_DIR = OUTPUT_DIR / "snp_to_gene"
+MAGMA_DIR = OUTPUT_DIR / "magma_results"
 GENE_ANALYSIS_DIR = OUTPUT_DIR / "gene_analysis"
 ENRICHMENT_DIR = OUTPUT_DIR / "enrichment"
 FIGURES_DIR = OUTPUT_DIR / "figures"
@@ -25,8 +27,9 @@ FIGURES_DIR = OUTPUT_DIR / "figures"
 def ensure_dirs() -> None:
     """Create all project directories."""
     for d in [
-        DATA_DIR, RAW_DIR, GWAS_DIR, EQTL_DIR, HIC_DIR, GENE_ANNOT_DIR,
-        OUTPUT_DIR, MAPPING_DIR, GENE_ANALYSIS_DIR, ENRICHMENT_DIR, FIGURES_DIR,
+        DATA_DIR, RAW_DIR, GWAS_DIR, EQTL_DIR, HIC_DIR, GENE_ANNOT_DIR, GENE_SETS_DIR,
+        OUTPUT_DIR, MAPPING_DIR, MAGMA_DIR, GENE_ANALYSIS_DIR, ENRICHMENT_DIR,
+        FIGURES_DIR,
     ]:
         d.mkdir(parents=True, exist_ok=True)
 
