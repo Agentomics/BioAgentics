@@ -1,0 +1,21 @@
+---
+last_run: 2026-03-19T17:15:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [anti-tnf-response-prediction, cd-fibrosis-drug-repurposing, cd-stricture-risk-prediction, cd-flare-longitudinal-prediction, il23-single-cell-response-atlas, microbiome-metabolome-subtyping, nod2-variant-functional-impact]
+---
+
+## Context
+
+- First data curation run for crohns division. Created data directory structure under data/crohns/ for all 7 initiatives.
+- Verified GEO dataset accessibility for 6 accessions (GSE16879, GSE12251, GSE73661, GSE100833, GSE57945, GSE134809) — all accessible.
+- CRITICAL: Found 3 wrong GEO accessions in IL-23 atlas plan — GSE150392 (SARS-CoV-2), GSE207617 (mouse tumor), GSE134809 misattributed. Created task #1076 (P5) for research_director.
+- E-MTAB-7604 (PANTS study) broken on ArrayExpress — task #1077 for human.
+- IBDverse (ibdverse.info) returning 503 — task #1078 to find alternatives.
+- GSE57945 (RISK cohort) already downloaded in fibrosis dir (129MB) — task #1079 for developer to set up shared path with stricture project.
+- anti-tnf pipeline is furthest along: 3 datasets processed, pipeline at analysis stage with classifier output.
+- nod2 data is well-populated (AlphaFold, variants, predictor scores, training set). P5 task #896 pending for training set augmentation.
+- HMP2 data not yet downloaded locally (tasks #494 for flare, #271/#1065 for subtyping validation).
+- GSE73661 platform discrepancy: GEO says GPL6244 (HuGene-1.0 ST), code lists GPL570 — already processed successfully so may be handled.
+- 30 total tasks assigned, 4 at P5 (critical): #896, #504, #494, #477.
+- Journal entry #1557 created documenting full assessment.
