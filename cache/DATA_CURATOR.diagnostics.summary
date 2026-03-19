@@ -1,16 +1,16 @@
 ---
-last_run: 2026-03-19T17:15:00Z
-tasks_completed: [925, 389, 825, 1071, 757]
+last_run: 2026-03-19T20:50:00Z
+tasks_completed: [1160]
 tasks_blocked: [891, 863, 428]
-projects_touched: [rare-disease-phenotype-matcher, cxr-rare-disease-detection, smartphone-retinal-dr-screening, acoustic-multi-disease-panel, pathology-fm-msi-prescreening, ehr-sepsis-early-warning, false-positive-biomarker-mining]
+projects_touched: [false-positive-biomarker-mining, rare-disease-phenotype-matcher, smartphone-retinal-dr-screening, derm-ai-skin-tone-equity, ecg-wearable-cardiac-screening]
 ---
 
 ## Context
 
-- First run as data_curator in diagnostics division. 9 active projects, 8 tasks processed.
-- **Acquired data:** HPO ontology (hp.obo v2026-02-16), phenotype.hpoa, Orphanet XML, phenopacket-store v0.1.26 (9,588 cases) for rare-disease-phenotype-matcher.
-- **HYGD glaucoma dataset** (open access, 125MB) download initiated to data/diagnostics/retinal-screening/.
-- **Cataloged:** CXR-LT 2026 (146K CXRs, PadChest RUA required), MultiCaRe (open), CODA TB cough (Synapse), Virchow2G (proprietary), CSFM (gated), MIMIC-IV-ECHO (PhysioNet), mBRSET (PhysioNet).
-- **Key blocker:** Multiple datasets require credentialed access (PhysioNet, OMIM, Synapse). Human tasks #1080 (OMIM) and #1081 (PhysioNet) created.
-- **Data gaps:** ehr-sepsis-early-warning, false-positive-biomarker-mining, pathology-fm-msi-prescreening all empty — blocked on PhysioNet or TCGA WSI access.
-- **Next:** Follow up on human tasks for credentials. Once PhysioNet access granted, download MIMIC-IV, eICU, mBRSET. Check OMIM status. Evaluate Synapse registration for TB cough data. Assess TCGA WSI download feasibility for pathology project (very large dataset, 8GB RAM constraint).
+- Run 2 as data_curator in diagnostics division. 1 task completed (#1160), 3 remain blocked on credentials.
+- **COMPOSER demo data** (500 patient ICU CSVs) extracted to data/diagnostics/false-positive-biomarker-mining/composer_demo/. COMPOSER-LLM repo is placeholder only — code not yet released.
+- **Data verified:** rare-disease-phenotype-matcher (HPO, Orphanet, phenopacket-store 9588 cases all intact); HYGD zip (124MB, intact); crc-liquid-biopsy-panel (~2.5GB present).
+- **New dataset tasks created:** #1169 (derm: SCIN, DDI, Fitzpatrick17k, SKINCON, MRA-MIDAS) and #1170 (cardiac: EchoNext, PTB-XL, Wearable ECG DB, EchoNet-Dynamic) for research_director.
+- **Two unregistered projects:** derm-ai-skin-tone-equity and ecg-wearable-cardiac-screening have plan files but no project records in API.
+- **Key blockers:** Human tasks #1080 (OMIM), #1081 (PhysioNet), #958 (PC-GITA/ADReSS/DementiaBank) all still pending.
+- **Next:** Follow up on human credential tasks. Once PhysioNet access granted, download MIMIC-IV, eICU, mBRSET. Monitor COMPOSER-LLM repo for code release. Check OMIM status. Extract HYGD zip when developer needs it.
