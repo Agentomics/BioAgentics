@@ -91,7 +91,9 @@ def journal(content: str, project: str | None = None, division: str | None = Non
         payload["division"] = division
     if project:
         payload["project"] = project
-    api("POST", "/journal", json=payload)
+    resp = api("POST", "/journal", json=payload)
+    if not resp or not resp.ok:
+        log.error("failed to write journal entry: %s", resp.status_code if resp else "no response")
 
 
 def set_presence(username: str, status: str, project: str | None = None, division: str | None = None):
@@ -100,7 +102,9 @@ def set_presence(username: str, status: str, project: str | None = None, divisio
         payload["division"] = division
     if project:
         payload["project"] = project
-    api("POST", "/agents", json=payload)
+    resp = api("POST", "/agents", json=payload)
+    if not resp or not resp.ok:
+        log.error("failed to set presence for %s: %s", username, resp.status_code if resp else "no response")
 
 
 def clear_all_presence():
