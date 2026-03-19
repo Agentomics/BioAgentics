@@ -171,17 +171,25 @@ def resolve_gene_to_probes(gene_symbols: list[str]) -> dict[str, list[dict]]:
 
     logger.info("Downloaded %d Allen gene entries", len(gene_map))
 
-    # Match our network genes
+    # Match our network genes — prioritize seed proteins
+    seed_set = set(get_gene_symbols())
     matched_genes = {}
+    # Seeds first
     for sym in gene_symbols:
-        if sym in gene_map:
+        if sym in gene_map and sym in seed_set:
+            matched_genes[sym] = gene_map[sym]
+    # Then the rest
+    for sym in gene_symbols:
+        if sym in gene_map and sym not in matched_genes:
             matched_genes[sym] = gene_map[sym]
 
     logger.info("Matched %d / %d network genes to Allen Atlas", len(matched_genes), len(gene_symbols))
 
-    # Get probe IDs for matched genes (paginated, batched)
+    # Get probe IDs for matched genes
+    # Limit to 300 genes to avoid excessive API calls (~5min instead of ~15min)
     gene_probes: dict[str, list[dict]] = {}
-    gene_ids = list(matched_genes.items())
+    gene_ids = list(matched_genes.items())[:300]
+    logger.info("Querying probes for %d genes (limited from %d)", len(gene_ids), len(matched_genes))
 
     for i in range(0, len(gene_ids), 50):
         batch = gene_ids[i : i + 50]
@@ -202,7 +210,7 @@ def resolve_gene_to_probes(gene_symbols: list[str]) -> dict[str, list[dict]]:
             time.sleep(RATE_LIMIT_DELAY)
 
         logger.info(
-            "Resolved probes for %d / %d matched genes",
+            "Resolved probes for %d / %d genes",
             min(i + 50, len(gene_ids)),
             len(gene_ids),
         )
