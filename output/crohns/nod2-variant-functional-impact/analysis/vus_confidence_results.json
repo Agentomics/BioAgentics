@@ -1,0 +1,18 @@
+{
+  "total_vus": 665,
+  "confidence_distribution": {
+    "high": 440,
+    "moderate": 58,
+    "low": 167
+  },
+  "class_distribution": {
+    "GOF": 125,
+    "LOF": 47,
+    "neutral": 493
+  },
+  "gof_in_nacht_wh": 61,
+  "gof_outside_nacht_wh": 64,
+  "high_pathogenicity_vus": 181,
+  "mean_max_prob": 0.8417455237032166,
+  "median_max_prob": 0.9935280429796248
+}
