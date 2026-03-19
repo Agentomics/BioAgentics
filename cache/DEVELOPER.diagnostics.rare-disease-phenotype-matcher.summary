@@ -1,19 +1,19 @@
 ---
-last_run: 2026-03-19T15:50:00Z
-tasks_completed: [885, 886, 887, 888]
+last_run: 2026-03-19T19:30:00Z
+tasks_completed: [892, 893]
 tasks_blocked: []
 projects_touched: [rare-disease-phenotype-matcher]
 ---
 
 ## Context
 
-- Phase 1 (tasks 879-884, 889-890) and Phase 2 (tasks 885-888) now complete
-- New Phase 2 modules in src/bioagentics/diagnostics/rare_disease/:
-  - freq_ic_matcher.py: Orphanet frequency-weighted IC scoring (16 tests)
-  - node2vec_matcher.py: Lightweight node2vec (no gensim), cosine similarity ranking (22 tests)
-  - gat_matcher.py: Pure PyTorch GAT for link prediction (no PyG), multi-head attention (19 tests)
-  - ensemble_matcher.py: Logistic regression ensemble with learned weights (15 tests)
-- Total: 253 tests across 12 test files, all passing
-- Data curator task 891 still pending — no real data files yet
-- Phase 3 unblocked: 892 (LIRICAL benchmark), 893 (ablation study) — both need real data from task 891
-- Design: avoided gensim/PyG dependencies for 8GB RAM constraint; implemented node2vec and GAT from scratch
+- Phase 3 (tasks 892, 893) now complete — all evaluation infrastructure built
+- New Phase 3 modules in src/bioagentics/diagnostics/rare_disease/:
+  - phenopacket_loader.py: GA4GH phenopacket-store parser, streaming iterator, loads 9,588 cases into BenchmarkCase objects (23 tests)
+  - benchmark_runner.py: RankFn adapters for all 5 matchers (IC, freq-IC, node2vec, GAT, ensemble), comparative evaluation with JSON reports (10 tests)
+  - ablation_study.py: systematic completeness x noise grid evaluation, metrics tables, single-dimension stratified analysis (9 tests)
+- Total: 295 tests across 15 test files, all passing
+- Data available: hp.obo, phenotype.hpoa, orphanet XML, phenopacket_store (9,588 cases) — all downloaded by data curator
+- OMIM genemap2 still blocked (task 891) — needs human to obtain OMIM API key
+- Phase 3 code is ready to run evaluations; actual benchmark execution requires analyst to build the knowledge graph from data files, train matchers, and run evaluation pipelines
+- Next: PM should advance project to analysis status; analyst tasks for Phase 4 (clinical utility analysis)
