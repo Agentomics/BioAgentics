@@ -1,0 +1,20 @@
+---
+last_run: 2026-03-19T19:32:00Z
+tasks_completed: [1079, 517, 518]
+tasks_blocked: [510, 512]
+projects_touched: [cd-stricture-risk-prediction]
+---
+
+## Context
+
+- Full pipeline built: 01_phenotype_extraction.py, 02_transcriptomic_features.py, 03_model_training.py in src/crohns/cd_stricture_risk_prediction/
+- GSE57945 symlinked from cd-fibrosis-drug-repurposing (no data duplication)
+- 218 CD patients identified, 174 with expression data, all have deep_ulcer annotations
+- Transcriptomic features: 7 pathway scores + 16 candidate genes = 23 features, 100% gene coverage
+- Proof-of-concept model results (deep_ulcer surrogate): full AUC 0.748, clinical-only 0.634, +0.114 improvement
+- Top features: collagen/ECM, CTHRC1, FGF2, ileal location, TL1A (TNFSF15), SERPINE1
+- CRITICAL BLOCKER: B2/B3 progression data NOT in GEO. Task #1114 (priority 5) assigned to data_curator for Kugathasan 2017 supplemental/dbGaP
+- Task #510 still blocked — phenotype code runs but lacks actual B2/B3 outcome
+- Task #512 blocked — genetic features need genotyping data (task #504)
+- Task #506 (MSigDB gene sets) still pending — using curated literature gene sets
+- Next: swap surrogate for B2/B3 outcome, add genetic features, external validation (GSE16879)
