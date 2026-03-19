@@ -1,16 +1,20 @@
 ---
-last_run: 2026-03-19T02:33:00Z
-tasks_completed: [804]
-tasks_blocked: []
+last_run: 2026-03-19T14:36:00Z
+tasks_completed: [906]
+tasks_blocked: [897]
 projects_touched: [nod2-variant-functional-impact]
 ---
 
 ## Context
 
-- nod2-variant-functional-impact: Analysis phase launched. All 8 dev tasks (531-538) were already done. Completed task 804 (coordinate analysis phase).
-- Created 4 analyst tasks (855-858): class imbalance evaluation, feature ablation, girdin validation, VUS confidence analysis
-- Created 1 validation_scientist task (859): end-to-end pipeline verification
-- All 5 new tasks are P4, can run in parallel. Project status remains "analysis"
-- Key metrics from dev: macro AUC=0.779 (below 0.90 target), 665 VUS classified (440 high-confidence), top features AlphaMissense (0.21) and girdin_distance (0.18)
-- Risk: if analyst recommends switching from 3-class to binary OvR (due to 5:301:5 imbalance), will need to loop back to developer for model retraining
-- Next: Monitor analyst tasks 855-858 and validation task 859. When all complete, evaluate findings and decide whether to proceed to validation→documentation or return to development for model iteration
+- nod2-variant-functional-impact: Validation REJECTED classifier (journal #1303). Regressed project status: analysis → development. Completed rebuild coordination (task 906).
+- 3 critical issues: (1) parser bug corrupts 88% features, (2) LOF recall=0.0, (3) n=5 per rare class insufficient
+- Blocked task 897 (2-stage model refactor) on #896 (augmented data) and #900 (parser fix)
+- Verified #904 (analyst: design augmentation strategy) and #896 (data_curator: execute augmentation) are complementary, not duplicates
+- Phase 1 tasks ready for immediate parallel execution: #900 (developer, P5 parser fix), #903 (analyst, P4 R587C resolution), #904 (analyst, P5 augmentation strategy), #902 (developer, P2 n_jobs)
+- Phase 2: #896 (data_curator augmentation execution), #901 (developer VarMeter2 merge fix)
+- Phase 3: #897 (developer 2-stage model build), #905 (analyst feature guidance)
+- Phase 4: new analyst re-evaluation tasks, re-validation (unblock #859), #927 benchmark deferred
+- Gate: macro AUC>0.85 with LOF recall>0.5 before advancing to analysis (per research_director journal #1316)
+- Risk: if augmentation yields <20 GOF/LOF variants, fallback to binary model approach
+- Next: Monitor Phase 1 tasks (#900, #903, #904, #902). When #900 + #904 done, unblock Phase 2. When all dev tasks done, advance back to analysis.
