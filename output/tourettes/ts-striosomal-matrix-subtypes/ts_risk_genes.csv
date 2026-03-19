@@ -1,0 +1,36 @@
+gene_symbol,source,evidence_level,description,variant_types,pathways,chromosome
+ASH1L,GWAS;rare,moderate,1q22 — histone methyltransferase H3K36; also de novo variants,lof;missense,chromatin_remodeling;histone_methylation;transcription_regulation,1q22
+BCL11B,GWAS,genome_wide_significant,"14q32 — BAF chromatin remodeling, striatal MSN differentiation (TSAICG 2024)",common,,
+CADPS2,GWAS,genome_wide_significant,"7q31 — Ca2+-dependent secretion activator, synaptic vesicle",common,,
+CELSR3,GWAS;rare,moderate,"3p21 — planar cell polarity, axon guidance; also de novo variants",missense,planar_cell_polarity;axon_guidance;neural_development,3p21.31
+CNTNAP2,GWAS;rare,moderate,"7q35 — contactin-associated protein-like 2, axon-glial",structural;missense,synaptic_adhesion;potassium_channel_clustering;language_development,7q35-q36.1
+COL27A1,GWAS,genome_wide_significant,"9q32 — collagen XXVII alpha-1, neural ECM (Scharf 2013)",common,,
+FLT3,GWAS,genome_wide_significant,13q12 — receptor tyrosine kinase; first GWS locus (Yu 2019),common,,
+LHX6,GWAS,genome_wide_significant,"9q33 — LIM homeobox 6, striatal interneuron specification",common,,
+MAOA,GWAS,genome_wide_significant,"Xp11 — monoamine oxidase A, monoamine catabolism",common,,
+MEIS1,GWAS,genome_wide_significant,"2p14 — homeobox TF, dopamine neuron development (Yu 2019)",common,,
+NDFIP2,GWAS,genome_wide_significant,"13q31 — Nedd4 family interacting protein 2, ubiquitin signaling (TSAICG 2024)",common,,
+NEGR1,GWAS,genome_wide_significant,1p31 — neuronal growth regulator 1 (Willsey 2024),common,,
+NRXN1,GWAS;rare,strong,"2p16 — neurexin 1, synaptic adhesion; also rare deletions",structural,synaptic_adhesion;synapse_formation;neurotransmitter_release,2p16.3
+NTN4,GWAS,genome_wide_significant,"12q22 — netrin-4, axon guidance (Scharf 2013, Yu 2019)",common,,
+OPRD1,GWAS,genome_wide_significant,1p36 — delta opioid receptor (Yu 2019),common,,
+PTPRD,GWAS,genome_wide_significant,9p24 — receptor protein tyrosine phosphatase delta; also ADHD GWAS,common,,
+RBFOX1,GWAS,genome_wide_significant,"16p13 — RNA-binding Fox-1, neuronal splicing regulator",common,,
+RBM26,GWAS,genome_wide_significant,"13q31 — RNA-binding motif protein 26, post-transcriptional regulation (TSAICG 2024)",common,,
+SEMA6D,GWAS,genome_wide_significant,"15q21 — semaphorin, axon guidance in CSTC circuits",common,,
+CNTN6,rare,strong,"3p26 — contactin-6, neural circuit formation (Paschou 2014)",structural;missense,axon_guidance;cell_adhesion;neural_circuit_formation,3p26.3
+COMT,rare,moderate,22q11.21,structural;missense,dopamine_degradation;catecholamine_metabolism,22q11.21
+EXOC1,rare;de_novo,moderate,4q12,lof;missense,vesicle_trafficking;neurite_outgrowth;exocytosis,4q12
+FN1,rare,suggestive,2q35,missense,extracellular_matrix;cell_adhesion;neural_migration,2q35
+GXYLT1,rare;de_novo,moderate,12q12,missense,notch_signaling;glycosylation,12q12
+HDC,rare,strong,15q21 — histidine decarboxylase; W317X (Ercan-Sencicek 2010 NEJM),lof,histamine_synthesis;basal_ganglia_modulation,15q21.2
+KMT2C,rare,moderate,7q36.1,lof;missense,chromatin_remodeling;histone_methylation;transcription_regulation,7q36.1
+NDE1,rare,moderate,16p13.11,structural,neuronal_migration;cortical_development;centrosome_function,16p13.11
+NTAN1,rare,suggestive,16p13.11,structural,protein_degradation;n_end_rule_pathway,16p13.11
+OPRK1,rare,suggestive,8q11.23,missense,opioid_signaling;dopamine_modulation;reward_circuitry,8q11.23
+PPP5C,rare;de_novo,moderate,19q13.33,lof;missense,stress_signaling;phosphatase_activity,19q13.33
+SLC6A1,rare,moderate,3p25.3,missense,gaba_transport;synaptic_transmission;inhibitory_signaling,3p25.3
+SLITRK1,rare,strong,13q31 — axon guidance; first TS gene (Abelson 2005 Science),missense;regulatory,axon_guidance;neurite_outgrowth;synapse_formation,13q31.1
+SMARCA2,rare,moderate,9p24.3,missense,chromatin_remodeling;swi_snf_complex;transcription_regulation,9p24.3
+TBX1,rare,suggestive,22q11.21,structural,neural_crest_development;pharyngeal_arch_patterning,22q11.21
+WWC1,rare,strong,5q34 — KIBRA/Hippo pathway; W88C functional validation (Chen 2025),missense,hippo_signaling;dopamine_regulation;synaptic_function;neurodevelopment,5q34
