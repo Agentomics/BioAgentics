@@ -1,4 +1,4 @@
-"""Tests for developmental trajectory pipeline steps 03-06.
+"""Tests for developmental trajectory pipeline steps 03-07.
 
 Tests core logic functions using synthetic data (no network access required).
 """
@@ -28,6 +28,7 @@ step03 = _import_step("03_expression_trajectories")
 step04 = _import_step("04_temporal_clustering")
 step05 = _import_step("05_enrichment_testing")
 step06 = _import_step("06_wgcna_brainspan")
+step07 = _import_step("07_critical_period_modules")
 
 
 # ---------------------------------------------------------------------------
@@ -333,3 +334,225 @@ class TestCharacterizeModuleDynamics:
                           "adolescent_rising", "adult_peak"}
         for d in dynamics:
             assert d["temporal_pattern"] in valid_patterns
+
+
+# ===========================================================================
+# Step 07 — Critical period gene module analysis (Phase 2)
+# ===========================================================================
+
+
+def _make_cluster_info() -> list[dict]:
+    """Create synthetic cluster characterization matching step 04 output."""
+    return [
+        {"cluster": 0, "temporal_pattern": "early_peak",
+         "peak_stage": "early_prenatal", "amplitude": 1.5},
+        {"cluster": 1, "temporal_pattern": "onset_window_peak",
+         "peak_stage": "late_childhood", "amplitude": 1.2},
+        {"cluster": 2, "temporal_pattern": "adolescent_peak",
+         "peak_stage": "adolescence", "amplitude": 0.9},
+        {"cluster": 3, "temporal_pattern": "flat_constitutive",
+         "peak_stage": "adulthood", "amplitude": 0.3},
+    ]
+
+
+def _make_cluster_assignments(n_genes: int = 40) -> pd.DataFrame:
+    """Create synthetic cluster assignments matching step 04 output."""
+    genes = [f"GENE{i}" for i in range(n_genes)]
+    clusters = [i % 4 for i in range(n_genes)]
+    return pd.DataFrame({"gene_symbol": genes, "cluster": clusters})
+
+
+def _make_wgcna_dynamics() -> list[dict]:
+    """Create synthetic WGCNA module dynamics matching step 06 output."""
+    return [
+        {"module": 1, "temporal_pattern": "childhood_peak",
+         "peak_stage": "late_childhood", "amplitude": 1.3,
+         "n_genes": 25, "variance_explained": 0.45},
+        {"module": 2, "temporal_pattern": "adolescent_rising",
+         "peak_stage": "adolescence", "amplitude": 0.8,
+         "n_genes": 20, "variance_explained": 0.38},
+        {"module": 3, "temporal_pattern": "stable",
+         "peak_stage": "adulthood", "amplitude": 0.2,
+         "n_genes": 30, "variance_explained": 0.52},
+    ]
+
+
+def _make_wgcna_modules(n_genes: int = 75) -> pd.DataFrame:
+    """Create synthetic WGCNA module assignments matching step 06 output."""
+    genes = [f"WGENE{i}" for i in range(n_genes)]
+    modules = [1] * 25 + [2] * 20 + [3] * 30
+    return pd.DataFrame({"gene_symbol": genes, "module": modules})
+
+
+def _make_wgcna_enrichment() -> list[dict]:
+    """Create synthetic WGCNA enrichment results matching step 06 output."""
+    return [
+        {"module": 1, "significant": True, "fold_enrichment": 2.5},
+        {"module": 2, "significant": False, "fold_enrichment": 0.8},
+        {"module": 3, "significant": False, "fold_enrichment": 1.1},
+    ]
+
+
+class TestMatchTemporalClustersToWindows:
+    """Tests for 07_critical_period_modules.match_temporal_clusters_to_windows."""
+
+    def test_returns_all_windows(self):
+        info = _make_cluster_info()
+        assignments = _make_cluster_assignments()
+        matched = step07.match_temporal_clusters_to_windows(info, assignments)
+        assert "onset" in matched
+        assert "peak_severity" in matched
+        assert "remission" in matched
+
+    def test_onset_matches_onset_window_pattern(self):
+        info = _make_cluster_info()
+        assignments = _make_cluster_assignments()
+        matched = step07.match_temporal_clusters_to_windows(info, assignments)
+        onset = matched["onset"]
+        assert onset["n_genes"] > 0
+        cluster_patterns = [c["temporal_pattern"] for c in onset["matched_clusters"]]
+        assert "onset_window_peak" in cluster_patterns
+
+    def test_remission_matches_adolescent_pattern(self):
+        info = _make_cluster_info()
+        assignments = _make_cluster_assignments()
+        matched = step07.match_temporal_clusters_to_windows(info, assignments)
+        remission = matched["remission"]
+        assert remission["n_genes"] > 0
+        cluster_patterns = [c["temporal_pattern"] for c in remission["matched_clusters"]]
+        assert "adolescent_peak" in cluster_patterns
+
+    def test_genes_come_from_matched_clusters(self):
+        info = _make_cluster_info()
+        assignments = _make_cluster_assignments()
+        matched = step07.match_temporal_clusters_to_windows(info, assignments)
+        # Onset cluster (1 = onset_window_peak) should contain genes from cluster 1
+        onset_genes = set(matched["onset"]["genes"])
+        cluster1_genes = set(
+            assignments[assignments["cluster"] == 1]["gene_symbol"]
+        )
+        assert onset_genes & cluster1_genes  # Should overlap
+
+
+class TestMatchWgcnaModulesToWindows:
+    """Tests for 07_critical_period_modules.match_wgcna_modules_to_windows."""
+
+    def test_returns_all_windows(self):
+        dynamics = _make_wgcna_dynamics()
+        modules = _make_wgcna_modules()
+        enrichment = _make_wgcna_enrichment()
+        matched = step07.match_wgcna_modules_to_windows(dynamics, modules, enrichment)
+        assert set(matched.keys()) == {"onset", "peak_severity", "remission"}
+
+    def test_marks_ts_enriched_modules(self):
+        dynamics = _make_wgcna_dynamics()
+        modules = _make_wgcna_modules()
+        enrichment = _make_wgcna_enrichment()
+        matched = step07.match_wgcna_modules_to_windows(dynamics, modules, enrichment)
+        # Module 1 is childhood_peak (matches onset/peak) and is enriched
+        onset = matched["onset"]
+        enriched_mods = [m for m in onset["matched_modules"] if m["ts_enriched"]]
+        assert len(enriched_mods) > 0
+
+
+class TestCombineWindowGenes:
+    """Tests for 07_critical_period_modules.combine_window_genes."""
+
+    def test_union_includes_both_sources(self):
+        temporal = {
+            "onset": {"genes": ["A", "B", "C"]},
+            "peak_severity": {"genes": ["D"]},
+            "remission": {"genes": ["E"]},
+        }
+        wgcna = {
+            "onset": {"genes": ["B", "C", "D"]},
+            "peak_severity": {"genes": ["F"]},
+            "remission": {"genes": ["G"]},
+        }
+        combined = step07.combine_window_genes(temporal, wgcna)
+        assert set(combined["onset"]["genes_union"]) == {"A", "B", "C", "D"}
+        assert set(combined["onset"]["genes_both"]) == {"B", "C"}
+
+    def test_counts_are_correct(self):
+        temporal = {
+            "onset": {"genes": ["A", "B"]},
+            "peak_severity": {"genes": []},
+            "remission": {"genes": ["X"]},
+        }
+        wgcna = {
+            "onset": {"genes": ["B", "C"]},
+            "peak_severity": {"genes": ["Y"]},
+            "remission": {"genes": []},
+        }
+        combined = step07.combine_window_genes(temporal, wgcna)
+        assert combined["onset"]["n_temporal"] == 2
+        assert combined["onset"]["n_wgcna"] == 2
+        assert combined["onset"]["n_union"] == 3
+        assert combined["onset"]["n_intersection"] == 1
+
+
+class TestTsEnrichmentInWindow:
+    """Tests for 07_critical_period_modules.test_ts_enrichment_in_window."""
+
+    def test_returns_expected_fields(self):
+        bg = [f"G{i}" for i in range(100)]
+        window = bg[:30]
+        ts_genes = set(bg[:10])
+        result = step07.test_ts_enrichment_in_window(
+            window, bg, ts_genes, n_permutations=100,
+        )
+        for key in ("observed", "expected", "fold_enrichment",
+                     "fisher_p", "permutation_p", "significant", "ts_genes_found"):
+            assert key in result, f"missing key: {key}"
+
+    def test_detects_enrichment(self):
+        # All TS genes are in the window — should be enriched
+        bg = [f"G{i}" for i in range(100)]
+        window = bg[:20]
+        ts_genes = set(bg[:15])  # 15 of 20 window genes are TS genes
+        result = step07.test_ts_enrichment_in_window(
+            window, bg, ts_genes, n_permutations=500,
+        )
+        assert result["fold_enrichment"] > 1.0
+        assert result["observed"] == 15
+
+    def test_empty_window(self):
+        bg = [f"G{i}" for i in range(50)]
+        result = step07.test_ts_enrichment_in_window(
+            [], bg, set(bg[:5]), n_permutations=100,
+        )
+        assert result["observed"] == 0
+        assert result["fold_enrichment"] == 0
+
+
+class TestPathwayEnrichment:
+    """Tests for 07_critical_period_modules.test_pathway_enrichment."""
+
+    def test_returns_results(self):
+        # Build background that includes some pathway genes
+        pathway_genes = set()
+        for pw in step07.NEURODEVEL_PATHWAYS.values():
+            pathway_genes.update(pw.keys())
+        bg = sorted(pathway_genes) + [f"BG{i}" for i in range(200)]
+        # Window includes some dopamine genes
+        da_genes = list(step07.NEURODEVEL_PATHWAYS["dopamine_signaling"].keys())
+        window = da_genes + [f"BG{i}" for i in range(20)]
+        results = step07.test_pathway_enrichment(window, bg)
+        assert len(results) > 0
+        assert all("pathway" in r for r in results)
+        assert all("fisher_p" in r for r in results)
+
+    def test_sorted_by_pvalue(self):
+        pathway_genes = set()
+        for pw in step07.NEURODEVEL_PATHWAYS.values():
+            pathway_genes.update(pw.keys())
+        bg = sorted(pathway_genes) + [f"BG{i}" for i in range(200)]
+        window = list(step07.NEURODEVEL_PATHWAYS["dopamine_signaling"].keys())
+        results = step07.test_pathway_enrichment(window, bg)
+        pvals = [r["fisher_p"] for r in results]
+        assert pvals == sorted(pvals)
+
+    def test_empty_window_returns_empty(self):
+        bg = [f"G{i}" for i in range(50)]
+        results = step07.test_pathway_enrichment([], bg)
+        assert results == []

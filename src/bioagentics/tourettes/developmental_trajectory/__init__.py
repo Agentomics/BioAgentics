@@ -11,4 +11,5 @@ Pipeline steps:
   04_temporal_clustering     — Cluster genes by developmental expression pattern
   05_enrichment_testing      — Test TS gene enrichment in temporal clusters
   06_wgcna_brainspan         — WGCNA co-expression analysis on BrainSpan data
+  07_critical_period_modules — Phase 2: Critical period gene module analysis
 """
