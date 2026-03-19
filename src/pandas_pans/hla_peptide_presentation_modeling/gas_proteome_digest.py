@@ -7,7 +7,6 @@ and writes results as streamed TSV files to avoid memory overload.
 
 import csv
 import json
-import os
 from dataclasses import dataclass
 from pathlib import Path
 
