@@ -199,11 +199,11 @@ def _univariate_ldsc(z_sq: np.ndarray, ld: np.ndarray, n: np.ndarray, m: int) ->
     X = np.hstack([x, ones])
 
     # Weights: inverse of variance of chi2, approximated as 1/l_j^2
+    # Use element-wise ops to avoid N×N dense diagonal matrices (OOM on real GWAS data)
     w = 1.0 / np.maximum(ld**2, 1.0)
-    W = np.diag(w)
 
     # WLS: beta = (X'WX)^{-1} X'Wy
-    XtW = X.T @ W
+    XtW = X.T * w  # broadcast w across columns, equivalent to X.T @ diag(w)
     XtWX = XtW @ X
     XtWy = XtW @ y
 
@@ -216,8 +216,10 @@ def _univariate_ldsc(z_sq: np.ndarray, ld: np.ndarray, n: np.ndarray, m: int) ->
     intercept = float(beta[1])
 
     # Standard errors via sandwich estimator
+    # meat = X' @ diag(w) @ diag(r^2) @ diag(w) @ X = X' @ diag(w^2 * r^2) @ X
     residuals = y - X @ beta
-    meat = X.T @ W @ np.diag(residuals**2) @ W @ X
+    wr2 = (w * residuals) ** 2
+    meat = (X.T * wr2) @ X
     try:
         bread = np.linalg.inv(XtWX)
     except np.linalg.LinAlgError:
@@ -249,10 +251,10 @@ def _bivariate_ldsc(
     ones = np.ones((len(y), 1))
     X = np.hstack([x, ones])
 
+    # Element-wise weighting to avoid N×N dense diagonal matrices
     w = 1.0 / np.maximum(ld**2, 1.0)
-    W = np.diag(w)
 
-    XtW = X.T @ W
+    XtW = X.T * w
     XtWX = XtW @ X
     XtWy = XtW @ y
 
@@ -265,7 +267,8 @@ def _bivariate_ldsc(
     intercept = float(beta[1])
 
     residuals = y - X @ beta
-    meat = X.T @ W @ np.diag(residuals**2) @ W @ X
+    wr2 = (w * residuals) ** 2
+    meat = (X.T * wr2) @ X
     try:
         bread = np.linalg.inv(XtWX)
     except np.linalg.LinAlgError:

@@ -166,11 +166,11 @@ def sldsc_regression(
         total_ld += merged[col].values
     total_ld = np.maximum(total_ld, 1.0)
 
+    # Element-wise weighting to avoid N×N dense diagonal matrices (OOM on real GWAS data)
     w = 1.0 / (total_ld**2)
-    W = np.diag(w)
 
     # WLS regression
-    XtW = X.T @ W
+    XtW = X.T * w  # broadcast w across columns, equivalent to X.T @ diag(w)
     XtWX = XtW @ X
     XtWy = XtW @ chi2
 
@@ -184,8 +184,10 @@ def sldsc_regression(
     taus = beta[:-1]
 
     # Standard errors via sandwich estimator
+    # meat = X' @ diag(w) @ diag(r^2) @ diag(w) @ X = X' @ diag(w^2 * r^2) @ X
     residuals = chi2 - X @ beta
-    meat = X.T @ W @ np.diag(residuals**2) @ W @ X
+    wr2 = (w * residuals) ** 2
+    meat = (X.T * wr2) @ X
     try:
         bread = np.linalg.inv(XtWX)
     except np.linalg.LinAlgError:
