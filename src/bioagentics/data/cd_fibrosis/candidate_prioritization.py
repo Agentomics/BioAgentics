@@ -111,6 +111,90 @@ SAFETY_SCORES: dict[str, float] = {
     "unknown": 0.1,
 }
 
+# ── Curated compound data (used when DrugBank XML is not available) ──
+# Targets and approval data for positive controls and key anti-fibrotic compounds
+
+CURATED_COMPOUNDS: dict[str, dict] = {
+    "pirfenidone": {
+        "target_genes": "TGFB1;TNF;PDGFRA;COL1A1;COL3A1",
+        "groups": "approved",
+        "indication": "Approved for idiopathic pulmonary fibrosis (IPF)",
+    },
+    "nintedanib": {
+        "target_genes": "VEGFR1;VEGFR2;VEGFR3;FGFR1;FGFR2;FGFR3;PDGFRA;PDGFRB",
+        "groups": "approved",
+        "indication": "Approved for IPF and systemic sclerosis-ILD",
+    },
+    "obefazimod": {
+        "target_genes": "MIR124;HDAC1;HDAC2;HDAC3",
+        "groups": "investigational",
+        "indication": "Phase 3 for ulcerative colitis; preclinical anti-fibrotic",
+    },
+    "duvakitug": {
+        "target_genes": "TNFSF15",
+        "groups": "investigational",
+        "indication": "Phase 2b for CD (APOLLO-CD: 55% endoscopic response)",
+    },
+    "tulisokibart": {
+        "target_genes": "TNFSF15",
+        "groups": "investigational",
+        "indication": "Phase 3 for CD (ARES-CD); anti-TL1A mAb",
+    },
+    "daratumumab": {
+        "target_genes": "CD38",
+        "groups": "approved",
+        "indication": "Approved for multiple myeloma; preclinical CD fibrosis",
+    },
+    "isatuximab": {
+        "target_genes": "CD38",
+        "groups": "approved",
+        "indication": "Approved for multiple myeloma",
+    },
+    "upadacitinib": {
+        "target_genes": "JAK1",
+        "groups": "approved",
+        "indication": "Approved for CD, UC, RA; JAK1-selective",
+    },
+    "tofacitinib": {
+        "target_genes": "JAK1;JAK3",
+        "groups": "approved",
+        "indication": "Approved for UC, RA; pan-JAK inhibitor",
+    },
+    "vorinostat": {
+        "target_genes": "HDAC1;HDAC2;HDAC3;HDAC6",
+        "groups": "approved",
+        "indication": "Approved for CTCL; pan-HDAC inhibitor",
+    },
+    "trichostatin-a": {
+        "target_genes": "HDAC1;HDAC2;HDAC3;HDAC4;HDAC6",
+        "groups": "experimental",
+        "indication": "Research tool; HDAC class I/II inhibitor",
+    },
+    "ontunisertib": {
+        "target_genes": "TGFBR1",
+        "groups": "investigational",
+        "indication": "Phase 2a for stricturing CD (STENOVA met endpoints)",
+    },
+}
+
+# ── Clinical benchmarks ──
+# Reference clinical response rates for anti-fibrotic agents in CD
+
+CLINICAL_BENCHMARKS: dict[str, dict] = {
+    "duvakitug": {
+        "trial": "APOLLO-CD Phase 2b",
+        "endoscopic_response": 0.55,  # 55%
+        "metric": "endoscopic_response_rate",
+    },
+    "upadacitinib": {
+        "trial": "U-ACHIEVE/U-ACCOMPLISH",
+        "endoscopic_response": 0.45,
+        "metric": "endoscopic_response_rate",
+    },
+}
+
+BENCHMARK_REFERENCE = "duvakitug"  # 55% endoscopic response as reference
+
 
 def classify_pathway(
     compound_name: str,
@@ -213,11 +297,26 @@ def score_cmap_reversal(
     return round(weighted, 4)
 
 
+def _resolve_drug_info(compound_name: str, drug_info: dict | None = None) -> dict | None:
+    """Resolve drug info from DrugBank or curated fallback.
+
+    Args:
+        compound_name: Compound name.
+        drug_info: DrugBank record (preferred) or None.
+
+    Returns:
+        Drug info dict or None.
+    """
+    if drug_info is not None:
+        return drug_info
+    return CURATED_COMPOUNDS.get(compound_name.lower().strip())
+
+
 def score_safety(drug_info: dict | None) -> float:
     """Score compound safety based on clinical development stage.
 
     Args:
-        drug_info: DrugBank record or None.
+        drug_info: DrugBank record or curated compound dict.
 
     Returns:
         Score in [0, 1] where 1 = approved drug with known safety profile.
@@ -237,6 +336,39 @@ def score_safety(drug_info: dict | None) -> float:
         return SAFETY_SCORES["experimental"]
     else:
         return SAFETY_SCORES["other"]
+
+
+def score_clinical_benchmark(
+    compound_name: str,
+    reference: str | None = None,
+) -> float:
+    """Score compound against the clinical benchmark reference.
+
+    Compounds with clinical trial data are scored relative to the benchmark
+    (duvakitug 55% endoscopic response). Compounds without data get a
+    neutral score.
+
+    Args:
+        compound_name: Compound name.
+        reference: Reference compound name (default: BENCHMARK_REFERENCE).
+
+    Returns:
+        Score in [0, 1] where 1 = meets or exceeds benchmark.
+    """
+    ref = reference or BENCHMARK_REFERENCE
+    ref_data = CLINICAL_BENCHMARKS.get(ref)
+    if ref_data is None:
+        return 0.5  # No reference available
+
+    ref_rate = ref_data["endoscopic_response"]
+    compound_data = CLINICAL_BENCHMARKS.get(compound_name.lower().strip())
+
+    if compound_data is None:
+        return 0.5  # No clinical data, neutral
+
+    rate = compound_data["endoscopic_response"]
+    # Score as ratio to reference, capped at 1.0
+    return round(min(1.0, rate / ref_rate), 4)
 
 
 def score_novelty(pathway_class: str) -> float:
@@ -377,8 +509,8 @@ def prioritize_candidates(
         compound = str(row.get(compound_column, "")).strip()
         compound_lower = compound.lower()
 
-        # Resolve targets from DrugBank
-        drug_info = drug_targets.get(compound_lower)
+        # Resolve targets: DrugBank > curated fallback
+        drug_info = _resolve_drug_info(compound, drug_targets.get(compound_lower))
         if drug_info and drug_info.get("target_genes"):
             targets = set(drug_info["target_genes"].upper().split(";"))
         else:
@@ -398,6 +530,7 @@ def prioritize_candidates(
         safety = score_safety(drug_info)
         novelty = score_novelty(pathway_class)
         pk = score_pharmacokinetics(compound)
+        clinical = score_clinical_benchmark(compound)
 
         # Composite
         composite = compute_composite_score(
@@ -417,6 +550,7 @@ def prioritize_candidates(
             "safety_score": safety,
             "novelty_score": novelty,
             "pk_score": pk,
+            "clinical_benchmark": clinical,
             "n_targets": len(targets),
             "n_pathways_hit": sum(
                 1 for v in pathway_overlap.values()
@@ -459,18 +593,19 @@ def generate_candidate_report(
     output_dir = output_dir or OUTPUT_DIR
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    has_cmap = ranked_hits is not None and len(ranked_hits) > 0
+    n_hits = len(ranked_hits) if ranked_hits is not None else 0
+    has_cmap = n_hits > 0
 
     print("=" * 60)
     print("Candidate Prioritization Report")
     print("=" * 60)
 
     if has_cmap:
-        print(f"\n  Input: {len(ranked_hits)} CMAP/iLINCS hits")
-        print(f"  Scoring mode: full (CMAP + network + safety + novelty + PK)")
+        print(f"\n  Input: {n_hits} CMAP/iLINCS hits")
+        print("  Scoring mode: full (CMAP + network + safety + novelty + PK)")
     else:
-        print(f"\n  Input: positive control seed candidates (no CMAP data)")
-        print(f"  Scoring mode: network + safety + novelty + PK (CMAP weight redistributed)")
+        print("\n  Input: positive control seed candidates (no CMAP data)")
+        print("  Scoring mode: network + safety + novelty + PK (CMAP weight redistributed)")
 
     result = prioritize_candidates(
         ranked_hits,
@@ -502,7 +637,6 @@ def generate_candidate_report(
           f"{'-'*5} {'-'*7} {'-'*6} {'-'*5} {'-'*12}")
 
     for i, (_, row) in enumerate(result.iterrows()):
-        cmap_str = f"{row['cmap_reversal_score']:.3f}" if row.get("cmap_reversal_score") else "  -  "
         print(f"  {i+1:>4d} {str(row['compound']):25s} "
               f"{row['composite_score']:>7.4f} "
               f"{str(row['pathway_class']):20s} "
