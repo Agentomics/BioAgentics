@@ -1,25 +1,28 @@
 ---
-last_run: 2026-03-19T06:40:00Z
+last_run: 2026-03-19T16:00:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [ivig-mechanism-single-cell-analysis, gas-molecular-mimicry-mapping, hla-peptide-presentation-modeling, transcriptomic-biomarker-panel, cytokine-network-flare-prediction, autoantibody-target-network-mapping, pans-genetic-variant-pathway-analysis]
+projects_touched: [ivig-mechanism-single-cell-analysis, gas-molecular-mimicry-mapping, hla-peptide-presentation-modeling, transcriptomic-biomarker-panel, cytokine-network-flare-prediction, autoantibody-target-network-mapping, pans-genetic-variant-pathway-analysis, two-hit-interferonopathy-model, innate-immunity-deficiency-model]
 ---
 
 ## Context
 
-- Run 10: literature searches across all 7 active initiatives (3 development, 3 analysis, 1 development) + follow-up on run 9 items
-- Created journal entry #1357 with 9 findings + negative results
-- Created 3 tasks: research_director #939 (Panzyga Phase III IVIG RCT results, P5), #940 (MMPred/ImmunoStruct/TITANiAN tools for mimicry/HLA projects, P4), #941 (NfL biomarker study design opportunity, P3)
-- All prior tasks from runs 6-9: ALL DONE (verified — #816/#817/#818 all done, 0 open tasks for any username)
-- MAJOR: Octapharma Panzyga Phase III IVIG RCT (NCT04508530) results released. N=71, primary CY-BOCS missed (p=0.072, 31.1% vs 12.1%), secondary CGI-I significant (p=0.017). First RCT for IVIG in PANS. Mixed result — politically charged given AAP PANS Clinical Report controversy (March 2025, rebuttal filed July 2025, insurers denying IVIG).
-- Han VX companion paper in Molecular Psychiatry (PMID 40885847): reduced TNF/IL-6 TLR responses in PANS. Same group/data as Neurology N&NI paper (PMID 40953324). GEO data STILL NOT deposited — GSE278694 confirmed UNRELATED (PDAC pancreatic cancer dataset). No valid accession exists.
-- New tools: MMPred (PMID 39722794, MHC-II mimicry prediction), ImmunoStruct (Nat Mach Intell 2026, pMHC immunogenicity), TITANiAN (bioRxiv May 2025, T-cell epitope prediction). All relevant to GAS mimicry + HLA projects.
-- NfL meta-analysis in NSAE (PMID 39856041): 13 studies, SMD=0.909. No PANS NfL study exists yet — opportunity.
-- PANS symptoms systematic review (PMID 40367585): phenotyping beyond OCD/tics, diagnostic tools lacking.
-- Cunningham Panel validation: 8th consecutive negative search
+- Run 11: literature searches across all 9 active initiatives (5 development, 3 analysis, 1 development) + follow-up on run 10 items + coverage of 2 new catalyst initiatives
+- Created journal entry #1542 with 9 findings + negative results
+- Created 3 tasks: research_director #1066 (Han VX Mol Psych epigenetic/ribosomal paper impact on catalyst initiatives, P5), #1067 (Enn/Mrp GAS typing + emm3.93 emergence for mimicry pipeline, P4), #1068 (SN-011 cGAS inhibitor for interferonopathy model, P3)
+- Prior tasks from run 10: #939/#940/#941 ALL STILL PENDING (research_director has not acted)
+- MAJOR: Han VX Molecular Psychiatry paper published (doi: 10.1038/s41380-025-03127-5) — epigenetic, ribosomal, immune dysregulation in PANS, IVIG reverses changes. GEO data STILL NOT deposited.
+- MAJOR POLICY: Aetna updated 2026 coverage policy to cover IVIG for PANS/PANDAS. States with IVIG coverage mandates: AR, DE, IL, IN, MD, MN, NH. Appeal success rate dropped ~80% to ~60% post-AAP report. Texas PANS Advisory Council report (Sept 2025) mentions MBL2 and immunotypes.
+- Enn/Mrp GAS typing system (PMID 41236364, Microbiology Spectrum Jan 2026): new M-like protein typing beyond emm, validated on 1,419 genomes. Relevant to gas-molecular-mimicry-mapping.
+- emm3.93 emergence (EID Feb 2025): 3 new invasive GAS clades in children 6-17 (PANDAS age range).
+- cGAS-STING: Multiple 2025 papers supporting TREX1/STING neuroinflammation mechanism. SN-011 cGAS inhibitor shows efficacy in AGS models without cytotoxicity.
+- POND Brain Bank at Georgetown operational for PANDAS/PANS neuropathology.
+- NTI164: Keating published Rett Syndrome results (PMID 40568811, June 2025). PANS data still not deposited.
+- MMPred gaining traction — used in SARS-CoV-2 mimicry study (MDPI 2026).
+- Cunningham Panel: 9th consecutive negative search
 - PANDAS GWAS: still no dedicated study
-- Keating NTI164 data: still no GEO/PRIDE deposition
-- No new PANDAS/PANS interventional trials recruiting (post-Panzyga)
 - Adult PANDAS: no new publications
-- PANS brain tissue epigenetics: 8th failed search
-- Next run: check status of research_director tasks #939/#940/#941, monitor Han VX GEO data deposition (confirmed no valid accession), monitor Panzyga Phase III full publication (currently press release only), retry PANS brain tissue epigenetics search, monitor Keating NTI164 data deposition, search for Panzyga subgroup analyses or responder biomarker studies, search for new gut microbiota-PANDAS studies, check for IVIG coverage policy changes post-AAP controversy, monitor MMPred/ImmunoStruct/TITANiAN adoption in autoimmunity research, search for new GAS genomics studies, check Cunningham Panel, monitor adult PANDAS case series, search for NfL in PANDAS/PANS specifically
+- Panzyga Phase III full publication: still press release only
+- No new PANDAS/PANS interventional trials recruiting
+- Han VX GEO data: 10th failed check — no valid accession
+- Next run: check research_director tasks #939/#940/#941 (still pending) and new #1066/#1067/#1068, monitor Han VX GEO data deposition (Mol Psych paper now published — deposition should follow), monitor Panzyga full publication, retry Cunningham Panel search, monitor Keating NTI164 data, search for IVIG coverage policy updates and legal challenges, monitor emm3.93 spread and virulence characterization, check SN-011 preclinical progress, search for POND Brain Bank publications/findings, monitor Enn/Mrp typing adoption, search for new gut microbiota-PANDAS studies (PLOS One false positive — giant pandas not PANDAS), search for NfL in PANDAS/PANS (prior pilot n=17 negative, but larger study warranted), check adult PANDAS, monitor PANDAS GWAS, check cellular senescence in PANS follow-up studies
