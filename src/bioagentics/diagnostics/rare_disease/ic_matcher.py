@@ -104,7 +104,8 @@ class ICScorer:
         if not common:
             return None
 
-        return max(common, key=lambda t: self.ic.get(t, 0.0))
+        # Break IC ties by preferring deeper (more specific) terms
+        return max(common, key=lambda t: (self.ic.get(t, 0.0), len(self._get_ancestors(t))))
 
     def resnik_similarity(self, term1: str, term2: str) -> float:
         """Resnik similarity: IC of MICA."""
