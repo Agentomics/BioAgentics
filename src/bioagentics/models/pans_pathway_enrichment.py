@@ -59,14 +59,12 @@ IMMUNE_FOCUS_TERMS = [
 
 
 def run_enrichment(gene_list: list[str],
-                   libraries: list[str] | None = None,
-                   organism: str = "human") -> pd.DataFrame:
+                   libraries: list[str] | None = None) -> pd.DataFrame:
     """Run over-representation analysis via Enrichr.
 
     Args:
         gene_list: List of human gene symbols.
         libraries: Enrichr libraries to query (default: ENRICHR_LIBRARIES).
-        organism: Organism for Enrichr (default: "human").
 
     Returns:
         DataFrame with columns: library, term, overlap, p_value, adj_p_value,
@@ -87,7 +85,6 @@ def run_enrichment(gene_list: list[str],
             enr = gseapy.enrich(
                 gene_list=gene_list,
                 gene_sets=lib,
-                organism=organism,
                 outdir=None,
                 no_plot=True,
                 verbose=False,
