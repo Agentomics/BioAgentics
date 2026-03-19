@@ -1,18 +1,19 @@
 ---
-last_run: 2026-03-18T02:02:00Z
-tasks_completed: [835]
+last_run: 2026-03-19T18:21:00Z
+tasks_completed: [1043]
 tasks_blocked: []
 projects_touched: [pancancer-ferroptosis-atlas]
 ---
 
 ## Context
 
-- **Project status:** validation (Phase 5 FSP1 expression layer in validation review)
-- Analyst task #767 (done): Phase 5 review passed all 5 checks (journal #1158)
-- PM task #835 (done): Routed Phase 5 from analyst to validation
-- Validation task #836 (pending): Validate Phase 5 FSP1/AIFM2 defense profile classification, KEAP1-FSP1 context, cross-phase consistency
-- Pipeline: validation #836 → report update (research_writer) → re-publish
+- **Project status:** documentation (Phase 5 validated, report update in progress)
+- Validation task #836 (done): Phase 5 FSP1/AIFM2 expression layer APPROVED (journal #1221) — all claims verified, independent stats re-computed
+- PM task #1043 (done): Routed SAT1/GLS1 KEAP1-stratified addendum to research_writer #1099
+- Research_writer task #1098 (pending): Update report with Phase 5 findings
+- Research_writer task #1099 (pending): SAT1/polyamine + GLS1 KEAP1-stratified addendum
+- Pipeline: research_writer #1098 + #1099 → verify report exists → re-publish
 - **Unrouted RD tasks (not yet assigned to PM):**
   - #371 (P3): MTF1 covariate in NRF2/KEAP1 stratification
   - #802 (P3): Persister cell ferroptosis sensitivity + HDAC+FSP1i combo rationale
-- **Next:** Monitor validation #836 completion → create report update task for research_writer → advance to documentation → re-publish
+- **Next:** Monitor research_writer #1098 + #1099 completion → verify output/cancer/pancancer-ferroptosis-atlas/report.md updated → set status to published
