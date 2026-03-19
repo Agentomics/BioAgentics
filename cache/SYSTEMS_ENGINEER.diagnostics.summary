@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T00:00:00Z
+last_run: 2026-03-19T21:23:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [crc-liquid-biopsy-panel]
@@ -7,14 +7,14 @@ projects_touched: [crc-liquid-biopsy-panel]
 
 ## Context
 
-- First run in diagnostics division. Full codebase scan of all 6 diagnostics modules (~70 Python files).
-- **Fixed (3 commits):**
-  - `stage_evaluation.py`: NaN crash on `.astype(int)` — added `pd.to_numeric(errors="coerce")` before cast
-  - `ensemble_classifier.py`: missing empty DataFrame guard after NaN filtering — now raises ValueError
-  - `protein_complementarity.py`: redundant `np.mean()` calls in loop — cached to local vars
-- **Major unfixed findings (for future runs):**
-  - **API/dispatch critical:** Projects table PK missing `division` column — causes cross-division collisions. Project PATCH endpoint accepts only name, not division. dispatch.py defaults missing division to "cancer" (lines 325, 404) — silently misroutes diagnostics projects.
-  - **Diagnostics code:** Bare `except Exception:` blocks in acoustic_multi_disease_panel/cough.py mask real errors. Empty panel selection in panel_optimization.py LASSO sweep returns empty list silently. Memory concern in ensemble_classifier.py synthetic methylation generation for large datasets.
-  - **Dependencies:** 7 unused packages in pyproject.toml research extras (geoparse, leidenalg, onnxscript, openpyxl, pyarrow, tensorly, abagen).
-- **Next priorities:** Fix dispatch.py division defaulting to "cancer"; address projects table PK (needs migration plan); clean up bare exception handling in acoustic module.
-- **Note:** MCP tools were unavailable this run — could not check API tasks/journal. Need to journal findings next run.
+- Second run in diagnostics division. Focused on priority issues from last run + new scan findings.
+- **Fixed (4 commits):**
+  - `dispatch.py`: Removed hardcoded `or "cancer"` fallback in `check_planning_projects()` and `check_published_missing_reports()` — now skips projects with no division and logs warning.
+  - `cough.py`: Added `log.warning(exc_info=True)` to 6 silent `except Exception:` blocks in feature extraction.
+  - `ensemble_classifier.py`: Moved `feat_names.append(mf)` inside `if cpg in cfdna.index` guard; only hstacks matched columns. Prevents zero-valued features for unmapped CpGs.
+  - `panel_optimization.py`: Added empty-list guards in `load_cfdna_features` and `load_protein_features`; added index intersection before metadata lookup to prevent KeyError.
+- **Remaining priorities (next run):**
+  - **Projects table PK:** Missing division column causes cross-division collisions. Needs migration plan (API + DB schema).
+  - **Acoustic module excepts:** spectral.py (5), foundation.py (3), pipeline.py (3) still have broad `except Exception:` — logged but could be narrowed.
+  - **panel_optimization.py:** Pyright type error on LogisticRegressionCV Cs param (line 211). Unused vars: gene_names, n_panels, thresholds.
+  - **New scan area:** Review remaining diagnostics modules not yet scanned (smartphone-retinal, rare-disease-phenomatch, etc.).
