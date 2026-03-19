@@ -95,11 +95,13 @@ def merge_features(data_dir: Path | None = None) -> pd.DataFrame:
         suffixes=("", "_pred"),
     )
 
-    # Merge VarMeter2 features by residue position
-    vm2_cols = ["residue_pos"] + [c for c in VARMETER2_FEATURES if c in vm2_df.columns]
+    # Merge VarMeter2 features by genomic coordinates (variant-specific)
+    vm2_merge_keys = ["chrom", "pos", "ref", "alt"]
+    vm2_cols = vm2_merge_keys + [c for c in VARMETER2_FEATURES if c in vm2_df.columns]
+    vm2_cols = [c for c in vm2_cols if c in vm2_df.columns]
     merged = merged.merge(
-        vm2_df[vm2_cols].drop_duplicates("residue_pos"),
-        on="residue_pos",
+        vm2_df[vm2_cols].drop_duplicates(subset=vm2_merge_keys),
+        on=vm2_merge_keys,
         how="left",
     )
 
@@ -212,7 +214,7 @@ def train_ensemble(
             gb_params,
             cv=inner_cv,
             scoring="balanced_accuracy",
-            n_jobs=-1,
+            n_jobs=1,
         )
         gb_search.fit(X_train, y_train, sample_weight=sw_train)
         best_gb = gb_search.best_estimator_
@@ -226,7 +228,7 @@ def train_ensemble(
             {"lr__" + k: v for k, v in lr_params.items()},
             cv=inner_cv,
             scoring="balanced_accuracy",
-            n_jobs=-1,
+            n_jobs=1,
         )
         lr_search.fit(X_train, y_train)
         best_lr = lr_search.best_estimator_
@@ -294,7 +296,7 @@ def train_ensemble(
         gb_params,
         cv=inner_cv,
         scoring="balanced_accuracy",
-        n_jobs=-1,
+        n_jobs=1,
     )
     final_gb.fit(X, y_encoded, sample_weight=sample_weights)
 
@@ -306,7 +308,7 @@ def train_ensemble(
         {"lr__" + k: v for k, v in lr_params.items()},
         cv=inner_cv,
         scoring="balanced_accuracy",
-        n_jobs=-1,
+        n_jobs=1,
     )
     final_lr.fit(X, y_encoded)
 
