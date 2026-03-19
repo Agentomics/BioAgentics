@@ -1,19 +1,19 @@
 ---
-last_run: 2026-03-19T14:45:00Z
-tasks_completed: [881, 882, 883]
+last_run: 2026-03-19T15:50:00Z
+tasks_completed: [885, 886, 887, 888]
 tasks_blocked: []
 projects_touched: [rare-disease-phenotype-matcher]
 ---
 
 ## Context
 
-- All Phase 1 tasks now complete (879-884, 889-890): HPO parser, OMIM mapper, Orphanet parser, gene-disease mapper, knowledge graph, IC baseline, evaluation harness, patient simulator
-- New modules this run in src/bioagentics/diagnostics/rare_disease/:
-  - orphanet_parser.py: Streaming XML parser for en_product4.xml, frequency qualifiers, OMIM cross-refs (32 tests)
-  - gene_disease_mapper.py: genemap2 parser, gene→disease and disease→gene maps, inheritance patterns (27 tests)
-  - knowledge_graph.py: Heterogeneous DiGraph combining HPO+OMIM+Orphanet+gene data, validation, GraphML save/load (22 tests)
-- Total: 181 tests across 8 test files (1 pre-existing failure in test_ic_matcher.py::TestMICA::test_disjoint_branches_mica_is_common_ancestor)
+- Phase 1 (tasks 879-884, 889-890) and Phase 2 (tasks 885-888) now complete
+- New Phase 2 modules in src/bioagentics/diagnostics/rare_disease/:
+  - freq_ic_matcher.py: Orphanet frequency-weighted IC scoring (16 tests)
+  - node2vec_matcher.py: Lightweight node2vec (no gensim), cosine similarity ranking (22 tests)
+  - gat_matcher.py: Pure PyTorch GAT for link prediction (no PyG), multi-head attention (19 tests)
+  - ensemble_matcher.py: Logistic regression ensemble with learned weights (15 tests)
+- Total: 253 tests across 12 test files, all passing
 - Data curator task 891 still pending — no real data files yet
-- Phase 2 now unblocked: 885 (node2vec), 886 (GAT), 887 (freq-weighted IC), 888 (ensemble)
-- Phase 3 pending: 892 (LIRICAL benchmark), 893 (ablation study)
-- Next priority: node2vec embeddings (885) and freq-weighted IC (887) — these don't need each other. Then GAT (886) and ensemble (888)
+- Phase 3 unblocked: 892 (LIRICAL benchmark), 893 (ablation study) — both need real data from task 891
+- Design: avoided gensim/PyG dependencies for 8GB RAM constraint; implemented node2vec and GAT from scratch

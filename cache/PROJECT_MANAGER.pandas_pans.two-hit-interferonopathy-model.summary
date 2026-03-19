@@ -1,18 +1,20 @@
 ---
-last_run: 2026-03-19T12:00:00Z
-tasks_completed: []
+last_run: 2026-03-19T15:49:00Z
+tasks_completed: [947]
 tasks_blocked: []
 projects_touched: [two-hit-interferonopathy-model]
 ---
 
 ## Context
 
-- two-hit-interferonopathy-model: Project created and set to `development` status. 7 developer tasks created (IDs 111-117).
-- Phase 1 tasks (priority 4): 111 (variant extractor), 112 (module classifier), 113 (compound hit test)
-- Phase 2 tasks (priority 3): 114 (cGAS-STING PPI model), 115 (GAS DNA simulator)
-- Phase 3 tasks (priority 3): 116 (ISG scorer)
-- Phase 4 tasks (priority 2): 117 (therapeutic model)
-- All tasks assigned to `developer`, all `pending`
-- Cross-project data available: pans-genetic-variant-pathway-analysis (PPI network, enrichment, GEO expression data), gas-molecular-mimicry-mapping (epitope predictions, mimicry screen, structures)
-- No blockers. Developer can begin immediately with task 111.
-- Next run: check developer task progress. When all 7 tasks are `done`, advance to analysis stage and create analyst tasks.
+- two-hit-interferonopathy-model: Advanced planning → development. Task #947 (review/plan initiative) done.
+- Created 5 tasks:
+  - #1033 data_curator (P5): Extract per-patient variant calls from Vettiatil 2026 PMID 41662332 — CRITICAL PATH
+  - #1034 developer (P4): Compound genotyping classifier — DEPENDS on #1033
+  - #1035 developer (P4): cGAS-STING pathway activation model — can start now (uses PPI network from pans-genetic-variant-pathway-analysis)
+  - #1036 developer (P4): ISG scorer (AGS 6-gene panel) — can start now
+  - #1037 developer (P3): Therapeutic model — depends on #1035
+- Tasks #1035 and #1036 are independent and can proceed in parallel immediately.
+- Task #1034 is blocked on data_curator #1033 output. If per-patient genotypes unavailable, compound hit test cannot proceed.
+- Cross-project data available from pans-genetic-variant-pathway-analysis: PPI network (#621), gene data module (#605), enrichment (#610), neuroinflammation xref (#623).
+- Next run: Check progress on tasks #1033 (data_curator), #1035, #1036 (developer). When all development tasks done, advance to analysis.
