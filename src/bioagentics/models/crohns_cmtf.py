@@ -250,11 +250,15 @@ def cross_validate_components(
             )
             model.fit(X_species[train_idx], X_metab[train_idx])
 
-            # Compute test loss
+            # Project test samples into factor space using fitted loadings
+            R = n_comp
+            lhs = alpha * (X_species[test_idx] @ model.A_) + (1 - alpha) * (X_metab[test_idx] @ model.B_)
+            rhs = alpha * (model.A_.T @ model.A_) + (1 - alpha) * (model.B_.T @ model.B_) + 1e-8 * np.eye(R)
+            F_test = lhs @ np.linalg.inv(rhs)
             loss = model._compute_loss(
                 X_species[test_idx],
                 X_metab[test_idx],
-                model.F_[test_idx] if len(test_idx) <= len(model.F_) else model.F_[:len(test_idx)],
+                F_test,
                 model.A_,
                 model.B_,
             )

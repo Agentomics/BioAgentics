@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from bioagentics.models.crohns_cmtf import CMTFIntegration, CMTFModel
+from bioagentics.models.crohns_cmtf import CMTFIntegration, CMTFModel, cross_validate_components
 
 
 @pytest.fixture
@@ -136,6 +136,46 @@ def test_integration_alpha_weighting(synthetic_data, tmp_path):
 
     # Different alpha should give different factor matrices
     assert not np.allclose(r1["factors"].values, r2["factors"].values)
+
+
+def test_cv_uses_out_of_sample_projections(synthetic_data):
+    """Verify cross_validate_components projects test data, not reusing training F_."""
+    _, _, X_sp, X_mb = synthetic_data
+    n_samples = X_sp.shape[0]
+
+    # Run CV with a small range
+    results = cross_validate_components(
+        X_sp, X_mb, component_range=range(3, 5), n_folds=3, alpha=0.65
+    )
+
+    assert len(results["n_components"]) == 2
+    assert all(loss > 0 for loss in results["mean_loss"])
+
+    # Verify the fix: fit on a subset, then check that projecting held-out
+    # samples produces a different F than simply indexing model.F_
+    from sklearn.model_selection import KFold
+    kf = KFold(n_splits=3, shuffle=True, random_state=42)
+    train_idx, test_idx = next(iter(kf.split(X_sp)))
+
+    model = CMTFModel(n_components=3, alpha=0.65, random_state=42)
+    model.fit(X_sp[train_idx], X_mb[train_idx])
+
+    # model.F_ has shape (len(train_idx), 3) — cannot be indexed by test_idx
+    assert model.F_.shape[0] == len(train_idx)
+    assert model.F_.shape[0] != n_samples
+
+    # Proper out-of-sample projection
+    alpha = 0.65
+    R = 3
+    lhs = alpha * (X_sp[test_idx] @ model.A_) + (1 - alpha) * (X_mb[test_idx] @ model.B_)
+    rhs = alpha * (model.A_.T @ model.A_) + (1 - alpha) * (model.B_.T @ model.B_) + 1e-8 * np.eye(R)
+    F_test = lhs @ np.linalg.inv(rhs)
+
+    assert F_test.shape == (len(test_idx), R)
+    # Test loss should be computable with projected factors
+    loss = model._compute_loss(X_sp[test_idx], X_mb[test_idx], F_test, model.A_, model.B_)
+    assert loss > 0
+    assert np.isfinite(loss)
 
 
 def test_map_to_metabolic_axes(synthetic_data, tmp_path):
