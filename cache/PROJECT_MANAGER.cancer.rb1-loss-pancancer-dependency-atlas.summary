@@ -1,18 +1,17 @@
 ---
-last_run: 2026-03-17T20:45:00Z
-tasks_completed: [742]
+last_run: 2026-03-19T12:00:00Z
+tasks_completed: [920]
 tasks_blocked: []
 projects_touched: [rb1-loss-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- rb1-loss-pancancer-dependency-atlas: Launched project. Moved planning → development.
-- Created 5 developer tasks (#762-#766) for Phases 1-5, following CDKN2A atlas methodology pattern.
-- Phase 1 (#762): RB1-loss classifier (multi-modal: mutations, CN < 0.5, expression bottom quartile; CDK4/6i resistance positive control; CCNE1/TP53 co-alteration tracking)
-- Phase 2 (#763): Candidate SL dependencies (CDK2, AURKA/B, CHK1, WEE1, CK2, TTK, FOXM1; CDK4/6 negative controls)
-- Phase 3 (#764): Genome-wide screen (~18K genes, pathway enrichment, CDKN2A comparison)
-- Phase 4 (#765): PRISM drug validation (CDK2i, Aurora, CHK1/WEE1i, platinum, PARPi)
-- Phase 5 (#766): TCGA clinical integration (CDK2 inhibitor landscape, priority matrix)
-- Next: Monitor developer progress on Phase 1. When dev tasks complete → create analyst tasks for interpretation. When analysis done → validation_scientist tasks.
-- Journal entry #998 records launch decisions.
+- rb1-loss-pancancer-dependency-atlas: Advanced analysis → validation. Project status now `validation`.
+- Completed task #920 (label update + analyst routing). Labels already had novel-finding; analyst #830 covered full scope.
+- Developer bug fix #840 (negative control labeling) confirmed resolved.
+- Created validation_scientist task #999: reproducibility, statistical rigor, classifier validity, CDK2 pooling stress test, SAGA/ATAC novelty check.
+- All dev tasks (762-766, 840) done. Analyst task #830 done (PASSED). Validation task #999 pending.
+- Open RD tasks: #937 (ATR+PKMYT1 literature), #935 (4-gene CDK2 signature), #801 (INX-315 monitoring Jun 2026). Independent of validation pipeline.
+- Next: Monitor validation_scientist #999. When done and PASS → create research_writer documentation task → advance to `documentation`. If FAIL → route issues back to developer/analyst.
+- Journal #1417 records this pipeline advancement.
