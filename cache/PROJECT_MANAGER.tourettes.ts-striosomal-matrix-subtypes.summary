@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-19T00:00:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [ts-striosomal-matrix-subtypes]
+---
+
+## Context
+
+- ts-striosomal-matrix-subtypes: Created project (status=development). 8 developer tasks created for Phases 1-2.
+- Phase 1 tasks (91-94): GSE303705 data download, compartment scoring module, zone specificity scores, NMF gene modules.
+- Phase 2 tasks (95-98): Risk gene compilation, enrichment testing module, striosome/matrix enrichment test, Wang et al. validation.
+- Phases 3-4 blocked on dependencies: ts-comorbidity-genetic-architecture (planning, needs PRS strata) and ts-drug-repurposing-network (planning, needs drug targets).
+- Phase 5 (developmental dynamics) deferred until Phases 1-2 complete.
+- Next: Monitor developer task progress. When all 8 developer tasks are done, create analyst tasks and advance to analysis.
