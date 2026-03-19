@@ -1,19 +1,18 @@
 ---
-last_run: 2026-03-17T22:45:00Z
-tasks_completed: [845, 846, 847]
+last_run: 2026-03-19T02:43:00Z
+tasks_completed: [491, 848, 490]
 tasks_blocked: [488]
 projects_touched: [cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- cd-fibrosis-drug-repurposing: Completed 3 new pathway signatures (#845-847) and built CMAP/iLINCS scoring pipeline (#488, blocked on API access).
-- Total signatures now: 6 (bulk: 998, celltype: 84, transition: 74, GLIS3/IL-11: 38, CTHRC1/YAP-TAZ: 69, TL1A-DR3/Rho: 72).
-- GLIS3/IL-11 (glis3_il11_signature.py): Nature 2026 Xavier/Broad. 3 components: GLIS3 TF targets, IL-11 signaling (JAK-STAT3), upstream activators. IL11 is key druggable target.
-- CTHRC1+/YAP-TAZ (cthrc1_yaptaz_signature.py): Cell 2025 Stanford. 4 components: CTHRC1+ fibroblast markers, YAP/TAZ targets, mechanosensing, creeping fat spatial. 6 convergence genes. Verteporfin is candidate hit.
-- TL1A-DR3/Rho (tl1a_dr3_rho_signature.py): Dedicated pathway covering duvakitug, tulisokibart, ontunisertib mechanisms. 4 components: TL1A-DR3 signaling, Rho GTPase cascade, fibroblast effectors, ALK5/TGF-beta.
-- CMAP pipeline (cmap_pipeline.py): Code complete, 16 tests pass. Loads all signatures, queries iLINCS/CMAP, ranks by convergent negative concordance, prioritizes fibroblast cell line hits.
-- BLOCKED: iLINCS user signature concordance returns 0 results via REST (upload works, 100 L1000 landmark overlap, but findConcordantSignatures returns empty). May need ilincsR R package. clue.io needs CLUE_API_KEY — created human task #854.
-- All 92 tests pass (36 original + 40 new signature + 16 pipeline).
-- Next priority: unblock #488 (API key), then iLINCS (#489), network pharmacology (#490), positive controls (#491), TL1A benchmark (#848).
-- MCP tools not available; using curl API at bioagentics.mtingers.com/api with X-API-Key header.
+- cd-fibrosis-drug-repurposing: Completed positive controls (#491), TL1A benchmark (#848), and network pharmacology (#490) modules.
+- Total signatures: 6 (bulk: 998, celltype: 84, transition: 74, GLIS3/IL-11: 38, CTHRC1/YAP-TAZ: 69, TL1A-DR3/Rho: 72).
+- positive_controls.py: 12 control compounds across 7 pathway classes. Validates CMAP/iLINCS results against known anti-fibrotics. TL1A benchmark validates duvakitug/tulisokibart/ontunisertib at top-15% threshold.
+- network_pharmacology.py: 7 fibrosis pathway gene sets, cross-organ reference (IPF/liver/kidney), STRING API client, druggability scoring, composite network score.
+- CMAP pipeline (#488): Still BLOCKED on iLINCS API (returns 0 results) and clue.io API key (human task #854 cancelled).
+- All 152 tests pass (36 original + 40 signature + 16 pipeline + 31 positive controls + 29 network pharmacology).
+- Code location: src/bioagentics/data/cd_fibrosis/ (not src/crohns/).
+- Remaining pending tasks: #489 (iLINCS scoring), #492 (candidate prioritization), #493 (in silico validation).
+- Next priority: unblock #488 (API access), then #492 (candidate prioritization/composite scoring).
