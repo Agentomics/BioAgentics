@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T12:00:00Z
+last_run: 2026-03-19T18:00:00Z
 tasks_completed: [611, 612, 613, 614, 617, 618, 619]
 tasks_blocked: [615, 616]
 projects_touched: [hla-peptide-presentation-modeling]
@@ -7,12 +7,15 @@ projects_touched: [hla-peptide-presentation-modeling]
 
 ## Context
 
-- hla-peptide-presentation-modeling: All feasible pipeline modules complete (Phase 1-6)
-  - Phase 1-4 (prior run): HLA panel, proteome manifest, peptide digestion, IEDB binding wrapper, differential presentation
-  - Phase 5 (this run): mimicry_hla_integration.py — cross-references differential peptides with mimicry hits, Fisher exact overlap test, builds HLA->peptide->human mimic network. Currently 0 overlap because binding predictions only cover 20 IEDB test peptides (PYRG_STRPC); mimicry proteins (DNAK, ENO, G3P, etc.) have no predictions yet
-  - Phase 6 (this run): population_risk.py — AFND allele frequencies for 10 populations, OR-weighted risk scoring, haplotype combination analysis. Results: Southern European highest risk (score=0.058, 39% carrier rate), East Asian lowest (score=-0.018, 18% carrier rate)
+- hla-peptide-presentation-modeling: All 6 pipeline phases implemented and committed
+  - Phase 1: hla_allele_panel.py — 9 HLA alleles (3 susceptibility, 2 protective, 2 control, 2 exploratory MHC-I)
+  - Phase 2: gas_proteome_digest.py — streaming FASTA digestion for 6 GAS serotypes (M1/M3/M5/M12/M18/M49), memory-safe chunked TSV writes
+  - Phase 3: iedb_binding_prediction.py — IEDB API wrapper for netmhciipan, batched requests, binding classification (strong <0.5%, weak <2%)
+  - Phase 4: differential_presentation.py — fold-change analysis (susceptibility vs control ranks), virulence factor Fisher exact enrichment
+  - Phase 5: mimicry_hla_integration.py — cross-references mimicry hits from gas-molecular-mimicry-mapping, builds HLA->peptide->mimic network. Currently 0 overlap (only 20 test peptides predicted)
+  - Phase 6: population_risk.py — AFND frequencies for 10 populations, OR-weighted risk scoring, haplotype combinations. Southern European highest risk (0.058), East Asian lowest (-0.018)
+- This run: fixed scipy fisher_exact type safety issues, added 13 unit tests (all passing)
 - Blocked tasks: 615 (AlphaFold not installed), 616 (GROMACS not installed) — need human to provision compute
-- API server was unreachable this run — task statuses (618/619 done, 615/616 blocked) not persisted to API. Next run should retry updates
-- Data files are gitignored (data/*), only source code committed
-- Critical bottleneck: full IEDB prediction run (~500K peptides x 7 alleles) needed before mimicry integration produces meaningful overlap
-- Note: DQA1*03:01 excluded from population risk analysis due to sparse multi-population AFND data
+- MCP API server unreachable — task status updates not persisted. Next run should retry
+- Critical bottleneck: full IEDB prediction run (~500K peptides x 7 alleles) needed for meaningful mimicry overlap
+- Data files gitignored; source code at src/pandas_pans/hla_peptide_presentation_modeling/
