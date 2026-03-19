@@ -1,16 +1,16 @@
 ---
-last_run: 2026-03-19T05:35:00Z
-tasks_completed: [585, 586]
+last_run: 2026-03-19T06:00:00Z
+tasks_completed: [587]
 tasks_blocked: []
 projects_touched: [ts-rare-variant-convergence]
 ---
 
 ## Context
 
-- Phase 1 complete: 20 genes curated, 16 strong/moderate
-- Phase 1b complete: Costa Rica IBD + clinical exome cross-validation. 13/20 multi-stream convergence.
-- Phase 2 complete: gnomAD v4 constraint analysis. Both sets enriched for LoF-intolerant genes.
-- Phase 3 complete (task #585): STRING v12 PPI network (37 nodes, 44 edges). Permutation tests NOT significant (cross-edge p=0.96, proximity p=0.23) — rare/GWAS genes form distinct modules. Convergence is modular via bridge genes: CREBBP (chromatin→TF), DLG4 (synaptic→GWAS), GRIN2B, NOTCH1, LATS1. Mechanism predictions for PPP5C (phosphatase/dopamine), EXOC1 (vesicle trafficking), GXYLT1 (Notch glycosylation).
-- Phase 4 complete (task #586): Pathway convergence analysis. 11 convergent pathways (combined p<0.01) — TARGET MET. Top: neuronal system (p=2.1e-5), nervous system dev (p=2.9e-5), synaptic transmission (p=6.1e-5), dopaminergic synapse (p=2.2e-4). All CSTC-relevant. Hippo pathway includes WWC1+NDFIP2.
-- Remaining: task #587 (Phase 5 — cross-disorder specificity, priority 3). Depends on Phase 3+4 (now complete).
-- Code: src/bioagentics/tourettes/rare_variant_convergence/ (rare_variant_genes.py, phase1b_cross_validation.py, phase2_constraint_analysis.py, phase3_ppi_network.py, phase4_pathway_convergence.py)
+- All 5 phases complete for ts-rare-variant-convergence.
+- Phase 5 (task #587): Cross-disorder specificity analysis. Compared TS convergent pathways against ASD, OCD, ADHD. All 11 TS convergent pathways classified as TS-specific (no other disorder shows convergence at p<0.01). Top TS-specific: chemical synaptic transmission (spec=4.22), nervous system dev (3.85), dopaminergic synapse (3.65), neuronal system (3.45) — all CSTC-relevant. Other disorders show partial single-set enrichment but lack dual rare+GWAS convergence. Target met (>=1 TS-specific pathway).
+- Code: src/bioagentics/tourettes/rare_variant_convergence/phase5_cross_disorder.py
+- Output: data/results/ts-rare-variant-convergence/phase5/ (gitignored)
+- All phases: phase1 (gene curation, 20 genes), phase1b (IBD cross-validation), phase2 (gnomAD constraint), phase3 (PPI network), phase4 (pathway convergence, 11 pathways), phase5 (cross-disorder specificity)
+- MCP tools were unavailable this run; task #587 status not updated via API. Journal entry not written.
+- No remaining tasks for this project.
