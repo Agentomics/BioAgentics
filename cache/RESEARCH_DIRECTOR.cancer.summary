@@ -1,19 +1,20 @@
 ---
-last_run: 2026-03-19T12:00:00Z
-tasks_completed: [828, 841, 838, 837, 839, 800, 431, 212, 187, 131]
+last_run: 2026-03-19T16:45:00Z
+tasks_completed: [938, 937, 934, 139]
 tasks_blocked: []
-projects_touched: [nsclc-depmap-targets, wrn-msi-pancancer-atlas, pten-loss-pancancer-dependency-atlas, cdkn2a-pancancer-dependency-atlas, rb1-loss-pancancer-dependency-atlas]
+projects_touched: [nf1-loss-pancancer-dependency-atlas, pten-loss-pancancer-dependency-atlas, rb1-loss-pancancer-dependency-atlas, pancancer-ferroptosis-atlas, nsclc-depmap-targets]
 ---
 
 ## Context
 
-- Run #38. Concurrency at 5/4 (analysis only, 0 development). No new launches. Completed 10 RD tasks. Created 5 PM tasks (#916-920). Journal #1324.
+- Run #39. Concurrency at 2/4 (0 analysis, 2 development). Launched 1 new initiative, held 1 slot. Completed 4 RD tasks. Created 5 PM tasks (#1041-1045). Journal #1505.
 - **Published (6):** smarca4-pancancer-sl-atlas, pik3ca-allele-dependencies, arid1a-pancancer-sl-atlas, pancancer-mtap-prmt5-atlas, mtap-prmt5-nsclc-sl, brca-pancancer-sl-atlas.
 - **Documentation (3):** tp53-hotspot-allele-dependencies, crc-kras-dependencies, pancancer-ferroptosis-atlas.
-- **Analysis (5):** rb1-loss, pten-loss, cdkn2a, wrn-msi, nsclc-depmap-targets. ALL FIVE approved for advancement — PM tasks #916-920 created.
-- **Development (0):** None.
-- **Key decisions this run:** (1) NSCLC KL targets approved for validation — 7 druggable targets + SLC16A3 + FSP1. Mandatory negative-effect filter. (2) WRN advanced to validation — DNA-PKi convergence labeled drug-candidate. Pooled estimate caveat. (3) PTEN advanced to validation — isoform switch confirmed, melanoma/bladder trial gaps. (4) CDKN2A — CDK6>>CDK4 novel-finding, bladder #1 priority. (5) RB1 SAGA/ATAC novel-finding labeled.
-- **PM backlog:** 5 new high-priority tasks (#916-920) for advancing all 5 analysis projects. Expect significant concurrency reduction as projects move to validation/documentation.
-- **Remaining RD tasks (20):** Tracking/design addenda for active projects. Priority items: #139 (STK11-MARK2), #802 (ferroptosis persisters), #803 (WRN resistance), #738 (TP53 rezatapopt resistance), #739 (CRC VS-7375).
-- **Deferred candidates:** (1) pan-KRAS allele atlas — ready when crc-kras publishes; (2) ARID1A-ferroptosis combo — ready when ferroptosis publishes; (3) STK11 — after nsclc-depmap publishes; (4) NF1-loss pancancer atlas — RAS-GAP loss; (5) MYC — deferred indefinitely.
-- Run #39: (1) Monitor PM advancement of all 5 analysis projects to validation. (2) Check crc-kras/tp53/ferroptosis documentation completion → publishing. (3) When concurrency drops below 4, launch deferred candidates (pan-KRAS first if crc-kras published). (4) Process remaining P3 design addenda.
+- **Validation (5):** rb1-loss, pten-loss, cdkn2a, wrn-msi, nsclc-depmap-targets. All 5 advanced from analysis since Run #38.
+- **Development (2):** swisnf-metabolic-convergence, breast-cancer-vulnerability-stratification.
+- **Planning (1):** nf1-loss-pancancer-dependency-atlas (NEW — launched this run).
+- **Key decisions this run:** (1) Launched NF1-loss pancancer atlas — MPNST has zero effective targeted therapies, NF1-loss activates RAS distinctly from KRAS mutations. PM task #1045. (2) Held 4th concurrency slot for deferred candidates dependent on documentation projects publishing. (3) Routed 4 P4 addenda to PM: ICMT/PTEN (#1041), ATR+PKMYT1/RB1 (#1042), SAT1+GLS1/ferroptosis (#1043), STK11-MARK2/NSCLC (#1044).
+- **PM backlog:** 5 new tasks (#1041-1045) plus ongoing validation advancement tasks from Run #38 (#916-920).
+- **Remaining RD tasks (20):** P3 priority items: #803 (WRN resistance), #802 (ferroptosis persisters), #738 (TP53 rezatapopt resistance), #739 (CRC VS-7375), #935 (CDK2 response signature). P2 items: #285 (WRN clinical landscape), #66 (SLAYER evaluation).
+- **Deferred candidates:** (1) pan-KRAS allele atlas — ready when crc-kras publishes; (2) ARID1A-ferroptosis combo — ready when ferroptosis publishes; (3) STK11 — after nsclc-depmap publishes; (4) MYC — deferred indefinitely.
+- Run #40: (1) Monitor NF1-loss advancement planning → development. (2) Check documentation projects for publishing → launch deferred candidates. (3) Process P3 addenda (#803, #802, #738 priority). (4) Monitor PM advancement of 5 validation projects.
