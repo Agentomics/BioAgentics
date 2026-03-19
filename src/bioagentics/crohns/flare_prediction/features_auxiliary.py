@@ -63,7 +63,7 @@ def _match_columns(df_columns: list[str], keywords: list[str]) -> list[str]:
 
 
 def _compute_pathway_features(
-    samples: pd.DataFrame, meta_cols: set[str]
+    samples: pd.DataFrame, meta_cols: set[str], max_pathway_slopes: int = 50,
 ) -> dict[str, float]:
     """Compute pathway dynamics features for a window's samples."""
     features: dict[str, float] = {}
@@ -88,8 +88,13 @@ def _compute_pathway_features(
     features["pw_mean_global"] = float(np.nanmean(all_values))
     features["pw_std_global"] = float(np.nanstd(all_values))
 
-    # Top pathways by change rate
-    for col in feature_cols:
+    # Per-pathway slopes (capped to top N most variable)
+    if len(feature_cols) > max_pathway_slopes:
+        stds = samples[feature_cols].std()
+        slope_cols = stds.sort_values(ascending=False).head(max_pathway_slopes).index.tolist()
+    else:
+        slope_cols = feature_cols
+    for col in slope_cols:
         features[f"pw_slope__{col}"] = _slope(samples[col].tolist())
 
     return features

@@ -60,6 +60,7 @@ def _slope(values: list[float]) -> float:
 def compute_microbiome_features(
     species: pd.DataFrame,
     windows: list[Window],
+    max_species_slopes: int = 50,
 ) -> pd.DataFrame:
     """Compute microbiome temporal features for each classification window.
 
@@ -82,6 +83,20 @@ def compute_microbiome_features(
     meta_cols = {"subject_id", "visit_num", "date", "diagnosis"}
     abundance_cols = [c for c in species_reset.columns if c not in meta_cols]
 
+    # Cap per-species slopes to the top N most variable species by CV
+    if len(abundance_cols) > max_species_slopes:
+        stds = species_reset[abundance_cols].std()
+        means = species_reset[abundance_cols].mean().abs()
+        cv = stds / means.replace(0, np.nan)
+        cv = cv.dropna().sort_values(ascending=False)
+        slope_cols = cv.head(max_species_slopes).index.tolist()
+        logger.info(
+            "Capping per-species slopes: %d -> %d (top by CV)",
+            len(abundance_cols), len(slope_cols),
+        )
+    else:
+        slope_cols = abundance_cols
+
     feature_rows: list[dict[str, float]] = []
 
     for idx, window in enumerate(windows):
@@ -102,7 +117,7 @@ def compute_microbiome_features(
             features["mb_bc_mean"] = np.nan
             features["mb_bc_max"] = np.nan
             features["mb_volatility_index"] = np.nan
-            for col in abundance_cols:
+            for col in slope_cols:
                 features[f"mb_slope__{col}"] = np.nan
             feature_rows.append(features)
             continue
@@ -118,9 +133,10 @@ def compute_microbiome_features(
         features["mb_bc_max"] = float(np.max(bc_dists)) if bc_dists else 0.0
         features["mb_volatility_index"] = float(np.mean(bc_dists)) if bc_dists else 0.0
 
-        # Per-species abundance slopes within window
-        for j, col in enumerate(abundance_cols):
-            values = abundances[:, j].tolist()
+        # Per-species abundance slopes within window (capped to top variable species)
+        for col in slope_cols:
+            col_idx = abundance_cols.index(col)
+            values = abundances[:, col_idx].tolist()
             features[f"mb_slope__{col}"] = _slope(values)
 
         feature_rows.append(features)
