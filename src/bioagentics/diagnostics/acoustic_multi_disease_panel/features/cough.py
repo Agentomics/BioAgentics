@@ -126,6 +126,7 @@ def _extract_from_array(y: np.ndarray, sr: int) -> dict[str, float | None]:
         features["spectral_centroid_mean"] = float(np.mean(spectral_centroid))
         features["spectral_centroid_std"] = float(np.std(spectral_centroid))
     except Exception:
+        log.warning("spectral_centroid extraction failed", exc_info=True)
         features["spectral_centroid_mean"] = None
         features["spectral_centroid_std"] = None
 
@@ -136,6 +137,7 @@ def _extract_from_array(y: np.ndarray, sr: int) -> dict[str, float | None]:
         features["spectral_rolloff_mean"] = float(np.mean(spectral_rolloff))
         features["spectral_rolloff_std"] = float(np.std(spectral_rolloff))
     except Exception:
+        log.warning("spectral_rolloff extraction failed", exc_info=True)
         features["spectral_rolloff_mean"] = None
         features["spectral_rolloff_std"] = None
 
@@ -146,6 +148,7 @@ def _extract_from_array(y: np.ndarray, sr: int) -> dict[str, float | None]:
         features["spectral_bandwidth_mean"] = float(np.mean(spectral_bandwidth))
         features["spectral_bandwidth_std"] = float(np.std(spectral_bandwidth))
     except Exception:
+        log.warning("spectral_bandwidth extraction failed", exc_info=True)
         features["spectral_bandwidth_mean"] = None
         features["spectral_bandwidth_std"] = None
 
@@ -156,6 +159,7 @@ def _extract_from_array(y: np.ndarray, sr: int) -> dict[str, float | None]:
         features["spectral_flatness_mean"] = float(np.mean(spectral_flatness))
         features["spectral_flatness_std"] = float(np.std(spectral_flatness))
     except Exception:
+        log.warning("spectral_flatness extraction failed", exc_info=True)
         features["spectral_flatness_mean"] = None
         features["spectral_flatness_std"] = None
 
@@ -167,6 +171,7 @@ def _extract_from_array(y: np.ndarray, sr: int) -> dict[str, float | None]:
         features["zcr_mean"] = float(np.mean(zcr))
         features["zcr_std"] = float(np.std(zcr))
     except Exception:
+        log.warning("zero_crossing_rate extraction failed", exc_info=True)
         features["zcr_mean"] = None
         features["zcr_std"] = None
 
@@ -235,6 +240,7 @@ def _extract_from_array(y: np.ndarray, sr: int) -> dict[str, float | None]:
         features["rms_energy_std"] = float(np.std(rms))
         features["rms_energy_max"] = float(np.max(rms))
     except Exception:
+        log.warning("rms_energy extraction failed", exc_info=True)
         features["rms_energy_mean"] = None
         features["rms_energy_std"] = None
         features["rms_energy_max"] = None
