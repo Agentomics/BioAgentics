@@ -1,0 +1,16 @@
+---
+last_run: 2026-03-19T11:32:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [cytokine-network-flare-prediction]
+---
+
+## Context
+
+- cytokine-network-flare-prediction: First complete pipeline run. Extracted cytokine data from 12 published PANDAS/PANS studies (132 records, 10 analytes). Ran full meta-analysis pipeline (meta-analysis, network, axis classification, flare prediction, treatment response).
+- Key findings: All 8 analytes significant (p<0.001). IL-1β strongest effect (g=1.52), IL-6 hub confirmed (g=1.46, k=7). Innate axis dominant. Regulatory failure (IL-10↓). IFN-γ epigenetic persistence supported.
+- Caveats: Flare prediction AUC=1.0 is overfitting (n=24). I²=0% uniformly low. Treatment response is modeled. Need individual-patient data.
+- Created tasks: #130 (research_director — evaluate IL-1β/NLRP3 novel finding), #131 (validation_scientist — validate methodology), #132 (developer — add condition_b CLI support)
+- Also ran flare vs healthy_control comparison (5 analytes ≥3 studies, all significant, larger effects: IL-1β g=1.88, IL-6 g=1.69)
+- Project registered in DB as 'analysis' status with findings_content populated
+- Next: Await validation_scientist review. If validated, seek individual-patient-level data for robust flare prediction. Add Th2 cytokine data (IL-4, IL-13) if available. CSF data for BBB analysis.
