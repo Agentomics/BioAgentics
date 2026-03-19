@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-19T17:30:00Z
+tasks_completed: [124, 125]
+tasks_blocked: []
+projects_touched: [swisnf-metabolic-convergence]
+---
+
+## Context
+
+- Phase 1a (#124) done: SWI/SNF classifier — 157 ARID1A-mut, 72 SMARCA4-mut, 16 dual, 1874 WT across 2119 lines. 14 cancer types qualify for combined analysis.
+- Phase 1b (#125) done: Metabolic dependency screen — 1590 KEGG metabolic genes screened. SMARCA4-ovarian has strong OXPHOS signal (COX6C d=-2.39, NDUF* complex I genes). ARID1A has 1 hit (HDC in Lymphoid). Combined screen lacks power.
+- Tasks remaining: #126 (Phase 2 cross-validation, p4), #127 (Phase 3 pathway enrichment, p4), #128 (Phase 4 TCGA expression, p3), #129 (Phase 5 drug repurposing, p3)
+- Next priority: Phase 2 (#126) — cross-validate HMGCR in SMARCA4-mutant lines, test mito gene deps in ARID1A lines, identify convergent metabolic genes
+- Key note: HMGCR did not reach FDR significance in Phase 1b — needs targeted examination in Phase 2
+- Code: src/cancer/swisnf_metabolic_convergence/ (01_swisnf_classifier.py, 02_metabolic_dependency_screen.py)
+- Results: data/results/swisnf-metabolic-convergence/phase1a/ and phase1b/
+- KEGG gene cache: data/results/swisnf-metabolic-convergence/phase1b/kegg_metabolic_genes.json
