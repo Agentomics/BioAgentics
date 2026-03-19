@@ -103,6 +103,15 @@ role = "LITERATURE_REVIEWER"
 division = "crohns"
 
 [[agents]]
+role = "DATA_CURATOR"
+division = "crohns"
+
+[[agents]]
+role = "SYSTEMS_ENGINEER"
+division = "crohns"
+effort = "max"
+
+[[agents]]
 role = "RESEARCH_CATALYST"
 division = "crohns"
 effort = "max"
@@ -142,6 +151,15 @@ effort = "max"
 [[agents]]
 role = "LITERATURE_REVIEWER"
 division = "tourettes"
+
+[[agents]]
+role = "DATA_CURATOR"
+division = "tourettes"
+
+[[agents]]
+role = "SYSTEMS_ENGINEER"
+division = "tourettes"
+effort = "max"
 
 [[agents]]
 role = "RESEARCH_CATALYST"
@@ -185,6 +203,15 @@ role = "LITERATURE_REVIEWER"
 division = "pandas_pans"
 
 [[agents]]
+role = "DATA_CURATOR"
+division = "pandas_pans"
+
+[[agents]]
+role = "SYSTEMS_ENGINEER"
+division = "pandas_pans"
+effort = "max"
+
+[[agents]]
 role = "RESEARCH_CATALYST"
 division = "pandas_pans"
 effort = "max"
@@ -224,6 +251,15 @@ effort = "max"
 [[agents]]
 role = "LITERATURE_REVIEWER"
 division = "diagnostics"
+
+[[agents]]
+role = "DATA_CURATOR"
+division = "diagnostics"
+
+[[agents]]
+role = "SYSTEMS_ENGINEER"
+division = "diagnostics"
+effort = "max"
 
 [[agents]]
 role = "RESEARCH_CATALYST"
