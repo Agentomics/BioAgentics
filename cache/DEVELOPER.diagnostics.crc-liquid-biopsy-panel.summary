@@ -1,16 +1,18 @@
 ---
-last_run: 2026-03-17T23:45:00Z
-tasks_completed: [638, 639, 640, 651, 652, 653, 654, 655]
+last_run: 2026-03-19T03:45:00Z
+tasks_completed: [638, 639, 640, 641, 651, 652, 653, 654, 655, 656, 657]
 tasks_blocked: []
 projects_touched: [crc-liquid-biopsy-panel]
 ---
 
 ## Context
 
-- crc-liquid-biopsy-panel: Implemented full analysis pipeline from data download through ensemble classification.
-- Module: src/bioagentics/diagnostics/crc_liquid_biopsy/ (6 files: download_tcga, download_geo, methylation_discovery, cfdna_validation, protein_complementarity, panel_optimization, ensemble_classifier)
-- Data: TCGA 450K methylation (421K CpGs x 452 samples), clinical (633 cases), GSE149282 cfDNA (24 samples), GSE164191 expression (121 samples)
-- Results: 14,404 significant CpGs, 13,083 cfDNA-validated, 7-protein optimal panel (MMP9, CXCL8, S100A4, TIMP1, SEPT9, ERBB2, SPP1), AUC 0.871, sens@95spec 47.7%, cost $105
-- Remaining tasks: 656 (stage-stratified evaluation), 657 (cost-effectiveness model), 641 (GSE48684 tissue validation)
-- Key issue: Sensitivity at 95% spec (47.7%) below 70% target. Analyst should consider mixed methylation+protein panel or larger validation cohort.
-- Added pyarrow dependency. Downloaded Illumina 450K manifest and GPL570 platform annotation into data/diagnostics/crc-liquid-biopsy-panel/.
+- crc-liquid-biopsy-panel: Full pipeline complete including stage-stratified evaluation and cost-effectiveness model.
+- Module: src/bioagentics/diagnostics/crc_liquid_biopsy/ (9 files: download_tcga, download_geo, methylation_discovery, cfdna_validation, protein_complementarity, panel_optimization, ensemble_classifier, stage_evaluation, cost_model)
+- Data: TCGA 450K methylation (452 samples), clinical (633 cases), GSE149282 cfDNA (24 samples), GSE164191 expression (121 samples), GSE48684 tissue methylation (147 samples: 88 tumor, 42 adenoma, 17 normal)
+- Panel: 7 protein markers (MMP9, CXCL8, S100A4, TIMP1, SEPT9, ERBB2, SPP1), AUC 0.871, sens@95spec 47.7%, cost $155/test
+- Comparison: Combined panel AUC=0.888 vs SEPT9 AUC=0.694 (delta 0.194, exceeds 5% target) on independent GSE164191 data
+- Cost model: $155/test (below $200 target), ICER $14,709/QALY (cost-effective at $50K WTP). Outperforms colonoscopy ($66K ICER), competitive with Cologuard ($26K), Galleri ($36K).
+- Sensitivity at 95% spec (47.7%) still below 70% target. Analyst should investigate mixed methylation+protein panel or larger validation cohort.
+- Fixed adenoma classification bug in download_geo._classify_tissue_condition
+- No remaining developer tasks for this project.
