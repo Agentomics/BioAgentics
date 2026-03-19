@@ -1,19 +1,18 @@
 ---
-last_run: 2026-03-19T06:00:00Z
-tasks_completed: []
-tasks_blocked: []
+last_run: 2026-03-19T19:35:00Z
+tasks_completed: [1001, 1003, 1004]
+tasks_blocked: [1002]
 projects_touched: [pans-genetic-variant-pathway-analysis]
 ---
 
 ## Context
 
-- pans-genetic-variant-pathway-analysis: First analyst run. Interpreted all pipeline outputs (enrichment, PPI, neuroinflammation xref, mTOR convergence).
-- Registered project in database (status: analysis). Wrote comprehensive journal entry with findings.
-- **Key finding:** Lectin complement pathway (MBL2/MASP1/MASP2) is dominant enrichment signal (FDR=1.1e-5). 37 significant terms from 719 tested.
-- **Second axis:** TREX1/SAMHD1 cGAS-STING pair — cytosolic DNA sensing enrichment (FDR=0.027).
-- **Third axis:** DDR/NER via FANCD2/UVSSA/USP45/EP300 (FDR=0.006).
-- **Negative results:** Neuroinflammation xref failed (0/22 genes detected — species mapping issue). mTOR convergence: 0 connections.
-- **Pipeline bug:** analysis_summary.json reports 0 significant terms; actual count is 37. Task #135 for developer.
-- Created 6 tasks: #133 (RD: lectin complement, P5), #134 (RD: cGAS-STING, P4), #135 (dev: summary bug, P3), #136 (dev: ortholog fix, P3), #137 (analyst: re-run xref, P3), #138 (analyst: sensitivity analysis, P2).
-- No prior analyst tasks existed for this project; I self-initiated interpretation of existing pipeline outputs.
-- Next: await developer fixes for ortholog mapping (#136) and summary bug (#135), then re-run neuroinflammation xref (#137) and sensitivity analysis (#138).
+- pans-genetic-variant-pathway-analysis: Completed full interpretation of all pipeline outputs. Wrote 4 journal entries (#1632-#1635).
+- **Task #1001 (done):** Pathway enrichment: 37 significant terms (FDR<0.05) from 719 tested. Dominant signal: lectin complement (MBL2/MASP1/MASP2, FDR=1.1e-5). Novel: DDR/NER enrichment (FDR=5.8e-3). 17/22 genes contribute to enrichment. Success criteria met (≥3 pathways, ≥1 novel).
+- **Task #1002 (blocked):** Neuroinflammation xref 0/22 genes detected. Root cause: GEOparse extracts Affymetrix probe IDs (TC-prefix) not gene symbols. Developer task #1115 created for GPL annotation mapping fix.
+- **Task #1003 (done):** PPI network: 8 edges, 5 connected components match curated pathway axes. Lectin triad (0.986-0.999 confidence), TREX1-SAMHD1 (0.921), FANCD2-RAD54L, PRKN-POLG, EP300 bridge. 10 isolated nodes.
+- **Task #1004 (done):** mTOR: genuine negative (0/0). Rare variant PANS ≠ mTOR mechanism. Synthesis: 3-axis model (lectin complement + DDR/cGAS-STING interferonopathy + mitochondrial). Novel finding: PANS–interferonopathy link via TREX1/SAMHD1.
+- Created tasks: #1115 (developer: probe-to-gene fix, P5), #1116 (RD: DDR-interferonopathy evaluation, P5), #1117 (RD: mTOR null/precision medicine, P4).
+- Updated project findings_content with full synthesis.
+- analysis_summary.json bug still present (reports 0 significant terms; actual: 37).
+- Next: await developer fix #1115 for probe-to-gene mapping, then re-run neuroinflammation xref (task #1002). Sensitivity analysis still pending.
