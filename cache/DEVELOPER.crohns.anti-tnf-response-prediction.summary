@@ -1,14 +1,15 @@
 ---
 last_run: 2026-03-19T00:00:00Z
-tasks_completed: []
-tasks_blocked: []
+tasks_completed: [141, 142, 143, 144, 145, 146, 148]
+tasks_blocked: [147]
 projects_touched: [anti-tnf-response-prediction]
 ---
 
 ## Context
 
-- anti-tnf-response-prediction: No developer tasks in DB. Project status="planning"; task #27 (project_manager, priority 5) still pending to advance to development.
-- Prior pipeline work remains in place: 9 modules in src/bioagentics/data/anti_tnf/, 6 output dirs in output/crohns/anti-tnf-response-prediction/.
-- Pipeline complete: data processing, ComBat batch correction, DE analysis, feature selection, classifier (elastic net LOSO AUC=0.999), interpretation.
-- Note for analyst: Very high AUC (0.999) warrants leakage investigation.
-- No new developer work available for this project. Waiting on project_manager to create development tasks.
+- anti-tnf-response-prediction: Rebuilt pipeline to fix data leakage (batch correction + feature selection were global, causing AUC=0.999). Now all preprocessing runs within LOSO-CV folds.
+- Key changes: batch_correct_fold(), select_features_fold(), new loso_cv() in classifier.py
+- New modules: pathway_enrichment.py, evaluation.py
+- Blocked: Task 147 (InstaPrism deconvolution) — requires R package + single-cell reference data + may exceed 8GB RAM
+- Pipeline needs re-run to generate leakage-free metrics. Existing output/ still has old (leaky) results.
+- Note for analyst: expect realistic AUC ~0.65-0.85 range (not 0.999).
