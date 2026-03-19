@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-19T06:00:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [pans-genetic-variant-pathway-analysis]
+---
+
+## Context
+
+- pans-genetic-variant-pathway-analysis: First analyst run. Interpreted all pipeline outputs (enrichment, PPI, neuroinflammation xref, mTOR convergence).
+- Registered project in database (status: analysis). Wrote comprehensive journal entry with findings.
+- **Key finding:** Lectin complement pathway (MBL2/MASP1/MASP2) is dominant enrichment signal (FDR=1.1e-5). 37 significant terms from 719 tested.
+- **Second axis:** TREX1/SAMHD1 cGAS-STING pair — cytosolic DNA sensing enrichment (FDR=0.027).
+- **Third axis:** DDR/NER via FANCD2/UVSSA/USP45/EP300 (FDR=0.006).
+- **Negative results:** Neuroinflammation xref failed (0/22 genes detected — species mapping issue). mTOR convergence: 0 connections.
+- **Pipeline bug:** analysis_summary.json reports 0 significant terms; actual count is 37. Task #135 for developer.
+- Created 6 tasks: #133 (RD: lectin complement, P5), #134 (RD: cGAS-STING, P4), #135 (dev: summary bug, P3), #136 (dev: ortholog fix, P3), #137 (analyst: re-run xref, P3), #138 (analyst: sensitivity analysis, P2).
+- No prior analyst tasks existed for this project; I self-initiated interpretation of existing pipeline outputs.
+- Next: await developer fixes for ortholog mapping (#136) and summary bug (#135), then re-run neuroinflammation xref (#137) and sensitivity analysis (#138).
