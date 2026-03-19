@@ -113,7 +113,7 @@ def clear_all_presence():
                 username = agent["username"]
                 division = agent.get("division") or None
                 project = agent.get("project") or None
-                label = f"{username}/{project}" if project else username
+                label = f"{username}/{division}/{project}" if project else f"{username}/{division}"
                 log.info("cleanup: %s was stuck as 'running', setting idle", label)
                 set_presence(username, "idle", project, division)
             journal(
@@ -198,7 +198,7 @@ def clear_stale_presences():
             username = agent["username"]
             division = agent.get("division") or None
             project = agent.get("project") or None
-            label = f"{username}/{project}" if project else username
+            label = f"{username}/{division}/{project}" if project else f"{username}/{division}"
             log.warning("STALE: %s running for %ds — resetting to idle", label, int(age))
             set_presence(username, "idle", project, division)
             journal(
@@ -280,7 +280,7 @@ def _advance_projects(from_status: str, to_status: str):
 
         patch_resp = api("PATCH", f"/projects/{name}", json={"status": to_status})
         if patch_resp and patch_resp.ok:
-            log.info("ADVANCE: %s %s → %s (no active tasks)", name, from_status, to_status)
+            log.info("ADVANCE: %s/%s %s → %s (no active tasks)", div, name, from_status, to_status)
             journal(
                 f"auto-advanced from {from_status} to {to_status} — "
                 "no pending/in_progress tasks remain",
@@ -288,7 +288,7 @@ def _advance_projects(from_status: str, to_status: str):
                 div,
             )
         else:
-            log.warning("failed to advance %s to %s", name, to_status)
+            log.warning("failed to advance %s/%s to %s", div, name, to_status)
 
 
 def _project_has_no_tasks(name: str, division: str | None = None) -> bool:
@@ -326,7 +326,7 @@ def check_planning_projects():
         if _has_active_task_for("project_manager", name, div):
             continue
 
-        log.info("STUCK PLANNING: %s — creating project_manager task", name)
+        log.info("STUCK PLANNING: %s/%s — creating project_manager task", div, name)
         api(
             "POST",
             "/tasks",
@@ -371,7 +371,7 @@ def check_orphaned_pipeline_projects():
             if not _project_has_no_tasks(name, div) or _project_is_idle(name, div):
                 continue
             # Project is in an active stage but has no tasks at all
-            log.warning("ORPHANED: %s in '%s' with no tasks", name, stage)
+            log.warning("ORPHANED: %s/%s in '%s' with no tasks", div, name, stage)
             journal(
                 f"orphaned project: status is '{stage}' but no tasks exist — "
                 f"expected {expected_agent} tasks. May need project_manager intervention.",
@@ -603,7 +603,7 @@ def build_agent_command(config: AgentConfig, project: str | None, division: str 
 def run_agent(config: AgentConfig, project: str | None = None) -> int:
     """Invoke an agent with retry logic, managing its presence lifecycle."""
     division = config.division
-    label = f"{config.role}" + (f"/{project}" if project else "")
+    label = f"{config.role}/{division}" + (f"/{project}" if project else "")
     username = config.role.lower()
 
     attempt = 0
@@ -911,7 +911,7 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
         for config, proj in work_queue:
             if _is_stopping():
                 break
-            label = f"{config.role}" + (f"/{proj}" if proj else "")
+            label = f"{config.role}/{config.division}" + (f"/{proj}" if proj else "")
             role = config.role.lower()
 
             if proj:
