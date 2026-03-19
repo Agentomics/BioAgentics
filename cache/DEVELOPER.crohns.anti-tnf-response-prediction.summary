@@ -7,9 +7,8 @@ projects_touched: [anti-tnf-response-prediction]
 
 ## Context
 
-- anti-tnf-response-prediction: No developer tasks in DB. Project status="planning" in DB; task #27 (project_manager) pending to advance to development.
-- All prior development work (from earlier task IDs 478-483, now absent from rebuilt DB) remains in place: 9 modules in src/bioagentics/data/anti_tnf/, 6 output dirs in output/crohns/anti-tnf-response-prediction/.
+- anti-tnf-response-prediction: No developer tasks in DB. Project status="planning"; task #27 (project_manager, priority 5) still pending to advance to development.
+- Prior pipeline work remains in place: 9 modules in src/bioagentics/data/anti_tnf/, 6 output dirs in output/crohns/anti-tnf-response-prediction/.
 - Pipeline complete: data processing, ComBat batch correction, DE analysis, feature selection, classifier (elastic net LOSO AUC=0.999), interpretation.
 - Note for analyst: Very high AUC (0.999) warrants leakage investigation.
-- API not reachable this run; queried db.sqlite directly.
-- No new developer work available for this project.
+- No new developer work available for this project. Waiting on project_manager to create development tasks.
