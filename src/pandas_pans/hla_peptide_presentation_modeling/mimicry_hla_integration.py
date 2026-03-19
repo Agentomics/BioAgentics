@@ -136,9 +136,9 @@ def compute_overlap(
 
     table = [[a, b], [c, d]]
     try:
-        result = scipy_stats.fisher_exact(table)
-        odds_ratio = float(result.statistic)
-        p_value = float(result.pvalue)
+        fe_result = scipy_stats.fisher_exact(table)
+        odds_ratio = float(fe_result[0])  # type: ignore[arg-type]
+        p_value = float(fe_result[1])  # type: ignore[arg-type]
     except ValueError:
         odds_ratio, p_value = float("nan"), 1.0
 
