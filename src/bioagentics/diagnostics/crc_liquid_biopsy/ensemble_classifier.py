@@ -115,6 +115,9 @@ def load_panel_features(
     X_df = X_df.loc[valid]
     y = y[valid]
 
+    if X_df.empty:
+        raise ValueError("No samples remaining after NaN filtering — check input data quality")
+
     logger.info("Feature matrix: %d samples x %d features, %d CRC, %d control",
                 len(X_df), X_df.shape[1], y.sum(), (1 - y).sum())
     return X_df, y, feat_names
