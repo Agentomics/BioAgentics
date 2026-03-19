@@ -1,0 +1,8 @@
+drug_a,drug_b,clinical_usage,evidence,pathways_a,pathways_b,targets_a,targets_b,classes_a,classes_b,n_pathways_union,adjusted_score,combo_score,ddi_severity,covered_pathways,found_in_screening
+ARIPIPRAZOLE,GUANFACINE,First-line combination: D2 partial agonist + alpha-2 agonist,Both FDA-indicated for TS; complementary mechanisms,0,0,,,,,,0.0,0.0,,,False
+RISPERIDONE,CLONIDINE,Common combination: atypical antipsychotic + alpha-2 agonist,Widely used in pediatric TS management,4,3,ADRA2A;CHRM1;DRD1;DRD3;HTR2A;HTR2C,ADRA2A,adrenergic;cholinergic;dopamine;serotonin,adrenergic,4,0.426,0.5568,minor,chemical synaptic transmission;modulation of synaptic transmission;neuronal system;dopaminergic synapse,True
+HALOPERIDOL,CLONIDINE,Traditional combination: typical antipsychotic + alpha-2 agonist,Historical first-line before atypicals,4,3,DRD1;DRD2;DRD3;DRD4;HTR2A;HTR2C,ADRA2A,dopamine;serotonin,adrenergic,4,0.2353,0.5172,unknown,chemical synaptic transmission;modulation of synaptic transmission;neuronal system;dopaminergic synapse,True
+ARIPIPRAZOLE,CLONIDINE,D2 partial agonist + alpha-2 agonist,Alternative first-line combination,0,3,,ADRA2A,,adrenergic,,0.0,0.0,,,False
+ECOPIPAM,GUANFACINE,Novel D1 antagonist + alpha-2 agonist,Emerging combination as ecopipam gains approval,4,0,DRD1,,dopamine,,,0.0,0.0,,,False
+RISPERIDONE,GUANFACINE,Atypical antipsychotic + alpha-2 agonist,Common in treatment-resistant TS,4,0,ADRA2A;CHRM1;DRD1;DRD3;HTR2A;HTR2C,,adrenergic;cholinergic;dopamine;serotonin,,,0.0,0.0,,,False
+PIMOZIDE,CLONIDINE,Classical D2 blocker + alpha-2 agonist,Historical combination; pimozide now less used,0,3,,ADRA2A,,adrenergic,,0.0,0.0,,,False
