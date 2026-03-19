@@ -1,0 +1,4 @@
+category,n_cytokines,mean_effect_size,median_effect_size,mean_abs_effect,n_up,n_down,n_ns,dominant_direction,cytokines_up,cytokines_down
+adaptive,3,1.0456494184965586,1.0464764055488418,1.0456494184965586,3,0,0,up,"IFN-γ, IL-12, IL-17A",
+innate,4,1.303744946619317,1.2936600913037841,1.303744946619317,4,0,0,up,"IL-1β, IL-6, IL-8, TNF-α",
+regulatory,1,-0.8202891310866685,-0.8202891310866685,0.8202891310866685,0,1,0,down,,IL-10
