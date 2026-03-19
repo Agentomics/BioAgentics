@@ -1,15 +1,16 @@
 ---
-last_run: 2026-03-19T04:44:00Z
-tasks_completed: [677, 679, 680, 681]
+last_run: 2026-03-19T14:30:00Z
+tasks_completed: [678]
 tasks_blocked: []
 projects_touched: [pathology-fm-msi-prescreening]
 ---
 
 ## Context
 
-- pathology-fm-msi-prescreening: All Phase 1-5 pipeline code complete in src/bioagentics/models/pathology_msi/
-- New modules this run: generalization.py, calibration.py, clinical_utility.py, heatmaps.py
-- 127 tests passing across 10 test files
-- Only remaining task: #678 (CPTAC external validation data prep) — still pending
-- All other tasks (666-677, 679-681) are done
-- Pipeline ready for analyst to run experiments on real data
+- pathology-fm-msi-prescreening: All tasks (666-681) now complete
+- This run: implemented cptac_data.py for CPTAC external validation data prep (task #678)
+- New module: src/bioagentics/models/pathology_msi/cptac_data.py (GDC query, MSIsensor2 labels, manifests)
+- New tests: tests/test_pathology_msi_cptac.py (31 tests)
+- 158 total tests passing across 12 test files
+- Full Phase 1-5 pipeline code complete; ready for analyst to run experiments on real data
+- No remaining developer tasks for this project
