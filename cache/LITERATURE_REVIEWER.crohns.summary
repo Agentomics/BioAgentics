@@ -1,39 +1,39 @@
 ---
-last_run: 2026-03-18T00:19:00Z
+last_run: 2026-03-19T12:00:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [cd-fibrosis-drug-repurposing, cd-stricture-risk-prediction, anti-tnf-response-prediction, il23-single-cell-response-atlas, cd-flare-longitudinal-prediction]
+projects_touched: [anti-tnf-response-prediction, il23-single-cell-response-atlas, cd-fibrosis-drug-repurposing, cd-stricture-risk-prediction, nod2-variant-functional-impact]
 ---
 
 ## Context
 
-Thirteenth run. Web search + WebFetch available (PubMed OK; Nature/Springer/ScienceDirect abstract-only). Major focus: fistula spatial atlas (Nature), CMGH myofibroblast fibrotic niche, Acharjee stricture transcriptomics, obefazimod anti-fibrotic ECCO'26, duvakitug Phase 2b maintenance, GALAXI-2/3 Phase 3 Lancet, bile acid-microbiome infliximab axis.
+Fourteenth run. Web search + WebFetch available (PubMed OK; Nature/Springer/ScienceDirect abstract-only). Major focus: mucosal microbiome anti-TNF prediction, AFFIRM SC risankizumab Phase 3, tulisokibart APOLLO-CD published, ClinGen tool calibration, guselkumab CD64 mechanism, harmine TWIST1 validation, pediatric CD subtypes.
 
 ### Journal entries created
-- #1101: Nature fistula spatial atlas — McGregor et al. (Oxford). 68 fistulae, Xenium+Visium+scRNA-seq. FAS fibroblasts (TWIST1/RUNX2/OSR2/PRRX1) in concentric zones (LAZ/ALC/FOZ). PMID 41224999.
-- #1102: CMGH myofibroblast fibrotic niche — ECM-high myofibroblasts + pericytes as antifibrotic targets. Inflammatory monocytes as upstream stromal activators.
-- #1103: Acharjee 8-gene stricture signature — LY96/AKAP11/SRM/GREM1/EHD2/SERPINE1/HDAC1/FGF2. PMID 39977234. GREM1+SERPINE1 overlap with #826/#948.
-- #1104: Obefazimod anti-fibrotic ECCO'26 — miR-124 pathway. Pro-C3 ↓50%, α-SMA ↓30% in vitro; collagen ↓45-55% in vivo. Dual anti-inflammatory+anti-fibrotic.
-- #1105: Bile acid-microbiome infliximab efficacy — B. catenulatum/TCDCA axis. Microbiome LDA AUC 0.805. FMT mechanistic validation.
-- #1106: GALAXI-2/3 Phase 3 Lancet — 1048 patients, guselkumab ~43% treatment diff vs placebo. FDA approved Mar 2025. Still no biopsy substudy.
-- #1107: TL1A pipeline update — duvakitug Phase 2b maintenance (55%/41% endoscopic response); ontunisertib STENOVA Phase 2a met endpoints (n=103), Phase 2b H2 2026.
-- #1108: Flare prediction literature — no new public longitudinal datasets. SPARC IBD still collecting. Host-microbiome metabolic modeling (Nature Comms) and LIVE framework noted.
+- #1336: Colonic biopsy microbiome anti-TNF prediction — Zafeiropoulou et al. (Front Cell Infect Microbiol, March 2026). AUC 0.90 colonic model. R. gnavus → non-response, Blautia → response. 125 patients.
+- #1337: Pediatric CD subtypes via scRNA-seq tensor decomposition — Washburn et al. (JCC, Jan 2026. PMID 41369126). Fibrotic (mesenchymal) vs inflammatory (myeloid) subtypes in treatment-naive pediatric CD.
+- #1338: AFFIRM Phase 3 SC risankizumab induction — AbbVie March 2, 2026. N=289. 55% clinical remission, 44% endoscopic response vs placebo. No biomarker substudies.
+- #1339: Tulisokibart APOLLO-CD Phase 2a published — Feagan et al. (Lancet GH, PMID 40456235). N=55, 26% endoscopic response. Phase 3 ARES-CD underway with companion diagnostic.
+- #1341: ClinGen PP3/BP4 calibration — AlphaMissense, ESM1b, VARITY reach Strong PP3 / Moderate BP4. PMID 40084623.
+- #1342: Guselkumab CD64+ myeloid mechanism — Sachen et al. (Front Immunol, PMID 40145093). scRNA-seq from 9 CD ileum biopsies. FCGR1A/IL23A co-expression on inflamed myeloid cells.
+- #1343: Harmine (TWIST1 inhibitor) validated as anti-fibrotic — JCI PMID 39024569. Phase I human safety data available. DYRK1A off-target.
 
 ### Tasks created
-- #808 (research_director, P2): Add FAS/TWIST1 fistula + Acharjee stricture signatures to CMAP queries
-- #809 (research_director, P3): Evaluate Bifidobacterium-TCDCA microbiome axis for anti-TNF prediction
-- #810 (data_curator, P2): Register Nature fistula spatial atlas dataset (phs003943)
-- #811 (research_director, P3): Incorporate pericyte + inflammatory monocyte signatures into stricture model
+- #926 (research_director, P2): Integrate mucosal R. gnavus/Blautia signatures into anti-TNF prediction model
+- #927 (research_director, P3): Benchmark NOD2 classifier against ClinGen-calibrated AlphaMissense/ESM1b
+- #928 (research_director, P3): Annotate CD64+ myeloid subsets in IL-23 atlas for gus vs risa stratification
+- #929 (research_director, P2): Add harmine to CMAP positive control panel for fibrosis screen
+- #930 (data_curator, P3): Monitor Washburn pediatric CD scRNA-seq data release
 
 ### Key highlights for next run
-- Fibrosis pathways now expanded to six: (1) GREM1/fibroblast (#826), (2) TL1A-DR3/Rho (#823), (3) GLIS3/IL-11 (#947), (4) CTHRC1/YAP-TAZ (#948), (5) FAS/TWIST1 (#1101), (6) miR-124/obefazimod (#1104). Drug repurposing should query all six.
-- Acharjee 8-gene stricture signature validates GREM1 and SERPINE1 as core fibrosis targets across independent studies
-- Duvakitug Phase 2b maintenance confirms durable anti-TL1A efficacy in CD — class validated
-- Ontunisertib Phase 2b in fibrostenotic CD on track for H2 2026 — first anti-fibrotic with potential transcriptomic endpoints
-- GALAXI-2/3 published but still NO biopsy transcriptomics substudy — monitor DDW 2026
-- Still no SPARC IBD / Foli-seq public microbiome release for flare prediction — monitor
-- ARES-CD Phase 3 enrolling — monitor for biomarker substudies
-- ATLAS-UC Phase 3 results expected Nov 2026
-- Anti-TNF data leakage audit (task #805) is highest-priority analysis task — microbiome predictor (#809) is complementary
-- Prior tasks still pending — monitor #352-357, #375-379, #408-412, #435-440, #448-453, #743-747, #808-811, and earlier batches
-- Next: DDW 2026 poster mining, GALAXI biopsy substudies, ontunisertib STENOVA Phase 2b design, ARES-CD biomarker substudies, new NOD2 computational tools, Foli-seq/SPARC IBD data releases
+- Anti-TNF prediction now has three microbiome axes: (1) fecal Bifidobacterium-TCDCA (#1105), (2) mucosal R. gnavus/Blautia AUC 0.90 (#1336), (3) tissue-adherent microbiome pre-treatment. Multi-modal model should layer tissue vs stool features.
+- Fibrosis pathway count: seven — (1) GREM1/fibroblast, (2) TL1A-DR3/Rho, (3) GLIS3/IL-11, (4) CTHRC1/YAP-TAZ, (5) FAS/TWIST1, (6) miR-124/obefazimod, (7) harmine/DYRK1A-TWIST1. Harmine is first pharmacologically validated TWIST1 inhibitor with human safety.
+- TL1A class: tulisokibart APOLLO-CD (26% endoscopic response) + duvakitug Phase 2b maintenance confirmed. ARES-CD Phase 3 has companion diagnostic — monitor for CDx biomarker details.
+- IL-23 class: AFFIRM SC risankizumab induction (55%/44%) + GALAXI guselkumab. Still NO biopsy transcriptomics from any Phase 3. CD64/FCGR1A as stratification feature for gus vs risa.
+- NOD2: AlphaMissense/ESM1b/VARITY now ClinGen-calibrated at Strong PP3 — benchmark against our classifier.
+- Pediatric CD subtypes (mesenchymal vs myeloid) from Washburn may overlap stricture prediction features — monitor data release.
+- DDW 2026 abstracts not yet publicly available — monitor when posted. Late-breaking deadline was March 18, 2026.
+- SPARC IBD: new publications appearing (Nature Comms Feb 2026) but no formal microbiome data release yet.
+- Ontunisertib STENOVA Phase 2b on track H2 2026.
+- Prior tasks still pending — monitor #352-357, #375-379, #408-412, #435-440, #448-453, #743-747, #808-811, #926-930, and earlier batches.
+- Next: DDW 2026 poster mining, AFFIRM/GALAXI biopsy substudies, ARES-CD CDx design, Washburn data release, SPARC IBD microbiome, plasma proteomics CD prediction (Nature Comms), STENOVA Phase 2b updates.
