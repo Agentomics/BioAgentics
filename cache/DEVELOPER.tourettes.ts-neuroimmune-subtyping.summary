@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T18:51:00Z
+last_run: 2026-03-19T19:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [ts-neuroimmune-subtyping]
@@ -12,25 +12,25 @@ Project status=planning. Zero tasks in DB for ts-neuroimmune-subtyping. Waiting 
 
 ### Data Preparation Status
 
-**Autoimmune GWAS LDSC (15/16 done → T1D in progress)**
+**Autoimmune GWAS LDSC (15/16 done → T1D restarted)**
 - 15 LDSC files complete and verified
-- **T1D**: Conversion restarted with optimized chunked writer (to_csv instead of iterrows). Was at 12M/~55M rows when session ended. Process launched via `uv run python -m bioagentics.data.tourettes.neuroimmune.download_autoimmune_gwas --disease t1d`. Check for completion: look for `t1d_chiou_2021.ldsc.tsv.gz` (not .tmp) in `data/tourettes/ts-neuroimmune-subtyping/autoimmune_gwas/ldsc/`
+- **T1D**: First attempt killed (exit 143) after 4.5hrs at 44M/55M rows — cross-chunk `seen_snps` set grew to 43M entries (~3GB), caused isin() slowdown. Fixed by removing cross-chunk dedup (commit bf5b949). Restarted in background. Check completion: look for `t1d_chiou_2021.ldsc.tsv.gz` (not .tmp) in `data/tourettes/ts-neuroimmune-subtyping/autoimmune_gwas/ldsc/`
 
 **MR Instruments — COMPLETE (11/11)**
 - All 11 instrument files present and verified
 - Manifest regenerated: 146,256 total instruments
-- crp: 47,617 | il6: 152 | tnfa: 117 | lymph: 2,604 | mono: 92,701 | neut: 20 | nk: 2,463 | cd4: 150 | igg: 181 | ccl2: 85 | il17: 166
+- neut newly completed this run: 20 instruments, median F=37.0
 - Note: mono has F=nan (check if SE column was missing in source)
 
 **DICE Immune References — COMPLETE**
 
 ### Code Changes This Run
-- Added chunked reading to `extract_instruments()` in `download_mr_instruments.py` for files >500MB (200k rows/chunk, filter to p<1e-5 per chunk)
-- Replaced `iterrows()` with `to_csv()` in LDSC chunked conversion for ~100x speedup
-- Commit: 61ad2a7
+- Chunked reading in `extract_instruments()` for files >500MB (commit 61ad2a7)
+- Replaced iterrows() with to_csv() in LDSC chunked writer (commit 61ad2a7)
+- Removed cross-chunk dedup in LDSC to prevent OOM/slowdown (commit bf5b949)
 
 ### Remaining before analysis can begin
-1. Verify T1D LDSC conversion completed (check for final .ldsc.tsv.gz file)
+1. Verify T1D LDSC conversion completed
 2. Regenerate autoimmune GWAS manifest after T1D completes
 3. Acquire TSAICG GWAS summary statistics (critical blocker, external dependency)
 
