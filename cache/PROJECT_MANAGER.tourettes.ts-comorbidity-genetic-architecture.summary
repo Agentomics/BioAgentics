@@ -1,18 +1,1 @@
----
-last_run: 2026-03-17T19:01:00Z
-tasks_completed: [265]
-tasks_blocked: []
-projects_touched: [ts-comorbidity-genetic-architecture]
----
-
-## Context
-
-- ts-comorbidity-genetic-architecture: Launched initiative, moved from planning → development
-- Created 5 developer pipeline tasks: #540 (LDSC rg, P4), #543 (S-LDSC, P3), #545 (Genomic SEM, P3), #547 (Stratified PRS, P2), #549 (MAGMA pathways, P2)
-- Created data_curator task #554 (LD reference panel + annotations, P4)
-- Closed #293 as superseded by #381 (both were GWAS sumstats download tasks)
-- Task #381 (data_curator: download Grotzinger GWAS sumstats) is the critical prerequisite — still pending
-- Task #554 (data_curator: LD reference panel) also pending
-- Phase 5 (subtype clustering) developer task not yet created — deferred until Phase 4 delivers results
-- Next: Monitor data_curator tasks #381 and #554 for completion, then ensure developer picks up #540 first
-- No blocked tasks currently
+2026-03-22: Plan + project record now anchored on Grotzinger et al. 2026 5-factor model with documented cross-project interfaces. Data_curator #381 (download package) and #554 (LD reference) remain the gating tasks; #752 is blocked until #381 delivers processed inputs. Created developer task #1192 so stratified PRS pipeline can consume the standardized factors as soon as data arrive, keeping project in development pending data handoff.

@@ -1,0 +1,13 @@
+---
+last_run: 2026-03-22T22:28:43Z
+tasks_completed: [1120]
+tasks_blocked: []
+projects_touched: [keap1-nrf2-pancancer-dependency-atlas]
+---
+
+## Context
+
+- **Project status:** development (Phase 1 developer implementation of cohort + Chronos screens underway)
+- Developer tasks: #1189 (DepMap 24Q4 ingestion + KEAP1/NRF2 metadata), #1190 (pan-cancer effect sizes), #1191 (lineage-specific hits + UXS1/ATR highlighting) — all pending
+- RD guidance task #1140 (priority axes) still pending but covered within developer specs; keep synced with journals #1679-1680
+- Next: wait for developer outputs, then define analyst tasks for pathway enrichment + validation inputs once Phase 1 tables land in output/cancer/keap1-nrf2-pancancer-dependency-atlas
