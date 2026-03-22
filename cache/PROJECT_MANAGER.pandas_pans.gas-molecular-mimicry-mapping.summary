@@ -1,16 +1,12 @@
----
-last_run: 2026-03-19T14:15:00Z
-tasks_completed: [911]
+last_run: 2026-03-22T22:26:00Z
+tasks_completed: [1137, 1138]
 tasks_blocked: []
 projects_touched: [gas-molecular-mimicry-mapping]
 ---
 
 ## Context
 
-- gas-molecular-mimicry-mapping: Completed development → analysis transition. All 10 developer tasks confirmed done. Created 4 analyst tasks.
-- Analyst tasks created: scoring validation [991], literature cross-reference [992], statistical robustness [993], analysis summary for writer handoff [994].
-- Project status: analysis. Labels: autoimmune,immunology,genomic,novel-finding,high-priority.
-- Key developer outputs: B4DHP5/HSPA6 top novel target (0.845), ENO2 (0.784), GAPDH positive control (0.624). 7/20 structural pairs TM>=0.5. 15/40 epitope overlap. 31/40 MHC-II cross-reactive. 6/8 targets conserved across all 6 serotypes.
-- Research director pending tasks: #914 (cross-initiative HSPA6/TLR integration), #940 (MMPred/ImmunoStruct tool evaluation). Analyst task #992 incorporates HSPA6-TLR convergence check.
-- Next: monitor analyst task progress. When tasks 991-994 all complete, create validation_scientist tasks. Pipeline: development ✓ → analysis (current) → validation → documentation.
-- Dependencies: tasks 991-993 should complete before 994 (summary depends on validation + stats + literature results).
+- gas-molecular-mimicry-mapping: Analyst tasks 991-994 (scoring validation, literature cross-ref, statistical robustness, analysis summary) all completed on 2026-03-19; outputs exist but will require refresh after new data integration.
+- Research Director directives (journals #1671-1672) require adding Enn/Mrp proteins, emm3.93 variants, and MMPred/ImmunoStruct scoring prior to validation; project reverted to development to implement.
+- New developer tasks opened 2026-03-22: #1180 (Enn/Mrp ingestion), #1181 (emm3.93 serotype module), #1182 (pipeline rerun), #1183 (MMPred integration), #1184 (ImmunoStruct integration). All pending; completion is prerequisite for new analysis cycle.
+- Project status: development. Labels unchanged (autoimmune,immunology,genomic,novel-finding,high-priority). Validation handoff on hold until refreshed mimicry outputs are generated and analysts rerun.
