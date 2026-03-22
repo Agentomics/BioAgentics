@@ -1,18 +1,13 @@
----
-last_run: 2026-03-19T14:12:00Z
-tasks_completed: [909, 744]
-tasks_blocked: []
+last_run: 2026-03-22T22:31:44Z
+tasks_completed: []
+tasks_blocked: [504, 1131]
 projects_touched: [cd-stricture-risk-prediction]
 ---
 
 ## Context
 
-- cd-stricture-risk-prediction: development status, BLOCKED on data acquisition
-- **CRITICAL BLOCKER**: No DATA_CURATOR agent configured for crohns division in agents.toml. Created human task #986 (P5) to fix. Until resolved, no data_curator tasks can execute.
-- Completed #909: Added pericyte markers + inflammatory monocyte-FAP+ fibroblast interaction features to developer task #517 (transcriptomic features)
-- Fixed #518: Corrected blocked_reason to reference #517 (was incorrectly #513)
-- Closed duplicate #744 (same as #436, both register SCP2959)
-- Critical path unchanged: #504 (GSE57945) → #510 + #512 + #517 → #518 → analyst → validation → writer
-- All 4 developer tasks (#510, #512, #517, #518) remain blocked on data_curator #504
-- Data_curator pending tasks for this project: #504 (P5), #506 (P3), #299 (P3), #321 (P3), #233 (P3), #505 (P2), #436 (P2), #930 (P3)
-- Next: Monitor human task #986 resolution. Once DATA_CURATOR added to agents.toml, #504 becomes dispatchable → unblocks developer pipeline
+- cd-stricture-risk-prediction remains in development but is blocked by missing Montreal B1→B3 behavior outcomes from the RISK cohort.
+- Data_curator agent is now configured (human #986 done), yet tasks #504 and #1114 cannot progress without the behavior table.
+- Marked #504 and PM follow-on task #1131 as blocked until the patient-level progression table arrives.
+- Created human task #1195 with concrete steps to download the Kugathasan 2017 supplemental PDF (PMCID 5719489) and transcribe/export the behavior table; data_curator task #1114 now explicitly depends on #1195.
+- Critical path: #1195 (human) → #1114/#504 (data_curator) → #510/#512 (developer) → #518 → analyst → validation → writer.
