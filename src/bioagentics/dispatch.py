@@ -529,6 +529,18 @@ def utcnow() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def _codex_reasoning_effort(value: str) -> str:
+    """Map repo effort values onto Codex's supported reasoning effort levels."""
+    normalized = value.strip().lower()
+    if normalized in {"low", "minimal"}:
+        return "low"
+    if normalized in {"medium", "med", "normal"}:
+        return "medium"
+    if normalized in {"high", "max", "maximum", "xhigh"}:
+        return "high"
+    return "high"
+
+
 def build_agent_command(config: AgentConfig, project: str | None, division: str | None = None) -> list[str]:
     """Build the CLI command to invoke an agent."""
     role = config.role
@@ -599,10 +611,14 @@ def build_agent_command(config: AgentConfig, project: str | None, division: str 
         )
         return [
             "codex",
+            "exec",
+            "--dangerously-bypass-approvals-and-sandbox",
+            "--ephemeral",
+            "--json",
             "--model",
             config.model,
-            "--full-auto",
-            "--prompt",
+            "-c",
+            f'model_reasoning_effort="{_codex_reasoning_effort(config.effort)}"',
             prompt,
         ]
 
@@ -655,16 +671,54 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
                         continue
                     try:
                         event = json.loads(line)
-                        if event.get("type") == "result":
+                        event_type = event.get("type", "")
+                        usage = None
+                        total_cost = None
+                        num_turns = 0
+                        session_id = ""
+
+                        if event_type == "result":
                             usage = event.get("usage", {})
+                            total_cost = event.get("total_cost_usd", 0.0) or 0.0
+                            num_turns = event.get("num_turns", 0)
+                            session_id = event.get("session_id", "")
+                        elif event_type in {
+                            "item.completed",
+                            "response.completed",
+                            "turn.completed",
+                            "session.completed",
+                            "task.completed",
+                        }:
+                            response = event.get("response") or event.get("item") or {}
+                            usage = response.get("usage") or event.get("usage")
+                            total_cost = (
+                                response.get("total_cost_usd")
+                                or event.get("total_cost_usd")
+                                or 0.0
+                            )
+                            num_turns = (
+                                response.get("num_turns")
+                                or event.get("num_turns")
+                                or 0
+                            )
+                            session_id = (
+                                response.get("session_id")
+                                or event.get("session_id")
+                                or ""
+                            )
+
+                        if usage:
                             stats = RunStats(
                                 input_tokens=usage.get("input_tokens", 0),
                                 output_tokens=usage.get("output_tokens", 0),
-                                cache_read_tokens=usage.get("cache_read_input_tokens", 0),
+                                cache_read_tokens=(
+                                    usage.get("cache_read_input_tokens")
+                                    or usage.get("input_tokens_details", {}).get("cached_tokens", 0)
+                                ),
                                 cache_creation_tokens=usage.get("cache_creation_input_tokens", 0),
-                                cost_usd=event.get("total_cost_usd", 0.0) or 0.0,
-                                num_turns=event.get("num_turns", 0),
-                                session_id=event.get("session_id", ""),
+                                cost_usd=total_cost or 0.0,
+                                num_turns=num_turns,
+                                session_id=session_id,
                             )
                     except (json.JSONDecodeError, TypeError):
                         pass

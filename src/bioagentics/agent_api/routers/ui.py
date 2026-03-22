@@ -286,6 +286,71 @@ def render_task_compact(row) -> str:
 </a>"""
 
 
+KANBAN_STATUSES = [
+    ("pending", "Pending"),
+    ("in_progress", "In Progress"),
+    ("blocked", "Blocked"),
+    ("done", "Done"),
+    ("cancelled", "Cancelled"),
+]
+
+
+def render_task_board(rows, status_filter: str = "") -> str:
+    """Render tasks grouped into Kanban columns by status."""
+    rows_by_status: dict[str, list] = {status: [] for status, _ in KANBAN_STATUSES}
+    extra_statuses: list[str] = []
+    labels = {status: label for status, label in KANBAN_STATUSES}
+
+    for row in rows:
+        task_status = row._mapping["status"]
+        if task_status not in rows_by_status:
+            rows_by_status[task_status] = []
+            extra_statuses.append(task_status)
+            labels[task_status] = task_status.replace("_", " ").title()
+        rows_by_status[task_status].append(row)
+
+    column_order = [status_filter] if status_filter else [status for status, _ in KANBAN_STATUSES]
+    column_order.extend(status for status in extra_statuses if status not in column_order)
+
+    columns = []
+    for task_status in column_order:
+        bg, fg = STATUS_COLORS.get(task_status, ("bg-[#27272a]", "text-[#a1a1aa]"))
+        column_rows = rows_by_status.get(task_status, [])
+        if column_rows:
+            cards_html = "".join(render_task_card(row) for row in column_rows)
+        else:
+            cards_html = (
+                '<div class="rounded-xl border border-dashed border-[#27272a] bg-[#09090b]/70 '
+                'px-4 py-8 text-center text-sm text-[#71717a]">'
+                'No tasks in this lane'
+                '</div>'
+            )
+
+        columns.append(
+            f"""<section class="w-[320px] shrink-0 rounded-2xl border border-[#27272a] bg-[#09090b]/80 p-3">
+  <div class="flex items-center justify-between gap-3 px-1 pb-3">
+    <div class="flex items-center gap-2 min-w-0">
+      <span class="h-2.5 w-2.5 rounded-full {bg}"></span>
+      <h3 class="text-sm font-semibold text-[#fafafa] truncate">{esc(labels[task_status])}</h3>
+    </div>
+    <span class="inline-flex items-center justify-center min-w-[28px] h-7 px-2 rounded-full text-xs font-semibold {bg} {fg}">
+      {len(column_rows)}
+    </span>
+  </div>
+  <div class="flex flex-col gap-3">
+    {cards_html}
+  </div>
+</section>"""
+        )
+
+    return (
+        '<div class="overflow-x-auto pb-3">'
+        '<div class="flex items-start gap-4 min-w-max">'
+        + "".join(columns)
+        + "</div></div>"
+    )
+
+
 def render_journal_card(row) -> str:
     m = row._mapping
     project_html = ""
@@ -1148,8 +1213,11 @@ def render_tasks_tab(
     priority: str,
     sort: str,
     offset: int,
+    view: str = "board",
     division: str = "",
 ) -> str:
+    view = "cards" if view == "cards" else "board"
+
     # Fetch filter options for datalists
     usernames = sorted(
         db.execute(
@@ -1173,7 +1241,10 @@ def render_tasks_tab(
     if id_match is not None:
         row = db.execute(select(tasks).where(tasks.c.id == id_match)).first()
         if row:
-            items_html = f'<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">{render_task_card(row)}</div>'
+            if view == "board":
+                items_html = render_task_board([row], status)
+            else:
+                items_html = f'<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">{render_task_card(row)}</div>'
             total = 1
         else:
             items_html = f'<div class="flex flex-col items-center justify-center py-16 text-[#a1a1aa]">{ICONS["inbox"]}<div class="mt-3 text-sm font-medium">Task {esc(search)} not found</div></div>'
@@ -1204,11 +1275,18 @@ def render_tasks_tab(
 
         order = tasks.c.created_at.asc() if sort == "asc" else tasks.c.created_at.desc()
         total = db.execute(count_query).scalar() or 0
-        rows = db.execute(query.order_by(order).limit(PER_PAGE).offset(offset)).fetchall()
+        ordered_query = query.order_by(order)
+        if view == "board":
+            rows = db.execute(ordered_query).fetchall()
+        else:
+            rows = db.execute(ordered_query.limit(PER_PAGE).offset(offset)).fetchall()
 
         if rows:
-            cards = "".join(render_task_card(r) for r in rows)
-            items_html = f'<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">{cards}</div>'
+            if view == "board":
+                items_html = render_task_board(rows, status)
+            else:
+                cards = "".join(render_task_card(r) for r in rows)
+                items_html = f'<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">{cards}</div>'
         else:
             items_html = f'<div class="flex flex-col items-center justify-center py-16 text-[#a1a1aa]">{ICONS["inbox"]}<div class="mt-3 text-sm font-medium">No tasks</div><div class="text-xs mt-1">Create a task or adjust your filters</div></div>'
 
@@ -1235,7 +1313,38 @@ def render_tasks_tab(
     dl_projects = "".join(f'<option value="{esc(p)}">' for p in projects_list)
 
     has_filters = bool(search or username or project or status or priority)
+    board_qs = build_qs(
+        search=search,
+        username=username,
+        project=project,
+        status=status,
+        priority=priority,
+        sort=sort,
+        division=division,
+        view="board",
+    )
+    cards_qs = build_qs(
+        search=search,
+        username=username,
+        project=project,
+        status=status,
+        priority=priority,
+        sort=sort,
+        division=division,
+        view="cards",
+    )
+    board_btn_cls = (
+        "bg-[#fafafa] text-[#09090b] border-[#fafafa]"
+        if view == "board"
+        else "bg-[#09090b] text-[#a1a1aa] border-[#27272a] hover:text-[#fafafa] hover:border-[#3f3f46]"
+    )
+    cards_btn_cls = (
+        "bg-[#fafafa] text-[#09090b] border-[#fafafa]"
+        if view == "cards"
+        else "bg-[#09090b] text-[#a1a1aa] border-[#27272a] hover:text-[#fafafa] hover:border-[#3f3f46]"
+    )
     filters_html = f"""<form class="flex gap-2 mb-4 flex-wrap items-center">
+  <input type="hidden" name="view" value="{view}" />
   {_search_input("search", search, "search or #id...", path)}
   {_text_input("username", username, "agent", path, "dl-users")}
   {_text_input("project", project, "project", path, "dl-projects")}
@@ -1249,12 +1358,31 @@ def render_tasks_tab(
 <datalist id="dl-users">{dl_users}</datalist>
 <datalist id="dl-projects">{dl_projects}</datalist>"""
 
-    params = dict(search=search, username=username, project=project, status=status, priority=priority, sort=sort, division=division)
-    pager_html = render_pager("t", path, offset, total, **params)
+    params = dict(
+        search=search,
+        username=username,
+        project=project,
+        status=status,
+        priority=priority,
+        sort=sort,
+        division=division,
+        view=view,
+    )
+    pager_html = ""
+    if view == "cards":
+        pager_html = render_pager("t", path, offset, total, **params)
 
     return f"""<div class="flex items-center justify-between mb-4">
-  <h2 class="text-lg font-semibold">Tasks</h2>
-  <span class="text-xs text-[#52525b] tabular-nums">{total} {"item" if total == 1 else "items"}</span>
+  <div class="flex items-center gap-3">
+    <h2 class="text-lg font-semibold">Tasks</h2>
+    <span class="text-xs text-[#52525b] tabular-nums">{total} {"item" if total == 1 else "items"}</span>
+  </div>
+  <div class="inline-flex items-center gap-1 rounded-xl border border-[#27272a] bg-[#09090b] p-1">
+    <a class="px-3 py-1.5 rounded-lg text-sm font-medium border no-underline transition-colors cursor-pointer {board_btn_cls}"
+       hx-get="{path}?{board_qs}" hx-target="#tab-content" hx-push-url="true">Board</a>
+    <a class="px-3 py-1.5 rounded-lg text-sm font-medium border no-underline transition-colors cursor-pointer {cards_btn_cls}"
+       hx-get="{path}?{cards_qs}" hx-target="#tab-content" hx-push-url="true">Cards</a>
+  </div>
 </div>
 {filters_html}
 {items_html}
@@ -2521,11 +2649,12 @@ def ui_tasks_page(
     status: str = Query(default=""),
     priority: str = Query(default=""),
     division: str = Query(default=""),
+    view: str = Query(default="board"),
     sort: str = Query(default="desc"),
     offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
 ):
-    content = render_tasks_tab(db, search, username, project, status, priority, sort, offset, division)
+    content = render_tasks_tab(db, search, username, project, status, priority, sort, offset, view, division)
     if is_htmx(request):
         return HTMLResponse(content + render_sidebar_nav_oob("tasks", db))
     stats_html = render_stats_html(db)
