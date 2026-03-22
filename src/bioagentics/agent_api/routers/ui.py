@@ -23,6 +23,7 @@ from bioagentics.config import REPO_ROOT
 router = APIRouter(tags=["ui"])
 
 PER_PAGE = 30
+BOARD_COL_LIMIT = 20
 
 DIV_COLORS = {
     "cancer": ("bg-[#172554]", "text-[#3b82f6]"),
@@ -317,7 +318,18 @@ def render_task_board(rows, status_filter: str = "") -> str:
         bg, fg = STATUS_COLORS.get(task_status, ("bg-[#27272a]", "text-[#a1a1aa]"))
         column_rows = rows_by_status.get(task_status, [])
         if column_rows:
-            cards_html = "".join(render_task_card(row) for row in column_rows)
+            visible = column_rows[:BOARD_COL_LIMIT]
+            overflow = len(column_rows) - BOARD_COL_LIMIT
+            cards_html = "".join(render_task_card(row) for row in visible)
+            if overflow > 0:
+                more_qs = build_qs(status=task_status, view="cards")
+                cards_html += (
+                    f'<a class="block rounded-xl border border-dashed border-[#27272a] bg-[#09090b]/70 '
+                    f'px-4 py-3 text-center text-sm text-[#3b82f6] no-underline hover:border-[#3b82f6] '
+                    f'hover:bg-[#172554]/30 transition-colors cursor-pointer" '
+                    f'hx-get="/ui/tasks?{more_qs}" hx-target="#tab-content" hx-push-url="true">'
+                    f'View all {len(column_rows)} &rarr;</a>'
+                )
         else:
             cards_html = (
                 '<div class="rounded-xl border border-dashed border-[#27272a] bg-[#09090b]/70 '
