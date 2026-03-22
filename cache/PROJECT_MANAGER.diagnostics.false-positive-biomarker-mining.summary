@@ -1,16 +1,13 @@
 ---
-last_run: 2026-03-19T14:05:00Z
-tasks_completed: [943]
+last_run: 2026-03-22T22:26:39Z
+tasks_completed: [943, 1135]
 tasks_blocked: []
 projects_touched: [false-positive-biomarker-mining]
 ---
 
 ## Context
 
-- false-positive-biomarker-mining: Kicked off initiative. Advanced from planning → development.
-- Created 7 developer tasks (974-980): extraction framework, profiling module, clustering pipeline, longitudinal outcome tracker, sepsis adapter, CRC adapter, directory structure setup.
-- Task priority: dir setup (980, p4) and extraction framework (974, p4) and longitudinal tracker (977, p4) are highest priority.
-- Dependencies: ehr-sepsis-early-warning is in development (no FP outputs yet, adapter uses stubs). crc-liquid-biopsy-panel is in analysis (may have usable outputs for CRC adapter).
-- Plan content and plain_summary stored in project record.
-- Next: monitor developer task completion, then create analyst tasks for Phase 2 (longitudinal validation) and Phase 3 (biomarker signature extraction).
-- Watch for: ehr-sepsis advancing to analysis (would unblock real FP data for sepsis adapter).
+- false-positive-biomarker-mining: Verified developer tasks 974-980 are complete and advanced project status to analysis.
+- Created analyst tasks 1185 (UK Biobank radiomics methodology note), 1186 (CRC FP extraction at 90/95/99% spec), 1187 (CRC FP profiling + clustering), and 1188 (COMPOSER demo sepsis FP + longitudinal pilot) to kick off Phase 2-3.
+- Dependencies: ehr-sepsis-early-warning still needs to produce engineered_features.parquet, sepsis_labels.parquet, and ensemble prediction exports before we can run MIMIC longitudinal analysis; CRC adapter currently reconstructs samples from stage-level counts until real per-sample predictions are available.
+- Next: monitor analyst execution of CRC and COMPOSER tasks, then plan validation handoff once real sepsis outputs arrive.

@@ -1,17 +1,15 @@
 ---
-last_run: 2026-03-19T18:41:00Z
-tasks_completed: [1053]
+last_run: 2026-03-22T22:26:40Z
+tasks_completed: [1053, 1134]
 tasks_blocked: []
 projects_touched: [rare-disease-phenotype-matcher]
 ---
 
 ## Context
 
-- rare-disease-phenotype-matcher: status=development. Phase 1 (879-883) and Phase 2 (884-888) ALL done. Eval harness (890) and patient simulator (889) done.
-- Phase 3 remaining: tasks 892 (LIRICAL benchmark, priority 4) and 893 (ablation study, priority 4) — both PENDING for developer.
-- Updated 892 description: phenopacket-store (9,588 cases) supersedes original LIRICAL 384. Updated 893: simulated patients ready.
-- Data curator task 891 blocked on OMIM genemap2 only (human task 1080). Not blocking Phase 3.
-- PM task 1053 (PhenoBrain Phase 5+ planning) marked done — decision per RD journal #1518.
-- RD tasks 1069 (DeepRare hybrid eval) pending — not my task.
-- Cannot advance to analysis: developer tasks 892, 893 not done yet.
-- Next: monitor developer on 892 + 893. When both done, advance project to analysis, create analyst tasks for Phase 4 (disease-group stratification, failure mode analysis, baseline comparison).
+- rare-disease-phenotype-matcher: still in development; developer must finish LIRICAL benchmark (892) + ablation runner (893) before moving to analysis.
+- Task 892 now references phenopacket-store (9,588 cases) and embeds DeepRare Recall@1 (64.4% HPO-only, 70.6% multimodal) + PhenoBrain Top-10 recall (0.654 / 0.813) as required comparators.
+- Task 893 ablation description updated with the same DeepRare/PhenoBrain reference lines so outputs contextualize our gains for later analysis docs.
+- Developer tooling (patient simulator 889, eval harness 890) already done; waiting on implementation only.
+- Data curator task 891 remains blocked on OMIM genemap2 import completion notes, but no longer blocking Phase 3 since human task 1080 supplied the file.
+- Next actions: monitor developer progress on 892/893; once both marked done, shift project status to analysis and create Phase 4 analyst tasks (disease-group stratification, failure modes, baseline comparison).
