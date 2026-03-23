@@ -201,7 +201,8 @@ def build_proteome_manifest(proteome_dir: Path) -> dict:
         if not fasta_path.exists():
             continue
 
-        protein_count = sum(1 for line in open(fasta_path) if line.startswith(">"))
+        with open(fasta_path) as fh:
+            protein_count = sum(1 for line in fh if line.startswith(">"))
         vf_detected = []
         with open(fasta_path) as f:
             text = f.read()
