@@ -1,28 +1,26 @@
 ---
-last_run: 2026-03-19T19:00:00Z
-tasks_completed: [611, 612, 613, 614, 617, 618, 619]
+last_run: 2026-03-22T19:26:00Z
+tasks_completed: []
 tasks_blocked: [615, 616]
 projects_touched: [hla-peptide-presentation-modeling]
 ---
 
 ## Context
 
-- hla-peptide-presentation-modeling: All 6 pipeline phases implemented and committed
-  - Phase 1: hla_allele_panel.py — 9 HLA alleles (3 susceptibility, 2 protective, 2 control, 2 exploratory MHC-I)
-  - Phase 2: gas_proteome_digest.py — streaming FASTA digestion for 6 GAS serotypes
-  - Phase 3: iedb_binding_prediction.py — **REFACTORED this run** for production-scale:
-    - Streaming writes to per-serotype-allele TSV files (memory-safe for 8GB)
-    - Retry with exponential backoff for API failures
-    - Resume capability (skips completed allele+serotype combos)
-    - merge_serotype_predictions() combines per-serotype files
-    - run_all_serotypes() orchestrates full multi-serotype pipeline
+- hla-peptide-presentation-modeling: All 6 pipeline phases implemented
+  - Phase 1: hla_allele_panel.py — 9 HLA alleles
+  - Phase 2: gas_proteome_digest.py — streaming FASTA digestion for 6 GAS serotypes + Enn/Mrp supplement
+  - Phase 3: iedb_binding_prediction.py — production-scale with streaming writes, retry, resume
   - Phase 4: differential_presentation.py — fold-change analysis, Fisher exact enrichment
-  - Phase 5: mimicry_hla_integration.py — cross-references mimicry hits, builds network. Still 0 overlap (needs full IEDB run)
+  - Phase 5: mimicry_hla_integration.py — cross-references mimicry hits, builds network
   - Phase 6: population_risk.py — AFND frequencies, OR-weighted risk scoring
-- This run: refactored Phase 3 for production scale, added 4 new tests (17 total, all passing)
-- Blocked tasks: 615 (AlphaFold not installed), 616 (GROMACS not installed) — need human to provision compute
-- MCP API server unreachable again — task status updates not persisted. Next run should retry
+- This run: integrated Enn/Mrp M-like proteins into peptide digest pipeline
+  - Added Mrp/Enn/M-related/M-like to VIRULENCE_FACTOR_KEYWORDS
+  - run_digest() now auto-digests enn_mrp_supplement.fasta if present
+  - 8 new tests (25 total, all passing)
+- Blocked tasks: 615 (AlphaFold not installed), 616 (GROMACS not installed)
+- MCP API server unreachable — task status updates not persisted
 - Next priorities:
   1. Run full IEDB prediction when API is accessible (run_all_serotypes())
-  2. Re-run Phase 4+5 after full predictions to get meaningful mimicry overlap
+  2. Re-run Phase 4+5 after full predictions for meaningful mimicry overlap
   3. Tasks 615/616 still blocked on compute provisioning
