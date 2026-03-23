@@ -34,7 +34,7 @@ class EnrichmentResult:
     compartment: str  # "striosome" or "matrix"
     n_genes_tested: int
     n_genes_in_compartment: int
-    odds_ratio: float
+    effect_size: float  # odds ratio (fisher) or z-score (permutation)
     p_value: float
     q_value: float  # FDR-corrected, filled in after multiple testing
     direction: str  # "enriched" or "depleted"
@@ -96,7 +96,7 @@ def fisher_enrichment(
         compartment="striosome",
         n_genes_tested=len(scored_test),
         n_genes_in_compartment=test_s,
-        odds_ratio=or_s,
+        effect_size=or_s,
         p_value=p_s,
         q_value=np.nan,
         direction="enriched" if or_s > 1 else "depleted",
@@ -109,7 +109,7 @@ def fisher_enrichment(
         compartment="matrix",
         n_genes_tested=len(scored_test),
         n_genes_in_compartment=test_m,
-        odds_ratio=or_m,
+        effect_size=or_m,
         p_value=p_m,
         q_value=np.nan,
         direction="enriched" if or_m > 1 else "depleted",
@@ -174,7 +174,7 @@ def permutation_enrichment(
         compartment="striosome",
         n_genes_tested=n_test,
         n_genes_in_compartment=int(np.sum(test_scores > 0)),
-        odds_ratio=z,  # z-score as effect size for permutation
+        effect_size=z,
         p_value=p_strio,
         q_value=np.nan,
         direction="enriched" if observed_mean > 0 else "depleted",
@@ -187,7 +187,7 @@ def permutation_enrichment(
         compartment="matrix",
         n_genes_tested=n_test,
         n_genes_in_compartment=int(np.sum(test_scores < 0)),
-        odds_ratio=-z,
+        effect_size=-z,
         p_value=p_matrix,
         q_value=np.nan,
         direction="enriched" if observed_mean < 0 else "depleted",
@@ -274,7 +274,7 @@ def results_to_rows(results: list[EnrichmentResult]) -> list[dict]:
             "compartment": r.compartment,
             "n_genes_tested": r.n_genes_tested,
             "n_genes_in_compartment": r.n_genes_in_compartment,
-            "odds_ratio": f"{r.odds_ratio:.4f}",
+            "effect_size": f"{r.effect_size:.4f}",
             "p_value": f"{r.p_value:.6f}",
             "q_value": f"{r.q_value:.6f}",
             "direction": r.direction,
@@ -295,7 +295,7 @@ def _empty_results(
             compartment="striosome",
             n_genes_tested=0,
             n_genes_in_compartment=0,
-            odds_ratio=np.nan,
+            effect_size=np.nan,
             p_value=1.0,
             q_value=1.0,
             direction="none",
@@ -307,7 +307,7 @@ def _empty_results(
             compartment="matrix",
             n_genes_tested=0,
             n_genes_in_compartment=0,
-            odds_ratio=np.nan,
+            effect_size=np.nan,
             p_value=1.0,
             q_value=1.0,
             direction="none",
