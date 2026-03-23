@@ -1,9 +1,9 @@
 cancer_type,depmap_lineage,cdk6_d,eligible_patients,cdkn2a_del_pct,active_trials,n_trials,gap_type
 BLCA,Bladder/Urinary Tract,-1.4599,14142,20.0,none,0,major_gap
-DLBC,Lymphoid,-0.0517,7658,10.0,none,0,major_gap
 COADREAD,Bowel,-0.4534,2903,2.0,none,0,major_gap
 PRAD,Prostate,-0.4534,2738,1.0,none,0,major_gap
 ESCA,Esophagus/Stomach,-0.4382,2549,12.0,none,0,major_gap
+DLBC,Lymphoid,-0.0517,2090,10.0,none,0,major_gap
 MESO,Pleura,-0.4534,1975,72.0,none,0,major_gap
 LIHC,Liver,-0.4534,1957,5.0,none,0,major_gap
 LAML,Myeloid,-0.16,1548,8.0,none,0,major_gap

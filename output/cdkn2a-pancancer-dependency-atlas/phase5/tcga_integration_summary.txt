@@ -2,8 +2,8 @@
 CDKN2A Pan-Cancer Dependency Atlas - Phase 5: TCGA Clinical Integration
 ============================================================
 
-Estimated total US CDKN2A-deleted patients/year: ~125,815
-Estimated CDK4/6i-eligible (CDKN2A-del/RB1-intact): ~117,959
+Estimated total US CDKN2A-deleted patients/year: ~119,953
+Estimated CDK4/6i-eligible (CDKN2A-del/RB1-intact): ~112,391
 
 CDKN2A DELETION PREVALENCE
 --------------------------------------------------
@@ -18,7 +18,7 @@ CDKN2A DELETION PREVALENCE
   LGG: 12% del, ~1,368 pts/yr, eligible: ~1,299
   ESCA: 12% del, ~2,684 pts/yr, eligible: ~2,549
   SARC: 12% del, ~1,630 pts/yr, eligible: ~1,467
-  DLBC: 10% del, ~8,062 pts/yr, eligible: ~7,658
+  DLBC: 10% del, ~2,200 pts/yr, eligible: ~2,090
   CHOL: 10% del, ~1,222 pts/yr, eligible: ~1,160
   LUAD: 8% del, ~4,702 pts/yr, eligible: ~4,466
   LAML: 8% del, ~1,630 pts/yr, eligible: ~1,548
@@ -65,10 +65,10 @@ MESOTHELIOMA DEEP-DIVE
 TRIAL GAP ANALYSIS (14 underexplored types)
 --------------------------------------------------
   [major_gap] BLCA: ~14,142 eligible pts/yr, 20% del rate, no CDK4/6i trials
-  [major_gap] DLBC: ~7,658 eligible pts/yr, 10% del rate, no CDK4/6i trials
   [major_gap] COADREAD: ~2,903 eligible pts/yr, 2% del rate, no CDK4/6i trials
   [major_gap] PRAD: ~2,738 eligible pts/yr, 1% del rate, no CDK4/6i trials
   [major_gap] ESCA: ~2,549 eligible pts/yr, 12% del rate, no CDK4/6i trials
+  [major_gap] DLBC: ~2,090 eligible pts/yr, 10% del rate, no CDK4/6i trials
   [major_gap] MESO: ~1,975 eligible pts/yr, 72% del rate, no CDK4/6i trials
   [major_gap] LIHC: ~1,957 eligible pts/yr, 5% del rate, no CDK4/6i trials
   [major_gap] LAML: ~1,548 eligible pts/yr, 8% del rate, no CDK4/6i trials
