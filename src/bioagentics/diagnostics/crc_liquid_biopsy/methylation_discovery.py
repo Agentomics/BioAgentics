@@ -38,8 +38,8 @@ CRC_METHYLATION_GENES = [
     "GATA4", "GATA5", "ITGA4", "EYA4", "ALX4",
 ]
 
-# Minimum absolute delta-beta threshold
-DELTA_BETA_THRESHOLD = 0.3
+# Minimum absolute delta-beta threshold (lowered from 0.3 to recover BMP3, RASSF1, MGMT, APC)
+DELTA_BETA_THRESHOLD = 0.2
 
 
 def load_tcga_data(data_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
