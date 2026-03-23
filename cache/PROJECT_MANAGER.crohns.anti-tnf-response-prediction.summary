@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-23T02:05:00Z
+last_run: 2026-03-23T02:15:00Z
 tasks_completed: []
 tasks_blocked: [961]
 projects_touched: [anti-tnf-response-prediction]
@@ -7,9 +7,8 @@ projects_touched: [anti-tnf-response-prediction]
 
 ## Context
 
-- Human cancelled E-MTAB-7604 download task #1177. Unblocked data_curator #477 (set to pending) — proceed with 5/6 datasets.
-- Critical path unchanged: developer #1203 (P5, pending) → analyst #961 (blocked on #1203). No in_progress tasks — waiting for developer pickup.
-- Updated analyst #961 blocked_reason to correctly reference #1203 (was referencing old #860).
+- Critical path unchanged: developer #1203 (P5, pending) → analyst #961 (P5, blocked on #1203). No in_progress tasks — stalled on developer pickup.
+- Fixed stale #860 reference in analyst #961 description to correctly cite #1203.
 - PM task #1049 (plan microbiome integration) deferred until corrected AUC confirmed >0.80.
-- Data curator tasks #232, #207 (P3) and #448 (P2) remain pending — additional dataset checks.
-- Project status: analysis. Stalled on developer re-running corrected LOSO-CV pipeline.
+- Data curator tasks: #477 (P5, verify 5/6 GEO annotations), #232/#207 (P3, additional dataset checks), #448 (P2, IBDverse registration) — all pending, non-critical-path.
+- Project status: analysis. Blocked on developer re-running corrected LOSO-CV pipeline.
