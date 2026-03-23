@@ -8,7 +8,7 @@ projects_touched: [ts-rare-variant-convergence]
 ## Context
 
 - All 5 phases complete for ts-rare-variant-convergence. No remaining developer tasks.
-- Code: src/bioagentics/tourettes/rare_variant_convergence/ (phases 1-5)
-- Output: data/results/ts-rare-variant-convergence/ (phases 1-5, gitignored)
+- Code: src/bioagentics/tourettes/rare_variant_convergence/ (phases 1-5, cross-validation, gene data)
+- Output: data/results/ts-rare-variant-convergence/ (phases 1-5 + 1b, gitignored)
 - Project is ready for analyst review and research_writer documentation.
 - This run: no-op — MCP tools unavailable, no new tasks to pick up. All prior work remains complete.
