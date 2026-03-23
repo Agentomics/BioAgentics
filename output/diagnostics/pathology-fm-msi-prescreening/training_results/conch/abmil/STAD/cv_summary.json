@@ -1,0 +1,16 @@
+{
+  "model": "abmil",
+  "mode": "pan_cancer",
+  "n_outer_folds": 5,
+  "n_inner_folds": 3,
+  "auroc_mean": 1.0,
+  "auroc_std": 0.0,
+  "auprc_mean": 1.0,
+  "auprc_std": 0.0,
+  "balanced_accuracy_mean": 1.0,
+  "balanced_accuracy_std": 0.0,
+  "sensitivity_mean": 1.0,
+  "sensitivity_std": 0.0,
+  "specificity_mean": 1.0,
+  "specificity_std": 0.0
+}
