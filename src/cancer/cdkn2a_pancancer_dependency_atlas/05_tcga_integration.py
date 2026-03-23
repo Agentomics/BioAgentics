@@ -82,7 +82,7 @@ US_ANNUAL_INCIDENCE = {
     "STAD": 26890,
     "OV": 19680,
     "SARC": 13590,
-    "DLBC": 80620,
+    "DLBC": 22000,  # DLBCL-specific (~25-30% of NHL 80,620; ACS 2024)
     "LAML": 20380,
     "BRCA": 310720,
     "COADREAD": 152810,
