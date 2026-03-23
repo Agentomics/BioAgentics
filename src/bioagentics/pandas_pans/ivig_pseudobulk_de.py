@@ -151,10 +151,7 @@ def aggregate_pseudobulk(
                 continue
 
             X_subset = ct_adata[s_mask].layers[layer] if layer else ct_adata[s_mask].X
-            if sp.issparse(X_subset):
-                counts = np.asarray(X_subset.sum(axis=0)).ravel()
-            else:
-                counts = np.asarray(X_subset.sum(axis=0)).ravel()
+            counts = np.asarray(X_subset.sum(axis=0)).ravel()
 
             agg_data.append(counts)
             condition = ct_adata[s_mask].obs[condition_key].iloc[0]

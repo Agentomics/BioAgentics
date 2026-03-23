@@ -218,10 +218,11 @@ def evaluate_by_stage(
 
         all_probs[test_idx] = clf.predict_proba(X_test)[:, 1]
 
-    # Find threshold at 95% specificity
+    # Find threshold at 95% specificity (FPR <= 0.05)
     fpr, tpr, thresholds = roc_curve(y, all_probs)
-    spec_idx = np.searchsorted(1 - fpr[::-1], 0.95)
-    thresh_95 = thresholds[::-1][min(spec_idx, len(thresholds) - 1)]
+    valid = fpr <= 0.05
+    thresh_95 = thresholds[valid][-1] if valid.any() else thresholds[-1]
+    sens_at_95spec = float(np.interp(0.05, fpr, tpr))
     all_preds = (all_probs >= thresh_95).astype(int)
 
     overall_auc = roc_auc_score(y, all_probs)
@@ -273,7 +274,7 @@ def evaluate_by_stage(
         "n_positive": int(y.sum()),
         "n_negative": int((1 - y).sum()),
         "auc": float(overall_auc),
-        "sensitivity_at_95spec": float(tpr[::-1][min(spec_idx, len(tpr) - 1)]),
+        "sensitivity_at_95spec": sens_at_95spec,
         "specificity": 0.95,
         "tp": int(((all_preds == 1) & (y == 1)).sum()),
         "fn": int(((all_preds == 0) & (y == 1)).sum()),
@@ -305,8 +306,7 @@ def _cv_evaluate(X: np.ndarray, y: np.ndarray, n_splits: int = 5) -> dict:
 
     auc = roc_auc_score(y, probs)
     fpr, tpr, _ = roc_curve(y, probs)
-    spec_idx = np.searchsorted(1 - fpr[::-1], 0.95)
-    sens = tpr[::-1][min(spec_idx, len(tpr) - 1)]
+    sens = float(np.interp(0.05, fpr, tpr))
 
     # Confusion matrix at Youden threshold
     j = tpr - fpr

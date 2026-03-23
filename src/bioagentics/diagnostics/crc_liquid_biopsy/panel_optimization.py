@@ -227,10 +227,9 @@ def cost_weighted_lasso(
         y_prob = model.predict_proba(X_weighted)[:, 1]
         auc = roc_auc_score(y, y_prob)
 
-        # Sensitivity at 95% specificity
+        # Sensitivity at 95% specificity (FPR <= 0.05)
         fpr, tpr, _ = roc_curve(y, y_prob)
-        spec_95_idx = np.searchsorted(1 - fpr[::-1], 0.95)
-        sens_at_95_spec = tpr[::-1][min(spec_95_idx, len(tpr) - 1)]
+        sens_at_95_spec = float(np.interp(0.05, fpr, tpr))
 
         # Estimate cost
         meth_count = sum(1 for s in selected if s.startswith("meth_"))
