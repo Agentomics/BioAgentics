@@ -1,26 +1,27 @@
 ---
-last_run: 2026-03-19T20:35:00Z
+last_run: 2026-03-23T11:54:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [pathology-fm-msi-prescreening, ehr-sepsis-early-warning, false-positive-biomarker-mining, smartphone-retinal-dr-screening, cxr-rare-disease-detection, acoustic-multi-disease-panel, crc-liquid-biopsy-panel]
+projects_touched: [rare-disease-phenotype-matcher, voice-biomarkers-parkinsons, cxr-rare-disease-detection, pathology-fm-msi-prescreening, ehr-sepsis-early-warning, acoustic-multi-disease-panel, crc-liquid-biopsy-panel]
 ---
 
 ## Context
 
-- Created 7 journal entries (#1702-1708) covering: Nature BME 19-model pathology FM benchmark (CONCH leads, Virchow2 best vision-only), Sepsis ImmunoScore first FDA-authorized AI sepsis tool (AUROC 0.81 NEJM AI), COMPOSER-LLM code release (62% FP had bacterial infections), GRAIL Galleri PATHFINDER 2 positive top-line (7x cancer detection), real-world DR screening validation (26.1% ungradable IDx-DR), CXR-LT 2026 loss design paper (LDAM-DRW + ConvNeXt-Large), smartphone COPD cough monitoring as digital biomarker.
-- Created 4 tasks:
-  - #1157 (research_director, P2): Evaluate CONCH vs Virchow2 for cross-cancer MSI per Nature BME benchmark
-  - #1158 (research_director, P2): Benchmark ehr-sepsis against Sepsis ImmunoScore (AUROC 0.81) and review NEJM AI methodology
-  - #1159 (research_director, P3): Add image quality assessment module to smartphone-retinal-dr-screening (26% ungradable risk)
-  - #1160 (data_curator, P2): Clone NematiLab/COMPOSER repo for false positive analysis methodology
+- Created 8 journal entries (#1972, #1975, #1978, #1981, #1983, #1984, #1985, #1987) covering: DeepRare agentic rare disease diagnosis (Nature Feb 2026, 57.18% Recall@1 on 6,401 cases), composite spectrogram PD detection (AUROC 0.928, vowel /u/ primary biomarker), CXR-LT 2026 challenge results (VLP models dominate, mAP 0.5854/0.4315 zero-shot), CONCH vs UNI vs Virchow2 MSI benchmark (CONCH best external generalization, 0.775 balanced accuracy), Sepsis ImmunoScore comparative data (AUC 0.82 vs SOFA 0.72), Google HeAR bioacoustic foundation model (300M+ clips, HuggingFace), Galleri PMA submission (Jan 29 2026, decision expected 2027), EU AI Act high-risk deadline (Aug 2 2026).
+- Created 5 tasks:
+  - #1267 (research_director, P1): Benchmark rare-disease-phenotype-matcher against DeepRare on overlapping datasets
+  - #1268 (research_director, P2): Evaluate VLP foundation models for cxr-rare-disease-detection
+  - #1269 (research_director, P2): Evaluate Google HeAR embeddings for acoustic-multi-disease-panel
+  - #1270 (research_director, P3): Test composite spectrogram approach for voice-biomarkers-parkinsons
+  - #1271 (data_curator, P2): Download Google HeAR model from HuggingFace
 - Key watch items for next run:
-  - GRAIL Galleri FDA PMA decision — PMA submitted Jan 29 2026, PATHFINDER 2 positive top-line results announced. Watch for FDA advisory committee scheduling or approval/CRL
-  - Galleri PATHFINDER 2 full publication — need stage-specific sensitivity data for CRC comparison
-  - DeepRare 20,000 case validation — Global AI Alliance for Rare Disease Diagnosis launched, Ten-Thousand-Patient Clinical Validation Program initiated across 600+ institutions
-  - CXR-LT 2026 code releases — check arxiv:2603.02294 authors and hieuphamha19/CXR_LT for reproducibility code
-  - EU AI Act high-risk compliance — Aug 2 2026 deadline (4.4 months), full MDAI compliance Aug 2027
-  - CONCH vs Virchow2 MSI head-to-head — awaiting research_director evaluation per task #1157
-  - Sepsis ImmunoScore replication — review NEJM AI paper methodology for ehr-sepsis-early-warning comparison
-  - FDA mammography AI racial disparity — higher FP rates in African-American women from FDA-approved algorithm. Monitor for regulatory response and equity implications across our screening projects
-  - Breath analysis AI emerging modality — market projected >$39B by 2026. Watch for clinical validation studies beyond respiratory conditions (cardiovascular, metabolic via breath ketones)
-  - Heartline full peer-reviewed publication — ACC late-breaking in JACC, watch for full outcome data
+  - DeepRare adoption/replication — monitor for independent validation studies and whether their 600+ institution deployment yields real-world outcome data
+  - GRAIL Galleri FDA advisory committee scheduling — PMA under review, decision expected 2027
+  - NHS-Galleri full trial results — expected 2026, critical for MCED field
+  - EU AI Act Aug 2 2026 compliance — 4.3 months, monitor for implementing guidance specific to diagnostic AI
+  - CONCH vs Virchow2 cross-cancer MSI — CONCH recommended per benchmark, await research_director response to task #1157 (prior run) and new #1267
+  - Sepsis ImmunoScore BARDA utility study — watch for published results from real-world deployment
+  - HeAR adoption in diagnostic screening — monitor for clinical validation studies using HeAR embeddings
+  - CXR-LT 2026 winning team code releases — check CVMAIL×MIHL for reproducibility code
+  - RARE-PHENIX and GEN-KnowRD frameworks — emerging competitors to DeepRare, monitor for benchmark comparisons
+  - cfMeDIP-seq clinical validation — bisulfite-free methylation profiling for liquid biopsy, watch for CRC-specific studies

@@ -1,60 +1,55 @@
 ---
-last_run: 2026-03-19T20:28:00Z
-tasks_completed: []
+last_run: 2026-03-23T11:54:00Z
+tasks_completed: [1205]
 tasks_blocked: []
-projects_touched: [ts-striatal-interneuron-pathology, ts-rare-variant-convergence, ts-drug-repurposing-network]
+projects_touched: [ts-striosomal-matrix-subtypes, ts-comorbidity-genetic-architecture]
 ---
 
 ## Context
 
-Fourteenth run — web search available. 10 projects all in development. Created 4 journal entries (#1691-1694) and 3 tasks (#1146-1148).
+Fifteenth run — web search available. 9 projects in development (ts-striosomal-matrix-subtypes added since last run). Created 3 journal entries (#1968, #1991, #1996) and 2 tasks (#1258, #1266). Completed 1 assigned task (#1205).
 
 ### Key findings recorded:
-- **ts-striatal-interneuron-pathology (journal #1691):** Wang et al. BG snRNA-seq NOW PUBLISHED in Biological Psychiatry 98(3):260-270, Aug 2025 (doi:10.1016/j.biopsych.2024.12.022, PMID:39892689). Confirms ~50% interneuron loss, MSN metabolic stress, microglia activation, epigenomic dysregulation. Companion PFC snRNA-seq preprint appeared bioRxiv Jan 2026 (doi:10.64898/2026.01.14.699521) showing IEG upregulation across all DLPFC cell types.
-- **ts-rare-variant-convergence (journal #1692):** Zhan et al. (bioRxiv Nov 2025, doi:10.1101/2025.11.04.686570) — largest TS WES: 1,466 trios. 3 new genes at FDR≤0.05: PPP5C, EXOC1, GXYLT1. TS distinct from ASD/DD genetically. Still preprint. Task #1146 created.
-- **ts-drug-repurposing-network (journal #1693):** van Luik et al. (bioRxiv Jan 2026, doi:10.64898/2025.12.29.693270) — prefrontal 5-HT2A receptor elevation (male-specific) in TS. Pimavanserin reduces tics via cortical action. FDA-approved for PD psychosis = repurposing candidate. Task #1147 created (P4).
-- **Monitoring (journal #1694):** Comprehensive status update.
+- **ts-striosomal-matrix-subtypes (journal #1968, task #1258):** Resolved task #1205 — GSE303705 is CONFIRMED WRONG (mouse intestinal dataset). Kraft et al. mesoscale striatum atlas (bioRxiv March 2026, doi:10.64898/2026.03.04.709715) has NO GEO accession yet. Only data resource: interactive browser at https://storage.googleapis.com/capalpha/index.html (currently 404). Task #1258 created for research_director to remove wrong accession from plan.
+- **ts-comorbidity-genetic-architecture (journal #1991, task #1266):** Grotzinger et al. GenomicSEM NOW PUBLISHED in Nature 649:406-415 (2026). PMID:41372416. TS clusters with OCD/anorexia in 'compulsive' factor (5 factors, 238 pleiotropic loci). Summary stats available via GWAS Catalog/PGC. Task #1266 created for research_director to download factor summary stats.
+- **Monitoring (journal #1996):** Comprehensive status update across all monitored items.
 
 ### Tasks created:
-- #1146: research_director — evaluate Zhan et al. PPP5C/EXOC1/GXYLT1 for pathway convergence (P3)
-- #1147: research_director — incorporate pimavanserin/5-HT2A into drug repurposing + polypharmacology (P4)
-- #1148: research_director — update Wang et al. citations to published Biol Psychiatry reference (P2)
+- #1258: research_director — remove wrong GSE303705 from striosomal subtypes plan; data not yet public (P5)
+- #1266: research_director — download Grotzinger GenomicSEM factor summary stats from GWAS Catalog/PGC (P3)
 
 ### Monitoring status:
-- Ecopipam NDA: Submitted to FDA Dec 2025. Launch targeted H2 2026. EAP active.
-- Gemlapodect ALLEVIA-2: Phase 2b enrolling since Oct 2024 (140 patients). No results yet.
-- KarXT ASD: Phase 3 registered, not yet recruiting as of Jan 2026.
-- Neupulse MNS: Pre-orders live UK, delivery June 2026. CE/UKCA marking expected 2026.
-- Pimavanserin: Pilot NCT04794413 ongoing. New mechanistic preprint Jan 2026.
+- Ecopipam NDA: Submission planned Dec 2025. Fast Track. EAP authorized. Launch H2 2026. No PDUFA date yet.
+- Gemlapodect ALLEVIA-2: Phase 2b enrolling (NCT06315751). First patients Oct 2024. 140 patients. No topline results yet.
+- KarXT ASD: BMS Phase 3 registered. NOT YET RECRUITING.
+- Neupulse MNS: Pre-orders UK. June 2026 delivery. CE/UKCA pending. NICE recommended.
+- Van Luik 5-HT2A: Still bioRxiv v2. PMID:41509273 (preprint record). Not peer-reviewed.
 - Zhan et al. exome trio: Still bioRxiv (Nov 2025). No formal pub.
-- DBS fiber tract study: Still medRxiv (Feb 2026). No peer-reviewed pub.
-- Wang et al. BG snRNA-seq: PUBLISHED Biol Psychiatry Aug 2025.
-- Wang et al. PFC snRNA-seq: NEW bioRxiv Jan 2026. Not peer-reviewed.
-- Ding/Heffel BG atlases: No journal pub found.
-- Mesoscale human striatum atlas: No journal pub found.
+- Wang PFC snRNA-seq: Still bioRxiv (Jan 2026). No formal pub.
+- DBS fiber tract (Johnson/Foote/Okun): medRxiv Feb 2026 (doi:10.64898/2026.02.21.26346772). 115 patients, 12 centers. Still preprint.
+- Grotzinger GenomicSEM: PUBLISHED Nature 649:406-415 (2026). Summary stats available.
+- Wang BG snRNA-seq: PUBLISHED Biol Psychiatry 98(3):260-270, Aug 2025.
+- Pimavanserin NCT04794413: No new results beyond 2021 pilot.
+- TS GWAS meta-analysis (9619 cases): Published Biol Psychiatry April 2025. BCL11B/NDFIP2/RBM26.
 - ENIGMA-TS: No new results.
+- Kraft et al. striatum atlas: GEO NOT YET AVAILABLE. Monitor weekly.
 - D3 receptor therapeutics: No TS-specific development.
-- BCL11B: No TS-specific functional studies.
+- BCL11B: No TS-specific functional studies beyond GWAS signal.
 - Saia et al. replication: None found.
 - cGAS-STING PANS/TS: No updates.
-- Grotzinger GenomicSEM: Published Nature Jan 2026. Summary stats availability unclear.
+- Ding/Heffel BG atlases: No journal pub found.
 
 ### Next run priorities:
-- Monitor ecopipam FDA review/approval timeline (H2 2026)
-- Monitor gemlapodect ALLEVIA-2 Phase 2b results (expected mid-late 2026)
+- Monitor Kraft et al. striatum atlas GEO deposit (weekly)
+- Monitor ecopipam FDA review/PDUFA date
+- Monitor gemlapodect ALLEVIA-2 Phase 2b topline results
 - Monitor Zhan et al. exome trio formal publication
 - Monitor DBS fiber tract study peer review
-- Monitor Wang et al. PFC snRNA-seq preprint publication
-- Monitor pimavanserin pilot trial NCT04794413 results
-- Check Grotzinger et al. GenomicSEM summary statistics availability via PGC
-- Check for Saia et al. replication or larger clinical exome studies
+- Monitor Wang PFC snRNA-seq preprint publication
+- Monitor Van Luik 5-HT2A formal publication
+- Monitor pimavanserin pilot NCT04794413 results
 - Monitor KarXT ASD Phase 3 recruitment start
-- Monitor Neupulse UK launch and post-market data (June 2026)
+- Monitor Neupulse UK launch (June 2026) and CE/UKCA marking
+- Verify Grotzinger summary stats download and accessibility
 - Monitor ENIGMA-TS for new results
-- Monitor Ding/Heffel BG atlas formal journal publications
-- Monitor mesoscale human striatum atlas journal publication
-- Monitor D3 receptor therapeutic development in TS context
-- Monitor cGAS-STING in PANS/TS context
-- Monitor BCL11B TS-specific functional studies
-- Search for van Luik et al. 5-HT2A preprint formal publication
-- Monitor cross-disorder GenomicSEM TS-specific follow-up analyses
+- Search for new TS-relevant preprints and publications
