@@ -210,7 +210,10 @@ def download_all_serotypes(dest_dir: Path, force: bool = False) -> list[dict]:
 
 
 def build_combined_fasta(dest_dir: Path) -> Path:
-    """Concatenate all per-serotype FASTAs into a single combined file."""
+    """Concatenate all per-serotype FASTAs + supplements into a single combined file.
+
+    Includes enn_mrp_supplement.fasta if present (Enn/Mrp M-like proteins).
+    """
     combined = dest_dir / "gas_combined.fasta"
     parts = sorted(dest_dir.glob("gas_m*.fasta"))
     if not parts:
@@ -218,9 +221,19 @@ def build_combined_fasta(dest_dir: Path) -> Path:
 
     with open(combined, "w") as out:
         for p in parts:
-            out.write(p.read_text())
-            if not p.read_text().endswith("\n"):
+            text = p.read_text()
+            out.write(text)
+            if not text.endswith("\n"):
                 out.write("\n")
+
+        # Include Enn/Mrp supplement if available
+        supplement = dest_dir / "enn_mrp_supplement.fasta"
+        if supplement.exists():
+            text = supplement.read_text()
+            out.write(text)
+            if not text.endswith("\n"):
+                out.write("\n")
+            logger.info("Included Enn/Mrp supplement in combined FASTA")
 
     total = sum(1 for line in combined.read_text().splitlines() if line.startswith(">"))
     logger.info("Combined FASTA: %s (%d proteins total)", combined.name, total)
