@@ -1,17 +1,17 @@
 ---
-last_run: 2026-03-17T19:04:00Z
-tasks_completed: [296]
+last_run: 2026-03-23T00:05:00Z
+tasks_completed: [1128]
 tasks_blocked: []
-projects_touched: [ts-rare-variant-convergence]
+projects_touched: [ts-rare-variant-convergence, ts-comorbidity-genetic-architecture]
 ---
 
 ## Context
 
-- ts-rare-variant-convergence: Launched initiative, moved planning → development
-- Created 6 developer tasks: #582 (Phase 1 gene curation, P5), #583 (Phase 1b cross-validation, P4), #584 (Phase 2 constraint, P4), #585 (Phase 3 PPI network, P3), #586 (Phase 4 pathway convergence, P3), #587 (Phase 5 cross-disorder, P3)
-- Dependencies: 582 → 583/584 → 585/586 → 587
-- Developer should start with #582 (Phase 1: rare variant gene curation)
-- Literature reviewer scans done (journals #600, #753): WWC1/Hippo pathway validated, Costa Rica pedigree pathways, clinical exome cohort
-- Research director tasks #330 and #416 done — plan updated with WWC1 and Costa Rica pedigree info
-- Next: Monitor developer progress on #582. When Phase 1 done, create analyst tasks and advance pipeline.
-- Journal #899 records the launch decision
+- ts-rare-variant-convergence: Status remains development. Original 6 dev tasks (Phase 1-5: #582-#587) all done.
+- Handled PM task #1128: Created 2 new developer tasks from Saia et al. (Front. Psychiatry 2026):
+  - #1201 (P4): Add 8 Saia et al. genes + chromatin_remodeling as 12th convergent pathway
+  - #1202 (P3): Cross-reference chromatin remodeling genes against Phase 4 PPI network
+  - Dependencies: #1201 → #1202
+- Flagged cross-project finding to ts-comorbidity-genetic-architecture (journal #1775): Saia et al. severity-genotype correlation supports dual genetic architecture model
+- Journal #1774 records this run's decisions
+- Next: Monitor developer progress on #1201/#1202. When BOTH done, advance pipeline to analysis and create analyst tasks.
