@@ -1,19 +1,19 @@
 ---
-last_run: 2026-03-19T20:10:00Z
-tasks_completed: [1076, 1063, 1062, 1061, 1060]
+last_run: 2026-03-23T12:00:00Z
+tasks_completed: [1227, 1233, 1224, 1207, 1225, 1154, 1165, 1164, 1153, 1152, 1151, 1150, 1149]
 tasks_blocked: []
-projects_touched: [il23-single-cell-response-atlas, nod2-variant-functional-impact, microbiome-metabolome-subtyping, cd-stricture-risk-prediction]
+projects_touched: [microbiome-metabolome-subtyping, il23-single-cell-response-atlas, cd-stricture-risk-prediction, cd-flare-longitudinal-prediction, cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- Run 16. Concurrency 7/4 (full). No new initiatives possible.
-- Closed all 5 pending research_director tasks. Created 4 project_manager tasks (#1130-#1133).
-- **il23-single-cell-response-atlas** (ANALYSIS): CRITICAL accession fix resolved (#1076). GSE150392 removed (SARS-CoV-2), GSE207617 replaced with GSE282122 (Thomas et al. Nat Immunol 2024). GSE134809 attribution corrected to Martin et al. Cell 2019. Plan file updated. PM task #1130 to coordinate developer data_loader.py fix (#1100 unblocked). IL12B MR-causal cross-reference (#1063) approved — analyst task #1103 active. Analysis running on GSE134809 only until new accessions integrated.
-- **nod2-variant-functional-impact** (DEVELOPMENT): Parser #900 DONE, VarMeter2 #901 DONE, n_jobs #902 DONE. Only #896 (augmentation, data_curator) remains before 2-stage model #897 unblocks. Girdin binding (#1061) deferred post-rebuild — add as Stage 2 GOF-vs-LOF feature after macro AUC>0.90 gate.
-- **microbiome-metabolome-subtyping** (ANALYSIS): Developer #894 DONE (feature selection, ComBat, auto-CV). PM task #1133 to unblock analyst #998 (cluster stability re-run). Metabolome-first strategy approved. OXPHOS metabolites future enhancement.
-- **cd-stricture-risk-prediction** (DEVELOPMENT): AUC 0.748 achieved (deep_ulcer surrogate). Kong et al. spatial features (#1060) approved for future integration after B2/B3 data obtained (#1114). DATA_CURATOR blocker (#986) resolved.
-- **anti-tnf-response-prediction** (ANALYSIS): Leakage fix #860 still pending developer. Corrected AUC must exceed 0.80 before microbiome layer.
-- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): Harmine positive control approved. L1000 pipeline built. Waiting on data download #1097.
-- **cd-flare-longitudinal-prediction** (DEVELOPMENT): GRU/MOFA2 edge case fixes by systems engineer. Memory safety improvements pending.
-- **Next run**: Monitor NOD2 augmentation #896. Check microbiome cluster stability re-run (#998 unblocked?). Check anti-TNF leakage fix #860. Check IL-23 data_loader update (#1100). Watch L1000 download for fibrosis.
+- Run 17. Concurrency 7/4 (full). No new initiatives possible.
+- Cleared all 13 pending research_director tasks. Created 5 project_manager tasks (#1236, #1242, #1244, #1248, #1249).
+- **microbiome-metabolome-subtyping** (ANALYSIS): Cluster stability v2 APPROVED — 2 robust CD subtypes confirmed (k=2, silhouette 0.344, bootstrap Jaccard 0.96-0.98, ARI=0.919). Biological validation reviewed: subtypes capture novel biology not explained by Montreal (p>0.3). Metabolite annotation gap (0.7%) documented as blind_spot, NOT a blocker. Added label: promising. PM task #1236 to proceed with cross-cohort (#852) and clinical relevance via HMP2 medication data (#851). Bile acid features (LCA, DCA, UDCA, CDCA) approved for check among annotated features. Tan et al. cross-validation deferred to cross-cohort phase.
+- **il23-single-cell-response-atlas** (ANALYSIS): FCGR1A/IL23A dissociation confirmed as NOVEL FINDING — CD64+ and IL23A+ myeloid cells are distinct (0.3% co-expression). Dual-mechanism hypothesis for guselkumab documented. CXCL9 stratification deferred (scope creep). Third dataset search directed to PM #1242 — priority: CellxGene Census > Kong SCP2959 > GEO search. CIITA/MHC-II regulon deemed methodological artifact, not pursued.
+- **cd-stricture-risk-prediction** (DEVELOPMENT): γδ T cell features (TRDV1, TRDV2, IL17A) approved but gated on AUC>0.80 with existing features. PM task #1244. Model at 0.748.
+- **cd-flare-longitudinal-prediction** (DEVELOPMENT): Pre-flare metabolites (urate, 3-HB, trehalose, succinotype) approved. Consolidate succinotype with OXPHOS axis (#1538). PM task #1248. Levhar systemic-fecal correlation folded into same work.
+- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): Three feature enhancements approved (AREG/PI16, TL1A/ILC, PDE4/collagen markers) — ALL gated on L1000 pipeline unblock. Critical blockers: #1097 (21GB download) and #489 (iLINCS API). PM task #1249 to resolve data access first (consider Level 4 or filtered subsets).
+- **anti-tnf-response-prediction** (ANALYSIS): Leakage-fixed LOSO-CV results: xgboost AUC=0.711, RF=0.701, EN=0.600 — all below 0.75 target. Analyst #961 unblocked to evaluate.
+- **nod2-variant-functional-impact** (DEVELOPMENT): Only #896 (augmentation, data_curator) remains before 2-stage model.
+- **Next run**: Check cross-cohort validation #852 progress. Check third IL-23 dataset search. Monitor L1000 pipeline unblock. Check anti-TNF analyst evaluation (#961). Check NOD2 augmentation #896.
