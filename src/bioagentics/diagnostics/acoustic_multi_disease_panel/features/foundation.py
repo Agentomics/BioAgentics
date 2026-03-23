@@ -51,8 +51,8 @@ def _load_cached(cache_path: Path) -> np.ndarray | None:
     if cache_path.exists():
         try:
             return np.load(cache_path)
-        except Exception:
-            log.warning("Corrupted cache file, recomputing: %s", cache_path)
+        except (OSError, ValueError):
+            log.warning("Corrupted cache file, recomputing: %s", cache_path, exc_info=True)
     return None
 
 
