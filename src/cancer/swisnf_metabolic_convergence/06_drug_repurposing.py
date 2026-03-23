@@ -145,7 +145,7 @@ def load_prism_drug_response(
     return pd.concat(frames)
 
 
-def test_drug_sensitivity(
+def compute_drug_sensitivity(
     drug_response: pd.Series,
     mut_ids: set[str],
     wt_ids: set[str],
@@ -274,13 +274,13 @@ def main() -> None:
                     drug_vals = prism_response.loc[brd_key]
 
                     # Test combined SWI/SNF-mutant vs WT
-                    combined_test = test_drug_sensitivity(drug_vals, mut_ids, wt_ids)
+                    combined_test = compute_drug_sensitivity(drug_vals, mut_ids, wt_ids)
 
                     # Test ARID1A-mutant vs WT
-                    arid1a_test = test_drug_sensitivity(drug_vals, arid1a_ids, wt_ids)
+                    arid1a_test = compute_drug_sensitivity(drug_vals, arid1a_ids, wt_ids)
 
                     # Test SMARCA4-mutant vs WT
-                    smarca4_test = test_drug_sensitivity(drug_vals, smarca4_ids, wt_ids)
+                    smarca4_test = compute_drug_sensitivity(drug_vals, smarca4_ids, wt_ids)
 
                     print(f"\n  {info['drug']} ({info['target_pathway']}):")
 
