@@ -75,6 +75,23 @@ SEROTYPES: dict[str, dict] = {
     },
 }
 
+# Variant lineages: downloaded separately from NCBI Datasets (not UniProt proteomes).
+# These use NCBI assembly accessions and have their own FASTA files (gas_m3.93.fasta etc.).
+# Tracked separately from canonical serotypes in comparison analyses.
+VARIANT_LINEAGES: dict[str, dict] = {
+    "M3.93": {
+        "assembly_accession": "GCA_046240755.1",
+        "strain": "emm3.93 isolate 1138712",
+        "parent_serotype": "M3",
+        "emm_type": "emm3.93",
+        "protein_count": 1821,
+        "fasta_file": "gas_m3.93.fasta",
+        "source": "ncbi_datasets",
+        "notes": "Emerging pediatric invasive GAS clade, 2025 EID report; "
+                 "emm3.93 M protein variant distinct from canonical emm3/MGAS315",
+    },
+}
+
 
 def _uniprot_request(url: str, params: dict | None = None,
                      accept: str = "text/plain") -> requests.Response:

@@ -38,7 +38,14 @@ DIAMOND_COLUMNS = [
 ]
 
 # PANDAS-associated serotypes (rheumatic fever / neuropsychiatric)
-PANDAS_ASSOCIATED = {"M1", "M3", "M5", "M12", "M18"}
+PANDAS_ASSOCIATED = {"M1", "M3", "M3.93", "M5", "M12", "M18"}
+
+# Variant lineages: tracked separately from canonical serotypes to detect
+# whether emerging clades show distinct mimicry profiles.
+# Parent serotype is used for grouping in analyses.
+VARIANT_LINEAGES: dict[str, str] = {
+    "M3.93": "M3",  # emm3.93 emerging pediatric invasive clade (2025 EID)
+}
 
 
 def load_per_serotype_hits(screen_dir: Path) -> dict[str, pd.DataFrame]:
@@ -170,8 +177,8 @@ def generate_heatmap(matrix_df: pd.DataFrame, dest: Path) -> None:
         index="human_gene", columns="serotype", values="best_bitscore", fill_value=0,
     )
 
-    # Order serotypes
-    serotype_order = [s for s in ["M1", "M3", "M5", "M12", "M18", "M49"] if s in pivot.columns]
+    # Order serotypes (canonical first, then variant lineages)
+    serotype_order = [s for s in ["M1", "M3", "M3.93", "M5", "M12", "M18", "M49"] if s in pivot.columns]
     pivot = pivot[serotype_order]
 
     fig, ax = plt.subplots(figsize=(10, max(6, len(pivot) * 0.5)))

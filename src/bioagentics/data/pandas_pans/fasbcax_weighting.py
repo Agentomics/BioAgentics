@@ -135,36 +135,47 @@ def classify_protein(header: str) -> tuple[str, float, str]:
 def build_phase_annotation(proteome_dir: Path) -> pd.DataFrame:
     """Parse all GAS FASTA files and classify each protein by infection phase.
 
+    Reads per-serotype FASTAs individually (gas_m1.fasta, gas_m3.fasta, etc.)
+    to correctly assign serotype from filename. Also reads variant lineage FASTAs
+    (gas_m3.93.fasta) and supplemental files (enn_mrp_supplement.fasta).
+
     Returns DataFrame with columns: protein_id, serotype, phase, weight, reason, description.
     """
     rows: list[dict] = []
-    combined = proteome_dir / "gas_combined.fasta"
 
-    if not combined.exists():
-        raise FileNotFoundError(f"Combined proteome not found: {combined}")
+    # Read per-serotype and variant lineage FASTAs
+    fasta_files = sorted(proteome_dir.glob("gas_m*.fasta"))
+    supplement = proteome_dir / "enn_mrp_supplement.fasta"
+    if supplement.exists():
+        fasta_files.append(supplement)
 
-    with open(combined) as f:
-        for line in f:
-            if not line.startswith(">"):
-                continue
-            header = line.strip()
-            # Extract protein ID (first field after >)
-            protein_id = header[1:].split()[0]
-            # Extract description
-            description = header[1:].split(None, 1)[1] if " " in header[1:] else ""
+    if not fasta_files:
+        raise FileNotFoundError(f"No proteome FASTAs found in {proteome_dir}")
 
-            # Determine serotype from header
-            serotype = _extract_serotype(header)
+    for fasta_path in fasta_files:
+        # Determine serotype from filename for variant lineages
+        file_serotype = _VARIANT_FASTA_SEROTYPES.get(fasta_path.name)
 
-            phase, weight, reason = classify_protein(header)
-            rows.append({
-                "protein_id": protein_id,
-                "serotype": serotype,
-                "phase": phase,
-                "weight": weight,
-                "match_reason": reason,
-                "description": description,
-            })
+        with open(fasta_path) as f:
+            for line in f:
+                if not line.startswith(">"):
+                    continue
+                header = line.strip()
+                protein_id = header[1:].split()[0]
+                description = header[1:].split(None, 1)[1] if " " in header[1:] else ""
+
+                # Use file-based serotype for variants, else parse from header
+                serotype = file_serotype if file_serotype else _extract_serotype(header)
+
+                phase, weight, reason = classify_protein(header)
+                rows.append({
+                    "protein_id": protein_id,
+                    "serotype": serotype,
+                    "phase": phase,
+                    "weight": weight,
+                    "match_reason": reason,
+                    "description": description,
+                })
 
     df = pd.DataFrame(rows)
     logger.info(
@@ -214,6 +225,13 @@ def _extract_serotype(header: str) -> str:
         return "unknown"
 
     return "unknown"
+
+
+# Mapping from NCBI TPA accession prefixes to variant lineages.
+# Used by build_phase_annotation when reading per-file instead of combined FASTA.
+_VARIANT_FASTA_SEROTYPES: dict[str, str] = {
+    "gas_m3.93.fasta": "M3.93",
+}
 
 
 def apply_phase_weights(hits_df: pd.DataFrame, phase_df: pd.DataFrame) -> pd.DataFrame:
