@@ -1,0 +1,102 @@
+================================================================================
+CDKN2A Pan-Cancer Dependency Atlas - Phase 3b: MTAP Stratification
+================================================================================
+
+PURPOSE: Deconfound CDKN2A-specific from MTAP-driven dependencies.
+MTAP co-deletion rate in CDKN2A-deleted lines: 255/343 (74.3%)
+
+COHORT SIZES (with CRISPR, RB1-intact filter, pan-cancer):
+  CDKN2A-intact (control): 548
+  CDKN2A-del/MTAP-intact: 74
+  CDKN2A-del/MTAP-deleted: 202
+
+COMPARISON A: MTAP-corrected CDKN2A screen
+  (CDKN2A-del/MTAP-intact vs CDKN2A-intact)
+  Tests: 17931
+
+COMPARISON B: MTAP confound check
+  (MTAP-del vs MTAP-intact within CDKN2A-del/RB1-intact)
+  Tests: 17931
+
+GENOME-WIDE RESULTS (Pan-cancer):
+  Original gained dependencies: 55
+  Survived MTAP correction: 23
+  Lost after correction: 32
+  Confirmed MTAP-driven: 2
+
+SURVIVED (genuinely CDKN2A-specific):
+  ACTR3: d=-0.415, FDR=4.058e-02
+  AK6: d=-0.500, FDR=2.050e-02
+  C3orf38: d=-0.468, FDR=3.401e-02
+  CCND1: d=-0.414, FDR=3.001e-02
+  CDK6: d=-0.508, FDR=2.012e-04
+  CRK: d=-0.722, FDR=3.086e-03
+  ICE2: d=-0.430, FDR=2.432e-02
+  IPO9: d=-0.602, FDR=1.333e-03
+  KIF18B: d=-0.597, FDR=1.939e-02
+  KIF2C: d=-0.744, FDR=2.012e-04
+  PLEKHB2: d=-0.571, FDR=3.287e-02
+  PPP2R1A: d=-0.469, FDR=3.401e-02
+  PTK2: d=-0.522, FDR=6.751e-03
+  RAC1: d=-0.552, FDR=1.092e-03
+  RPL28: d=-0.486, FDR=2.349e-02
+  RPS25: d=-0.494, FDR=2.804e-02
+  SLC39A1: d=-0.705, FDR=2.681e-03
+  TAF1D: d=-0.553, FDR=1.136e-03
+  TIAL1: d=-0.480, FDR=2.050e-02
+  TLN1: d=-0.628, FDR=1.154e-03
+  TNS3: d=-0.589, FDR=4.125e-02
+  WWTR1: d=-0.845, FDR=2.362e-05
+  ZFP36L1: d=-0.737, FDR=9.585e-04
+
+LOST AFTER CORRECTION (MTAP-confounded):
+  ARPC4: orig d=-0.301
+  ARVCF: orig d=-0.345
+  C19orf53: orig d=-0.338
+  CCND3: orig d=-0.351
+  DOCK7: orig d=-0.326
+  EAF1: orig d=-0.324
+  EVA1A: orig d=-0.317
+  GTSF1: orig d=-0.312
+  JUN: orig d=-0.338
+  MIDEAS: orig d=-0.310
+  MSI2: orig d=-0.378
+  MSL2: orig d=-0.320
+  NAPB: orig d=-0.300
+  NFE2L2: orig d=-0.366
+  NIFK: orig d=-0.322
+  PFDN1: orig d=-0.359
+  PFDN5: orig d=-0.306
+  PRMT5: orig d=-0.486 [confirmed MTAP-driven]
+  RAPGEF6: orig d=-0.302
+  RBBP7: orig d=-0.345
+  RBL2: orig d=-0.302
+  SBDS: orig d=-0.334
+  SNUPN: orig d=-0.301
+  SPAG8: orig d=-0.300
+  TRIO: orig d=-0.346
+  TRIP10: orig d=-0.317
+  UBIAD1: orig d=-0.314
+  VBP1: orig d=-0.353
+  VCL: orig d=-0.343
+  VRK1: orig d=-0.323
+  WDR77: orig d=-0.581 [confirmed MTAP-driven]
+  ZNF593: orig d=-0.318
+
+KEY GENE VERDICTS:
+  ACTR3: CDKN2A-SPECIFIC
+  CCND1: CDKN2A-SPECIFIC
+  CCND3: attenuated
+  CDK2: not significant
+  CDK4: not significant
+  CDK6: CDKN2A-SPECIFIC
+  E2F1: not significant
+  KIF2C: CDKN2A-SPECIFIC
+  MAT2A: not significant
+  MDM2: not significant
+  MSI2: attenuated
+  MTAP: MTAP-DRIVEN
+  PRMT5: MTAP-DRIVEN
+  TLN1: CDKN2A-SPECIFIC
+  WDR77: MTAP-DRIVEN
+  WWTR1: CDKN2A-SPECIFIC

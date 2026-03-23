@@ -1,0 +1,629 @@
+{
+  "clinical_categorical": [
+    {
+      "feature": "montreal_location",
+      "test": "chi-square",
+      "chi2": 3.969,
+      "p_value": 0.553891,
+      "dof": 5,
+      "crosstab": {
+        "L1": {
+          "0": 2,
+          "1": 6
+        },
+        "L1+L4": {
+          "0": 1,
+          "1": 4
+        },
+        "L2": {
+          "0": 1,
+          "1": 4
+        },
+        "L2+L4": {
+          "0": 0,
+          "1": 1
+        },
+        "L3": {
+          "0": 4,
+          "1": 10
+        },
+        "L3+L4": {
+          "0": 6,
+          "1": 5
+        }
+      }
+    },
+    {
+      "feature": "sex",
+      "test": "chi-square",
+      "chi2": 0.007,
+      "p_value": 0.932134,
+      "dof": 1,
+      "crosstab": {
+        "Female": {
+          "0": 8,
+          "1": 15
+        },
+        "Male": {
+          "0": 8,
+          "1": 19
+        }
+      }
+    }
+  ],
+  "clinical_continuous": [
+    {
+      "feature": "CRP_mg_L",
+      "test": "kruskal-wallis",
+      "H": 0.947,
+      "p_value": 0.330372,
+      "subtype_0_median": 2.52,
+      "subtype_0_mean": 86.84,
+      "subtype_0_n": 12,
+      "subtype_1_median": 1.595,
+      "subtype_1_mean": 46.751,
+      "subtype_1_n": 24
+    },
+    {
+      "feature": "HBI",
+      "test": "kruskal-wallis",
+      "H": 0.741,
+      "p_value": 0.389424,
+      "subtype_0_median": 2.0,
+      "subtype_0_mean": 4.333,
+      "subtype_0_n": 3,
+      "subtype_1_median": 2.0,
+      "subtype_1_mean": 2.3,
+      "subtype_1_n": 10
+    },
+    {
+      "feature": "age",
+      "test": "kruskal-wallis",
+      "H": 0.894,
+      "p_value": 0.344512,
+      "subtype_0_median": 16.0,
+      "subtype_0_mean": 23.4,
+      "subtype_0_n": 15,
+      "subtype_1_median": 18.0,
+      "subtype_1_mean": 27.059,
+      "subtype_1_n": 34
+    }
+  ],
+  "top_species_cmtf_c0": [
+    {
+      "feature": "Faecalibacterium_Faecalibacterium_prausnitzii",
+      "loading": -0.0492068118814533,
+      "abs_loading": 0.0492068118814533,
+      "direction": "negative"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_uniformis",
+      "loading": -0.0472735884927157,
+      "abs_loading": 0.0472735884927157,
+      "direction": "negative"
+    },
+    {
+      "feature": "Subdoligranulum_Subdoligranulum_unclassified",
+      "loading": -0.0431851876189491,
+      "abs_loading": 0.0431851876189491,
+      "direction": "negative"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_vulgatus",
+      "loading": -0.040178809902804,
+      "abs_loading": 0.040178809902804,
+      "direction": "negative"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_ovatus",
+      "loading": -0.0399310925992927,
+      "abs_loading": 0.0399310925992927,
+      "direction": "negative"
+    },
+    {
+      "feature": "Eubacterium_Eubacterium_rectale",
+      "loading": -0.0384095724027425,
+      "abs_loading": 0.0384095724027425,
+      "direction": "negative"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_fragilis",
+      "loading": -0.0366433244476078,
+      "abs_loading": 0.0366433244476078,
+      "direction": "negative"
+    },
+    {
+      "feature": "Escherichia_Escherichia_coli",
+      "loading": -0.0348271808358915,
+      "abs_loading": 0.0348271808358915,
+      "direction": "negative"
+    },
+    {
+      "feature": "Alistipes_Alistipes_putredinis",
+      "loading": -0.0337492236936581,
+      "abs_loading": 0.0337492236936581,
+      "direction": "negative"
+    },
+    {
+      "feature": "Blautia_Ruminococcus_torques",
+      "loading": -0.0335416198919577,
+      "abs_loading": 0.0335416198919577,
+      "direction": "negative"
+    },
+    {
+      "feature": "Roseburia_Roseburia_intestinalis",
+      "loading": -0.0318919056137035,
+      "abs_loading": 0.0318919056137035,
+      "direction": "negative"
+    },
+    {
+      "feature": "Parabacteroides_Parabacteroides_unclassified",
+      "loading": -0.0310545409485474,
+      "abs_loading": 0.0310545409485474,
+      "direction": "negative"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_dorei",
+      "loading": -0.0307508547679442,
+      "abs_loading": 0.0307508547679442,
+      "direction": "negative"
+    },
+    {
+      "feature": "Oscillibacter_Oscillibacter_unclassified",
+      "loading": -0.030153669620922,
+      "abs_loading": 0.030153669620922,
+      "direction": "negative"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_stercoris",
+      "loading": -0.0290391638437902,
+      "abs_loading": 0.0290391638437902,
+      "direction": "negative"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_xylanisolvens",
+      "loading": -0.0286194825279304,
+      "abs_loading": 0.0286194825279304,
+      "direction": "negative"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_thetaiotaomicron",
+      "loading": -0.0280628368006233,
+      "abs_loading": 0.0280628368006233,
+      "direction": "negative"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_caccae",
+      "loading": -0.0275402939761338,
+      "abs_loading": 0.0275402939761338,
+      "direction": "negative"
+    },
+    {
+      "feature": "Clostridium_Clostridium_bolteae",
+      "loading": -0.0271793389045871,
+      "abs_loading": 0.0271793389045871,
+      "direction": "negative"
+    },
+    {
+      "feature": "Parabacteroides_Parabacteroides_distasonis",
+      "loading": -0.0255065913821398,
+      "abs_loading": 0.0255065913821398,
+      "direction": "negative"
+    }
+  ],
+  "top_species_cmtf_c1": [
+    {
+      "feature": "Faecalibacterium_Faecalibacterium_prausnitzii",
+      "loading": 0.0983411479655673,
+      "abs_loading": 0.0983411479655673,
+      "direction": "positive"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_uniformis",
+      "loading": 0.0871468359829679,
+      "abs_loading": 0.0871468359829679,
+      "direction": "positive"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_vulgatus",
+      "loading": 0.0866720960369647,
+      "abs_loading": 0.0866720960369647,
+      "direction": "positive"
+    },
+    {
+      "feature": "Subdoligranulum_Subdoligranulum_unclassified",
+      "loading": 0.0845658178031591,
+      "abs_loading": 0.0845658178031591,
+      "direction": "positive"
+    },
+    {
+      "feature": "Eubacterium_Eubacterium_rectale",
+      "loading": 0.0826876335606405,
+      "abs_loading": 0.0826876335606405,
+      "direction": "positive"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_ovatus",
+      "loading": 0.0777214443785674,
+      "abs_loading": 0.0777214443785674,
+      "direction": "positive"
+    },
+    {
+      "feature": "Blautia_Ruminococcus_torques",
+      "loading": 0.0750956330961715,
+      "abs_loading": 0.0750956330961715,
+      "direction": "positive"
+    },
+    {
+      "feature": "Oscillibacter_Oscillibacter_unclassified",
+      "loading": 0.072980756949976,
+      "abs_loading": 0.072980756949976,
+      "direction": "positive"
+    },
+    {
+      "feature": "Escherichia_Escherichia_coli",
+      "loading": 0.0716211056103353,
+      "abs_loading": 0.0716211056103353,
+      "direction": "positive"
+    },
+    {
+      "feature": "Roseburia_Roseburia_intestinalis",
+      "loading": 0.0598414237221668,
+      "abs_loading": 0.0598414237221668,
+      "direction": "positive"
+    },
+    {
+      "feature": "Clostridium_Clostridium_bolteae",
+      "loading": 0.0596702070290431,
+      "abs_loading": 0.0596702070290431,
+      "direction": "positive"
+    },
+    {
+      "feature": "Parabacteroides_Parabacteroides_unclassified",
+      "loading": 0.0566290918456457,
+      "abs_loading": 0.0566290918456457,
+      "direction": "positive"
+    },
+    {
+      "feature": "Haemophilus_Haemophilus_parainfluenzae",
+      "loading": 0.0548740597863593,
+      "abs_loading": 0.0548740597863593,
+      "direction": "positive"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_caccae",
+      "loading": 0.0532732689773627,
+      "abs_loading": 0.0532732689773627,
+      "direction": "positive"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_fragilis",
+      "loading": 0.0525596464851258,
+      "abs_loading": 0.0525596464851258,
+      "direction": "positive"
+    },
+    {
+      "feature": "Bacteroides_Bacteroides_stercoris",
+      "loading": 0.0522969793620772,
+      "abs_loading": 0.0522969793620772,
+      "direction": "positive"
+    },
+    {
+      "feature": "Roseburia_Roseburia_inulinivorans",
+      "loading": 0.0512538849339829,
+      "abs_loading": 0.0512538849339829,
+      "direction": "positive"
+    },
+    {
+      "feature": "Bifidobacterium_Bifidobacterium_longum",
+      "loading": 0.0501497164954418,
+      "abs_loading": 0.0501497164954418,
+      "direction": "positive"
+    },
+    {
+      "feature": "Alistipes_Alistipes_putredinis",
+      "loading": 0.0494298810268212,
+      "abs_loading": 0.0494298810268212,
+      "direction": "positive"
+    },
+    {
+      "feature": "Veillonella_Veillonella_parvula",
+      "loading": 0.048905434462465,
+      "abs_loading": 0.048905434462465,
+      "direction": "positive"
+    }
+  ],
+  "top_metabolites_cmtf_c0": [
+    {
+      "feature": "HILp_QI11892",
+      "loading": 0.0939310403987407,
+      "abs_loading": 0.0939310403987407,
+      "direction": "positive"
+    },
+    {
+      "feature": "HILp_QI13608",
+      "loading": 0.0930266786688227,
+      "abs_loading": 0.0930266786688227,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI10966",
+      "loading": 0.092978630003678,
+      "abs_loading": 0.092978630003678,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI29786",
+      "loading": 0.0929676000033795,
+      "abs_loading": 0.0929676000033795,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI29007",
+      "loading": 0.0927938862883011,
+      "abs_loading": 0.0927938862883011,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI20265",
+      "loading": 0.0925394276662717,
+      "abs_loading": 0.0925394276662717,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI29615",
+      "loading": 0.0921676704351297,
+      "abs_loading": 0.0921676704351297,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI27253",
+      "loading": 0.0921110636814506,
+      "abs_loading": 0.0921110636814506,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI28675",
+      "loading": 0.0920899117930679,
+      "abs_loading": 0.0920899117930679,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI10968",
+      "loading": 0.0920777542997905,
+      "abs_loading": 0.0920777542997905,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI23309",
+      "loading": 0.0919848482058386,
+      "abs_loading": 0.0919848482058386,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI29452",
+      "loading": 0.0919550333816919,
+      "abs_loading": 0.0919550333816919,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI11741",
+      "loading": 0.091682309153537,
+      "abs_loading": 0.091682309153537,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI15027",
+      "loading": 0.0916040799526348,
+      "abs_loading": 0.0916040799526348,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI29780",
+      "loading": 0.091520880653518,
+      "abs_loading": 0.091520880653518,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI29616",
+      "loading": 0.0912809712565129,
+      "abs_loading": 0.0912809712565129,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI29880",
+      "loading": 0.091216155701292,
+      "abs_loading": 0.091216155701292,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI12599",
+      "loading": 0.0911762649802118,
+      "abs_loading": 0.0911762649802118,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI12641",
+      "loading": 0.0909668492305609,
+      "abs_loading": 0.0909668492305609,
+      "direction": "positive"
+    },
+    {
+      "feature": "C8p_QI28061",
+      "loading": 0.0909612646658769,
+      "abs_loading": 0.0909612646658769,
+      "direction": "positive"
+    }
+  ],
+  "top_metabolites_cmtf_c1": [
+    {
+      "feature": "HILp_QI24955",
+      "loading": -0.1542934816139338,
+      "abs_loading": 0.1542934816139338,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI21421",
+      "loading": -0.1460005467932584,
+      "abs_loading": 0.1460005467932584,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI17019",
+      "loading": -0.1443286078324361,
+      "abs_loading": 0.1443286078324361,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI17012",
+      "loading": -0.1440429012600296,
+      "abs_loading": 0.1440429012600296,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI24391",
+      "loading": -0.1395742645586748,
+      "abs_loading": 0.1395742645586748,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI23495",
+      "loading": -0.1324034915461778,
+      "abs_loading": 0.1324034915461778,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI24376",
+      "loading": -0.1303256160236896,
+      "abs_loading": 0.1303256160236896,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI20994",
+      "loading": -0.1296007721063304,
+      "abs_loading": 0.1296007721063304,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI24981",
+      "loading": -0.1290040348253786,
+      "abs_loading": 0.1290040348253786,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI22877",
+      "loading": -0.1284225264901532,
+      "abs_loading": 0.1284225264901532,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI19120",
+      "loading": -0.1283340995188696,
+      "abs_loading": 0.1283340995188696,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI24729",
+      "loading": -0.1264360322247747,
+      "abs_loading": 0.1264360322247747,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI16929",
+      "loading": -0.1256222428004494,
+      "abs_loading": 0.1256222428004494,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI16436",
+      "loading": -0.1252048247537018,
+      "abs_loading": 0.1252048247537018,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI24179",
+      "loading": -0.1246418334405556,
+      "abs_loading": 0.1246418334405556,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILn_QI453",
+      "loading": -0.1245263211822964,
+      "abs_loading": 0.1245263211822964,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI15250",
+      "loading": -0.1233757790699759,
+      "abs_loading": 0.1233757790699759,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI25119",
+      "loading": -0.1225997162582269,
+      "abs_loading": 0.1225997162582269,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI24188",
+      "loading": -0.1220371119530424,
+      "abs_loading": 0.1220371119530424,
+      "direction": "negative"
+    },
+    {
+      "feature": "HILp_QI24424",
+      "loading": -0.1213742851181305,
+      "abs_loading": 0.1213742851181305,
+      "direction": "negative"
+    }
+  ],
+  "axis_mapping": {
+    "0": {
+      "Bifidobacterium-TCDCA": 1.029983669772586,
+      "Tryptophan-NAD": 0.0,
+      "BCAA": 0.0
+    },
+    "1": {
+      "Bifidobacterium-TCDCA": 1.1911644213478614,
+      "Tryptophan-NAD": 0.0,
+      "BCAA": 0.0
+    }
+  },
+  "pathway_enrichment": {},
+  "biomarker_panels": {
+    "0": {
+      "n_markers": 10,
+      "dominant_axis": "Bifidobacterium-TCDCA",
+      "therapeutic": "FMT/probiotics",
+      "markers": [
+        "C8p_QI11162",
+        "C8p_QI18027",
+        "C8p_QI26103",
+        "C8p_QI15043",
+        "C8p_QI12599",
+        "C8p_QI12142",
+        "C8p_QI12592",
+        "C8p_QI29786",
+        "C8p_QI23769",
+        "C8p_QI15041"
+      ]
+    },
+    "1": {
+      "n_markers": 10,
+      "dominant_axis": "Bifidobacterium-TCDCA",
+      "therapeutic": "FMT/probiotics",
+      "markers": [
+        "C8p_QI11162",
+        "C8p_QI18027",
+        "C8p_QI26103",
+        "C8p_QI15043",
+        "C8p_QI12599",
+        "C8p_QI12142",
+        "C8p_QI12592",
+        "C8p_QI29786",
+        "C8p_QI23769",
+        "C8p_QI15041"
+      ]
+    }
+  }
+}
