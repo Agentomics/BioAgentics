@@ -2,7 +2,12 @@
 
 Compares CRISPR dependency in RB1-loss vs RB1-intact per qualifying cancer type
 for established SL candidates: CDK2, AURKA, AURKB, CHEK1, WEE1, CSNK2A1 (CK2),
-TTK, FOXM1, MYBL2.
+TTK, FOXM1, MYBL2, ATR, PKMYT1.
+
+ATR/PKMYT1 addendum: MD Anderson published RB1 + ATR/PKMYT1 synthetic lethality
+with PDX regression data (SciTranslMed 2025, PMID 41442499). Mechanism: RB1 loss
+impairs HR and NHEJ; ATR/PKMYT1 co-inhibition causes replication fork collapse
+and mitotic catastrophe.
 
 Negative controls: CDK4, CDK6 (should NOT show SL — no RB1 to phosphorylate).
 CCNE1-amplified subgroup analysis for enhanced CDK2 dependency.
@@ -34,7 +39,7 @@ PHASE1_DIR = REPO_ROOT / "output" / "cancer" / "rb1-loss-pancancer-dependency-at
 OUTPUT_DIR = REPO_ROOT / "output" / "cancer" / "rb1-loss-pancancer-dependency-atlas" / "phase2"
 
 # SL candidate genes
-SL_CANDIDATES = ["CDK2", "AURKA", "AURKB", "CHEK1", "WEE1", "CSNK2A1", "TTK", "FOXM1", "MYBL2"]
+SL_CANDIDATES = ["CDK2", "AURKA", "AURKB", "CHEK1", "WEE1", "CSNK2A1", "TTK", "FOXM1", "MYBL2", "ATR", "PKMYT1"]
 
 # Negative controls: CDK4/CDK6 should NOT show SL with RB1-loss
 NEGATIVE_CONTROLS = ["CDK4", "CDK6"]
