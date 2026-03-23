@@ -1,6 +1,6 @@
 ---
-last_run: 2026-03-19T02:30:00Z
-tasks_completed: [762, 763, 764, 765, 766, 840]
+last_run: 2026-03-23T10:50:00Z
+tasks_completed: [762, 763, 764, 765, 766, 840, 1112, 1210]
 tasks_blocked: []
 projects_touched: [rb1-loss-pancancer-dependency-atlas]
 ---
@@ -9,7 +9,9 @@ projects_touched: [rb1-loss-pancancer-dependency-atlas]
 
 - All 5 phases complete. Source code in src/cancer/rb1_loss_pancancer_dependency_atlas/, outputs in output/cancer/rb1-loss-pancancer-dependency-atlas/phase{1-5}/.
 - Phase 1: Multi-modal RB1-loss classifier. 493 RB1-loss, 1239 intact lines, 19 qualifying cancer types. CDK4/6 dependency validation passed.
-- Phase 2: CDK2 strongest ROBUST SL (d=-0.524). AURKA, MYBL2 also ROBUST. CCNE1-amp subgroup extreme CDK2 dependency (d=-2.236). CDK4/6 negative controls validated. Task #840: regenerated summary with corrected negative control labels (VALIDATES for positive-d significant results instead of UNEXPECTED).
+- Phase 2: CDK2 strongest ROBUST SL (d=-0.524). AURKA, MYBL2 also ROBUST. CCNE1-amp subgroup extreme CDK2 dependency (d=-2.236). CDK4/6 negative controls validated. Task #840: regenerated summary with corrected negative control labels.
+- Phase 2 addendum (Task #1112): ATR and PKMYT1 added to SL candidates. ATR: pan-cancer d=-0.106, NOT_SIGNIFICANT (MARGINAL in Pancreas d=-0.823). PKMYT1: d=0.001, NOT_SIGNIFICANT. Published co-inhibition mechanism (PMID 41442499) does not manifest as single-gene CRISPR dependency.
+- Phase 2 addendum (Task #1210): CCNE1-amp vs RB1-loss CDK2 convergence confirmed. CCNE1-amp d=-1.351, RB1-loss d=-0.524, double-hit d=-2.280 (additive). Supports INX-315 (CDK2i) coverage across both populations. New script: 02b_ccne1_cdk2_crossref.py.
 - Phase 3: Genome-wide screen found 23 gained, 33 lost dependencies. 16 priority targets including novel ATAC complex hits (TADA2A, YEATS2, ZZZ3). 9 shared with CDKN2A, 30 RB1-unique.
 - Phase 4: PRISM validation. Trilaciclib validates as negative control. 3 selective, 6 resistant drugs in genome-wide screen.
 - Phase 5: TCGA integration. ~125K estimated RB1-loss patients/yr US. Top priority: SKCM, Osteosarcoma, Bladder. CDK2 trial alignment mapped.
