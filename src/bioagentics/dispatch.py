@@ -237,7 +237,7 @@ def reap_stale_blocked_tasks():
         username = task.get("username", "?")
         project = task.get("project")
         division = task.get("division")
-        blocked_reason = task.get("blocked_reason", "")
+        blocked_reason = task.get("blocked_reason") or ""
         cycles = task.get("blocked_cycles", 0) + 1
 
         if cycles >= max_cycles:
