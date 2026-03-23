@@ -18,6 +18,7 @@ CO-ALTERATION LANDSCAPE (in CDKN2A-deleted lines)
   RB1 co-loss: 10/343 (2.9%)
   TP53 mutation: 185/343 (53.9%)
   CDKN2B co-deletion: 290/343 (84.5%)
+  MTAP co-deletion: 255/343 (74.3%)
   CCNE1 amplification: 9/343 (2.6%)
 
 CLINICAL NOTE: RB1 co-loss abolishes CDK4/6 dependency.
