@@ -134,7 +134,7 @@ def load_chembl_drugs(path: Path, pchembl_min: float = 6.0) -> dict[str, dict]:
     """Load drug-target mappings from ChEMBL bioactivity data.
 
     Filters for named compounds with pChEMBL >= 6.0 (sub-micromolar activity).
-    Returns: {compound_name: {"targets": set[str], "chembl_id": str, "max_phase": str}}
+    Returns: {compound_name: {"targets": set[str], "chembl_id": str, "max_phase": int}}
     """
     df = pd.read_csv(path, sep="\t")
     drugs: dict[str, dict] = {}
@@ -155,13 +155,17 @@ def load_chembl_drugs(path: Path, pchembl_min: float = 6.0) -> dict[str, dict]:
             drugs[name] = {
                 "targets": set(),
                 "chembl_id": str(row.get("chembl_id", "")),
-                "max_phase": "",
+                "max_phase": 0,
             }
         drugs[name]["targets"].add(row["target_gene"])
 
-        # Track highest phase seen
-        phase = str(row.get("max_phase", ""))
-        if phase and phase > drugs[name]["max_phase"]:
+        # Track highest phase seen (numeric comparison to avoid "2" > "10" bug)
+        raw_phase = row.get("max_phase", "") or ""
+        try:
+            phase = int(float(raw_phase)) if raw_phase != "" else 0
+        except (ValueError, TypeError):
+            phase = 0
+        if phase > drugs[name]["max_phase"]:
             drugs[name]["max_phase"] = phase
 
     return drugs
