@@ -12,6 +12,7 @@ retry_delays = [60, 300, 600, 1000]
 retry_max_attempts = 6
 oom_delays = [300, 600]
 oom_max_attempts = 4
+blocked_cycles_max = 3          # auto-cancel tasks still blocked after this many dispatch cycles
 
 # --- Divisions ---
 
@@ -39,6 +40,9 @@ description = "Making medical diagnosis more accurate, accessible, and affordabl
 backend = "claude"
 model = "claude-opus-4-6"
 effort = "max"
+# backend = "codex"
+# model = "gpt-5-codex"
+# effort = "high"
 division = "cancer"
 
 # --- Cancer: Generators (always run, create work for others) ---

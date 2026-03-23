@@ -68,6 +68,7 @@ class TaskUpdate(BaseModel):
     description: str | None = Field(default=None, max_length=5_000)
     priority: int | None = Field(default=None, ge=1, le=5)
     blocked_reason: str | None = Field(default=None, max_length=1000)
+    blocked_cycles: int | None = Field(default=None, ge=0)
 
 
 class TaskEntry(BaseModel):
@@ -83,6 +84,7 @@ class TaskEntry(BaseModel):
     updated_at: str
     blocked_at: str | None
     blocked_reason: str | None
+    blocked_cycles: int
 
 
 class TaskList(BaseModel):

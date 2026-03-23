@@ -141,6 +141,7 @@ def update_task(task_id: int, body: TaskUpdate, db: Session = Depends(get_db)):
             updates["blocked_at"] = now
         elif updates["status"] != "blocked" and row._mapping["status"] == "blocked":
             updates["blocked_at"] = None
+            updates["blocked_cycles"] = 0
 
     db.execute(tasks.update().where(tasks.c.id == task_id).values(**updates))
     db.commit()

@@ -65,6 +65,7 @@ tasks = Table(
     ),
     Column("blocked_at", String, nullable=True),
     Column("blocked_reason", String, nullable=True),
+    Column("blocked_cycles", Integer, nullable=False, server_default=text("0")),
 )
 
 
@@ -220,4 +221,15 @@ def init_db():
                     conn.commit()
             except Exception:
                 pass
+        # Migrate tasks table: add blocked_cycles if missing
+        try:
+            cols = conn.execute(text("PRAGMA table_info(tasks)")).fetchall()
+            col_names = [c[1] for c in cols]
+            if "blocked_cycles" not in col_names:
+                conn.execute(
+                    text("ALTER TABLE tasks ADD COLUMN blocked_cycles INTEGER NOT NULL DEFAULT 0")
+                )
+                conn.commit()
+        except Exception:
+            pass
     metadata.create_all(engine)

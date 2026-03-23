@@ -213,20 +213,67 @@ def clear_stale_presences():
             )
 
 
-def check_stale_blocked_tasks():
-    """Log warnings for tasks blocked longer than 3 hours."""
-    resp = api("GET", "/tasks?status=blocked&older_than=3h&limit=100")
-    if resp and resp.ok:
-        total = resp.json().get("total", 0)
-        if total > 0:
-            log.warning("WARNING: %d task(s) blocked >3h", total)
-            lines = []
-            for task in resp.json().get("items", []):
-                lines.append(
-                    f"- [{task['id']}] {task['title']} (assigned: {task['username']})"
+def reap_stale_blocked_tasks():
+    """Increment blocked_cycles for every blocked task; cancel those past the limit.
+
+    Each dispatch cycle counts as one attempt.  After blocked_cycles_max
+    cycles the task is auto-cancelled so the project pipeline can advance.
+    Cycle counts survive dispatcher restarts (stored in the DB).
+    """
+    max_cycles = _dispatch.blocked_cycles_max
+
+    resp = api("GET", "/tasks?status=blocked&limit=200")
+    if not resp or not resp.ok:
+        return
+    items = resp.json().get("items", [])
+    if not items:
+        return
+
+    cancelled = 0
+    incremented = 0
+    for task in items:
+        tid = task["id"]
+        title = task["title"]
+        username = task.get("username", "?")
+        project = task.get("project")
+        division = task.get("division")
+        blocked_reason = task.get("blocked_reason", "")
+        cycles = task.get("blocked_cycles", 0) + 1
+
+        if cycles >= max_cycles:
+            patch_resp = api(
+                "PATCH",
+                f"/tasks/{tid}",
+                json={"status": "cancelled", "blocked_cycles": cycles},
+            )
+            if patch_resp and patch_resp.ok:
+                cancelled += 1
+                log.info(
+                    "REAP: #%d [%s/%s] %s — blocked %d cycles, cancelled",
+                    tid, division, project, title, cycles,
                 )
-                log.warning("  %s", lines[-1])
-            journal(f"STALE BLOCKED: {total} task(s) blocked >3h:\n" + "\n".join(lines))
+                journal(
+                    f"auto-cancelled blocked task #{tid}: {title} "
+                    f"(assigned: {username}, blocked {cycles} cycles, "
+                    f"reason: {blocked_reason[:200]})",
+                    project,
+                    division,
+                )
+            else:
+                log.warning("failed to cancel blocked task #%d", tid)
+        else:
+            patch_resp = api(
+                "PATCH",
+                f"/tasks/{tid}",
+                json={"blocked_cycles": cycles},
+            )
+            if patch_resp and patch_resp.ok:
+                incremented += 1
+
+    if incremented:
+        log.info("REAP: incremented blocked_cycles on %d task(s)", incremented)
+    if cancelled:
+        log.info("REAP: cancelled %d task(s) past %d-cycle limit", cancelled, max_cycles)
 
 
 def _project_is_idle(name: str, division: str | None = None) -> bool:
@@ -566,12 +613,24 @@ def build_agent_command(config: AgentConfig, project: str | None, division: str 
             f"All work happens in this single repository."
         )
 
+    username = role.lower()
+    task_clause = ""
+    if role in GENERATORS:
+        task_clause = (
+            f"IMPORTANT: Before self-directed work, check for pending tasks "
+            f"assigned to you: list_tasks(username=\"{username}\", "
+            f"status=\"pending\", division=\"{div}\"). "
+            f"Process assigned tasks first — they are requests from other "
+            f"agents. Mark each in_progress, do the work, then mark done."
+        )
+
     if config.backend == "claude":
         prompt = (
             f"0. Read @org-roles/{div}/{role}.md .\n"
             f"  1. Read previous context summary at @{summary_file} (if exists).\n"
             f"  2. {division_clause} {project_clause}\n"
-            f"  3. Do your job. Note: your presence (running/idle) is managed by "
+            f"  3. {task_clause + ' Then d' if task_clause else 'D'}o your job. "
+            f"Note: your presence (running/idle) is managed by "
             f"the dispatcher — do not manage your own agent presence.\n"
             f"  4. Finally, save a new short and concise context summary to "
             f"{summary_file} for next run. Use the format in @SUMMARY_FORMAT.md ."
@@ -599,12 +658,14 @@ def build_agent_command(config: AgentConfig, project: str | None, division: str 
         except FileNotFoundError:
             summary = "(no prior context)"
 
+        task_section = f"\n\n{task_clause}\n" if task_clause else ""
         prompt = (
             f"You are: {role}\n\n"
             f"{role_content}\n\n"
             f"Previous context summary:\n{summary}\n\n"
             f"{division_clause}\n\n"
             f"{project_clause}\n\n"
+            f"{task_section}"
             f"Do your job. Your presence (running/idle) is managed by the "
             f"dispatcher — do not manage your own agent presence.\n\n"
             f"When done, save a short context summary to {summary_file}."
@@ -891,8 +952,8 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
     # Clear agents stuck as 'running' beyond the presence timeout
     clear_stale_presences()
 
-    # Check for stale blocked tasks
-    check_stale_blocked_tasks()
+    # Auto-cancel tasks blocked beyond the configured threshold
+    reap_stale_blocked_tasks()
 
     # Advance projects through the research pipeline
     check_stale_pipeline_projects()
@@ -946,7 +1007,11 @@ def dispatch_cycle(agents: list[AgentConfig], allow_research_director: bool):
     for item in generator_queue:
         gen_by_div.setdefault(item[0].division, []).append(item)
 
-    # Shuffle division order each cycle to prevent alphabetical bias
+    # Shuffle both division order AND role order within each division
+    # so that roles like validation_scientist and research_writer aren't
+    # always starved by developer (which has the most projects).
+    for div_list in task_by_div.values():
+        random.shuffle(div_list)
     task_divs = list(task_by_div.values())
     random.shuffle(task_divs)
     gen_divs = list(gen_by_div.values())
