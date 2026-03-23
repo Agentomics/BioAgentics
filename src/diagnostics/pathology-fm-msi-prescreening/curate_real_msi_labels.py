@@ -2,21 +2,20 @@
 """Curate real MSI labels from TCGA molecular subtype data.
 
 Replaces synthetic labels (based on published prevalence rates) with real
-per-patient MSI calls from GDC API molecular test data and MANTIS scores.
+per-patient MSI calls from cBioPortal TCGA PanCanAtlas data (MANTIS scores
+and MSIsensor scores).
 
 Sources:
-- GDC API follow_ups.molecular_tests.msi_status
-- GDC API clinical supplement files (MANTIS scores)
+- cBioPortal TCGA PanCanAtlas studies (MANTIS + MSIsensor scores)
+- GDC API for case metadata
 - Cortes-Ciriano et al. (PMID: 28585546)
 
 Usage:
     uv run python src/diagnostics/pathology-fm-msi-prescreening/curate_real_msi_labels.py
 """
 
-import json
 import logging
 import sys
-import time
 from pathlib import Path
 
 import pandas as pd
@@ -27,386 +26,165 @@ PROJECT_ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from bioagentics.models.pathology_msi.msi_labels import (
-    MSI_PROJECTS,
+    MANTIS_MSI_H_THRESHOLD,
     classify_msi_from_mantis,
-    curate_msi_labels,
     fetch_tcga_clinical_msi,
     print_label_summary,
-    resolve_msi_status,
     save_labels,
 )
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger(__name__)
 
-GDC_CASES_ENDPOINT = "https://api.gdc.cancer.gov/cases"
-GDC_FILES_ENDPOINT = "https://api.gdc.cancer.gov/files"
-
 DATA_DIR = PROJECT_ROOT / "data/diagnostics/pathology-fm-msi-prescreening"
 LABELS_DIR = DATA_DIR / "labels"
 
+# cBioPortal TCGA PanCanAtlas study IDs
+CBIO_STUDIES = {
+    "coadread_tcga_pan_can_atlas_2018": ["COAD", "READ"],
+    "ucec_tcga_pan_can_atlas_2018": ["UCEC"],
+    "stad_tcga_pan_can_atlas_2018": ["STAD"],
+}
 
-def fetch_gdc_molecular_tests_msi(
-    project_ids: list[str] | None = None,
-    page_size: int = 500,
-) -> pd.DataFrame:
-    """Fetch MSI status from GDC molecular tests data.
+# MSIsensor threshold (Niu et al., Bioinformatics 2014)
+MSISENSOR_MSI_H_THRESHOLD = 3.5
 
-    Queries follow_ups.molecular_tests which contains MSI-PCR and IHC results
-    for TCGA cases.
+
+def fetch_cbioportal_msi_scores() -> pd.DataFrame:
+    """Fetch MANTIS and MSIsensor scores from cBioPortal TCGA PanCanAtlas.
+
+    Returns DataFrame with: patient_id, mantis_score, msisensor_score, study_id
     """
-    if project_ids is None:
-        project_ids = MSI_PROJECTS
+    all_records = []
 
-    filters = {
-        "op": "in",
-        "content": {
-            "field": "project.project_id",
-            "value": project_ids,
-        },
-    }
-
-    fields = [
-        "case_id",
-        "submitter_id",
-        "project.project_id",
-    ]
-
-    expand = ["follow_ups.molecular_tests"]
-
-    all_cases = []
-    from_ = 0
-
-    while True:
-        params = {
-            "filters": json.dumps(filters),
-            "fields": ",".join(fields),
-            "expand": ",".join(expand),
-            "format": "JSON",
-            "size": page_size,
-            "from": from_,
-        }
-        resp = requests.get(GDC_CASES_ENDPOINT, params=params, timeout=60)
+    for study_id, cancer_types in CBIO_STUDIES.items():
+        logger.info(f"  Fetching {study_id}...")
+        url = f"https://www.cbioportal.org/api/studies/{study_id}/clinical-data"
+        params = {"clinicalDataType": "SAMPLE", "projection": "DETAILED"}
+        resp = requests.get(
+            url,
+            params=params,
+            headers={"accept": "application/json"},
+            timeout=60,
+        )
         resp.raise_for_status()
         data = resp.json()
-        hits = data.get("data", {}).get("hits", [])
-        if not hits:
-            break
 
-        all_cases.extend(hits)
-        total = data["data"]["pagination"]["total"]
-        logger.info(f"  molecular tests: fetched {len(all_cases)}/{total} cases")
-        if len(all_cases) >= total:
-            break
-        from_ += page_size
-        time.sleep(0.5)
+        # Group by patient
+        patient_data: dict[str, dict] = {}
+        for entry in data:
+            attr_id = entry.get("clinicalAttributeId", "")
+            patient_id = entry.get("patientId", "")
+            value = entry.get("value", "")
 
-    records = []
-    for case in all_cases:
-        project_id = case.get("project", {}).get("project_id", "")
-        submitter_id = case.get("submitter_id", "")
+            if attr_id not in ("MSI_SCORE_MANTIS", "MSI_SENSOR_SCORE"):
+                continue
 
-        # Extract MSI status from molecular tests
-        msi_status = None
-        msi_test_type = None
-        follow_ups = case.get("follow_ups", [])
-        for fu in follow_ups:
-            mol_tests = fu.get("molecular_tests", [])
-            for test in mol_tests:
-                test_msi = test.get("msi_status")
-                if test_msi and str(test_msi).upper() not in (
-                    "",
-                    "NOT REPORTED",
-                    "UNKNOWN",
-                ):
-                    msi_status = test_msi
-                    msi_test_type = test.get("test_type", "molecular_test")
-                    break
-            if msi_status:
-                break
-
-        if msi_status:
-            records.append(
-                {
-                    "submitter_id": submitter_id,
-                    "case_id": case["case_id"],
-                    "project_id": project_id,
-                    "cancer_type": project_id.replace("TCGA-", ""),
-                    "pcr_call": msi_status,
-                    "test_type": msi_test_type,
+            if patient_id not in patient_data:
+                patient_data[patient_id] = {
+                    "patient_id": patient_id,
+                    "study_id": study_id,
                 }
-            )
 
-    df = pd.DataFrame(records)
-    logger.info(
-        f"Found {len(df)} cases with molecular test MSI data"
-    )
+            if attr_id == "MSI_SCORE_MANTIS":
+                try:
+                    patient_data[patient_id]["mantis_score"] = float(value)
+                except (ValueError, TypeError):
+                    pass
+            elif attr_id == "MSI_SENSOR_SCORE":
+                try:
+                    patient_data[patient_id]["msisensor_score"] = float(value)
+                except (ValueError, TypeError):
+                    pass
+
+        records = list(patient_data.values())
+        logger.info(
+            f"    {study_id}: {len(records)} patients with MSI scores"
+        )
+        all_records.extend(records)
+
+    df = pd.DataFrame(all_records)
+    logger.info(f"  Total: {len(df)} patients with MSI scores from cBioPortal")
     return df
 
 
-def fetch_gdc_clinical_supplement_msi(
-    project_ids: list[str] | None = None,
-    page_size: int = 500,
-) -> pd.DataFrame:
-    """Fetch MSI status from GDC clinical supplement (biotab) files.
+def classify_msi_dual_score(
+    mantis_score: float | None,
+    msisensor_score: float | None,
+) -> tuple[str, str]:
+    """Classify MSI status using both MANTIS and MSIsensor scores.
 
-    Queries GDC for clinical supplement files and extracts MSI data
-    from TCGA biotab format.
+    Resolution priority:
+    1. If both scores agree, use concordant call
+    2. If they disagree, prefer MANTIS (used more in literature)
+    3. If only one score available, use it
+
+    Returns (msi_status, source).
     """
-    if project_ids is None:
-        project_ids = MSI_PROJECTS
+    mantis_call = None
+    msisensor_call = None
 
-    filters = {
-        "op": "and",
-        "content": [
-            {
-                "op": "in",
-                "content": {
-                    "field": "cases.project.project_id",
-                    "value": project_ids,
-                },
-            },
-            {
-                "op": "=",
-                "content": {
-                    "field": "data_category",
-                    "value": "Clinical",
-                },
-            },
-            {
-                "op": "=",
-                "content": {
-                    "field": "data_type",
-                    "value": "Clinical Supplement",
-                },
-            },
-            {
-                "op": "=",
-                "content": {
-                    "field": "data_format",
-                    "value": "BCR XML",
-                },
-            },
-        ],
-    }
+    if mantis_score is not None and not pd.isna(mantis_score):
+        mantis_call = classify_msi_from_mantis(mantis_score)
 
-    fields = [
-        "file_id",
-        "file_name",
-        "cases.case_id",
-        "cases.submitter_id",
-        "cases.project.project_id",
-    ]
+    if msisensor_score is not None and not pd.isna(msisensor_score):
+        msisensor_call = "MSI-H" if msisensor_score >= MSISENSOR_MSI_H_THRESHOLD else "MSS"
 
-    params = {
-        "filters": json.dumps(filters),
-        "fields": ",".join(fields),
-        "format": "JSON",
-        "size": 1,
-    }
+    if mantis_call is None and msisensor_call is None:
+        return "unknown", "no_data"
 
-    resp = requests.get(GDC_FILES_ENDPOINT, params=params, timeout=60)
-    resp.raise_for_status()
-    data = resp.json()
-    total = data.get("data", {}).get("pagination", {}).get("total", 0)
-    logger.info(f"Found {total} clinical supplement files in GDC")
+    if mantis_call is None:
+        return msisensor_call, "msisensor_only"
 
-    # Clinical supplement XML parsing is complex; molecular_tests is the
-    # preferred source. Return empty if not needed.
-    return pd.DataFrame()
+    if msisensor_call is None:
+        return mantis_call, "mantis_only"
+
+    # Both available
+    if mantis_call == msisensor_call:
+        return mantis_call, "mantis_msisensor_concordant"
+
+    # Disagreement: MANTIS is more widely used; flag the conflict
+    return mantis_call, f"mantis_preferred_over_msisensor_{msisensor_call}"
 
 
-def fetch_gdc_ssm_msi_scores(
-    project_ids: list[str] | None = None,
-    page_size: int = 500,
-) -> pd.DataFrame:
-    """Fetch MANTIS/MSIsensor scores from GDC analysis files.
-
-    Queries for Microsatellite Instability analysis results.
-    """
-    if project_ids is None:
-        project_ids = MSI_PROJECTS
-
-    # Query for MSI analysis files
-    filters = {
-        "op": "and",
-        "content": [
-            {
-                "op": "in",
-                "content": {
-                    "field": "cases.project.project_id",
-                    "value": project_ids,
-                },
-            },
-            {
-                "op": "in",
-                "content": {
-                    "field": "analysis.workflow_type",
-                    "value": ["MSIsensor"],
-                },
-            },
-        ],
-    }
-
-    fields = [
-        "file_id",
-        "file_name",
-        "file_size",
-        "cases.case_id",
-        "cases.submitter_id",
-        "cases.project.project_id",
-    ]
-
-    all_hits = []
-    from_ = 0
-
-    while True:
-        params = {
-            "filters": json.dumps(filters),
-            "fields": ",".join(fields),
-            "format": "JSON",
-            "size": page_size,
-            "from": from_,
-        }
-        resp = requests.get(GDC_FILES_ENDPOINT, params=params, timeout=60)
-        resp.raise_for_status()
-        data = resp.json()
-        hits = data.get("data", {}).get("hits", [])
-        if not hits:
-            break
-        all_hits.extend(hits)
-        total = data["data"]["pagination"]["total"]
-        logger.info(f"  MSIsensor files: fetched {len(all_hits)}/{total}")
-        if len(all_hits) >= total:
-            break
-        from_ += page_size
-        time.sleep(0.5)
-
-    if not all_hits:
-        logger.info("No MSIsensor analysis files found in GDC")
-        return pd.DataFrame()
-
-    # Download and parse MSIsensor score files (they are small text files)
-    records = []
-    for hit in all_hits:
-        file_id = hit["file_id"]
-        cases = hit.get("cases", [])
-        if not cases:
-            continue
-        case = cases[0]
-
-        # Download the score file
-        try:
-            resp = requests.get(
-                f"https://api.gdc.cancer.gov/data/{file_id}",
-                timeout=30,
-            )
-            resp.raise_for_status()
-            # MSIsensor output is typically: "Total_Number_of_Sites\tNumber_of_Somatic_Sites\t%"
-            # or just a single score value
-            content = resp.text.strip()
-            score = _parse_msisensor_score(content)
-            if score is not None:
-                records.append(
-                    {
-                        "submitter_id": case.get("submitter_id", ""),
-                        "case_id": case["case_id"],
-                        "project_id": case.get("project", {}).get("project_id", ""),
-                        "msisensor_score": score,
-                    }
-                )
-        except Exception as e:
-            logger.warning(f"Failed to download MSIsensor file {file_id}: {e}")
-        time.sleep(0.3)
-
-    df = pd.DataFrame(records)
-    logger.info(f"Parsed {len(df)} MSIsensor scores")
-    return df
-
-
-def _parse_msisensor_score(content: str) -> float | None:
-    """Parse MSIsensor output to extract the MSI score."""
-    lines = content.strip().split("\n")
-    for line in lines:
-        parts = line.strip().split("\t")
-        if len(parts) >= 3:
-            try:
-                return float(parts[2])
-            except (ValueError, IndexError):
-                pass
-        # Try parsing as a single float
-        try:
-            return float(line.strip())
-        except ValueError:
-            pass
-    return None
-
-
-def merge_msi_sources(
+def merge_cases_with_msi(
     cases_df: pd.DataFrame,
-    molecular_tests_df: pd.DataFrame,
-    msisensor_df: pd.DataFrame,
+    msi_scores_df: pd.DataFrame,
 ) -> pd.DataFrame:
-    """Merge MSI data from multiple GDC sources into curated labels.
-
-    Priority:
-    1. molecular_tests (PCR/IHC - gold standard)
-    2. MSIsensor scores (computational)
-    """
+    """Merge GDC case metadata with cBioPortal MSI scores."""
     df = cases_df.copy()
 
-    # Merge molecular test results
-    if not molecular_tests_df.empty:
-        mol_cols = ["submitter_id", "pcr_call"]
-        available = [c for c in mol_cols if c in molecular_tests_df.columns]
-        mt = molecular_tests_df[available].drop_duplicates(subset=["submitter_id"])
-        # Use patient barcode (first 12 chars) for matching
-        df["patient_barcode"] = df["submitter_id"].str[:12]
-        mt["patient_barcode"] = mt["submitter_id"].str[:12]
-        df = df.merge(
-            mt[["patient_barcode", "pcr_call"]],
-            on="patient_barcode",
-            how="left",
-        )
-    else:
-        df["patient_barcode"] = df["submitter_id"].str[:12]
-        df["pcr_call"] = None
+    # Create patient barcode for matching (first 12 chars of submitter_id)
+    df["patient_barcode"] = df["submitter_id"].str[:12]
 
-    # Merge MSIsensor scores
-    if not msisensor_df.empty:
-        ms = msisensor_df[["submitter_id", "msisensor_score"]].drop_duplicates(
-            subset=["submitter_id"]
-        )
-        ms["patient_barcode"] = ms["submitter_id"].str[:12]
+    if not msi_scores_df.empty:
+        scores = msi_scores_df.copy()
+        # patient_id in cBioPortal is the TCGA barcode (e.g., TCGA-AA-3562)
+        scores["patient_barcode"] = scores["patient_id"].str[:12]
+
+        # Deduplicate (some patients may appear in multiple samples)
+        scores = scores.drop_duplicates(subset=["patient_barcode"], keep="first")
+
+        merge_cols = ["patient_barcode"]
+        score_cols = [c for c in ["mantis_score", "msisensor_score"] if c in scores.columns]
         df = df.merge(
-            ms[["patient_barcode", "msisensor_score"]],
+            scores[merge_cols + score_cols],
             on="patient_barcode",
             how="left",
         )
     else:
+        df["mantis_score"] = None
         df["msisensor_score"] = None
 
     df = df.drop(columns=["patient_barcode"])
 
-    # Resolve MSI status using priority logic
+    # Classify MSI status
     statuses = []
     sources = []
     for _, row in df.iterrows():
-        pcr = row.get("pcr_call")
-        msisensor = row.get("msisensor_score")
-
-        # MSIsensor uses threshold of 3.5 (vs MANTIS 0.4)
-        mantis_call = None
-        if msisensor is not None and not pd.isna(msisensor):
-            if msisensor >= 3.5:
-                mantis_call = "MSI-H"
-            else:
-                mantis_call = "MSS"
-
-        status, source = resolve_msi_status(
-            mantis_call=mantis_call,
-            pcr_call=pcr,
-            mantis_score=None,  # We use MSIsensor not MANTIS
+        status, source = classify_msi_dual_score(
+            mantis_score=row.get("mantis_score"),
+            msisensor_score=row.get("msisensor_score"),
         )
         statuses.append(status)
         sources.append(source)
@@ -423,63 +201,71 @@ def main() -> None:
     logger.info("Curating real MSI labels from TCGA molecular data")
     logger.info("=" * 60)
 
-    # Step 1: Fetch case data from GDC
-    logger.info("\n[1/4] Fetching case data from GDC API...")
+    # Step 1: Fetch case metadata from GDC
+    logger.info("\n[1/3] Fetching case metadata from GDC API...")
     cases_df = fetch_tcga_clinical_msi()
-    logger.info(f"  Got {len(cases_df)} cases across {cases_df['cancer_type'].nunique()} cancer types")
+    logger.info(f"  {len(cases_df)} cases across {cases_df['cancer_type'].nunique()} cancer types")
     for ct, count in cases_df["cancer_type"].value_counts().items():
-        logger.info(f"    {ct}: {count} cases")
+        logger.info(f"    {ct}: {count}")
 
-    # Step 2: Fetch molecular test MSI data
-    logger.info("\n[2/4] Fetching molecular test MSI data from GDC...")
-    mol_tests_df = fetch_gdc_molecular_tests_msi()
+    # Step 2: Fetch MSI scores from cBioPortal
+    logger.info("\n[2/3] Fetching MSI scores from cBioPortal PanCanAtlas...")
+    msi_scores_df = fetch_cbioportal_msi_scores()
 
-    # Step 3: Fetch MSIsensor scores
-    logger.info("\n[3/4] Fetching MSIsensor analysis scores from GDC...")
-    msisensor_df = fetch_gdc_ssm_msi_scores()
-
-    # Step 4: Merge and resolve
-    logger.info("\n[4/4] Merging MSI data sources and resolving labels...")
-    curated_df = merge_msi_sources(cases_df, mol_tests_df, msisensor_df)
+    # Step 3: Merge and classify
+    logger.info("\n[3/3] Merging case data with MSI scores...")
+    curated_df = merge_cases_with_msi(cases_df, msi_scores_df)
 
     # Print summary
     print("\n" + "=" * 60)
-    print("CURATED MSI LABELS SUMMARY")
+    print("CURATED REAL MSI LABELS SUMMARY")
     print("=" * 60)
     print_label_summary(curated_df)
 
-    # Compare with synthetic labels
-    synthetic_path = LABELS_DIR / "tcga_msi_labels.csv"
-    if synthetic_path.exists():
-        synthetic_df = pd.read_csv(synthetic_path)
-        print(f"\n--- Comparison with synthetic labels ---")
-        print(f"Synthetic labels: {len(synthetic_df)} cases")
-        print(f"Real labels: {len(curated_df)} cases")
-        if "msi_source" in synthetic_df.columns:
-            syn_sources = synthetic_df["msi_source"].value_counts().to_dict()
-            print(f"Synthetic sources: {syn_sources}")
-        real_sources = curated_df["msi_source"].value_counts().to_dict()
-        print(f"Real sources: {real_sources}")
+    # Score distribution summary
+    has_mantis = curated_df["mantis_score"].notna().sum()
+    has_msisensor = curated_df["msisensor_score"].notna().sum()
+    print(f"\nScore coverage:")
+    print(f"  MANTIS scores: {has_mantis}/{len(curated_df)}")
+    print(f"  MSIsensor scores: {has_msisensor}/{len(curated_df)}")
 
-        # Count how many have real (non-unknown) labels
-        known = curated_df[curated_df["msi_status"] != "unknown"]
-        print(f"\nCases with known MSI status: {len(known)}/{len(curated_df)}")
+    # Compare with previous labels
+    synthetic_backup = LABELS_DIR / "tcga_msi_labels_synthetic_backup.csv"
+    current_labels = LABELS_DIR / "tcga_msi_labels.csv"
 
-    # Save real labels (backup synthetic first)
+    if current_labels.exists():
+        prev_df = pd.read_csv(current_labels)
+        prev_sources = prev_df["msi_source"].value_counts().to_dict()
+        is_synthetic = any("synthetic" in str(s) for s in prev_sources)
+
+        if is_synthetic:
+            print(f"\n--- Replacing synthetic labels ---")
+            print(f"Previous: {len(prev_df)} cases (source: {prev_sources})")
+
+    # Backup synthetic labels if this is the first real curation
     LABELS_DIR.mkdir(parents=True, exist_ok=True)
-    if synthetic_path.exists():
-        backup_path = LABELS_DIR / "tcga_msi_labels_synthetic_backup.csv"
-        if not backup_path.exists():
-            synthetic_df.to_csv(backup_path, index=False)
-            logger.info(f"Backed up synthetic labels to {backup_path}")
+    if current_labels.exists() and not synthetic_backup.exists():
+        prev_df = pd.read_csv(current_labels)
+        if any("synthetic" in str(s) for s in prev_df["msi_source"].unique()):
+            prev_df.to_csv(synthetic_backup, index=False)
+            logger.info(f"Backed up synthetic labels to {synthetic_backup}")
 
+    # Save curated labels
     output_path = save_labels(curated_df, LABELS_DIR, "tcga_msi_labels.csv")
-    logger.info(f"\nSaved curated labels to {output_path}")
+    logger.info(f"Saved curated labels to {output_path}")
 
-    # Also save a detailed version with all source columns
+    # Save detailed version with all score columns
     detailed_path = LABELS_DIR / "tcga_msi_labels_detailed.csv"
     curated_df.to_csv(detailed_path, index=False)
     logger.info(f"Saved detailed labels to {detailed_path}")
+
+    # Summary stats for journal
+    known = curated_df[curated_df["msi_status"] != "unknown"]
+    msi_h = (curated_df["msi_status"] == "MSI-H").sum()
+    print(f"\nFinal: {len(known)}/{len(curated_df)} cases with real MSI labels")
+    print(f"  MSI-H: {msi_h}, MSS: {(curated_df['msi_status'] == 'MSS').sum()}")
+    print(f"  MSI-L: {(curated_df['msi_status'] == 'MSI-L').sum()}")
+    print(f"  Unknown: {(curated_df['msi_status'] == 'unknown').sum()}")
 
 
 if __name__ == "__main__":
