@@ -1,0 +1,56 @@
+[
+  {
+    "operating_point": "spec_90pct",
+    "threshold": 0.4824,
+    "specificity": 0.8889,
+    "sensitivity": 0.8799,
+    "n_fp": 5,
+    "n_tn": 40,
+    "n_tp": 271,
+    "n_fn": 37,
+    "n_total": 353,
+    "fp_rate": 0.1111,
+    "fp_stage_breakdown": {
+      "Normal": 5
+    },
+    "tn_stage_breakdown": {
+      "Normal": 40
+    }
+  },
+  {
+    "operating_point": "spec_95pct",
+    "threshold": 0.4952,
+    "specificity": 0.9333,
+    "sensitivity": 0.8734,
+    "n_fp": 3,
+    "n_tn": 42,
+    "n_tp": 269,
+    "n_fn": 39,
+    "n_total": 353,
+    "fp_rate": 0.0667,
+    "fp_stage_breakdown": {
+      "Normal": 3
+    },
+    "tn_stage_breakdown": {
+      "Normal": 42
+    }
+  },
+  {
+    "operating_point": "spec_99pct",
+    "threshold": 0.5441,
+    "specificity": 0.9778,
+    "sensitivity": 0.8149,
+    "n_fp": 1,
+    "n_tn": 44,
+    "n_tp": 251,
+    "n_fn": 57,
+    "n_total": 353,
+    "fp_rate": 0.0222,
+    "fp_stage_breakdown": {
+      "Normal": 1
+    },
+    "tn_stage_breakdown": {
+      "Normal": 44
+    }
+  }
+]
