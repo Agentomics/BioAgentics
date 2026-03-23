@@ -125,17 +125,17 @@ MR_EXPOSURES: list[MRExposure] = [
     MRExposure(
         biomarker="Monocyte count",
         abbreviation="mono",
-        gwas_id="GCST90002314",
-        pmid="32888494",
-        first_author="Chen",
-        year=2020,
-        sample_size=408112,
+        gwas_id="GCST90078992",
+        pmid="34662886",
+        first_author="Backman",
+        year=2021,
+        sample_size=418449,
         ancestry="European",
-        download_url="https://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90002001-GCST90003000/GCST90002314/harmonised/32888493-GCST90002314-EFO_0004509.h.tsv.gz",
-        filename="mono_chen_2020.tsv.gz",
+        download_url="https://ftp.ebi.ac.uk/pub/databases/gwas/summary_statistics/GCST90078001-GCST90079000/GCST90078992/harmonised/GCST90078992.h.tsv.gz",
+        filename="mono_backman_2021.tsv.gz",
         source="gwas_catalog",
-        unit="10^9/L",
-        notes="UKB+INTERVAL blood cell traits",
+        unit="RINT",
+        notes="UKB exome monocyte count; replaces Chen 2020 (GCST90002314) which had no beta/SE",
     ),
     MRExposure(
         biomarker="Neutrophil count",
@@ -362,6 +362,11 @@ def extract_instruments(
     elif or_col:
         df["_beta"] = np.log(pd.to_numeric(df[or_col], errors="coerce"))
     else:
+        result["status"] = "no_effect_size"
+        return result
+
+    if df["_beta"].isna().all():
+        logger.error("  All beta values are NA in %s — file lacks effect sizes", raw_path.name)
         result["status"] = "no_effect_size"
         return result
 
