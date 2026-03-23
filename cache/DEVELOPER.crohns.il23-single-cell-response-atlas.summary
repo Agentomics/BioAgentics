@@ -1,18 +1,18 @@
 ---
-last_run: 2026-03-23T04:12:00Z
-tasks_completed: [1100]
+last_run: 2026-03-23T11:21:00Z
+tasks_completed: [1226]
 tasks_blocked: []
 projects_touched: [il23-single-cell-response-atlas]
 ---
 
 ## Context
 
-- il23-single-cell-response-atlas: Fixed incorrect GEO accessions in data_loader.py (task #1100).
-- GSE134809 attribution corrected: Martin et al. Cell 2019 (PMID 31474370), not Kong et al.
-- GSE150392 removed (was SARS-CoV-2 iPSC-cardiomyocytes, not IBD).
-- GSE207617 replaced with GSE282122 (Thomas et al. Nature Immunology 2024, longitudinal scRNA-seq anti-TNF IBD, ~1M cells).
-- DATASETS dict now has 2 entries: GSE134809, GSE282122.
-- All 7 scrna pipeline modules remain complete (data_loader, qc, integration, annotation, pathway_scoring, differential, regulon).
-- 41 scrna tests pass. Scrublet bus error on macOS in test_scrna_qc::test_stats_summary (known, not a code bug).
+- il23-single-cell-response-atlas: Fixed data_loader.py for real-world GEO data loading (task #1226).
+- Added load_10x_from_flat_tar() for plain .tar archives with GSM-prefixed 10x triplets.
+- Set PANDAS_FUTURE_INFER_STRING=0 before pandas import for anndata h5ad serialization compat.
+- Added _filter_empty_droplets() (min_genes=200) to remove 737k empty barcodes from raw 10x.
+- Fixed scipy.sparse.mmread -> scipy.io.mmread for scipy 1.14+ compat.
+- 9 new tests in test_scrna_data_loader.py, all passing (50 total scrna tests pass).
+- Scrublet bus error on macOS in test_scrna_qc::test_stats_summary remains (known, not a code bug).
 - Pipeline is code-complete. Awaiting data_curator to download GEO datasets.
 - No pending developer tasks remain for this project.
