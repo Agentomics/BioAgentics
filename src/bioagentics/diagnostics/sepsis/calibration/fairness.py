@@ -22,9 +22,9 @@ from bioagentics.diagnostics.sepsis.config import RESULTS_DIR
 
 logger = logging.getLogger(__name__)
 
-# Default age bins for stratification
-AGE_BINS = [(18, 45), (45, 65), (65, 80), (80, 200)]
-AGE_BIN_LABELS = ["18-44", "45-64", "65-79", "80+"]
+# Default age bins for stratification (per task spec: <50, 50-65, 65-80, >80)
+AGE_BINS = [(18, 50), (50, 65), (65, 80), (80, 200)]
+AGE_BIN_LABELS = ["<50", "50-64", "65-79", "80+"]
 
 
 def compute_subgroup_metrics(
@@ -159,6 +159,90 @@ def assign_age_groups(
     return groups
 
 
+def compute_subgroup_alarm_burden(
+    y_true: np.ndarray,
+    y_prob: np.ndarray,
+    groups: np.ndarray,
+    threshold: float = 0.5,
+) -> dict[str, dict]:
+    """Compute subgroup-specific false alarm rates.
+
+    Per COMPOSER-LLM architecture assessment: alarm burden disparities
+    across demographic groups are a key fairness metric.
+
+    Parameters
+    ----------
+    y_true : Binary ground truth labels.
+    y_prob : Predicted probabilities.
+    groups : Group labels.
+    threshold : Decision threshold.
+
+    Returns
+    -------
+    Dictionary keyed by group with false alarm counts, rates,
+    and false alarm ratio (FP/TP).
+    """
+    unique_groups = np.unique(groups)
+    results: dict[str, dict] = {}
+
+    for g in unique_groups:
+        mask = groups == g
+        n = int(mask.sum())
+        if n < 10:
+            continue
+
+        yt = y_true[mask]
+        y_pred = (y_prob[mask] >= threshold).astype(int)
+
+        tp = int(((y_pred == 1) & (yt == 1)).sum())
+        fp = int(((y_pred == 1) & (yt == 0)).sum())
+        fn = int(((y_pred == 0) & (yt == 1)).sum())
+        total_alarms = tp + fp
+
+        results[str(g)] = {
+            "n_samples": n,
+            "true_positives": tp,
+            "false_positives": fp,
+            "false_negatives": fn,
+            "total_alarms": total_alarms,
+            "false_alarm_rate": float(fp / max(n - int(yt.sum()), 1)),
+            "false_alarm_ratio": float(fp / max(tp, 1)),
+            "alarm_rate": float(total_alarms / n),
+        }
+
+    return results
+
+
+def compute_alarm_burden_disparity(
+    alarm_metrics: dict[str, dict],
+) -> dict:
+    """Compute max disparity in false alarm rates across subgroups.
+
+    Returns
+    -------
+    Dictionary with max disparity and whether it's acceptable.
+    """
+    rates = {
+        g: m["false_alarm_rate"]
+        for g, m in alarm_metrics.items()
+    }
+    if len(rates) < 2:
+        return {"max_far_disparity": 0.0, "n_groups": len(rates)}
+
+    min_group = min(rates, key=lambda g: rates[g])
+    max_group = max(rates, key=lambda g: rates[g])
+    disparity = rates[max_group] - rates[min_group]
+
+    return {
+        "max_far_disparity": float(disparity),
+        "min_far_group": min_group,
+        "min_far_value": float(rates[min_group]),
+        "max_far_group": max_group,
+        "max_far_value": float(rates[max_group]),
+        "n_groups": len(rates),
+    }
+
+
 def run_fairness_analysis(
     y_true: np.ndarray,
     y_prob: np.ndarray,
@@ -191,16 +275,22 @@ def run_fairness_analysis(
         logger.info("Fairness analysis: %s (%d unique groups)", axis_name, len(np.unique(groups)))
         subgroup = compute_subgroup_metrics(y_true, y_prob, groups)
         disparity = compute_fairness_disparity(subgroup)
+        alarm_burden = compute_subgroup_alarm_burden(y_true, y_prob, groups)
+        alarm_disparity = compute_alarm_burden_disparity(alarm_burden)
 
         results[axis_name] = {
             "subgroup_metrics": subgroup,
             "disparity": disparity,
+            "alarm_burden": alarm_burden,
+            "alarm_burden_disparity": alarm_disparity,
         }
         logger.info(
-            "  %s: max AUROC disparity = %.4f (meets target: %s)",
+            "  %s: max AUROC disparity = %.4f (meets target: %s), "
+            "max FAR disparity = %.4f",
             axis_name,
             disparity["max_auroc_disparity"],
             disparity["meets_target"],
+            alarm_disparity["max_far_disparity"],
         )
 
     # Overall fairness summary

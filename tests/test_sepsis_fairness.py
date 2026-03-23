@@ -7,7 +7,9 @@ import pytest
 
 from bioagentics.diagnostics.sepsis.calibration.fairness import (
     assign_age_groups,
+    compute_alarm_burden_disparity,
     compute_fairness_disparity,
+    compute_subgroup_alarm_burden,
     compute_subgroup_metrics,
 )
 
@@ -89,20 +91,20 @@ def test_assign_age_groups():
     """Age groups are assigned correctly."""
     ages = np.array([25, 50, 70, 85, 30, 60])
     groups = assign_age_groups(ages)
-    assert groups[0] == "18-44"
-    assert groups[1] == "45-64"
+    assert groups[0] == "<50"
+    assert groups[1] == "50-64"
     assert groups[2] == "65-79"
     assert groups[3] == "80+"
-    assert groups[4] == "18-44"
-    assert groups[5] == "45-64"
+    assert groups[4] == "<50"
+    assert groups[5] == "50-64"
 
 
 def test_assign_age_groups_edge_cases():
     """Boundary ages are assigned correctly."""
-    ages = np.array([18, 45, 65, 80])
+    ages = np.array([18, 50, 65, 80])
     groups = assign_age_groups(ages)
-    assert groups[0] == "18-44"  # 18 >= 18 and < 45
-    assert groups[1] == "45-64"  # 45 >= 45 and < 65
+    assert groups[0] == "<50"    # 18 >= 18 and < 50
+    assert groups[1] == "50-64"  # 50 >= 50 and < 65
     assert groups[2] == "65-79"  # 65 >= 65 and < 80
     assert groups[3] == "80+"    # 80 >= 80
 
@@ -112,3 +114,27 @@ def test_assign_age_groups_unknown():
     ages = np.array([5, 10])
     groups = assign_age_groups(ages)
     assert all(g == "unknown" for g in groups)
+
+
+def test_compute_subgroup_alarm_burden(fairness_data):
+    """Alarm burden metrics have expected fields."""
+    y_true, y_prob, groups = fairness_data
+    result = compute_subgroup_alarm_burden(y_true, y_prob, groups)
+    assert len(result) > 0
+    for _, metrics in result.items():
+        assert "true_positives" in metrics
+        assert "false_positives" in metrics
+        assert "false_alarm_rate" in metrics
+        assert "false_alarm_ratio" in metrics
+        assert "alarm_rate" in metrics
+        assert metrics["false_alarm_rate"] >= 0.0
+        assert metrics["alarm_rate"] >= 0.0
+
+
+def test_compute_alarm_burden_disparity(fairness_data):
+    """Alarm burden disparity computation is valid."""
+    y_true, y_prob, groups = fairness_data
+    alarm = compute_subgroup_alarm_burden(y_true, y_prob, groups)
+    disparity = compute_alarm_burden_disparity(alarm)
+    assert "max_far_disparity" in disparity
+    assert disparity["max_far_disparity"] >= 0.0
