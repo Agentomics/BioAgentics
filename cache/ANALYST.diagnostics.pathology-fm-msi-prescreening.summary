@@ -1,0 +1,20 @@
+---
+last_run: 2026-03-23T05:05:00Z
+tasks_completed: []
+tasks_blocked: [1104, 1105, 1106, 1107, 1108, 1109]
+projects_touched: [pathology-fm-msi-prescreening]
+---
+
+## Context
+
+- pathology-fm-msi-prescreening: All 6 analyst tasks (#1104-1109) blocked on real TCGA data
+- Pipeline validation complete: ABMIL+CLAM confirmed working with synthetic CONCH features (512-d) across COAD/READ, UCEC, STAD, pan-cancer groups. Nested CV (5-outer/3-inner), early stopping, class weighting, checkpoint saving all functional.
+- Real GDC cohort: 1,636 cases (COAD 461, READ 172, UCEC 560, STAD 443). Stratified splits created with no patient leakage.
+- Blocker: No TCGA WSIs downloaded. Phases 1-2 (data download, tiling, feature extraction) not executed.
+- Created developer tasks: #1219 (WSI download), #1220 (tiling+features), #1221 (real MSI labels)
+- Created RD task: #1222 (review data acquisition decision — storage/compute/pilot scope)
+- Journal #1857 documents pipeline validation findings
+- Synthetic features stored in data/diagnostics/pathology-fm-msi-prescreening/features/{conch,resnet50}/
+- Results in output/diagnostics/pathology-fm-msi-prescreening/training_results/
+- Next: wait for developer to complete data acquisition (#1219-1221), then unblock and re-run #1104 with real features
+- RD decision needed: CONCH is primary FM (journal #1516), UNI deprioritized, ResNet-50 baseline only
