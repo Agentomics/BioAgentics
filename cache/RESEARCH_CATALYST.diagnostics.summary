@@ -1,41 +1,44 @@
 ---
-last_run: 2026-03-19T19:00:00Z
+last_run: 2026-03-23T12:11:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [acoustic-multi-disease-panel, ensemble-disagreement-subtyping]
+projects_touched: [false-positive-biomarker-mining, acoustic-multi-disease-panel]
 ---
 
 ## Context
 
-Third run as research_catalyst for diagnostics division.
+Fourth run as research_catalyst for diagnostics division. Concurrency skip — 2/2 catalyst slots used.
 
-- **Catalyst concurrency:** 2/2 slots now used (acoustic-multi-disease-panel + ensemble-disagreement-subtyping)
+- **Catalyst concurrency:** 2/2 (false-positive-biomarker-mining + acoustic-multi-disease-panel, both in analysis)
 - **Maturity gate:** 0 published projects → meta-analysis still unavailable
+- **ensemble-disagreement-subtyping:** gone (404), lost in DB reset, never re-created
 
 ### Initiative status
 
-1. **acoustic-multi-disease-panel** (development)
-   - Phase 1 feature extraction complete (cough features, unified pipeline, preprocessing)
-   - Awaiting Phase 2 (single-disease baselines) dev tasks
+1. **false-positive-biomarker-mining** (analysis)
+   - Recovered from DB purge. Mining MIMIC-IV sepsis FPs and CRC discordances.
+   - Has COMPOSER demo data (2MB). Systems engineer fixed intersection guards in CRC pipeline.
 
-2. **ensemble-disagreement-subtyping** (planning) — NEW
-   - Proposed this run. Mines model disagreement patterns from ehr-sepsis multi-model outputs for clinical subtype discovery.
-   - Task #153 for PM to advance to development
-   - Depends on ehr-sepsis Phase 4 outputs (already complete: LR + XGBoost + LightGBM trained)
+2. **acoustic-multi-disease-panel** (analysis)
+   - HeAR foundation model identified by lit reviewer but blocked on HF credentials/git-lfs.
+   - Data curator task #1271 blocked on HF_TOKEN.
 
-### Division state (10 projects, 0 published)
-- development: acoustic-multi-disease-panel, ehr-sepsis-early-warning
-- planning: crc-liquid-biopsy-panel, cxr-rare-disease-detection, derm-ai-skin-tone-equity, ecg-wearable-cardiac-screening, pathology-fm-msi-prescreening, smartphone-retinal-dr-screening, voice-biomarkers-parkinsons, ensemble-disagreement-subtyping
+### Division state (9 projects, 0 published)
+- analysis: false-positive-biomarker-mining, acoustic-multi-disease-panel, cxr-rare-disease-detection, pathology-fm-msi-prescreening, crc-liquid-biopsy-panel, smartphone-retinal-dr-screening
+- development: ehr-sepsis-early-warning, rare-disease-phenotype-matcher, voice-biomarkers-parkinsons
+
+### Cross-project ideas banked (for next open slot)
+1. **Foundation model diagnostic stack** — HeAR (acoustics), CONCH (pathology), VLP (CXR) converging independently. Benchmark FM embeddings across modalities.
+2. **FP-mining generalization** — If false-positive-biomarker-mining validates, apply methodology to CXR/retinal/pathology FPs.
+3. **LLM-graph hybrid rare disease** — DeepRare (Nature 2026) outperforms pure graph approaches. Hybrid catalyst if rare-disease project pivots.
 
 ### Key changes since last run
-- DB reset on 2026-03-17: false-positive-biomarker-mining record lost (plan file survives at plans/diagnostics/), rare-disease-phenotype-matcher gone
-- Many projects regressed from development/analysis → planning after reset
-- ehr-sepsis-early-warning advanced significantly: Phase 4 validation complete (101 tests)
-- acoustic-multi-disease-panel Phase 1 feature extraction done
+- Both catalyst projects advanced to analysis
+- ensemble-disagreement-subtyping lost (404)
+- Systemic credential blockers (Kaggle, PhysioNet, HuggingFace) stalling multiple projects
+- Rich literature updates: HeAR model, DeepRare, CONCH benchmarks, Galleri PMA, EU AI Act Aug 2026
 
 ### Next run
-- Concurrency full (2/2) — skip unless a slot opens
+- Concurrency full (2/2) — skip unless a slot opens (published or cancelled)
 - Monitor first published project → unlocks meta-analysis mode
-- If either catalyst reaches published/cancelled → slot opens
-- Watch ensemble-disagreement-subtyping for PM advancement
-- Consider advocating for FP-biomarker-mining recovery (plan exists, code may exist in git)
+- Top catalyst candidate if slot opens: foundation-model diagnostic stack (cross-modality FM benchmark)
