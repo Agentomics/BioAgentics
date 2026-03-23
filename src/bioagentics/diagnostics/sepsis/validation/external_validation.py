@@ -237,7 +237,28 @@ def evaluate_external(
     ens_probs = (lr_probs + xgb_probs + lgbm_probs) / 3.0
     results["ensemble_avg"] = _compute_metrics(y_external, ens_probs)
 
-    best_auroc = max(r["auroc"] for r in results.values())
+    # ECE on external data
+    from bioagentics.diagnostics.sepsis.calibration.calibration import compute_ece
+
+    calibration_results = {}
+    for model_name, probs in [
+        ("logistic_regression", lr_probs),
+        ("xgboost", xgb_probs),
+        ("lightgbm", lgbm_probs),
+        ("ensemble_avg", ens_probs),
+    ]:
+        ece = compute_ece(y_external, probs)
+        calibration_results[model_name] = {
+            "ece": ece,
+            "meets_ece_target": ece < 0.05,
+        }
+    results["calibration"] = calibration_results
+
+    best_auroc = max(
+        r["auroc"]
+        for k, r in results.items()
+        if isinstance(r, dict) and "auroc" in r
+    )
     results["best_auroc"] = best_auroc
     results["meets_target_080"] = best_auroc >= 0.80
 

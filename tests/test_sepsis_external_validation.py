@@ -154,3 +154,16 @@ def test_compute_metrics_valid_range():
     assert 0 <= result["auroc"] <= 1
     assert result["n_samples"] == 6
     assert result["n_positive"] == 3
+
+
+def test_evaluate_external_calibration(source_data, external_data):
+    """External evaluation includes ECE calibration metrics."""
+    X_train, y_train = source_data
+    X_ext, y_ext, _ = external_data
+    trained = train_on_source(X_train, y_train)
+    result = evaluate_external(trained, X_ext, y_ext)
+    assert "calibration" in result
+    for model in ["logistic_regression", "xgboost", "lightgbm", "ensemble_avg"]:
+        assert model in result["calibration"]
+        assert "ece" in result["calibration"][model]
+        assert 0.0 <= result["calibration"][model]["ece"] <= 1.0
