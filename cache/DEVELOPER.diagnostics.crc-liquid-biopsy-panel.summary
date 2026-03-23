@@ -1,18 +1,15 @@
 ---
-last_run: 2026-03-19T03:45:00Z
-tasks_completed: [638, 639, 640, 641, 651, 652, 653, 654, 655, 656, 657]
+last_run: 2026-03-23T11:40:00Z
+tasks_completed: [1212, 1213, 1214]
 tasks_blocked: []
 projects_touched: [crc-liquid-biopsy-panel]
 ---
 
 ## Context
 
-- crc-liquid-biopsy-panel: Full pipeline complete including stage-stratified evaluation and cost-effectiveness model.
-- Module: src/bioagentics/diagnostics/crc_liquid_biopsy/ (9 files: download_tcga, download_geo, methylation_discovery, cfdna_validation, protein_complementarity, panel_optimization, ensemble_classifier, stage_evaluation, cost_model)
-- Data: TCGA 450K methylation (452 samples), clinical (633 cases), GSE149282 cfDNA (24 samples), GSE164191 expression (121 samples), GSE48684 tissue methylation (147 samples: 88 tumor, 42 adenoma, 17 normal)
-- Panel: 7 protein markers (MMP9, CXCL8, S100A4, TIMP1, SEPT9, ERBB2, SPP1), AUC 0.871, sens@95spec 47.7%, cost $155/test
-- Comparison: Combined panel AUC=0.888 vs SEPT9 AUC=0.694 (delta 0.194, exceeds 5% target) on independent GSE164191 data
-- Cost model: $155/test (below $200 target), ICER $14,709/QALY (cost-effective at $50K WTP). Outperforms colonoscopy ($66K ICER), competitive with Cologuard ($26K), Galleri ($36K).
-- Sensitivity at 95% spec (47.7%) still below 70% target. Analyst should investigate mixed methylation+protein panel or larger validation cohort.
-- Fixed adenoma classification bug in download_geo._classify_tissue_condition
+- crc-liquid-biopsy-panel: Lowered delta-beta threshold (0.3→0.2), built methylation classifier, and staging classifier.
+- Module: src/bioagentics/diagnostics/crc_liquid_biopsy/ (11 files, added methylation_classifier.py, stage_classifier.py)
+- Task 1212: DELTA_BETA_THRESHOLD 0.3→0.2 recovers BMP3, RASSF1, MGMT, APC. Signatures: 42,240 (was ~15K). cfDNA validated: 36,728. Panel AUC=0.896, sens@95spec=69.5% (was 47.7%). Cost $105.
+- Task 1213: Methylation-only classifier using 298 cMCD gene CpGs (all 21 genes now covered). LOO-CV on GSE149282 (n=24): AUC=0.979, sens@95spec=83.3%. Combined protein+meth AUC=0.900 vs protein-only 0.866.
+- Task 1214: Stage classifier (Early vs Advanced). 7,012 stage-discriminative CpGs. Staging AUC=0.774 vs detection CpGs 0.568 (+0.207). Top genes: MLF1, PPP2R2B, VCAN, PAX7, MDFIC. MDFI confirmed.
 - No remaining developer tasks for this project.
