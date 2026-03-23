@@ -103,10 +103,10 @@
     },
     {
       "cancer_type": "DLBC",
-      "estimated_patients": 4031,
+      "estimated_patients": 1210,
       "pten_loss_pct": 5.0,
       "dep_d": -0.48,
-      "rationale": "~4,031 PTEN-loss pts/yr with no active PTEN-targeted trials"
+      "rationale": "~1,210 PTEN-loss pts/yr with no active PTEN-targeted trials"
     },
     {
       "cancer_type": "UCS",

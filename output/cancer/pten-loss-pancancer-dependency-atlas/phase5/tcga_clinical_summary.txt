@@ -2,7 +2,7 @@
 PTEN Loss Pan-Cancer Dependency Atlas - Phase 5: TCGA Clinical Integration
 ======================================================================
 
-Estimated total US PTEN-loss patients/year: ~179,860
+Estimated total US PTEN-loss patients/year: ~177,039
 Cancer types assessed: 19
 
 PTEN LOSS PREVALENCE BY ALTERATION TYPE (TCGA)
@@ -20,7 +20,7 @@ PTEN LOSS PREVALENCE BY ALTERATION TYPE (TCGA)
   OV: 6% total (del=3%, trunc=2%, miss=2%) — ~1,180 pts/yr
   LUSC: 5% total (del=2%, trunc=2%, miss=2%) — ~2,938 pts/yr
   ESCA: 5% total (del=2%, trunc=2%, miss=2%) — ~1,118 pts/yr
-  DLBC: 5% total (del=2%, trunc=2%, miss=2%) — ~4,031 pts/yr
+  DLBC: 5% total (del=2%, trunc=2%, miss=2%) — ~1,210 pts/yr
   HNSC: 3% total (del=1%, trunc=1%, miss=1%) — ~1,753 pts/yr
   KIRC: 3% total (del=1%, trunc=1%, miss=1%) — ~2,454 pts/yr
   LIHC: 3% total (del=1%, trunc=1%, miss=1%) — ~1,236 pts/yr
@@ -74,7 +74,7 @@ PRIORITY RANKING (PIK3CB dependency x population)
   STAD: score=8.2, PIK3CB d=-1.090 [lineage-specific], ~1,882 pts/yr
   ESCA: score=7.7, PIK3CB d=-1.090 [lineage-specific], ~1,118 pts/yr
   UCEC: score=4.1, PIK3CB d=0.382 [lineage-specific], ~44,122 pts/yr
-  DLBC: score=4.0, PIK3CB d=-0.480 [lineage-specific], ~4,031 pts/yr
+  DLBC: score=3.4, PIK3CB d=-0.480 [lineage-specific], ~1,210 pts/yr
   UCS: score=2.9, PIK3CB d=0.382 [lineage-specific], ~1,750 pts/yr
   GBM: score=2.8, PIK3CB d=-0.323 [lineage-specific], ~5,040 pts/yr
   COADREAD: score=2.4, PIK3CB d=-0.260 [lineage-specific], ~10,696 pts/yr
@@ -90,7 +90,7 @@ TRIAL GAP ANALYSIS (14 underexplored types)
   LUSC: ~2,938 pts/yr, 5% PTEN loss, no active trials
   STAD: ~1,882 pts/yr, 7% PTEN loss, no active trials
   ESCA: ~1,118 pts/yr, 5% PTEN loss, no active trials
-  DLBC: ~4,031 pts/yr, 5% PTEN loss, no active trials
+  DLBC: ~1,210 pts/yr, 5% PTEN loss, no active trials
   UCS: ~1,750 pts/yr, 35% PTEN loss, no active trials
   COADREAD: ~10,696 pts/yr, 7% PTEN loss, no active trials
   OV: ~1,180 pts/yr, 6% PTEN loss, no active trials
