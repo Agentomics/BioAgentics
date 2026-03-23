@@ -59,6 +59,32 @@ Source: bioRxiv 10.64898/2026.01.22.700152v1 + Atlas Phases 1-5
   BRCA: MSI-H 15.0 mut/Mb (10.0x MSS) → P(resistance)=1.0000 [VERY_HIGH]
   SKCM: MSI-H 50.0 mut/Mb (4.2x MSS) → P(resistance)=1.0000 [VERY_HIGH]
 
+  *** MODEL CAVEAT (added 2026-03-23 per validation finding #1648) ***
+  CRITICAL: This model gives P(resistance)=1.0 for ALL tumor types INCLUDING MSS.
+  Even the lowest MSS rate (1.5 mut/Mb) yields N*mu*L=540, far exceeding the
+  saturation threshold. The VERY_HIGH risk category is therefore UNINFORMATIVE
+  as a discriminator between MSI-H and MSS — it applies universally.
+
+  This model should be interpreted as a WORST-CASE UPPER BOUND, not a
+  discriminative risk stratification tool. The model overestimates because:
+    (a) L=1800bp assumes ANY mutation in the helicase domain confers resistance.
+        The preprint identifies specific binding-site positions — the effective
+        target region (L_eff) is likely 10-50bp, not 1800bp.
+    (b) No fitness cost is modeled. Resistance mutations often carry a
+        replication or catalytic fitness penalty that limits clonal expansion.
+    (c) N=1e9 assumes all cells are dividing and equally exposed to drug.
+
+  The MSI-H vs MSS distinction remains biologically important (4-26x elevated
+  mutation rates accelerate resistance KINETICS), but this model cannot
+  quantify the difference because it saturates at both rates.
+
+  NOTE: The combo vs monotherapy deployment recommendations (Section 6) are
+  actually driven by mutation rate DATA AVAILABILITY, not by model output.
+  Tumor types with published MSI-H mutation rates were assigned VERY_HIGH
+  and recommended for combination; those without data were assigned UNKNOWN
+  and defaulted to monotherapy. This is acknowledged as a data limitation,
+  not a model-derived recommendation.
+
 4. COMBINATION VULNERABILITY CROSS-REFERENCE (Phase 3 + Phase 4)
 --------------------------------------------------
   Resistance preprint identifies NHEJ + WIP1 as vulnerabilities in WRN-resistant cells.
@@ -226,3 +252,34 @@ Source: bioRxiv 10.64898/2026.01.22.700152v1 + Atlas Phases 1-5
   5. NDI-219216 provides third non-cross-resistant option for pan-resistance scenarios
   6. PAAD patients (low IO ORR + moderate resistance risk) are strongest candidates
      for WRN inhibitor combination strategies
+
+8. LIMITATIONS AND BLIND SPOTS (added 2026-03-23)
+--------------------------------------------------
+  (a) Resistance model saturation: P(resistance)=1.0 for all tumor types
+      including MSS (see Section 3 caveat). Model is a worst-case bound only.
+
+  (b) UCS mutation rate gap: UCS has no published MSI-H mutation rate data
+      despite sharing the Uterus lineage with UCEC (65 mut/Mb). UCS is
+      classified UNKNOWN risk and defaulted to monotherapy, but may warrant
+      combination if UCEC-like rates apply. This needs confirmation.
+
+  (c) NDI-219216 efficacy data: Phase 1/2 Part A (NCT06898450) completed
+      dose escalation with no DLTs (Dec 2025), but efficacy data are NOT
+      yet available. Deployment recommendations that include NDI-219216 as
+      a sequential option are based on its distinct binding mode, not on
+      demonstrated clinical activity. Flag for update when data emerge.
+
+  (d) DLBC MSI-H prevalence uncertainty: The ~3,950 pts/yr estimate for
+      DLBC is based on only 2/41 TCGA samples classified as MSI-H (4.9%).
+      This is subject to high sampling uncertainty (95% CI ~0.6-16.5%).
+      The true addressable population could be substantially smaller.
+
+  (e) Effective target region: L=1800bp (full helicase domain) is almost
+      certainly an overestimate. The preprint identifies specific resistance
+      positions. A refined model using L_eff from experimentally validated
+      positions would produce more informative risk stratification.
+
+  (f) PRKDC (DNA-PK) absent from Phase 3 CRISPR screen: PRKDC was not
+      tested in the genome-wide screen, so we lack a direct genetic
+      validation of DNA-PK dependency in MSI-H. The AZD-7648 drug data
+      (Phase 4) provides pharmacological evidence but not genetic confirmation.
