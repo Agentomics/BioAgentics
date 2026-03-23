@@ -62,6 +62,8 @@ def compute_differential_peptides(predictions: list[dict]) -> list[dict]:
         "susceptibility_ranks": [],
         "control_ranks": [],
         "protective_ranks": [],
+        "best_sus_rank": float("inf"),
+        "best_sus_allele": "",
         "meta": {},
     })
 
@@ -71,6 +73,9 @@ def compute_differential_peptides(predictions: list[dict]) -> list[dict]:
 
         if allele in susceptibility_alleles:
             peptide_data[pep]["susceptibility_ranks"].append(pred["percentile_rank"])
+            if pred["percentile_rank"] < peptide_data[pep]["best_sus_rank"]:
+                peptide_data[pep]["best_sus_rank"] = pred["percentile_rank"]
+                peptide_data[pep]["best_sus_allele"] = allele
         elif allele in control_alleles:
             peptide_data[pep]["control_ranks"].append(pred["percentile_rank"])
         elif allele in protective_alleles:
@@ -113,24 +118,12 @@ def compute_differential_peptides(predictions: list[dict]) -> list[dict]:
             "mean_control_rank": round(mean_ctrl, 4),
             "mean_protective_rank": round(mean_prot, 4) if mean_prot is not None else None,
             "min_susceptibility_rank": round(min(sus_ranks), 4),
-            "best_susceptibility_allele": _best_allele(pep, predictions, susceptibility_alleles),
+            "best_susceptibility_allele": data["best_sus_allele"],
             **data["meta"],
         })
 
     results.sort(key=lambda x: x["fold_change"], reverse=True)
     return results
-
-
-def _best_allele(peptide: str, predictions: list[dict], allele_set: set) -> str:
-    """Find the allele with best (lowest) percentile rank for a peptide."""
-    best_rank = float("inf")
-    best_allele = ""
-    for pred in predictions:
-        if pred["peptide"] == peptide and pred["allele"] in allele_set:
-            if pred["percentile_rank"] < best_rank:
-                best_rank = pred["percentile_rank"]
-                best_allele = pred["allele"]
-    return best_allele
 
 
 def virulence_enrichment_test(differential: list[dict], all_peptides: list[dict]) -> dict:

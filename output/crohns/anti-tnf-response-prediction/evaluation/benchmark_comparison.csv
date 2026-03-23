@@ -1,0 +1,8 @@
+model,auc,source,features,outcome
+adalimumab_ML_clinical,0.935,"PLOS One 2025, doi:10.1371/journal.pone.0331447","Clinical/lab (calprotectin, CRP, hemoglobin)",48-week response
+Porto_5gene_mucosal,0.88,"PubMed 40819280, 2025","TREM1, IL23R, CCL7, IL17F, YES1 (mucosal)",Anti-TNF response (pediatric CD)
+TabNet_multimodal,0.858,"J Crohns Colitis 2026, PMID 41298328",Histopathology + CT enterography + clinical labs,IFX primary non-response
+Ours (xgboost),0.7113372093023256,"This study (LOSO-CV, within-fold preprocessing)",Mucosal transcriptomics,"Anti-TNF response (CD, LOSO-CV)"
+Ours (random_forest),0.7005813953488372,"This study (LOSO-CV, within-fold preprocessing)",Mucosal transcriptomics,"Anti-TNF response (CD, LOSO-CV)"
+Ours (elastic_net),0.6,"This study (LOSO-CV, within-fold preprocessing)",Mucosal transcriptomics,"Anti-TNF response (CD, LOSO-CV)"
+EPIC_CD_blood_methylation,0.25,"Lancet GH 2025, PMID 40614748",Blood DNA methylation (adalimumab),Primary non-response

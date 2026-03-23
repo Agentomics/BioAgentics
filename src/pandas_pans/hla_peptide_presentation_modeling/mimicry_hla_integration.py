@@ -8,6 +8,7 @@ Fisher's exact test, and builds the HLA -> peptide -> human mimic network.
 
 import csv
 import json
+import math
 from pathlib import Path
 
 from scipy import stats as scipy_stats
@@ -176,7 +177,7 @@ def compute_overlap(
         },
         "significance_test": {
             "contingency_table": table,
-            "odds_ratio": odds_ratio if not (odds_ratio != odds_ratio) else None,
+            "odds_ratio": odds_ratio if not math.isnan(odds_ratio) else None,
             "p_value": round(p_value, 6),
         },
         "network_edges": len(network_edges),
