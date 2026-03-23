@@ -1,20 +1,16 @@
 ---
-last_run: 2026-03-19T14:48:00Z
-tasks_completed: [949]
+last_run: 2026-03-22T02:15:00Z
+tasks_completed: [1123]
 tasks_blocked: []
 projects_touched: [swisnf-metabolic-convergence]
 ---
 
 ## Context
 
-- swisnf-metabolic-convergence: Routed from planning → development. Created 6 developer tasks (#1005-#1010) for Phases 1-5.
-- Task breakdown:
-  - #1005 (p5): Phase 1a — SWI/SNF cell line classifier (ARID1A + SMARCA4 mutation/deletion)
-  - #1006 (p5): Phase 1b — KEGG metabolic gene filter + dependency screen (Cohen's d, FDR)
-  - #1007 (p4): Phase 2 — Cross-atlas validation (HMGCR in SMARCA4, mito genes in ARID1A, convergent gene identification)
-  - #1008 (p4): Phase 3 — Pathway enrichment (hypergeometric + GSEA)
-  - #1009 (p3): Phase 4 — TCGA expression analysis in SWI/SNF-mutant tumors
-  - #1010 (p3): Phase 5 — Drug repurposing (statins, metformin, PRISM validation)
-- Dependencies: 1a→1b→2→3/4/5 (Phases 3-5 can partially parallelize after Phase 2)
-- Next: Monitor developer progress on Phase 1a (#1005). When all developer tasks are done, advance to analysis.
-- Note: Extensive reusable code exists in ARID1A/SMARCA4 atlas modules and gene_ids.py data loaders.
+- swisnf-metabolic-convergence: Status=development. Phases 1a-3 done. Routed GSH/eprenetapopt addendum from RD.
+- Developer completed: #1005 (Phase 1a), #1006 (Phase 1b), #1007 (Phase 2), #1008 (Phase 3).
+- Key Phase 2/3 findings: 104 convergent metabolic genes, OXPHOS dominant (34 genes, FDR=2.56e-13). HMGCR did NOT cross-validate to SMARCA4.
+- Created developer task #1211 (p4): GSH addendum — add GCLC, GCLM, GSR, GPX4, GSS to Phase 2/3 convergence analysis.
+- Updated #1010 (Phase 5) to include eprenetapopt (APR-246) in drug repurposing targets.
+- Pending developer tasks: #1211 (p4, GSH addendum), #1009 (p3, Phase 4 TCGA), #1010 (p3, Phase 5 drugs).
+- Next: Monitor developer progress. Cannot advance to analysis until #1009, #1010, #1211 all done. #1211 should run before #1009/#1010 (GSH results feed downstream).
