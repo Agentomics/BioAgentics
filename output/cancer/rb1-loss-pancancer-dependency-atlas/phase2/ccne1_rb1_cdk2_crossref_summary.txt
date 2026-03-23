@@ -1,0 +1,21 @@
+======================================================================
+CCNE1-amp vs RB1-loss CDK2 Dependency Cross-Reference
+======================================================================
+
+HYPOTHESIS: CCNE1 amplification and RB1 loss both drive CDK2-dependent
+G1/S transition. If CDK2 dependency converges, INX-315 (CDK2i, FDA Fast
+Track for CCNE1-amp ovarian) may cover both populations.
+
+  CCNE1-amp vs non-amp (all)                         d=-1.351 [-2.044, -0.658] p=4.124e-05 ***
+  RB1-loss vs intact (all)                           d=-0.524 [-0.683, -0.379] p=2.923e-10 ***
+  Double-hit (RB1-loss+CCNE1-amp) vs neither         d=-2.280 [-3.493, -1.062] p=1.019e-03 **
+  Double-hit vs RB1-loss only                        d=-1.337 [-2.442, -0.346] p=1.155e-02 *
+  Double-hit vs CCNE1-amp only                       d=-0.654 [-1.520, -0.015] p=1.466e-01 ns
+  CCNE1-amp only vs neither                          d=-0.994 [-1.704, -0.382] p=1.621e-03 **
+  RB1-loss only vs neither                           d=-0.487 [-0.627, -0.332] p=1.289e-09 ***
+
+INTERPRETATION:
+  - CCNE1-amp effect on CDK2: d=-1.351
+  - RB1-loss effect on CDK2:  d=-0.524
+  - CONVERGENCE SUPPORTED: Both alterations increase CDK2 dependency
+  - Double-hit vs neither: d=-2.280 (additive/synergistic effect)
