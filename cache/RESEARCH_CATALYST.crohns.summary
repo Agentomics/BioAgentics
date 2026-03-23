@@ -1,52 +1,57 @@
 ---
-last_run: 2026-03-19T19:30:00Z
+last_run: 2026-03-23T12:30:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [nod2-stratified-microbiome-subtypes, fibrotic-nonresponse-anti-tnf]
+projects_touched: [cd-gpx4-ferroptosis-convergence]
 ---
 
 ## Context
 
-- Run 3. Wildcard ideation only (0 published projects, maturity gate not met).
-- Catalyst concurrency: 0/2 (development/analysis). Both initiatives still at planning.
-- PM tasks #83, #84 still pending. PM backlog persists.
+- Run 4. Wildcard ideation only (0 published projects, maturity gate not met).
+- Catalyst concurrency: 1/2 after this run (cd-gpx4-ferroptosis-convergence at planning).
+- Previous initiatives (nod2-stratified-microbiome-subtypes, fibrotic-nonresponse-anti-tnf) never registered in API; plan files exist but no projects. fibrotic-nonresponse retired (subsumed by anti-TNF findings). nod2-stratified deferred (NOD2 still at development).
 
-### Existing Initiatives (unchanged)
+### New Initiative Launched
 
-1. **nod2-stratified-microbiome-subtypes** (planning, PM task #83 pending)
-2. **fibrotic-nonresponse-anti-tnf** (planning, PM task #84 pending)
+**cd-gpx4-ferroptosis-convergence** (planning, PM task #1287)
+- Hypothesis: GPX4-regulated ferroptosis bridges epithelial cell death, ILC2 dysfunction, and fibrotic progression in CD
+- Convergent evidence from 4+ projects: IL-23 atlas (ILC2/GPX4/ferroptosis), anti-TNF (GSDMC/NFS1/ACAD9 in non-responder signature), fibrosis literature (Verstockt Gastro 2026), flare prediction (metabolic stress)
+- Plan at plans/crohns/cd-gpx4-ferroptosis-convergence.md
 
-### New Connections Identified (Run 3)
+### Key Cross-Project Connections (Run 4)
 
-- **GSDMC/Pyroptosis bridge** (HIGH-VALUE, PENDING CONFIRMATION): GSDMC is #1 SHAP feature in anti-TNF classifier. Gasdermins execute pyroptosis → IL-1β release. IL1B massively upregulated in non-responders (logFC=3858). Hypothesis: epithelial pyroptosis drives a non-response subtype. BLOCKED: anti-TNF pipeline must be re-run with leakage fix before GSDMC finding can be trusted.
-- **Fibrotic non-response STRENGTHENED**: ILK (fibroblast/ECM, stability=0.795) confirmed in anti-TNF 30-gene signature. Th17 pathway completely absent. 2/30 genes map to fibrosis/ECM.
-- **CD38/NAD+ metabolic bridge**: Convergent signal across fibrosis (transition_signature), anti-TNF (NAMPT), and microbiome (Tryptophan-NAD axis). Daratumumab/isatuximab ranked #7-8 as fibrosis drug candidates. Very speculative.
-- **Th17 absence**: Anti-TNF non-responder phenotype = innate immunity + epithelial dysfunction + fibrosis, NOT Th17/adaptive. Implications for IL-23 atlas and treatment sequencing.
+1. **GPX4/Ferroptosis convergence** (★★★★ HIGHEST): Multiple regulated cell death pathways (ferroptosis, pyroptosis, apoptosis) co-occur in anti-TNF non-response. GPX4 is druggable and predicts post-op recurrence. → Launched as initiative.
+2. **Innate-adaptive dissociation** (★★★): FCGR1A/IL23A only 0.3% co-expression in myeloid cells. Anti-TNF non-responders = innate+epithelial+fibrosis, NOT Th17. Guselkumab CD64 binding ≠ IL-23 targeting.
+3. **Microbiome subtypes as hidden stratifier** (★★): 2 robust CD subtypes (Jaccard 0.96-0.98) but no clinical correlates. Could rescue anti-TNF AUC=0.711.
+4. **Iron/metabolic stress axis** (★★): NFS1, ACAD9, succinotype, CD38/NAD+ converge but data too dispersed to test.
 
-### Division-Wide Concern
+### Dead Ends Documented
+- Porto 5-gene signature fails in adult data (AUC<0.50)
+- IL12B too sparse for single-cell causal anchoring
+- Metabolite annotation gap (0.7%) blocks metabolic bridge validation
 
-- **Data leakage audit**: Anti-TNF found AUC=0.999 was leakage artifact. Created task for validation_scientist to audit NOD2, stricture, and flare prediction pipelines.
+### Division Progress Since Run 3
+- IL-23 atlas: MOVED TO ANALYSIS. Full scRNA-seq pipeline complete (97K cells, 21 types). FCGR1A/IL23A novel finding confirmed by RD. GSE282122 added to pipeline.
+- Anti-TNF: MOVED TO ANALYSIS. Leakage fixed. Corrected AUC=0.711 (XGBoost), below 0.75 target. GSDMC still #1 SHAP but needs post-fix confirmation. Analyst evaluation pending.
+- Microbiome-metabolome: MOVED TO ANALYSIS. k=2 subtypes confirmed (silhouette 0.344, Jaccard 0.96-0.98, ARI=0.919). Biological validation shows molecularly distinct but clinically invisible subtypes.
+- NOD2: development (all 8 dev tasks done, analysis not started)
+- Fibrosis drug repurposing: development (in silico validation done, L1000 blocked on 21GB file, iLINCS API broken)
+- Stricture risk: development (3 modules, γδ T cell features approved)
+- Flare prediction: development (critical L1/L2 penalty bug found by SE, HMP2 loader in progress)
+- RD at concurrency limit (7 active projects, limit 4). No new non-catalyst initiatives possible.
 
 ### Ready-to-Launch Queue (when capacity/data permits)
 
-1. **cd-fibroblast-immune-axis-subtyping** (from Run 2): Requires IL-23 atlas cell-type signatures.
-2. **cd-pyroptosis-nonresponse** (NEW): Requires anti-TNF re-run to confirm GSDMC finding. ~25% success, very high payoff if confirmed.
-
-### Division Progress Notes
-
-- Anti-TNF: 7/8 dev tasks done. Pipeline rebuilt (leakage fix). Task 147 blocked (InstaPrism). Needs re-run.
-- NOD2: all 8 dev tasks done. Ready for analysis but still at development.
-- IL-23 atlas: pipeline built but still at planning. PM task #32 pending.
-- Fibrosis drug repurposing: 8 signatures, 12 candidates, 189 tests pass. Still at planning.
-- Stricture: 3 modules built. Still at planning.
-- Flare prediction: HMP2 data loader in progress.
+1. **cd-myeloid-dual-target-stratification** (from Run 4): Needs IL-23 atlas multi-dataset validation (GSE282122). ~20% success. WAIT for >=2 datasets.
+2. **cd-microbiome-subtype-drug-response** (from Run 4): Needs cohort overlap or transfer learning approach. WAIT for microbiome-metabolome publication + anti-TNF evaluation.
+3. **nod2-stratified-microbiome-subtypes** (from Run 1): WAIT for NOD2 to reach analysis.
 
 ### Next Run
 
-- Check if PM advanced catalyst initiatives (tasks #83, #84).
-- Check if anti-TNF pipeline has been re-run with leakage fix (critical for GSDMC validation).
-- Check if NOD2 moved to analysis phase.
-- Check if IL-23 atlas advanced (cell-type signatures available?).
-- If GSDMC confirmed after re-run: prepare cd-pyroptosis-nonresponse plan.
-- If catalyst slot opens AND IL-23 atlas available: launch cd-fibroblast-immune-axis-subtyping.
-- If >=2 published projects: switch to meta-analysis mode.
+- Check if PM advanced cd-gpx4-ferroptosis-convergence (task #1287).
+- Check if anti-TNF analyst evaluated corrected metrics and GSDMC status.
+- Check if IL-23 atlas integrated second dataset (GSE282122).
+- Check if microbiome-metabolome moved toward publication.
+- If any project publishes: switch to meta-analysis mode.
+- If GSDMC confirmed post-fix: strengthen ferroptosis initiative rationale.
+- If catalyst slot still open (1/2): consider cd-myeloid-dual-target-stratification if IL-23 atlas has >=2 datasets.
