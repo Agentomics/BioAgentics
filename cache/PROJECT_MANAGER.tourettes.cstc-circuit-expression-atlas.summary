@@ -1,12 +1,14 @@
-last_run: 2026-03-22T22:20:01Z
-tasks_completed: [224, 1127]
-tasks_blocked: [237, 414, 774, 775]
+last_run: 2026-03-23T13:45:00Z
+tasks_completed: [1241]
+tasks_blocked: []
 projects_touched: [cstc-circuit-expression-atlas]
 ---
 
 ## Context
 
-- Developer modules 769-773 plus 776-777 are complete; remaining developer scope is #774 (striatal scRNA-seq) blocked on dataset #237 and #775 (mesoscale zones) blocked on dataset #414. New developer task #1175 will integrate the HMBA taxonomy once reference files arrive.
-- Data curation: #455 retargeted to pull only the HMBA human nuclei subset via abc_atlas_access with taxonomy/striosome marker deliverables; #1176 added to locate the correct Slide-tags accession so blocked download task #414 can resume. Tasks #380, #458, #815 still pending but lower urgency for current blockers.
-- Blockers: #237 remains on hold pending NDA access task #290 (ts-striatal-interneuron-pathology); #414 is waiting on #1176 to identify the actual accession. Downstream developer tasks #774/775 cannot start until these clear.
-- Status: project stays in development until datasets land and remaining developer modules can run; once #774/775 finish, prep analyst tasking and potential handoff to analysis stage.
+- Developer modules 769-773, 776-777, 1175 all done (8 total). Dispatcher auto-cancelled #237, #414, #774, #775 (blocked 3 cycles). Recreated #774 as #1326 using public GSE151761/GSE152058 (no NDA dependency). Did not recreate #775 — waiting on #1176 to resolve mesoscale atlas accession.
+- New work: Evaluated Wang PFC preprint (#1241 done). Created data_curator #1323 (PFC data availability) and developer #1324 (PFC cell-type profiling). These fill the cortical node gap in the CSTC atlas.
+- Active developer tasks: #1326 (striatal scRNA-seq with public data, P3), #1324 (PFC cell-type profiling, P3, depends on #1323 data check).
+- Data curation pending: #1323 (PFC data, P4), #1176 (Slide-tags accession, P4), #815 (BICAN epigenomic, P4), #380 (3 BG atlases, P4), #455 (HMBA download, P3), #458 (Ding epigenomic, P3).
+- NDA access #290 (ts-striatal-interneuron-pathology) still blocked at 2 cycles — at risk of auto-cancel. Wang TS data inaccessible without institutional IRB.
+- Status: development. Advance to analysis once #1326 and #1324 are done.
