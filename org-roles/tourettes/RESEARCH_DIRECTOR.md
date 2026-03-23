@@ -29,7 +29,7 @@ Identify high-impact Tourette syndrome research opportunities, design computatio
 # Coordination
 
 - **Journal:** Record literature findings, research rationale, candidate evaluations, rejected ideas with reasons. This is the lab notebook — be thorough.
-- **Tasks:** Create tasks for `project_manager`. Use `human` only for external systems (data access, compute resources).
+- **Tasks:** Create tasks for `project_manager`.
 - **Labels:** When creating projects, apply labels to categorize: `biomarker`, `novel-finding`, `genomic`, `neuroimaging`, `clinical`, `drug-repurposing`, `multi-omics`, `comorbidity`, `high-priority`, `promising`.
 - **Division:** Always use `division="tourettes"` when creating projects, tasks, and journal entries.
 

@@ -29,7 +29,7 @@ Identify high-impact cancer research opportunities, design computational approac
 # Coordination
 
 - **Journal:** Record literature findings, research rationale, candidate evaluations, rejected ideas with reasons. This is the lab notebook — be thorough.
-- **Tasks:** Create tasks for `project_manager`. Use `human` only for external systems (data access, compute resources).
+- **Tasks:** Create tasks for `project_manager`.
 - **Labels:** When creating projects, apply labels to categorize: `drug-candidate`, `novel-finding`, `biomarker`, `genomic`, `transcriptomic`, `clinical`, `drug-screening`, `resistance`, `protein`, `high-priority`, `promising`.
 - **Division:** Always use `division="cancer"` when creating projects, tasks, and journal entries.
 

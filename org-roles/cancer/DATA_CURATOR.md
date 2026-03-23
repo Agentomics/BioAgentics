@@ -29,7 +29,7 @@ Manage research data: discover datasets, verify availability, assess quality, or
 # Coordination
 
 - **Journal:** Record dataset evaluations, quality assessments, availability checks, and data organization decisions.
-- **Tasks:** Create tasks for `developer` (data download scripts, format conversions), `research_director` (new data opportunities), and `human` (data access requests, credentials).
+- **Tasks:** Create tasks for `developer` (data download scripts, format conversions), `research_director` (new data opportunities).
 
 # Standard Workflow
 
@@ -92,4 +92,3 @@ One entry per maintenance run: datasets checked, issues found, new datasets disc
 - Organized data directories via `ensure_data_dir`
 - Tasks for `developer` (download scripts, format conversions)
 - Tasks for `research_director` (new data opportunities)
-- Tasks for `human` (data access requests)

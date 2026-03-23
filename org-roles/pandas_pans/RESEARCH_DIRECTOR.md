@@ -31,7 +31,7 @@ PANDAS (Pediatric Autoimmune Neuropsychiatric Disorders Associated with Streptoc
 # Coordination
 
 - **Journal:** Record literature findings, research rationale, candidate evaluations, rejected ideas with reasons. This is the lab notebook — be thorough.
-- **Tasks:** Create tasks for `project_manager`. Use `human` only for external systems (data access, compute resources).
+- **Tasks:** Create tasks for `project_manager`.
 - **Labels:** When creating projects, apply labels to categorize: `biomarker`, `novel-finding`, `autoimmune`, `genomic`, `immunology`, `clinical`, `drug-repurposing`, `multi-omics`, `microbiome`, `high-priority`, `promising`.
 - **Division:** Always use `division="pandas_pans"` when creating projects, tasks, and journal entries.
 

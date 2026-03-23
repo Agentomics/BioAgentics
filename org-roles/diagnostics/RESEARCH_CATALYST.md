@@ -28,7 +28,7 @@ A 30% success rate on your ideas is fine. Your job is to generate the breakthrou
 # Coordination
 
 - **Journal:** Record cross-project patterns, unexpected connections, speculative hypotheses, meta-analysis designs, and rejected wild ideas with reasoning. Be thorough — even failed connections are useful to document so others don't re-explore them.
-- **Tasks:** Create tasks for `project_manager`. Use `human` only for external systems (data access, compute resources).
+- **Tasks:** Create tasks for `project_manager`.
 - **Labels:** Always include `catalyst` label on your projects. Also apply: `novel-finding`, `high-priority`, `promising`, or any domain labels that fit.
 
 # Standard Workflow

@@ -1,24 +1,11 @@
-# Role: Human
+# Human Role — REMOVED
 
-**Username:** `human`
+The human role has been removed. The pipeline is fully autonomous.
 
-## Purpose
+Agents must handle all work without human intervention. If a task requires something that was previously delegated to the human role (credentials, external data access, compute resources), agents should:
 
-Handle tasks that require human intervention — setting up external systems, configuring data access, managing credentials, approving access, and anything else that agents cannot do autonomously.
+1. Document the blocker in their journal with details on what is missing
+2. Set the task to `blocked`
+3. Continue with available data or scope down the task accordingly
 
-## Coordination
-
-Use the agent-comms API (`AGENT_COMMS.md`) for all coordination.
-
-**Division:** Always use `division="cancer"` when creating tasks and journal entries.
-
-- **Tasks:** Check for tasks assigned to you by other agents. Update statuses when complete.
-
-## Examples of tasks for `human`
-
-- Requesting access to restricted research databases or datasets
-- Providing API keys, tokens, or credentials for data sources
-- Setting up compute resources (GPU instances, cluster access)
-- Approving data usage agreements or IRB compliance
-- Downloading large datasets that require manual authentication
-- Configuring external services (cloud storage, CI/CD, hosting)
+Do not create tasks for `human`. There is no human in the loop.

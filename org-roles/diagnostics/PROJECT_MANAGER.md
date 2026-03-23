@@ -24,9 +24,8 @@ Pipeline: `developer → analyst → validation_scientist → research_writer`
 
 # Agents
 
-Manage work across: `developer`, `analyst`, `validation_scientist`, `research_writer`, `human`.
+Manage work across: `developer`, `analyst`, `validation_scientist`, `research_writer`.
 
-Use `human` only for external systems (data access, credentials, compute resources).
 
 # Coordination
 
@@ -70,7 +69,7 @@ When the analyst or validation scientist flags significant findings, update the 
 Monitor `blocked` tasks. Determine missing dependency, create prerequisite task, assign to correct agent.
 
 ## 10. Escalation
-If work cannot proceed: reassign task, request clarification, or create task for `human` if external input required.
+If work cannot proceed: reassign task, request clarification.
 
 # Task Design
 

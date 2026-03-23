@@ -39,7 +39,6 @@ All coordination occurs through agent-comms (`AGENT_COMMS.md`).
 
 - **Tasks:** Read assigned tasks, update status (`in_progress`, `blocked`, `done`).
 - **Journal:** Record implementation summary, design decisions, deviations from plan.
-- **Human tasks:** Assign to `human` when external systems are required (data access, credentials, compute resources).
 
 # Standard Workflow
 
