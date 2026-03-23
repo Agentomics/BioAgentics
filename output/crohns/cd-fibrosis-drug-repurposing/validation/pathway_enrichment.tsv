@@ -1,0 +1,8 @@
+pathway	pathway_size	n_candidate_targets	n_compounds_targeting	targeting_compounds	targets_in_pathway	novelty_score
+TGF-beta	18	4	2	ontunisertib;pirfenidone	COL1A1;COL3A1;TGFB1;TGFBR1	0.3
+JAK-STAT	15	3	2	tofacitinib;upadacitinib	JAK1;JAK3	0.4
+epigenetic	13	7	2	obefazimod;vorinostat	HDAC1;HDAC2;HDAC3;HDAC6	0.7
+TL1A-DR3	18	1	1	tulisokibart	TNFSF15	0.5
+ECM_remodeling	19	2	1	pirfenidone	COL1A1;COL3A1	0.6
+Wnt	18	0	0			0.7
+YAP/TAZ	16	0	0			0.8
