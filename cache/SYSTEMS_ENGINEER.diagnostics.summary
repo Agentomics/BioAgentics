@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-23T12:09:00Z
+last_run: 2026-03-23T12:15:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [crc-liquid-biopsy-panel]
@@ -8,17 +8,24 @@ projects_touched: [crc-liquid-biopsy-panel]
 ## Context
 
 - Third run in diagnostics division. Focused on clearing backlog + scanning unscanned modules.
-- **Fixed (6 commits):**
-  - `panel_optimization.py`: Removed unused `gene_names`, `n_panels`, hoisted `roc_curve` import from loop, cast Cs to `float()`.
+- **Fixed (8 commits):**
+  - `panel_optimization.py`: Removed unused `gene_names`, `n_panels`, hoisted `roc_curve` import, cast Cs to `float()`.
   - `foundation.py`: Narrowed cache-load except to `(OSError, ValueError)`, added `exc_info=True`.
-  - `threshold_analysis.py`: Added intersection guard in `load_protein_features()`, NaN/empty guards in `build_mixed_panel()`, removed unused `prot_names`.
+  - `threshold_analysis.py`: Added intersection guard, NaN/empty guards in `build_mixed_panel()`, removed unused `prot_names`.
   - `stage_evaluation.py`: Added intersection guards in `_load_protein_data()` and `_load_cfdna_features()`.
-  - `ensemble_classifier.py`: Added intersection guard, fixed `labels_tmp` dimensional mismatch with filtered samples, added NaN/empty guards for synthetic methylation features, floored noise at 0.01.
-- **Pattern found:** Multiple CRC files had `meta.index.tolist()` without intersection against `expr.columns` — systematic issue now fixed in 4 files.
-- **Acoustic modules:** Reviewed spectral.py, foundation.py, pipeline.py. All `except Exception:` blocks already use `log.exception()` (properly logged). Only foundation.py cache handler needed narrowing.
-- **Scanned:** voice_pd/robustness (augmentation.py, cross_dataset.py) — clean, no issues.
+  - `ensemble_classifier.py`: Intersection guard, `labels_tmp` dimensional mismatch fix, NaN/empty guards, noise floor.
+  - CRC sensitivity calcs: Simplified np.searchsorted approach to np.interp(0.05, fpr, tpr).
+  - `gradcam.py`: Added null check for `self.gradients`/`self.activations` before use (crash risk).
+  - `download.py`: Added column-count check before index fallbacks in IDRiD and Messidor-2 parsers.
+- **Pattern found:** `meta.index.tolist()` without intersection against `expr.columns` — fixed in 4 CRC files.
+- **Retinal scan findings (not yet fixed):**
+  - Unsafe `torch.load(weights_only=False)` in 6 files (training, evaluation, export, gradcam, calibration, distillation).
+  - `evaluation.py:69-72` — fragile `DRDataset.__new__()` bypassing `__init__`.
+  - `augmentation.py:145` — silent zero-fill on failed image load (trains on fabricated data).
+  - `preprocessing.py:260` — large catalog loaded fully into memory (88k+ rows).
 - **Remaining priorities (next run):**
-  - **Projects table PK:** Missing division column causes cross-division collisions. Needs migration plan (API + DB schema).
-  - **Scan pandas_pans module:** New division, not yet reviewed by systems_engineer.
-  - **Review scan results:** Launched agents for retinal_dr_screening, sepsis, rare_disease, fp_mining — results should inform next run.
-  - **New CRC files:** methylation_discovery.py, methylation_classifier.py, stage_classifier.py not yet deep-scanned.
+  - **Projects table PK:** Missing division column causes cross-division collisions. Needs migration plan.
+  - **Review sepsis/rare_disease/fp_mining scan results** (agents launched, results pending).
+  - **Scan pandas_pans module:** New division, not yet reviewed.
+  - **New CRC files:** methylation_discovery.py, methylation_classifier.py, stage_classifier.py not deep-scanned.
+  - **Retinal torch.load security:** Consider migrating to `weights_only=True` across 6 files.
