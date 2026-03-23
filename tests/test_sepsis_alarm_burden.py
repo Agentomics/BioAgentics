@@ -6,8 +6,12 @@ import numpy as np
 import pytest
 
 from bioagentics.diagnostics.sepsis.calibration.alarm_burden import (
+    compare_with_conformal,
+    compute_per_patient_hour_rate,
     evaluate_alarm_burden,
     find_threshold_at_sensitivity,
+    flag_subclinical_candidates,
+    generate_operating_table,
 )
 
 
@@ -107,3 +111,46 @@ def test_evaluate_alarm_burden_prevalence(alarm_data):
     result = evaluate_alarm_burden(y_true, y_prob)
     expected_prev = y_true.mean()
     assert result["prevalence"] == pytest.approx(expected_prev)
+
+
+def test_compute_per_patient_hour_rate():
+    """Per-patient-hour rate calculation."""
+    rate = compute_per_patient_hour_rate(48, 100, 48.0)
+    assert rate == pytest.approx(0.01)  # 48 / (100*48)
+    rate_zero = compute_per_patient_hour_rate(0, 100, 48.0)
+    assert rate_zero == 0.0
+
+
+def test_generate_operating_table(alarm_data):
+    """Operating table covers all clinical settings."""
+    y_true, y_prob = alarm_data
+    table = generate_operating_table(y_true, y_prob)
+    assert len(table) == 3
+    settings = {r["setting"] for r in table}
+    assert settings == {"icu", "ward", "ed"}
+    for row in table:
+        assert "false_alarms_per_patient_hour" in row
+        assert "meets_composer_target" in row
+        assert isinstance(row["meets_composer_target"], bool)
+
+
+def test_compare_with_conformal(alarm_data):
+    """Conformal comparison returns expected structure."""
+    y_true, y_prob = alarm_data
+    result = compare_with_conformal(y_true, y_prob, n_folds=3)
+    assert "standard" in result
+    assert "conformal" in result
+    assert "false_alarm_reduction" in result
+    assert result["standard"]["false_alarms"] >= 0
+    assert result["conformal"]["false_alarms"] >= 0
+
+
+def test_flag_subclinical_candidates(alarm_data):
+    """Subclinical flagging returns valid structure."""
+    y_true, y_prob = alarm_data
+    result = flag_subclinical_candidates(y_true, y_prob)
+    assert result["total_false_positives"] >= 0
+    assert result["high_confidence_fps"] >= 0
+    assert result["high_confidence_fps"] <= result["total_false_positives"]
+    assert 0.0 <= result["fraction_high_confidence"] <= 1.0
+    assert isinstance(result["subclinical_candidate_indices"], list)
