@@ -6,7 +6,6 @@ Also provides a TCGA-COAD/READ stage adapter for pre-clinical gradient analysis.
 
 from __future__ import annotations
 
-import json
 import logging
 from pathlib import Path
 

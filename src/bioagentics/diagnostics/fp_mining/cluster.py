@@ -243,11 +243,14 @@ def run_clustering(
     op_name = result.operating_point.name
 
     # Cluster assignments
-    assignments = fp[["sample_id"]].copy() if "sample_id" in fp.columns else pd.DataFrame()
+    if "sample_id" in fp.columns:
+        assignments = fp[["sample_id"]].copy()
+    else:
+        assignments = pd.DataFrame(index=range(len(km_labels)))
     assignments["kmeans_cluster"] = km_labels
     assignments["dbscan_cluster"] = db_labels
-    assignments["pca_x"] = X_2d[:, 0]
-    assignments["pca_y"] = X_2d[:, 1] if X_2d.shape[1] > 1 else 0.0
+    assignments["pca_x"] = X_2d[:, 0] if X_2d.ndim > 1 else X_2d
+    assignments["pca_y"] = X_2d[:, 1] if X_2d.ndim > 1 and X_2d.shape[1] > 1 else 0.0
     assignments.to_parquet(
         save_dir / f"{domain}_{op_name}_assignments.parquet",
         index=False,
