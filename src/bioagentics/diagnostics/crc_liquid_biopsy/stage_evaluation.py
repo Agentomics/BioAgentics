@@ -80,7 +80,7 @@ def _load_protein_data(data_dir: Path, output_dir: Path) -> tuple[pd.DataFrame, 
     probe_to_gene = dict(zip(sig_proteins["probe_id"], sig_proteins.index))
 
     available = [p for p in probe_ids if p in expr.index]
-    samples = meta.index.tolist()
+    samples = meta.index.intersection(expr.columns).tolist()
     X = expr.loc[available, samples].T
     X.columns = [f"prot_{probe_to_gene.get(c, c)}" for c in X.columns]
 
@@ -106,7 +106,9 @@ def _load_cfdna_features(data_dir: Path, output_dir: Path, n_top: int = 50) -> t
     available = [c for c in top_cpgs if c in meth.index]
     X = meth.loc[available].T
     X.columns = [f"meth_{c}" for c in X.columns]
-    X["condition"] = meta.loc[X.index, "condition"]
+    common = X.index.intersection(meta.index)
+    X = X.loc[common]
+    X["condition"] = meta.loc[common, "condition"]
 
     y = (X["condition"] == "CRC").astype(int).values
     X = X.drop(columns=["condition"])
