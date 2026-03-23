@@ -1,0 +1,13 @@
+{
+  "model_name": "mobilenetv3_small_100",
+  "image_size": 224,
+  "num_params": 1522981,
+  "num_params_m": 1.52,
+  "file_size_mb": 5.93,
+  "cpu_latency_ms": 82.1,
+  "cpu_latency_std_ms": 1.7,
+  "gpu_latency_ms": 0.0,
+  "gpu_latency_std_ms": 0.0,
+  "mps_latency_ms": 12.5,
+  "mps_latency_std_ms": 0.5
+}

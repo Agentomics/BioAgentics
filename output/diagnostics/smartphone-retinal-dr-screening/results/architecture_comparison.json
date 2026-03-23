@@ -1,0 +1,41 @@
+[
+  {
+    "model_name": "mobilenetv3_small_100",
+    "image_size": 224,
+    "num_params": 1522981,
+    "num_params_m": 1.52,
+    "file_size_mb": 5.93,
+    "cpu_latency_ms": 85.3,
+    "cpu_latency_std_ms": 4.8,
+    "gpu_latency_ms": 0.0,
+    "gpu_latency_std_ms": 0.0,
+    "mps_latency_ms": 14.9,
+    "mps_latency_std_ms": 0.9
+  },
+  {
+    "model_name": "efficientnet_b0",
+    "image_size": 512,
+    "num_params": 4013953,
+    "num_params_m": 4.01,
+    "file_size_mb": 15.59,
+    "cpu_latency_ms": 453.6,
+    "cpu_latency_std_ms": 54.7,
+    "gpu_latency_ms": 0.0,
+    "gpu_latency_std_ms": 0.0,
+    "mps_latency_ms": 61.2,
+    "mps_latency_std_ms": 15.9
+  },
+  {
+    "model_name": "efficientnet_b4",
+    "image_size": 512,
+    "num_params": 17557581,
+    "num_params_m": 17.56,
+    "file_size_mb": 67.68,
+    "cpu_latency_ms": 1125.1,
+    "cpu_latency_std_ms": 27.9,
+    "gpu_latency_ms": 0.0,
+    "gpu_latency_std_ms": 0.0,
+    "mps_latency_ms": 146.6,
+    "mps_latency_std_ms": 8.2
+  }
+]
