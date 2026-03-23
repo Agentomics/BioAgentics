@@ -41,8 +41,11 @@ SMARCA4_MITO_GENES = [
     "MTERF4", "MICOS13", "DMAC2", "MRPS35", "COX6C", "WARS2", "HIGD2A", "TIMM22",
 ]
 
+# Glutathione synthesis genes (GSH addendum — eprenetapopt/APR-246 target axis)
+GSH_GENES = ["GCLC", "GCLM", "GSR", "GPX4", "GSS"]
+
 # All targeted genes for direct CRISPR testing
-TARGETED_GENES = HMGCR_GENES + ADCK5_GENES + SMARCA4_MITO_GENES
+TARGETED_GENES = HMGCR_GENES + ADCK5_GENES + SMARCA4_MITO_GENES + GSH_GENES
 
 
 def cohens_d(group1: np.ndarray, group2: np.ndarray) -> float:
@@ -396,6 +399,63 @@ def main() -> None:
     else:
         print("  No results (insufficient qualifying cancer types)")
 
+    # === Part 2b: GSH/glutathione gene targeted analysis ===
+    print("\n--- Part 2b: GSH/glutathione gene targeted analysis ---")
+    print("Testing GSH genes (GCLC, GCLM, GSR, GPX4, GSS) in both ARID1A and SMARCA4 contexts...")
+
+    # Test GSH genes in ARID1A-mutant lines
+    gsh_in_arid1a = test_targeted_genes(
+        crispr, classified, GSH_GENES, source_atlas="SMARCA4",
+    )
+    # Test GSH genes in SMARCA4-mutant lines
+    gsh_in_smarca4 = test_targeted_genes(
+        crispr, classified, GSH_GENES, source_atlas="ARID1A",
+    )
+
+    # Find convergent GSH genes (SL in at least one cancer type in BOTH contexts)
+    gsh_convergent = []
+    for gene in GSH_GENES:
+        a_hits = gsh_in_arid1a[(gsh_in_arid1a["gene"] == gene) & gsh_in_arid1a["is_sl"]] if len(gsh_in_arid1a) > 0 else pd.DataFrame()
+        s_hits = gsh_in_smarca4[(gsh_in_smarca4["gene"] == gene) & gsh_in_smarca4["is_sl"]] if len(gsh_in_smarca4) > 0 else pd.DataFrame()
+        is_convergent = len(a_hits) > 0 and len(s_hits) > 0
+        if is_convergent:
+            gsh_convergent.append(gene)
+
+    # Combine results for saving
+    gsh_all_results = []
+    if len(gsh_in_arid1a) > 0:
+        gsh_in_arid1a_save = gsh_in_arid1a.copy()
+        gsh_in_arid1a_save["context"] = "in_ARID1A_mutant"
+        gsh_all_results.append(gsh_in_arid1a_save)
+    if len(gsh_in_smarca4) > 0:
+        gsh_in_smarca4_save = gsh_in_smarca4.copy()
+        gsh_in_smarca4_save["context"] = "in_SMARCA4_mutant"
+        gsh_all_results.append(gsh_in_smarca4_save)
+
+    if gsh_all_results:
+        gsh_results_df = pd.concat(gsh_all_results, ignore_index=True)
+        gsh_results_df.to_csv(OUTPUT_DIR / "targeted_gsh_genes.csv", index=False)
+
+        print(f"\n  GSH gene results ({len(gsh_results_df)} tests):")
+        for gene in GSH_GENES:
+            gene_df = gsh_results_df[gsh_results_df["gene"] == gene]
+            if len(gene_df) == 0:
+                continue
+            sl_hits = gene_df[gene_df["is_sl"]]
+            best = gene_df.loc[gene_df["cohens_d"].idxmin()]
+            convergent_flag = " ***CONVERGENT***" if gene in gsh_convergent else ""
+            print(
+                f"    {gene:6s} {len(sl_hits)}/{len(gene_df)} SL hits, "
+                f"best d={best['cohens_d']:+.3f} ({best['context']}, {best['cancer_type']})"
+                f"{convergent_flag}"
+            )
+    else:
+        print("  No GSH results (insufficient qualifying cancer types)")
+
+    print(f"\n  Convergent GSH genes: {len(gsh_convergent)}")
+    if gsh_convergent:
+        print(f"  Genes: {', '.join(gsh_convergent)}")
+
     # === Part 3: Convergence matrix ===
     print("\n--- Part 3: Convergence matrix ---")
     convergent_gene_list = convergent_df["gene"].tolist()
@@ -437,6 +497,13 @@ def main() -> None:
             print(f"\nHMGCR in SMARCA4: {len(hmgcr_sl)}/{len(hmgcr_results)} cancer types show SL")
         else:
             print("\nHMGCR: not testable in SMARCA4 lines")
+
+    # GSH addendum summary
+    print(f"\nGSH convergent genes: {len(gsh_convergent)}")
+    if gsh_convergent:
+        print(f"  Convergent: {', '.join(gsh_convergent)}")
+    else:
+        print("  No GSH genes reach convergent SL threshold in both ARID1A and SMARCA4")
 
     print(f"\nResults saved to {OUTPUT_DIR}")
 

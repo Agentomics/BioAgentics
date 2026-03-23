@@ -266,6 +266,53 @@ def main() -> None:
         print(f"\n  Top 2 nominally enriched pathways cover {len(top2_genes)}/{len(convergent_genes)} "
               f"convergent genes ({len(top2_genes)/len(convergent_genes):.0%})")
 
+    # === GSH addendum: explicit glutathione pathway assessment ===
+    print("\n--- GSH addendum: Glutathione pathway assessment ---")
+
+    # Check glutathione metabolism in hypergeometric results
+    gsh_pathway_name = "Glutathione metabolism"
+    gsh_hyper = hyper_results[hyper_results["pathway"] == gsh_pathway_name]
+    if len(gsh_hyper) > 0:
+        r = gsh_hyper.iloc[0]
+        print(f"\n  Glutathione metabolism (hypergeometric):")
+        print(f"    {r['convergent_in_pathway']}/{r['pathway_size']} convergent genes")
+        print(f"    fold={r['fold_enrichment']:.2f}x  p={r['p_value']:.2e}  FDR={r['fdr']:.2e}")
+        if r["genes"]:
+            print(f"    Genes: {r['genes']}")
+    else:
+        print("  Glutathione metabolism: not found in enrichment results")
+
+    # Check ranked enrichment for glutathione
+    gsh_ranked = ranked_results[ranked_results["pathway"] == gsh_pathway_name]
+    if len(gsh_ranked) > 0:
+        print(f"\n  Glutathione metabolism (ranked enrichment):")
+        for _, r in gsh_ranked.iterrows():
+            print(
+                f"    {r['screen']:8s}: median_d={r['median_d_in_pathway']:+.3f} "
+                f"vs {r['median_d_outside']:+.3f}  p={r['p_value']:.2e}  FDR={r['fdr']:.2e}"
+            )
+
+    # Load GSH targeted results from Phase 2 if available
+    gsh_targeted_path = PHASE2_DIR / "targeted_gsh_genes.csv"
+    if gsh_targeted_path.exists():
+        gsh_targeted = pd.read_csv(gsh_targeted_path)
+        gsh_sl = gsh_targeted[gsh_targeted["is_sl"]]
+        print(f"\n  GSH targeted analysis (from Phase 2):")
+        print(f"    {len(gsh_sl)}/{len(gsh_targeted)} tests show SL signal")
+        if len(gsh_sl) > 0:
+            for _, r in gsh_sl.iterrows():
+                print(f"      {r['gene']:6s} {r['context']:20s} {r['cancer_type']:25s} d={r['cohens_d']:+.3f}")
+
+    # Save GSH-specific enrichment summary
+    gsh_summary = {
+        "pathway": gsh_pathway_name,
+        "hyper_fold": gsh_hyper.iloc[0]["fold_enrichment"] if len(gsh_hyper) > 0 else None,
+        "hyper_p": gsh_hyper.iloc[0]["p_value"] if len(gsh_hyper) > 0 else None,
+        "hyper_fdr": gsh_hyper.iloc[0]["fdr"] if len(gsh_hyper) > 0 else None,
+        "convergent_gsh_genes": gsh_hyper.iloc[0]["genes"] if len(gsh_hyper) > 0 and gsh_hyper.iloc[0]["genes"] else "",
+    }
+    pd.DataFrame([gsh_summary]).to_csv(OUTPUT_DIR / "gsh_enrichment_summary.csv", index=False)
+
     # === Summary ===
     print("\n" + "=" * 60)
     print("PHASE 3 SUMMARY")

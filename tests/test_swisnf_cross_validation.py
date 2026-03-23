@@ -21,6 +21,7 @@ fdr_correction = _mod.fdr_correction
 find_convergent_genes_from_screens = _mod.find_convergent_genes_from_screens
 build_convergence_matrix = _mod.build_convergence_matrix
 categorize_convergent_genes = _mod.categorize_convergent_genes
+GSH_GENES = _mod.GSH_GENES
 
 
 # ---------- Fixtures ----------
@@ -194,3 +195,25 @@ class TestCategorizeConvergentGenes:
         gene_list = pd.DataFrame({"gene": ["OTHERGENE"], "pathways": ["something"]})
         result = categorize_convergent_genes(convergent, gene_list)
         assert result.iloc[0]["category"] == "Other metabolism"
+
+    def test_glutathione_category(self):
+        """Glutathione pathway genes categorized as Redox/cofactor."""
+        convergent = pd.DataFrame({"gene": ["GCLC"]})
+        gene_list = pd.DataFrame({
+            "gene": ["GCLC"],
+            "pathways": ["Glutathione metabolism"],
+        })
+        result = categorize_convergent_genes(convergent, gene_list)
+        assert result.iloc[0]["category"] == "Redox/cofactor"
+
+
+# ---------- Test GSH gene constants ----------
+
+
+class TestGSHGenes:
+    """Test GSH addendum gene list."""
+
+    def test_gsh_genes_present(self):
+        """All 5 GSH genes are defined."""
+        expected = {"GCLC", "GCLM", "GSR", "GPX4", "GSS"}
+        assert set(GSH_GENES) == expected
