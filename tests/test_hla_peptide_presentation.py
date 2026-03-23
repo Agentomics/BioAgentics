@@ -271,3 +271,116 @@ class TestPopulationRisk:
         assert (tmp_path / "population_risk" / "population_risk_scores.tsv").exists()
         assert (tmp_path / "population_risk" / "haplotype_risk_table.tsv").exists()
         assert (tmp_path / "population_risk" / "risk_analysis_summary.json").exists()
+
+
+class TestEnnMrpIngestion:
+    """Tests for Enn/Mrp M-like protein ingestion module."""
+
+    def test_entry_metadata(self):
+        from bioagentics.data.pandas_pans.enn_mrp_ingestion import (
+            ENN_MRP_ENTRIES,
+            EXISTING_ENN_MRP,
+        )
+
+        assert len(ENN_MRP_ENTRIES) == 4
+        classes = {e["protein_class"] for e in ENN_MRP_ENTRIES}
+        assert classes == {"mrp", "enn"}
+
+        assert len(EXISTING_ENN_MRP) == 1
+        assert EXISTING_ENN_MRP[0]["gene"] == "ennX"
+
+    def test_write_and_load_metadata(self, tmp_path):
+        from bioagentics.data.pandas_pans.enn_mrp_ingestion import (
+            _load_existing_metadata,
+            _write_metadata,
+        )
+
+        metadata = [
+            {
+                "accession": "X001",
+                "protein_class": "mrp",
+                "gene": "mrp",
+                "protein_name": "Test Mrp",
+                "length": 100,
+                "serotype_association": "M3",
+                "source": "uniprot",
+                "already_in_proteome": False,
+                "notes": "test",
+            },
+        ]
+
+        _write_metadata(metadata, tmp_path)
+        loaded = _load_existing_metadata(tmp_path)
+        assert len(loaded) == 1
+        assert loaded[0]["accession"] == "X001"
+        assert loaded[0]["protein_class"] == "mrp"
+
+    def test_load_existing_metadata_missing(self, tmp_path):
+        from bioagentics.data.pandas_pans.enn_mrp_ingestion import _load_existing_metadata
+
+        assert _load_existing_metadata(tmp_path) == []
+
+    def test_rebuild_combined_fasta(self, tmp_path):
+        from bioagentics.data.pandas_pans.enn_mrp_ingestion import rebuild_combined_fasta
+
+        # Create mock per-serotype FASTA
+        (tmp_path / "gas_m1.fasta").write_text(">sp|P001|M1\nACDEFG\n")
+        (tmp_path / "gas_m3.fasta").write_text(">sp|P002|M3\nHIKLMN\n")
+
+        # Create mock supplement
+        (tmp_path / "enn_mrp_supplement.fasta").write_text(">tr|X001|MRP\nPQRSTV\n")
+
+        combined = rebuild_combined_fasta(tmp_path)
+        assert combined.exists()
+
+        text = combined.read_text()
+        assert ">sp|P001|M1" in text
+        assert ">sp|P002|M3" in text
+        assert ">tr|X001|MRP" in text
+
+    def test_rebuild_combined_fasta_no_supplement(self, tmp_path):
+        from bioagentics.data.pandas_pans.enn_mrp_ingestion import rebuild_combined_fasta
+
+        (tmp_path / "gas_m1.fasta").write_text(">sp|P001|M1\nACDEFG\n")
+
+        combined = rebuild_combined_fasta(tmp_path)
+        text = combined.read_text()
+        assert ">sp|P001|M1" in text
+
+    def test_rebuild_combined_fasta_no_serotypes(self, tmp_path):
+        from bioagentics.data.pandas_pans.enn_mrp_ingestion import rebuild_combined_fasta
+
+        with pytest.raises(FileNotFoundError):
+            rebuild_combined_fasta(tmp_path)
+
+
+class TestDigestEnnMrpIntegration:
+    """Test that Enn/Mrp virulence factor keywords are detected."""
+
+    def test_enn_mrp_virulence_keywords(self):
+        from src.pandas_pans.hla_peptide_presentation_modeling.gas_proteome_digest import (
+            VIRULENCE_FACTOR_KEYWORDS,
+        )
+
+        keywords_lower = {kw.lower() for kw in VIRULENCE_FACTOR_KEYWORDS}
+        assert "mrp" in keywords_lower
+        assert "m-related protein" in keywords_lower
+        assert "protein enn" in keywords_lower
+
+    def test_enn_mrp_detected_as_virulence_factor(self, tmp_path):
+        from src.pandas_pans.hla_peptide_presentation_modeling.gas_proteome_digest import (
+            parse_fasta_streaming,
+        )
+
+        fasta = tmp_path / "enn_mrp.fasta"
+        fasta.write_text(
+            ">tr|X001|MRP_STRPY M-related protein Mrp OS=GAS\n"
+            "ACDEFGHIKLMNPQRSTVWY\n"
+            ">tr|X002|ENN_STRPY M-related protein Enn OS=GAS\n"
+            "ACDEFGHIKLMNPQRSTVWY\n"
+        )
+
+        proteins = list(parse_fasta_streaming(fasta))
+        assert len(proteins) == 2
+        assert proteins[0].is_virulence_factor  # "M-related protein" matched
+        assert proteins[1].is_virulence_factor  # "Enn" matched

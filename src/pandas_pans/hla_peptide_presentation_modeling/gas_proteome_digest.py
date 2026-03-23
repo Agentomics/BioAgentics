@@ -55,6 +55,7 @@ SEROTYPES = {
 VIRULENCE_FACTOR_KEYWORDS = frozenset({
     "M protein", "emm", "streptolysin", "SLO", "C5a peptidase",
     "streptokinase", "DNase", "SpeB", "SpyCEP", "Sic",
+    "M-related protein", "Mrp", "protein Enn", "M-like",
 })
 
 MHC_I_LENGTHS = range(8, 12)   # 8, 9, 10, 11
@@ -256,6 +257,15 @@ def run_digest(output_base: Path | None = None) -> dict:
         summary["serotypes"][serotype] = stats
         total_i += stats["mhc_i_peptides"]
         total_ii += stats["mhc_ii_peptides"]
+
+    # Digest Enn/Mrp supplement if present (shared across serotypes)
+    enn_mrp_fasta = proteome_dir / "enn_mrp_supplement.fasta"
+    if enn_mrp_fasta.exists():
+        print("Digesting Enn/Mrp supplement...")
+        enn_stats = digest_serotype("enn_mrp", enn_mrp_fasta, peptide_dir)
+        summary["serotypes"]["enn_mrp"] = enn_stats
+        total_i += enn_stats["mhc_i_peptides"]
+        total_ii += enn_stats["mhc_ii_peptides"]
 
     summary["totals"] = {
         "serotypes_processed": len(summary["serotypes"]),
