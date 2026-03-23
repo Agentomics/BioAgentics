@@ -139,13 +139,9 @@ def train_methylation_classifier(
     auc = roc_auc_score(y, probs)
     fpr, tpr, _ = roc_curve(y, probs)
 
-    # Sensitivity at 90% specificity
-    idx_90 = np.searchsorted(1 - fpr[::-1], 0.90)
-    sens_90 = tpr[::-1][min(idx_90, len(tpr) - 1)]
-
-    # Sensitivity at 95% specificity
-    idx_95 = np.searchsorted(1 - fpr[::-1], 0.95)
-    sens_95 = tpr[::-1][min(idx_95, len(tpr) - 1)]
+    # Sensitivity at 90% and 95% specificity
+    sens_90 = float(np.interp(0.10, fpr, tpr))
+    sens_95 = float(np.interp(0.05, fpr, tpr))
 
     logger.info("Methylation classifier LOO-CV: AUC=%.3f, sens@90spec=%.3f, sens@95spec=%.3f",
                 auc, sens_90, sens_95)
@@ -206,8 +202,7 @@ def evaluate_combined_panel(
 
     prot_auc = roc_auc_score(prot_labels, prot_probs)
     fpr_p, tpr_p, _ = roc_curve(prot_labels, prot_probs)
-    idx = np.searchsorted(1 - fpr_p[::-1], 0.95)
-    prot_sens95 = tpr_p[::-1][min(idx, len(tpr_p) - 1)]
+    prot_sens95 = float(np.interp(0.05, fpr_p, tpr_p))
 
     # Combined: add synthetic methylation score to protein features
     # Use methylation classifier performance to simulate scores
@@ -245,11 +240,8 @@ def evaluate_combined_panel(
 
     combined_auc = roc_auc_score(prot_labels, combined_probs)
     fpr_c, tpr_c, _ = roc_curve(prot_labels, combined_probs)
-    idx = np.searchsorted(1 - fpr_c[::-1], 0.95)
-    combined_sens95 = tpr_c[::-1][min(idx, len(tpr_c) - 1)]
-
-    idx90 = np.searchsorted(1 - fpr_c[::-1], 0.90)
-    combined_sens90 = tpr_c[::-1][min(idx90, len(tpr_c) - 1)]
+    combined_sens95 = float(np.interp(0.05, fpr_c, tpr_c))
+    combined_sens90 = float(np.interp(0.10, fpr_c, tpr_c))
 
     logger.info("Protein-only: AUC=%.3f, sens@95spec=%.3f", prot_auc, prot_sens95)
     logger.info("Combined: AUC=%.3f, sens@95spec=%.3f", combined_auc, combined_sens95)
