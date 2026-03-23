@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T21:23:00Z
+last_run: 2026-03-23T12:09:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [crc-liquid-biopsy-panel]
@@ -7,14 +7,18 @@ projects_touched: [crc-liquid-biopsy-panel]
 
 ## Context
 
-- Second run in diagnostics division. Focused on priority issues from last run + new scan findings.
-- **Fixed (4 commits):**
-  - `dispatch.py`: Removed hardcoded `or "cancer"` fallback in `check_planning_projects()` and `check_published_missing_reports()` — now skips projects with no division and logs warning.
-  - `cough.py`: Added `log.warning(exc_info=True)` to 6 silent `except Exception:` blocks in feature extraction.
-  - `ensemble_classifier.py`: Moved `feat_names.append(mf)` inside `if cpg in cfdna.index` guard; only hstacks matched columns. Prevents zero-valued features for unmapped CpGs.
-  - `panel_optimization.py`: Added empty-list guards in `load_cfdna_features` and `load_protein_features`; added index intersection before metadata lookup to prevent KeyError.
+- Third run in diagnostics division. Focused on clearing backlog + scanning unscanned modules.
+- **Fixed (6 commits):**
+  - `panel_optimization.py`: Removed unused `gene_names`, `n_panels`, hoisted `roc_curve` import from loop, cast Cs to `float()`.
+  - `foundation.py`: Narrowed cache-load except to `(OSError, ValueError)`, added `exc_info=True`.
+  - `threshold_analysis.py`: Added intersection guard in `load_protein_features()`, NaN/empty guards in `build_mixed_panel()`, removed unused `prot_names`.
+  - `stage_evaluation.py`: Added intersection guards in `_load_protein_data()` and `_load_cfdna_features()`.
+  - `ensemble_classifier.py`: Added intersection guard, fixed `labels_tmp` dimensional mismatch with filtered samples, added NaN/empty guards for synthetic methylation features, floored noise at 0.01.
+- **Pattern found:** Multiple CRC files had `meta.index.tolist()` without intersection against `expr.columns` — systematic issue now fixed in 4 files.
+- **Acoustic modules:** Reviewed spectral.py, foundation.py, pipeline.py. All `except Exception:` blocks already use `log.exception()` (properly logged). Only foundation.py cache handler needed narrowing.
+- **Scanned:** voice_pd/robustness (augmentation.py, cross_dataset.py) — clean, no issues.
 - **Remaining priorities (next run):**
   - **Projects table PK:** Missing division column causes cross-division collisions. Needs migration plan (API + DB schema).
-  - **Acoustic module excepts:** spectral.py (5), foundation.py (3), pipeline.py (3) still have broad `except Exception:` — logged but could be narrowed.
-  - **panel_optimization.py:** Pyright type error on LogisticRegressionCV Cs param (line 211). Unused vars: gene_names, n_panels, thresholds.
-  - **New scan area:** Review remaining diagnostics modules not yet scanned (smartphone-retinal, rare-disease-phenomatch, etc.).
+  - **Scan pandas_pans module:** New division, not yet reviewed by systems_engineer.
+  - **Review scan results:** Launched agents for retinal_dr_screening, sepsis, rare_disease, fp_mining — results should inform next run.
+  - **New CRC files:** methylation_discovery.py, methylation_classifier.py, stage_classifier.py not yet deep-scanned.
