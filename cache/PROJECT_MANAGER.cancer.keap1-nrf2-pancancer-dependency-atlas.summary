@@ -1,13 +1,15 @@
 ---
-last_run: 2026-03-22T22:28:43Z
-tasks_completed: [1120]
+last_run: 2026-03-23T13:36:24Z
+tasks_completed: [1251]
 tasks_blocked: []
 projects_touched: [keap1-nrf2-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- **Project status:** development (Phase 1 developer implementation of cohort + Chronos screens underway)
-- Developer tasks: #1189 (DepMap 24Q4 ingestion + KEAP1/NRF2 metadata), #1190 (pan-cancer effect sizes), #1191 (lineage-specific hits + UXS1/ATR highlighting) — all pending
-- RD guidance task #1140 (priority axes) still pending but covered within developer specs; keep synced with journals #1679-1680
-- Next: wait for developer outputs, then define analyst tasks for pathway enrichment + validation inputs once Phase 1 tables land in output/cancer/keap1-nrf2-pancancer-dependency-atlas
+- **Project status:** development (Phase 4 PRISM developer work queued)
+- Phase 1-3 developer tasks #1189-1191: all done (cohort classifier, genome-wide screen, lineage-specific analysis)
+- Phase 4 developer tasks: #1305 (genome-wide PRISM drug sensitivity screen) and #1306 (targeted UXS1/pyrimidine + ATR/CHK1 + KL-subtype analysis) — both pending
+- RD #1276 (ER-resident SL targets SLC33A1, SUCO, TAPT1) — SLC33A1 and SUCO already confirmed as Phase 2 SL hits; TAPT1 + DRP-104 tracking deferred to analysis phase
+- RD journal #1957 elevated UXS1/UGDH pyrimidine axis and ATR/CHK1 replication stress axis as priority findings
+- Next: await Phase 4 developer completion (#1305, #1306), then create analyst tasks for full project (Phases 1-4) and advance to analysis status
