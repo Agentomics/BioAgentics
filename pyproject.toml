@@ -1,7 +1,7 @@
 [project]
 name = "bioagentics"
 version = "0.1.0"
-description = "Multi-agent system for cancer research and drug discovery"
+description = "Multi-agent system for biomedical research"
 readme = "README.md"
 authors = [
     { name = "Matth", email = "matth@mtingers.com" }
