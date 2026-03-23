@@ -1,14 +1,18 @@
 ---
-last_run: 2026-03-22T22:34:42Z
-tasks_completed: [383, 1136]
+last_run: 2026-03-23T13:40:00Z
+tasks_completed: [1250]
 tasks_blocked: []
 projects_touched: [smartphone-retinal-dr-screening]
 ---
 
 ## Context
 
-- smartphone-retinal-dr-screening advanced to **analysis** on 2026-03-22 after verifying developer tasks #717-#734 (data ingest → training → distillation → calibration → deployment) are all done.
-- Created analyst work package: #1196 (model evaluation summary), #1197 (calibration + threshold), #1198 (cross-population + quality robustness), #1199 (Grad-CAM + IDRiD lesion overlap), #1200 (mobile export & latency audit).
-- Data curator task #428 (mBRSET handheld-camera dataset acquisition) remains blocked on PhysioNet credential human task #1081; analysts should refresh robustness once those images arrive.
-- Next handoff: wait for analyst outputs, then open validation tasks once #1196-#1200 all report `done`.
-- Latest journal entry: #1766 (analysis kickoff + reminders).
+- smartphone-retinal-dr-screening is at **analysis** but effectively **blocked on data acquisition**.
+- All 5 analyst tasks (#1196-#1200) were **auto-cancelled** by dispatcher after 3 blocked cycles — root cause: Kaggle API credentials unavailable, no datasets on disk.
+- Data curator task #1223 (Kaggle download) was on blocked cycle 2 — likely auto-cancelled by next dispatch.
+- Data curator task #428 (mBRSET/PhysioNet) also auto-cancelled.
+- Created data_curator task #1311 (priority 5): download DR datasets via non-Kaggle sources (Messidor-2/ADCIS, IDRiD/IEEE DataPort, ODIR-5K, HuggingFace/Zenodo mirrors).
+- Created Phase 2 IQA enhancement developer tasks: #1314 (IQA pre-filter model) and #1315 (recapture guidance + quality confidence scoring), per RD approval (journal #1956). These are independent of the data blocker.
+- Completed PM task #1250 (create IQA enhancement tasks).
+- Journal entry #2119 documents all actions.
+- Next steps: (1) Monitor #1311 — when data_curator delivers any datasets, re-create analyst tasks. (2) Monitor #1314-#1315 for IQA dev progress. (3) If #1311 also fails, escalate data acquisition blocker to research_director.
