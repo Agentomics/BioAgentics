@@ -208,6 +208,98 @@ class TestIEDBBindingPrediction:
 class TestDifferentialPresentation:
     """Tests for Phase 4: Differential analysis."""
 
+    def _make_predictions(self):
+        """Build synthetic binding predictions across allele groups."""
+        predictions = []
+        # Peptide A: strong binder to susceptibility, weak to control -> high fold change
+        for allele in ["DRB1*07:01", "DRB1*04:01", "DRB1*01:01"]:
+            predictions.append({
+                "peptide": "PEPTIDEA_15MER_X",
+                "allele": allele,
+                "percentile_rank": 0.3,
+                "ic50": 50.0,
+                "source_protein": "M protein",
+                "source_accession": "P001",
+                "serotype": "M1",
+                "is_virulence_factor": True,
+            })
+        for allele in ["DRB1*03:01", "DRB1*13:01"]:
+            predictions.append({
+                "peptide": "PEPTIDEA_15MER_X",
+                "allele": allele,
+                "percentile_rank": 15.0,
+                "ic50": 5000.0,
+                "source_protein": "M protein",
+                "source_accession": "P001",
+                "serotype": "M1",
+                "is_virulence_factor": True,
+            })
+        # Peptide B: similar binding across groups -> fold change ~1
+        for allele in ["DRB1*07:01", "DRB1*04:01", "DRB1*01:01"]:
+            predictions.append({
+                "peptide": "PEPTIDEB_15MER_Y",
+                "allele": allele,
+                "percentile_rank": 5.0,
+                "ic50": 500.0,
+                "source_protein": "Hypothetical",
+                "source_accession": "P002",
+                "serotype": "M1",
+                "is_virulence_factor": False,
+            })
+        for allele in ["DRB1*03:01", "DRB1*13:01"]:
+            predictions.append({
+                "peptide": "PEPTIDEB_15MER_Y",
+                "allele": allele,
+                "percentile_rank": 5.0,
+                "ic50": 500.0,
+                "source_protein": "Hypothetical",
+                "source_accession": "P002",
+                "serotype": "M1",
+                "is_virulence_factor": False,
+            })
+        return predictions
+
+    def test_compute_differential_peptides_fold_change(self):
+        from src.pandas_pans.hla_peptide_presentation_modeling.differential_presentation import (
+            compute_differential_peptides,
+        )
+
+        predictions = self._make_predictions()
+        results = compute_differential_peptides(predictions)
+
+        assert len(results) == 2
+        # Results sorted by fold change descending
+        assert results[0]["peptide"] == "PEPTIDEA_15MER_X"
+        assert results[0]["fold_change"] == 50.0  # 15.0 / 0.3
+        assert results[1]["peptide"] == "PEPTIDEB_15MER_Y"
+        assert results[1]["fold_change"] == 1.0  # 5.0 / 5.0
+
+    def test_compute_differential_peptides_best_allele(self):
+        from src.pandas_pans.hla_peptide_presentation_modeling.differential_presentation import (
+            compute_differential_peptides,
+        )
+
+        predictions = self._make_predictions()
+        results = compute_differential_peptides(predictions)
+
+        # All susceptibility alleles had rank 0.3, so best is whichever was seen first
+        assert results[0]["best_susceptibility_allele"] in {
+            "DRB1*07:01", "DRB1*04:01", "DRB1*01:01"
+        }
+
+    def test_compute_differential_peptides_metadata(self):
+        from src.pandas_pans.hla_peptide_presentation_modeling.differential_presentation import (
+            compute_differential_peptides,
+        )
+
+        predictions = self._make_predictions()
+        results = compute_differential_peptides(predictions)
+
+        vf_result = next(r for r in results if r["peptide"] == "PEPTIDEA_15MER_X")
+        assert vf_result["is_virulence_factor"] is True
+        assert vf_result["source_protein"] == "M protein"
+        assert vf_result["serotype"] == "M1"
+
     def test_virulence_enrichment(self):
         from src.pandas_pans.hla_peptide_presentation_modeling.differential_presentation import (
             virulence_enrichment_test,
@@ -227,6 +319,76 @@ class TestDifferentialPresentation:
         assert "odds_ratio" in result
         assert result["differential_vf"] == 1
         assert result["differential_non_vf"] == 1
+
+
+class TestMimicryHLAIntegration:
+    """Tests for Phase 5: Mimicry-HLA integration."""
+
+    def test_compute_overlap_with_matches(self):
+        from src.pandas_pans.hla_peptide_presentation_modeling.mimicry_hla_integration import (
+            compute_overlap,
+        )
+
+        mimicry_hits = [
+            {"gas_protein": "P001", "human_protein": "DRD1", "score": 0.85},
+            {"gas_protein": "P003", "human_protein": "tubulin", "score": 0.72},
+        ]
+        differential_peptides = [
+            {"peptide": "AAAAAA", "source_accession": "P001", "source_protein": "M protein",
+             "best_susceptibility_allele": "DRB1*07:01", "fold_change": "50.0"},
+            {"peptide": "BBBBBB", "source_accession": "P002", "source_protein": "C5a peptidase",
+             "best_susceptibility_allele": "DRB1*04:01", "fold_change": "12.0"},
+        ]
+        binding_predictions = [
+            {"peptide": "AAAAAA", "source_accession": "P001", "source_protein": "M protein"},
+            {"peptide": "BBBBBB", "source_accession": "P002", "source_protein": "C5a peptidase"},
+            {"peptide": "CCCCCC", "source_accession": "P003", "source_protein": "Hypothetical"},
+        ]
+
+        result = compute_overlap(mimicry_hits, differential_peptides, binding_predictions)
+
+        assert result["unique_mimicry_proteins"] == 2
+        assert result["overlap"]["differential_and_mimicry"] == 1  # P001
+        assert result["overlap"]["proteins_in_both"] == 2  # P001, P003
+        assert result["network_edges"] == 1  # P001 -> DRD1
+        assert result["significance_test"]["p_value"] <= 1.0
+        assert result["pandas_target_analysis"]["pandas_targets_in_mimicry"] == 2  # DRD1, tubulin
+
+    def test_compute_overlap_no_mimicry(self):
+        from src.pandas_pans.hla_peptide_presentation_modeling.mimicry_hla_integration import (
+            compute_overlap,
+        )
+
+        result = compute_overlap([], [], [])
+        assert result["mimicry_hits_total"] == 0
+        assert result["overlap"]["differential_and_mimicry"] == 0
+        assert result["network_edges"] == 0
+
+    def test_load_mimicry_hits_empty_dir(self, tmp_path):
+        from src.pandas_pans.hla_peptide_presentation_modeling.mimicry_hla_integration import (
+            load_mimicry_hits,
+        )
+
+        hits = load_mimicry_hits(tmp_path)
+        assert hits == []
+
+    def test_load_mimicry_hits_from_tsv(self, tmp_path):
+        from src.pandas_pans.hla_peptide_presentation_modeling.mimicry_hla_integration import (
+            load_mimicry_hits,
+        )
+
+        tsv = tmp_path / "mimicry_results.tsv"
+        tsv.write_text(
+            "gas_protein\thuman_protein\tsimilarity_score\n"
+            "P001\tDRD1\t0.85\n"
+            "P002\ttubulin\t0.72\n"
+        )
+
+        hits = load_mimicry_hits(tmp_path)
+        assert len(hits) == 2
+        assert hits[0]["gas_protein"] == "P001"
+        assert hits[0]["human_protein"] == "DRD1"
+        assert hits[0]["score"] == 0.85
 
 
 class TestPopulationRisk:

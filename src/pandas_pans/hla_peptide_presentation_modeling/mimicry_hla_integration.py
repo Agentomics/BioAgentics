@@ -33,9 +33,13 @@ def load_mimicry_hits(mimicry_dir: Path | None = None) -> list[dict]:
 
     hits = []
 
-    # Try common output file patterns
+    # Try common output file patterns, deduplicating across patterns
+    seen_paths: set[Path] = set()
     for pattern in ["*mimicry*.tsv", "*mimicry*.csv", "*hits*.tsv", "*results*.tsv"]:
         for path in mimicry_dir.rglob(pattern):
+            if path in seen_paths:
+                continue
+            seen_paths.add(path)
             delimiter = "\t" if path.suffix == ".tsv" else ","
             try:
                 with open(path) as f:
