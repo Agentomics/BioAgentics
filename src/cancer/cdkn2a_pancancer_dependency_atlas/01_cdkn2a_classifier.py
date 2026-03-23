@@ -154,6 +154,11 @@ def classify_cdkn2a(df: pd.DataFrame, depmap_dir: Path) -> pd.DataFrame:
     df = df.join(cdkn2b_cn, how="left")
     df["CDKN2B_co_deleted"] = df["CDKN2B_CN_log2"] <= HOMDEL_CN_THRESHOLD
 
+    # --- MTAP co-deletion (9p21 neighbour — confounds PRMT5/WDR77 dependency) ---
+    mtap_cn = load_copy_number(depmap_dir, "MTAP").rename("MTAP_CN_log2")
+    df = df.join(mtap_cn, how="left")
+    df["MTAP_co_deleted"] = df["MTAP_CN_log2"] <= HOMDEL_CN_THRESHOLD
+
     # --- CCNE1 amplification (CDK2-dependent bypass) ---
     ccne1_cn = load_copy_number(depmap_dir, "CCNE1").rename("CCNE1_CN_log2")
     df = df.join(ccne1_cn, how="left")
@@ -243,6 +248,7 @@ def build_cancer_type_summary(df: pd.DataFrame) -> pd.DataFrame:
         rb1_co_lost = int(del_lines["RB1_status"].eq("lost").sum()) if n_del_total > 0 else 0
         tp53_co_mut = int(del_lines["TP53_status"].eq("mutant").sum()) if n_del_total > 0 else 0
         cdkn2b_co_del = int(del_lines["CDKN2B_co_deleted"].fillna(False).sum()) if n_del_total > 0 else 0
+        mtap_co_del = int(del_lines["MTAP_co_deleted"].fillna(False).sum()) if n_del_total > 0 else 0
         ccne1_amp = int(del_lines["CCNE1_amplified"].fillna(False).sum()) if n_del_total > 0 else 0
 
         # RB1-intact deleted lines (primary analysis cohort)
@@ -267,6 +273,7 @@ def build_cancer_type_summary(df: pd.DataFrame) -> pd.DataFrame:
             "rb1_co_loss": rb1_co_lost,
             "tp53_co_mutation": tp53_co_mut,
             "cdkn2b_co_deletion": cdkn2b_co_del,
+            "mtap_co_deletion": mtap_co_del,
             "ccne1_amplification": ccne1_amp,
             "qualifies": qualifies,
             "power_note": power_note,
@@ -296,6 +303,7 @@ def write_summary_txt(
     n_rb1_lost = int(del_lines["RB1_status"].eq("lost").sum())
     n_tp53_mut = int(del_lines["TP53_status"].eq("mutant").sum())
     n_cdkn2b = int(del_lines["CDKN2B_co_deleted"].fillna(False).sum())
+    n_mtap = int(del_lines["MTAP_co_deleted"].fillna(False).sum())
     n_ccne1 = int(del_lines["CCNE1_amplified"].fillna(False).sum())
 
     lines = [
@@ -328,6 +336,7 @@ def write_summary_txt(
         f"  RB1 co-loss: {n_rb1_lost}/{n_del} ({n_rb1_lost/n_del:.1%})" if n_del > 0 else "  N/A",
         f"  TP53 mutation: {n_tp53_mut}/{n_del} ({n_tp53_mut/n_del:.1%})" if n_del > 0 else "  N/A",
         f"  CDKN2B co-deletion: {n_cdkn2b}/{n_del} ({n_cdkn2b/n_del:.1%})" if n_del > 0 else "  N/A",
+        f"  MTAP co-deletion: {n_mtap}/{n_del} ({n_mtap/n_del:.1%})" if n_del > 0 else "  N/A",
         f"  CCNE1 amplification: {n_ccne1}/{n_del} ({n_ccne1/n_del:.1%})" if n_del > 0 else "  N/A",
         "",
         "CLINICAL NOTE: RB1 co-loss abolishes CDK4/6 dependency.",
@@ -400,9 +409,10 @@ def main() -> None:
     n_rb1 = del_lines["RB1_status"].eq("lost").sum()
     n_tp53 = del_lines["TP53_status"].eq("mutant").sum()
     n_cdkn2b = del_lines["CDKN2B_co_deleted"].fillna(False).sum()
+    n_mtap = del_lines["MTAP_co_deleted"].fillna(False).sum()
     n_ccne1 = del_lines["CCNE1_amplified"].fillna(False).sum()
     print(f"  Co-alterations in deleted: RB1-lost={n_rb1}, TP53-mut={n_tp53}, "
-          f"CDKN2B-codel={n_cdkn2b}, CCNE1-amp={n_ccne1}")
+          f"CDKN2B-codel={n_cdkn2b}, MTAP-codel={n_mtap}, CCNE1-amp={n_ccne1}")
 
     # Step 3: Cross-validate with expression
     print("\nCross-validating with CDKN2A expression...")
@@ -443,6 +453,7 @@ def main() -> None:
         "OncotreeLineage", "CDKN2A_status", "CDKN2A_CN_log2", "CDKN2A_expression",
         "expression_discordant", "RB1_status", "RB1_CN_log2", "RB1_mutated", "RB1_homdel",
         "TP53_status", "CDKN2B_CN_log2", "CDKN2B_co_deleted",
+        "MTAP_CN_log2", "MTAP_co_deleted",
         "CCNE1_CN_log2", "CCNE1_amplified", "has_crispr",
     ]
     output_cols = [c for c in output_cols if c in df.columns]
