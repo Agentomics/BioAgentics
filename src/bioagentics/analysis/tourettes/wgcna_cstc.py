@@ -30,6 +30,10 @@ from scipy.spatial.distance import squareform
 
 from bioagentics.config import REPO_ROOT
 from bioagentics.data.tourettes.gene_sets import get_gene_set
+from bioagentics.data.tourettes.hmba_reference import (
+    get_taxonomy,
+    get_marker_panel,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -296,6 +300,49 @@ def find_hub_genes(
     return hub_genes[:n_top]
 
 
+def annotate_modules_cell_types(
+    modules: pd.DataFrame,
+) -> list[dict]:
+    """Annotate each WGCNA module with HMBA cell-type marker overlap.
+
+    For each module, checks how many of its genes overlap with each
+    HMBA cell type's marker panel.  Returns a list of per-module
+    annotations sorted by best cell-type match.
+    """
+    taxonomy = get_taxonomy()
+    # Build marker -> cell_type_label mapping
+    marker_to_ct: dict[str, list[str]] = {}
+    for label in taxonomy:
+        for marker in get_marker_panel(label):
+            marker_to_ct.setdefault(marker, []).append(label)
+
+    results: list[dict] = []
+    for mod_id in sorted(modules["module"].unique()):
+        if mod_id == 0:
+            continue
+        mod_genes = set(modules[modules["module"] == mod_id]["gene_symbol"])
+        ct_hits: dict[str, list[str]] = {}
+        for gene in mod_genes:
+            for ct_label in marker_to_ct.get(gene, []):
+                ct_hits.setdefault(ct_label, []).append(gene)
+
+        ct_annotations = sorted(
+            [
+                {"cell_type": ct, "marker_genes": genes, "n_markers": len(genes)}
+                for ct, genes in ct_hits.items()
+            ],
+            key=lambda x: -x["n_markers"],
+        )
+        results.append({
+            "module": int(mod_id),
+            "module_size": len(mod_genes),
+            "cell_type_annotations": ct_annotations,
+            "top_cell_type": ct_annotations[0]["cell_type"] if ct_annotations else None,
+        })
+
+    return results
+
+
 def run_analysis(
     expr_matrix: pd.DataFrame,
     gene_set_name: str = "ts_combined",
@@ -355,6 +402,13 @@ def run_analysis(
         with open(hub_path, "w") as f:
             json.dump(hub_results, f, indent=2, default=str)
 
+    # Annotate modules with HMBA cell-type markers
+    logger.info("Annotating modules with HMBA cell-type markers...")
+    cell_type_annotations = annotate_modules_cell_types(modules)
+    ct_path = output_dir / "wgcna_module_cell_types.json"
+    with open(ct_path, "w") as f:
+        json.dump(cell_type_annotations, f, indent=2)
+
     # Generate enrichment plot
     _generate_enrichment_plot(enrichment, output_dir / "wgcna_enrichment_plot.png")
 
@@ -368,6 +422,7 @@ def run_analysis(
         "n_significant": n_significant,
         "enrichment": enrichment,
         "hub_genes": hub_results,
+        "cell_type_annotations": cell_type_annotations,
     }
 
 

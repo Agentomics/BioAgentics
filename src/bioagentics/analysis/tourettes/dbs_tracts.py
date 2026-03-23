@@ -31,6 +31,10 @@ from scipy import stats
 
 from bioagentics.config import REPO_ROOT
 from bioagentics.data.tourettes.gene_sets import get_gene_set, list_gene_sets
+from bioagentics.data.tourettes.hmba_reference import (
+    get_cstc_region_cell_types,
+    CellType,
+)
 from bioagentics.analysis.tourettes.ahba_spatial import (
     CSTC_STRUCTURES,
     fetch_gene_expression,
@@ -94,6 +98,30 @@ THALAMIC_RESPONSE_MAP: dict[str, dict] = {
 NON_TRACT_BG_REGIONS = ["caudate", "GPe"]
 
 
+def get_tract_cell_types(tract_name: str) -> list[CellType]:
+    """Return HMBA cell types affected by a given DBS tract corridor.
+
+    Aggregates cell types from all CSTC regions traversed by the tract.
+    """
+    regions = get_tract_regions(tract_name)
+    cell_types: list[CellType] = []
+    seen: set[str] = set()
+    for region in regions:
+        for ct in get_cstc_region_cell_types(region):
+            if ct.label not in seen:
+                cell_types.append(ct)
+                seen.add(ct.label)
+    return cell_types
+
+
+def get_all_tract_cell_type_map() -> dict[str, list[str]]:
+    """Return mapping of tract name -> list of HMBA cell-type labels."""
+    return {
+        name: [ct.label for ct in get_tract_cell_types(name)]
+        for name in DBS_TRACTS
+    }
+
+
 def get_tract_regions(tract_name: str) -> list[str]:
     """Return CSTC region names traversed by a given DBS tract."""
     if tract_name not in DBS_TRACTS:
@@ -144,6 +172,7 @@ def profile_all_tracts(expr_df: pd.DataFrame) -> pd.DataFrame:
             mean_z = gene_group["mean_zscore"].mean()
             std_z = gene_group["mean_zscore"].std()
             n = len(gene_group)
+            tract_cts = get_tract_cell_types(tract_name)
             records.append({
                 "gene_symbol": gene,
                 "tract": tract_name,
@@ -152,6 +181,7 @@ def profile_all_tracts(expr_df: pd.DataFrame) -> pd.DataFrame:
                 "std_zscore": std_z if not np.isnan(std_z) else 0.0,
                 "n_observations": n,
                 "regions": ",".join(tract_info["regions"]),
+                "hmba_cell_types": ",".join(ct.label for ct in tract_cts),
             })
 
     return pd.DataFrame(records)
