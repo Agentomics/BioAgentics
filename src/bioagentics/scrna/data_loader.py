@@ -33,22 +33,16 @@ CHUNK_SIZE = 1024 * 64
 # GEO datasets for IL-23/Th17 single-cell atlas
 DATASETS: dict[str, dict] = {
     "GSE134809": {
-        "description": "CD ileal tissue scRNA-seq, inflamed and non-inflamed (Kong et al.)",
+        "description": "CD ileal tissue scRNA-seq, inflamed and non-inflamed (Martin et al. Cell 2019, PMID 31474370)",
         "platform": "10x Genomics",
         "use": "Primary dataset — IL-23 pathway mapping, FCGR1A/IL23A co-expression",
         "format": "supplementary_10x",
     },
-    "GSE150392": {
-        "description": "Single-cell atlas of inflamed human gut with treatment metadata (Martin et al.)",
+    "GSE282122": {
+        "description": "Longitudinal scRNA-seq of anti-TNF in IBD, ~1M cells, 216 biopsies, 41 subjects (Thomas et al. Nature Immunology 2024)",
         "platform": "10x Genomics",
-        "use": "Multi-tissue IBD atlas with treatment annotations",
+        "use": "Treatment response dataset — anti-TNF longitudinal single-cell atlas",
         "format": "supplementary_h5ad",
-    },
-    "GSE207617": {
-        "description": "Single-cell CD with clinical/treatment annotations",
-        "platform": "10x Genomics",
-        "use": "Clinical annotation dataset for treatment response analysis",
-        "format": "supplementary_10x",
     },
 }
 
