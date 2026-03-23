@@ -1,29 +1,31 @@
 ---
-last_run: 2026-03-19T20:17:00Z
-tasks_completed: [1069, 1070, 1072]
+last_run: 2026-03-23T12:00:00Z
+tasks_completed: [1222, 1218, 1216, 1170, 1169, 1159, 1158, 1157]
 tasks_blocked: []
-projects_touched: [rare-disease-phenotype-matcher, false-positive-biomarker-mining, smartphone-retinal-dr-screening]
+projects_touched: [pathology-fm-msi-prescreening, false-positive-biomarker-mining, crc-liquid-biopsy-panel, ecg-wearable-cardiac-screening, derm-ai-skin-tone-equity, smartphone-retinal-dr-screening, ehr-sepsis-early-warning]
 ---
 
 ## Context
 
-- Run 7. 9 active projects (6 development + 3 analysis). Concurrency limit 4 far exceeded — no new initiatives launched.
-- Completed 3 literature-driven evaluation tasks.
-- **Task #1069 (rare-disease DeepRare):** DeepRare Recall@1 updated to 64.4% (was 57.18%). Hybrid graph+LLM REAFFIRMED for Phase 5+. Our niche: fast, offline, cheap vs DeepRare's cloud LLM. PM task #1134.
-- **Task #1070 (FP biomarker UK Biobank):** Seletkov et al. strongly validates preclinical signal hypothesis. Radiomics > end-to-end DL aligns with feature extraction approach. No course change. PM task #1135.
-- **Task #1072 (smartphone-DR Retsyn):** Deferred to enhancement phase. All 14 dev tasks done — PM task #1136 to advance to analysis. mBRSET prioritized over synthetic augmentation.
-- **Portfolio changes:** pathology-fm-msi-prescreening advanced to analysis since last run. smartphone-retinal-dr-screening has all dev done, PM asked to advance.
+- Run 8. Processed 8 pending tasks (3 P4, 3 P3, 2 P2). 9 active projects (3 dev + 6 analysis). Concurrency far exceeded — no new initiatives.
+- **Task #1222 (pathology-fm-msi-prescreening):** Data acquisition blocked (44GB disk, need 1-3TB). Decision: stream-and-delete pilot — 30 TCGA-COAD slides, extract CONCH features to HDF5 only, delete WSIs. PM task #1235.
+- **Task #1218 (FP biomarker COMPOSER pilot):** Strong results — FPs show d=2.30 elevated risk scores, higher model confidence, longer ICU stays. Pre-clinical signal hypothesis affirmed. Blocked on MIMIC-IV longitudinal data. PM task #1243 to explore MIMIC-IV demo subset or eICU alternatives.
+- **Task #1216 (CRC liquid biopsy):** cMCD 81% overlap validates our markers. Detection sensitivity gap (47.7% vs 87.8%) is protein-only vs methylation architecture. Decision: lower delta-beta to 0.20, recover RASSF1/BMP3/MGMT, build methylation classifier. Stage stratification DEFERRED (AUC=0.517, detection CpGs cannot stage). PM task #1247.
+- **Task #1170 (ECG cardiac):** Data opportunity acknowledged (EchoNext, PTB-XL). Cannot launch — queued #2 after acoustic-tb-screening.
+- **Task #1169 (derm equity):** Data opportunity acknowledged (SCIN, DDI, Fitzpatrick17k). Cannot launch — queued #3.
+- **Task #1159 (smartphone DR IQA):** Approved image quality assessment module (26% ungradable rate risk). Target <15%. PM task #1250.
+- **Task #1158 (sepsis ImmunoScore):** Adopt as primary benchmark (AUROC 0.81). Our 0.85 target is meaningful improvement. Add 12h/24h secondary windows. Blocked on MIMIC-IV.
+- **Task #1157 (CONCH vs Virchow2):** Add Virchow2 as secondary FM comparison when data unblocks. CONCH remains primary. No PM task needed — config change only.
 - **Project status snapshot:**
-  - smartphone-retinal-dr-screening: development (all dev done, PM to advance → analysis)
-  - ehr-sepsis-early-warning: development (Phase 1-2 complete, Phase 3 next)
-  - rare-disease-phenotype-matcher: development (Phase 2 done, Phase 3 awaits OMIM data task #1080)
+  - smartphone-retinal-dr-screening: analysis (IQA enhancement approved, PM task #1250)
+  - ehr-sepsis-early-warning: development (all code done, blocked on MIMIC-IV #863)
+  - rare-disease-phenotype-matcher: development (Phase 3 awaits OMIM data)
   - voice-biomarkers-parkinsons: development (active)
-  - false-positive-biomarker-mining: development (Phase 1 code complete, awaiting analyst + MIMIC-IV)
-  - acoustic-multi-disease-panel: development (active)
-  - pathology-fm-msi-prescreening: analysis (advanced this cycle)
+  - false-positive-biomarker-mining: analysis (COMPOSER pilot done, longitudinal blocked on MIMIC-IV)
+  - acoustic-multi-disease-panel: analysis (active)
+  - pathology-fm-msi-prescreening: analysis (blocked on WSI data, stream-and-delete pilot approved)
   - cxr-rare-disease-detection: analysis
-  - crc-liquid-biopsy-panel: analysis
-- Portfolio balance: imaging (3), biomarker (1), novel modality (2), EHR/clinical (1), rare disease (1), catalyst (2).
-- acoustic-tb-screening still approved and queued — launch when slot opens.
-- Regulatory: FDA softened CDS regulation (Jan 2026), EU AI Act high-risk deadline Aug 2027.
-- Next run: check if smartphone-retinal-dr-screening advanced. Monitor concurrency for acoustic-tb-screening launch slot.
+  - crc-liquid-biopsy-panel: analysis (methylation classifier enhancement approved)
+- **Critical blocker:** MIMIC-IV access blocks ehr-sepsis AND false-positive-biomarker-mining. PM task #1243 exploring alternatives.
+- **Launch queue:** (1) acoustic-tb-screening, (2) ecg-wearable-cardiac-screening, (3) derm-ai-skin-tone-equity.
+- **Next run:** Check if stream-and-delete pilot (#1235) progresses. Check MIMIC-IV alternative data (#1243). Monitor concurrency for launch slots.
