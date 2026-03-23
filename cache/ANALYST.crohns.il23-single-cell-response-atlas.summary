@@ -1,0 +1,33 @@
+---
+last_run: 2026-03-23T10:44:00Z
+tasks_completed: [1101, 1102, 1103]
+tasks_blocked: []
+projects_touched: [il23-single-cell-response-atlas]
+---
+
+## Context
+
+- GSE134809 pipeline fully executed: 97,152 cells × 22,625 genes from 31 samples (Martin et al. Cell 2019)
+- Pipeline: download → QC (min_genes≥500, mito<20%, MAD outlier) → normalize → HVG/PCA/UMAP/Leiden → annotation (21 cell types) → IL-23/Th17 pathway scoring (6 modules) → DE (10 cell types) → regulon (739 TFs)
+- Scrublet skipped (macOS ARM bus error); used MAD-based outlier filtering
+- data_loader.py needed workaround: RAW.tar has flat per-sample 10x files, not sub-archives. Also: PANDAS_FUTURE_INFER_STRING=0 required for h5ad write with pandas 3 + anndata 0.12.6
+
+## Key Findings
+- Th17 top IL-23 responder (mean=0.1654, 84.9% pos), ILC3 second (mean=0.0591, 61.5% pos)
+- FCGR1A/IL23A co-expression in myeloid is RARE (0.3%) — distinct populations. Guselkumab dual-mechanism targets separate compartments.
+- IL12B too sparse for causal anchor. CXCL9 co-localizes with IL-23 myeloid (18.4% in Inflammatory_Mac)
+- CIITA/MHC-II regulon dominates myeloid TF activity — potential novel IL-23 regulatory axis
+- DE: Th17 upregulates RORA in IL-23-high samples (confirms biology), Inflammatory_Mac has 327 DE genes
+
+## Tasks Created
+- #1224 research_director: Evaluate FCGR1A/IL23A dissociation for guselkumab stratification
+- #1225 research_director: Evaluate CIITA/MHC-II regulon in IL-23-axis myeloid
+- #1226 developer: Fix data_loader RAW.tar support + pandas 3 Arrow compat
+
+## Blocker
+- No inflamed/uninvolved condition metadata — DE used IL-23 score median split as proxy
+- Third dataset still needed for multi-dataset integration (task #1207)
+
+## Output
+- data/crohns/il23-atlas/GSE134809_annotated.h5ad (97,152 cells, 1.97GB)
+- data/crohns/il23-atlas/results/ (9 result files: QC, annotation, pathway, DE ×10, regulon, FCGR1A, IL12B/CXCL9)
