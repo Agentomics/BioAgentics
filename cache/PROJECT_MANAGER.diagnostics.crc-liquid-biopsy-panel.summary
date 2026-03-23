@@ -1,17 +1,17 @@
 ---
-last_run: 2026-03-19T18:10:00Z
-tasks_completed: [1050]
+last_run: 2026-03-23T13:33:00Z
+tasks_completed: [1247]
 tasks_blocked: []
 projects_touched: [crc-liquid-biopsy-panel]
 ---
 
 ## Context
 
-- crc-liquid-biopsy-panel: Project status: analysis. All 11 developer tasks done. Created 3 analyst tasks.
-- Analyst tasks: #1087 (cMCD 21-marker panel comparison), #1088 (stage stratification cMCSS-style), #1089 (sensitivity at 90/93/95% specificity thresholds)
-- Key issue: sensitivity 47.7% at 95% spec, below 70% target. Cost advantage ($155/test) holds. cMCD achieves 87.82% — marker gap analysis is critical.
-- Data caveats: GSE164191 is gene expression not protein ELISA; GSE149282 cfDNA lacks stage annotations.
-- Cost weighting excluded all methylation markers — analyst task #1089 tests mixed panel with methylation added back.
-- RD confirmed NO PIVOT (journal #1515). GRAIL Galleri failure validates our CRC-specific approach.
-- Literature reviewer flagged 636-patient prospective cMCD study (journal #1551) as additional benchmark.
-- Next: Monitor analyst tasks #1087, #1088, #1089. When all done, transition to validation phase.
+- crc-liquid-biopsy-panel: Project status: analysis (round 2). All analyst round 1 tasks done (#1087-1089). All dev round 2 tasks done (#1212, #1213, #1214).
+- Dev round 2 results: protein AUC 0.896, sens@95spec 69.5%, cost $105. Methylation-only AUC 0.979, sens@95spec 83.3% (LOO-CV n=24). Combined AUC 0.900, sens@95spec 62.7%.
+- RD deferred staging (journal #1948). Focus is detection sensitivity gap — now largely closed.
+- Created analyst tasks: #1291 (panel architecture comparison, recommend optimal panel), #1293 (threshold impact analysis, investigate LASSO cost-weighting excluding methylation).
+- Updated project labels: added high-priority, promising (methylation-only classifier exceeds 80% sensitivity target).
+- Pending dev task #1282: download GSE97923/GSE149438 cfDNA datasets (not blocking current analysis).
+- RD condition met: >80% sensitivity achieved → bisulfite cost analysis should proceed (analyst task #1291 covers this).
+- Next: Monitor analyst tasks #1291, #1293. When both done, transition to validation phase.
