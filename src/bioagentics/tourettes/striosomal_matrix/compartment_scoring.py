@@ -88,8 +88,9 @@ def compute_compartment_scores(
             f"Available genes (sample): {sorted(available_genes)[:10]}"
         )
 
-    # Z-score normalize across zones for each marker
-    z_scored = zone_expression.apply(
+    # Z-score normalize across zones for marker genes only (not all ~20k genes)
+    marker_cols = list(set(strio_avail + matrix_avail))
+    z_scored = zone_expression[marker_cols].apply(
         lambda col: (col - col.mean()) / col.std() if col.std() > 0 else col * 0,
         axis=0,
     )
@@ -109,8 +110,9 @@ def compute_compartment_scores(
         marker_coverage = n_markers / max_markers if max_markers > 0 else 0
 
         all_vals = strio_vals + matrix_vals
-        consistency = 1.0 - float(np.std(all_vals)) if len(all_vals) > 1 else 0.5
-        confidence = marker_coverage * max(0, consistency)
+        # Use 1/(1+std) so consistency stays in (0,1] even for z-scored data
+        consistency = 1.0 / (1.0 + float(np.std(all_vals))) if len(all_vals) > 1 else 0.5
+        confidence = marker_coverage * consistency
 
         rows.append({
             "zone_id": str(zone_id),
@@ -154,8 +156,6 @@ def score_genes_by_compartment(
 
     gene_scores: dict[str, float] = {}
     for gene in zone_expression.columns:
-        if gene not in zone_expression.columns:
-            continue
         # Z-score expression across zones
         vals = zone_expression.loc[zones, gene].values.astype(float)
         std = np.std(vals)
