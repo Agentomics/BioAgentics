@@ -13,16 +13,25 @@ from __future__ import annotations
 import argparse
 import gzip
 import io
+import os
+import re
 import sys
 import tarfile
+from collections import defaultdict
 from pathlib import Path
 
-import anndata as ad
-import pandas as pd
-import requests
-import scanpy as sc
-import scipy.sparse as sp
-from tqdm import tqdm
+# pandas 3+ with pyarrow backend creates ArrowStringArray which anndata cannot
+# serialize to h5ad.  Disable inferred-string before importing pandas/anndata.
+os.environ.setdefault("PANDAS_FUTURE_INFER_STRING", "0")
+
+import anndata as ad  # noqa: E402
+import numpy as np  # noqa: E402
+import pandas as pd  # noqa: E402
+import requests  # noqa: E402
+import scanpy as sc  # noqa: E402
+import scipy.io as sio  # noqa: E402
+import scipy.sparse as sp  # noqa: E402
+from tqdm import tqdm  # noqa: E402
 
 from bioagentics.config import REPO_ROOT
 
@@ -151,7 +160,7 @@ def load_10x_from_tar(tar_path: Path) -> ad.AnnData | None:
         if mtx_fh is None:
             return None
         mtx_data = gzip.decompress(mtx_fh.read())
-        matrix = sp.csc_matrix(sp.mmread(io.BytesIO(mtx_data))).T  # cells x genes
+        matrix = sp.csc_matrix(sio.mmread(io.BytesIO(mtx_data))).T  # cells x genes
 
         # Read barcodes
         bc_fh = tar.extractfile(members[barcode_key])
@@ -183,6 +192,94 @@ def load_10x_from_tar(tar_path: Path) -> ad.AnnData | None:
     )
     adata.var_names_make_unique()
     return adata
+
+
+def load_10x_from_flat_tar(
+    tar_path: Path,
+    min_genes: int = 200,
+) -> list[ad.AnnData]:
+    """Load per-sample 10x matrices from a plain .tar with flat GSM-prefixed files.
+
+    GEO RAW.tar archives often contain files like:
+        GSM3972009_barcodes.tsv.gz
+        GSM3972009_genes.tsv.gz
+        GSM3972009_matrix.mtx.gz
+
+    Groups files by GSM prefix, loads each triplet, and applies
+    ``min_genes`` filtering to remove empty droplets before returning.
+    """
+    _10X_SUFFIXES = {"barcodes.tsv.gz", "genes.tsv.gz", "features.tsv.gz", "matrix.mtx.gz"}
+
+    open_mode = "r:gz" if tar_path.name.endswith(".gz") else "r:"
+    with tarfile.open(tar_path, open_mode) as tar:
+        members = [m for m in tar.getmembers() if not m.isdir()]
+
+        # Group by GSM prefix
+        groups: dict[str, dict[str, tarfile.TarInfo]] = defaultdict(dict)
+        for m in members:
+            basename = m.name.split("/")[-1]
+            # Match GSM\d+_ prefix
+            match = re.match(r"(GSM\d+)_(.+)", basename)
+            if not match:
+                continue
+            gsm, suffix = match.group(1), match.group(2)
+            if suffix in _10X_SUFFIXES:
+                groups[gsm][suffix] = m
+
+        adatas: list[ad.AnnData] = []
+        for gsm in sorted(groups):
+            g = groups[gsm]
+            mtx_m = g.get("matrix.mtx.gz")
+            bc_m = g.get("barcodes.tsv.gz")
+            feat_m = g.get("genes.tsv.gz") or g.get("features.tsv.gz")
+            if mtx_m is None or bc_m is None or feat_m is None:
+                print(f"    {gsm}: incomplete triplet ({list(g.keys())}), skipping")
+                continue
+
+            # Read matrix
+            fh = tar.extractfile(mtx_m)
+            if fh is None:
+                continue
+            mtx_data = gzip.decompress(fh.read())
+            matrix = sp.csc_matrix(sio.mmread(io.BytesIO(mtx_data))).T  # cells x genes
+
+            # Read barcodes
+            fh = tar.extractfile(bc_m)
+            if fh is None:
+                continue
+            bc_data = gzip.decompress(fh.read())
+            barcodes = [line.split("\t")[0] for line in bc_data.decode().strip().split("\n")]
+
+            # Read features/genes
+            fh = tar.extractfile(feat_m)
+            if fh is None:
+                continue
+            feat_data = gzip.decompress(fh.read())
+            genes: list[str] = []
+            gene_ids: list[str] = []
+            for line in feat_data.decode().strip().split("\n"):
+                parts = line.split("\t")
+                gene_ids.append(parts[0])
+                genes.append(parts[1] if len(parts) > 1 else parts[0])
+
+            adata = ad.AnnData(
+                X=sp.csr_matrix(matrix),
+                obs=pd.DataFrame(index=barcodes),
+                var=pd.DataFrame({"gene_ids": gene_ids, "gene_symbols": genes}, index=genes),
+            )
+            adata.var_names_make_unique()
+
+            # Filter empty droplets — raw 10x may have 737k barcodes
+            n_genes_per_cell = np.diff(adata.X.indptr) if sp.issparse(adata.X) else (adata.X > 0).sum(axis=1)
+            keep = np.asarray(n_genes_per_cell >= min_genes).flatten()
+            before = adata.n_obs
+            adata = adata[keep].copy()
+            print(f"    {gsm}: {before} -> {adata.n_obs} cells (min_genes={min_genes})")
+
+            adata.obs["sample"] = gsm
+            adatas.append(adata)
+
+    return adatas
 
 
 def load_10x_from_mtx_dir(mtx_dir: Path) -> ad.AnnData | None:
@@ -279,9 +376,20 @@ def discover_and_load_supplementary(gse_dir: Path, gse: str) -> list[ad.AnnData]
     if adatas:
         return adatas
 
-    # Try tar.gz archives containing 10x mtx format
+    # Try plain .tar archives with flat per-sample 10x files (e.g. GEO RAW.tar)
+    for tar_file in sorted(suppl_dir.glob("*.tar")):
+        if tar_file.name.endswith(".tar.gz"):
+            continue  # handled below
+        print(f"    Loading flat 10x tar: {tar_file.name}")
+        sample_adatas = load_10x_from_flat_tar(tar_file)
+        adatas.extend(sample_adatas)
+
+    if adatas:
+        return adatas
+
+    # Try tar.gz archives containing 10x mtx format (single-sample archives)
     for tar_file in sorted(suppl_dir.glob("*.tar.gz")):
-        print(f"    Loading 10x tar: {tar_file.name}")
+        print(f"    Loading 10x tar.gz: {tar_file.name}")
         adata = load_10x_from_tar(tar_file)
         if adata is not None:
             # Use tar filename to label the sample
@@ -302,6 +410,24 @@ def discover_and_load_supplementary(gse_dir: Path, gse: str) -> list[ad.AnnData]
             break  # Only load once per directory
 
     return adatas
+
+
+def _filter_empty_droplets(adata: ad.AnnData, min_genes: int = 200) -> ad.AnnData:
+    """Remove barcodes with fewer than *min_genes* detected genes.
+
+    Raw 10x matrices may contain all 737,280 barcodes including empty droplets.
+    Filtering early prevents OOM during concatenation and downstream processing.
+    """
+    if min_genes <= 0:
+        return adata
+    n_genes_per_cell = np.diff(adata.X.indptr) if sp.issparse(adata.X) else (adata.X > 0).sum(axis=1)
+    keep = np.asarray(n_genes_per_cell >= min_genes).flatten()
+    n_removed = int(adata.n_obs - keep.sum())
+    if n_removed > 0:
+        print(f"  Filtered {n_removed} empty droplets (min_genes={min_genes}), "
+              f"{keep.sum()}/{adata.n_obs} cells kept")
+        adata = adata[keep].copy()
+    return adata
 
 
 def process_dataset(gse: str, dest_dir: Path, force: bool = False) -> Path | None:
@@ -343,6 +469,9 @@ def process_dataset(gse: str, dest_dir: Path, force: bool = False) -> Path | Non
     else:
         print(f"  Concatenating {len(adatas)} samples...")
         adata = ad.concat(adatas, join="outer", label="sample_file", index_unique="-")
+
+    # Remove empty droplets before heavy downstream work
+    adata = _filter_empty_droplets(adata)
 
     # Standardize
     print(f"  Standardizing gene names...")
