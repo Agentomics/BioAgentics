@@ -2,18 +2,18 @@ Target Prioritization Scoring — Summary
 ==================================================
 
 Total targets scored: 8
-Score range: 0.113 — 0.845
+Score range: 0.206 — 0.850
 
 Known PANDAS targets (positive controls):
-  GAPDH: composite=0.624, rank=4
+  GAPDH: composite=0.657, rank=4
 
 Top novel mimicry target candidates:
-  B4DHP5 (B4DHP5): composite=0.845, pident=49.3%, conservation=1.00
-  ENO2 (P09104): composite=0.784, pident=49.1%, conservation=1.00
-  B4DHW5 (B4DHW5): composite=0.740, pident=47.4%, conservation=1.00
-  B4DHP7 (B4DHP7): composite=0.461, pident=47.3%, conservation=1.00
-  PSMC6 (P62333): composite=0.396, pident=41.4%, conservation=1.00
-  B4DHZ4 (B4DHZ4): composite=0.205, pident=51.6%, conservation=0.14
-  AK9 (Q5TCS8): composite=0.113, pident=42.9%, conservation=0.29
+  B4DHP5 (B4DHP5): composite=0.850, pident=49.3%, conservation=1.00
+  ENO2 (P09104): composite=0.788, pident=49.1%, conservation=1.00
+  B4DHW5 (B4DHW5): composite=0.748, pident=47.4%, conservation=1.00
+  B4DHP7 (B4DHP7): composite=0.500, pident=47.3%, conservation=1.00
+  PSMC6 (P62333): composite=0.437, pident=41.4%, conservation=1.00
+  B4DHZ4 (B4DHZ4): composite=0.293, pident=51.6%, conservation=0.14
+  AK9 (Q5TCS8): composite=0.206, pident=42.9%, conservation=0.29
 
-Scoring weights: {'epitope': 0.2, 'mhc': 0.2, 'conservation': 0.15, 'identity': 0.15, 'coverage': 0.1, 'phase': 0.1, 'known_target': 0.1}
+Scoring weights: {'epitope': 0.18, 'mhc': 0.15, 'mmpred': 0.1, 'conservation': 0.14, 'identity': 0.14, 'coverage': 0.09, 'phase': 0.1, 'known_target': 0.1}

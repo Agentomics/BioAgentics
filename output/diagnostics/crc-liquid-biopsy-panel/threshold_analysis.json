@@ -1,0 +1,223 @@
+{
+  "analysis": "Multi-threshold sensitivity analysis",
+  "specificity_thresholds": [
+    0.9,
+    0.93,
+    0.95
+  ],
+  "prevalence_assumed": 0.041,
+  "panels": [
+    {
+      "panel": "Combined 7-protein (ensemble)",
+      "n_features": 7,
+      "cost_usd": 155.0,
+      "auc": 0.866,
+      "thresholds": {
+        "spec_90": {
+          "specificity": 0.9,
+          "sensitivity": 0.678,
+          "ppv": 0.2247,
+          "npv": 0.9849,
+          "nns": 36.0
+        },
+        "spec_93": {
+          "specificity": 0.93,
+          "sensitivity": 0.6102,
+          "ppv": 0.2715,
+          "npv": 0.9824,
+          "nns": 40.0
+        },
+        "spec_95": {
+          "specificity": 0.95,
+          "sensitivity": 0.5424,
+          "ppv": 0.3168,
+          "npv": 0.9798,
+          "nns": 45.0
+        }
+      }
+    },
+    {
+      "panel": "All proteins",
+      "n_features": 15,
+      "cost_usd": 225.0,
+      "auc": 0.8882,
+      "thresholds": {
+        "spec_90": {
+          "specificity": 0.9,
+          "sensitivity": 0.7966,
+          "ppv": 0.2541,
+          "npv": 0.9904,
+          "nns": 30.6
+        },
+        "spec_93": {
+          "specificity": 0.93,
+          "sensitivity": 0.678,
+          "ppv": 0.2928,
+          "npv": 0.9854,
+          "nns": 36.0
+        },
+        "spec_95": {
+          "specificity": 0.95,
+          "sensitivity": 0.661,
+          "ppv": 0.3611,
+          "npv": 0.985,
+          "nns": 36.9
+        }
+      }
+    },
+    {
+      "panel": "SEPT9 alone",
+      "n_features": 1,
+      "cost_usd": 15.0,
+      "auc": 0.6941,
+      "thresholds": {
+        "spec_90": {
+          "specificity": 0.9,
+          "sensitivity": 0.3898,
+          "ppv": 0.1429,
+          "npv": 0.9718,
+          "nns": 62.6
+        },
+        "spec_93": {
+          "specificity": 0.93,
+          "sensitivity": 0.3898,
+          "ppv": 0.1923,
+          "npv": 0.9727,
+          "nns": 62.6
+        },
+        "spec_95": {
+          "specificity": 0.95,
+          "sensitivity": 0.3898,
+          "ppv": 0.25,
+          "npv": 0.9733,
+          "nns": 62.6
+        }
+      }
+    },
+    {
+      "panel": "Mixed (7 protein + 3 methylation)",
+      "n_features": 10,
+      "cost_usd": 380.0,
+      "auc": 0.9997,
+      "thresholds": {
+        "spec_90": {
+          "specificity": 0.9,
+          "sensitivity": 1.0,
+          "ppv": 0.2995,
+          "npv": 1.0,
+          "nns": 24.4
+        },
+        "spec_93": {
+          "specificity": 0.93,
+          "sensitivity": 1.0,
+          "ppv": 0.3792,
+          "npv": 1.0,
+          "nns": 24.4
+        },
+        "spec_95": {
+          "specificity": 0.95,
+          "sensitivity": 1.0,
+          "ppv": 0.4609,
+          "npv": 1.0,
+          "nns": 24.4
+        }
+      },
+      "features": [
+        "prot_MMP9",
+        "prot_CXCL8",
+        "prot_S100A4",
+        "prot_TIMP1",
+        "prot_SEPT9",
+        "prot_ERBB2",
+        "prot_SPP1",
+        "meth_cg14642259",
+        "meth_cg18601167",
+        "meth_cg13895235"
+      ]
+    },
+    {
+      "panel": "Mixed (7 protein + 5 methylation)",
+      "n_features": 12,
+      "cost_usd": 530.0,
+      "auc": 1.0,
+      "thresholds": {
+        "spec_90": {
+          "specificity": 0.9,
+          "sensitivity": 1.0,
+          "ppv": 0.2995,
+          "npv": 1.0,
+          "nns": 24.4
+        },
+        "spec_93": {
+          "specificity": 0.93,
+          "sensitivity": 1.0,
+          "ppv": 0.3792,
+          "npv": 1.0,
+          "nns": 24.4
+        },
+        "spec_95": {
+          "specificity": 0.95,
+          "sensitivity": 1.0,
+          "ppv": 0.4609,
+          "npv": 1.0,
+          "nns": 24.4
+        }
+      },
+      "features": [
+        "prot_MMP9",
+        "prot_CXCL8",
+        "prot_S100A4",
+        "prot_TIMP1",
+        "prot_SEPT9",
+        "prot_ERBB2",
+        "prot_SPP1",
+        "meth_cg14642259",
+        "meth_cg18601167",
+        "meth_cg13895235",
+        "meth_cg17301223",
+        "meth_cg11017065"
+      ]
+    },
+    {
+      "panel": "Methylation only (cfDNA, n=24)",
+      "n_features": 50,
+      "cost_usd": 3750.0,
+      "auc": 1.0,
+      "thresholds": {
+        "spec_90": {
+          "specificity": 0.9,
+          "sensitivity": 1.0,
+          "ppv": 0.2995,
+          "npv": 1.0,
+          "nns": 24.4
+        },
+        "spec_93": {
+          "specificity": 0.93,
+          "sensitivity": 1.0,
+          "ppv": 0.3792,
+          "npv": 1.0,
+          "nns": 24.4
+        },
+        "spec_95": {
+          "specificity": 0.95,
+          "sensitivity": 1.0,
+          "ppv": 0.4609,
+          "npv": 1.0,
+          "nns": 24.4
+        }
+      },
+      "warning": "Very small sample (n=24). Results likely overfit."
+    }
+  ],
+  "caveats": [
+    "GSE164191 is Affymetrix gene expression array data, not direct protein ELISA. Reported protein marker performance may not translate directly to clinical immunoassay.",
+    "Methylation-only results are from GSE149282 cfDNA (n=24), a very small sample. AUC=1.0 likely reflects overfitting.",
+    "Mixed panel uses synthetic methylation features injected into the protein cohort (n=121). This approximates but does not replace a true multi-analyte validation cohort.",
+    "CRC prevalence 4.1% is approximate for US screening-age adults (50-75y)."
+  ],
+  "recommendation": {
+    "best_protein_panel_threshold": "spec_90",
+    "best_sensitivity": 0.678,
+    "note": "At 90% specificity the 7-protein panel achieves the highest sensitivity. The mixed panel (protein + methylation) provides additional boost but at increased cost. A true multi-analyte validation on a single cohort with both protein and cfDNA methylation measurements is needed to confirm the mixed panel advantage."
+  }
+}
