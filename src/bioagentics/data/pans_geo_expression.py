@@ -68,6 +68,67 @@ def _uppercase_symbol_map(mouse_symbol: str) -> str:
     return mouse_symbol.upper()
 
 
+def _build_probe_to_gene_map(gse: object, platform_name: str | None) -> dict[str, str]:
+    """Build probe ID to gene symbol mapping from GPL platform annotation.
+
+    Checks ``Gene Symbol``, ``gene_assignment``, and ``SPOT_ID.1`` columns
+    in the GPL annotation table.  Returns ``{probe_id: gene_symbol}`` for
+    every probe that can be resolved.
+    """
+    if platform_name is None or platform_name not in gse.gpls:
+        return {}
+
+    annot = gse.gpls[platform_name].table
+    if annot is None or annot.empty:
+        return {}
+
+    probe_col = "ID" if "ID" in annot.columns else annot.columns[0]
+
+    # --- Strategy 1: direct Gene Symbol column ---
+    for candidate in ("Gene Symbol", "gene_symbol", "GENE_SYMBOL", "Symbol"):
+        if candidate in annot.columns:
+            mapping: dict[str, str] = {}
+            for _, row in annot.iterrows():
+                probe = str(row[probe_col]).strip()
+                raw = str(row.get(candidate, "")).strip()
+                if raw and raw not in ("---", "nan", ""):
+                    symbol = raw.split("///")[0].strip()
+                    if symbol:
+                        mapping[probe] = symbol
+            if mapping:
+                return mapping
+
+    # --- Strategy 2: gene_assignment (Affymetrix format) ---
+    #  Typical format: "accession // Symbol // description // loc // geneID"
+    if "gene_assignment" in annot.columns:
+        mapping = {}
+        for _, row in annot.iterrows():
+            probe = str(row[probe_col]).strip()
+            assignment = str(row.get("gene_assignment", "")).strip()
+            if not assignment or assignment in ("---", "nan"):
+                continue
+            # Take the first assignment (before ///)
+            first_assign = assignment.split("///")[0]
+            parts = [p.strip() for p in first_assign.split("//")]
+            if len(parts) >= 2 and parts[1] and parts[1] != "---":
+                mapping[probe] = parts[1].strip()
+        if mapping:
+            return mapping
+
+    # --- Strategy 3: SPOT_ID.1 ---
+    if "SPOT_ID.1" in annot.columns:
+        mapping = {}
+        for _, row in annot.iterrows():
+            probe = str(row[probe_col]).strip()
+            raw = str(row.get("SPOT_ID.1", "")).strip()
+            if raw and raw not in ("---", "nan", ""):
+                mapping[probe] = raw.split("///")[0].strip()
+        if mapping:
+            return mapping
+
+    return {}
+
+
 def download_gse102482(dest_dir: Path,
                        force: bool = False) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Download and parse GSE102482 using GEOparse.
@@ -91,6 +152,14 @@ def download_gse102482(dest_dir: Path,
     # Get the platform (typically GPL or similar)
     platform_name = list(gse.gpls.keys())[0] if gse.gpls else None
     logger.info("Platform: %s", platform_name)
+
+    # Build probe-to-gene mapping from GPL annotation table
+    probe_to_gene = _build_probe_to_gene_map(gse, platform_name)
+    if probe_to_gene:
+        logger.info("Built probe-to-gene mapping: %d probes mapped to gene symbols",
+                     len(probe_to_gene))
+    else:
+        logger.warning("No probe-to-gene mapping available from GPL annotations")
 
     # Extract expression data from the first (usually only) GPL
     # GSMs contain the per-sample data
@@ -132,6 +201,18 @@ def download_gse102482(dest_dir: Path,
 
     expr_df = pd.DataFrame(samples)
     expr_df.index.name = "gene_symbol"
+
+    # Map probe IDs to gene symbols using GPL annotation
+    if probe_to_gene:
+        mapped = [probe_to_gene.get(str(pid).strip()) for pid in expr_df.index]
+        keep = [s is not None for s in mapped]
+        n_mapped = sum(keep)
+        n_total = len(expr_df)
+        logger.info("Probe mapping: %d/%d probes resolved to gene symbols",
+                     n_mapped, n_total)
+        expr_df = expr_df[keep].copy()
+        expr_df.index = pd.Index([m for m in mapped if m is not None],
+                                 name="gene_symbol")
 
     # Drop rows with all NaN
     expr_df = expr_df.dropna(how="all")

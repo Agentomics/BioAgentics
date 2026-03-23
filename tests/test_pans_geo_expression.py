@@ -1,10 +1,13 @@
 """Tests for PANS GEO expression module (unit tests, no network calls)."""
 
+from types import SimpleNamespace
+
 import numpy as np
 import pandas as pd
 
 from bioagentics.data.pans_geo_expression import (
     MOUSE_TO_HUMAN,
+    _build_probe_to_gene_map,
     classify_samples,
     compute_de,
     normalize_expression,
@@ -81,3 +84,51 @@ def test_compute_de():
     top_gene = de.iloc[0]["gene_symbol"]
     assert top_gene == "Gene0"
     assert de.iloc[0]["log2fc"] > 0
+
+
+def _make_fake_gse(annot_df):
+    """Build a minimal GEO-like object with a GPL annotation table."""
+    gpl = SimpleNamespace(table=annot_df)
+    gse = SimpleNamespace(gpls={"GPL1234": gpl})
+    return gse
+
+
+def test_build_probe_to_gene_map_gene_symbol_column():
+    annot = pd.DataFrame({
+        "ID": ["probe_1", "probe_2", "probe_3"],
+        "Gene Symbol": ["Trex1", "Samhd1", "---"],
+    })
+    gse = _make_fake_gse(annot)
+    mapping = _build_probe_to_gene_map(gse, "GPL1234")
+    assert mapping == {"probe_1": "Trex1", "probe_2": "Samhd1"}
+
+
+def test_build_probe_to_gene_map_gene_assignment_column():
+    annot = pd.DataFrame({
+        "ID": ["TC001", "TC002", "TC003"],
+        "gene_assignment": [
+            "NM_001 // Ep300 // E1A binding protein p300 // 15 E1 // 328572",
+            "NM_002 // Prkn // parkin // 17 A1 // 50873",
+            "---",
+        ],
+    })
+    gse = _make_fake_gse(annot)
+    mapping = _build_probe_to_gene_map(gse, "GPL1234")
+    assert mapping == {"TC001": "Ep300", "TC002": "Prkn"}
+
+
+def test_build_probe_to_gene_map_multi_symbol():
+    """When Gene Symbol has /// separated entries, take the first."""
+    annot = pd.DataFrame({
+        "ID": ["p1"],
+        "Gene Symbol": ["Abc /// Def"],
+    })
+    gse = _make_fake_gse(annot)
+    mapping = _build_probe_to_gene_map(gse, "GPL1234")
+    assert mapping == {"p1": "Abc"}
+
+
+def test_build_probe_to_gene_map_no_platform():
+    gse = SimpleNamespace(gpls={})
+    assert _build_probe_to_gene_map(gse, None) == {}
+    assert _build_probe_to_gene_map(gse, "MISSING") == {}
