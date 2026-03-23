@@ -1,0 +1,3 @@
+data_source,module,comparison,n_pans,n_control,mean_pans,mean_control,fold_change,U_statistic,p_value,rank_biserial_r,direction
+bulk,cgas_sting_pathway,pre_vs_control,9,10,27158.222222222223,22245.6,1.2208356808637315,46.0,0.967435545139537,-0.022222222222222143,pans_higher
+scrna_pseudobulk,cgas_sting_pathway,pre_vs_control,5,4,35850.0,46649.5,0.7684969828186797,6.0,0.4126984126984127,0.4,pans_lower

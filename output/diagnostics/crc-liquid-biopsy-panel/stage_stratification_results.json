@@ -1,0 +1,186 @@
+{
+  "analysis": "Stage Stratification (cMCSS-style)",
+  "date": "2026-03-22",
+  "task_id": 1088,
+  "data_source": "TCGA-COAD/READ methylation (tissue, NOT cfDNA)",
+  "limitation": "Tissue-based only. GSE149282 cfDNA lacks stage annotations. Requires stage-annotated cfDNA cohort for validation.",
+  "three_class": {
+    "accuracy": 0.5637393767705382,
+    "confusion_matrix": [
+      [
+        43,
+        0,
+        2
+      ],
+      [
+        0,
+        91,
+        81
+      ],
+      [
+        1,
+        70,
+        65
+      ]
+    ],
+    "normal": {
+      "precision": 0.9772727272727273,
+      "recall": 0.9555555555555556,
+      "f1": 0.9662921348314607,
+      "n": 45
+    },
+    "early": {
+      "precision": 0.5652173913043478,
+      "recall": 0.5290697674418605,
+      "f1": 0.5465465465465466,
+      "n": 172
+    },
+    "advanced": {
+      "precision": 0.4391891891891892,
+      "recall": 0.47794117647058826,
+      "f1": 0.45774647887323944,
+      "n": 136
+    }
+  },
+  "binary_staging": {
+    "auc": 0.5170143638850889,
+    "accuracy": 0.4902597402597403,
+    "early_recall": 0.5232558139534884,
+    "advanced_recall": 0.4485294117647059,
+    "cmcss_benchmark": {
+      "early": 0.7586,
+      "advanced": 0.8945
+    },
+    "confusion_matrix": [
+      [
+        90,
+        82
+      ],
+      [
+        75,
+        61
+      ]
+    ]
+  },
+  "per_stage_detection": {
+    "overall_auc": 1.0,
+    "stages": [
+      {
+        "stage": "Stage I",
+        "n": 51,
+        "detected": 51,
+        "sensitivity": 1.0
+      },
+      {
+        "stage": "Stage II",
+        "n": 121,
+        "detected": 121,
+        "sensitivity": 1.0
+      },
+      {
+        "stage": "Stage III",
+        "n": 100,
+        "detected": 100,
+        "sensitivity": 1.0
+      },
+      {
+        "stage": "Stage IV",
+        "n": 36,
+        "detected": 36,
+        "sensitivity": 1.0
+      }
+    ]
+  },
+  "top_stage_features": [
+    {
+      "cpg": "cg20295442",
+      "abs_coef": 1.6045521929116482,
+      "gene": "ADHFE1",
+      "direction": "hyper in Advanced"
+    },
+    {
+      "cpg": "cg00558689",
+      "abs_coef": 1.30459676670903,
+      "gene": "MDFI",
+      "direction": "hyper in Advanced"
+    },
+    {
+      "cpg": "cg00813378",
+      "abs_coef": 1.2480864205685436,
+      "gene": "C1orf70",
+      "direction": "hyper in Early"
+    },
+    {
+      "cpg": "cg00817367",
+      "abs_coef": 1.0819005958796692,
+      "gene": "GRASP",
+      "direction": "hyper in Advanced"
+    },
+    {
+      "cpg": "cg01901262",
+      "abs_coef": 1.0616670302861884,
+      "gene": "IRX5",
+      "direction": "hyper in Advanced"
+    },
+    {
+      "cpg": "cg23142394",
+      "abs_coef": 1.0550276794472135,
+      "gene": "LOC283392;TRHDE;LOC283392",
+      "direction": "hyper in Early"
+    },
+    {
+      "cpg": "cg20873416",
+      "abs_coef": 1.017447853750671,
+      "gene": "nan",
+      "direction": "hyper in Advanced"
+    },
+    {
+      "cpg": "cg08550523",
+      "abs_coef": 0.9958148769760732,
+      "gene": "nan",
+      "direction": "hyper in Early"
+    },
+    {
+      "cpg": "cg22871668",
+      "abs_coef": 0.9866416690344699,
+      "gene": "EYA4;EYA4;EYA4",
+      "direction": "hyper in Advanced"
+    },
+    {
+      "cpg": "cg00469207",
+      "abs_coef": 0.9847351904602596,
+      "gene": "nan",
+      "direction": "hyper in Early"
+    },
+    {
+      "cpg": "cg23987444",
+      "abs_coef": 0.9185310619201953,
+      "gene": "SLC18A3;CHAT",
+      "direction": "hyper in Advanced"
+    },
+    {
+      "cpg": "cg14520424",
+      "abs_coef": 0.9178815900822315,
+      "gene": "nan",
+      "direction": "hyper in Early"
+    },
+    {
+      "cpg": "cg04025964",
+      "abs_coef": 0.857252531082825,
+      "gene": "NR5A2;NR5A2",
+      "direction": "hyper in Early"
+    },
+    {
+      "cpg": "cg20299663",
+      "abs_coef": 0.8295080032978258,
+      "gene": "SFMBT2",
+      "direction": "hyper in Early"
+    },
+    {
+      "cpg": "cg21479226",
+      "abs_coef": 0.8263990412193102,
+      "gene": "nan",
+      "direction": "hyper in Advanced"
+    }
+  ]
+}
