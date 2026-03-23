@@ -1,15 +1,12 @@
 ---
-last_run: 2026-03-17T21:30:00Z
-tasks_completed: [768]
+last_run: 2026-03-23T06:16:00Z
+tasks_completed: [990]
 tasks_blocked: []
 projects_touched: [nsclc-depmap-targets]
 ---
 
 ## Context
 
-- nsclc-depmap-targets: Completed Phase 3 composite scoring re-evaluation (journal #1149). Direction-aware fix verified — PASS on all checks: signed effects correct, ACTB excluded (222 genes), MDM2 assigned KL #1 (effect -0.53).
-- KL top 10 alignment with Phase 2 Tier 1: MDM2 #1, MDM4 #2, STAT3 #4, SMARCA2 #7. SLC16A3 at #14 (undruggable, no SL hits — expected).
-- Identified residual issue: positive-effect genes appear in vulnerability rankings via drug/SL/significance scores (KL: 1/10, KP: 5/10). Not a bug — structural property of composite formula. Created developer task #829 (P3) for optional direction filter.
-- **Recommendation: CONDITIONAL PASS** — advance 7 druggable KL vulnerability targets to validation (MDM2, MDM4, PSMB7, STAT3, ERBB3, SMARCA2, IGF1R).
-- Created RD task #828 (P5): decision on KL advancement, KP ranking filtering, SLC16A3 inclusion as biomarker, FSP1/AIFM2 priority.
-- No pending analyst tasks remain for this project. Awaiting RD decisions before further analysis.
+- nsclc-depmap-targets: Project status is **validation**. Completed direction-filtered composite rankings verification (task #990, journal #1900). All 5 checks PASS: vulnerability rankings have only negative effects, release rankings have only positive effects, KP false positives (MDM2/MDM4/ERBB3/PSMB7/PRKACA) removed, KL 7 druggable targets preserved, unfiltered file retained.
+- Validation scientist task #987 is pending — validating the 7 KL vulnerability targets (MDM2, MDM4, PSMB7, STAT3, ERBB3, SMARCA2, IGF1R).
+- No pending analyst tasks remain for nsclc-depmap-targets. Awaiting validation stage completion.
