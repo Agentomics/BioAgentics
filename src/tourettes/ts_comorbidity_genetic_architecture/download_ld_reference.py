@@ -82,7 +82,7 @@ def _extract_archive(archive: Path, dest_dir: Path) -> None:
     else:
         raise ValueError(f"Unknown archive format: {archive.name}")
     with tarfile.open(archive, mode) as tf:
-        tf.extractall(path=dest_dir)
+        tf.extractall(path=dest_dir, filter="data")
 
 
 def _md5sum(path: Path) -> str:
