@@ -1,12 +1,13 @@
-last_run: 2026-03-22T22:26:00Z
-tasks_completed: [1137, 1138]
+last_run: 2026-03-23T13:35:00Z
+tasks_completed: [1261]
 tasks_blocked: []
 projects_touched: [gas-molecular-mimicry-mapping]
 ---
 
 ## Context
 
-- gas-molecular-mimicry-mapping: Analyst tasks 991-994 (scoring validation, literature cross-ref, statistical robustness, analysis summary) all completed on 2026-03-19; outputs exist but will require refresh after new data integration.
-- Research Director directives (journals #1671-1672) require adding Enn/Mrp proteins, emm3.93 variants, and MMPred/ImmunoStruct scoring prior to validation; project reverted to development to implement.
-- New developer tasks opened 2026-03-22: #1180 (Enn/Mrp ingestion), #1181 (emm3.93 serotype module), #1182 (pipeline rerun), #1183 (MMPred integration), #1184 (ImmunoStruct integration). All pending; completion is prerequisite for new analysis cycle.
-- Project status: development. Labels unchanged (autoimmune,immunology,genomic,novel-finding,high-priority). Validation handoff on hold until refreshed mimicry outputs are generated and analysts rerun.
+- gas-molecular-mimicry-mapping: Advanced from development → analysis. All 5 expansion-cycle developer tasks resolved: #1180 (Enn/Mrp) done, #1181 (emm3.93) done, #1182 (pipeline rerun) done, #1183 (MMPred) done, #1184 (ImmunoStruct) cancelled (no GPU, class I/II mismatch).
+- Dataset expanded 30%: 52 filtered hits (was 40), 47 unique pairs, 7 serotypes (added emm3.93). Rankings stable: B4DHP5 #1 (0.850), ENO2 #2 (0.788), GAPDH #4 (0.657). emm3.93 mimicry profile identical to canonical M3.
+- Created 4 analyst tasks: #1301 (Enn/Mrp + emm3.93 validation), #1302 (MMPred integration assessment), #1303 (statistical robustness update), #1304 (analysis summary for research_writer). All pending.
+- Created developer task #1298 (EMoMiS evaluation) per Research Director endorsement (journal #1973). Medium priority, does not block analysis cycle.
+- Project status: analysis. Labels unchanged. Next: monitor analyst tasks #1301-1304 completion before advancing to validation.
