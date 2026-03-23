@@ -1,0 +1,19 @@
+ModelID,OncotreeLineage,OncotreePrimaryDisease,NF1_status,NF1_loss,NF1_CN_log2,NF1_expression,TP53_status,CDKN2A_status,has_RAS_mutation,NF1_TP53_comut,has_crispr
+ACH-000037,Soft Tissue,"Sarcoma, NOS",LOF_mutation,True,0.7943570749286886,3.4558085315842404,mutant,WT,False,True,True
+ACH-000145,Soft Tissue,Leiomyosarcoma,LOF_mutation,True,0.9208107125722308,3.2416434390080244,mutant,WT,False,True,True
+ACH-000169,Soft Tissue,Rhabdomyosarcoma,LOF_mutation,True,0.971610345373481,4.23371169955497,mutant,WT,True,True,True
+ACH-001756,Soft Tissue,Rhabdomyosarcoma,LOF_mutation,True,,4.104168894823455,mutant,WT,True,True,False
+ACH-001758,Soft Tissue,Rhabdomyosarcoma,LOF_mutation,True,,3.8768705169987983,mutant,WT,True,True,False
+ACH-001759,Soft Tissue,Rhabdomyosarcoma,LOF_mutation,True,,4.670426815811727,mutant,WT,True,True,False
+ACH-001760,Soft Tissue,Rhabdomyosarcoma,LOF_mutation,True,,4.36934084435945,mutant,WT,True,True,False
+ACH-002065,Peripheral Nervous System,Nerve Sheath Tumor,intact,False,1.0231890697415282,5.015426203609608,WT,WT,False,False,False
+ACH-002066,Peripheral Nervous System,Nerve Sheath Tumor,LOF_mutation,True,0.9981152777016964,4.737016087609007,mutant,WT,False,True,True
+ACH-002309,Soft Tissue,Fibrosarcoma,LOF_mutation,True,,,mutant,mutant,False,True,False
+ACH-002693,Peripheral Nervous System,Nerve Sheath Tumor,LOF_mutation,True,0.7126358150433715,3.515422309594967,mutant,WT,False,True,True
+ACH-002695,Peripheral Nervous System,Nerve Sheath Tumor,intact,False,0.9516616113068284,4.5410191531335595,mutant,mutant,False,False,False
+ACH-002710,Peripheral Nervous System,Nerve Sheath Tumor,intact,False,0.992409125722717,5.004168769990325,mutant,WT,True,False,True
+ACH-002784,Soft Tissue,Undifferentiated Pleomorphic Sarcoma/Malignant Fibrous Histiocytoma/High-Grade Spindle Cell Sarcoma,LOF_mutation,True,1.0277671247591196,3.130771110502891,mutant,WT,False,True,True
+ACH-002799,Peripheral Nervous System,Nerve Sheath Tumor,intact,False,0.8087291505508332,4.401548555002773,WT,WT,False,False,True
+ACH-002800,Peripheral Nervous System,Nerve Sheath Tumor,LOF_mutation,True,0.7933469013500027,2.5102733110154576,WT,WT,False,False,True
+ACH-002801,Peripheral Nervous System,Nerve Sheath Tumor,LOF_mutation,True,1.0583242797588226,3.560458180812936,mutant,WT,False,True,True
+ACH-002802,Peripheral Nervous System,Nerve Sheath Tumor,LOF_mutation,True,1.28050020779526,3.653541599608915,WT,WT,False,False,False

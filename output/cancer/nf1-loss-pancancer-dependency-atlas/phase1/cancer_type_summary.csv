@@ -1,0 +1,31 @@
+cancer_type,n_total,n_nf1_lost,n_intact,nf1_loss_freq,n_lof_mutation,n_deep_deletion,n_lost_crispr,n_intact_crispr,tp53_co_mutation,cdkn2a_co_mutation,ras_co_mutation,nf1_tp53_comut,is_mpnst_lineage,qualifies
+CNS/Brain,79,21,58,0.2658,21,0,18,51,12,3,2,12,False,True
+Thyroid,12,3,9,0.25,3,0,2,8,3,0,0,3,False,False
+Peripheral Nervous System,40,10,30,0.25,10,0,8,27,7,1,0,7,False,True
+Uterus,32,7,25,0.2188,7,0,6,21,5,1,4,5,False,True
+Soft Tissue,61,9,52,0.1475,9,0,4,35,9,1,5,9,False,False
+Breast,55,8,47,0.1455,8,0,5,34,7,1,1,7,False,True
+Liver,22,3,19,0.1364,3,0,3,19,2,1,1,2,False,False
+Bowel,60,8,52,0.1333,8,0,6,37,6,1,4,6,False,True
+Cervix,8,1,7,0.125,1,0,0,6,0,0,1,0,False,False
+Skin,83,10,73,0.1205,10,0,4,47,5,4,3,5,False,False
+Ovary/Fallopian Tube,50,6,44,0.12,6,0,4,38,3,1,2,3,False,False
+Lung,156,18,138,0.1154,18,0,10,90,17,1,0,17,False,True
+Esophagus/Stomach,52,6,46,0.1154,6,0,6,41,6,1,1,6,False,True
+Testis,9,1,8,0.1111,1,0,0,5,0,0,0,0,False,False
+Myeloid,57,4,53,0.0702,4,0,2,35,1,0,1,1,False,False
+Bladder/Urinary Tract,20,1,19,0.05,1,0,1,19,0,0,1,0,False,False
+Lymphoid,111,5,106,0.045,5,0,3,66,3,2,2,3,False,False
+Kidney,34,1,33,0.0294,1,0,1,25,1,0,0,1,False,False
+Bone,52,1,51,0.0192,1,0,1,39,1,0,0,1,False,False
+Prostate,6,0,6,0.0,0,0,0,6,0,0,0,0,False,False
+Pleura,15,0,15,0.0,0,0,0,15,0,0,0,0,False,False
+Adrenal Gland,2,0,2,0.0,0,0,0,1,0,0,0,0,False,False
+Pancreas,33,0,33,0.0,0,0,0,31,0,0,0,0,False,False
+Other,1,0,1,0.0,0,0,0,0,0,0,0,0,False,False
+Ampulla of Vater,3,0,3,0.0,0,0,0,3,0,0,0,0,False,False
+Head and Neck,48,0,48,0.0,0,0,0,43,0,0,0,0,False,False
+Fibroblast,4,0,4,0.0,0,0,0,1,0,0,0,0,False,False
+Eye,18,0,18,0.0,0,0,0,12,0,0,0,0,False,False
+Biliary Tract,10,0,10,0.0,0,0,0,8,0,0,0,0,False,False
+Vulva/Vagina,2,0,2,0.0,0,0,0,2,0,0,0,0,False,False

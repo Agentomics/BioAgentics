@@ -1,0 +1,75 @@
+======================================================================
+NF1-Loss Pan-Cancer Dependency Atlas - Phase 1: Cohort Classifier
+======================================================================
+
+OVERVIEW
+  Total cell lines with lineage + data: 1135
+  Cell lines with CRISPR data: 849
+  NF1-lost (combined): 123 (10.8%)
+    LOF mutation only: 123
+    Deep deletion only: 0
+    Both: 0
+  NF1-intact: 1012
+
+CO-ALTERATION LANDSCAPE (in NF1-lost lines)
+  TP53 mutation: 88/123 (71.5%)
+  CDKN2A mutation: 18/123 (14.6%)
+  RAS mutation (KRAS/NRAS/HRAS): 28/123 (22.8%)
+  NF1+TP53 co-mutation: 88/123 (71.5%)
+
+NF1 EXPRESSION CROSS-VALIDATION
+  NF1 expression: lost=3.71 vs intact=4.52, p=9.46e-14 (VALIDATES)
+
+QUALIFYING CANCER TYPES (>=5 lost + >=10 intact with CRISPR)
+----------------------------------------------------------------------
+  CNS/Brain: 18 lost / 51 intact (CRISPR), 21/79 total (26.6%), TP53=12, RAS=2
+  Peripheral Nervous System: 8 lost / 27 intact (CRISPR), 10/40 total (25.0%), TP53=7, RAS=0
+  Uterus: 6 lost / 21 intact (CRISPR), 7/32 total (21.9%), TP53=5, RAS=4
+  Breast: 5 lost / 34 intact (CRISPR), 8/55 total (14.5%), TP53=7, RAS=1
+  Bowel: 6 lost / 37 intact (CRISPR), 8/60 total (13.3%), TP53=6, RAS=4
+  Lung: 10 lost / 90 intact (CRISPR), 18/156 total (11.5%), TP53=17, RAS=0
+  Esophagus/Stomach: 6 lost / 41 intact (CRISPR), 6/52 total (11.5%), TP53=6, RAS=1
+
+MPNST / PERIPHERAL NERVE SHEATH LINES
+----------------------------------------------------------------------
+  ACH-000037: Sarcoma, NOS (Soft Tissue), NF1=LOF_mutation, TP53=mutant, CRISPR
+  ACH-000145: Leiomyosarcoma (Soft Tissue), NF1=LOF_mutation, TP53=mutant, CRISPR
+  ACH-000169: Rhabdomyosarcoma (Soft Tissue), NF1=LOF_mutation, TP53=mutant, CRISPR
+  ACH-001756: Rhabdomyosarcoma (Soft Tissue), NF1=LOF_mutation, TP53=mutant, no CRISPR
+  ACH-001758: Rhabdomyosarcoma (Soft Tissue), NF1=LOF_mutation, TP53=mutant, no CRISPR
+  ACH-001759: Rhabdomyosarcoma (Soft Tissue), NF1=LOF_mutation, TP53=mutant, no CRISPR
+  ACH-001760: Rhabdomyosarcoma (Soft Tissue), NF1=LOF_mutation, TP53=mutant, no CRISPR
+  ACH-002065: Nerve Sheath Tumor (Peripheral Nervous System), NF1=intact, TP53=WT, no CRISPR
+  ACH-002066: Nerve Sheath Tumor (Peripheral Nervous System), NF1=LOF_mutation, TP53=mutant, CRISPR
+  ACH-002309: Fibrosarcoma (Soft Tissue), NF1=LOF_mutation, TP53=mutant, no CRISPR
+  ACH-002693: Nerve Sheath Tumor (Peripheral Nervous System), NF1=LOF_mutation, TP53=mutant, CRISPR
+  ACH-002695: Nerve Sheath Tumor (Peripheral Nervous System), NF1=intact, TP53=mutant, no CRISPR
+  ACH-002710: Nerve Sheath Tumor (Peripheral Nervous System), NF1=intact, TP53=mutant, CRISPR
+  ACH-002784: Undifferentiated Pleomorphic Sarcoma/Malignant Fibrous Histiocytoma/High-Grade Spindle Cell Sarcoma (Soft Tissue), NF1=LOF_mutation, TP53=mutant, CRISPR
+  ACH-002799: Nerve Sheath Tumor (Peripheral Nervous System), NF1=intact, TP53=WT, CRISPR
+  ACH-002800: Nerve Sheath Tumor (Peripheral Nervous System), NF1=LOF_mutation, TP53=WT, CRISPR
+  ACH-002801: Nerve Sheath Tumor (Peripheral Nervous System), NF1=LOF_mutation, TP53=mutant, CRISPR
+  ACH-002802: Nerve Sheath Tumor (Peripheral Nervous System), NF1=LOF_mutation, TP53=WT, no CRISPR
+
+ALL CANCER TYPES WITH NF1 LOSS
+----------------------------------------------------------------------
+  CNS/Brain: 21 lost / 58 intact (CRISPR: 18/51) *
+  Thyroid: 3 lost / 9 intact (CRISPR: 2/8)
+  Peripheral Nervous System: 10 lost / 30 intact (CRISPR: 8/27) *
+  Uterus: 7 lost / 25 intact (CRISPR: 6/21) *
+  Soft Tissue: 9 lost / 52 intact (CRISPR: 4/35)
+  Breast: 8 lost / 47 intact (CRISPR: 5/34) *
+  Liver: 3 lost / 19 intact (CRISPR: 3/19)
+  Bowel: 8 lost / 52 intact (CRISPR: 6/37) *
+  Cervix: 1 lost / 7 intact (CRISPR: 0/6)
+  Skin: 10 lost / 73 intact (CRISPR: 4/47)
+  Ovary/Fallopian Tube: 6 lost / 44 intact (CRISPR: 4/38)
+  Lung: 18 lost / 138 intact (CRISPR: 10/90) *
+  Esophagus/Stomach: 6 lost / 46 intact (CRISPR: 6/41) *
+  Testis: 1 lost / 8 intact (CRISPR: 0/5)
+  Myeloid: 4 lost / 53 intact (CRISPR: 2/35)
+  Bladder/Urinary Tract: 1 lost / 19 intact (CRISPR: 1/19)
+  Lymphoid: 5 lost / 106 intact (CRISPR: 3/66)
+  Kidney: 1 lost / 33 intact (CRISPR: 1/25)
+  Bone: 1 lost / 51 intact (CRISPR: 1/39)
+
