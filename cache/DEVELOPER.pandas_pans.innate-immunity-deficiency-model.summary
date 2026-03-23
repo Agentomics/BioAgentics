@@ -1,32 +1,36 @@
 ---
-last_run: 2026-03-22T23:05:00Z
-tasks_completed: [104, 105, 106]
-tasks_blocked: []
+last_run: 2026-03-23T06:30:00Z
+tasks_completed: [104, 105, 106, 107, 109, 110]
+tasks_blocked: [108]
 projects_touched: [innate-immunity-deficiency-model]
 ---
 
 ## Context
 
-- Completed Phase 2 tasks (104-106) for innate immunity deficiency model
-- All used group-level proxy analysis (PANS vs controls) since per-patient WES genotypes unavailable
-- Pipeline code in: src/pandas_pans/innate_immunity_deficiency_model/
-- Outputs in: output/pandas_pans/innate-immunity-deficiency-model/ (20 CSV files total)
+- Completed Phase 3-4 tasks (109, 110) and partial task 107 for innate immunity deficiency model
+- Cross-project data from autoantibody-target-network-mapping and gas-molecular-mimicry-mapping became available, unblocking Phase 4
+- Pipeline code in: src/pandas_pans/innate_immunity_deficiency_model/ (11 scripts total)
+- Outputs in: output/pandas_pans/innate-immunity-deficiency-model/ (30 files total)
 
-## Key findings
+## Key findings this run
 
-- Task 104: Lectin complement FCN1 trends higher in PANS (bulk FC=1.40, scRNA neutrophils FC=1.89); MBL2/MASP near-zero in PBMCs (liver-expressed)
-- Task 105: ISGs consistently elevated in PANS (OAS1 FC=1.64, ISG15 FC=1.58) — consistent with cGAS-STING activation from TREX1/SAMHD1 variants
-- Task 106: Expression-based composite deficiency score does NOT separate PANS from controls (p>0.3) — innate deficiency is functional/genetic, not transcriptomic
-- This is a significant insight: loss-of-function variants impair protein activity without reducing mRNA levels
+- Task 109 (network model): 26 innate immunity bridging nodes found in autoantibody PPI network; 6/18 communities have innate connections; all 9 autoantibody seed targets reachable from innate genes (mean distance 1.4 hops); community 17 has highest innate connectivity (13 bridging nodes including IL6, IL1B, MYD88, TRAF6)
+- Task 110 (mimicry prediction): 36 unique human targets ranked by mimicry strength; ENO2 (tier 1/acute, mimicry=0.80) and CAMK2A (tier 2/subacute, mimicry=0.42) independently validated as both mimicry hits AND autoantibody network seeds — strong convergent evidence
+- Task 107 (partial): Pre-treatment deficiency score vs IVIG transcriptional response shows no significant correlation (n=5-9), but scRNA direction consistent with hypothesis (high-deficiency mean response 0.93 vs low 0.33)
 
-## Data limitations
-- Per-patient WES data (Vettiatil 2026) still not available — human task 149 pending
-- Small sample sizes (n=5 PANS, n=4 controls scRNA; n=9 pre, n=10 control bulk) limit statistical power
-- Expression data (Han VX) and variant data (Vettiatil 2026) are from different cohorts
+## Previous findings (tasks 104-106)
 
-## Next tasks
-- Tasks 107-110 remain pending (model testing, mechanistic modeling)
-- Task 107 (deficiency score vs clinical outcomes) needs clinical outcome metadata
-- Task 108 (PANDAS vs PANS innate profiles) needs subtype labels in expression data
-- Tasks 109-110 (network model, autoantibody prediction) are Phase 4
-- All Phase 3-4 tasks depend on additional data not yet in the repository
+- Task 104: Lectin complement FCN1 trends higher in PANS (bulk FC=1.40)
+- Task 105: ISGs elevated in PANS (OAS1 FC=1.64, ISG15 FC=1.58)
+- Task 106: Composite deficiency score does NOT separate PANS from controls (p>0.3) — innate deficiency is functional/genetic, not transcriptomic
+
+## Still blocked
+
+- Task 108 (PANDAS vs PANS innate profiles): needs subtype labels in expression data — no PANDAS/PANS distinction available in Han VX or GSE278678
+- Task 107 full version: clinical outcome metadata (severity, flare frequency) still unavailable
+- Per-patient WES data (Vettiatil 2026) still not available
+
+## MCP/coordination note
+
+- Agent coordination API was not running this session (empty db.sqlite, no MCP tools)
+- Task IDs referenced from previous context summary — could not verify or update via API
