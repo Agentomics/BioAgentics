@@ -3,10 +3,14 @@
 Models the effect of cGAS-STING pathway inhibitors on type I IFN output
 across different genotype scenarios. Predicts which patients (by genotype
 compound hit profile) would benefit most from:
-  - STING inhibition (H-151)
+  - STING inhibition (SN-011 preferred, H-151, C-178)
   - cGAS inhibition (RU.521)
   - Complement replacement (for lectin complement deficiency)
   - Combined therapy
+
+SN-011 is the preferred STING inhibitor for DDR-variant PANS profiles based
+on superior efficacy (~IC50 100 nM), no cytotoxicity (unlike H-151), and
+demonstrated CNS efficacy in TREX1-deficient AGS mouse models.
 
 Uses the cGAS-STING pathway model from two_hit_cgas_sting_model.py as
 the simulation engine.
@@ -67,6 +71,17 @@ INHIBITORS = [
         efficacy=0.70,
         description="Covalent STING inhibitor; targets Cys91",
         clinical_stage="Preclinical",
+    ),
+    Inhibitor(
+        name="SN-011",
+        target="sting",
+        efficacy=0.92,
+        description=(
+            "High-potency STING inhibitor (IC50 ~100 nM); no cytotoxicity "
+            "unlike H-151; demonstrated CNS efficacy in TREX1-deficient AGS "
+            "mouse models mitigating neurological impairment"
+        ),
+        clinical_stage="Preclinical (in vivo AGS model efficacy demonstrated)",
     ),
 ]
 
@@ -184,12 +199,26 @@ def predict_therapy(
         result = simulate_inhibitor_effect(trex1, samhd1, gas_dna, inh)
         inhibitor_results.append(result)
 
-    # Find best single inhibitor
+    # Find best single inhibitor overall
     best_inh = max(inhibitor_results, key=lambda r: r["ifn_reduction"])
+
+    # Find best STING-class inhibitor separately
+    sting_results = [r for r in inhibitor_results if r["target"] == "sting"]
+    best_sting = max(sting_results, key=lambda r: r["ifn_reduction"]) if sting_results else None
 
     # Determine therapy recommendation
     baseline = simulate_pathway(gas_dna, trex1, samhd1)
     needs_ifn_control = baseline.ifn_output > 0.3
+
+    # Check if profile has DDR/cGAS-STING variant burden (low TREX1 or SAMHD1)
+    has_ddr_cgas_sting = trex1 < 0.8 or samhd1 < 0.8
+    preferred_note = ""
+    if has_ddr_cgas_sting and best_sting and best_sting["inhibitor"] == "SN-011":
+        preferred_note = (
+            "; SN-011 is preferred STING inhibitor for DDR/cGAS-STING profiles "
+            "due to superior potency (IC50 ~100 nM), no cytotoxicity, and "
+            "demonstrated CNS efficacy in TREX1-deficient models"
+        )
 
     if lectin_def and needs_ifn_control:
         therapy = "combined: complement replacement + " + best_inh["inhibitor"]
@@ -197,6 +226,7 @@ def predict_therapy(
             f"Dual targeting: lectin complement replacement for pathogen clearance, "
             f"{best_inh['inhibitor']} ({best_inh['target']} inhibitor) for IFN control "
             f"({best_inh['pct_reduction']:.0f}% reduction)"
+            f"{preferred_note}"
         )
     elif lectin_def and not needs_ifn_control:
         therapy = "complement_replacement"
@@ -206,6 +236,7 @@ def predict_therapy(
         rationale = (
             f"{best_inh['inhibitor']} ({best_inh['target']} inhibitor) reduces IFN by "
             f"{best_inh['pct_reduction']:.0f}%"
+            f"{preferred_note}"
         )
     else:
         therapy = "monitoring"
@@ -222,6 +253,7 @@ def predict_therapy(
         "baseline_ifn": round(baseline.ifn_output, 4),
         "inhibitor_results": inhibitor_results,
         "best_single_inhibitor": best_inh["inhibitor"],
+        "preferred_sting_inhibitor": best_sting["inhibitor"] if best_sting and has_ddr_cgas_sting else None,
         "recommended_therapy": therapy,
         "rationale": rationale,
     }

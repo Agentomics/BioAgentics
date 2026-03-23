@@ -14,6 +14,26 @@ from bioagentics.models.two_hit_therapeutic_model import (
 )
 
 
+class TestInhibitorPanel:
+    def test_inhibitor_count(self):
+        """INHIBITORS list includes all 4 inhibitors (H-151, RU.521, C-178, SN-011)."""
+        assert len(INHIBITORS) == 4
+
+    def test_sn011_in_panel(self):
+        names = [inh.name for inh in INHIBITORS]
+        assert "SN-011" in names
+
+    def test_sn011_targets_sting(self):
+        sn011 = next(inh for inh in INHIBITORS if inh.name == "SN-011")
+        assert sn011.target == "sting"
+        assert sn011.efficacy == 0.92
+
+    def test_sn011_highest_sting_efficacy(self):
+        sting_inhibitors = [inh for inh in INHIBITORS if inh.target == "sting"]
+        best = max(sting_inhibitors, key=lambda i: i.efficacy)
+        assert best.name == "SN-011"
+
+
 class TestSimulateInhibitorEffect:
     def test_sting_inhibitor_reduces_ifn(self):
         h151 = INHIBITORS[0]  # H-151 targets STING
@@ -47,6 +67,20 @@ class TestSimulateInhibitorEffect:
         r_high = simulate_inhibitor_effect(0.1, 0.1, 0.5, high_eff)
         assert r_high["ifn_reduction"] >= r_low["ifn_reduction"]
 
+    def test_sn011_reduces_ifn(self):
+        sn011 = next(inh for inh in INHIBITORS if inh.name == "SN-011")
+        result = simulate_inhibitor_effect(0.1, 0.1, 0.5, sn011)
+        assert result["inhibited_ifn"] < result["baseline_ifn"]
+        assert result["pct_reduction"] > 0
+
+    def test_sn011_outperforms_h151(self):
+        """SN-011 (efficacy 0.92) should reduce IFN more than H-151 (0.85)."""
+        h151 = next(inh for inh in INHIBITORS if inh.name == "H-151")
+        sn011 = next(inh for inh in INHIBITORS if inh.name == "SN-011")
+        r_h151 = simulate_inhibitor_effect(0.1, 0.1, 0.5, h151)
+        r_sn011 = simulate_inhibitor_effect(0.1, 0.1, 0.5, sn011)
+        assert r_sn011["ifn_reduction"] >= r_h151["ifn_reduction"]
+
 
 class TestPredictTherapy:
     def test_lectin_only_recommends_complement(self):
@@ -77,6 +111,20 @@ class TestPredictTherapy:
         pred = predict_therapy(COMPOUND_PROFILES[1])
         valid_names = [inh.name for inh in INHIBITORS]
         assert pred["best_single_inhibitor"] in valid_names
+
+    def test_sn011_preferred_sting_for_ddr_profiles(self):
+        """SN-011 should be the preferred STING inhibitor for DDR/cGAS-STING profiles."""
+        for profile in COMPOUND_PROFILES:
+            if profile["trex1_activity"] < 0.8 or profile["samhd1_activity"] < 0.8:
+                pred = predict_therapy(profile)
+                assert pred["preferred_sting_inhibitor"] == "SN-011"
+
+    def test_sn011_in_rationale_for_ddr_profiles(self):
+        """Profiles with cGAS-STING variants should mention SN-011 in rationale."""
+        for profile in COMPOUND_PROFILES:
+            if profile["trex1_activity"] < 0.8 or profile["samhd1_activity"] < 0.8:
+                pred = predict_therapy(profile)
+                assert "SN-011" in pred["rationale"]
 
 
 class TestRunPipeline:

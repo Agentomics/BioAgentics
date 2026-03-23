@@ -1,0 +1,229 @@
+{
+  "metadata": {
+    "description": "Therapeutic predictions for PANS patients based on compound genotype profiles. Models cGAS-STING inhibitor effects on type I IFN output.",
+    "inhibitors": [
+      {
+        "name": "H-151",
+        "target": "sting",
+        "efficacy": 0.85,
+        "description": "Small-molecule STING antagonist; palmitoylation inhibitor",
+        "clinical_stage": "Preclinical (Haag et al. 2018, Nature)"
+      },
+      {
+        "name": "RU.521",
+        "target": "cgas",
+        "efficacy": 0.8,
+        "description": "cGAS catalytic site inhibitor; blocks cGAMP synthesis",
+        "clinical_stage": "Preclinical tool compound"
+      },
+      {
+        "name": "C-178",
+        "target": "sting",
+        "efficacy": 0.7,
+        "description": "Covalent STING inhibitor; targets Cys91",
+        "clinical_stage": "Preclinical"
+      },
+      {
+        "name": "SN-011",
+        "target": "sting",
+        "efficacy": 0.92,
+        "description": "High-potency STING inhibitor (IC50 ~100 nM); no cytotoxicity unlike H-151; demonstrated CNS efficacy in TREX1-deficient AGS mouse models mitigating neurological impairment",
+        "clinical_stage": "Preclinical (in vivo AGS model efficacy demonstrated)"
+      }
+    ]
+  },
+  "predictions": [
+    {
+      "profile": "lectin_only",
+      "description": "Lectin complement deficiency only (MBL2/MASP variants)",
+      "genotype": {
+        "trex1_activity": 1.0,
+        "samhd1_activity": 1.0,
+        "lectin_complement_deficient": true
+      },
+      "baseline_ifn": 0.0,
+      "inhibitor_results": [
+        {
+          "inhibitor": "H-151",
+          "target": "sting",
+          "baseline_ifn": 0.0,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.0,
+          "pct_reduction": 0.0
+        },
+        {
+          "inhibitor": "RU.521",
+          "target": "cgas",
+          "baseline_ifn": 0.0,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.0,
+          "pct_reduction": 0.0
+        },
+        {
+          "inhibitor": "C-178",
+          "target": "sting",
+          "baseline_ifn": 0.0,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.0,
+          "pct_reduction": 0.0
+        },
+        {
+          "inhibitor": "SN-011",
+          "target": "sting",
+          "baseline_ifn": 0.0,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.0,
+          "pct_reduction": 0.0
+        }
+      ],
+      "best_single_inhibitor": "H-151",
+      "preferred_sting_inhibitor": null,
+      "recommended_therapy": "complement_replacement",
+      "rationale": "Lectin complement deficiency primary driver; IFN pathway near normal"
+    },
+    {
+      "profile": "cgas_sting_only",
+      "description": "cGAS-STING dysregulation only (TREX1/SAMHD1 variants)",
+      "genotype": {
+        "trex1_activity": 0.3,
+        "samhd1_activity": 0.5,
+        "lectin_complement_deficient": false
+      },
+      "baseline_ifn": 0.6734,
+      "inhibitor_results": [
+        {
+          "inhibitor": "H-151",
+          "target": "sting",
+          "baseline_ifn": 0.6734,
+          "inhibited_ifn": 0.002,
+          "ifn_reduction": 0.6715,
+          "pct_reduction": 99.7
+        },
+        {
+          "inhibitor": "RU.521",
+          "target": "cgas",
+          "baseline_ifn": 0.6734,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.6734,
+          "pct_reduction": 100.0
+        },
+        {
+          "inhibitor": "C-178",
+          "target": "sting",
+          "baseline_ifn": 0.6734,
+          "inhibited_ifn": 0.0059,
+          "ifn_reduction": 0.6675,
+          "pct_reduction": 99.1
+        },
+        {
+          "inhibitor": "SN-011",
+          "target": "sting",
+          "baseline_ifn": 0.6734,
+          "inhibited_ifn": 0.0012,
+          "ifn_reduction": 0.6722,
+          "pct_reduction": 99.8
+        }
+      ],
+      "best_single_inhibitor": "RU.521",
+      "preferred_sting_inhibitor": "SN-011",
+      "recommended_therapy": "RU.521",
+      "rationale": "RU.521 (cgas inhibitor) reduces IFN by 100%; SN-011 is preferred STING inhibitor for DDR/cGAS-STING profiles due to superior potency (IC50 ~100 nM), no cytotoxicity, and demonstrated CNS efficacy in TREX1-deficient models"
+    },
+    {
+      "profile": "two_hit_mild",
+      "description": "Two-hit: mild lectin + mild cGAS-STING (heterozygous carriers)",
+      "genotype": {
+        "trex1_activity": 0.5,
+        "samhd1_activity": 0.7,
+        "lectin_complement_deficient": true
+      },
+      "baseline_ifn": 0.5836,
+      "inhibitor_results": [
+        {
+          "inhibitor": "H-151",
+          "target": "sting",
+          "baseline_ifn": 0.5836,
+          "inhibited_ifn": 0.0002,
+          "ifn_reduction": 0.5834,
+          "pct_reduction": 100.0
+        },
+        {
+          "inhibitor": "RU.521",
+          "target": "cgas",
+          "baseline_ifn": 0.5836,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.5836,
+          "pct_reduction": 100.0
+        },
+        {
+          "inhibitor": "C-178",
+          "target": "sting",
+          "baseline_ifn": 0.5836,
+          "inhibited_ifn": 0.0006,
+          "ifn_reduction": 0.583,
+          "pct_reduction": 99.9
+        },
+        {
+          "inhibitor": "SN-011",
+          "target": "sting",
+          "baseline_ifn": 0.5836,
+          "inhibited_ifn": 0.0001,
+          "ifn_reduction": 0.5835,
+          "pct_reduction": 100.0
+        }
+      ],
+      "best_single_inhibitor": "RU.521",
+      "preferred_sting_inhibitor": "SN-011",
+      "recommended_therapy": "combined: complement replacement + RU.521",
+      "rationale": "Dual targeting: lectin complement replacement for pathogen clearance, RU.521 (cgas inhibitor) for IFN control (100% reduction); SN-011 is preferred STING inhibitor for DDR/cGAS-STING profiles due to superior potency (IC50 ~100 nM), no cytotoxicity, and demonstrated CNS efficacy in TREX1-deficient models"
+    },
+    {
+      "profile": "two_hit_severe",
+      "description": "Two-hit: lectin complement + severe cGAS-STING",
+      "genotype": {
+        "trex1_activity": 0.1,
+        "samhd1_activity": 0.3,
+        "lectin_complement_deficient": true
+      },
+      "baseline_ifn": 0.6994,
+      "inhibitor_results": [
+        {
+          "inhibitor": "H-151",
+          "target": "sting",
+          "baseline_ifn": 0.6994,
+          "inhibited_ifn": 0.0072,
+          "ifn_reduction": 0.6923,
+          "pct_reduction": 99.0
+        },
+        {
+          "inhibitor": "RU.521",
+          "target": "cgas",
+          "baseline_ifn": 0.6994,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.6994,
+          "pct_reduction": 100.0
+        },
+        {
+          "inhibitor": "C-178",
+          "target": "sting",
+          "baseline_ifn": 0.6994,
+          "inhibited_ifn": 0.0202,
+          "ifn_reduction": 0.6792,
+          "pct_reduction": 97.1
+        },
+        {
+          "inhibitor": "SN-011",
+          "target": "sting",
+          "baseline_ifn": 0.6994,
+          "inhibited_ifn": 0.0046,
+          "ifn_reduction": 0.6949,
+          "pct_reduction": 99.3
+        }
+      ],
+      "best_single_inhibitor": "RU.521",
+      "preferred_sting_inhibitor": "SN-011",
+      "recommended_therapy": "combined: complement replacement + RU.521",
+      "rationale": "Dual targeting: lectin complement replacement for pathogen clearance, RU.521 (cgas inhibitor) for IFN control (100% reduction); SN-011 is preferred STING inhibitor for DDR/cGAS-STING profiles due to superior potency (IC50 ~100 nM), no cytotoxicity, and demonstrated CNS efficacy in TREX1-deficient models"
+    }
+  ]
+}
