@@ -1,0 +1,44 @@
+{
+  "analysis": "deficiency_score_vs_ivig_response",
+  "note": "Partial task 107 \u2014 clinical outcome metadata not yet available",
+  "available_tests": [
+    "deficiency_score_vs_transcriptional_response"
+  ],
+  "unavailable_tests": [
+    "deficiency_score_vs_disease_severity",
+    "deficiency_score_vs_flare_frequency",
+    "deficiency_score_vs_clinical_ivig_response"
+  ],
+  "bulk_n_patients": 9,
+  "scrna_n_patients": 5,
+  "correlations": [
+    {
+      "data_source": "bulk",
+      "n": 9,
+      "spearman_rho": -0.25,
+      "spearman_p": 0.5164895523012261,
+      "pearson_r": -0.07353092781100645,
+      "pearson_p": 0.8508773132368913,
+      "signed_spearman_rho": -0.08333333333333334,
+      "signed_spearman_p": 0.831214097710308,
+      "median_split_U": 5.0,
+      "median_split_p": 0.2857142857142857,
+      "high_deficiency_mean_response": 0.40375721941789056,
+      "low_deficiency_mean_response": 0.5960735724243748
+    },
+    {
+      "data_source": "scrna",
+      "n": 5,
+      "spearman_rho": 0.09999999999999999,
+      "spearman_p": 0.8728885715695384,
+      "pearson_r": 0.2728929432707602,
+      "pearson_p": 0.6569039830506311,
+      "signed_spearman_rho": -0.3,
+      "signed_spearman_p": 0.623837664781073,
+      "median_split_U": 4.0,
+      "median_split_p": 0.8,
+      "high_deficiency_mean_response": 0.9270569329059408,
+      "low_deficiency_mean_response": 0.33020190242890474
+    }
+  ]
+}

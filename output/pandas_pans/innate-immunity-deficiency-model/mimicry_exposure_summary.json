@@ -1,0 +1,39 @@
+{
+  "total_mimicry_hits": 335,
+  "unique_human_targets": 36,
+  "unique_gas_proteins": 228,
+  "n_tier_1_acute": 12,
+  "tier_1_acute_targets": [
+    "ENO2",
+    "GAPDH",
+    "ECEL1",
+    "ALDH7A1",
+    "PSMC6",
+    "MCAT",
+    "HARS1"
+  ],
+  "n_tier_2_subacute": 12,
+  "tier_2_subacute_targets": [
+    "CAMK2A",
+    "FARS2",
+    "UXS1",
+    "AK9",
+    "AIFM3",
+    "SCP2",
+    "ACSF2"
+  ],
+  "n_tier_3_chronic": 12,
+  "tier_3_chronic_targets": [
+    "RPS6KA5",
+    "PCCB",
+    "TSFM",
+    "GRID1",
+    "ARL8A"
+  ],
+  "n_autoantibody_seeds_with_mimicry": 2,
+  "autoantibody_seeds_with_mimicry": [
+    "ENO2",
+    "CAMK2A"
+  ],
+  "prediction": "Innate deficiency (lectin complement failure) extends GAS exposure duration, allowing progression from tier 1 (acute) to tier 2-3 (subacute/chronic) mimicry targets. This predicts broader autoantibody diversification in patients with MBL2/MASP variants compared to those with intact innate immunity."
+}
