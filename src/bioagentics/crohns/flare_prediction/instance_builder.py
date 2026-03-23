@@ -161,8 +161,8 @@ def build_instances(
     availability_rows: list[dict[str, bool]] = []
 
     for idx, window in enumerate(windows):
-        instance_features = pd.Series(dtype=float, name=idx)
         layer_avail: dict[str, bool] = {}
+        layer_aggs: list[pd.Series] = []
 
         n_samples = 0
         available: list[str] = []
@@ -186,7 +186,10 @@ def build_instances(
             n_samples = max(n_samples, len(samples))
 
             agg = _aggregate_samples(samples, prefix=layer_name)
-            instance_features = pd.concat([instance_features, agg])
+            if not agg.empty:
+                layer_aggs.append(agg)
+
+        instance_features = pd.concat(layer_aggs) if layer_aggs else pd.Series(dtype=float, name=idx)
 
         instances.append(
             Instance(
