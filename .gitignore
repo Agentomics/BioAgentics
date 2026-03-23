@@ -18,6 +18,7 @@ wheels/
 # Research data (large files - use git-lfs or download scripts)
 data/*
 !data/.gitkeep
+!data/**/DATA_MANIFEST.md
 
 # Runtime
 .dispatch.pid
@@ -28,3 +29,5 @@ db.sqlite*
 
 deploy.sh
 data/pandas_pans/
+
+archive/
