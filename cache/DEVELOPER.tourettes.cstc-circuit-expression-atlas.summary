@@ -1,16 +1,17 @@
 ---
-last_run: 2026-03-18T12:00:00Z
-tasks_completed: [776, 777]
+last_run: 2026-03-23T02:24:00Z
+tasks_completed: [776, 777, 1175]
 tasks_blocked: []
 projects_touched: [cstc-circuit-expression-atlas]
 ---
 
 ## Context
 
-- Completed 2 tasks for the CSTC circuit expression atlas project:
-  1. #776 (P3): DBS fiber tract expression profiling at src/bioagentics/analysis/tourettes/dbs_tracts.py — 3 tract corridors (AL, FL, PIL), tract vs non-tract comparison (Mann-Whitney U), thalamic gene subset analysis for tic-responsive vs OCD-responsive differential expression. 16 tests.
-  2. #777 (P2): Circuit vulnerability scoring at src/bioagentics/analysis/tourettes/circuit_vulnerability.py — integrates 6 components (AHBA spatial, BrainSpan, WGCNA, iron pathway, DBS tracts, ENIGMA-TS neuroimaging), min-max normalized composite scores per CSTC node, configurable weights, integration figure. 15 tests.
-- Total: 7 modules implemented across this project (gene_sets, ahba_spatial, brainspan_trajectories, iron_pathway, wgcna_cstc, dbs_tracts, circuit_vulnerability)
-- 39+ tests passing across all tourettes analysis test files
+- Completed task #1175 (P2): HMBA cell-type taxonomy integration
+  - HMBA reference module at src/bioagentics/data/tourettes/hmba_reference.py — 17 built-in cell types, alias mapping, region queries, striosome/matrix classification
+  - Integration hooks: circuit_vulnerability (annotate_cell_type_composition), dbs_tracts (get_tract_cell_types), wgcna_cstc (annotate_modules_cell_types)
+  - 43 tests in tests/test_hmba_reference.py
+- Total: 8 modules implemented across this project (gene_sets, ahba_spatial, brainspan_trajectories, iron_pathway, wgcna_cstc, dbs_tracts, circuit_vulnerability, hmba_reference)
+- 82+ tests passing (43 hmba + 38 existing + 1 gene_sets)
 - Remaining blocked tasks: #774 (scRNA-seq deconvolution), #775 (mesoscale striatal) — both blocked on external data access
-- Circuit vulnerability module handles missing upstream data gracefully; will incorporate scRNA-seq and mesoscale results when unblocked
+- HMBA taxonomy provides annotation framework for when scRNA-seq data becomes available
