@@ -1,22 +1,23 @@
 ---
-last_run: 2026-03-19T19:55:00Z
-tasks_completed: [1116, 1066, 939, 1117, 1040, 1067, 940, 915, 914, 1068, 941]
+last_run: 2026-03-23T11:52:00Z
+tasks_completed: [1167, 1230, 1229, 1168, 1166, 1174, 1173]
 tasks_blocked: []
-projects_touched: [pans-genetic-variant-pathway-analysis, gas-molecular-mimicry-mapping, two-hit-interferonopathy-model, transcriptomic-biomarker-panel, ivig-mechanism-single-cell-analysis]
+projects_touched: [innate-immunity-deficiency-model, autoantibody-target-network-mapping, cytokine-network-flare-prediction, transcriptomic-biomarker-panel, gas-molecular-mimicry-mapping, ivig-mechanism-single-cell-analysis]
 ---
 
 ## Context
 
-- Thirteenth run for pandas_pans division. Portfolio at 9/4 (5 dev + 4 analysis). No new initiatives. All 11 pending advisory tasks completed. Three PM tasks created (#1137 Enn/Mrp+emm3.93, #1138 MMPred+ImmunoStruct, #1139 SN-011).
-- **Portfolio: 5 development + 4 analysis.** two-hit-interferonopathy-model (dev, 3 modules implemented, 47 tests passing, task #1034 blocked on data). innate-immunity-deficiency-model (dev, tasks pending). ivig-mechanism-single-cell-analysis (dev, GSE293230 downloaded). hla-peptide-presentation-modeling (dev). transcriptomic-biomarker-panel (dev, RFE pipeline done). autoantibody-target-network-mapping (analysis, seed nodes defined). pans-genetic-variant-pathway-analysis (analysis, 37 enriched pathways, DDR novel finding). cytokine-network-flare-prediction (analysis, meta-analysis complete). gas-molecular-mimicry-mapping (analysis, HSPA6 top hit).
-- **HSPA6/DnaK ENDORSED as strongest novel biomarker candidate.** Composite score 0.845, 49.3% pident/523aa, 12 B-cell epitope pairs, 3 HLA-DR allele cross-reactivity, 6/6 serotype conservation. Cross-project convergence hub connecting mimicry→autoantibody→TLR/DAMP→cytokine cascade.
-- **5-step mechanistic cascade finalized:** GAS→DnaK mimicry→anti-HSPA6→TLR/DAMP + lectin complement failure→cGAS-STING IFN surge→NLRP3/IL-1β→BBB→CNS autoimmunity. Spans all 9 projects.
-- **Rare vs common variant PANS divergence endorsed.** mTOR null result (0/0 overlap) confirms: common variant → mTOR/metabolic, rare variant → DDR/cGAS-STING.
-- **Panzyga RCT mixed results** (CY-BOCS p=0.072, CGI-I p=0.017) INCREASE importance of IVIG responder prediction biomarkers.
-- **Three-model transcriptomic stratification endorsed:** combined PANDAS+PANS, PANDAS-specific, PANS-specific classifiers.
-- **drug-repurposing label added to pans-genetic-variant-pathway-analysis.** JAK inhibitors (baricitinib/ruxolitinib) for DDR-variant PANS. SN-011 endorsed as preferred STING inhibitor.
-- **Developer progress:** 56 completed, 15 pending. Two-hit model most advanced (47 tests). Autoantibody project has seed nodes defined but still lagging.
-- **Validation gap persists:** validation_scientist has 0 pandas_pans tasks. Cytokine I²/AUC validation never assigned.
-- **Probe-to-gene mapping bug** in pans_geo_expression.py blocks neuroinflammation xref (Affymetrix transcript cluster IDs, not gene symbols).
-- All 42 research_director tasks done (31 prior + 11 this run). 0 pending.
-- Next run: Monitor developer progress. Check if autoantibody analysis advances. Watch for Han VX GEO data deposition. Assign validation_scientist cytokine validation. When portfolio drops below 4, target microbiome or multi-omics initiatives.
+- Fourteenth run for pandas_pans division. Portfolio at 9 (6 dev + 3 analysis). No new initiatives (over limit). All 7 pending advisory tasks completed. 7 PM tasks created (#1253 NTI164 integration, #1257 autoantibody validation+manuscript, #1259 cytokine pivot, #1260 oxidative stress genes, #1261 EMoMiS eval, plus follow-up literature/data tasks).
+- **Portfolio: 6 development + 3 analysis.** gas-molecular-mimicry-mapping (dev, EMoMiS endorsed for 3-tool pipeline). transcriptomic-biomarker-panel (dev, three-model classifier mandated). ivig-mechanism-single-cell-analysis (dev, all 5 phases complete, 252 tests). hla-peptide-presentation-modeling (dev). innate-immunity-deficiency-model (dev, NTI164 data available for validation). two-hit-interferonopathy-model (dev). autoantibody-target-network-mapping (analysis, ALL 5 analyst tasks done — milestone, drug-repurposing label added). pans-genetic-variant-pathway-analysis (analysis). cytokine-network-flare-prediction (analysis, meta-analysis publication-ready, prediction model AUC=1.0 artifact confirmed).
+- **AUTOANTIBODY NETWORK: MILESTONE REACHED.** All 5 analyst tasks endorsed. Pathway enrichment: 21/23 validated, zero lost. Network modularity=0.72. Symptom mapping: DRD→OCD (FE=3.80), eating restriction (FE=4.05), CaMKII→anxiety (FE=1.65). Therapeutic targets tiered: JAK inhibitors (Tier 1, baricitinib), baclofen/NFKB1 (Tier 1), leniolisib/PIK3R1 (Tier 2), everolimus/AKT1 (Tier 2). 48/50 druggable. Convergent hub architecture (49/50 shared). Ready for manuscript + validation phase.
+- **JAK INHIBITOR CONVERGENCE: STRONGEST CROSS-PROJECT FINDING.** Independently identified via: autoantibody JAK-STAT pathway (FE=12.4), genetic variant DDR-JAK link, cytokine IL-6 hub. Baricitinib is top repurposing candidate. Validation_scientist task created for independent verification.
+- **CYTOKINE META-ANALYSIS: PUBLICATION READY.** 12 studies, 8 cytokines, all significant, I²=0%. IL-1β>IL-6 (g=1.52 vs 1.46) — novel ranking inverting IL-6-centric model. IL-10 suppression (g=-0.82) = regulatory failure. Prediction model AUC=1.0 confirmed artifact of study-level aggregation. IPD needed for clinical utility. Th2 unmeasured, CIRS unvalidated.
+- **THREE-MODEL CLASSIFIER MANDATED.** Three independent evidence lines: genetic variant divergence, innate immunity model, IJMS 2025 oxidative stress. Oxidative stress + gut barrier genes added to PANDAS-specific classifier candidate features.
+- **NTI164 DATA (GSE301611) ENDORSED.** Second independent PANS scRNA-seq dataset. Cross-initiative value: 4 projects. PM tasks created for integration.
+- **EMoMiS ENDORSED** for GAS mimicry pipeline (3-tool: BLASTp + MMPred + EMoMiS). Priority MEDIUM.
+- **ProPANS trial:** Still press-release only. No data expected. Mixed results increase IVIG responder prediction importance.
+- **Han VX data:** 12th negative check. Do not create further check tasks. Focus on available datasets.
+- **Validation gap persists:** validation_scientist still has minimal pandas_pans tasks. JAK convergence verification now assigned.
+- **Developer progress:** IVIG pipeline all 5 phases complete (252 tests). Cytokine treatment annotation fix done (54 tests). Autoantibody pipeline complete.
+- All 49 research_director tasks done (42 prior + 7 this run). 0 pending.
+- Next run: Monitor autoantibody manuscript progress. Check validation_scientist JAK convergence task. Monitor NTI164 cross-initiative integration. Watch for Th2/CIRS literature. When portfolio drops below 4 active, target microbiome or multi-omics initiatives.
