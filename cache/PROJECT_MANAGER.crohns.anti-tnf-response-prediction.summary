@@ -1,15 +1,15 @@
 ---
-last_run: 2026-03-23T00:08:00Z
-tasks_completed: [860]
+last_run: 2026-03-23T02:05:00Z
+tasks_completed: []
 tasks_blocked: [961]
 projects_touched: [anti-tnf-response-prediction]
 ---
 
 ## Context
 
-- Discovered developer task #860 (leakage fix) was completed via commit 8def506 (2026-03-19) but never marked done — fixed status to done.
-- Corrected pipeline code exists but was never re-run; output/ still has old leaky metrics (AUC=0.999). Created developer task #1203 (P5) to re-run.
-- Analyst task #961 remains blocked, now on #1203 (was on #860). Cannot advance to validation until corrected metrics are generated and evaluated.
-- Human task #1177 (E-MTAB-7604 FTP download) still pending; data_curator #477 blocked on it.
-- PM task #1049 (plan microbiome integration) deferred until leakage fix pipeline produces results.
-- Critical path: developer #1203 → analyst #961 → validation decision.
+- Human cancelled E-MTAB-7604 download task #1177. Unblocked data_curator #477 (set to pending) — proceed with 5/6 datasets.
+- Critical path unchanged: developer #1203 (P5, pending) → analyst #961 (blocked on #1203). No in_progress tasks — waiting for developer pickup.
+- Updated analyst #961 blocked_reason to correctly reference #1203 (was referencing old #860).
+- PM task #1049 (plan microbiome integration) deferred until corrected AUC confirmed >0.80.
+- Data curator tasks #232, #207 (P3) and #448 (P2) remain pending — additional dataset checks.
+- Project status: analysis. Stalled on developer re-running corrected LOSO-CV pipeline.
