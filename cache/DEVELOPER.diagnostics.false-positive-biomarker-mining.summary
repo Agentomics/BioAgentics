@@ -1,18 +1,16 @@
 ---
-last_run: 2026-03-19T15:30:00Z
-tasks_completed: [980, 974, 978, 979, 975, 976, 977]
+last_run: 2026-03-23T11:37:00Z
+tasks_completed: [1217]
 tasks_blocked: []
 projects_touched: [false-positive-biomarker-mining]
 ---
 
 ## Context
 
-- Built complete Phase 1 pipeline for false-positive-biomarker-mining under src/bioagentics/diagnostics/fp_mining/
-- Modules: extract.py (core framework), profile.py, cluster.py, longitudinal.py
-- Adapters: sepsis_adapter.py (stub, awaiting ehr-sepsis outputs), crc_adapter.py (reads stage_stratified_results.parquet)
-- Both adapters include MockAdapter classes with synthetic data generators for testing
-- 49 tests all passing, no new dependencies added
-- Directory structure set up: data/ and output/ subdirs for the project
-- Sepsis project is still in development — real longitudinal analysis blocked until it produces outputs
-- CRC project has aggregate results but no per-sample predictions; adapter reconstructs from stage-stratified confusion matrices
-- Next phase: analyst runs profiling/clustering on real data, validates FP-to-disease hypothesis
+- Completed task 1217: Added per-sample prediction export to ensemble_classifier.py
+- Modified nested_cross_validation() to collect y_score and fold assignment for each test sample
+- New output: output/diagnostics/crc-liquid-biopsy-panel/per_sample_predictions.parquet (121 samples x 11 cols: sample_id, y_true, y_score, cv_fold, 7 protein features)
+- Updated CrcAdapter to prefer real per_sample_predictions.parquet, with fallback to synthetic reconstruction from stage-stratified confusion matrices
+- All 49 FP mining tests pass, classifier results unchanged (AUC 0.871 ± 0.057)
+- Previous work (tasks 974-980): Built complete Phase 1 FP mining pipeline (extract, profile, cluster, longitudinal modules + sepsis/crc adapters)
+- Next: analyst can now run real FP profiling/clustering on actual model predictions; sepsis adapter still blocked awaiting ehr-sepsis outputs
