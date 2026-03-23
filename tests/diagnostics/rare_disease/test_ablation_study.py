@@ -203,6 +203,17 @@ class TestAblationReport:
         assert d["points"][0]["completeness"] == 0.5
         assert d["points"][0]["metrics"]["mrr"] == 0.6
 
+    def test_to_dict_includes_reference_targets(self):
+        report = AblationReport(
+            matcher_names=["m1"],
+            points=[AblationPoint(0.5, 0.0, "m1", EvalMetrics())],
+        )
+        d = report.to_dict()
+        assert "reference_targets" in d
+        assert "DeepRare (HPO-only)" in d["reference_targets"]
+        assert d["reference_targets"]["DeepRare (multimodal)"]["recall_at_1"] == 0.706
+        assert d["reference_targets"]["PhenoBrain (human+computer)"]["top10_recall"] == 0.813
+
 
 class TestRunSingleDimensionAblation:
     def test_stratifies_by_completeness(self):

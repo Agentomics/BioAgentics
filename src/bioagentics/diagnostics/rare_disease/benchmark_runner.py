@@ -28,6 +28,16 @@ logger = logging.getLogger(__name__)
 
 OUTPUT_DIR = REPO_ROOT / "output" / "diagnostics" / "rare-disease-phenotype-matcher"
 
+# External SOTA reference targets for side-by-side comparison in reports.
+# Sources: DeepRare (Nature 2026, doi:10.1038/s41586-025-10097-9),
+#          PhenoBrain (npj Digital Medicine, Jan 2025).
+REFERENCE_TARGETS = {
+    "DeepRare (HPO-only)": {"recall_at_1": 0.644},
+    "DeepRare (multimodal)": {"recall_at_1": 0.706},
+    "PhenoBrain (standalone)": {"top10_recall": 0.654},
+    "PhenoBrain (human+computer)": {"top10_recall": 0.813},
+}
+
 
 @dataclass
 class BenchmarkResult:
@@ -47,9 +57,17 @@ class BenchmarkReport:
     n_total_cases: int = 0
 
     def comparison_table(self) -> str:
-        """Generate a formatted comparison table."""
+        """Generate a formatted comparison table with SOTA reference lines."""
         model_metrics = {r.matcher_name: r.metrics for r in self.results}
-        return compare_models(model_metrics)
+        table = compare_models(model_metrics)
+        # Append reference targets for side-by-side comparison
+        ref_lines = [
+            "",
+            "Reference targets (external SOTA):",
+            f"  DeepRare Recall@1: 64.4% (HPO-only), 70.6% (multimodal)",
+            f"  PhenoBrain Top-10 recall: 0.654 (standalone), 0.813 (human+computer)",
+        ]
+        return table + "\n".join(ref_lines)
 
     def to_dict(self) -> dict:
         """Serialize to dict for JSON output."""
@@ -63,6 +81,7 @@ class BenchmarkReport:
                 }
                 for r in self.results
             ],
+            "reference_targets": REFERENCE_TARGETS,
         }
 
 

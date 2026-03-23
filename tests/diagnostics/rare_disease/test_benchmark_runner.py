@@ -10,6 +10,7 @@ import pytest
 from bioagentics.diagnostics.rare_disease.benchmark_runner import (
     BenchmarkReport,
     BenchmarkResult,
+    REFERENCE_TARGETS,
     make_ensemble_rank_fn,
     make_ic_rank_fn,
     run_benchmark,
@@ -132,6 +133,31 @@ class TestBenchmarkReport:
         assert d["n_cases"] == 5
         assert len(d["results"]) == 1
         assert d["results"][0]["matcher"] == "m1"
+
+    def test_to_dict_includes_reference_targets(self):
+        report = BenchmarkReport(
+            benchmark_name="test",
+            n_total_cases=5,
+            results=[BenchmarkResult("m1", EvalMetrics(n_cases=5))],
+        )
+        d = report.to_dict()
+        assert "reference_targets" in d
+        assert "DeepRare (HPO-only)" in d["reference_targets"]
+        assert d["reference_targets"]["DeepRare (HPO-only)"]["recall_at_1"] == 0.644
+        assert "PhenoBrain (standalone)" in d["reference_targets"]
+        assert d["reference_targets"]["PhenoBrain (standalone)"]["top10_recall"] == 0.654
+
+    def test_comparison_table_includes_references(self):
+        report = BenchmarkReport(
+            results=[
+                BenchmarkResult("m1", EvalMetrics(n_cases=5, top1_accuracy=0.5)),
+            ],
+            n_total_cases=5,
+        )
+        table = report.comparison_table()
+        assert "DeepRare" in table
+        assert "PhenoBrain" in table
+        assert "64.4%" in table
 
 
 class TestMakeEnsembleRankFn:

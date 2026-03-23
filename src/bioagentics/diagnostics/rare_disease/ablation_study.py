@@ -37,6 +37,16 @@ logger = logging.getLogger(__name__)
 
 OUTPUT_DIR = REPO_ROOT / "output" / "diagnostics" / "rare-disease-phenotype-matcher"
 
+# External SOTA reference targets for contextualizing ablation results.
+# Sources: DeepRare (Nature 2026, doi:10.1038/s41586-025-10097-9),
+#          PhenoBrain (npj Digital Medicine, Jan 2025).
+REFERENCE_TARGETS = {
+    "DeepRare (HPO-only)": {"recall_at_1": 0.644},
+    "DeepRare (multimodal)": {"recall_at_1": 0.706},
+    "PhenoBrain (standalone)": {"top10_recall": 0.654},
+    "PhenoBrain (human+computer)": {"top10_recall": 0.813},
+}
+
 
 @dataclass
 class AblationConfig:
@@ -146,6 +156,7 @@ class AblationReport:
                 }
                 for p in self.points
             ],
+            "reference_targets": REFERENCE_TARGETS,
         }
 
 
