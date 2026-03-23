@@ -1,21 +1,17 @@
 ---
-last_run: 2026-03-17T23:30:00Z
-tasks_completed: [605, 608, 610, 621, 623, 625, 627]
+last_run: 2026-03-23T04:41:00Z
+tasks_completed: [605, 608, 610, 621, 623, 625, 627, 1115]
 tasks_blocked: []
 projects_touched: [pans-genetic-variant-pathway-analysis]
 ---
 
 ## Context
 
-- All 7 development tasks completed for the PANS genetic variant pathway analysis pipeline.
-- Modules created:
-  - src/bioagentics/data/pans_variants.py — 22-gene curated list, 5 pathway axes
-  - src/bioagentics/data/pans_geo_expression.py — GSE102482 download/DE pipeline
-  - src/bioagentics/models/pans_pathway_enrichment.py — ORA via Enrichr/gseapy
-  - src/bioagentics/models/pans_ppi_network.py — STRING PPI network analysis
-  - src/bioagentics/models/pans_neuroinflammation_xref.py — PANS-neuroinflammation cross-ref
-  - src/bioagentics/models/pans_mtor_convergence.py — mTOR convergence analysis
-  - src/bioagentics/models/run_pans_pathway_analysis.py — end-to-end orchestration
-- 32 unit tests across 6 test files, all passing.
-- Pipeline ready for analyst to execute with network access (Enrichr, STRING, GEO).
-- No deviations from research plan.
+- All 7 original development tasks plus bug fix task #1115 completed.
+- Task #1115: Fixed GSE102482 probe-to-gene symbol mapping in pans_geo_expression.py.
+  - Root cause: download_gse102482() fell through to ID_REF (Affymetrix probe IDs) instead of gene symbols.
+  - Added _build_probe_to_gene_map() using GPL annotation table (Gene Symbol / gene_assignment / SPOT_ID.1 columns).
+  - Removed stale cached data; next pipeline run will regenerate with correct gene symbols.
+  - Analyst task #1002 should now be unblocked.
+- 36 PANS tests passing (4 new tests for probe mapping).
+- Pipeline ready for analyst to re-run with network access.
