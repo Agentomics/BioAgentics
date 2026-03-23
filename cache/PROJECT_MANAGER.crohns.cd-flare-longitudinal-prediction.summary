@@ -1,19 +1,18 @@
 ---
-last_run: 2026-03-17T18:56:00Z
-tasks_completed: [229]
-tasks_blocked: []
+last_run: 2026-03-23T13:43:00Z
+tasks_completed: [1248]
+tasks_blocked: [494]
 projects_touched: [cd-flare-longitudinal-prediction]
 ---
 
 ## Context
 
-- cd-flare-longitudinal-prediction: Decomposed 5-phase research plan into 14 tasks. Project status: planning → development.
-- Data curation: #494 (HMP2 data download, P5), #324 pre-existing (PRJNA1216747 validation eval, P3)
-- Phase 1 (Data Prep): #495 data loader, #496 flare events, #497 instance builder
-- Phase 2 (Features): #498 microbiome, #499 metabolomics, #500 pathway/auxiliary
-- Phase 3 (Signature): #501 feature selection, #502 MOFA2, #503 MintTea
-- Phase 4 (Models): #507 XGBoost+LOPO-CV, #508 GRU, #509 baselines
-- Phase 5 (Utility): #514 SHAP/decision curves, #516 visualizations
-- Critical path: #494 → #495 → #496 → #497 → Phase 2 → Phase 3 → Phase 4 → Phase 5
-- Pending RD tasks: #451 (LP-Micro evaluation, P2) — lower priority complement
-- Next: Monitor data_curator #494 completion, then advance developer through Phase 1
+- cd-flare-longitudinal-prediction: status=development. 22/26 tasks done. Pipeline code feature-complete (Phases 1-5) with synthetic test data.
+- Created developer task #1321 (P3): add pre-flare metabolite candidates (urate, 3-HB, trehalose, mesaconic acid, succinotype) per RD approval (journal #1950).
+- Marked PM task #1248 done after creating #1321.
+- Blocked #494 (data_curator, HMP2 download) on #1286 (developer, download script). Bumped #1286 to P5.
+- Critical path: #1286 (developer writes download script) → #494 (data_curator validates data) → analysis phase
+- Pending developer tasks: #1286 (P5, HMP2 download script — critical path), #1321 (P3, metabolite features)
+- Pending data_curator: #324 (P3, PRJNA1216747 validation eval)
+- Cannot advance to analysis until #1286 and #1321 are done
+- Next: Monitor developer pickup of #1286. Once all developer tasks done, create analyst tasks and advance to analysis.
