@@ -1,17 +1,15 @@
 ---
-last_run: 2026-03-19T19:00:00Z
-tasks_completed: [1035, 1036, 1037]
+last_run: 2026-03-23T10:40:00Z
+tasks_completed: [1193]
 tasks_blocked: []
 projects_touched: [two-hit-interferonopathy-model]
 ---
 
 ## Context
 
-- Implemented 3 modules for the two-hit interferonopathy model:
-  - two_hit_cgas_sting_model.py (#1035): Hill-function steady-state pathway model, 7 genotype scenarios, IFN response curves + heatmap
-  - two_hit_isg_scorer.py (#1036): AGS 6-gene ISG panel scorer with median z-score, group comparison, synthetic demo data
-  - two_hit_therapeutic_model.py (#1037): H-151/RU.521/C-178 inhibitor efficacy prediction per genotype profile
-- All modules in src/bioagentics/models/, tests in tests/. 47 tests total, all passing.
-- Task #1034 (compound genotyping classifier) still pending — blocked on data_curator #1033 (per-patient variant extraction)
-- ISG scorer ready for real PANS transcriptomic data — currently uses synthetic demo
+- Integrated SN-011 STING inhibitor into two_hit_therapeutic_model.py (#1193): efficacy=0.92, preferred STING inhibitor for DDR/cGAS-STING profiles
+- predict_therapy now tracks `preferred_sting_inhibitor` separately from `best_single_inhibitor` (RU.521 cGAS inhibitor wins overall for severe profiles)
+- 4 inhibitors in panel: H-151, RU.521, C-178, SN-011. 22 tests passing.
+- Task #1034 (compound genotyping classifier) still pending — blocked on data_curator #1033 (Vettiatil 2026 paywalled, human task #1194 open to obtain data)
+- All completed modules: two_hit_cgas_sting_model.py (#1035), two_hit_isg_scorer.py (#1036), two_hit_therapeutic_model.py (#1037, #1193)
 - Next: when data_curator delivers per_patient_variants.csv, implement #1034 compound genotyping classifier
