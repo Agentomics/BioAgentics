@@ -96,14 +96,25 @@ class TreatmentResponseAnalyzer:
         df = self.dataset.to_dataframe()
         result = TreatmentAnalysisResult(treatment=treatment)
 
-        # Filter by treatment keyword in notes if available
-        if "notes" in df.columns:
-            treatment_mask = df["notes"].fillna("").str.contains(treatment, case=False, na=False)
+        # Filter by the dedicated 'treatment' column first, then fall back
+        # to keyword search in 'notes'. If neither source has data, skip
+        # this treatment entirely instead of using the full dataset.
+        filtered = False
+        if "treatment" in df.columns:
+            treatment_mask = df["treatment"].fillna("").str.lower() == treatment.lower()
             if treatment_mask.any():
                 df = df[treatment_mask]
-            else:
-                # Fall back to using all data (treatment-agnostic analysis)
-                logger.debug("No explicit '%s' annotations found — using full dataset", treatment)
+                filtered = True
+
+        if not filtered and "notes" in df.columns:
+            notes_mask = df["notes"].fillna("").str.contains(treatment, case=False, na=False)
+            if notes_mask.any():
+                df = df[notes_mask]
+                filtered = True
+
+        if not filtered:
+            logger.warning("No '%s' annotations found in treatment or notes columns — skipping", treatment)
+            return result
 
         for analyte in df["analyte_name"].unique():
             analyte_df = df[df["analyte_name"] == analyte]

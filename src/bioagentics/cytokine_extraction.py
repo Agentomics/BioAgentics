@@ -109,6 +109,7 @@ class CytokineRecord(BaseModel):
     mean_or_median: float = Field(description="Central tendency value (mean or median)")
     sd_or_iqr: float | None = Field(default=None, ge=0, description="Spread measure (SD or IQR)")
     p_value: float | None = Field(default=None, ge=0, le=1, description="Reported p-value")
+    treatment: str | None = Field(default=None, description="Treatment received (IVIG, plasmapheresis, antibiotics, etc.)")
     notes: str | None = Field(default=None, description="Free-text notes")
 
     @field_validator("analyte_name")
@@ -219,6 +220,11 @@ class CytokineDataset:
         """Return a subset with only the given condition."""
         return CytokineDataset([r for r in self.records if r.condition == condition])
 
+    def filter_treatment(self, treatment: str) -> CytokineDataset:
+        """Return a subset where the treatment field matches (case-insensitive)."""
+        t_lower = treatment.lower()
+        return CytokineDataset([r for r in self.records if r.treatment and r.treatment.lower() == t_lower])
+
     def analytes(self) -> list[str]:
         """List unique analyte names across all records."""
         return sorted({r.analyte_name for r in self.records})
@@ -281,7 +287,8 @@ class CytokineDataset:
 
 TEMPLATE_COLUMNS = [
     "study_id", "pmid", "analyte_name", "measurement_method", "sample_type",
-    "condition", "sample_size_n", "mean_or_median", "sd_or_iqr", "p_value", "notes",
+    "condition", "sample_size_n", "mean_or_median", "sd_or_iqr", "p_value",
+    "treatment", "notes",
 ]
 
 

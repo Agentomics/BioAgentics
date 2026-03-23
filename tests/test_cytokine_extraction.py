@@ -180,4 +180,56 @@ def test_write_template_csv(tmp_path):
     df = pd.read_csv(out)
     assert "study_id" in df.columns
     assert "analyte_name" in df.columns
+    assert "treatment" in df.columns
     assert len(df) == 0
+
+
+def test_treatment_field():
+    r = CytokineRecord(
+        study_id="T2024",
+        analyte_name="IL-6",
+        measurement_method="ELISA",
+        sample_type="serum",
+        condition="flare",
+        sample_size_n=15,
+        mean_or_median=12.0,
+        treatment="IVIG",
+    )
+    assert r.treatment == "IVIG"
+
+
+def test_treatment_field_optional():
+    r = CytokineRecord(
+        study_id="T2024",
+        analyte_name="IL-6",
+        measurement_method="ELISA",
+        sample_type="serum",
+        condition="flare",
+        sample_size_n=15,
+        mean_or_median=12.0,
+    )
+    assert r.treatment is None
+
+
+def test_filter_treatment():
+    records = [
+        CytokineRecord(
+            study_id="A", analyte_name="IL-6", measurement_method="ELISA",
+            sample_type="serum", condition="flare", sample_size_n=10,
+            mean_or_median=10.0, treatment="IVIG",
+        ),
+        CytokineRecord(
+            study_id="B", analyte_name="IL-6", measurement_method="ELISA",
+            sample_type="serum", condition="flare", sample_size_n=10,
+            mean_or_median=12.0, treatment="plasmapheresis",
+        ),
+        CytokineRecord(
+            study_id="C", analyte_name="IL-6", measurement_method="ELISA",
+            sample_type="serum", condition="flare", sample_size_n=10,
+            mean_or_median=14.0,
+        ),
+    ]
+    ds = CytokineDataset(records)
+    filtered = ds.filter_treatment("IVIG")
+    assert len(filtered) == 1
+    assert filtered.records[0].study_id == "A"
