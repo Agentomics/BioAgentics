@@ -130,14 +130,17 @@ def nested_cross_validation(
     X: np.ndarray,
     y: np.ndarray,
     feature_names: list[str],
+    sample_ids: list[str] | None = None,
     n_outer: int = 5,
     n_inner: int = 5,
     random_state: int = 42,
-) -> dict:
+) -> tuple[dict, pd.DataFrame]:
     """Run nested cross-validation with ensemble classifier.
 
     Outer loop: performance estimation (unbiased)
     Inner loop: hyperparameter tuning
+
+    Returns (results dict, per-sample predictions DataFrame).
     """
     outer_cv = StratifiedKFold(n_splits=n_outer, shuffle=True, random_state=random_state)
 
@@ -145,6 +148,10 @@ def nested_cross_validation(
     outer_sensitivities = []
     outer_specificities = []
     fold_details = []
+
+    # Collect per-sample predictions across all outer folds
+    sample_fold = np.full(len(y), -1, dtype=int)
+    sample_scores = np.full(len(y), np.nan)
 
     for fold, (train_idx, test_idx) in enumerate(outer_cv.split(X, y)):
         logger.info("Outer fold %d/%d", fold + 1, n_outer)
@@ -199,6 +206,10 @@ def nested_cross_validation(
         y_prob = ensemble.predict_proba(X_test_s)[:, 1]
         auc = roc_auc_score(y_test, y_prob)
 
+        # Record per-sample predictions for this fold
+        sample_fold[test_idx] = fold
+        sample_scores[test_idx] = y_prob
+
         # Sensitivity at 95% specificity
         fpr, tpr, _ = roc_curve(y_test, y_prob)
         spec_95_idx = np.searchsorted(1 - fpr[::-1], 0.95)
@@ -230,6 +241,19 @@ def nested_cross_validation(
             "  Fold %d: AUC=%.3f, sens@95spec=%.3f, best_sens=%.3f, best_spec=%.3f",
             fold + 1, auc, sens_at_95_spec, best_sens, best_spec,
         )
+
+    # Build per-sample predictions DataFrame
+    if sample_ids is None:
+        sample_ids = [f"sample_{i:04d}" for i in range(len(y))]
+    per_sample = pd.DataFrame({
+        "sample_id": sample_ids,
+        "y_true": y.astype(int),
+        "y_score": sample_scores,
+        "cv_fold": sample_fold,
+    })
+    # Append feature columns
+    for i, fname in enumerate(feature_names):
+        per_sample[fname] = X[:, i]
 
     # Aggregate results
     results = {
@@ -264,7 +288,7 @@ def nested_cross_validation(
         results["std_sensitivity_at_95spec"],
     )
 
-    return results
+    return results, per_sample
 
 
 def run_classifier(
@@ -274,18 +298,27 @@ def run_classifier(
 ) -> dict:
     """Run ensemble classifier pipeline."""
     output_path = output_dir / "classifier_results.json"
-    if output_path.exists() and not force:
+    predictions_path = output_dir / "per_sample_predictions.parquet"
+    if output_path.exists() and predictions_path.exists() and not force:
         logger.info("Loading cached classifier results from %s", output_path)
         with open(output_path) as f:
             return json.load(f)
 
     X_df, y, feature_names = load_panel_features(output_dir, data_dir)
-    results = nested_cross_validation(X_df.values, y, feature_names)
+    results, per_sample = nested_cross_validation(
+        X_df.values, y, feature_names, sample_ids=X_df.index.tolist(),
+    )
 
     output_dir.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
     logger.info("Saved classifier results to %s", output_path)
+
+    per_sample.to_parquet(predictions_path, index=False)
+    logger.info(
+        "Saved per-sample predictions (%d samples x %d cols) to %s",
+        len(per_sample), len(per_sample.columns), predictions_path,
+    )
 
     return results
 

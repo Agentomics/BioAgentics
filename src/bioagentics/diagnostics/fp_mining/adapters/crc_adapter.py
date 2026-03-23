@@ -34,16 +34,35 @@ class CrcAdapter:
         self.output_dir = output_dir or CRC_OUTPUT_DIR
 
     def load_predictions(self) -> pd.DataFrame:
-        """Load CRC classifier predictions with methylation/protein features.
+        """Load CRC classifier predictions with features.
 
-        Combines stage-stratified results with validated marker features.
+        Prefers real per-sample predictions from the ensemble classifier
+        (per_sample_predictions.parquet). Falls back to reconstructing
+        synthetic sample-level data from stage-stratified confusion matrices.
 
         Raises:
             FileNotFoundError: If required output files are missing.
         """
+        predictions_path = self.output_dir / "per_sample_predictions.parquet"
+        if predictions_path.exists():
+            return self._load_real_predictions(predictions_path)
+        return self._load_reconstructed_predictions()
+
+    def _load_real_predictions(self, path: Path) -> pd.DataFrame:
+        """Load real per-sample predictions exported by the ensemble classifier."""
+        df = pd.read_parquet(path)
+        logger.info(
+            "Loaded %d real per-sample CRC predictions (%d cols) from %s",
+            len(df), len(df.columns), path,
+        )
+        return df
+
+    def _load_reconstructed_predictions(self) -> pd.DataFrame:
+        """Reconstruct sample-level predictions from stage-stratified results.
+
+        Fallback when per_sample_predictions.parquet is not yet available.
+        """
         stage_path = self.output_dir / "stage_stratified_results.parquet"
-        markers_path = self.output_dir / "cfdna_validated_markers.parquet"
-        panel_path = self.output_dir / "optimized_panel.json"
         classifier_path = self.output_dir / "classifier_results.json"
 
         for path in [stage_path, classifier_path]:
@@ -53,49 +72,23 @@ class CrcAdapter:
                     f"The crc-liquid-biopsy-panel pipeline must be run first."
                 )
 
-        # Load stage-stratified results for ground truth structure
         stage_results = pd.read_parquet(stage_path)
 
-        # Load classifier results for model performance context
-        with open(classifier_path) as f:
-            classifier = json.load(f)
-
-        # Load panel feature names
-        panel_features = []
-        if panel_path.exists():
-            with open(panel_path) as f:
-                panel = json.load(f)
-            panel_features = panel.get("optimal_panel", {}).get("features", [])
-
-        # Load validated markers for feature vectors
-        marker_features = {}
-        if markers_path.exists():
-            markers = pd.read_parquet(markers_path)
-            # Use cfDNA deltas as feature representation
-            if "cfdna_delta" in markers.columns:
-                top_markers = markers.nlargest(50, "combined_score")
-                for _, row in top_markers.iterrows():
-                    cpg_id = row.name if isinstance(row.name, str) else f"cpg_{row.name}"
-                    marker_features[f"meth_{cpg_id}"] = row.get("cfdna_delta", 0.0)
-
-        # Reconstruct sample-level predictions from stage-stratified data
-        # Each stage row has tp, fn, tn, fp counts — we expand these
         samples = []
         for _, stage_row in stage_results.iterrows():
             stage = stage_row.get("stage", "Unknown")
             stage_num = int(stage_row.get("stage_numeric", 0))
+
+            if stage_num < 0:
+                continue
+
             n_tp = int(stage_row.get("tp", 0))
             n_fn = int(stage_row.get("fn", 0))
             n_tn = int(stage_row.get("tn", 0))
             n_fp = int(stage_row.get("fp", 0))
 
-            # Generate synthetic per-sample scores based on stage-level metrics
-            auc = float(stage_row.get("auc", 0.5))
-            sens = float(stage_row.get("sensitivity_at_95spec", 0.0))
-
             rng = np.random.default_rng(stage_num)
 
-            # True positives: high scores
             for i in range(n_tp):
                 samples.append({
                     "sample_id": f"crc_{stage}_{i:04d}_tp",
@@ -105,7 +98,6 @@ class CrcAdapter:
                     "stage_numeric": stage_num,
                 })
 
-            # False negatives: low scores, truly positive
             for i in range(n_fn):
                 samples.append({
                     "sample_id": f"crc_{stage}_{i:04d}_fn",
@@ -115,7 +107,6 @@ class CrcAdapter:
                     "stage_numeric": stage_num,
                 })
 
-            # True negatives: low scores
             for i in range(n_tn):
                 samples.append({
                     "sample_id": f"crc_{stage}_{i:04d}_tn",
@@ -125,7 +116,6 @@ class CrcAdapter:
                     "stage_numeric": stage_num,
                 })
 
-            # False positives: high scores, truly negative
             for i in range(n_fp):
                 samples.append({
                     "sample_id": f"crc_{stage}_{i:04d}_fp",
@@ -141,7 +131,8 @@ class CrcAdapter:
         df = pd.DataFrame(samples)
         logger.info(
             "Reconstructed %d CRC samples from stage-stratified results "
-            "(pos=%d, neg=%d)",
+            "(pos=%d, neg=%d) — run ensemble_classifier with --force to "
+            "generate real per-sample predictions",
             len(df),
             int(df["y_true"].sum()),
             int((df["y_true"] == 0).sum()),
