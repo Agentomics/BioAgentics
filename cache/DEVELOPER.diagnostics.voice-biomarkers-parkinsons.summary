@@ -7,13 +7,15 @@ projects_touched: [voice-biomarkers-parkinsons]
 
 ## Context
 
-- voice-biomarkers-parkinsons: Implemented Phase 5 quality_tiers module (robustness/quality_tiers.py).
-- New file: robustness/quality_tiers.py — assign_quality_tier (spectral flatness + clipping + bandwidth), evaluate_by_quality_tier (per-tier AUC with JSON output).
-- New test file: tests/test_voice_pd_robustness.py — 19 tests covering augmentation, quality tiers, and cross-dataset evaluation.
-- All 56 voice_pd tests pass (19 new + 37 existing).
-- Phase 5 robustness module now complete: augmentation.py, cross_dataset.py, quality_tiers.py all implemented and tested.
+- voice-biomarkers-parkinsons: Implemented Phase 6 mobile deployment module.
+- New files in mobile/:
+  - converter.py — export_onnx (PyTorch→ONNX), convert_onnx_to_tflite (ONNX→TFLite, optional tf dep), run_pytorch_inference, run_tflite_inference, benchmark_inference.
+  - protocol.py — 30-sec voice task protocol (10s sustained vowel + 5s pause + 15s sentence reading), validate_recording, segment_recording, extract_vowel_clip, get_protocol_description.
+  - benchmark.py — benchmark_end_to_end (full pipeline: clip→spectrogram→inference with per-stage timing).
+- New test file: tests/test_voice_pd_mobile.py — 23 tests covering converter, protocol, and benchmark.
+- All 73 voice_pd tests pass (23 new + 50 existing).
+- Phase 6 mobile module now complete: converter.py, protocol.py, benchmark.py all implemented and tested.
 - Codebase status:
-  - DONE: config, utils, preprocessing, all 4 feature extractors, unified pipeline, data_loaders (5 datasets), models/classical (GBM), deep/ (MobileNetV2 CNN), models/ensemble (late/early/stacked fusion), robustness/ (augmentation, cross-dataset eval, quality tiers)
-  - STUB: mobile/ (TFLite)
-- Next priority: Phase 6 — mobile deployment module (TFLite conversion, inference benchmarking, voice task protocol).
+  - DONE: config, utils, preprocessing, all 4 feature extractors, unified pipeline, data_loaders (5 datasets), models/classical (GBM), deep/ (MobileNetV2 CNN), models/ensemble (late/early/stacked fusion), robustness/ (augmentation, cross-dataset eval, quality tiers), mobile/ (converter, protocol, benchmark)
+  - All 7 methodology phases from research plan are now implemented.
 - Note: MCP tools not available — could not check/update agent-comms tasks or write journal entry.
