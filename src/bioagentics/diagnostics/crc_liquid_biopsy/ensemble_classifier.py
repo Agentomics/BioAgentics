@@ -80,7 +80,7 @@ def load_panel_features(
         raise ValueError("No protein probes mapped from panel features")
 
     # Build X matrix (samples x features)
-    samples = meta.index.tolist()
+    samples = meta.index.intersection(expr.columns).tolist()
     X = expr.loc[probe_ids, samples].T.values.astype(float)
 
     # For methylation features, create synthetic features based on cfDNA stats
@@ -91,7 +91,7 @@ def load_panel_features(
             cfdna = pd.read_parquet(cfdna_path)
             cfdna_meta = pd.read_parquet(cfdna_meta_path)
             rng = np.random.default_rng(42)
-            labels_tmp = (meta["condition"] == "CRC").astype(int).values
+            labels_tmp = (meta.loc[samples, "condition"] == "CRC").astype(int).values
             meth_X = np.zeros((len(samples), len(meth_features)))
             found_meth_cols: list[int] = []
             for i, mf in enumerate(meth_features):
