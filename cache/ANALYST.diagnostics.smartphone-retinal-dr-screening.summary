@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-23T05:14:00Z
+tasks_completed: []
+tasks_blocked: [1196, 1197, 1198, 1199, 1200]
+projects_touched: [smartphone-retinal-dr-screening]
+---
+
+## Context
+
+- All 5 analyst tasks (#1196-#1200) BLOCKED on missing datasets. No data on disk.
+- Kaggle CLI installed (v2.0.0) but no API credentials (~/.kaggle/kaggle.json missing). Returns 403.
+- IDRiD, Messidor-2, ODIR-5K also need manual download. mBRSET blocked on PhysioNet creds (task #428).
+- Created task #1223 (P5, data_curator) to acquire Kaggle credentials and download APTOS + EyePACS.
+- Partial work on #1200: Architecture profiling complete, saved to results/architecture_comparison.json.
+  - MobileNetV3-Small @224: 1.52M params, 5.9MB, CPU 85ms, MPS 15ms — meets all deployment targets.
+  - EfficientNet-B0 @512: 4.01M params, 15.6MB, CPU 454ms — borderline on latency.
+  - EfficientNet-B4 @512: 17.56M params, 67.7MB, CPU 1125ms — teacher model only.
+- Journal #1860 records all findings and blockers.
+- Next: resume once data_curator completes #1223. Pipeline: download → preprocess → splits → train → evaluate.
