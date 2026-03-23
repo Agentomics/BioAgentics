@@ -351,9 +351,11 @@ def main() -> None:
         summary_lines.append(f"  {report['gene']} (J#{report['journal_id']}): {report['rationale']}")
         for res in report["results"]:
             sig = " ***SIG***" if res["significant"] else ""
+            fdr_val = res["fdr"]
+            fdr_str = "N/A" if fdr_val is None else f"{fdr_val:.3e}"
             summary_lines.append(
                 f"    {res['cancer_type']}: d={res['cohens_d']:.3f}, "
-                f"FDR={res['fdr']:.3e if res['fdr'] is not None else 'N/A'}{sig}"
+                f"FDR={fdr_str}{sig}"
             )
 
     summary_lines.append("")
