@@ -83,6 +83,17 @@ class TestMatchCompoundName:
         assert ctrl is not None
         assert ctrl.pathway == "JAK-STAT"
 
+    def test_harmine_match(self):
+        ctrl = match_compound_name("harmine")
+        assert ctrl is not None
+        assert ctrl.name == "harmine"
+        assert ctrl.pathway == "TWIST1/beta-carboline"
+
+    def test_harmine_dyrk1a_confound_documented(self):
+        ctrl = match_compound_name("harmine")
+        assert ctrl is not None
+        assert "DYRK1A" in ctrl.mechanism
+
 
 class TestValidatePositiveControls:
     def _make_ranked_results(self) -> pd.DataFrame:

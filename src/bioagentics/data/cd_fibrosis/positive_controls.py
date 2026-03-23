@@ -145,6 +145,19 @@ POSITIVE_CONTROLS: list[PositiveControl] = [
         evidence="STENOVA Phase 2a met primary and key secondary endpoints in "
         "fibrostenotic CD. Directly targets ALK5/SMAD2/3 axis in fibroblasts.",
     ),
+    # TWIST1 inhibitor (harmine — beta-carboline alkaloid)
+    PositiveControl(
+        name="harmine",
+        aliases=["harmine"],
+        mechanism="TWIST1 transcription factor inhibitor (beta-carboline alkaloid). "
+        "CONFOUND: also inhibits DYRK1A kinase — interpret results cautiously.",
+        pathway="TWIST1/beta-carboline",
+        evidence="PMID 39024569: harmine inhibits TWIST1 in fibroblasts, ameliorated "
+        "fibrosis in mouse model. FAP+TWIST1+ fibroblasts are highest ECM-producing "
+        "subtype in fibrotic CD intestine (JCI 2024). Present in L1000 GSE92742 "
+        "(6 profiles: FIBRNPC, NEU, NPC). DYRK1A off-target is a known confound.",
+        expected_rank_percentile=0.20,
+    ),
 ]
 
 # Group positive controls by pathway class for validation reporting
@@ -156,6 +169,7 @@ PATHWAY_CLASSES = {
     "epigenetic/HDAC": ["vorinostat", "trichostatin-a"],
     "miR-124": ["obefazimod"],
     "ALK5/TGF-beta": ["ontunisertib"],
+    "TWIST1/beta-carboline": ["harmine"],
 }
 
 # TL1A benchmark: compounds that should rank in top 15% against the
