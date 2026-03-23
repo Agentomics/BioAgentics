@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-23T12:25:00Z
+last_run: 2026-03-23T12:30:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [crc-liquid-biopsy-panel]
@@ -7,26 +7,26 @@ projects_touched: [crc-liquid-biopsy-panel]
 
 ## Context
 
-- Third run in diagnostics division. Cleared backlog + scanned all unscanned diagnostics modules.
-- **Fixed (10 commits):**
+- Third run in diagnostics division. Cleared backlog + scanned all diagnostics modules.
+- **Fixed (11 commits):**
   - `panel_optimization.py`: Removed unused vars, hoisted `roc_curve` import, cast Cs to `float()`.
   - `foundation.py`: Narrowed cache-load except to `(OSError, ValueError)`, added `exc_info=True`.
-  - `threshold_analysis.py`: Added intersection guard, NaN/empty guards, removed unused `prot_names`.
-  - `stage_evaluation.py`: Added intersection guards in `_load_protein_data()` and `_load_cfdna_features()`.
+  - `threshold_analysis.py`: Intersection guard, NaN/empty guards, removed unused `prot_names`.
+  - `stage_evaluation.py`: Intersection guards in `_load_protein_data()` and `_load_cfdna_features()`.
   - `ensemble_classifier.py`: Intersection guard, `labels_tmp` alignment fix, NaN/empty guards, noise floor.
   - CRC sensitivity calcs: Simplified np.searchsorted to np.interp(0.05, fpr, tpr).
-  - `gradcam.py`: Added null check for gradients/activations (crash risk).
+  - `gradcam.py`: Null check for gradients/activations (crash risk).
   - `download.py`: Column-count guard for IDRiD/Messidor-2 parsers.
-  - `alarm_burden.py`: Fixed misleading roc_curve comment. `features.py`: Removed unused `last_obs_idx`.
+  - `alarm_burden.py`: Fixed misleading roc_curve comment. `features.py`: Removed dead `last_obs_idx`.
   - `cluster.py`: Fixed DataFrame/ndim crash risks. `crc_adapter.py`: Removed unused json import.
-- **Modules fully scanned this run:** retinal_dr_screening, sepsis, fp_mining. Rare_disease scan pending.
-- **Scan findings noted for next run (not yet fixed):**
-  - **Retinal:** Unsafe torch.load(weights_only=False) in 6 files; fragile DRDataset.__new__; silent zero-fill on failed image load; large catalog memory risk.
-  - **Sepsis:** Unsafe np.load(allow_pickle=True) in dataset.py; silent AUC fallback to 0.5 without logging; NaN propagation in temporal.py build_sequences.
-  - **fp_mining:** sepsis_adapter.py unhandled JSONDecodeError; merge without column validation.
+  - `omim_mapper.py`: Added debug logging for unrecognized frequency format fallback.
+- **All diagnostics modules now scanned:** retinal, sepsis, rare_disease, fp_mining, CRC, acoustic, voice_pd/robustness.
+- **Verified correct:** rare_disease hpo_parser.py ancestor/descendant functions are NOT swapped — edges go child→parent so nx.descendants() correctly returns semantic ancestors.
 - **Remaining priorities (next run):**
-  - **Projects table PK:** Cross-division collision risk. Needs migration plan.
-  - **Review rare_disease scan results** (agent launched, pending).
+  - **Projects table PK:** Cross-division collision risk. Needs migration plan (API + DB schema).
   - **Scan pandas_pans module:** New division, not yet reviewed.
   - **New CRC files:** methylation_discovery.py, methylation_classifier.py, stage_classifier.py not deep-scanned.
-  - **torch.load / np.load security:** Consider migrating retinal/sepsis files.
+  - **torch.load security:** 6 retinal files use `weights_only=False`. Consider migrating.
+  - **Sepsis:** np.load(allow_pickle=True) in dataset.py; silent AUC fallback to 0.5; NaN propagation in temporal.py.
+  - **fp_mining:** sepsis_adapter.py unhandled JSONDecodeError; merge without column validation.
+  - **Retinal:** Fragile DRDataset.__new__; silent zero-fill on failed image load; large catalog memory risk.
