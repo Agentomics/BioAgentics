@@ -170,6 +170,50 @@ class TestIEDBBindingPrediction:
         peptides = load_peptides_sampled(tsv, max_peptides=2)
         assert len(peptides) == 2
 
+    def test_api_url_selection_by_mhc_class(self):
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            IEDB_API_URLS,
+        )
+
+        assert "I" in IEDB_API_URLS
+        assert "II" in IEDB_API_URLS
+        assert "mhci" in IEDB_API_URLS["I"]
+        assert "mhcii" in IEDB_API_URLS["II"]
+        assert IEDB_API_URLS["I"] != IEDB_API_URLS["II"]
+
+    def test_call_iedb_api_default_methods(self):
+        """Verify that call_iedb_api selects the correct default method per MHC class."""
+        from unittest.mock import patch, MagicMock
+
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            IEDB_API_URLS,
+            call_iedb_api,
+        )
+
+        mock_resp = MagicMock()
+        mock_resp.text = "allele\tpeptide\tic50\tpercentile_rank\nA*02:01\tACDEFGHIK\t500\t1.5"
+        mock_resp.raise_for_status = MagicMock()
+
+        with patch("src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction.requests.post", return_value=mock_resp) as mock_post:
+            # MHC-I should use netmhcpan and MHC-I URL
+            call_iedb_api(["ACDEFGHIK"], "A*02:01", mhc_class="I")
+            args, kwargs = mock_post.call_args
+            assert args[0] == IEDB_API_URLS["I"]
+            assert kwargs["data"]["method"] == "netmhcpan"
+
+            # MHC-II should use netmhciipan and MHC-II URL
+            call_iedb_api(["ACDEFGHIKLMNPQR"], "DRB1*07:01", mhc_class="II")
+            args, kwargs = mock_post.call_args
+            assert args[0] == IEDB_API_URLS["II"]
+            assert kwargs["data"]["method"] == "netmhciipan"
+
+    def test_supplemental_sets_constant(self):
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            SUPPLEMENTAL_SETS,
+        )
+
+        assert "enn_mrp" in SUPPLEMENTAL_SETS
+
     def test_merge_serotype_predictions(self, tmp_path):
         from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
             PREDICTION_FIELDNAMES,
@@ -203,6 +247,42 @@ class TestIEDBBindingPrediction:
             rows = list(reader)
         assert len(rows) == 2
         assert {r["serotype"] for r in rows} == {"M1", "M3"}
+
+
+    def test_merge_includes_supplemental_sets(self, tmp_path):
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            PREDICTION_FIELDNAMES,
+            merge_serotype_predictions,
+        )
+
+        pred_dir = tmp_path / "binding_predictions"
+        pred_dir.mkdir(parents=True)
+
+        # Create serotype + supplement prediction files
+        for label, pep in [("m1", "AAAAAAA"), ("enn_mrp", "BBBBBBB")]:
+            path = pred_dir / f"{label}_DRB1_07_01_mhc_ii.tsv"
+            with open(path, "w", newline="") as f:
+                writer = csv.DictWriter(f, fieldnames=PREDICTION_FIELDNAMES, delimiter="\t")
+                writer.writeheader()
+                writer.writerow({
+                    "peptide": pep, "allele": "DRB1*07:01", "ic50": 100.0,
+                    "percentile_rank": 0.3, "binding_class": "strong_binder",
+                    "method": "netmhciipan", "source_protein": "test",
+                    "source_accession": "P001", "serotype": label.upper(),
+                    "is_virulence_factor": True,
+                })
+
+        merged = merge_serotype_predictions(
+            serotypes=["M1", "enn_mrp"], mhc_class="II", output_base=tmp_path
+        )
+
+        assert merged.exists()
+        with open(merged) as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            rows = list(reader)
+        assert len(rows) == 2
+        serotypes = {r["serotype"] for r in rows}
+        assert "ENN_MRP" in serotypes
 
 
 class TestDifferentialPresentation:
