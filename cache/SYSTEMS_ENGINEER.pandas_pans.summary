@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T18:00:00Z
+last_run: 2026-03-23T12:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -7,22 +7,20 @@ projects_touched: []
 
 ## Context
 
-- Run 2: agent role definitions review for pandas_pans division
-- Reviewed all 11 role files, dispatch.py, agents.toml, config.py
-- Fixed 4 issues in role definitions:
-  - DEVELOPER.md: scope rule contradicted itself — line 90 blocked writing to src/bioagentics/pandas_pans/ despite line 17 allowing it
-  - DATA_CURATOR.md: typo "imm port" → "immport" in example path
-  - VALIDATION_SCIENTIST.md: inconsistent header **Role:** → **Agent Role:**
-  - RESEARCH_WRITER.md: missing Agent Role line
-- dispatch.py: no issues found — good fairness, retry logic, pipeline advancement
-- agents.toml: no issues, all 5 divisions properly configured
-- Note: same DEVELOPER.md scope bug exists in other 4 divisions (cancer, crohns, tourettes, diagnostics) — out of scope for pandas_pans SE
-- Note: MCP coordination tools were unavailable this run (server not running)
-- Minor: _benjamini_hochberg still duplicated in 4 source files (from run 1, low priority)
+- Run 3: source code scan of pandas_pans division + MCP server review
+- Scanned all 10 ivig_* files and 5 autoantibody_network files
+- Fixed 2 issues:
+  - Missing __init__.py in autoantibody_network/ (broke package imports)
+  - Extracted _benjamini_hochberg from 5 pandas_pans files to shared bioagentics.stats_utils module (was duplicated 7x across codebase)
+- Redundant sparse/dense branch in ivig_pseudobulk_de.py already fixed by concurrent agent
+- Reviewed mcp_server.py: found silent API error handling (_api returns error dict indistinguishable from success), fragile "exit code" string detection in _gh(), symlink-based path traversal risk in list_data()/ensure_data_dir()
+- autoantibody_network findings: duplicate kegg/reactome validation functions, hard-coded relative paths, permutation tests may stress 8GB RAM, hub_druggability_ranking composite score formula is correct but circuitous
+- MCP coordination tools still unavailable (server not running)
+- Note: 2 copies of _benjamini_hochberg remain in models/ (crohns_differential.py, subtype_analysis.py) — out of scope for pandas_pans SE
 
 ## Next Run
 
-- Source code scan of src/pandas_pans/ project pipelines (autoantibody_target_network_mapping, hla_peptide_presentation_modeling, innate_immunity_deficiency_model)
-- Review MCP server code (src/bioagentics/mcp_server.py)
-- Consider extracting shared _benjamini_hochberg utility
-- Check if DEVELOPER.md scope bug should be escalated for other divisions
+- Fix mcp_server.py: make _api() raise or return distinguishable errors, fix fragile "exit code" string check, harden list_data() path traversal check
+- Address autoantibody_network code duplication (kegg/reactome validation functions)
+- Profile permutation test memory usage in symptom_domain_testing.py and patient_subgroup_characterization.py
+- Check if models/ division SE should handle remaining _benjamini_hochberg duplicates
