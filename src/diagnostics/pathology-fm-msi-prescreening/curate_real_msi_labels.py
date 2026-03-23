@@ -27,7 +27,6 @@ sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from bioagentics.models.pathology_msi.msi_labels import (
     MANTIS_MSI_H_THRESHOLD,
-    classify_msi_from_mantis,
     fetch_tcga_clinical_msi,
     print_label_summary,
     save_labels,
@@ -108,11 +107,28 @@ def fetch_cbioportal_msi_scores() -> pd.DataFrame:
     return df
 
 
+def classify_mantis_binary(score: float) -> str:
+    """Classify MSI status from MANTIS score using binary threshold.
+
+    MANTIS (Kautto et al., Bioinformatics 2017) uses a single threshold of 0.4:
+    - MSI-H: >= 0.4
+    - MSS: < 0.4
+
+    Note: MSI-L is defined by PCR-based testing (Bethesda markers), not by
+    computational scores. MANTIS scores in the 0.3-0.4 range are MSS, not MSI-L.
+    """
+    if score >= MANTIS_MSI_H_THRESHOLD:
+        return "MSI-H"
+    return "MSS"
+
+
 def classify_msi_dual_score(
     mantis_score: float | None,
     msisensor_score: float | None,
 ) -> tuple[str, str]:
     """Classify MSI status using both MANTIS and MSIsensor scores.
+
+    Uses binary classification (MSI-H vs MSS) for both computational scores.
 
     Resolution priority:
     1. If both scores agree, use concordant call
@@ -125,7 +141,7 @@ def classify_msi_dual_score(
     msisensor_call = None
 
     if mantis_score is not None and not pd.isna(mantis_score):
-        mantis_call = classify_msi_from_mantis(mantis_score)
+        mantis_call = classify_mantis_binary(mantis_score)
 
     if msisensor_score is not None and not pd.isna(msisensor_score):
         msisensor_call = "MSI-H" if msisensor_score >= MSISENSOR_MSI_H_THRESHOLD else "MSS"
@@ -134,7 +150,7 @@ def classify_msi_dual_score(
         return "unknown", "no_data"
 
     if mantis_call is None:
-        return msisensor_call, "msisensor_only"
+        return msisensor_call, "msisensor_only"  # type: ignore[return-value]
 
     if msisensor_call is None:
         return mantis_call, "mantis_only"

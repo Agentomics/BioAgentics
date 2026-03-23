@@ -1,0 +1,87 @@
+{
+  "stage_discriminative_cpgs": {
+    "total_significant": 500,
+    "top_genes": {
+      "MLF1": 35,
+      "PPP2R2B": 23,
+      "VCAN": 16,
+      "PAX7": 15,
+      "MDFIC": 12,
+      "SH3GL3": 12,
+      "NRG1": 12,
+      "MIER1": 10,
+      "NELL2": 10,
+      "A2BP1": 9,
+      "PML": 9,
+      "ANO5": 8,
+      "NFATC1": 8,
+      "BRUNOL4": 8,
+      "JAKMIP1": 8,
+      "GREB1L": 7,
+      "ELF5": 7,
+      "EN1": 7,
+      "APOL3": 6,
+      "KCTD8": 6
+    },
+    "candidate_gene_hits": {
+      "ADHFE1": 0,
+      "MDFI": 3,
+      "C1orf70": 0,
+      "GRASP": 0,
+      "IRX5": 0
+    }
+  },
+  "staging_classifier": {
+    "auc": 0.7743245554035569,
+    "sensitivity_at_90spec": 0.4338235294117647,
+    "sensitivity_at_80spec": 0.5882352941176471,
+    "n_features": 50,
+    "n_samples": 308,
+    "n_early": 172,
+    "n_advanced": 136,
+    "per_stage": {
+      "stage_1": {
+        "n": 51,
+        "accuracy": 0.8235294117647058,
+        "advanced_pred_rate": 0.17647058823529413
+      },
+      "stage_2": {
+        "n": 121,
+        "accuracy": 0.7768595041322314,
+        "advanced_pred_rate": 0.2231404958677686
+      },
+      "stage_3": {
+        "n": 100,
+        "accuracy": 0.65,
+        "advanced_pred_rate": 0.65
+      },
+      "stage_4": {
+        "n": 36,
+        "accuracy": 0.5833333333333334,
+        "advanced_pred_rate": 0.5833333333333334
+      }
+    },
+    "method": "LogisticRegressionCV L2, 5-fold CV",
+    "top_features": [
+      "cg03616722",
+      "cg09571420",
+      "cg15930380",
+      "cg21937377",
+      "cg24820672",
+      "cg02076869",
+      "cg15690342",
+      "cg16284459",
+      "cg06502570",
+      "cg10416814"
+    ]
+  },
+  "baseline_detection_cpgs_for_staging": {
+    "auc": 0.5676727086183311,
+    "note": "Detection-optimized CpGs used for staging (expected ~0.5)"
+  },
+  "improvement": {
+    "delta_auc": 0.20665184678522586,
+    "stage_optimized_auc": 0.7743245554035569,
+    "detection_optimized_auc": 0.5676727086183311
+  }
+}
