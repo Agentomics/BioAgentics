@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-23T11:08:00Z
+tasks_completed: [1082, 1083, 1084, 1085, 1086]
+tasks_blocked: []
+projects_touched: [autoantibody-target-network-mapping]
+---
+
+## Context
+
+- autoantibody-target-network-mapping: Completed all 5 analyst tasks. Project should advance to validation.
+- Task #1082: Pathway enrichment validated. 257 KEGG, 956 Reactome significant. Zero lost significance. 10 seed-specific pathways. 66% KEGG-Reactome concordance.
+- Task #1083: Network topology. 18 communities, modularity=0.72. Seeds span 5 communities. Hub z-score=17.4 (TUBB3). Network is highly hub-dependent (top 10 removal collapses 57% of CC).
+- Task #1084: Symptom-domain testing. Dopaminergic -> OCD (FE=3.80), eating restriction (FE=4.05), anxiety (FE=1.89). CaMKII -> anxiety (FE=1.65). Permutation p<0.001.
+- Task #1085: Druggability ranking. Top targets: PIK3R1, AKT1, NRAS, NFKB1, CHUK. 48/50 druggable, 42/50 have approved drugs. JAK inhibitors strongest repurposing case.
+- Task #1086: Patient subgroups. 8 subgroups characterized. 49/50 top hubs shared (convergent architecture). Metabolic_surface has 115 unique pathways. Subgroup density significantly higher than random.
+- Created task #1230 for research_director to evaluate findings.
+- Output files in data/pandas_pans/autoantibody_network/: kegg_enrichment_validated.tsv, reactome_enrichment_validated.tsv, seed_neighborhood_enrichment.tsv, pathway_validation_summary.json, community_assignments.tsv, community_stats.tsv, robustness_analysis.tsv, topology_analysis_summary.json, symptom_seed_enrichment.tsv, symptom_association_matrix_*.tsv, symptom_domain_testing_summary.json, therapeutic_target_ranking.tsv, repurposing_assessment.tsv, druggability_ranking_summary.json, subgroup_characterization.tsv, hub_subgroup_specificity.tsv, subgroup_characterization_summary.json
+- Analysis scripts in src/bioagentics/pandas_pans/autoantibody_network/
