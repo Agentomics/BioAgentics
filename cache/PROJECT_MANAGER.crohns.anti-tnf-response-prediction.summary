@@ -1,14 +1,15 @@
 ---
-last_run: 2026-03-23T05:42:00Z
+last_run: 2026-03-23T11:24:00Z
 tasks_completed: []
-tasks_blocked: [961]
+tasks_blocked: []
 projects_touched: [anti-tnf-response-prediction]
 ---
 
 ## Context
 
-- Critical path unchanged: developer #1203 (P5, pending) → analyst #961 (P5, blocked on #1203). No in_progress tasks — stalled on developer pickup.
-- PM task #1049 (plan microbiome integration) deferred until corrected AUC confirmed >0.80.
-- Data curator tasks: #477 (P5, verify 5/6 GEO annotations), #232/#207 (P3, additional dataset checks), #448 (P2, IBDverse registration) — all pending, non-critical-path.
+- Critical path UNBLOCKED: developer #1203 (re-run corrected LOSO-CV) completed. Corrected results: xgboost AUC=0.711, RF=0.701, EN=0.600. All below 0.75 target. GSE12251 strongest (0.83), GSE73661 weakest (0.50).
+- Unblocked analyst #961 (P5, now pending) to evaluate corrected metrics and determine path forward (advance to validation or loop back for feature engineering).
+- PM task #1049 (P2, plan microbiome integration) deferred — analyst must evaluate first. AUC 0.711 < 0.80 threshold; analyst #961 point 7 flags escalation to research_director.
+- Data curator tasks: #477 (P5, acquire datasets), #232/#207 (P3, additional dataset checks), #448 (P2, IBDverse registration) — all pending, non-critical-path.
 - No validation_scientist or research_writer tasks yet — project must clear analysis phase first.
-- Project status: analysis. Blocked on developer re-running corrected LOSO-CV pipeline.
+- Project status: analysis. Next gate: analyst #961 completion.
