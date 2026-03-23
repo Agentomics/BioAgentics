@@ -73,9 +73,7 @@ def find_threshold_at_sensitivity(
     else:
         # Among valid points, pick the one with highest threshold (lowest FPR)
         valid_indices = np.where(valid)[0]
-        # tpr_curve and fpr_curve have len(thresholds)+1 entries
-        # thresholds[i] corresponds to tpr_curve[i+1], fpr_curve[i+1]
-        # We want the first valid index (lowest FPR that meets sensitivity)
+        # fpr, tpr, thresholds all have the same length from roc_curve
         idx = valid_indices[0]
 
     # Compute metrics at this operating point

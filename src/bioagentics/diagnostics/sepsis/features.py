@@ -129,7 +129,6 @@ def compute_missingness(
 
         # Hours since last observation
         observed_mask = ~group[feat].isna()
-        last_obs_idx = observed_mask.where(observed_mask).ffill()
         # Compute distance in rows (hours)
         cumcount = np.arange(len(group))
         last_obs_pos = pd.Series(cumcount, index=group.index)
