@@ -1,0 +1,31 @@
+{
+  "n_bridging_nodes": 26,
+  "n_seed_bridging": 0,
+  "n_communities": 18,
+  "n_communities_with_innate_bridge": 6,
+  "n_communities_with_lectin_bridge": 1,
+  "n_autoantibody_targets": 9,
+  "n_targets_reachable_from_innate": 9,
+  "mean_distance_to_targets": 1.4444444444444444,
+  "median_distance_to_targets": 1.0,
+  "n_early_targets_leq2_hops": 8,
+  "early_targets": [
+    "PKM",
+    "TUBB3",
+    "CAMK2A",
+    "ENO1",
+    "ENO2",
+    "ALDOC",
+    "ENO3",
+    "DRD1"
+  ],
+  "innate_modules_with_bridges": [
+    "cgas_sting_pathway",
+    "lectin_complement",
+    "monocyte_defense",
+    "neutrophil_defense",
+    "nk_cell_effector",
+    "pattern_recognition_receptors",
+    "trained_immunity"
+  ]
+}

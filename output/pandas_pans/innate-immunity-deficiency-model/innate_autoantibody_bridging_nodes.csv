@@ -1,0 +1,27 @@
+gene_symbol,innate_modules,n_innate_modules,community,is_seed,degree,betweenness,pagerank,convergence_score,is_druggable,n_drug_interactions
+IL6,trained_immunity,1,17,False,154,0.014316,0.00624358,0.3183022527230925,True,49
+IL1B,trained_immunity,1,17,False,95,0.015869,0.0038593,0.4297841459266937,True,51
+NFKB1,monocyte_defense,1,16,False,68,0.018888,0.00302363,0.5060224887892918,True,96
+AKT1,trained_immunity,1,16,False,51,0.015701,0.00233849,0.5439730847988671,True,71
+HIF1A,trained_immunity,1,16,False,43,0.002046,0.00193399,0.3544006841224661,True,145
+HK2,trained_immunity,1,12,False,34,0.001056,0.00167515,0.0180441869221752,False,0
+TNF,trained_immunity,1,16,False,27,0.000918,0.00116056,0.2713131232501948,True,93
+TLR2,monocyte_defense; pattern_recognition_receptors,2,16,False,22,0.000613,0.00106321,0.3637155646492781,True,14
+IFNA1,cgas_sting_pathway,1,17,False,20,0.000264,0.00083502,0.2201249141662604,True,11
+TLR4,monocyte_defense; pattern_recognition_receptors,2,16,False,19,0.000196,0.00079203,0.232052747386898,True,23
+IFNB1,cgas_sting_pathway,1,17,False,18,0.000121,0.00074535,0.2300504913875381,True,4
+TBK1,cgas_sting_pathway,1,16,False,11,0.00016,0.00055629,0.2197287098464813,False,0
+MYD88,monocyte_defense,1,17,False,11,5e-06,0.00047646,0.0771986412963755,False,0
+NCAM1,nk_cell_effector,1,13,False,8,2e-06,0.0006951,0.0257431972422533,False,0
+PFKFB3,trained_immunity,1,12,False,7,0.0,0.00048149,0.0110193743046634,False,0
+GZMB,nk_cell_effector,1,17,False,5,0.0,0.00025752,0.0207043827404511,False,0
+LCN2,neutrophil_defense,1,17,False,5,0.0,0.00024351,0.009847146232155,False,0
+DDX58,pattern_recognition_receptors,1,17,False,5,3e-06,0.0003012,0.0362710977917649,False,0
+ISG15,cgas_sting_pathway,1,17,False,4,1e-06,0.00024283,0.0265465076320467,False,0
+TRAF6,monocyte_defense,1,17,False,3,0.0,0.00020276,0.1003694790281938,False,0
+PRF1,nk_cell_effector,1,17,False,3,0.0,0.00019227,0.0168399942976357,False,0
+IFIH1,pattern_recognition_receptors,1,17,False,3,0.0,0.00024023,0.0277759730940582,False,0
+OAS1,cgas_sting_pathway,1,17,False,2,0.0,0.00018037,0.0211417024990484,False,0
+S100A9,neutrophil_defense,1,12,False,1,0.0,0.00011379,0.0160377042208906,False,0
+FCN3,lectin_complement,1,9,False,1,0.0,0.0001833,0.0022813971943124,False,0
+MAVS,pattern_recognition_receptors,1,11,False,1,0.0,0.00013302,0.0361853983063301,False,0

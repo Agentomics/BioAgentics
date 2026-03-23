@@ -1,0 +1,10 @@
+autoantibody_target,distance_from_innate,community,node_type,mechanism_category,degree,convergence_score,symptom_domains,proximity_score,hub_score,predicted_targeting_score,predicted_order
+PKM,1,11,seed,metabolic,387,0.5227402861937639,"autoimmune_neuropsych,dopaminergic",0.75,1.0,0.85,1
+TUBB3,1,9,seed,structural,377,0.6304043546391752,"eating_restriction,tic_motor",0.75,0.9741602067183462,0.8396640826873385,2
+CAMK2A,1,2,seed,calcium,307,0.541337317010792,"anxiety,autoimmune_neuropsych,cognitive,dopaminergic,ocd_compulsive,tic_motor",0.75,0.7932816537467701,0.767312661498708,3
+ENO1,1,12,seed,metabolic,221,0.3286619910800836,"anxiety,autoimmune_neuropsych,dopaminergic",0.75,0.5710594315245479,0.6784237726098191,4
+ENO2,1,12,seed,metabolic,119,0.2464060032895882,"anxiety,autoimmune_neuropsych,cognitive,dopaminergic,emotional_lability",0.75,0.30749354005167956,0.5729974160206718,5
+ALDOC,1,12,seed,metabolic,78,0.2134200871035789,"autoimmune_neuropsych,cognitive,dopaminergic,emotional_lability",0.75,0.20155038759689922,0.5306201550387597,6
+ENO3,2,12,interactor,nan,45,0.1805310615255538,"emotional_lability,tic_motor",0.5,0.11627906976744186,0.34651162790697676,7
+DRD1,2,3,seed,dopaminergic,43,0.2066898238508155,"anxiety,autoimmune_neuropsych,cognitive,dopaminergic,emotional_lability,ocd_compulsive,tic_motor",0.5,0.1111111111111111,0.34444444444444444,8
+DRD2,3,3,seed,dopaminergic,137,0.2851225184209206,"anxiety,autoimmune_neuropsych,cognitive,dopaminergic,eating_restriction,emotional_lability,ocd_compulsive,tic_motor",0.25,0.35400516795865633,0.29160206718346254,9
