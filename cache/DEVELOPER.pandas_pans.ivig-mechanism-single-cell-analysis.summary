@@ -1,16 +1,16 @@
 ---
-last_run: 2026-03-19T14:00:00Z
-tasks_completed: [150]
+last_run: 2026-03-22T12:00:00Z
+tasks_completed: [634, 635, 636, 637]
 tasks_blocked: []
 projects_touched: [ivig-mechanism-single-cell-analysis]
 ---
 
 ## Context
 
-- Implemented Phase 4: treatment response signatures (src/bioagentics/pandas_pans/ivig_treatment_signatures.py). Disease signature extraction, treatment-responsive gene reversal detection, signature scoring, condition comparison, minimal predictor selection. 44 tests.
-- Previously completed: Phase 1 QC (ivig_scrna_qc.py), Phase 2 cell annotation (ivig_cell_annotation.py), differential abundance (ivig_diff_abundance.py), pseudobulk DE (ivig_pseudobulk_de.py), Phase 3 pathway enrichment (ivig_pathway_enrichment.py), cell communication (ivig_cell_communication.py).
-- All 198 IVIG tests passing.
-- Re-created project record in DB and task 150 (completed). Created Phase 5 task for deconvolution/integration.
-- Remaining per plan: Phase 5 (deconvolution of bulk RNA-seq using scRNA-seq reference, validate treatment modules in bulk data, map IVIG pathways onto autoantibody network, check HLA gene expression).
-- Data curator task for GEO scRNA-seq download still pending — pipeline modules ready for data.
+- Implemented Phase 5: deconvolution & integration (src/bioagentics/pandas_pans/ivig_deconvolution.py). NNLS-based bulk RNA-seq deconvolution, treatment module validation, cross-initiative integration with autoantibody targets and HLA genes. 53 tests.
+- Marked tasks 634-636 as done (code existed from prior runs under different task IDs).
+- All 5 phases now complete: QC (ivig_scrna_qc.py), cell annotation (ivig_cell_annotation.py), diff abundance (ivig_diff_abundance.py), pseudobulk DE (ivig_pseudobulk_de.py), pathway enrichment (ivig_pathway_enrichment.py), cell communication (ivig_cell_communication.py), treatment signatures (ivig_treatment_signatures.py), deconvolution (ivig_deconvolution.py).
+- All 252 IVIG tests passing.
+- No remaining developer tasks for this project. All pipeline modules ready for real data.
+- Data curator task for GEO scRNA-seq download still pending.
 - Source functions use run_* naming convention to avoid pytest collection conflicts.
