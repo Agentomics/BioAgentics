@@ -1,15 +1,15 @@
 ---
-last_run: 2026-03-23T10:40:00Z
-tasks_completed: [1193]
-tasks_blocked: []
+last_run: 2026-03-23T11:38:00Z
+tasks_completed: []
+tasks_blocked: [1034]
 projects_touched: [two-hit-interferonopathy-model]
 ---
 
 ## Context
 
-- Integrated SN-011 STING inhibitor into two_hit_therapeutic_model.py (#1193): efficacy=0.92, preferred STING inhibitor for DDR/cGAS-STING profiles
-- predict_therapy now tracks `preferred_sting_inhibitor` separately from `best_single_inhibitor` (RU.521 cGAS inhibitor wins overall for severe profiles)
+- Task #1034 (compound genotyping classifier) set to blocked: per_patient_variants.csv does not exist, entire dependency chain stalled
+- Data curator #1033 blocked (Vettiatil 2026 paywalled), human task #1194 cancelled (user declined)
+- All completed modules: two_hit_cgas_sting_model.py (#1035), two_hit_isg_scorer.py (#1036), two_hit_therapeutic_model.py (#1037, #1193 SN-011)
 - 4 inhibitors in panel: H-151, RU.521, C-178, SN-011. 22 tests passing.
-- Task #1034 (compound genotyping classifier) still pending — blocked on data_curator #1033 (Vettiatil 2026 paywalled, human task #1194 open to obtain data)
-- All completed modules: two_hit_cgas_sting_model.py (#1035), two_hit_isg_scorer.py (#1036), two_hit_therapeutic_model.py (#1037, #1193)
-- Next: when data_curator delivers per_patient_variants.csv, implement #1034 compound genotyping classifier
+- No pending or actionable tasks remain — project blocked until data access resolved
+- Recommended alternatives journaled: simulated gnomAD data, different WES/WGS cohort, or theoretical reframing
