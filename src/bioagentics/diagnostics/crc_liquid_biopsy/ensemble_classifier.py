@@ -97,9 +97,15 @@ def load_panel_features(
             for i, mf in enumerate(meth_features):
                 cpg = mf.replace("meth_", "")
                 if cpg in cfdna.index:
-                    crc_mean = cfdna.loc[cpg, cfdna_meta[cfdna_meta["condition"] == "CRC"].index].mean()
-                    ctrl_mean = cfdna.loc[cpg, cfdna_meta[cfdna_meta["condition"] == "control"].index].mean()
+                    crc_idx = cfdna_meta[cfdna_meta["condition"] == "CRC"].index.intersection(cfdna.columns)
+                    ctrl_idx = cfdna_meta[cfdna_meta["condition"] == "control"].index.intersection(cfdna.columns)
+                    if crc_idx.empty or ctrl_idx.empty:
+                        continue
+                    crc_mean = cfdna.loc[cpg, crc_idx].mean()
+                    ctrl_mean = cfdna.loc[cpg, ctrl_idx].mean()
                     noise = abs(crc_mean - ctrl_mean) * 0.3
+                    if noise < 1e-10:
+                        noise = 0.01
                     meth_X[:, i] = np.where(
                         labels_tmp == 1,
                         rng.normal(crc_mean, noise, len(labels_tmp)),
