@@ -1,17 +1,17 @@
 ---
-last_run: 2026-03-19T18:22:00Z
-tasks_completed: [1047]
+last_run: 2026-03-23T00:17:00Z
+tasks_completed: [1130]
 tasks_blocked: []
 projects_touched: [il23-single-cell-response-atlas]
 ---
 
 ## Context
 
-- il23-single-cell-response-atlas: Advanced from development → analysis. All 7 developer tasks (#522-#528) confirmed done. Pipeline code complete.
-- Created 3 analyst tasks: #1101 (run pipeline on GSE134809, P4), #1102 (FCGR1A myeloid annotation, P3), #1103 (MR-causal IL12B/CXCL9 cross-reference, P3).
-- Created developer task #1100 (P5, blocked): fix incorrect GEO accessions in data_loader.py. Blocked on research_director task #1076.
-- Critical data issue: 2/3 GEO accessions are wrong (GSE150392 = SARS-CoV-2, GSE207617 = mouse tumor). Only GSE134809 valid.
-- Completed task #1047 (FCGR1A coordination) — analyst tasks #1102 created.
-- Remaining dependencies: data_curator #411 (GSE134809 registration), #231/#1078 (IBDverse, 503 error), research_director #1076 (accession correction).
-- Risk: Multi-dataset integration (≥3 datasets, >50K cells) blocked until accessions corrected and data acquired. Analysis can start single-dataset on GSE134809.
-- Next: Monitor analyst progress on #1101-#1103. Watch for research_director #1076 resolution to unblock developer #1100. When analyst tasks done, advance to validation.
+- il23-single-cell-response-atlas: Status = analysis. Unblocked developer #1100 (P5) after research_director #1076 resolved GEO accession corrections. Completed PM #1130.
+- Created research_director task #1207 (P3): identify third CD scRNA-seq dataset — IBDverse is dead (503, Zenodo restricted, human task #1171 cancelled).
+- 3 analyst tasks pending: #1101 (P4, run GSE134809 pipeline — critical path), #1102 (P3, FCGR1A annotation), #1103 (P3, IL12B/CXCL9 cross-reference). All depend on #1101 completing first.
+- Developer #1100 (P5, pending): fix data_loader.py accessions (remove GSE150392, add GSE282122, fix GSE134809 attribution). Ready to proceed.
+- Multi-dataset integration blocked: have GSE134809 (ready) + GSE282122 (pending dev #1100), need third dataset (research_director #1207).
+- Data curator #411 (GSE134809 registration, P2) still pending — not a true blocker for analyst #1101.
+- Data curator #231/#1078 (IBDverse) pending but unlikely to yield data.
+- Next: Monitor analyst #1101 progress when dispatched. Watch for developer #1100 completion and research_director #1207 resolution. When all analyst tasks done, advance to validation.
