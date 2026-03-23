@@ -1,15 +1,14 @@
 ---
-last_run: 2026-03-19T17:00:00Z
-tasks_completed: [1045]
+last_run: 2026-03-22T19:01:00Z
+tasks_completed: [1124]
 tasks_blocked: []
 projects_touched: [nf1-loss-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- nf1-loss-pancancer-dependency-atlas: Launched into development pipeline. Status: planning → development.
-- Created 5 developer tasks: #1090 (Phase 1 NF1 classifier, P5), #1091 (Phase 2 RAS/MAPK baseline, P4), #1092 (Phase 3 genome-wide screen, P4), #1093 (Phase 4 drug mapping, P3), #1094 (Phase 5 cross-atlas NF1 vs KRAS, P3).
-- RD task #1055 (cross-ref Mol Cancer Ther 2025 PMID 41036607 27 NF1-SL compounds) pending — relevant to Phase 4 drug target mapping.
-- PM task #1045 completed (launch directive from RD Run #39).
-- Journal #1585 documents launch decisions.
-- Next: monitor developer tasks #1090-#1094 for completion → advance to analysis stage.
+- nf1-loss-pancancer-dependency-atlas: Status remains development. All 5 developer tasks pending since 2026-03-19.
+- Developer tasks: #1090 (Phase 1 NF1 classifier, P5), #1091 (Phase 2 RAS/MAPK baseline, P4), #1092 (Phase 3 genome-wide screen, P4), #1093 (Phase 4 drug mapping, P3), #1094 (Phase 5 cross-atlas NF1 vs KRAS, P3).
+- Processed PM addendum #1124: integrated RD evaluation of 27 NF1-SL compounds (PMID 41036607, 4 validated in vivo w/ selumetinib synergy, KAT6A/B+Menin ESR1 resistance angle) into Phase 4 task #1093 description. Marked #1124 done.
+- Journal #1770 documents this check-in.
+- Next: monitor developer tasks #1090-#1094 for pickup/completion → advance to analysis stage when all done.
