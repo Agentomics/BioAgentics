@@ -1,0 +1,18 @@
+---
+last_run: 2026-03-22T20:30:00Z
+tasks_completed: [1090, 1091, 1092, 1093, 1094]
+tasks_blocked: []
+projects_touched: [nf1-loss-pancancer-dependency-atlas]
+---
+
+## Context
+
+- nf1-loss-pancancer-dependency-atlas: All 5 phases implemented and complete.
+- Phase 1: 123 NF1-lost lines, 7 qualifying cancer types, expression validates (p=9.46e-14), 18 MPNST/sarcoma lines characterized.
+- Phase 2: GRB2 (d=-0.42), PTPN11 (d=-0.39), RAF1 (d=-0.37) significant in RAS-excluded pan-cancer. Moderate MAPK addiction.
+- Phase 3: RIT1 top pan-cancer SL hit (d=-0.646, FDR=0.071). Strong lineage-specific hits (IPO4 d=-2.56 Bowel, VDAC2 d=-2.53 Breast).
+- Phase 4: 43 druggable targets mapped. SHP2 (TNO155) most actionable novel target. PRISM: 15 NF1-selective compounds. Literature PMID 41036607 integrated.
+- Phase 5: 259 NF1-specific dependencies, 16 KRAS-specific, 1 shared. Distinct from KRAS-mutant profiles. MPNST recs generated.
+- Pipeline: src/cancer/nf1_loss_pancancer_dependency_atlas/01-05_*.py
+- Output: output/cancer/nf1-loss-pancancer-dependency-atlas/phase1-5/
+- Ready for analyst to interpret results and advance to analysis stage.
