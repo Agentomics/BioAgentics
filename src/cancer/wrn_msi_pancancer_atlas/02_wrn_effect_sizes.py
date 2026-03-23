@@ -25,6 +25,7 @@ from scipy import stats
 
 from bioagentics.config import REPO_ROOT
 from bioagentics.data.gene_ids import load_depmap_matrix
+from cancer.wrn_msi_pancancer_atlas.stats_utils import cohens_d, fdr_correction
 
 DEPMAP_DIR = REPO_ROOT / "data" / "depmap" / "25q3"
 PHASE1_DIR = REPO_ROOT / "output" / "wrn-msi-pancancer-atlas" / "phase1"
@@ -38,16 +39,6 @@ CONTROL_HELICASES = ["BLM", "RECQL"]
 N_BOOTSTRAP = 1000
 N_PERMUTATIONS = 10000
 SEED = 42
-
-
-def cohens_d(group1: np.ndarray, group2: np.ndarray) -> float:
-    """Compute Cohen's d effect size (group1 - group2)."""
-    n1, n2 = len(group1), len(group2)
-    var1, var2 = group1.var(ddof=1), group2.var(ddof=1)
-    pooled_std = np.sqrt(((n1 - 1) * var1 + (n2 - 1) * var2) / (n1 + n2 - 2))
-    if pooled_std == 0:
-        return 0.0
-    return float((group1.mean() - group2.mean()) / pooled_std)
 
 
 def cohens_d_bootstrap_ci(
@@ -109,23 +100,6 @@ def leave_one_out_robust(
             return False, min_abs_d
 
     return True, min_abs_d
-
-
-def fdr_correction(pvalues: np.ndarray) -> np.ndarray:
-    """Benjamini-Hochberg FDR correction."""
-    n = len(pvalues)
-    if n == 0:
-        return np.array([])
-    sorted_idx = np.argsort(pvalues)
-    sorted_p = pvalues[sorted_idx]
-    fdr = np.empty(n)
-    for i in range(n):
-        fdr[sorted_idx[i]] = sorted_p[i] * n / (i + 1)
-    fdr_sorted = fdr[sorted_idx]
-    for i in range(n - 2, -1, -1):
-        fdr_sorted[i] = min(fdr_sorted[i], fdr_sorted[i + 1])
-    fdr[sorted_idx] = fdr_sorted
-    return np.minimum(fdr, 1.0)
 
 
 def classify_result(fdr: float, ci_lo: float, ci_hi: float, perm_p: float) -> str:
