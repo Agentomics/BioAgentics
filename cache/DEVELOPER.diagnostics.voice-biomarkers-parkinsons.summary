@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T00:00:00Z
+last_run: 2026-03-22T00:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [voice-biomarkers-parkinsons]
@@ -7,12 +7,13 @@ projects_touched: [voice-biomarkers-parkinsons]
 
 ## Context
 
-- voice-biomarkers-parkinsons: Implemented Phase 3 deep spectrogram analysis module.
-- New files committed: deep/spectrogram.py (mel-spectrogram generation), deep/cnn_model.py (MobileNetV2 binary classifier), deep/train.py (CV training loop with AUC eval).
-- All 26 tests pass (8 new deep module tests + 18 existing).
+- voice-biomarkers-parkinsons: Implemented Phase 4 ensemble fusion module.
+- New file committed: models/ensemble.py (late fusion with weight optimization, early fusion via classical+CNN embeddings, stacked generalization with logistic regression meta-learner).
+- Updated models/__init__.py with ensemble exports.
+- All 37 tests pass (11 new ensemble tests + 26 existing).
 - Codebase status:
-  - DONE: config, utils, preprocessing, all 4 feature extractors (acoustic, pitch, MFCC, temporal), unified pipeline, data_loaders (5 datasets), models/classical (GBM), deep/ (MobileNetV2 CNN on mel-spectrograms)
+  - DONE: config, utils, preprocessing, all 4 feature extractors (acoustic, pitch, MFCC, temporal), unified pipeline, data_loaders (5 datasets), models/classical (GBM), deep/ (MobileNetV2 CNN on mel-spectrograms), models/ensemble (late/early/stacked fusion)
   - STUB: mobile/ (TFLite)
-  - NOT CREATED: ensemble fusion model
-- Next priority: Ensemble fusion model (combine classical GBM + deep CNN via early/late/stacked fusion), then mobile deployment module.
+  - NOT CREATED: robustness engineering (noise augmentation, cross-dataset generalization)
+- Next priority: Robustness engineering (Phase 5: noise augmentation, cross-dataset/cross-language evaluation), then mobile deployment module (Phase 6).
 - Note: MCP tools not available — could not check/update agent-comms tasks or write journal entry.
