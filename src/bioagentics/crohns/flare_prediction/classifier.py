@@ -180,7 +180,7 @@ def _create_model(model_type: str):
         )
     elif model_type == "logistic":
         return LogisticRegression(
-            solver="saga", C=1.0, l1_ratio=0.5,
+            solver="saga", penalty="elasticnet", C=1.0, l1_ratio=0.5,
             max_iter=1000, random_state=42,
         )
     else:
