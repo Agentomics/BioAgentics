@@ -243,7 +243,10 @@ def main() -> None:
         )
         print(f"   Clinical combination mean score: {mean_clin:.4f}")
         print(f"   Random combination mean score: {mean_rand:.4f}")
-        print(f"   Fold enrichment: {mean_clin / mean_rand:.2f}x")
+        if mean_rand > 0:
+            print(f"   Fold enrichment: {mean_clin / mean_rand:.2f}x")
+        else:
+            print(f"   Fold enrichment: N/A (random mean is zero)")
         print(f"   Permutation p-value: {p_val:.4f}")
         significant = p_val < 0.01
         print(f"   Significant (p < 0.01): {'YES' if significant else 'NO'}")
