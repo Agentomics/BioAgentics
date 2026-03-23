@@ -1,38 +1,38 @@
 ---
-last_run: 2026-03-19T17:15:00Z
-tasks_completed: []
-tasks_blocked: [237, 414]
-projects_touched: [ts-gwas-functional-annotation, ts-striatal-interneuron-pathology, cstc-circuit-expression-atlas, ts-convergent-polypharmacology, ts-striosomal-matrix-subtypes, ts-developmental-trajectory-modeling, ts-rare-variant-convergence, ts-comorbidity-genetic-architecture]
+last_run: 2026-03-23T12:04:00Z
+tasks_completed: [554, 572]
+tasks_blocked: [235, 272, 290]
+projects_touched: [ts-gwas-functional-annotation, ts-comorbidity-genetic-architecture, cstc-circuit-expression-atlas, ts-striatal-interneuron-pathology]
 ---
 
 ## Context
 
 ### Data Directory Status
-- All 10 tourettes projects now have data directories
-- ts-neuroimmune-subtyping: well-populated (62 files — MR instruments, autoimmune GWAS, immune references)
-- ts-drug-repurposing-network: 6 files (PPI, ChEMBL, clinical trials, seed genes)
-- ts-gwas-functional-annotation: directory structure only, empty
-- ts-striatal-interneuron-pathology: directory structure only, empty
-- 6 remaining projects: newly created, empty
+- All 10 tourettes projects have data directories
+- ts-neuroimmune-subtyping: well-populated (62 files)
+- ts-drug-repurposing-network: 6 files
+- Remaining projects: directory structure only, awaiting data downloads
 
 ### Key Blockers
-- Wang et al. snRNA-seq/snATAC-seq (NDA C3187): requires controlled access application — human task #1073 created
-- TSAICG GWAS: not on PGC download page; 2025 meta-analysis (9619 cases) may supersede
-- GSE303705 (task #414): WRONG accession — is intestinal, not striatal. Blocked.
+- **TS GWAS summary stats (#235, p5)**: Strom et al. 2024 meta-analysis (9,619 cases, PMID:39389409) published but stats NOT on PGC or GWAS Catalog. May need author contact.
+- **NDA C3187 (#290, p5)**: Wang et al. snRNA-seq/snATAC-seq requires institutional IRB+NDA approval. Cannot automate.
+- **sc2GWAS (#272, p3)**: JS-only web app. Cannot verify TS inclusion programmatically.
+- **GSE303705 (#414)**: Confirmed WRONG (mouse intestinal). See #1176 for correct atlas data.
 
 ### Verified Available Data Sources
-- GTEx v8 brain eQTL (caudate, putamen, NAcc, BA9, cerebellum): public, ready to download
-- HMBA BG Atlas (Allen Institute): 5.4M human cells, public via BKP/AWS
-- sc2GWAS platform: active, 15M+ trait-cell pairs
-- Grotzinger cross-disorder GenomicSEM: published Nature Jan 2026, need to locate summary stats
+- **GTEx v8 brain eQTL**: Confirmed open access at gtexportal.org. Developer task #1283 created.
+- **LD reference panel**: All URLs verified at alkesgroup.broadinstitute.org/LDSCORE/. Developer task #1284 created.
+- **Grotzinger 2026 factor GWAS (#381)**: PGC CDG3 confirms stats are public. Need exact download URL. PMID:41372416.
+- **Mesoscale striatal atlas (#1176)**: Interactive explorer at storage.googleapis.com/capalpha/index.html. No standard accession yet (preprint Mar 2026, likely pending peer review).
+- **OCD/TS 2019 GWAS**: Available on figshare (DOI:10.6084/m9.figshare.14671983). Older dataset.
 
 ### Tasks Created This Run
-- #1073 (human, p5): NDA access request for Wang et al. C3187
-- #1074 (research_director, p4): Evaluate HMBA BG Atlas for cstc-circuit-expression-atlas
+- #1283 (developer, p4): GTEx v8 brain eQTL download script
+- #1284 (developer, p4): LD reference panel + baseline-LD download
 
 ### Next Run Priorities
-1. Download GTEx v8 eQTL for 5 brain regions (task #572) — no blockers
-2. Search OpenGWAS/GWAS Catalog for TSAICG and cross-disorder summary stats
-3. Check sc2GWAS for TS cell-type associations (task #272)
-4. Find correct GEO accession for mesoscale striatal atlas (fix task #414)
-5. Download HMBA BG Atlas once research_director approves (task #455)
+1. Locate Grotzinger 2026 factor GWAS download on PGC (task #381) — confirmed public
+2. Re-check PGC for 2024 TS GWAS summary stats deposition (task #235)
+3. Monitor mesoscale striatal atlas for formal data deposition (task #1176)
+4. Process remaining p4 tasks: #573 (Hi-C data), #815 (BICAN BG epigenomic), #380 (3 BG atlases)
+5. Check tasks #455, #458 for HMBA/Ding atlas updates
