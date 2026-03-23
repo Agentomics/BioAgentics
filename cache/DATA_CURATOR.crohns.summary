@@ -1,19 +1,22 @@
 ---
-last_run: 2026-03-19T21:02:00Z
-tasks_completed: [896]
-tasks_blocked: [1114]
-projects_touched: [nod2-variant-functional-impact, anti-tnf-response-prediction, cd-stricture-risk-prediction, il23-single-cell-response-atlas, cd-fibrosis-drug-repurposing]
+last_run: 2026-03-23T14:15:00Z
+tasks_completed: [1114, 504, 321, 232, 1156, 299, 506, 1163, 1162, 1161]
+tasks_blocked: [477, 1078, 1265, 1155]
+projects_touched: [cd-stricture-risk-prediction, anti-tnf-response-prediction, cd-flare-longitudinal-prediction, cd-fibrosis-drug-repurposing, il23-single-cell-response-atlas, microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-- **Task #896 COMPLETED**: NOD2 training set Phase 1 augmentation. R587C removed (validation). Added 7 GOF (E383G, E383D, R426H, H496L, M513T, T605P, N670K) + 10 LOF (R38M, R138Q, A105T, D113N, L248R, W355X, D357A, L550V, N825K, R1019X). GOF=12 (1 short—E600A needs ClinVar verification), LOF=14.
-- **Task #1114 BLOCKED**: RISK B2/B3 progression data. GSE57945 confirmed lacks Montreal classification. Lancet paywalled. dbGaP phs000450 is WRONG (lymphoma). Created human task #1172.
-- **GEO verified public**: GSE305528 (69 samples, CD progenitor epigenomics), GSE290220 (29 samples, TL1A scRNA-seq), GSE302569 (2 samples, fibrostenotic spatial).
-- **IBDverse**: Still 503. Zenodo files RESTRICTED (DOI:10.5281/zenodo.14276773). Created human task #1171 for access request.
-- **Anti-TNF (#477)**: 5/6 GEO datasets downloaded (~795MB in geo_cache). E-MTAB-7604 still broken.
-- **HMP2 data (#494)**: Still not downloaded locally. Blocks cd-flare-longitudinal and subtyping validation.
-- **GSE275144**: GEO shows Visium spatial (2 samples), not scRNA-seq as expected by task #321. Accession mismatch needs investigation.
-- 37 total tasks, 5 at P5: #896 (done), #1114 (blocked), #504, #494, #477 (5/6 done).
-- Journal entry #1721 documents full assessment.
-- Next priorities: Download HMP2 data (#494), complete GSE57945 extraction for stricture project (#504), verify GSE275144 scRNA-seq accession.
+- **RISK cohort (#1114/#504) RESOLVED**: Patient-level B2 vs B3 NOT in any public repo. GSE93624 has binary complication outcome (27 yes / 218 no, 245 total). Kugathasan 2017 supplement (freely downloadable from Elsevier CDN) has aggregate B2/B3 (54 B2, 24 B3 of 913). Binary prediction is the viable path.
+- **E-MTAB-7604 (#477) STILL BLOCKED**: 44 count files confirmed at EBI Fire URLs but ftp.ebi.ac.uk unreachable from this machine (connection refused). Created dev task #1285 for download script. ENA has raw FASTQs (ERP113396). 5/6 GEO datasets already downloaded.
+- **HMP2 (#494)**: Directories created. ibdmdb.org accessible, all 5 data layers available. URLs are JS-rendered. Created dev task #1286 for download script. curatedMetagenomicData has metagenomics (HMP_2019_ibdmdb).
+- **IBDverse (#1078)**: Still 503, Zenodo restricted. No alternative found.
+- **GEO datasets verified public**: GSE305528 (69, scRNA+snATAC), GSE290220 (29, TL1A scRNA), GSE291125 (2, TL1A companion), GSE298981 (8, organoid microarray), GSE302569 (2, fibrostenotic spatial). GSE275144 confirmed Visium (NOT scRNA-seq).
+- **IBDTransDB**: Real URL is abbviegrc.shinyapps.io/ibdtransdb/. 34 datasets. SQLite DB downloadable.
+- **Levhar et al.**: Data available (PRJNA1053872, PRJNA1057679, supp metabolomics).
+- **Verstockt GPX4**: Conference abstracts only, no public data deposit.
+- **Tan metabolomics**: Paywalled, no public deposit.
+- **SCP2959**: 347K cells on Single Cell Portal. Raw needs dbGaP phs003943.
+- **MSigDB/IBDGC**: Both available. HALLMARK_EMT has fibrosis genes. IBDGC GWAS on Sanger FTP.
+- 22 pending tasks remain. Next priorities: complete HMP2 download (#494, needs dev task #1286), resolve ftp.ebi.ac.uk connectivity for E-MTAB-7604, process remaining P3 tasks (#231 IBDverse eval, #324 CD inception cohort, #228 HMP2 metabolomics, #173 pediatric CD multi-omics).
+- Journal entry #2034 documents full assessment.
