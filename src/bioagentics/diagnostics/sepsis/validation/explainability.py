@@ -190,6 +190,171 @@ def feature_importance_stability(
     }
 
 
+def compare_centers_ranking(
+    shap_results: dict[str, dict],
+) -> dict:
+    """Compare feature importance rankings across centers/datasets.
+
+    Parameters
+    ----------
+    shap_results : Dictionary keyed by center/dataset name, each
+        containing a "feature_ranking" list from compute_shap_tree.
+
+    Returns
+    -------
+    Dictionary with pairwise rank correlations between centers and
+    consistently important features.
+    """
+    from scipy.stats import spearmanr
+
+    center_names = list(shap_results.keys())
+    if len(center_names) < 2:
+        return {
+            "n_centers": len(center_names),
+            "pairwise_correlations": [],
+            "shared_top_features": [],
+        }
+
+    # Build rank arrays per center
+    all_features = set()
+    for r in shap_results.values():
+        for item in r["feature_ranking"]:
+            all_features.add(item["feature"])
+    all_features_list = sorted(all_features)
+
+    center_ranks = {}
+    for name, r in shap_results.items():
+        rank_map = {
+            item["feature"]: i
+            for i, item in enumerate(r["feature_ranking"])
+        }
+        center_ranks[name] = np.array([
+            rank_map.get(f, len(all_features_list))
+            for f in all_features_list
+        ])
+
+    pairwise = []
+    for i in range(len(center_names)):
+        for j in range(i + 1, len(center_names)):
+            rho, _ = spearmanr(
+                center_ranks[center_names[i]],
+                center_ranks[center_names[j]],
+            )
+            pairwise.append({
+                "center_a": center_names[i],
+                "center_b": center_names[j],
+                "spearman_rho": float(rho),
+            })
+
+    # Shared top-10 features
+    top_k = min(10, len(all_features_list))
+    top_sets = []
+    for r in shap_results.values():
+        top_sets.append(
+            {item["feature"] for item in r["feature_ranking"][:top_k]}
+        )
+    shared = sorted(set.intersection(*top_sets)) if top_sets else []
+
+    return {
+        "n_centers": len(center_names),
+        "pairwise_correlations": pairwise,
+        "mean_correlation": float(np.mean([p["spearman_rho"] for p in pairwise])),
+        "shared_top_features": shared,
+        "n_shared_top": len(shared),
+    }
+
+
+def generate_plot_data(
+    shap_values: np.ndarray,
+    X: np.ndarray,
+    feature_names: list[str],
+    top_k: int = 20,
+) -> dict:
+    """Generate structured data for SHAP summary plots.
+
+    Produces data for beeswarm and bar plots without invoking
+    matplotlib (memory-safe for 8GB machines).
+
+    Parameters
+    ----------
+    shap_values : (n_samples, n_features) SHAP values.
+    X : (n_samples, n_features) feature values.
+    feature_names : Feature names.
+    top_k : Number of top features to include.
+
+    Returns
+    -------
+    Dictionary with bar_data and beeswarm_data for visualization.
+    """
+    mean_abs = np.mean(np.abs(shap_values), axis=0)
+    top_idx = np.argsort(mean_abs)[::-1][:top_k]
+
+    # Bar plot data
+    bar_data = [
+        {"feature": feature_names[i], "mean_abs_shap": float(mean_abs[i])}
+        for i in top_idx
+    ]
+
+    # Beeswarm data (feature values + SHAP values for each sample)
+    beeswarm_data = []
+    for i in top_idx:
+        beeswarm_data.append({
+            "feature": feature_names[i],
+            "shap_values": shap_values[:, i].tolist(),
+            "feature_values": X[:, i].tolist(),
+        })
+
+    return {"bar": bar_data, "beeswarm": beeswarm_data}
+
+
+def generate_waterfall_data(
+    shap_values: np.ndarray,
+    X: np.ndarray,
+    feature_names: list[str],
+    sample_idx: int,
+    base_value: float = 0.0,
+    top_k: int = 10,
+) -> dict:
+    """Generate waterfall plot data for a single prediction.
+
+    Parameters
+    ----------
+    shap_values : (n_samples, n_features) SHAP values.
+    X : Feature matrix.
+    feature_names : Feature names.
+    sample_idx : Index of sample to explain.
+    base_value : Expected value (model output bias).
+    top_k : Number of features to show.
+
+    Returns
+    -------
+    Dictionary with waterfall components for the sample.
+    """
+    sv = shap_values[sample_idx]
+    xv = X[sample_idx]
+
+    # Sort by absolute SHAP value
+    sorted_idx = np.argsort(np.abs(sv))[::-1][:top_k]
+
+    contributions = []
+    cumulative = base_value
+    for i in sorted_idx:
+        cumulative += sv[i]
+        contributions.append({
+            "feature": feature_names[i],
+            "feature_value": float(xv[i]),
+            "shap_value": float(sv[i]),
+            "cumulative": float(cumulative),
+        })
+
+    return {
+        "sample_idx": sample_idx,
+        "base_value": base_value,
+        "final_value": float(base_value + sv.sum()),
+        "contributions": contributions,
+    }
+
+
 def run_explainability(
     X: np.ndarray,
     y: np.ndarray,

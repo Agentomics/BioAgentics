@@ -6,8 +6,11 @@ import numpy as np
 import pytest
 
 from bioagentics.diagnostics.sepsis.validation.explainability import (
+    compare_centers_ranking,
     compute_shap_tree,
     feature_importance_stability,
+    generate_plot_data,
+    generate_waterfall_data,
     run_explainability,
 )
 
@@ -135,3 +138,60 @@ def test_run_explainability(synth_data, tmp_path):
     assert "feature_ranking" in result
     assert "stability" in result
     assert (tmp_path / "explainability_test.json").exists()
+
+
+def test_compare_centers_ranking(fitted_xgb, synth_data):
+    """Cross-center comparison produces valid correlations."""
+    model, X_clean = fitted_xgb
+    _, _, feature_names = synth_data
+
+    result_a = compute_shap_tree(model, X_clean[:100], feature_names, max_samples=50)
+    result_b = compute_shap_tree(model, X_clean[100:], feature_names, max_samples=50)
+
+    comparison = compare_centers_ranking({
+        "mimic": result_a,
+        "eicu": result_b,
+    })
+    assert comparison["n_centers"] == 2
+    assert len(comparison["pairwise_correlations"]) == 1
+    assert -1.0 <= comparison["mean_correlation"] <= 1.0
+    assert isinstance(comparison["shared_top_features"], list)
+
+
+def test_generate_plot_data(fitted_xgb, synth_data):
+    """Plot data generation returns bar and beeswarm data."""
+    model, X_clean = fitted_xgb
+    _, _, feature_names = synth_data
+    result = compute_shap_tree(model, X_clean, feature_names, max_samples=50)
+
+    plot = generate_plot_data(
+        result["shap_values"], X_clean[:result["n_samples_explained"]],
+        feature_names, top_k=5,
+    )
+    assert "bar" in plot
+    assert "beeswarm" in plot
+    assert len(plot["bar"]) == 5
+    assert len(plot["beeswarm"]) == 5
+    assert "feature" in plot["bar"][0]
+    assert "mean_abs_shap" in plot["bar"][0]
+
+
+def test_generate_waterfall_data(fitted_xgb, synth_data):
+    """Waterfall data for a single prediction."""
+    model, X_clean = fitted_xgb
+    _, _, feature_names = synth_data
+    result = compute_shap_tree(model, X_clean, feature_names, max_samples=50)
+
+    wf = generate_waterfall_data(
+        result["shap_values"],
+        X_clean[:result["n_samples_explained"]],
+        feature_names,
+        sample_idx=0,
+        top_k=5,
+    )
+    assert wf["sample_idx"] == 0
+    assert "base_value" in wf
+    assert "final_value" in wf
+    assert len(wf["contributions"]) == 5
+    assert "feature" in wf["contributions"][0]
+    assert "shap_value" in wf["contributions"][0]
