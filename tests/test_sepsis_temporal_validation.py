@@ -130,3 +130,19 @@ def test_evaluate_temporal_holdout_reasonable_auroc(synth_data):
     )
     # With planted signal, best model should beat random
     assert result["best_auroc"] > 0.5
+
+
+def test_evaluate_temporal_holdout_calibration(synth_data):
+    """Temporal holdout includes ECE calibration metrics."""
+    X, y, admit_times = synth_data
+    split = temporal_split(X, y, admit_times, holdout_frac=0.2)
+    result = evaluate_temporal_holdout(
+        split["X_train"], split["y_train"],
+        split["X_test"], split["y_test"],
+    )
+    assert "calibration" in result
+    for model in ["logistic_regression", "xgboost", "lightgbm", "ensemble_avg"]:
+        assert model in result["calibration"]
+        assert "ece" in result["calibration"][model]
+        assert 0.0 <= result["calibration"][model]["ece"] <= 1.0
+        assert "meets_ece_target" in result["calibration"][model]

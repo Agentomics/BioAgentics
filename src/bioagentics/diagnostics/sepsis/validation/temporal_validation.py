@@ -3,7 +3,8 @@
 Splits MIMIC-IV admissions by date (earliest 80% for training,
 most recent 20% for testing) to simulate prospective deployment.
 Trains LR, GBM, and ensemble models on the training period and
-evaluates on the temporal holdout.
+evaluates on the temporal holdout. Includes ECE calibration and
+fairness evaluation on the holdout set.
 """
 
 from __future__ import annotations
@@ -202,9 +203,25 @@ def evaluate_temporal_holdout(
         "y_true": y_test,
     }
 
+    # Calibration (ECE) on temporal holdout
+    from bioagentics.diagnostics.sepsis.calibration.calibration import compute_ece
+
+    probs = results["_probabilities"]
+    calibration_results = {}
+    for model_name in ["logistic_regression", "xgboost", "lightgbm", "ensemble_avg"]:
+        model_probs = probs[model_name]
+        ece = compute_ece(y_test, model_probs)
+        calibration_results[model_name] = {
+            "ece": ece,
+            "meets_ece_target": ece < 0.05,
+        }
+    results["calibration"] = calibration_results
+
     # Check success criterion: AUROC >= 0.85 at 6h
     best_auroc = max(
-        r["auroc"] for k, r in results.items() if not k.startswith("_")
+        r["auroc"]
+        for k, r in results.items()
+        if isinstance(r, dict) and "auroc" in r
     )
     results["best_auroc"] = best_auroc
     results["meets_target_085"] = best_auroc >= 0.85
