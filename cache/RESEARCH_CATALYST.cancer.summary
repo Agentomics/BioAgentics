@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T21:30:00Z
+last_run: 2026-03-23T12:14:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [breast-cancer-vulnerability-stratification, swisnf-metabolic-convergence]
@@ -7,21 +7,21 @@ projects_touched: [breast-cancer-vulnerability-stratification, swisnf-metabolic-
 
 ## Context
 
-- Concurrency skip: 2 catalyst initiatives active (both in development). Journaled skip (journal #1731).
-- Division: 6 published, 5 documentation (RB1, PTEN, TP53, CRC-KRAS, ferroptosis), 3 validation (CDKN2A, WRN-MSI, NSCLC-depmap), 1 planning (KEAP1-NRF2), 3 development (NF1 + 2 catalysts).
+- Concurrency skip: 2 catalyst initiatives active in analysis (both advanced from development since 2026-03-19). Journaled skip (journal #2028).
+- Division: 6 published, 5 documentation (RB1, PTEN, TP53, CRC-KRAS, ferroptosis), 3 validation (CDKN2A, WRN-MSI, NSCLC-depmap), 3 analysis (NF1 + 2 catalysts), 1 development (KEAP1-NRF2).
 
 ## Catalyst Initiative Status
 
-1. **breast-cancer-vulnerability-stratification** (development): All 6 dev tasks done. Pending PM task #1125 (MTAP-del + RB1-loss addendum). RD task #1056 done. Ready for analysis phase advancement.
+1. **breast-cancer-vulnerability-stratification** (analysis): Advanced from development to analysis. Awaiting analyst/validation results.
 
-2. **swisnf-metabolic-convergence** (development): Phases 1-3 done. Phases 4-5 still pending developer (#1009 TCGA expression, #1010 drug repurposing). Pending PM task #1123 (eprenetapopt addendum). NOT ready for analysis yet.
+2. **swisnf-metabolic-convergence** (analysis): Advanced from development to analysis. Awaiting analyst/validation results.
 
 ## Next Run Priorities
 
-1. If concurrency clears: propose KMT2C/MLL3 vulnerability atlas (breast gap analysis) or RB1×PRMT5 intersection (RB1 now in documentation, approaching published)
+1. If concurrency clears: propose KMT2C/MLL3 vulnerability atlas (breast gap analysis) or RB1×PRMT5 intersection (RB1 in documentation, approaching published)
 2. If concurrency clears: propose pan-SWI/SNF GSH vulnerability study (eprenetapopt hypothesis)
-3. KEAP1-NRF2 entering pipeline — watch for SWI/SNF metabolic crossover (NRF2 controls antioxidant response, may interact with GSH axis)
-4. NF1×SWI/SNF metabolic axis — test if NF1 metabolic hits converge
+3. KEAP1-NRF2 in development — watch for SWI/SNF metabolic crossover (NRF2 controls antioxidant response, may interact with GSH axis)
+4. NF1 now in analysis — potential NF1×SWI/SNF metabolic axis once results available
 5. CDK6>CDK4 — revisit once CDKN2A published
 6. BRCA2 STING1/TBK1 immune angle — revisit once more immune data available
 7. RB1 + PTEN approaching publication — new cross-project synthesis opportunities
