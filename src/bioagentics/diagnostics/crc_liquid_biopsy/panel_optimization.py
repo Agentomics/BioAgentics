@@ -21,7 +21,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegressionCV
-from sklearn.metrics import roc_auc_score
+from sklearn.metrics import roc_auc_score, roc_curve
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import StandardScaler
 
@@ -89,7 +89,6 @@ def load_protein_features(output_dir: Path, data_dir: Path) -> pd.DataFrame:
         sig_proteins = protein_aucs.head(10)
 
     probe_ids = sig_proteins["probe_id"].tolist()
-    gene_names = sig_proteins.index.tolist()
 
     # Load expression data
     expr_path = data_dir / "gse164191_protein_biomarkers.parquet"
@@ -179,7 +178,6 @@ def build_combined_feature_matrix(
 def cost_weighted_lasso(
     X: pd.DataFrame,
     y: np.ndarray,
-    n_panels: int = 10,
 ) -> list[dict]:
     """Run cost-weighted LASSO to select optimal marker panels.
 
@@ -208,7 +206,7 @@ def cost_weighted_lasso(
         X_weighted = X_scaled / penalties[np.newaxis, :]
 
         model = LogisticRegressionCV(
-            Cs=[C],
+            Cs=[float(C)],
             penalty="l1",
             solver="saga",
             cv=cv,
@@ -230,9 +228,7 @@ def cost_weighted_lasso(
         auc = roc_auc_score(y, y_prob)
 
         # Sensitivity at 95% specificity
-        from sklearn.metrics import roc_curve
-
-        fpr, tpr, thresholds = roc_curve(y, y_prob)
+        fpr, tpr, _ = roc_curve(y, y_prob)
         spec_95_idx = np.searchsorted(1 - fpr[::-1], 0.95)
         sens_at_95_spec = tpr[::-1][min(spec_95_idx, len(tpr) - 1)]
 
