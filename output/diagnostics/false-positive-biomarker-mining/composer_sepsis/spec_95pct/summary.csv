@@ -1,0 +1,2 @@
+domain,operating_point,threshold,specificity,sensitivity,n_total,n_fp,n_tn,n_tp,n_fn,fp_rate
+composer_sepsis,spec_95pct,0.893474295735359,0.9497716894977168,0.46774193548387094,500,22,416,29,33,0.0502283105022831

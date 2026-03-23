@@ -1,0 +1,2 @@
+cancer_type,gene,cohens_d,p_value,n_altered,n_wt,median_dep_altered,median_dep_wt,fdr,direction,is_nrf2_pathway,is_priority
+Lung,NFE2L2,-1.6697,1.8051207959891804e-06,18,87,-0.8898,-0.223,0.0323676209928819,gained_SL,True,False

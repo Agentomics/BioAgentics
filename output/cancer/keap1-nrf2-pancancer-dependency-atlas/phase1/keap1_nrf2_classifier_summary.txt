@@ -1,0 +1,53 @@
+======================================================================
+KEAP1/NRF2 Pan-Cancer Dependency Atlas - Phase 1: Cohort Classifier
+======================================================================
+
+OVERVIEW
+  Total cell lines with lineage + data: 1111
+  Cell lines with CRISPR data: 842
+  KEAP1/NRF2 altered (combined): 65 (5.9%)
+    KEAP1-loss only: 34
+    NFE2L2-GOF only: 30
+    Both: 1
+  Wild-type: 1046
+
+CO-ALTERATION LANDSCAPE (in altered lines)
+  STK11 mutation: 11/65 (16.9%)
+  KRAS mutation: 12/65 (18.5%)
+  TP53 mutation: 47/65 (72.3%)
+  KL subtype (KEAP1+STK11): 10/65 (15.4%)
+
+NRF2 TARGET EXPRESSION CROSS-VALIDATION
+  NQO1: altered=9.69 vs WT=7.76, p=7.81e-16 (VALIDATES)
+  GCLM: altered=5.44 vs WT=4.08, p=4.85e-18 (VALIDATES)
+  TXNRD1: altered=9.04 vs WT=7.12, p=1.56e-19 (VALIDATES)
+  HMOX1: altered=4.75 vs WT=3.69, p=4.39e-04 (VALIDATES)
+  AKR1C1: altered=8.47 vs WT=1.80, p=1.17e-16 (VALIDATES)
+
+QUALIFYING CANCER TYPES (>=3 altered + >=10 WT with CRISPR)
+----------------------------------------------------------------------
+  Bladder/Urinary Tract: 4 altered / 17 WT (CRISPR), 4/21 total (19.1%), STK11=0, KRAS=0
+  Uterus: 3 altered / 23 WT (CRISPR), 5/31 total (16.1%), STK11=0, KRAS=3
+  Lung: 18 altered / 87 WT (CRISPR), 25/158 total (15.8%), STK11=8, KRAS=6
+  Head and Neck: 5 altered / 40 WT (CRISPR), 7/52 total (13.5%), STK11=0, KRAS=0
+  Esophagus/Stomach: 6 altered / 40 WT (CRISPR), 7/52 total (13.5%), STK11=0, KRAS=0
+
+ALL CANCER TYPES WITH ALTERATIONS
+----------------------------------------------------------------------
+  Vulva/Vagina: 1 altered / 2 WT (CRISPR: 0/2)
+  Bladder/Urinary Tract: 4 altered / 17 WT (CRISPR: 4/17) *
+  Uterus: 5 altered / 26 WT (CRISPR: 3/23) *
+  Lung: 25 altered / 133 WT (CRISPR: 18/87) *
+  Cervix: 1 altered / 6 WT (CRISPR: 1/5)
+  Head and Neck: 7 altered / 45 WT (CRISPR: 5/40) *
+  Esophagus/Stomach: 7 altered / 45 WT (CRISPR: 6/40) *
+  Biliary Tract: 1 altered / 10 WT (CRISPR: 1/8)
+  Kidney: 3 altered / 32 WT (CRISPR: 1/24)
+  Liver: 1 altered / 21 WT (CRISPR: 1/21)
+  Bowel: 2 altered / 56 WT (CRISPR: 1/41)
+  CNS/Brain: 2 altered / 69 WT (CRISPR: 2/62)
+  Lymphoid: 3 altered / 109 WT (CRISPR: 1/69)
+  Ovary/Fallopian Tube: 1 altered / 44 WT (CRISPR: 1/37)
+  Bone: 1 altered / 51 WT (CRISPR: 0/40)
+  Soft Tissue: 1 altered / 55 WT (CRISPR: 1/38)
+

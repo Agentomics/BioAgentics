@@ -1,0 +1,3 @@
+cancer_type,gene,cohens_d,p_value,n_altered,n_wt,median_dep_altered,median_dep_wt,fdr
+Pan-cancer (pooled),TXN,0.7622,2.3054053096834943e-06,46,796,-0.9815,-1.2908,0.011896270202700883
+Pan-cancer (pooled),GCLM,0.6629,4.004540395181023e-06,46,796,0.0476,-0.0438,0.014361082765198185

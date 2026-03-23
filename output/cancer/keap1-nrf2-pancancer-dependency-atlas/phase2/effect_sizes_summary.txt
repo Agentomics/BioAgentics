@@ -1,0 +1,34 @@
+======================================================================
+KEAP1/NRF2 Pan-Cancer Dependency Atlas - Phase 2: Effect Sizes
+======================================================================
+
+Total tests: 107298
+Contexts screened: Bladder/Urinary Tract, Uterus, Lung, Head and Neck, Esophagus/Stomach, Pan-cancer (pooled)
+
+SL gained dependencies (FDR<0.1, |d|>0.5): 5
+High-confidence SL (FDR<0.05, |d|>0.8): 3
+Lost dependencies: 2
+NRF2 pathway genes in hits: 1
+Novel SL candidates: 3
+
+TOP PAN-CANCER SL HITS
+------------------------------------------------------------
+  NFE2L2: d=-1.779, FDR=1.270e-04 [NRF2 pathway]
+  SUCO: d=-0.823, FDR=1.190e-02
+  EID3: d=-0.743, FDR=3.621e-02
+  SLC33A1: d=-0.721, FDR=1.190e-02
+
+PRIORITY GENE STATUS
+------------------------------------------------------------
+  ATR [Bladder/Urinary Tract]: d=-0.699, FDR=9.138e-01
+  ATR [Uterus]: d=-0.217, FDR=1.000e+00
+  ATR [Lung]: d=0.023, FDR=9.888e-01
+  ATR [Head and Neck]: d=0.153, FDR=9.615e-01
+  ATR [Esophagus/Stomach]: d=0.204, FDR=9.955e-01
+  ATR [Pan-cancer (pooled)]: d=-0.069, FDR=9.906e-01
+  UXS1 [Bladder/Urinary Tract]: d=-1.011, FDR=7.206e-01
+  UXS1 [Uterus]: d=-0.500, FDR=9.811e-01
+  UXS1 [Lung]: d=-0.831, FDR=8.369e-01
+  UXS1 [Head and Neck]: d=-0.814, FDR=9.018e-01
+  UXS1 [Esophagus/Stomach]: d=0.931, FDR=8.985e-01
+  UXS1 [Pan-cancer (pooled)]: d=-0.575, FDR=3.083e-01

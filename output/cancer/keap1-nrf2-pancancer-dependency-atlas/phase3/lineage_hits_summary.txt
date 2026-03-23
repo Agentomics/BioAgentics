@@ -1,0 +1,27 @@
+======================================================================
+KEAP1/NRF2 Pan-Cancer Dependency Atlas - Phase 3: Lineage-Specific
+======================================================================
+
+Lineage-specific SL hits (|d|>0.5, n>=3, FDR<0.1): 1
+Unique SL genes: 1
+Novel SL genes (non-pathway): 0
+
+TOP NOVEL LINEAGE-SPECIFIC SL GENES
+------------------------------------------------------------
+
+PRIORITY GENE ASSESSMENT
+------------------------------------------------------------
+  UXS1 (J#1679): Pyrimidine vulnerability in KEAP1-mutant lung cancer. UXS1 knockout selectively kills KEAP1-mut cells via UDP-glucuronate depletion. Cancer Res Dec 2025.
+    Bladder/Urinary Tract: d=-1.011, FDR=7.206e-01
+    Uterus: d=-0.500, FDR=9.811e-01
+    Lung: d=-0.831, FDR=8.369e-01
+    Head and Neck: d=-0.814, FDR=9.018e-01
+    Esophagus/Stomach: d=0.931, FDR=8.985e-01
+    Pan-cancer (pooled): d=-0.575, FDR=3.083e-01
+  ATR (J#1680): KEAP1/STK11 co-mutant tumors sensitive to ATR inhibition. Ceralasertib (ATR inhibitor) shows clinical validation in KEAP1-mut NSCLC. Cancer Cell 2025.
+    Bladder/Urinary Tract: d=-0.699, FDR=9.138e-01
+    Uterus: d=-0.217, FDR=1.000e+00
+    Lung: d=0.023, FDR=9.888e-01
+    Head and Neck: d=0.153, FDR=9.615e-01
+    Esophagus/Stomach: d=0.204, FDR=9.955e-01
+    Pan-cancer (pooled): d=-0.069, FDR=9.906e-01

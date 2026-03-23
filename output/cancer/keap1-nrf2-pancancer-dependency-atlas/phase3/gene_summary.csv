@@ -1,0 +1,2 @@
+gene,n_lineages,lineages,best_cohens_d,best_fdr,best_lineage,pancancer_d,pancancer_fdr,is_nrf2_pathway,is_priority
+NFE2L2,1,Lung,-1.6697,0.0323676209928819,Lung,-1.7794,0.0001270001954392,True,False

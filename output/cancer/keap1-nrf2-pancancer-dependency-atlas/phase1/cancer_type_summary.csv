@@ -1,0 +1,31 @@
+cancer_type,n_total,n_altered,n_wt,alteration_freq,n_keap1_loss,n_nfe2l2_gof,n_altered_crispr,n_wt_crispr,stk11_co_mutation,kras_co_mutation,tp53_co_mutation,kl_subtype,qualifies
+Vulva/Vagina,3,1,2,0.3333,0,1,0,2,0,0,1,0,False
+Bladder/Urinary Tract,21,4,17,0.1905,1,3,4,17,0,0,2,0,True
+Uterus,31,5,26,0.1613,0,5,3,23,0,3,3,0,True
+Lung,158,25,133,0.1582,18,7,18,87,8,6,20,8,True
+Cervix,7,1,6,0.1429,0,1,1,5,1,0,1,0,False
+Head and Neck,52,7,45,0.1346,2,5,5,40,0,0,5,0,True
+Esophagus/Stomach,52,7,45,0.1346,2,6,6,40,0,0,7,0,True
+Biliary Tract,11,1,10,0.0909,1,0,1,8,0,1,0,0,False
+Kidney,35,3,32,0.0857,0,3,1,24,0,0,1,0,False
+Liver,22,1,21,0.0455,1,0,1,21,0,0,1,0,False
+Bowel,58,2,56,0.0345,2,0,1,41,0,2,1,0,False
+CNS/Brain,71,2,69,0.0282,2,0,2,62,0,0,1,0,False
+Lymphoid,112,3,109,0.0268,3,0,1,69,2,0,2,2,False
+Ovary/Fallopian Tube,45,1,44,0.0222,1,0,1,37,0,0,1,0,False
+Bone,52,1,51,0.0192,1,0,0,40,0,0,1,0,False
+Soft Tissue,56,1,55,0.0179,1,0,1,38,0,0,0,0,False
+Pleura,15,0,15,0.0,0,0,0,15,0,0,0,0,False
+Testis,8,0,8,0.0,0,0,0,5,0,0,0,0,False
+Skin,77,0,77,0.0,0,0,0,50,0,0,0,0,False
+Thyroid,10,0,10,0.0,0,0,0,9,0,0,0,0,False
+Prostate,6,0,6,0.0,0,0,0,6,0,0,0,0,False
+Myeloid,56,0,56,0.0,0,0,0,37,0,0,0,0,False
+Peripheral Nervous System,38,0,38,0.0,0,0,0,34,0,0,0,0,False
+Pancreas,33,0,33,0.0,0,0,0,31,0,0,0,0,False
+Other,1,0,1,0.0,0,0,0,0,0,0,0,0,False
+Ampulla of Vater,3,0,3,0.0,0,0,0,3,0,0,0,0,False
+Fibroblast,4,0,4,0.0,0,0,0,1,0,0,0,0,False
+Eye,18,0,18,0.0,0,0,0,12,0,0,0,0,False
+Breast,54,0,54,0.0,0,0,0,38,0,0,0,0,False
+Adrenal Gland,2,0,2,0.0,0,0,0,1,0,0,0,0,False

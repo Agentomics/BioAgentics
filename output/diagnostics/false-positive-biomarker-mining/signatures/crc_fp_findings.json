@@ -1,0 +1,304 @@
+[
+  {
+    "operating_point": "spec_90pct",
+    "threshold": 0.48244707691395,
+    "specificity": 0.8888888888888888,
+    "sensitivity": 0.8798701298701299,
+    "n_fp": 5,
+    "n_tn": 40,
+    "features_available": [
+      "stage_numeric"
+    ],
+    "n_features": 1,
+    "n_significant_features": 0,
+    "confidence_scores": {
+      "false_positives": {
+        "mean": 0.51191118770075,
+        "std": 0.030902626064282186,
+        "median": 0.496218006477559,
+        "p25": 0.4912431878738407,
+        "p75": 0.5210674182508017,
+        "min": 0.4888220030456565,
+        "max": 0.5622053228558918,
+        "n": 5
+      },
+      "true_negatives": {
+        "mean": 0.24250458955537996,
+        "std": 0.11577187995313529,
+        "median": 0.2253408131867588,
+        "p25": 0.16272468970349685,
+        "p75": 0.3194922076490859,
+        "min": 0.041471460296917714,
+        "max": 0.4728846877163902,
+        "n": 40
+      },
+      "true_positives": {
+        "mean": 0.7521968905527924,
+        "std": 0.12611511990230612,
+        "median": 0.7664607974643768,
+        "p25": 0.6566427969431858,
+        "p75": 0.8508807915304011,
+        "min": 0.4832419675171745,
+        "max": 0.9943020454053676,
+        "n": 271
+      },
+      "false_negatives": {
+        "mean": 0.3880751903323569,
+        "std": 0.0631749342421242,
+        "median": 0.39447467646448175,
+        "p25": 0.36037831419630295,
+        "p75": 0.43243927005353633,
+        "min": 0.2025275733512092,
+        "max": 0.47323916989823656,
+        "n": 37
+      }
+    },
+    "demographics": {
+      "stage": {
+        "fp": {
+          "Normal": 1.0
+        },
+        "tn": {
+          "Normal": 1.0
+        }
+      },
+      "stage_numeric": {
+        "fp": {
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 5
+        },
+        "tn": {
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 40
+        }
+      }
+    },
+    "clustering": "skipped \u2014 all FPs have identical feature values (stage_numeric=0), insufficient variance for meaningful clustering",
+    "feature_comparison": [
+      {
+        "feature": "stage_numeric",
+        "fp_mean": 0.0,
+        "fp_std": 0.0,
+        "fp_median": 0.0,
+        "fp_n": 5,
+        "tn_mean": 0.0,
+        "tn_std": 0.0,
+        "tn_median": 0.0,
+        "tn_n": 40,
+        "mean_diff": 0.0,
+        "cohens_d": 0.0,
+        "t_statistic": NaN,
+        "t_pvalue": NaN,
+        "ks_statistic": 0.0,
+        "ks_pvalue": 1.0
+      }
+    ]
+  },
+  {
+    "operating_point": "spec_95pct",
+    "threshold": 0.49522304275681533,
+    "specificity": 0.9333333333333333,
+    "sensitivity": 0.8733766233766234,
+    "n_fp": 3,
+    "n_tn": 42,
+    "features_available": [
+      "stage_numeric"
+    ],
+    "n_features": 1,
+    "n_significant_features": 0,
+    "confidence_scores": {
+      "false_positives": {
+        "mean": 0.5264969158614174,
+        "std": 0.033327032030039935,
+        "median": 0.5210674182508017,
+        "p25": 0.5086427123641803,
+        "p75": 0.5416363705533467,
+        "min": 0.496218006477559,
+        "max": 0.5622053228558918,
+        "n": 3
+      },
+      "true_negatives": {
+        "mean": 0.254291637455588,
+        "std": 0.12488335131721146,
+        "median": 0.23638036097970333,
+        "p25": 0.16539731959333526,
+        "p75": 0.3391030374136414,
+        "min": 0.041471460296917714,
+        "max": 0.4912431878738407,
+        "n": 42
+      },
+      "true_positives": {
+        "mean": 0.7541814846006929,
+        "std": 0.12445084782697888,
+        "median": 0.7668506178280503,
+        "p25": 0.6572636124624484,
+        "p75": 0.8510345149444901,
+        "min": 0.4962059580456324,
+        "max": 0.9943020454053676,
+        "n": 269
+      },
+      "false_negatives": {
+        "mean": 0.3930594878081425,
+        "std": 0.06521446506289326,
+        "median": 0.3970874932105532,
+        "p25": 0.3635399944398813,
+        "p75": 0.4358559181912257,
+        "min": 0.2025275733512092,
+        "max": 0.4872960147031794,
+        "n": 39
+      }
+    },
+    "demographics": {
+      "stage": {
+        "fp": {
+          "Normal": 1.0
+        },
+        "tn": {
+          "Normal": 1.0
+        }
+      },
+      "stage_numeric": {
+        "fp": {
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 3
+        },
+        "tn": {
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 42
+        }
+      }
+    },
+    "clustering": "skipped \u2014 all FPs have identical feature values (stage_numeric=0), insufficient variance for meaningful clustering",
+    "feature_comparison": [
+      {
+        "feature": "stage_numeric",
+        "fp_mean": 0.0,
+        "fp_std": 0.0,
+        "fp_median": 0.0,
+        "fp_n": 3,
+        "tn_mean": 0.0,
+        "tn_std": 0.0,
+        "tn_median": 0.0,
+        "tn_n": 42,
+        "mean_diff": 0.0,
+        "cohens_d": 0.0,
+        "t_statistic": NaN,
+        "t_pvalue": NaN,
+        "ks_statistic": 0.0,
+        "ks_pvalue": 1.0
+      }
+    ]
+  },
+  {
+    "operating_point": "spec_99pct",
+    "threshold": 0.5441046448296523,
+    "specificity": 0.9777777777777777,
+    "sensitivity": 0.814935064935065,
+    "n_fp": 1,
+    "n_tn": 44,
+    "features_available": [
+      "stage_numeric"
+    ],
+    "n_features": 1,
+    "n_significant_features": 0,
+    "confidence_scores": {
+      "false_positives": {
+        "mean": 0.5622053228558918,
+        "std": NaN,
+        "median": 0.5622053228558918,
+        "p25": 0.5622053228558918,
+        "p75": 0.5622053228558918,
+        "min": 0.5622053228558918,
+        "max": 0.5622053228558918,
+        "n": 1
+      },
+      "true_negatives": {
+        "mean": 0.26585304995143305,
+        "std": 0.13322880116206032,
+        "median": 0.2490560443525931,
+        "p25": 0.16799398678699035,
+        "p75": 0.36480377314161183,
+        "min": 0.041471460296917714,
+        "max": 0.5210674182508017,
+        "n": 44
+      },
+      "true_positives": {
+        "mean": 0.770766739494106,
+        "std": 0.1116086128069113,
+        "median": 0.7746450705177653,
+        "p25": 0.6753904516234203,
+        "p75": 0.8567443471128964,
+        "min": 0.5482757104755706,
+        "max": 0.9943020454053676,
+        "n": 251
+      },
+      "false_negatives": {
+        "mean": 0.4340646977032162,
+        "std": 0.08173662830220861,
+        "median": 0.4358209536676188,
+        "p25": 0.3816523907193401,
+        "p75": 0.5054683509437873,
+        "min": 0.2025275733512092,
+        "max": 0.5429003688162972,
+        "n": 57
+      }
+    },
+    "demographics": {
+      "stage": {
+        "fp": {
+          "Normal": 1.0
+        },
+        "tn": {
+          "Normal": 1.0
+        }
+      },
+      "stage_numeric": {
+        "fp": {
+          "mean": 0.0,
+          "std": NaN,
+          "median": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 1
+        },
+        "tn": {
+          "mean": 0.0,
+          "std": 0.0,
+          "median": 0.0,
+          "p25": 0.0,
+          "p75": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 44
+        }
+      }
+    },
+    "clustering": "skipped \u2014 all FPs have identical feature values (stage_numeric=0), insufficient variance for meaningful clustering"
+  }
+]

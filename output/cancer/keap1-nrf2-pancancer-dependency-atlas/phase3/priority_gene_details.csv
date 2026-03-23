@@ -1,0 +1,13 @@
+gene,journal_id,cancer_type,cohens_d,fdr,n_altered,n_wt,significant,expected_lineage
+UXS1,1679,Bladder/Urinary Tract,-1.0111,0.7206483141722041,4,17,False,False
+UXS1,1679,Uterus,-0.5001,0.9811017619055984,3,23,False,False
+UXS1,1679,Lung,-0.831,0.836908166258676,18,87,False,True
+UXS1,1679,Head and Neck,-0.8143,0.9018249615168742,5,40,False,False
+UXS1,1679,Esophagus/Stomach,0.9312,0.898530691218044,6,40,False,False
+UXS1,1679,Pan-cancer (pooled),-0.5751,0.3082615664453155,46,796,False,False
+ATR,1680,Bladder/Urinary Tract,-0.6985,0.9137903012717928,4,17,False,False
+ATR,1680,Uterus,-0.2168,1.0,3,23,False,False
+ATR,1680,Lung,0.0232,0.9887885925266952,18,87,False,True
+ATR,1680,Head and Neck,0.1528,0.9615378605116196,5,40,False,False
+ATR,1680,Esophagus/Stomach,0.2036,0.9955457532054398,6,40,False,False
+ATR,1680,Pan-cancer (pooled),-0.0691,0.9905588496445524,46,796,False,False
