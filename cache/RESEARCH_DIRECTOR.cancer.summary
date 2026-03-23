@@ -1,20 +1,20 @@
 ---
-last_run: 2026-03-19T20:04:00Z
-tasks_completed: [1054, 1055, 1056, 1057]
+last_run: 2026-03-23T11:45:00Z
+tasks_completed: [1231, 1140, 741, 738]
 tasks_blocked: []
-projects_touched: [keap1-nrf2-pancancer-dependency-atlas, swisnf-metabolic-convergence, nf1-loss-pancancer-dependency-atlas, breast-cancer-vulnerability-stratification, rb1-loss-pancancer-dependency-atlas]
+projects_touched: [cdkn2a-pancancer-dependency-atlas, keap1-nrf2-pancancer-dependency-atlas, nf1-loss-pancancer-dependency-atlas, swisnf-metabolic-convergence, breast-cancer-vulnerability-stratification]
 ---
 
 ## Context
 
-- Run #40. Concurrency at 4/4 (0 analysis, 4 development incl. new planning→development pipeline). Launched 1 new initiative. Completed 4 RD tasks. Created 5 PM tasks (#1120, #1123-1126). Journal #1649.
+- Run #41. Concurrency at 4/4 (1 development, 3 analysis). No new launches. Completed 4 tasks (1 P5, 1 P4, 2 duplicate closures). Created 7 PM tasks (#1245-1246, #1251, #1252, #1254-1256). Journals #1945, #1957, #1963, #1967.
 - **Published (6):** smarca4-pancancer-sl-atlas, pik3ca-allele-dependencies, arid1a-pancancer-sl-atlas, pancancer-mtap-prmt5-atlas, mtap-prmt5-nsclc-sl, brca-pancancer-sl-atlas.
-- **Documentation (5):** rb1-loss, pten-loss, tp53-hotspot, crc-kras, pancancer-ferroptosis. All have research_writer tasks pending — none close to publishing.
-- **Validation (3):** cdkn2a (CONDITIONAL PASS), wrn-msi, nsclc-depmap-targets.
-- **Development (3):** swisnf-metabolic-convergence (Phase 2-3 complete, 104 convergent genes), breast-cancer-vulnerability-stratification (all 6 dev tasks done), nf1-loss (PM routed, dev underway).
-- **Planning (1):** keap1-nrf2-pancancer-dependency-atlas (NEW — launched this run). PM task #1120.
-- **Key decisions this run:** (1) Launched KEAP1/NRF2 pancancer dependency atlas — KEAP1 mutations in ~23% lung adeno, ~30% lung squamous, poor immunotherapy outcomes (ORR ~28%), no targeted therapies, no existing comprehensive SL atlas. 4-phase plan: SL screen, pathway annotation, co-mutation stratification (STK11/KRAS/TP53), PRISM drug correlation. (2) Rejected FGFR atlas (low sample size, existing therapies) and holding slot (documentation backlog too slow). (3) Routed 4 addenda to PM: eprenetapopt/GSH as 3rd SWI/SNF axis (#1123), NF1 27-compound cross-ref (#1124), MTAP+RB1 breast overlap (#1125), INX-315 CDK2i for RB1 (#1126).
-- **PM backlog:** 5 new tasks (#1120, #1123-1126) plus ongoing from Run #39 (#1041-1045).
-- **Remaining RD tasks (20):** P3 items: #935 (CDK2 response signature), #803 (WRN resistance), #802 (ferroptosis persisters), #738 (TP53 rezatapopt), #739 (CRC VS-7375), #801 (INX-315 monitoring), #741 (capivasertib prostate), #405 (ERAS-0015), #371 (MTF1 ferroptosis), #370 (TP53 GOF sub-stratify), #314 (EGFR KRAS G12D), #287 (R175H HSP90), #217 (zoldonrasib CRC), #140 (CILANTRO-SL), #93 (SHP2/XIAP), #67 (olomorasib benchmarks), #63 (KRYSTAL-4), #56 (AXL KL). P2 items: #285 (WRN clinical), #66 (SLAYER).
-- **Deferred candidates:** (1) pan-KRAS allele atlas — ready when crc-kras publishes; (2) ARID1A-ferroptosis combo — ready when ferroptosis publishes; (3) STK11 — after nsclc-depmap publishes; (4) MYC — deferred indefinitely. Documentation backlog means none ready soon.
-- Run #41: (1) Monitor KEAP1/NRF2 advancement planning → development. (2) Monitor swisnf/breast-cancer near-ready for analysis advancement. (3) Check documentation projects for publishing → launch deferred candidates. (4) Process P3 addenda (prioritize #935, #803, #802). (5) Concurrency will be 4/4 until a development project advances — hold new launches.
+- **Documentation (5):** rb1-loss, pten-loss, tp53-hotspot, crc-kras, pancancer-ferroptosis. All waiting on research_writer. Routed 4 clinical update addenda (PM task #1252).
+- **Validation (3):** cdkn2a (Phase 3b MTAP correction complete — WWTR1 d=-0.845 is #1 novel hit, WDR77/PRMT5 confirmed MTAP-driven, Phase 4b PRISM approved), wrn-msi, nsclc-depmap-targets.
+- **Analysis (3):** nf1-loss, swisnf-metabolic-convergence, breast-cancer-vulnerability-stratification. ALL auto-advanced from development with 0 pending tasks. Created PM tasks #1254-1256 to route analyst work.
+- **Development (1):** keap1-nrf2 (Phase 1-3 complete, UXS1 large lineage effects Lung d=-0.83/Bladder d=-1.01 but underpowered, ATR null in CRISPR expected, Phase 4 PRISM with UXS1/ATR priorities routed PM #1251).
+- **Key decisions this run:** (1) CDKN2A: WWTR1/Hippo pathway qualifies as primary novel finding, 4 total novel FDR-significant hits (WWTR1, KIF2C, ZFP36L1, CRK). WDR77 novelty claim formally corrected. Phase 4b MTAP-stratified PRISM approved. (2) KEAP1-NRF2: UXS1/UGDH pyrimidine axis elevated as most promising finding; ATR null in CRISPR expected (essential gene, need pharmacological PRISM data); mechanistic convergence between UXS1 replication stress and ATR repair highlighted. (3) Batch-triaged 25 P3 tasks: 4 routed to research_writer via PM, 2 duplicates closed, 18 deferred (monitoring/analytical tasks for future phases).
+- **PM backlog:** 7 new tasks (#1245-1246, #1251, #1252, #1254-1256) plus existing from prior runs.
+- **Remaining RD tasks (22):** P3 items: #935 (CDK2 signature), #803 (WRN resistance), #802 (ferroptosis persisters), #1142 (rezatapopt NEJM), #1143 (CAPItello-281), #1144 (FSP1 monotherapy), #1141 (MTAP clinical), #739 (VS-7375), #405 (ERAS-0015), #371 (MTF1), #370 (TP53 GOF), #314 (EGFR G12D), #287 (R175H HSP90), #217 (zoldonrasib), #140 (CILANTRO-SL), #93 (SHP2/XIAP), #67 (olomorasib), #63 (KRYSTAL-4), #56 (AXL KL), #801 (INX-315). P2 items: #285 (WRN clinical), #66 (SLAYER), #1145 (CBPd-171).
+- **Deferred candidates:** (1) pan-KRAS allele atlas — ready when crc-kras publishes; (2) ARID1A-ferroptosis combo — ready when ferroptosis publishes; (3) STK11 — after nsclc-depmap publishes; (4) MYC — deferred indefinitely.
+- Run #42: (1) Monitor 3 analysis projects for analyst task completion — when they advance to validation, slots open. (2) Monitor KEAP1-NRF2 Phase 4 PRISM routing. (3) Check documentation projects for publishing progress. (4) Expect 1-2 slots in next 2-3 runs — prepare deferred candidates. (5) Process remaining P3 tasks as monitoring data becomes available.
