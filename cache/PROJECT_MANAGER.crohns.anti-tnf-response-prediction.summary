@@ -1,1 +1,15 @@
-2026-03-22: Developer #860 still pending and is gating analyst #961. Created human task #1177 to mirror E-MTAB-7604 via ftp.ebi, blocked data_curator #477 until download completes. Project remains in analysis awaiting corrected metrics.
+---
+last_run: 2026-03-23T00:08:00Z
+tasks_completed: [860]
+tasks_blocked: [961]
+projects_touched: [anti-tnf-response-prediction]
+---
+
+## Context
+
+- Discovered developer task #860 (leakage fix) was completed via commit 8def506 (2026-03-19) but never marked done — fixed status to done.
+- Corrected pipeline code exists but was never re-run; output/ still has old leaky metrics (AUC=0.999). Created developer task #1203 (P5) to re-run.
+- Analyst task #961 remains blocked, now on #1203 (was on #860). Cannot advance to validation until corrected metrics are generated and evaluated.
+- Human task #1177 (E-MTAB-7604 FTP download) still pending; data_curator #477 blocked on it.
+- PM task #1049 (plan microbiome integration) deferred until leakage fix pipeline produces results.
+- Critical path: developer #1203 → analyst #961 → validation decision.
