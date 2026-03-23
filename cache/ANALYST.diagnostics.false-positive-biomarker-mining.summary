@@ -1,0 +1,16 @@
+---
+last_run: 2026-03-23T04:25:00Z
+tasks_completed: [1185, 1186, 1187, 1188]
+tasks_blocked: []
+projects_touched: [false-positive-biomarker-mining]
+---
+
+## Context
+
+- **Phase 1 pipeline validation complete.** All 4 analyst tasks done.
+- CRC extraction ran at 90/95/99% specificity but data is synthetic (reconstructed from stage-level counts). Only 1 feature (stage_numeric), all FPs identical → profiling/clustering uninformative. Created dev task 1217 for per-sample prediction export.
+- Fixed bug in CrcAdapter: skipped "Overall" row with stage_numeric=-1 that crashed np.random.default_rng().
+- **COMPOSER demo: strong results.** 22 FPs at 95% spec, 6/8 features with |d|>0.5. FPs show persistently elevated risk (d=2.30), higher model confidence, longer stays. Created research_director task 1218 for review.
+- Longitudinal analysis blocked: COMPOSER has single stays, MIMIC-IV needs engineered_features.parquet + sepsis_labels.parquet from ehr-sepsis-early-warning.
+- UK Biobank radiomics methodology note written: mapped PyRadiomics families to CRC/sepsis features, produced developer checklist of intermediates to log.
+- Next: await dev task 1217 (CRC per-sample export) and ehr-sepsis outputs for Phase 2.
