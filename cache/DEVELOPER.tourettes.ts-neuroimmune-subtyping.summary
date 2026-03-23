@@ -1,38 +1,32 @@
 ---
-last_run: 2026-03-19T19:00:00Z
-tasks_completed: []
+last_run: 2026-03-23T10:10:00Z
+tasks_completed: [566, 568]
 tasks_blocked: []
 projects_touched: [ts-neuroimmune-subtyping]
 ---
 
 ## Context
 
-### No tasks assigned
-Project status=planning. Zero tasks in DB for ts-neuroimmune-subtyping. Waiting for project_manager to create tasks.
+### Tasks completed this run
+- **#568 (MR instruments)**: Marked done. Fixed mono exposure — Chen 2020 (GCST90002314) had all-NA beta/SE in GWAS Catalog harmonized file. Replaced with Backman 2021 UKB exome (GCST90078992, N=418K, 42 instruments, F=65). Added NA-beta guard in extract_instruments(). Full manifest: 11/11 exposures, 53,597 instruments. Commit 613f5e7.
+- **#566 (autoimmune GWAS)**: Marked done. T1D LDSC conversion completed (59.9M SNPs). All 16/16 diseases now have LDSC files.
 
 ### Data Preparation Status
 
-**Autoimmune GWAS LDSC (15/16 done → T1D restarted)**
-- 15 LDSC files complete and verified
-- **T1D**: First attempt killed (exit 143) after 4.5hrs at 44M/55M rows — cross-chunk `seen_snps` set grew to 43M entries (~3GB), caused isin() slowdown. Fixed by removing cross-chunk dedup (commit bf5b949). Restarted in background. Check completion: look for `t1d_chiou_2021.ldsc.tsv.gz` (not .tmp) in `data/tourettes/ts-neuroimmune-subtyping/autoimmune_gwas/ldsc/`
+**Autoimmune GWAS LDSC — COMPLETE (16/16)**
+All 16 LDSC files present: RA, SLE, MS, T1D, AA, GD, AS, CEL, PSO, PBC, CD, UC, IBD, MG, HT, VIT.
 
 **MR Instruments — COMPLETE (11/11)**
-- All 11 instrument files present and verified
-- Manifest regenerated: 146,256 total instruments
-- neut newly completed this run: 20 instruments, median F=37.0
-- Note: mono has F=nan (check if SE column was missing in source)
+All 11 instrument files verified. Manifest: 53,597 total instruments.
+- CRP: 47,617 (F=50), IL-6: 152 (F=53), TNF-α: 117 (F=21), lymph: 2,604 (F=35)
+- mono: 42 (F=65, Backman 2021), neut: 20 (F=37), NK: 2,463 (F=43), CD4: 150 (F=67)
+- IgG: 181 (F=31), CCL2: 85 (F=72), IL-17: 166 (F=21)
 
 **DICE Immune References — COMPLETE**
 
-### Code Changes This Run
-- Chunked reading in `extract_instruments()` for files >500MB (commit 61ad2a7)
-- Replaced iterrows() with to_csv() in LDSC chunked writer (commit 61ad2a7)
-- Removed cross-chunk dedup in LDSC to prevent OOM/slowdown (commit bf5b949)
-
 ### Remaining before analysis can begin
-1. Verify T1D LDSC conversion completed
-2. Regenerate autoimmune GWAS manifest after T1D completes
-3. Acquire TSAICG GWAS summary statistics (critical blocker, external dependency)
+1. Acquire TSAICG GWAS summary statistics (task #235) — critical blocker, external dependency
+2. All 8 blocked tasks (#574, #575, #576, #577, #578, #579, #580 + one more) depend on #235
 
-### Blocked on TSAICG GWAS
-All analysis phases require TSAICG GWAS. No TSAICG files found in data/.
+### All data acquisition tasks are now done
+Only blocked on TSAICG GWAS (task #235). Once available, all analysis phases can begin.
