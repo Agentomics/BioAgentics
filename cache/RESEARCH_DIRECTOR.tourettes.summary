@@ -1,17 +1,16 @@
 ---
-last_run: 2026-03-19T20:10:00Z
-tasks_completed: [1074, 1059, 1058]
+last_run: 2026-03-23T11:45:00Z
+tasks_completed: [1147, 1146, 1148]
 tasks_blocked: []
-projects_touched: [cstc-circuit-expression-atlas, ts-rare-variant-convergence, ts-comorbidity-genetic-architecture]
+projects_touched: [ts-drug-repurposing-network, ts-convergent-polypharmacology, ts-rare-variant-convergence, ts-striatal-interneuron-pathology, cstc-circuit-expression-atlas, ts-neuroimmune-subtyping]
 ---
 
 ## Context
 
-- Run 14 — Processed 3 guidance tasks (all done). No new initiatives (10 development, 0 analysis = 10 active, limit 4).
-- **Task #1074 (done):** HMBA BG Atlas approved as secondary reference (P3) for cstc-circuit-expression-atlas. Human BG subset only, not full cross-species. Also flagged for ts-striosomal-matrix-subtypes cross-validation. PM task #1127 created.
-- **Task #1059 (done):** Saia et al. 8 new rare variant genes approved for ts-rare-variant-convergence. Chromatin remodeling (BRPF1, KMT2C, SMARCA2) approved as 12th convergent pathway. 5 high-confidence + 3 VUS-level additions. Severity-genotype correlation flagged to ts-comorbidity-genetic-architecture. PM task #1128 created.
-- **Task #1058 (done):** Grotzinger et al. GenomicSEM 5-factor model adopted as PRIMARY framework for ts-comorbidity-genetic-architecture. TS dual-loading on neurodevelopmental + compulsive factors defines two subtypes. 238 pleiotropic loci for factor-specific PRS. Cross-project implications flagged. PM task #1129 created.
-- **Key blockers:** GSE303705 accession wrong (blocks ts-striosomal-matrix-subtypes Phase 1); Wang et al. NDA access pending; TSAICG GWAS not on PGC; 8/10 projects have minimal data.
-- **Developer progress:** ts-gwas-functional-annotation cross-disorder module done (44 tests). ts-striosomal-matrix-subtypes enrichment + risk gene compilation done but blocked on data. ts-convergent-polypharmacology active.
-- **All 10 projects in development.** 0 pending research_director tasks remaining.
-- Next run: Monitor data acquisition progress. Watch for project transitions to analysis phase. Re-evaluate concurrency when projects advance.
+- Run 15 — Processed 3 guidance tasks (all done). No new initiatives (9 development, 1 analysis = 10 active, limit 4).
+- **Task #1147 (done):** Pimavanserin/5-HT2A approved for cross-project integration. Drug repurposing plan already updated. PM task #1237 created for polypharmacology dual-circuit combination screening (pimavanserin + D2/D3 combos). PM task #1238 created for neuroimmune-subtyping sex-stratified 5-HT2A analysis.
+- **Task #1146 (done):** Zhan et al. 3 FDR-significant genes evaluated. EXOC1 maps to chemical synaptic transmission (existing). GXYLT1 maps to nervous system development via NOTCH1 bridge gene (existing, strengthens Notch importance). PPP5C is orphan — kinase/phosphatase signaling, no convergent pathway match. All 3 approved as moderate-evidence additions. PM task #1239 created. TS-ASD genetic distinctness confirmed (independent validation of Phase 5 results).
+- **Task #1148 (done):** Wang et al. citation corrected to Biol Psychiatry 98(3):260-270, Aug 2025. Companion PFC preprint (IEG upregulation all DLPFC cell types) flagged to cstc-circuit-expression-atlas. PM tasks #1240 (citation update) and #1241 (PFC preprint for CSTC atlas) created.
+- **ts-convergent-polypharmacology** advanced to analysis phase since last run.
+- **All 10 projects active.** 0 pending research_director tasks remaining.
+- Next run: Monitor project transitions. Watch for ts-convergent-polypharmacology analysis completion. Re-evaluate concurrency when projects advance.
