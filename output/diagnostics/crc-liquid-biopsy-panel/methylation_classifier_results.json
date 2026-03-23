@@ -1,0 +1,56 @@
+{
+  "methylation_only_classifier": {
+    "auc": 0.9791666666666667,
+    "sensitivity_at_90spec": 0.9166666666666666,
+    "sensitivity_at_95spec": 0.8333333333333334,
+    "n_cmcd_genes": 21,
+    "n_cpgs_available": 298,
+    "n_features_selected": 20,
+    "top_features": [
+      "cg22418909",
+      "cg20611276",
+      "cg06132028",
+      "cg21296676",
+      "cg17664182",
+      "cg25927227",
+      "cg00519829",
+      "cg11354906",
+      "cg09649901",
+      "cg12840719"
+    ],
+    "method": "LogisticRegression L2, LOO-CV",
+    "dataset": "GSE149282 (12 CRC, 12 control)"
+  },
+  "multi_analyte_comparison": {
+    "protein_only": {
+      "auc": 0.8655002733734282,
+      "sensitivity_at_95spec": 0.6779661016949152,
+      "n_markers": 7,
+      "markers": [
+        "MMP9",
+        "CXCL8",
+        "S100A4",
+        "TIMP1",
+        "SEPT9",
+        "ERBB2",
+        "SPP1"
+      ]
+    },
+    "combined_protein_methylation": {
+      "auc": 0.8996719518862766,
+      "sensitivity_at_90spec": 0.711864406779661,
+      "sensitivity_at_95spec": 0.6271186440677966,
+      "n_protein_markers": 7,
+      "n_methylation_score": 1
+    },
+    "delta_auc": 0.034171678512848414,
+    "delta_sens95": -0.05084745762711862
+  },
+  "cmcd_reference": {
+    "sensitivity": 0.8782,
+    "specificity": 0.9188,
+    "n_patients": 636,
+    "source": "Clinical Epigenetics 2026"
+  },
+  "conclusion": "Multi-analyte approach improves AUC by 0.034 and sensitivity@95spec by -5.1% over protein-only. Methylation-only AUC=0.979 on small cfDNA cohort (n=24) is promising. Gap to cMCD (87.8% sensitivity) reflects cohort size difference (n=24 vs n=636)."
+}

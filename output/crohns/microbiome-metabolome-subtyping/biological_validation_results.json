@@ -338,121 +338,141 @@
       "feature": "HILp_QI11892",
       "loading": 0.0939310403987407,
       "abs_loading": 0.0939310403987407,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "HILp_QI13608",
       "loading": 0.0930266786688227,
       "abs_loading": 0.0930266786688227,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI10966",
       "loading": 0.092978630003678,
       "abs_loading": 0.092978630003678,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI29786",
       "loading": 0.0929676000033795,
       "abs_loading": 0.0929676000033795,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI29007",
       "loading": 0.0927938862883011,
       "abs_loading": 0.0927938862883011,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI20265",
       "loading": 0.0925394276662717,
       "abs_loading": 0.0925394276662717,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI29615",
       "loading": 0.0921676704351297,
       "abs_loading": 0.0921676704351297,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI27253",
       "loading": 0.0921110636814506,
       "abs_loading": 0.0921110636814506,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI28675",
       "loading": 0.0920899117930679,
       "abs_loading": 0.0920899117930679,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI10968",
       "loading": 0.0920777542997905,
       "abs_loading": 0.0920777542997905,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI23309",
       "loading": 0.0919848482058386,
       "abs_loading": 0.0919848482058386,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI29452",
       "loading": 0.0919550333816919,
       "abs_loading": 0.0919550333816919,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI11741",
       "loading": 0.091682309153537,
       "abs_loading": 0.091682309153537,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI15027",
       "loading": 0.0916040799526348,
       "abs_loading": 0.0916040799526348,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI29780",
       "loading": 0.091520880653518,
       "abs_loading": 0.091520880653518,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI29616",
       "loading": 0.0912809712565129,
       "abs_loading": 0.0912809712565129,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI29880",
       "loading": 0.091216155701292,
       "abs_loading": 0.091216155701292,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI12599",
       "loading": 0.0911762649802118,
       "abs_loading": 0.0911762649802118,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI12641",
       "loading": 0.0909668492305609,
       "abs_loading": 0.0909668492305609,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     },
     {
       "feature": "C8p_QI28061",
       "loading": 0.0909612646658769,
       "abs_loading": 0.0909612646658769,
-      "direction": "positive"
+      "direction": "positive",
+      "compound": ""
     }
   ],
   "top_metabolites_cmtf_c1": [
@@ -460,121 +480,141 @@
       "feature": "HILp_QI24955",
       "loading": -0.1542934816139338,
       "abs_loading": 0.1542934816139338,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI21421",
       "loading": -0.1460005467932584,
       "abs_loading": 0.1460005467932584,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI17019",
       "loading": -0.1443286078324361,
       "abs_loading": 0.1443286078324361,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI17012",
       "loading": -0.1440429012600296,
       "abs_loading": 0.1440429012600296,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI24391",
       "loading": -0.1395742645586748,
       "abs_loading": 0.1395742645586748,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI23495",
       "loading": -0.1324034915461778,
       "abs_loading": 0.1324034915461778,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI24376",
       "loading": -0.1303256160236896,
       "abs_loading": 0.1303256160236896,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI20994",
       "loading": -0.1296007721063304,
       "abs_loading": 0.1296007721063304,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI24981",
       "loading": -0.1290040348253786,
       "abs_loading": 0.1290040348253786,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI22877",
       "loading": -0.1284225264901532,
       "abs_loading": 0.1284225264901532,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI19120",
       "loading": -0.1283340995188696,
       "abs_loading": 0.1283340995188696,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI24729",
       "loading": -0.1264360322247747,
       "abs_loading": 0.1264360322247747,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI16929",
       "loading": -0.1256222428004494,
       "abs_loading": 0.1256222428004494,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI16436",
       "loading": -0.1252048247537018,
       "abs_loading": 0.1252048247537018,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI24179",
       "loading": -0.1246418334405556,
       "abs_loading": 0.1246418334405556,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILn_QI453",
       "loading": -0.1245263211822964,
       "abs_loading": 0.1245263211822964,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI15250",
       "loading": -0.1233757790699759,
       "abs_loading": 0.1233757790699759,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI25119",
       "loading": -0.1225997162582269,
       "abs_loading": 0.1225997162582269,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI24188",
       "loading": -0.1220371119530424,
       "abs_loading": 0.1220371119530424,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     },
     {
       "feature": "HILp_QI24424",
       "loading": -0.1213742851181305,
       "abs_loading": 0.1213742851181305,
-      "direction": "negative"
+      "direction": "negative",
+      "compound": ""
     }
   ],
   "axis_mapping": {
@@ -589,7 +629,172 @@
       "BCAA": 0.0
     }
   },
-  "pathway_enrichment": {},
+  "pathway_enrichment": {
+    "0": [
+      {
+        "pathway": "PWY-6215: 4-chlorobenzoate degradation",
+        "mean_in_subtype": -8.7542,
+        "mean_out_subtype": -12.0498,
+        "mean_diff": 3.2956,
+        "p_value": 0.007530011408011501,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "P621-PWY: nylon-6 oligomer degradation",
+        "mean_in_subtype": -9.0945,
+        "mean_out_subtype": -12.423,
+        "mean_diff": 3.3284,
+        "p_value": 0.009618281846359013,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY-4321: L-glutamate degradation IV",
+        "mean_in_subtype": -6.8674,
+        "mean_out_subtype": -10.4292,
+        "mean_diff": 3.5618,
+        "p_value": 0.012208157877388317,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY-7165: L-ascorbate biosynthesis VI (engineered pathway)",
+        "mean_in_subtype": -8.3048,
+        "mean_out_subtype": -11.2257,
+        "mean_diff": 2.9209,
+        "p_value": 0.02537108399612567,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "URSIN-PWY: ureide biosynthesis",
+        "mean_in_subtype": -7.0093,
+        "mean_out_subtype": -10.3755,
+        "mean_diff": 3.3662,
+        "p_value": 0.028227448811775118,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY3DJ-35471: L-ascorbate biosynthesis IV",
+        "mean_in_subtype": -5.3084,
+        "mean_out_subtype": -9.1402,
+        "mean_diff": 3.8319,
+        "p_value": 0.028227448811775118,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY-6182: superpathway of salicylate degradation",
+        "mean_in_subtype": -8.634,
+        "mean_out_subtype": -11.4142,
+        "mean_diff": 2.7802,
+        "p_value": 0.034779041317124205,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY-6953: dTDP-3-acetamido-3,6-dideoxy-&alpha;-D-galactose biosynthesis",
+        "mean_in_subtype": -12.4795,
+        "mean_out_subtype": -7.3865,
+        "mean_diff": -5.0929,
+        "p_value": 0.03660662131755763,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "METHGLYUT-PWY: superpathway of methylglyoxal degradation",
+        "mean_in_subtype": 0.3682,
+        "mean_out_subtype": 1.818,
+        "mean_diff": -1.4498,
+        "p_value": 0.0405081015630998,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY-1541: superpathway of taurine degradation",
+        "mean_in_subtype": -9.8289,
+        "mean_out_subtype": -11.984,
+        "mean_diff": 2.1551,
+        "p_value": 0.065686451678053,
+        "fdr": 0.9965173373002011
+      }
+    ],
+    "1": [
+      {
+        "pathway": "PWY-6215: 4-chlorobenzoate degradation",
+        "mean_in_subtype": -12.0498,
+        "mean_out_subtype": -8.7542,
+        "mean_diff": -3.2956,
+        "p_value": 0.007530011408011501,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "P621-PWY: nylon-6 oligomer degradation",
+        "mean_in_subtype": -12.423,
+        "mean_out_subtype": -9.0945,
+        "mean_diff": -3.3284,
+        "p_value": 0.009618281846359013,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY-4321: L-glutamate degradation IV",
+        "mean_in_subtype": -10.4292,
+        "mean_out_subtype": -6.8674,
+        "mean_diff": -3.5618,
+        "p_value": 0.012208157877388317,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY-7165: L-ascorbate biosynthesis VI (engineered pathway)",
+        "mean_in_subtype": -11.2257,
+        "mean_out_subtype": -8.3048,
+        "mean_diff": -2.9209,
+        "p_value": 0.02537108399612567,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "URSIN-PWY: ureide biosynthesis",
+        "mean_in_subtype": -10.3755,
+        "mean_out_subtype": -7.0093,
+        "mean_diff": -3.3662,
+        "p_value": 0.028227448811775118,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY3DJ-35471: L-ascorbate biosynthesis IV",
+        "mean_in_subtype": -9.1402,
+        "mean_out_subtype": -5.3084,
+        "mean_diff": -3.8319,
+        "p_value": 0.028227448811775118,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY-6182: superpathway of salicylate degradation",
+        "mean_in_subtype": -11.4142,
+        "mean_out_subtype": -8.634,
+        "mean_diff": -2.7802,
+        "p_value": 0.034779041317124205,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY-6953: dTDP-3-acetamido-3,6-dideoxy-&alpha;-D-galactose biosynthesis",
+        "mean_in_subtype": -7.3865,
+        "mean_out_subtype": -12.4795,
+        "mean_diff": 5.0929,
+        "p_value": 0.03660662131755763,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "METHGLYUT-PWY: superpathway of methylglyoxal degradation",
+        "mean_in_subtype": 1.818,
+        "mean_out_subtype": 0.3682,
+        "mean_diff": 1.4498,
+        "p_value": 0.0405081015630998,
+        "fdr": 0.9965173373002011
+      },
+      {
+        "pathway": "PWY-1541: superpathway of taurine degradation",
+        "mean_in_subtype": -11.984,
+        "mean_out_subtype": -9.8289,
+        "mean_diff": -2.1551,
+        "p_value": 0.065686451678053,
+        "fdr": 0.9965173373002011
+      }
+    ]
+  },
   "biomarker_panels": {
     "0": {
       "n_markers": 10,
