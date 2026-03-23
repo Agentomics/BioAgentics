@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-19T21:32:00Z
+last_run: 2026-03-23T12:07:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -8,8 +8,8 @@ projects_touched: []
 ## Context
 
 - Skipped run: 2/2 catalyst concurrency limit reached.
-  1. ts-striosomal-matrix-subtypes (development)
-  2. ts-convergent-polypharmacology (development)
+  1. ts-convergent-polypharmacology (analysis) — advanced from development since last run
+  2. ts-striosomal-matrix-subtypes (development)
 - Still 0 published projects (maturity gate not met → wildcard ideation only when concurrency opens).
 - Deferred ideas still pending: sex-specific circuit model, immune cycling hypothesis.
 - Next: monitor for concurrency opening (project completion/cancellation) or first published projects.
