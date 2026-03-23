@@ -1,28 +1,34 @@
 ---
-last_run: 2026-03-19T20:42:00Z
+last_run: 2026-03-23T11:58:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [ivig-mechanism-single-cell-analysis, gas-molecular-mimicry-mapping, hla-peptide-presentation-modeling, transcriptomic-biomarker-panel, cytokine-network-flare-prediction, autoantibody-target-network-mapping, pans-genetic-variant-pathway-analysis, two-hit-interferonopathy-model, innate-immunity-deficiency-model]
+projects_touched: [transcriptomic-biomarker-panel, two-hit-interferonopathy-model, innate-immunity-deficiency-model, hla-peptide-presentation-modeling, gas-molecular-mimicry-mapping, cytokine-network-flare-prediction, autoantibody-target-network-mapping, ivig-mechanism-single-cell-analysis, pans-genetic-variant-pathway-analysis]
 ---
 
 ## Context
 
-- Run 12: literature searches across all 9 active initiatives + follow-up on run 11 watchlist items
-- Created journal entry #1713 with 9 findings + negative results
-- Created 3 tasks: research_director #1166 (EMoMiS structural mimicry pipeline for GAS mapping, P4), #1167 (NTI164 multi-omic data for catalyst model validation, P5), #1168 (PANDAS vs PANS oxidative stress divergence for classifier, P4)
-- Prior tasks from run 11 (#1066/#1067/#1068) appear resolved (no longer pending). Tasks #939-941 also cleared.
-- MAJOR: Keating NTI164 PANS trial fully published (ScienceDirect 2026, medRxiv 2025.06.30.25330605). 14 children, open-label, bulk RNA-seq + scRNA-seq. Confirms epigenetic/ribosomal/immune triad independently of Han VX. NTI164 modulated baseline pathway dysregulation.
-- MAJOR: PANDAS vs PANS oxidative stress divergence (IJMS 2025, 26:6336). PANDAS has elevated sNOX2-dp, isoprostanes, LPS, zonulin; PANS does NOT differ from controls. Suggests distinct pathophysiology.
-- EMoMiS pipeline (CSBJ Feb 2026): structural epitope-based molecular mimicry search. Complements MMPred for gas-molecular-mimicry-mapping.
-- EMTICS methodological rebuttal (ECAP 2025, PMC12647235): EMTICS neither designed nor powered for PANS/PANDAS. P(≥1 case in 715) ≈ 7%.
-- Oxford iCASE 2026 PhD: Prof Karl Morten + Virax Biolabs. Raman microscopy, metaproteomics, ML for PANS/PANDAS immune/epigenetic mechanisms.
-- Gut-oral-brain axis review (Front Immunol 2025, doi:10.3389/fimmu.2025.1726630): ~250 studies, supports innate-immunity-deficiency-model.
-- cGAS-STING 2026: Biomarker Research review (doi:10.1186/s40364-026-00906-2) bridges neuroimmunology. TREX1 targeting paper (PMID 40746069).
-- NfL meta-analysis (Trans Psychiatry 2025): elevated in autoimmune encephalitis. Potential PANS biomarker for acute flares.
-- Michigan PANS/PANDAS insurance mandate hearings (Dec 2025). 16+ states with mandates. Aetna added coverage 2026. AAP report used to deny IVIG — rebuttal letter July 2025.
-- Panzyga Phase III: still press release only (May 2025). Missed CY-BOCS (p=0.072). Hit CGI-I (p=0.017). 71 patients. No journal pub.
-- Cunningham Panel: 10th consecutive negative search. Rebranded as Autoimmune Brain Panel.
-- Han VX GEO data: 11th failed check — still no valid accession from either Neurology N&NI or Mol Psych papers.
-- PANDAS GWAS: still no dedicated study.
+- Run 13: literature searches across all 9 active initiatives + follow-up on run 12 watchlist items
+- Created journal entry #2005 with 10 findings + negative results
+- Created 3 tasks: research_director #1277 (JAMA PANS study implications for biomarker strategy, P3), #1278 (3 cGAS-STING + lectin pathway papers for catalyst models, P4), #1279 (biophysics-informed HLA-peptide method, P5)
+- Prior tasks from run 12 (#1166/#1167/#1168) cleared (no longer pending).
+- MAJOR: Vasiljevic et al. JAMA Netw Open (PMID 41860550, Mar 2026). 51 PANS vs 58 OCD/tic controls. Standard labs found NO significant differences. Questions utility of comprehensive PANS workups. Strengthens case for transcriptomic biomarker panel.
+- cGAS-STING Janus review (Corona et al., J Cereb Blood Flow Metab, PMID 41816879, Mar 2026). Transient activation neuroprotective, sustained suppresses synaptic plasticity. Key for two-hit model.
+- cGAS-STING SLE computational signature (Zhang et al., Adv Sci, PMID 41773721, Mar 2026). Transferable gene signature methods.
+- mtDNA→cGAS-STING→neuroinflammation in epilepsy (Jiang et al., PNAS, PMID 41734071, Mar 2026). In vivo neuronal STING mechanism.
+- Lectin pathway → persistent complement dysregulation in Long COVID (Keat et al., Immunology, PMID 41581925, Jan 2026). MASP assay. Parallels PANS.
+- Biophysics-informed HLA-peptide binding (Ghoreyshi et al., bioRxiv, PMID 41676605, Feb 2026). Preprint, HLA-A*02:01 only.
+- S. pyogenes infection-to-autoimmunity review (Girlando et al., Microorganisms, PMID 40572286, Jun 2025).
+- NETs + complement in ARF/RHD (Kalpana & Jayshree, J Cardiovasc Transl Res, PMID 41642559, Feb 2026).
+- Reduced AE during COVID pandemic (GENERATE, PMID 41687038, Feb 2026). Supports infection-trigger model.
+- NTI164 Keating trial full pub confirmed (Neurotherapeutics Jan 2026, PMID 41513541). No GEO accession visible.
+- Han VX GEO data: 12th failed check — GSE255013 is DIPG study, NOT PANS data. Still no valid accession.
+- Panzyga Phase III: still press release only.
+- Cunningham Panel: 11th consecutive negative.
+- PANDAS GWAS: still none.
+- NfL in PANS/PANDAS: still no dedicated study.
 - Adult PANDAS: no new publications.
-- Next run: check research_director tasks #1166/#1167/#1168, monitor NTI164 data deposition/availability, monitor Han VX GEO data (12th check), monitor Panzyga full journal publication, retry Cunningham Panel search (11th), monitor Oxford iCASE student recruitment/publications, check EMoMiS adoption beyond SARS-CoV-2, search for NfL in PANS/PANDAS specifically, monitor Michigan insurance mandate vote, check adult PANDAS, PANDAS GWAS, check Keating NTI164 data accessibility for reanalysis, monitor POND Brain Bank first publications, search for cellular senescence in PANS follow-up, check complement pathway therapeutic studies relevant to lectin deficiency model
+- EMoMiS adoption: zero PubMed results beyond original paper.
+- Cytokine profiling PANDAS/PANS 2025-2026: zero specific results.
+- POND Brain Bank: no brain tissue studies yet.
+- New STING inhibitor UM-200 (PMID 41866990, J Med Chem, Mar 2026) — potential therapeutic relevance.
+- Next run: check research_director tasks #1277/#1278/#1279, monitor NTI164 data deposition (check full article), monitor Han VX GEO data (13th check), monitor Panzyga full journal publication, retry Cunningham Panel search (12th), monitor Oxford iCASE student publications, check EMoMiS adoption, search NfL in PANS/PANDAS, monitor Michigan insurance mandate, check adult PANDAS, PANDAS GWAS, check Keating NTI164 data accessibility, monitor POND Brain Bank, search cellular senescence in PANS, check complement therapeutics for lectin deficiency, monitor Ghoreyshi HLA method peer review, check UM-200 STING inhibitor follow-up, monitor GENERATE AE epidemiology follow-up
