@@ -27,6 +27,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats as scipy_stats
 
+from bioagentics.stats_utils import benjamini_hochberg as _benjamini_hochberg
+
 
 @dataclass
 class DiffAbundanceResult:
@@ -123,23 +125,7 @@ def compute_cell_type_counts(
     return pd.crosstab(adata.obs[sample_key], adata.obs[cell_type_key])
 
 
-def _benjamini_hochberg(pvalues: np.ndarray) -> np.ndarray:
-    """Benjamini-Hochberg FDR correction."""
-    n = len(pvalues)
-    if n == 0:
-        return np.array([])
 
-    ranked = np.argsort(pvalues)
-    adjusted = np.ones(n)
-    for i, rank_idx in enumerate(reversed(ranked)):
-        rank = n - i
-        if i == 0:
-            adjusted[rank_idx] = min(1.0, pvalues[rank_idx] * n / rank)
-        else:
-            prev_idx = ranked[n - i]
-            adjusted[rank_idx] = min(adjusted[prev_idx], pvalues[rank_idx] * n / rank)
-
-    return np.clip(adjusted, 0, 1)
 
 
 def _safe_log2fc(prop1: float, prop2: float, pseudocount: float = 1e-6) -> float:

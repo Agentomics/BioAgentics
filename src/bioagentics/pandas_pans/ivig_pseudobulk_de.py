@@ -24,6 +24,8 @@ import pandas as pd
 import scipy.sparse as sp
 from scipy import stats as scipy_stats
 
+from bioagentics.stats_utils import benjamini_hochberg as _benjamini_hochberg
+
 
 @dataclass
 class DEResult:
@@ -178,23 +180,7 @@ def aggregate_pseudobulk(
     return pseudobulk
 
 
-def _benjamini_hochberg(pvalues: np.ndarray) -> np.ndarray:
-    """Benjamini-Hochberg FDR correction."""
-    n = len(pvalues)
-    if n == 0:
-        return np.array([])
 
-    ranked = np.argsort(pvalues)
-    adjusted = np.ones(n)
-    for i, rank_idx in enumerate(reversed(ranked)):
-        rank = n - i
-        if i == 0:
-            adjusted[rank_idx] = min(1.0, pvalues[rank_idx] * n / rank)
-        else:
-            prev_idx = ranked[n - i]
-            adjusted[rank_idx] = min(adjusted[prev_idx], pvalues[rank_idx] * n / rank)
-
-    return np.clip(adjusted, 0, 1)
 
 
 def _normalize_counts(X: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
