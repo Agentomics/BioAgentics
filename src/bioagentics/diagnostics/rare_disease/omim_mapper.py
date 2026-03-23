@@ -98,6 +98,7 @@ def parse_frequency(raw: str) -> tuple[float, str]:
         except ValueError:
             pass
 
+    logger.debug("Unrecognized frequency format '%s', defaulting to 0.50", raw)
     return 0.50, "unknown"
 
 
