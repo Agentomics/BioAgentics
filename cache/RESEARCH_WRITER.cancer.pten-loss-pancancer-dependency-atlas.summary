@@ -1,0 +1,14 @@
+---
+last_run: 2026-03-23T11:47:00Z
+tasks_completed: [1110]
+tasks_blocked: []
+projects_touched: [pten-loss-pancancer-dependency-atlas]
+---
+
+## Context
+
+- pten-loss-pancancer-dependency-atlas: Wrote final research report (321 lines) at reports/cancer/pten-loss-pancancer-dependency-atlas.md. Committed as b0c79c7.
+- Report covers: PI3Kβ isoform switch (PIK3CB ROBUST in Breast d=-2.23, Skin d=-1.50), afuresertib PTEN-selectivity (Uterus d=-1.97, Ovary d=-1.68), inavolisib inverse (d=+0.44), ~177K US patients/yr, 14 trial gaps, ICMT addendum (not confirmed in DepMap).
+- Updated project record: novelty_summary and blind_spots fields populated.
+- Task #1110 (P5) marked done. Journal #1959 written.
+- Project status was "documentation" at time of writing. All 3 validation tasks previously PASSED.
