@@ -145,13 +145,17 @@ def discover_stage_cpgs(
     }, index=cpg_ids)
     result.index.name = "cpg_id"
 
-    # FDR correction
+    # FDR correction (Benjamini-Hochberg with cumulative minimum)
+    result["q_value"] = np.nan
     valid_p = result["p_value"].dropna()
     if len(valid_p) > 0:
-        ranked = valid_p.rank()
+        sorted_idx = valid_p.sort_values().index
         n_tests = len(valid_p)
-        result.loc[valid_p.index, "q_value"] = valid_p * n_tests / ranked
-        result["q_value"] = result["q_value"].clip(upper=1.0)
+        ranks = np.arange(1, n_tests + 1)
+        q_raw = valid_p.loc[sorted_idx].values * n_tests / ranks
+        # Enforce monotonicity: cumulative minimum from the tail
+        q_adj = np.minimum.accumulate(q_raw[::-1])[::-1]
+        result.loc[sorted_idx, "q_value"] = np.clip(q_adj, 0.0, 1.0)
 
     sig = result[(result["q_value"] <= q_threshold)].copy()
     sig = sig.sort_values("abs_delta_stage", ascending=False)
@@ -238,10 +242,8 @@ def train_staging_classifier(
     auc = roc_auc_score(y, probs)
     fpr, tpr, _ = roc_curve(y, probs)
 
-    idx90 = np.searchsorted(1 - fpr[::-1], 0.90)
-    sens_90 = tpr[::-1][min(idx90, len(tpr) - 1)]
-    idx80 = np.searchsorted(1 - fpr[::-1], 0.80)
-    sens_80 = tpr[::-1][min(idx80, len(tpr) - 1)]
+    sens_90 = float(np.interp(0.10, fpr, tpr))  # sensitivity at 90% specificity
+    sens_80 = float(np.interp(0.20, fpr, tpr))  # sensitivity at 80% specificity
 
     # Per-stage accuracy
     thresh = 0.5
