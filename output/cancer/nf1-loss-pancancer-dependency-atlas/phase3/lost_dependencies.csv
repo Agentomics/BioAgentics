@@ -1,0 +1,1 @@
+cancer_type,gene,cohens_d,p_value,n_lost,n_intact,median_dep_lost,median_dep_intact,fdr,composite_score,gene_set

@@ -1,0 +1,2 @@
+gene,nf1_cohens_d,nf1_fdr,kras_cohens_d,kras_pvalue,kras_mean_dep_mut,kras_mean_dep_wt,category
+ACADM,-0.305,0.6780490098953341,-0.42304936222976375,0.030409054132567653,-0.02788349544260585,0.026945786574285414,shared_RAS_dependency

@@ -1,0 +1,2 @@
+cancer_type,gene,cohens_d,p_value,n_lost,n_intact,median_dep_lost,median_dep_intact,fdr,composite_score,gene_set
+Pan-cancer (RAS-excluded),RIT1,-0.6456,3.9817194572558625e-06,67,585,-0.2727,-0.1774,0.07139621158805487,0.7401,

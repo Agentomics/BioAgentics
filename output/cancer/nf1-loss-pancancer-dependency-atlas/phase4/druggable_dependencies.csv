@@ -1,0 +1,44 @@
+gene,target_name,cancer_type,cohens_d,fdr,composite_score,compounds,clinical_stage,n_lost,n_intact
+RIT1,RIT1,Breast,-1.1154,0.9454838861770826,0.0272,No direct inhibitors (RAS family GTPase),N/A,5,34
+GRB2,GRB2,Lung,-0.9732,1.0,-0.0,No direct inhibitors,Preclinical,10,90
+ATR,ATR,Bowel,-0.8747,0.9100992773456492,0.0358,Ceralasertib (AZD6738); Berzosertib (M6620),Phase 2,6,37
+PTPN11,SHP2,Lung,-0.8082,1.0,-0.0,TNO155 (Novartis); RMC-4630 (Revolution Med); GDC-1971 (Genentech),Phase 2,10,90
+EZH2,EZH2,Bowel,-0.7776,0.9032493842815432,0.0344,Tazemetostat (FDA-approved for epithelioid sarcoma),FDA-approved,6,37
+PARP1,PARP1,Breast,-0.7398,0.9863467817914776,0.0044,Olaparib; Niraparib; Rucaparib; Talazoparib,FDA-approved,5,34
+GRB2,GRB2,Bowel,-0.7344,0.9131506300356114,0.029,No direct inhibitors,Preclinical,6,37
+CHEK1,CHK1,Bowel,-0.7293,0.9032493842815432,0.0322,Prexasertib (LY2606368); SRA737,Phase 1/2,6,37
+CHEK1,CHK1,Peripheral Nervous System,-0.7059,0.9678719111103156,0.01,Prexasertib (LY2606368); SRA737,Phase 1/2,8,27
+WEE1,WEE1,Breast,-0.6906,0.9580309356536274,0.0129,Adavosertib (AZD1775); ZN-c3,Phase 1/2,5,34
+RAF1,C-RAF,Breast,-0.6717,0.9912457562950818,0.0026,LY3009120 (pan-RAF); Belvarafenib (pan-RAF),Phase 1/2,5,34
+RIT1,RIT1,Pan-cancer (RAS-excluded),-0.6456,0.0713962115880548,0.7401,No direct inhibitors (RAS family GTPase),N/A,67,585
+CDK6,CDK6,Bowel,-0.6382,0.9032493842815432,0.0282,Palbociclib; Ribociclib,FDA-approved,6,37
+PTPN11,SHP2,Bowel,-0.6333,0.9100992773456492,0.0259,TNO155 (Novartis); RMC-4630 (Revolution Med); GDC-1971 (Genentech),Phase 2,6,37
+RAF1,C-RAF,Peripheral Nervous System,-0.6017,0.9667814033960136,0.0088,LY3009120 (pan-RAF); Belvarafenib (pan-RAF),Phase 1/2,8,27
+PTPN11,SHP2,CNS/Brain,-0.5851,0.9839359020327332,0.0041,TNO155 (Novartis); RMC-4630 (Revolution Med); GDC-1971 (Genentech),Phase 2,18,51
+WEE1,WEE1,Esophagus/Stomach,-0.5776,1.0,-0.0,Adavosertib (AZD1775); ZN-c3,Phase 1/2,6,41
+ATR,ATR,Uterus,-0.5651,0.8231060470423658,0.0478,Ceralasertib (AZD6738); Berzosertib (M6620),Phase 2,6,21
+MAP2K2,MEK2,Uterus,-0.5585,0.9140352485597842,0.0218,Trametinib (dual MEK1/2); Cobimetinib,FDA-approved,6,21
+CDK6,CDK6,Breast,-0.5381,0.9525890654922914,0.0114,Palbociclib; Ribociclib,FDA-approved,5,34
+CDK6,CDK6,Lung,-0.5069,1.0,-0.0,Palbociclib; Ribociclib,FDA-approved,10,90
+WEE1,WEE1,Bowel,-0.4726,0.957545772802304,0.0089,Adavosertib (AZD1775); ZN-c3,Phase 1/2,6,37
+PIK3CA,PI3Kalpha,Esophagus/Stomach,-0.4706,1.0,-0.0,Alpelisib (FDA); Inavolisib,FDA-approved,6,41
+RIT1,RIT1,Pan-cancer (pooled),-0.4486,0.4116598425658543,0.1729,No direct inhibitors (RAS family GTPase),N/A,84,765
+RIT1,RIT1,Lung,-0.4458,1.0,-0.0,No direct inhibitors (RAS family GTPase),N/A,10,90
+CDK6,CDK6,Peripheral Nervous System,-0.424,0.9822306320233224,0.0033,Palbociclib; Ribociclib,FDA-approved,8,27
+CDK2,CDK2,CNS/Brain,-0.4232,0.9839359020327332,0.003,INX-315 (Incyte); PF-07104091 (Pfizer),Phase 1/2,18,51
+GRB2,GRB2,Pan-cancer (RAS-excluded),-0.4181,0.5221159999823018,0.118,No direct inhibitors,Preclinical,67,585
+MAP2K2,MEK2,Bowel,-0.4172,0.9211129842766372,0.0149,Trametinib (dual MEK1/2); Cobimetinib,FDA-approved,6,37
+EZH2,EZH2,CNS/Brain,-0.4068,0.9839359020327332,0.0029,Tazemetostat (FDA-approved for epithelioid sarcoma),FDA-approved,18,51
+PTPN11,SHP2,Pan-cancer (RAS-excluded),-0.3892,0.5559311675252981,0.0992,TNO155 (Novartis); RMC-4630 (Revolution Med); GDC-1971 (Genentech),Phase 2,67,585
+RAF1,C-RAF,Pan-cancer (RAS-excluded),-0.3678,0.6956303534759828,0.058,LY3009120 (pan-RAF); Belvarafenib (pan-RAF),Phase 1/2,67,585
+PIK3CB,PI3Kbeta,Lung,-0.367,1.0,-0.0,KIN-193/AZD6482,Preclinical,10,90
+PIK3CB,PI3Kbeta,Peripheral Nervous System,-0.3606,0.9798210070767024,0.0032,KIN-193/AZD6482,Preclinical,8,27
+CHEK1,CHK1,Lung,-0.3522,1.0,-0.0,Prexasertib (LY2606368); SRA737,Phase 1/2,10,90
+PARP1,PARP1,Peripheral Nervous System,-0.3491,0.9901865061353404,0.0015,Olaparib; Niraparib; Rucaparib; Talazoparib,FDA-approved,8,27
+MAP2K2,MEK2,Lung,-0.3401,1.0,-0.0,Trametinib (dual MEK1/2); Cobimetinib,FDA-approved,10,90
+RAF1,C-RAF,CNS/Brain,-0.3384,0.987558204633347,0.0018,LY3009120 (pan-RAF); Belvarafenib (pan-RAF),Phase 1/2,18,51
+PIK3CB,PI3Kbeta,Bowel,-0.3278,0.970045357608218,0.0043,KIN-193/AZD6482,Preclinical,6,37
+CDK6,CDK6,Esophagus/Stomach,-0.3069,1.0,-0.0,Palbociclib; Ribociclib,FDA-approved,6,41
+RIT1,RIT1,CNS/Brain,-0.306,0.9839359020327332,0.0022,No direct inhibitors (RAS family GTPase),N/A,18,51
+GRB2,GRB2,Pan-cancer (pooled),-0.3054,0.6538095055725908,0.0564,No direct inhibitors,Preclinical,84,765
+RAF1,C-RAF,Pan-cancer (pooled),-0.3008,0.6996621092261692,0.0467,LY3009120 (pan-RAF); Belvarafenib (pan-RAF),Phase 1/2,84,765

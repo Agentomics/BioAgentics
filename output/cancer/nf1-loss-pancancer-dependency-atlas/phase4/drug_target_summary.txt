@@ -1,0 +1,139 @@
+======================================================================
+NF1-Loss Pan-Cancer Dependency Atlas - Phase 4: Drug Target Mapping
+======================================================================
+
+Druggable dependency targets (d < -0.3): 43
+PRISM NF1-selective compounds: 1516
+Literature NF1-SL compounds (PMID 41036607): 15
+MPNST therapeutic candidates: 6
+
+DRUGGABLE DEPENDENCY TARGETS
+------------------------------------------------------------
+  RIT1 (RIT1) [Breast]: d=-1.115, FDR=9.455e-01, N/A
+    Compounds: No direct inhibitors (RAS family GTPase)
+  GRB2 (GRB2) [Lung]: d=-0.973, FDR=1.000e+00, Preclinical
+    Compounds: No direct inhibitors
+  ATR (ATR) [Bowel]: d=-0.875, FDR=9.101e-01, Phase 2
+    Compounds: Ceralasertib (AZD6738); Berzosertib (M6620)
+  PTPN11 (SHP2) [Lung]: d=-0.808, FDR=1.000e+00, Phase 2
+    Compounds: TNO155 (Novartis); RMC-4630 (Revolution Med); GDC-1971 (Genentech)
+  EZH2 (EZH2) [Bowel]: d=-0.778, FDR=9.032e-01, FDA-approved
+    Compounds: Tazemetostat (FDA-approved for epithelioid sarcoma)
+  PARP1 (PARP1) [Breast]: d=-0.740, FDR=9.863e-01, FDA-approved
+    Compounds: Olaparib; Niraparib; Rucaparib; Talazoparib
+  GRB2 (GRB2) [Bowel]: d=-0.734, FDR=9.132e-01, Preclinical
+    Compounds: No direct inhibitors
+  CHEK1 (CHK1) [Bowel]: d=-0.729, FDR=9.032e-01, Phase 1/2
+    Compounds: Prexasertib (LY2606368); SRA737
+  CHEK1 (CHK1) [Peripheral Nervous System]: d=-0.706, FDR=9.679e-01, Phase 1/2
+    Compounds: Prexasertib (LY2606368); SRA737
+  WEE1 (WEE1) [Breast]: d=-0.691, FDR=9.580e-01, Phase 1/2
+    Compounds: Adavosertib (AZD1775); ZN-c3
+  RAF1 (C-RAF) [Breast]: d=-0.672, FDR=9.912e-01, Phase 1/2
+    Compounds: LY3009120 (pan-RAF); Belvarafenib (pan-RAF)
+  RIT1 (RIT1) [Pan-cancer (RAS-excluded)]: d=-0.646, FDR=7.140e-02, N/A
+    Compounds: No direct inhibitors (RAS family GTPase)
+  CDK6 (CDK6) [Bowel]: d=-0.638, FDR=9.032e-01, FDA-approved
+    Compounds: Palbociclib; Ribociclib
+  PTPN11 (SHP2) [Bowel]: d=-0.633, FDR=9.101e-01, Phase 2
+    Compounds: TNO155 (Novartis); RMC-4630 (Revolution Med); GDC-1971 (Genentech)
+  RAF1 (C-RAF) [Peripheral Nervous System]: d=-0.602, FDR=9.668e-01, Phase 1/2
+    Compounds: LY3009120 (pan-RAF); Belvarafenib (pan-RAF)
+  PTPN11 (SHP2) [CNS/Brain]: d=-0.585, FDR=9.839e-01, Phase 2
+    Compounds: TNO155 (Novartis); RMC-4630 (Revolution Med); GDC-1971 (Genentech)
+  WEE1 (WEE1) [Esophagus/Stomach]: d=-0.578, FDR=1.000e+00, Phase 1/2
+    Compounds: Adavosertib (AZD1775); ZN-c3
+  ATR (ATR) [Uterus]: d=-0.565, FDR=8.231e-01, Phase 2
+    Compounds: Ceralasertib (AZD6738); Berzosertib (M6620)
+  MAP2K2 (MEK2) [Uterus]: d=-0.558, FDR=9.140e-01, FDA-approved
+    Compounds: Trametinib (dual MEK1/2); Cobimetinib
+  CDK6 (CDK6) [Breast]: d=-0.538, FDR=9.526e-01, FDA-approved
+    Compounds: Palbociclib; Ribociclib
+  CDK6 (CDK6) [Lung]: d=-0.507, FDR=1.000e+00, FDA-approved
+    Compounds: Palbociclib; Ribociclib
+  WEE1 (WEE1) [Bowel]: d=-0.473, FDR=9.575e-01, Phase 1/2
+    Compounds: Adavosertib (AZD1775); ZN-c3
+  PIK3CA (PI3Kalpha) [Esophagus/Stomach]: d=-0.471, FDR=1.000e+00, FDA-approved
+    Compounds: Alpelisib (FDA); Inavolisib
+  RIT1 (RIT1) [Pan-cancer (pooled)]: d=-0.449, FDR=4.117e-01, N/A
+    Compounds: No direct inhibitors (RAS family GTPase)
+  RIT1 (RIT1) [Lung]: d=-0.446, FDR=1.000e+00, N/A
+    Compounds: No direct inhibitors (RAS family GTPase)
+  CDK6 (CDK6) [Peripheral Nervous System]: d=-0.424, FDR=9.822e-01, FDA-approved
+    Compounds: Palbociclib; Ribociclib
+  CDK2 (CDK2) [CNS/Brain]: d=-0.423, FDR=9.839e-01, Phase 1/2
+    Compounds: INX-315 (Incyte); PF-07104091 (Pfizer)
+  GRB2 (GRB2) [Pan-cancer (RAS-excluded)]: d=-0.418, FDR=5.221e-01, Preclinical
+    Compounds: No direct inhibitors
+  MAP2K2 (MEK2) [Bowel]: d=-0.417, FDR=9.211e-01, FDA-approved
+    Compounds: Trametinib (dual MEK1/2); Cobimetinib
+  EZH2 (EZH2) [CNS/Brain]: d=-0.407, FDR=9.839e-01, FDA-approved
+    Compounds: Tazemetostat (FDA-approved for epithelioid sarcoma)
+  PTPN11 (SHP2) [Pan-cancer (RAS-excluded)]: d=-0.389, FDR=5.559e-01, Phase 2
+    Compounds: TNO155 (Novartis); RMC-4630 (Revolution Med); GDC-1971 (Genentech)
+  RAF1 (C-RAF) [Pan-cancer (RAS-excluded)]: d=-0.368, FDR=6.956e-01, Phase 1/2
+    Compounds: LY3009120 (pan-RAF); Belvarafenib (pan-RAF)
+  PIK3CB (PI3Kbeta) [Lung]: d=-0.367, FDR=1.000e+00, Preclinical
+    Compounds: KIN-193/AZD6482
+  PIK3CB (PI3Kbeta) [Peripheral Nervous System]: d=-0.361, FDR=9.798e-01, Preclinical
+    Compounds: KIN-193/AZD6482
+  CHEK1 (CHK1) [Lung]: d=-0.352, FDR=1.000e+00, Phase 1/2
+    Compounds: Prexasertib (LY2606368); SRA737
+  PARP1 (PARP1) [Peripheral Nervous System]: d=-0.349, FDR=9.902e-01, FDA-approved
+    Compounds: Olaparib; Niraparib; Rucaparib; Talazoparib
+  MAP2K2 (MEK2) [Lung]: d=-0.340, FDR=1.000e+00, FDA-approved
+    Compounds: Trametinib (dual MEK1/2); Cobimetinib
+  RAF1 (C-RAF) [CNS/Brain]: d=-0.338, FDR=9.876e-01, Phase 1/2
+    Compounds: LY3009120 (pan-RAF); Belvarafenib (pan-RAF)
+  PIK3CB (PI3Kbeta) [Bowel]: d=-0.328, FDR=9.700e-01, Preclinical
+    Compounds: KIN-193/AZD6482
+  CDK6 (CDK6) [Esophagus/Stomach]: d=-0.307, FDR=1.000e+00, FDA-approved
+    Compounds: Palbociclib; Ribociclib
+  RIT1 (RIT1) [CNS/Brain]: d=-0.306, FDR=9.839e-01, N/A
+    Compounds: No direct inhibitors (RAS family GTPase)
+  GRB2 (GRB2) [Pan-cancer (pooled)]: d=-0.305, FDR=6.538e-01, Preclinical
+    Compounds: No direct inhibitors
+  RAF1 (C-RAF) [Pan-cancer (pooled)]: d=-0.301, FDR=6.997e-01, Phase 1/2
+    Compounds: LY3009120 (pan-RAF); Belvarafenib (pan-RAF)
+
+TOP PRISM NF1-SELECTIVE COMPOUNDS
+------------------------------------------------------------
+  L-689560: d=-0.435 FDR=6.409e-01
+  bamaquimast: d=-0.409 FDR=6.409e-01
+  KAF-156: d=-0.383 FDR=9.275e-01
+  CCG-1423: d=-0.381 FDR=7.505e-01
+  pyrethrins: d=-0.372 FDR=9.275e-01
+  NB-001: d=-0.352 FDR=9.275e-01
+  nifedipine: d=-0.348 FDR=9.275e-01
+  Etelcalcetide (hydrochloride): d=-0.325 FDR=9.275e-01
+  AB-423: d=-0.323 FDR=9.275e-01
+  lylamine: d=-0.321 FDR=9.275e-01
+  GDC-0927: d=-0.320 FDR=8.342e-01
+  TY-52156: d=-0.315 FDR=9.275e-01
+  amcasertib: d=-0.314 FDR=9.275e-01
+  PZ-2891: d=-0.309 FDR=9.275e-01
+  SAG: d=-0.302 FDR=9.275e-01
+
+MPNST THERAPEUTIC CANDIDATES
+------------------------------------------------------------
+  MEK1/2: Selumetinib, Trametinib, Mirdametinib
+    Limited single-agent activity in MPNST
+  mTOR: Everolimus + Selumetinib
+    MEK+mTOR combo under investigation for MPNST
+  CDK4/6: Palbociclib, Ribociclib
+    CDKN2A loss frequent in MPNST → CDK4/6 dependency
+  SHP2: TNO155, RMC-4630
+    SHP2 feeds RAS; SHP2+MEK combo rational for NF1
+  BRD4: JQ1, OTX015, Pelabresib
+    BET inhibition disrupts super-enhancer oncogene programs
+  EZH2: Tazemetostat
+    PRC2 loss common in MPNST; paradoxical dependency context
+
+LITERATURE NF1-SL COMPOUNDS (PMID 41036607)
+------------------------------------------------------------
+  MEK inhibitors: Selumetinib, Trametinib, Cobimetinib, PD-0325901 (in vivo)
+  mTOR inhibitors: Everolimus, Temsirolimus, AZD8055 (in vivo)
+  CDK4/6 inhibitors: Palbociclib, Ribociclib (in vivo)
+  BET inhibitors: JQ1, OTX015 (in vitro)
+  HSP90 inhibitors: Ganetespib, 17-AAG (in vivo)
+  KAT6A/B inhibitors: WM-1119, PF-07248144 (in vitro)

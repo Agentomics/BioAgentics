@@ -1,0 +1,26 @@
+{
+  "total_cases": 1636,
+  "cancer_types": {
+    "COAD": {
+      "total": 461,
+      "msi_h": 81,
+      "msi_h_pct": 17.6
+    },
+    "READ": {
+      "total": 172,
+      "msi_h": 25,
+      "msi_h_pct": 14.5
+    },
+    "STAD": {
+      "total": 443,
+      "msi_h": 85,
+      "msi_h_pct": 19.2
+    },
+    "UCEC": {
+      "total": 560,
+      "msi_h": 173,
+      "msi_h_pct": 30.9
+    }
+  },
+  "splits_valid": true
+}

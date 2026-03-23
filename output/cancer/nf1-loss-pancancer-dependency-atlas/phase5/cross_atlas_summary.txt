@@ -1,0 +1,48 @@
+======================================================================
+NF1-Loss Pan-Cancer Dependency Atlas - Phase 5: Cross-Atlas Comparison
+======================================================================
+
+NF1 vs KRAS DEPENDENCY CLASSIFICATION
+  Shared RAS dependencies: 1 genes
+  NF1-specific: 259 genes
+  KRAS-specific: 16 genes
+
+TOP SHARED RAS DEPENDENCIES
+------------------------------------------------------------
+  ACADM: NF1 d=-0.305, KRAS d=-0.423
+
+TOP NF1-SPECIFIC DEPENDENCIES (not shared with KRAS)
+------------------------------------------------------------
+  KRTAP21-1: NF1 d=-0.756
+  SPRR1A: NF1 d=-0.728
+  USP9Y: NF1 d=-0.666
+  EIF1AY: NF1 d=-0.650
+  RIT1: NF1 d=-0.646
+  CSNK2A3: NF1 d=-0.634
+  RPS2: NF1 d=-0.574
+  SRRM5: NF1 d=-0.567
+  SPRR2F: NF1 d=-0.557
+  GUCA1ANB-GUCA1A: NF1 d=-0.535
+
+MPNST THERAPEUTIC TARGETS
+------------------------------------------------------------
+  Tier 2: SH2D6 (PNS d=-2.193) — No drug available
+  Tier 2: FKBP6 (PNS d=-2.158) — No drug available
+  Tier 2: TGM6 (PNS d=-1.987) — No drug available
+  Tier 2: RBM39 (PNS d=-1.951) — No drug available
+  Tier 2: RPS10 (PNS d=-1.928) — No drug available
+  Tier 2: TYW1B (PNS d=-1.886) — No drug available
+  Tier 2: SUMO2 (PNS d=-1.866) — No drug available
+  Tier 2: CNNM4 (PNS d=-1.811) — No drug available
+  Tier 2: PTPRC (PNS d=-1.733) — No drug available
+  Tier 2: KRTAP21-1 (PNS d=-1.715) — No drug available
+
+PER-TUMOR-TYPE TOP DEPENDENCIES
+------------------------------------------------------------
+  CNS/Brain: SPRR1A(d=-1.48); LCE1F(d=-1.32); KRTAP21-1(d=-1.29)
+  Peripheral Nervous System: SH2D6(d=-2.19); FKBP6(d=-2.16); TGM6(d=-1.99)
+  Uterus: ADRM1(d=-2.37); TMEM82(d=-2.32); UQCC6(d=-2.24)
+  Breast: VDAC2(d=-2.53); GSX1(d=-2.08); WDR88(d=-1.93)
+  Bowel: IPO4(d=-2.56); POLR2M(d=-2.54); SREBF1(d=-2.09)
+  Lung: FOS(d=-1.20); ASNS(d=-1.14); PIGR(d=-1.13)
+  Esophagus/Stomach: MRPS22(d=-2.22); FBXL5(d=-1.86); HK1(d=-1.81)

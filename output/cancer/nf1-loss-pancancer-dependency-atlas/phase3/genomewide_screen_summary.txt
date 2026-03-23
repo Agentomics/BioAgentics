@@ -1,0 +1,45 @@
+======================================================================
+NF1-Loss Pan-Cancer Dependency Atlas - Phase 3: Genome-Wide Screen
+======================================================================
+
+Total tests: 160947
+Contexts: CNS/Brain, Peripheral Nervous System, Uterus, Breast, Bowel, Lung, Esophagus/Stomach, Pan-cancer (pooled), Pan-cancer (RAS-excluded)
+
+SL gained dependencies (FDR<0.1, |d|>0.5): 1
+High-confidence SL (FDR<0.05, |d|>0.8): 0
+Lost dependencies: 0
+
+TOP PAN-CANCER SL HITS (RAS-excluded, novel)
+------------------------------------------------------------
+  RIT1: d=-0.646, FDR=7.140e-02, composite=0.7
+
+HYPOTHESIS GENE SET SUMMARY (RAS-excluded)
+------------------------------------------------------------
+  mTOR/PI3K > RPTOR: d=-0.169, FDR=9.355e-01
+  mTOR/PI3K > AKT1: d=-0.108, FDR=9.936e-01
+  mTOR/PI3K > RICTOR: d=-0.102, FDR=9.889e-01
+  mTOR/PI3K > PIK3CA: d=-0.098, FDR=9.976e-01
+  mTOR/PI3K > PIK3CB: d=-0.056, FDR=9.797e-01
+  mTOR/PI3K > MTOR: d=0.022, FDR=9.889e-01
+  mTOR/PI3K > AKT2: d=0.166, FDR=9.658e-01
+  Cell cycle > CDK2: d=-0.150, FDR=9.355e-01
+  Cell cycle > CDK6: d=-0.125, FDR=9.180e-01
+  Cell cycle > RB1: d=-0.073, FDR=9.216e-01
+  Cell cycle > CCND1: d=0.023, FDR=9.985e-01
+  Cell cycle > CDK4: d=0.077, FDR=9.945e-01
+  Epigenetic/PRC2 > SUZ12: d=-0.002, FDR=9.976e-01
+  Epigenetic/PRC2 > DOT1L: d=0.097, FDR=9.773e-01
+  Epigenetic/PRC2 > EED: d=0.101, FDR=9.824e-01
+  Epigenetic/PRC2 > BRD4: d=0.107, FDR=9.580e-01
+  Epigenetic/PRC2 > EZH2: d=0.115, FDR=9.886e-01
+  DNA damage > CHEK1: d=-0.241, FDR=8.396e-01
+  DNA damage > WEE1: d=-0.051, FDR=9.841e-01
+  DNA damage > ATR: d=-0.025, FDR=9.824e-01
+  DNA damage > PARP1: d=0.127, FDR=9.025e-01
+  RAS feedback > SPRY4: d=-0.110, FDR=9.173e-01
+  RAS feedback > ERF: d=-0.091, FDR=9.824e-01
+  RAS feedback > SPRY1: d=0.032, FDR=9.961e-01
+  RAS feedback > SPRY2: d=0.047, FDR=9.425e-01
+  RAS feedback > DUSP4: d=0.119, FDR=9.244e-01
+  RAS feedback > DUSP6: d=0.211, FDR=7.839e-01
+  RAS feedback > RASA2: d=0.241, FDR=5.598e-01

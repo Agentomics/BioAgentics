@@ -1,0 +1,16 @@
+category,compound,in_vivo_validated,selumetinib_synergy,note
+MEK inhibitors,Selumetinib,True,False,Backbone therapy for NF1-loss
+MEK inhibitors,Trametinib,True,False,Backbone therapy for NF1-loss
+MEK inhibitors,Cobimetinib,True,False,Backbone therapy for NF1-loss
+MEK inhibitors,PD-0325901,True,False,Backbone therapy for NF1-loss
+mTOR inhibitors,Everolimus,True,True,MEK+mTOR combo under clinical investigation
+mTOR inhibitors,Temsirolimus,True,True,MEK+mTOR combo under clinical investigation
+mTOR inhibitors,AZD8055,True,True,MEK+mTOR combo under clinical investigation
+CDK4/6 inhibitors,Palbociclib,True,True,NF1-loss → RAS → cyclin D1 → CDK4/6 addiction
+CDK4/6 inhibitors,Ribociclib,True,True,NF1-loss → RAS → cyclin D1 → CDK4/6 addiction
+BET inhibitors,JQ1,False,True,BRD4 inhibition disrupts super-enhancer driven oncogene transcription
+BET inhibitors,OTX015,False,True,BRD4 inhibition disrupts super-enhancer driven oncogene transcription
+HSP90 inhibitors,Ganetespib,True,False,Destabilizes mutant signaling complexes
+HSP90 inhibitors,17-AAG,True,False,Destabilizes mutant signaling complexes
+KAT6A/B inhibitors,WM-1119,False,False,NF1-loss as ESR1 resistance mechanism. KAT6A/B + Menin inhibitor combos resensitize HR+ cancers
+KAT6A/B inhibitors,PF-07248144,False,False,NF1-loss as ESR1 resistance mechanism. KAT6A/B + Menin inhibitor combos resensitize HR+ cancers

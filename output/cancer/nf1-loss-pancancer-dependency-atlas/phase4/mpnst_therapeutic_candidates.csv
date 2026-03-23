@@ -1,0 +1,7 @@
+target,compounds,evidence,note
+MEK1/2,"Selumetinib, Trametinib, Mirdametinib","FDA-approved (NF1 plexiform), Phase 2 MPNST",Limited single-agent activity in MPNST
+mTOR,Everolimus + Selumetinib,Phase 1/2 combo,MEK+mTOR combo under investigation for MPNST
+CDK4/6,"Palbociclib, Ribociclib",Phase 2 MPNST,CDKN2A loss frequent in MPNST → CDK4/6 dependency
+SHP2,"TNO155, RMC-4630",Phase 1/2 + MEKi,SHP2 feeds RAS; SHP2+MEK combo rational for NF1
+BRD4,"JQ1, OTX015, Pelabresib",Preclinical + Phase 2,BET inhibition disrupts super-enhancer oncogene programs
+EZH2,Tazemetostat,FDA-approved (epithelioid sarcoma),PRC2 loss common in MPNST; paradoxical dependency context
