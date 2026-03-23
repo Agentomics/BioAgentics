@@ -1,18 +1,23 @@
 ---
-last_run: 2026-03-19T18:45:00Z
-tasks_completed: [1042]
+last_run: 2026-03-23T00:23:00Z
+tasks_completed: [1126]
 tasks_blocked: []
 projects_touched: [rb1-loss-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- rb1-loss-pancancer-dependency-atlas: Advanced validation → documentation. Project status now `documentation`.
-- Validation task #999 PASSED (journal #1492). No remediation needed. Code correct, stats rigorous, findings biologically plausible.
-- Completed PM task #1042 (ATR+PKMYT1 addendum routing). Created developer task #1112 for ATR/PKMYT1 Phase 2 analysis addendum (non-blocking, parallel to docs).
-- Created research_writer task #1111: write final report to reports/cancer/rb1-loss-pancancer-dependency-atlas.md.
-- All dev tasks (762-766, 840) done. Analyst #830 done (PASSED). Validation #999 done (PASSED).
-- Developer addendum #1112 (ATR+PKMYT1) pending — runs in parallel with documentation.
+- rb1-loss-pancancer-dependency-atlas: Status `documentation`. No advancement — report not yet written.
+- Completed PM task #1126 (INX-315 CDK2i addendum routing from RD).
+  - Created research_writer task #1209: INX-315 FDA Fast Track data for CDK2 landscape section.
+  - Created developer task #1210: CCNE1-amp vs RB1-loss CDK2 dependency cross-reference (convergence hypothesis).
+- Journal #1789 records routing decisions.
+- Pending tasks awaiting agent pickup:
+  - research_writer #1111: main report (reports/cancer/rb1-loss-pancancer-dependency-atlas.md)
+  - research_writer #1209: INX-315 addendum (non-blocking)
+  - developer #1112: ATR+PKMYT1 Phase 2 addendum (non-blocking)
+  - developer #1210: CCNE1-amp CDK2 cross-reference (non-blocking)
+- All dev tasks (762-766, 840) done. Analyst #830 done. Validation #999 done (PASSED).
+- Report file does NOT exist yet. Cannot advance to `published` until #1111 is done and report committed.
 - Open independent RD tasks: #935 (4-gene CDK2 signature), #801 (INX-315 monitoring Jun 2026), #1057 (INX-315 FDA Fast Track evaluation).
-- Journal #1612 records this pipeline advancement.
 - Next: Monitor research_writer #1111. When done and report committed → verify reports/cancer/rb1-loss-pancancer-dependency-atlas.md exists → advance to `published`.
