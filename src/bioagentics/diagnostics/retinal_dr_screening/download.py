@@ -208,6 +208,9 @@ def catalog_idrid(data_dir: Path | None = None) -> pd.DataFrame:
             continue
 
         labels = pd.read_csv(labels_path)
+        if len(labels.columns) < 2:
+            logger.warning("Label CSV %s has fewer than 2 columns, skipping", labels_path)
+            continue
         # Column names vary; try common patterns
         img_col = next(
             (c for c in labels.columns if "image" in c.lower() or "name" in c.lower()),
@@ -303,6 +306,9 @@ def catalog_messidor2(data_dir: Path | None = None) -> pd.DataFrame:
         else:
             labels = pd.read_csv(labels_path)
 
+        if len(labels.columns) < 2:
+            logger.warning("Label file %s has fewer than 2 columns, skipping", labels_path)
+            continue
         img_col = next(
             (c for c in labels.columns if "image" in c.lower() or "name" in c.lower()),
             labels.columns[0],

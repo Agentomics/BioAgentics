@@ -96,6 +96,9 @@ class GradCAM:
         output.backward(gradient=one_hot, retain_graph=True)
 
         # Compute Grad-CAM
+        if self.gradients is None or self.activations is None:
+            logger.warning("Grad-CAM hooks did not capture gradients/activations")
+            return np.zeros(input_tensor.shape[2:], dtype=np.float32)
         weights = self.gradients.mean(dim=[2, 3], keepdim=True)  # GAP of gradients
         cam = (weights * self.activations).sum(dim=1, keepdim=True)
         cam = F.relu(cam)  # only positive contributions
