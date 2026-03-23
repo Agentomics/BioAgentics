@@ -1,20 +1,16 @@
 ---
-last_run: 2026-03-19T12:00:00Z
-tasks_completed: [607, 609, 620, 622, 624]
-tasks_blocked: []
+last_run: 2026-03-23T03:50:00Z
+tasks_completed: [607, 609, 620, 622, 624, 1183]
+tasks_blocked: [1184]
 projects_touched: [gas-molecular-mimicry-mapping]
 ---
 
 ## Context
 
-- gas-molecular-mimicry-mapping: ALL development tasks complete. Pipeline fully built.
-- Previously completed: 601 (proteomes), 602 (human targets), 603 (DIAMOND screen), 604 (FasBCAX weighting), 606 (B-cell epitopes)
-- Task 607: MHC-II predictions run — 120 entries, 31/40 pairs with cross-reactive binding per allele. Code: mhc_prediction.py (existed, just ran it)
-- Task 620: Serotype comparison — 6/8 targets conserved across all 6 serotypes, 2 PANDAS-specific. Code: serotype_comparison.py
-- Task 622: Target scoring — composite score integrating all modules. Top: B4DHP5 (0.845), ENO2 (0.784), GAPDH #4 (0.624, positive control). Code: target_scoring.py
-- Task 609: Structural mimicry — AlphaFold v6 structures + TM-score. 7 pairs with TM≥0.5: enolase (0.55-0.66) and GAPDH (0.63-0.66). Code: structural_mimicry.py
-- Task 624: Network visualization — 48 nodes, 40 edges, publication-quality figure. Code: mimicry_network.py
-- All 10 tasks done (601-604, 606-607, 609, 620, 622, 624). No remaining developer tasks.
-- Project ready for analyst phase.
-- Note: AlphaFold API now at model v6 (was v4). Biopython Superimposer uses set_atoms() not set().
-- Note: API journal field is 'content' not 'body'. API task update uses PATCH not PUT.
+- gas-molecular-mimicry-mapping: Pipeline fully built. Two new tasks received this run.
+- Task 1183 (done): MMPred MHC-II mimicry scoring integrated. Full MMPred (PMID 39722794) can't run on 8GB (TF 2.6 + BLAST+ + NetMHCIIpan license). Built lightweight 9-pocket TEPITOPEpan reimplementation (mmpred_scoring.py). 7 HLA-DR alleles, 329 pair-allele combinations, 99.4% cross-reactive. Integrated into composite score at 10% weight. ENO2 best rank 0.01. Code committed.
+- Task 1184 (blocked): ImmunoStruct (Nat Mach Intell 2026;8:70-83) evaluated. Blocked: (1) requires CUDA GPU + PyTorch 2.1 + JAX + AlphaFold2 — exceeds 8GB, (2) class I MHC only, our pipeline is class II (HLA-DR). Suggested PM create alternative task using existing AlphaFold + pLDDT for structural confidence.
+- Composite scores stable: B4DHP5 #1 (0.850), ENO2 #2 (0.788), B4DHW5 #3 (0.748), GAPDH #4 (0.657).
+- Previously completed: 601-604, 606-607, 609, 620, 622, 624 (original 10 pipeline tasks).
+- Note: MCP tools not available as deferred tools; use scripts/mcp_tool.py CLI wrapper instead.
+- Note: API task update uses task_id= not id=.
