@@ -17,3 +17,27 @@ Top novel mimicry target candidates:
   AK9 (Q5TCS8): composite=0.206, pident=42.9%, conservation=0.29
 
 Scoring weights: {'epitope': 0.18, 'mhc': 0.15, 'mmpred': 0.1, 'conservation': 0.14, 'identity': 0.14, 'coverage': 0.09, 'phase': 0.1, 'known_target': 0.1}
+
+MMPred Integration Note
+-----------------------
+MMPred (Junet et al., Front Genet 2024;15:1500684, PMID 39722794) provides
+MHC-II molecular mimicry prediction via CNN + NetMHCIIpan.  The full tool
+requires TensorFlow 2.6, BLAST+, and NetMHCIIpan 4.1 (academic license),
+exceeding the 8GB RAM constraint.  A lightweight reimplementation using
+TEPITOPEpan 9-pocket binding profiles with percentile-rank calibration
+(10,000 random peptides/allele) was used instead.
+
+Allele panel (7 HLA-DR alleles): DRB1*04:01, *07:01, *01:01, *15:01,
+*03:01, *11:01, *13:01 — expanding from the 3-allele PSSM predictions.
+
+Key findings:
+  - ENO2 (P09104): best MMPred rank 0.01 (strongest cross-reactive binding)
+  - B4DHW5: rank 0.14, PSMC6: rank 0.20, P04406/GAPDH: rank 0.19
+  - AK9 (Q5TCS8): rank 1.58 (weakest, consistent with low composite score)
+  - 329 pair-allele combinations scored; cross-reactive peptides found in
+    327/329 (99.4%), confirming strong mimicry signal across the panel.
+
+Impact on rankings: Combined MHC evidence (PSSM + MMPred) = 25% of
+composite weight.  MMPred's expanded allele coverage and 9-pocket scoring
+corroborate the PSSM rankings and provide additional confidence in the
+top candidates, particularly ENO2 which achieves near-perfect MMPred rank.

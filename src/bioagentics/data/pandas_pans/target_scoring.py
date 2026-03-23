@@ -32,12 +32,15 @@ SEROTYPE_DIR = OUTPUT_BASE / "serotype_comparison"
 OUTPUT_DIR = OUTPUT_BASE / "target_scoring"
 
 # Scoring weights for composite score (sum to 1.0)
+# MMPred (expanded-allele 9-pocket scoring) complements the original PSSM MHC
+# predictions.  Combined MHC evidence (mhc + mmpred) = 0.25.
 WEIGHTS = {
-    "epitope": 0.20,
-    "mhc": 0.20,
-    "conservation": 0.15,
-    "identity": 0.15,
-    "coverage": 0.10,
+    "epitope": 0.18,
+    "mhc": 0.15,
+    "mmpred": 0.10,
+    "conservation": 0.14,
+    "identity": 0.14,
+    "coverage": 0.09,
     "phase": 0.10,
     "known_target": 0.10,
 }
@@ -79,6 +82,15 @@ def load_mhc_scores(mhc_dir: Path) -> pd.DataFrame:
         )),
     ).reset_index()
     return agg
+
+
+def load_mmpred_scores(mhc_dir: Path) -> pd.DataFrame:
+    """Load MMPred-style MHC-II binding prediction results."""
+    path = mhc_dir / "mmpred_target_summary.tsv"
+    if not path.exists():
+        logger.warning("No MMPred predictions found at %s", path)
+        return pd.DataFrame()
+    return pd.read_csv(path, sep="\t")
 
 
 def load_conservation_scores(serotype_dir: Path) -> pd.DataFrame:
@@ -133,6 +145,12 @@ def compute_composite_score(merged: pd.DataFrame) -> pd.DataFrame:
     merged["norm_identity"] = normalize_column(merged["best_pident"].fillna(0))
     merged["norm_coverage"] = normalize_column(merged["best_qcovhsp"].fillna(0))
 
+    # MMPred: lower rank = better binder, so invert (1 - rank/100)
+    if "best_mmpred_rank" in merged.columns:
+        merged["norm_mmpred"] = 1.0 - merged["best_mmpred_rank"].fillna(100) / 100.0
+    else:
+        merged["norm_mmpred"] = 0.0
+
     # Phase weight: normalize so invasive=1.0, housekeeping=0.5, colonization=0.0
     phase = merged["best_phase_weight"].fillna(1.0)
     merged["norm_phase"] = (phase - 0.5) / 1.5  # maps 0.5→0, 1.0→0.33, 2.0→1.0
@@ -144,6 +162,7 @@ def compute_composite_score(merged: pd.DataFrame) -> pd.DataFrame:
     merged["composite_score"] = (
         WEIGHTS["epitope"] * merged["norm_epitope"]
         + WEIGHTS["mhc"] * merged["norm_mhc"]
+        + WEIGHTS["mmpred"] * merged["norm_mmpred"]
         + WEIGHTS["conservation"] * merged["norm_conservation"]
         + WEIGHTS["identity"] * merged["norm_identity"]
         + WEIGHTS["coverage"] * merged["norm_coverage"]
@@ -175,6 +194,7 @@ def main(argv: list[str] | None = None) -> None:
 
     epitopes = load_epitope_scores(EPITOPE_DIR)
     mhc = load_mhc_scores(MHC_DIR)
+    mmpred = load_mmpred_scores(MHC_DIR)
     conservation = load_conservation_scores(SEROTYPE_DIR)
 
     # Merge all components on human_accession
@@ -191,6 +211,13 @@ def main(argv: list[str] | None = None) -> None:
                                     "max_mhc_cross_pairs", "alleles_with_hits"]],
                                on="human_accession", how="left")
         logger.info("  MHC data: %d targets", len(mhc))
+
+    if not mmpred.empty:
+        merged = merged.merge(mmpred[["human_accession", "best_mmpred_rank",
+                                       "best_mmpred_score", "mmpred_cross_pairs",
+                                       "mmpred_alleles_hit"]],
+                               on="human_accession", how="left")
+        logger.info("  MMPred data: %d targets", len(mmpred))
 
     if not conservation.empty:
         merged = merged.merge(conservation, on="human_accession", how="left")
