@@ -483,6 +483,8 @@ def review_pr(number: int, action: str = "comment", body: str = "") -> str:
     """
     if action not in _REVIEW_ACTIONS:
         return json.dumps({"error": f"invalid action: {action!r}, must be one of {_REVIEW_ACTIONS}"})
+    if action == "request-changes" and not body:
+        return json.dumps({"error": "body is required when action is 'request-changes'"})
     repo = f"{GITHUB_ORG}/{GITHUB_REPO}"
     args = ["pr", "review", str(number), "--repo", repo, f"--{action}"]
     if body:
@@ -550,7 +552,10 @@ def list_data(subdir: str = "") -> str:
     entries = []
     for item in sorted(target.iterdir()):
         kind = "dir" if item.is_dir() else "file"
-        size = item.stat().st_size if item.is_file() else ""
+        try:
+            size = item.stat().st_size if item.is_file() else ""
+        except OSError:
+            size = ""  # broken symlink or permission error
         entries.append({"name": item.name, "type": kind, "size": size})
     return json.dumps(entries, indent=2)
 
