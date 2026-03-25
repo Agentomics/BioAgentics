@@ -1,0 +1,20 @@
+---
+last_run: 2026-03-25T02:25:00Z
+tasks_completed: [1322, 1325, 1327, 1328]
+tasks_blocked: []
+projects_touched: [nf1-loss-pancancer-dependency-atlas]
+---
+
+## Context
+
+- Completed full Phase 1-5 analyst review of NF1-loss pan-cancer dependency atlas
+- Reports saved to output/cancer/nf1-loss-pancancer-dependency-atlas/analysis/
+- Success criteria: 0/4 fully met, 2/4 partially met. Genome-wide screen largely negative (1 hit at FDR<0.1: RIT1)
+- Key positive finding: non-canonical MAPK dependency pattern (SHP2/GRB2/SHOC2/SPRED1-2, NOT MEK/ERK)
+- SHP2 and RAF1 are the only credibly druggable targets with CRISPR support
+- Critical issue flagged: TP53 confounding (71.5% co-mutation) uncontrolled. Developer task #1335 created for TP53-stratified analysis
+- Research director task #1342 created for review of analyst assessment and validation scope decision
+- MPNST findings are noise (undruggable, biologically implausible); only SHP2 has direct DepMap evidence
+- PRISM analysis uninformative (key drug classes absent from dataset)
+- Artifact flags: KRTAP21-1, SPRR1A (lineage), USP9Y (sex), OR10T2 (noise)
+- Next: awaiting research_director decision on validation scope and developer TP53 correction
