@@ -1,0 +1,245 @@
+======================================================================
+NF1-Loss Pan-Cancer Dependency Atlas
+Phase 3 Critical Assessment: Genome-Wide Differential Dependency Screen
+Analyst: analyst | Division: cancer | Date: 2026-03-24
+======================================================================
+
+EXECUTIVE SUMMARY
+------------------
+The genome-wide screen is severely underpowered at the per-cancer-type
+level and modestly underpowered pan-cancer. Only 1 hit meets the
+FDR<0.1, |d|>0.5 threshold (RIT1, which is biologically plausible).
+Zero per-cancer-type hits survive FDR correction. The top hit list
+contains a mix of credible biology (RIT1, SHOC2, SPRED1/2) and clear
+artifacts (KRTAP21-1, SPRR1A, USP9Y). TP53 confounding remains
+uncontrolled. The study does NOT meet the success criterion of >=5
+NF1-loss-specific dependencies.
+
+======================================================================
+1. STATISTICAL ADEQUACY
+======================================================================
+
+Total tests: 160,947 (9 contexts x ~18,000 genes)
+FDR method: Benjamini-Hochberg (appropriate)
+
+Power assessment:
+  Per-cancer-type (n=5-18 lost):
+  - n=5-6: <15% power for d=0.8 at genome-wide FDR<0.1
+  - n=10: ~20% power for d=0.8
+  - n=18 (CNS): ~35% power for d=0.8
+  Verdict: Per-type analyses are FUNDAMENTALLY UNDERPOWERED for
+  genome-wide discovery. No amount of effect size can overcome the
+  multiple testing penalty at these sample sizes. All per-type hits
+  with FDR>0.5 are expected under the null.
+
+  Pan-cancer RAS-excluded (n=67 lost):
+  - ~70% power for d=0.8 at genome-wide FDR<0.1
+  - ~30% power for d=0.5
+  Verdict: Adequately powered for large effects only. The single hit
+  (RIT1 d=-0.646) is consistent with borderline detection power.
+
+Multiple testing burden: With 160,947 tests and BH-FDR, a raw p-value
+of ~4e-06 is needed for FDR<0.1. This is appropriate but means only
+very strong, consistent signals can be detected.
+
+======================================================================
+2. PAN-CANCER HIT ASSESSMENT (RAS-EXCLUDED)
+======================================================================
+
+Hit #1: RIT1 (d=-0.646, FDR=0.071, composite=0.74)
+  Biological plausibility: HIGH
+  - RIT1 is a RAS-family GTPase (RRAS subfamily) that activates
+    RAF/MEK/ERK and PI3K/AKT pathways.
+  - NF1 is a GAP for RAS but has minimal activity on RIT1 (different
+    GTPase domain specificity). Thus, NF1-loss does NOT directly
+    hyperactivate RIT1 — rather, NF1-lost cells may become more
+    dependent on RIT1 as a parallel pathway input to maintain
+    sufficient MAPK flux when upstream RAS regulation is disrupted.
+  - RIT1 mutations are oncogenic in lung adenocarcinoma (PMID:25049390),
+    confirming it as a driver in the RAS pathway.
+  - RIT1 is per-type strongest in Breast (d=-1.115) and Lung (d=-0.446),
+    absent in PNS (d=+0.188). Not MPNST-relevant.
+  Confound risk: LOW. Not a TP53-associated dependency.
+  Druggability: LOW. No direct RIT1 inhibitors exist. SOS1 inhibitors
+    (BI-3406) may partially address RIT1 activation but specificity is
+    unclear.
+  Verdict: CREDIBLE but SOLE high-confidence hit. Insufficient alone.
+
+Sub-FDR hits warranting attention (FDR 0.2-0.3):
+
+  SHOC2 (d=-0.485, FDR=0.245):
+  - Already validated in Phase 2. Consistent signal.
+  - Mechanistically linked to RAF1 activation pathway.
+  - Novel SHOC2 inhibitors in preclinical development.
+  Assessment: CREDIBLE, consistent with Phase 2 baseline.
+
+  SPRED1 (d=-0.446, FDR=0.289) and SPRED2 (d=-0.409, FDR=0.245):
+  - SPRED proteins are RAS/MAPK negative regulators.
+  - SPRED1 physically interacts with NF1 to enhance RAS-GAP activity.
+  - Biological interpretation: NF1-lost cells retain partial MAPK
+    pathway regulation through SPRED. Additional loss of SPRED pushes
+    RAS/MAPK hyperactivation beyond a tolerable threshold, consistent
+    with "RAS toxicity" models of synthetic lethality.
+  - SPRED1 shows strongest signal in CNS (d=-1.069) and Uterus
+    (d=-1.163) — large effects, per-type underpowered.
+  Assessment: BIOLOGICALLY COHERENT. Top-tier for follow-up despite
+  marginal FDR. SPRED-NF1 functional interaction is well-established
+  (PMID:28135245).
+
+  RAD51 (d=-0.402, FDR=0.296):
+  - DNA repair (homologous recombination). NF1 has reported roles in
+    DNA damage response (PMID:24573287).
+  - BUT: 71.5% TP53 co-mutation confound. TP53-null cells show
+    increased RAD51 dependency independent of NF1.
+  Assessment: INCONCLUSIVE. Cannot attribute to NF1 without TP53
+  stratification.
+
+  EIF2B5 (d=-0.455, FDR=0.245):
+  - Translation initiation factor. No known connection to NF1/RAS.
+  Assessment: UNCLEAR biological rationale. May be noise.
+
+  SRRM5 (d=-0.567, FDR=0.211):
+  - Splicing regulator. No established NF1 connection.
+  Assessment: UNCLEAR. Possibly novel but lacks mechanistic support.
+
+ARTIFACT FLAGS (top list contamination):
+
+  SPRR1A (d=-0.728, FDR=0.522):
+  - Small proline-rich protein expressed in skin keratinocytes.
+  - NF1 loss is enriched in melanoma/cutaneous tumors.
+  - LINEAGE CONFOUND: likely reflects NF1-loss enrichment in skin
+    lineages where SPRR1A is constitutively essential, not a true
+    NF1-specific dependency.
+  Assessment: ARTIFACT. Exclude from findings.
+
+  KRTAP21-1 (d=-0.756, FDR=0.562):
+  - Keratin-associated protein. Same lineage confound as SPRR1A.
+  Assessment: ARTIFACT. Exclude.
+
+  USP9Y (d=-0.666, FDR=0.522):
+  - Y chromosome gene. SEX IMBALANCE confound (NF1-lost group may
+    have different M:F ratio than intact).
+  Assessment: ARTIFACT. Exclude.
+
+  OR10T2 (d=-0.509, FDR=0.403):
+  - Olfactory receptor. No biological rationale for cancer dependency.
+  - Likely CNV artifact or mapping error.
+  Assessment: ARTIFACT. Exclude.
+
+======================================================================
+3. PER-TUMOR-TYPE SIGNALS
+======================================================================
+
+Zero per-tumor-type hits reach FDR<0.1.
+
+Notable large effects (all FDR>0.9, treat as EXPLORATORY ONLY):
+
+  Bowel (n=6/37):
+  - ATR:    d=-0.875 — Large, but FDR=0.91. n=6 is inadequate.
+  - EZH2:   d=-0.778 — FDR=0.90. TP53 confound (6/6 TP53-mut).
+  - CHEK1:  d=-0.729 — FDR=0.90. TP53 confound + small n.
+  - CDK6:   d=-0.638 — FDR=0.90.
+  - PTPN11: d=-0.633 — FDR=0.91. Consistent with pan-cancer signal.
+
+  Lung (n=10/90):
+  - PTPN11: d=-0.808 — Large but FDR=1.0. Per-type FDR is extremely
+    conservative here due to ~18,000 tests with n=10.
+  - CDK6:   d=-0.507 — FDR=1.0.
+
+  Breast (n=5/34):
+  - RIT1:   d=-1.115 — Largest RIT1 effect, but n=5, FDR=0.95.
+
+  CNS/Brain (n=18/51):
+  - SPRED1: d=-1.069 — Strongest SPRED1 signal. FDR=0.64.
+  - PTPN11: d=-0.585 — Consistent with pan-cancer. FDR=0.98.
+  - SPRED2: d=-0.833 — Strong. FDR=0.98.
+
+  PNS (n=8/27):
+  - CHEK1:  d=-0.706 — FDR=0.97. TP53 confound (7/8 TP53-mut).
+  - RAD51:  d=-0.649 — FDR=0.97. Same TP53 concern.
+  - RAF1:   d=-0.602 — FDR=0.97. Consistent with Phase 2.
+
+Interpretation: Per-type signals are NOISE at the statistical level
+(all FDR>0.6). However, some show consistency with pan-cancer trends
+(PTPN11 in Lung/CNS/Bowel; SPRED1/2 in CNS; RAF1 in PNS). These
+directional consistencies increase confidence in pan-cancer findings
+but do NOT independently validate them.
+
+======================================================================
+4. HYPOTHESIS GENE SET ASSESSMENT
+======================================================================
+
+All hypothesis gene sets show FDR>0.5 at pan-cancer level. None are
+statistically significant NF1-loss dependencies.
+
+The heatmap shows highly heterogeneous patterns across cancer types,
+with effects often pointing in opposite directions for the same gene
+in different lineages. This heterogeneity explains why pan-cancer
+pooling dilutes per-type signals.
+
+mTOR/PI3K pathway: No signal. RPTOR is the "best" at d=-0.169.
+  This argues against mTOR cross-talk as a major NF1-loss dependency,
+  despite clinical interest in MEK+mTOR combinations.
+
+Cell cycle (CDK4/6): CDK6 d=-0.125 (FDR=0.92) is weak. CDK4 positive.
+  Per-type CDK6 signals in Bowel (d=-0.638) and Lung (d=-0.507) are
+  underpowered. Does not support CDK4/6 as NF1-specific dependency.
+
+Epigenetic (PRC2, BRD4): No signal pan-cancer. EZH2 d=+0.115.
+  Per-type EZH2 signal in Bowel (d=-0.778) is isolated. Not NF1-specific.
+
+DDR (ATR, CHEK1, WEE1): CHEK1 shows the most consistent signal
+  (d=-0.241 pan-cancer, d=-0.729 Bowel, d=-0.706 PNS) but all FDR>0.8.
+  CRITICAL: 71.5% TP53 co-mutation makes ALL DDR signals suspect.
+  TP53-null cells are known to be synthetically lethal with ATR/CHEK1
+  (PMID:22137880). Cannot attribute to NF1 without TP53 adjustment.
+
+RAS feedback: SPRED1/2 are the notable signals (discussed above).
+  DUSP4/6 show positive d (NF1-lost LESS dependent) — inconsistent
+  with simple feedback model. RASA2 positive (d=+0.241).
+
+======================================================================
+5. TP53 CONFOUNDING IMPACT ON PHASE 3
+======================================================================
+
+The 71.5% TP53 co-mutation rate is expected to inflate signals for:
+  - DDR genes (ATR, CHEK1, WEE1): DIRECT confound. Known TP53-SL genes.
+  - RAD51: Homologous recombination dependency is TP53-context-dependent.
+  - CDK6: Cell cycle regulation is TP53/RB pathway-dependent.
+  - EZH2: PRC2 dependency can be TP53-driven in some contexts.
+
+Genes UNLIKELY to be TP53-confounded:
+  - RIT1: No established TP53-RIT1 synthetic lethal interaction.
+  - SHOC2: RAS scaffold, not TP53-related.
+  - SPRED1/2: RAS negative regulators, not TP53-related.
+  - GRB2, PTPN11: Upstream MAPK, not TP53-related.
+
+Recommendation: The TP53-stratified analysis (developer task #1335)
+is ESSENTIAL before DDR/cell-cycle hits can be reported. MAPK pathway
+hits (RIT1, SHOC2, SPRED1/2, GRB2, PTPN11) are more credibly
+NF1-specific.
+
+======================================================================
+6. OVERALL PHASE 3 VERDICT
+======================================================================
+
+LARGELY NEGATIVE but with credible biology in the sub-threshold hits.
+
+Credible NF1-loss dependencies (RAS/MAPK axis):
+  1. RIT1 (d=-0.646, FDR=0.071) — ONLY hit meeting success criteria
+  2. SHOC2 (d=-0.485, FDR=0.245) — consistent with Phase 2
+  3. SPRED1 (d=-0.446, FDR=0.289) — strong biological rationale
+  4. SPRED2 (d=-0.409, FDR=0.245) — same pathway, independent signal
+  5. GRB2/PTPN11 — from Phase 2, confirmed by genome-wide trends
+
+The emerging picture is that NF1-loss creates dependency on the
+RAS/MAPK regulatory network (RIT1, SHOC2, SPRED1/2, GRB2, SHP2)
+rather than on downstream effectors (MEK, ERK) or cross-pathway
+targets (mTOR, CDK, PRC2). This is biologically coherent but
+statistically under-powered for formal validation.
+
+Success criteria status: 1/5 hits at FDR<0.1 (needs >=5). NOT MET.
+However, the 4 additional RAS-axis hits at FDR 0.2-0.3 form a
+mechanistically coherent gene set. If treated as a pathway rather
+than individual genes, significance may improve via GSEA-style
+analysis.
