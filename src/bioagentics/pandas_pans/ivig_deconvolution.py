@@ -189,27 +189,43 @@ def _select_marker_genes(
     if len(cell_types) < 2:
         raise ValueError("Need at least 2 cell types for marker selection")
 
-    # Dense matrix for computation
+    # Compute per-cell-type means via sparse ops to avoid materializing
+    # the full dense matrix (144K cells x 20K genes = ~23GB as float64).
     X = adata.X
-    if sp.issparse(X):
-        X = X.toarray()
-    X = np.asarray(X, dtype=np.float64)
+    is_sparse = sp.issparse(X)
+    if is_sparse:
+        X_csc = sp.csc_matrix(X)
 
     gene_names = list(adata.var_names)
     selected: set[str] = set()
 
+    # Pre-compute global mean using sparse arithmetic
+    if is_sparse:
+        global_mean = np.asarray(X_csc.mean(axis=0)).ravel()
+    else:
+        global_mean = np.asarray(X.mean(axis=0)).ravel()
+    n_total = X.shape[0]
+
     for ct in cell_types:
         mask_ct = (adata.obs[cell_type_key] == ct).values
-        mask_rest = ~mask_ct
+        n_ct = int(mask_ct.sum())
+        n_rest = n_total - n_ct
 
-        if mask_ct.sum() < 2 or mask_rest.sum() < 2:
+        if n_ct < 2 or n_rest < 2:
             continue
 
-        mean_ct = X[mask_ct].mean(axis=0)
-        mean_rest = X[mask_rest].mean(axis=0)
+        # Compute cell-type mean and fraction from the subset only
+        if is_sparse:
+            X_ct = X_csc[mask_ct]
+            mean_ct = np.asarray(X_ct.mean(axis=0)).ravel()
+            frac_ct = np.asarray((X_ct > 0).mean(axis=0)).ravel()
+        else:
+            X_ct = np.asarray(X[mask_ct])
+            mean_ct = X_ct.mean(axis=0)
+            frac_ct = (X_ct > 0).mean(axis=0)
 
-        # Fraction of cells expressing each gene in this type
-        frac_ct = (X[mask_ct] > 0).mean(axis=0)
+        # Derive rest-mean from global mean without a second full pass
+        mean_rest = (global_mean * n_total - mean_ct * n_ct) / n_rest
 
         # Fold change (add pseudocount)
         fc = (mean_ct + 1e-9) / (mean_rest + 1e-9)
