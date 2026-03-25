@@ -1,18 +1,18 @@
 ---
-last_run: 2026-03-22T02:24:00Z
-tasks_completed: [1133, 1132]
+last_run: 2026-03-25T02:14:00Z
+tasks_completed: [1236]
 tasks_blocked: []
 projects_touched: [microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-- microbiome-metabolome-subtyping: In ANALYSIS phase. Developer remediation complete, awaiting analyst re-run.
-- Developer task #894 DONE (2026-03-19): metabolite feature selection (top 1000), ComBat batch correction, CMTF n_components auto-CV, extended process_all(). 39 tests pass.
-- Analyst task #998 (PENDING, P5): re-run cluster stability with all pipeline fixes + CD-only cohort (n=50). Ready for analyst pickup. Success criteria: silhouette >0.3, bootstrap Jaccard >0.6, permutation p<0.05.
-- Blocked analyst tasks: #850 (biological validation), #851 (clinical relevance), #852 (cross-cohort). Updated blocked_reason to reference #998 dependency. Unblock when #998 achieves silhouette >0.3.
-- Fallback: if silhouette still <0.3 after fixes, pivot to supervised ACMTF-R (RD journal #1319).
-- Future enhancements (not blocking): metabolome-first weighting (SPARC IBD, lit #1541), OXPHOS metabolites (Raschdorf, lit #1538).
-- 5 data_curator tasks (#172, #173, #228, #271, #453) continue in parallel for external validation datasets.
-- Labels: microbiome, multi-omics, biomarker, novel-finding, high-priority.
-- Next PM action: Monitor analyst pickup of #998. When done with silhouette >0.3, unblock #850/#851/#852. If fails, coordinate ACMTF-R pivot.
+- microbiome-metabolome-subtyping: In ANALYSIS phase. Cluster stability and biological validation complete. Post-validation analyst tasks created.
+- Task #998 DONE: silhouette=0.344, bootstrap Jaccard 0.96-0.98, ARI=0.919. 2 robust CD subtypes confirmed (k=2). RD approved (journal #1940).
+- Task #850 DONE: Biological validation complete. Subtypes molecularly defined, no Montreal association (all p>0.3). CMTF loadings driven by canonical CD dysbiosis taxa. 0.7% metabolite annotation — not a blocker per RD.
+- Task #852 CANCELLED by dispatcher (3 blocked cycles). Replaced with #1333.
+- Analyst queue: #851 (p4, clinical relevance — treatment response via HMP2 medication data), #1333 (p4, cross-cohort reproducibility — species-only classifier), #1334 (p3, bile acid metabolite check per RD).
+- Developer #1234 (p3): Metabolite RT/m/z annotation utility — not blocking per RD.
+- Data curator tasks (#172, #173, #228, #271, #453, #1065): external validation datasets — ongoing.
+- Labels: microbiome, multi-omics, biomarker, novel-finding, high-priority, promising.
+- Next PM action: Monitor analyst completion of #851, #1333, #1334. When all done, advance to validation phase. Create validation_scientist tasks.
