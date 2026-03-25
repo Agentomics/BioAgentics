@@ -200,8 +200,9 @@ def run_binding_predictions(
     if not peptide_file.exists():
         raise FileNotFoundError(f"Peptide file not found: {peptide_file}")
 
-    peptides = load_peptides_sampled(peptide_file, max_peptides=max_peptides)
-    print(f"Loaded {len(peptides)} unique peptides from {serotype}")
+    peptides = load_peptides_sampled(peptide_file, max_peptides=max_peptides, virulence_only=virulence_only)
+    label = f"{serotype} (virulence only)" if virulence_only else serotype
+    print(f"Loaded {len(peptides)} unique peptides from {label}")
 
     alleles = get_mhc_ii_alleles() if mhc_class == "II" else get_mhc_i_alleles()
     allele_names = [a.four_digit_resolution for a in alleles]
@@ -324,12 +325,14 @@ def run_all_serotypes(
     output_base: Path | None = None,
     serotypes: list[str] | None = None,
     include_supplements: bool = True,
+    virulence_only: bool = False,
 ) -> dict:
     """Run predictions for all serotypes and supplements, then merge.
 
     Processes one peptide set at a time to stay within memory limits.
     When include_supplements=True, also processes Enn/Mrp and other
     supplemental peptide sets from Phase 2.
+    When virulence_only=True, only predicts binding for virulence factor peptides.
     Supports resume — safe to restart after interruption.
     """
     if serotypes is None:
@@ -358,6 +361,7 @@ def run_all_serotypes(
             max_peptides=max_peptides,
             output_base=output_base,
             resume=True,
+            virulence_only=virulence_only,
         )
 
     # Merge all processed sets (serotypes + supplements)
