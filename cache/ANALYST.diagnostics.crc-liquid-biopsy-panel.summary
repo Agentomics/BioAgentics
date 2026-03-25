@@ -1,17 +1,17 @@
 ---
-last_run: 2026-03-23T04:03:00Z
-tasks_completed: [1087, 1088]
+last_run: 2026-03-25T02:17:00Z
+tasks_completed: [1291, 1293]
 tasks_blocked: []
 projects_touched: [crc-liquid-biopsy-panel]
 ---
 
 ## Context
 
-- crc-liquid-biopsy-panel: Project in analysis phase. Completed cMCD comparison and stage stratification.
-- Task 1087 (cMCD comparison): 17/21 cMCD genes overlap with our data (81%). 4 genes (BMP3, APC, MGMT, RASSF1) filtered by delta-beta >= 0.3 but have significant cfDNA signal. Sensitivity gap (47.7% vs 87.82%) is architectural — protein-only panel vs methylation. Created developer tasks #1212 (lower threshold) and #1213 (build methylation classifier).
-- Task 1088 (stage stratification): Detection CpGs have ZERO staging power (AUC=0.517). Stage discrimination requires different features than detection. Created developer task #1214 (stage-specific features) and data curator task #1215 (stage-annotated cfDNA data).
-- Task 1089 (threshold analysis): Previously completed by prior analyst run. 7-protein panel at 90% spec reaches 67.8% sensitivity.
-- Created research_director review task #1216 for strategic decision: close detection sensitivity gap first vs pursue staging.
-- Key outputs: cmcd_comparison_report.json, stage_stratification_results.json in output/diagnostics/crc-liquid-biopsy-panel/
-- No pending analyst tasks remain for this project.
-- Next: wait for developer to rebuild pipeline with lower threshold and methylation classifier, then re-evaluate combined panel performance.
+- crc-liquid-biopsy-panel: Completed panel architecture comparison and threshold impact assessment.
+- Task 1291 (panel architecture): Three architectures compared. Protein-only (nested CV, n=121): AUC 0.871, sens@95spec 47.7%, $105. Methylation-only (LOO-CV, n=24): AUC 0.979, sens@95spec 83.3% — HIGH overfitting risk, CI [58.3%-100%]. Combined: AUC 0.900, sens@95spec 62.7% — worse than protein at 95% spec (operating point paradox).
+- Task 1293 (threshold lowering): 69.5% sensitivity claim is training performance, not validated. Recomputed: 54.2% from predictions, 47.7% from nested CV. Protein panel identical at both thresholds. LASSO excludes methylation due to 15x cost overpenalty ($75/CpG vs correct $5/CpG).
+- Created developer tasks: #1336 (fix LASSO cost weight), #1337 (bootstrap validation for methylation), #1338 (CpG-to-gene mapping).
+- Created data_curator task: #1340 (find independent cfDNA methylation validation cohort n>=100).
+- Created research_director task: #1339 (review >80% sensitivity finding with overfitting caveat).
+- Key outputs: panel_architecture_comparison.json, threshold_impact_analysis.json in output/diagnostics/crc-liquid-biopsy-panel/.
+- No pending analyst tasks remain. Next: wait for developer bootstrap validation (#1337) and corrected LASSO (#1336), then re-evaluate. Methylation validation cohort (#1340) is the critical blocker for advancing methylation architecture.
