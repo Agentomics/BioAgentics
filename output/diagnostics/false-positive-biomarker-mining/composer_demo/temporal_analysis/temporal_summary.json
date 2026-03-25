@@ -1,0 +1,47 @@
+{
+  "analysis": "within_stay_temporal_fp_analysis",
+  "data_source": "COMPOSER demo (MockSepsisAdapter, n=500, seed=42)",
+  "operating_point": "spec_95pct",
+  "groups": {
+    "FP": 22,
+    "TN": 416
+  },
+  "risk_escalation": {
+    "fp_mean_delta": 0.07023978616342676,
+    "tn_mean_delta": -0.025758074070020006,
+    "mann_whitney_p": 0.09910575979300601,
+    "cohens_d": 0.36293786462125616,
+    "fp_pct_escalating": 0.5909090909090909,
+    "tn_pct_escalating": 0.38221153846153844
+  },
+  "score_trend": {
+    "fp_mean_trend": 0.07023978616342676,
+    "tn_mean_trend": -0.025758074070020006,
+    "mann_whitney_p": 0.09910575979300601,
+    "cohens_d": 0.36293786462125616
+  },
+  "peak_timing": {
+    "fp_mean_peak_fraction": 0.4298659875550838,
+    "tn_mean_peak_fraction": 0.3680095113778562,
+    "mann_whitney_p": 0.10526100125211019
+  },
+  "volatility": {
+    "fp_mean_std_score": 0.19815641553564645,
+    "tn_mean_std_score": 0.11422685234190016,
+    "mann_whitney_p": 2.261048745403401e-07,
+    "cohens_d": 1.2142006668112497
+  },
+  "escalation_pattern": {
+    "fp_escalating_pct": 0.45454545454545453,
+    "tn_escalating_pct": 0.25240384615384615,
+    "fisher_exact_or": 2.4682539682539684,
+    "fisher_exact_p": 0.03665039284165111
+  },
+  "composite_temporal_index": {
+    "fp_mean_z": 0.7848459078847221,
+    "tn_mean_z": -0.04150627397467284,
+    "auroc": 0.6453234265734266,
+    "mann_whitney_p": 0.010790131674525477,
+    "cohens_d": 0.7154049492025764
+  }
+}
