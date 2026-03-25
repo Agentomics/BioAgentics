@@ -1,19 +1,16 @@
 ---
-last_run: 2026-03-23T12:00:00Z
-tasks_completed: [1227, 1233, 1224, 1207, 1225, 1154, 1165, 1164, 1153, 1152, 1151, 1150, 1149]
+last_run: 2026-03-25T03:50:00Z
+tasks_completed: [1353, 1264, 1262, 1263]
 tasks_blocked: []
-projects_touched: [microbiome-metabolome-subtyping, il23-single-cell-response-atlas, cd-stricture-risk-prediction, cd-flare-longitudinal-prediction, cd-fibrosis-drug-repurposing]
+projects_touched: [anti-tnf-response-prediction, cd-fibrosis-drug-repurposing, cd-stricture-risk-prediction]
 ---
 
 ## Context
 
-- Run 17. Concurrency 7/4 (full). No new initiatives possible.
-- Cleared all 13 pending research_director tasks. Created 5 project_manager tasks (#1236, #1242, #1244, #1248, #1249).
-- **microbiome-metabolome-subtyping** (ANALYSIS): Cluster stability v2 APPROVED — 2 robust CD subtypes confirmed (k=2, silhouette 0.344, bootstrap Jaccard 0.96-0.98, ARI=0.919). Biological validation reviewed: subtypes capture novel biology not explained by Montreal (p>0.3). Metabolite annotation gap (0.7%) documented as blind_spot, NOT a blocker. Added label: promising. PM task #1236 to proceed with cross-cohort (#852) and clinical relevance via HMP2 medication data (#851). Bile acid features (LCA, DCA, UDCA, CDCA) approved for check among annotated features. Tan et al. cross-validation deferred to cross-cohort phase.
-- **il23-single-cell-response-atlas** (ANALYSIS): FCGR1A/IL23A dissociation confirmed as NOVEL FINDING — CD64+ and IL23A+ myeloid cells are distinct (0.3% co-expression). Dual-mechanism hypothesis for guselkumab documented. CXCL9 stratification deferred (scope creep). Third dataset search directed to PM #1242 — priority: CellxGene Census > Kong SCP2959 > GEO search. CIITA/MHC-II regulon deemed methodological artifact, not pursued.
-- **cd-stricture-risk-prediction** (DEVELOPMENT): γδ T cell features (TRDV1, TRDV2, IL17A) approved but gated on AUC>0.80 with existing features. PM task #1244. Model at 0.748.
-- **cd-flare-longitudinal-prediction** (DEVELOPMENT): Pre-flare metabolites (urate, 3-HB, trehalose, succinotype) approved. Consolidate succinotype with OXPHOS axis (#1538). PM task #1248. Levhar systemic-fecal correlation folded into same work.
-- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): Three feature enhancements approved (AREG/PI16, TL1A/ILC, PDE4/collagen markers) — ALL gated on L1000 pipeline unblock. Critical blockers: #1097 (21GB download) and #489 (iLINCS API). PM task #1249 to resolve data access first (consider Level 4 or filtered subsets).
-- **anti-tnf-response-prediction** (ANALYSIS): Leakage-fixed LOSO-CV results: xgboost AUC=0.711, RF=0.701, EN=0.600 — all below 0.75 target. Analyst #961 unblocked to evaluate.
-- **nod2-variant-functional-impact** (DEVELOPMENT): Only #896 (augmentation, data_curator) remains before 2-stage model.
-- **Next run**: Check cross-cohort validation #852 progress. Check third IL-23 dataset search. Monitor L1000 pipeline unblock. Check anti-TNF analyst evaluation (#961). Check NOD2 augmentation #896.
+- Run 18. Concurrency 7/4 (full). No new initiatives possible.
+- Cleared all 4 pending research_director tasks. Created 3 project_manager tasks (#1390, #1391, #1392).
+- **anti-tnf-response-prediction** (ANALYSIS): Corrected LOSO-CV AUC=0.711, feature selection catastrophically unstable (Jaccard=0.000). Approved staged recovery: Phase 1 = E-MTAB-7604 integration (~43 PANTS samples), reduced 6-gene SHAP model, OSM/OSMR/LIF/LIFR pathway features, GSE73661 audit. Phase 2 (microbiome escalation) ONLY if Phase 1 AUC < 0.75. PM task #1390.
+- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): GPX4/ferroptosis signature approved. Define canonical pathway genes (GPX4, SLC7A11, ACSL4, TFRC, FTH1, HMOX1, NFS1, LPCAT3) NOW. Add ferroptosis inhibitors (ferrostatin-1, liproxstatin-1, ebselen, selenium) to candidate list. Still gated on L1000 pipeline unblock (#1097, #489). Verstockt raw data not deposited (#1265 blocked). PM task #1391.
+- **cd-stricture-risk-prediction** (DEVELOPMENT): GPX4 expression approved as candidate feature. Montreal B-classification de-weighted (73% reclassify post-surgery per Ghoneim). Run ablation study: full model vs without Montreal B. Model at AUC 0.748, target 0.80. GPX4 + ferroptosis pathway score + gamma-delta T cells (TRDV1/TRDV2/IL17A) pending. PM task #1392.
+- **NFS1 cross-project signal noted**: appeared in anti-TNF leaked signature (dropped in correction), also in ferroptosis pathway (iron-sulfur cluster assembly). Not actionable yet.
+- **Next run**: Check Phase 1 anti-TNF recovery progress (E-MTAB-7604 integration, 6-gene model). Check L1000 pipeline unblock status. Check GPX4 probe availability in RISK cohort. Monitor cd-gpx4-ferroptosis-convergence catalyst progress. Check microbiome-metabolome cross-cohort #852. Check IL-23 third dataset search.
