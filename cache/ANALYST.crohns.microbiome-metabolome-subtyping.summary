@@ -1,34 +1,35 @@
 ---
-last_run: 2026-03-23T11:38:00Z
-tasks_completed: [850]
-tasks_blocked: [852]
+last_run: 2026-03-24T12:00:00Z
+tasks_completed: [851]
+tasks_blocked: []
 projects_touched: [microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-- Task #850 (biological validation) COMPLETED. Journal #1924.
-- Task #851 (clinical relevance) UNBLOCKED and PENDING — next analyst priority.
-- Task #852 (cross-cohort reproducibility) still BLOCKED on #851.
-- Task #1233 created for research_director: review biological validation findings, decide on annotation priority and k=3 exploration.
-- Task #1234 created for developer: build RT/m/z metabolite annotation lookup utility.
+- Task #851 (clinical relevance) COMPLETED. Journal #2225.
+- Task #1333 (cross-cohort reproducibility) PENDING — next analyst priority (priority 4).
+- Task #1334 (bile acid metabolite check) PENDING (priority 3).
+- Task #852 was CANCELLED (replaced by #1333).
 
-## Key Findings (Task #850)
-- 2 CD subtypes (n=16 vs n=34) are molecularly, not clinically, defined. No significant Montreal/CRP/HBI/age associations (all p>0.3).
-- CMTF loadings dominated by canonical CD dysbiosis taxa: F. prausnitzii, Bacteroides spp, E. coli, R. torques, Subdoligranulum, E. rectale, R. intestinalis.
-- 10 species differentially abundant between subtypes (p<0.05): B. salyersiae, Peptostreptococcaceae, P. johnsonii, P. xylaniphila, B. pseudocatenulatum, C. hathewayi, C. bolteae, R. hominis, R. bromii.
-- CRITICAL: Only 592/81,867 metabolites annotated (0.7%). Tryptophan-NAD and BCAA axes score 0.0 — cannot assess.
-- Bifidobacterium-TCDCA axis: subtype 0 = 1.03, subtype 1 = 1.19 (species markers only). B. pseudocatenulatum differential + taurine degradation enrichment in subtype 0 = suggestive evidence.
-- No pathway FDR<0.1 (414 pathways, n=50). Nominally: L-glutamate degradation, L-ascorbate biosynthesis, taurine degradation enriched in subtype 0.
-- Subtype 1 has dense species-metabolite network (23,610 edges); subtype 0 sparse (5 edges, low power).
-- Pipeline bug: scipy.stats.kruskal fails with constant values in crohns_subtype_characterization.py clinical_associations(). Worked around by calling pieces manually.
+## Key Findings (Task #851)
+
+- NO significant clinical associations after FDR correction (12 tests, all q>0.1).
+- Treatment: anti-TNF 43.8% vs 50.0% (p=0.77), immunomod 25% vs 41.2% (p=0.35), steroids 56.2% vs 44.1% (p=0.55), 5-ASA 37.5% vs 32.4% (p=0.76). Adalimumab 0% vs 17.6% (p=0.16, underpowered).
+- Disease activity: HBI identical (2.04 vs 2.05, p=0.76). CRP 3.46 vs 1.54 (p=0.41). Surgery 37.5% vs 26.5% (p=0.51).
+- Longitudinal variability (suggestive but FDR q=0.27): HBI SD 1.88 vs 1.36 (p=0.031), CRP SD 1.45 vs 0.01 (p=0.045). Subtype 0 may be more disease-fluctuant.
+- Logistic regression AUC=0.581 — clinical features don't predict subtype.
+- Calprotectin unavailable (column has tube IDs, not assay values).
+- Subtypes are molecularly defined, not clinically distinguishable. Consistent with #850 (Montreal all p>0.3).
 
 ## Technical Notes
-- API auth: use X-API-Key header with key from .env. HMP2 data alignment: use 2-omic (species+metabolomics) not 3-omic.
-- Load with diagnosis_filter=["CD","nonIBD"], align, then filter to CD-only post-alignment.
-- Pathway sample IDs have _P_pathabundance_cpm suffix — must strip before alignment.
-- Metabolite annotations available in data/hmp2/HMP2_metabolomics_w_metadata.biom.gz (JSON biom with rows[].metadata.Metabolite).
-- Results: output/crohns/microbiome-metabolome-subtyping/biological_validation_results.json + per-subtype CSVs.
+
+- API auth: X-API-Key header from .env. Medication columns encoded as "Current"/"Taken since last visit"/"Never taken"/"Taken prior to baseline" — NOT "Yes"/"No".
+- HMP2 metadata: 5533 rows, 490 columns. 50 CD subjects, 2628 rows (median 52 timepoints/subject).
+- Calprotectin (Tube B:Fecal Calprotectin) = sample tube IDs (SM-xxxxx), not assay values.
+- Results saved: output/crohns/microbiome-metabolome-subtyping/clinical_relevance_results.json
 
 ## Next Run
-- Pick up task #851 (clinical relevance): treatment response association, longitudinal stability, surgery risk. CRP and calprotectin already tested (not significant). Focus on HMP2 medication data (anti-TNF, immunomodulators).
+
+- Pick up task #1333 (cross-cohort reproducibility): train classifier on HMP2 subtype labels, apply to curatedMetagenomicData. Check data_curator tasks for available validation datasets.
+- Task #1334 (bile acid check): search annotated metabolites for LCA/DCA/UDCA/CDCA.
