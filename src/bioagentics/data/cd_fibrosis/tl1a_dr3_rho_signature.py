@@ -124,7 +124,47 @@ TL1A_FIBROBLAST_EFFECTORS: dict[str, str] = {
     "TWIST1": "up",      # master TF for fibroblast activation
 }
 
-# Component 4: ALK5/TGF-beta receptor axis (ontunisertib target pathway)
+# Component 4: TL1A-activated ILC markers (ILC2/ILC3 axis)
+# TL1A activates ILC2s (IL-13, amphiregulin) and ILC3s (IL-17, IL-22)
+# which drive fibroblast activation and ECM deposition in CD strictures.
+# Source: Meylan et al., Nat Rev Immunol 2023; Castellanos et al., Immunity 2024
+TL1A_ILC_MARKERS: dict[str, str] = {
+    "RORC": "up",        # RORγt, ILC3 lineage-defining TF
+    "IL7R": "up",        # CD127, ILC surface marker (all ILCs)
+    "KLRG1": "up",       # ILC2 activation marker
+    "GATA3": "up",       # ILC2 lineage-defining TF
+    "IL5": "up",         # ILC2-derived type 2 cytokine
+    "IL13": "up",        # ILC2-derived, activates fibroblasts
+    "AREG": "up",        # ILC2-derived amphiregulin, profibrotic
+    "IL17A": "up",       # ILC3-derived, fibroblast activator
+    "IL22": "up",        # ILC3-derived, epithelial and fibroblast effects
+    "NCR1": "up",        # NKp46, ILC3 subset marker
+    "KIT": "up",         # CD117, ILC progenitor marker
+    "ID2": "up",         # ILC master TF
+}
+
+# Component 5: Granulopoiesis and neutrophil-fibroblast axis
+# Neutrophils accumulate in CD strictures and activate fibroblasts via
+# NETosis, elastase release, and cytokine signaling.
+# Source: Rieder et al., Gut 2023; de Bruyn et al., J Crohns Colitis 2024
+GRANULOPOIESIS_NEUTROPHIL: dict[str, str] = {
+    "ELANE": "up",       # Neutrophil elastase, activates fibroblasts
+    "MPO": "up",         # Myeloperoxidase, neutrophil marker
+    "CTSG": "up",        # Cathepsin G, serine protease
+    "PRTN3": "up",       # Proteinase 3 (PR3)
+    "S100A8": "up",      # Calprotectin subunit (S100A8/A9)
+    "S100A9": "up",      # Calprotectin subunit
+    "S100A12": "up",     # EN-RAGE, neutrophil-derived alarmin
+    "CXCR2": "up",       # Neutrophil chemokine receptor
+    "CXCL1": "up",       # Neutrophil chemoattractant (GRO-α)
+    "CXCL5": "up",       # ENA-78, neutrophil chemoattractant
+    "FCGR3B": "up",      # CD16b, neutrophil Fc receptor
+    "PADI4": "up",       # PAD4, required for NETosis
+    "CSF3R": "up",       # G-CSF receptor, granulopoiesis
+    "CSF3": "up",        # G-CSF, granulopoiesis driver
+}
+
+# Component 6: ALK5/TGF-beta receptor axis (ontunisertib target pathway)
 # Source: ontunisertib STENOVA Phase 2a transcriptomic data
 ALK5_TGFB_AXIS: dict[str, str] = {
     "TGFBR1": "up",      # ALK5, ontunisertib target
@@ -160,6 +200,8 @@ def build_tl1a_dr3_rho_signature(msigdb_dir: Path | None = None) -> pd.DataFrame
         ("TL1A_DR3_SIGNALING", TL1A_DR3_SIGNALING),
         ("RHO_GTPASE_CASCADE", RHO_GTPASE_CASCADE),
         ("TL1A_FIBROBLAST_EFFECTORS", TL1A_FIBROBLAST_EFFECTORS),
+        ("TL1A_ILC_MARKERS", TL1A_ILC_MARKERS),
+        ("GRANULOPOIESIS_NEUTROPHIL", GRANULOPOIESIS_NEUTROPHIL),
         ("ALK5_TGFB_AXIS", ALK5_TGFB_AXIS),
     ]
 
@@ -240,6 +282,8 @@ def derive_tl1a_dr3_rho_signature(
         ("TL1A_DR3_SIGNALING", TL1A_DR3_SIGNALING),
         ("RHO_GTPASE_CASCADE", RHO_GTPASE_CASCADE),
         ("TL1A_FIBROBLAST_EFFECTORS", TL1A_FIBROBLAST_EFFECTORS),
+        ("TL1A_ILC_MARKERS", TL1A_ILC_MARKERS),
+        ("GRANULOPOIESIS_NEUTROPHIL", GRANULOPOIESIS_NEUTROPHIL),
         ("ALK5_TGFB_AXIS", ALK5_TGFB_AXIS),
     ]:
         print(f"  {component_name}: {len(gene_dict)} genes")
