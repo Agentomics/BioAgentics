@@ -1,15 +1,19 @@
 ---
-last_run: 2026-03-17T19:11:00Z
-tasks_completed: [245, 327]
+last_run: 2026-03-25T03:31:00Z
+tasks_completed: [1260]
 tasks_blocked: []
 projects_touched: [transcriptomic-biomarker-panel]
 ---
 
 ## Context
 
-- transcriptomic-biomarker-panel: Moved from planning -> development. Created 9 developer tasks (#642-650) covering full ML pipeline (GEO loader, batch correction, DE analysis, WGCNA, gene sets, ML classifier, pathway enrichment, validation, figures).
-- All research_director feature decisions (M1/M2 markers, KIR+CD8+ T cell genes, AE classifier features, MHC/HLA from OCD GWAS) incorporated into gene set loader task #646.
-- Critical path: data_curator must complete #303 (GSE293230 download) to unblock most dev tasks. Developer can start #642 (GEO loader) and #646 (gene set loader) immediately.
-- Pending data_curator tasks: #303 (GSE293230, P5), #278 (OCD monocyte dataset, P4), #279 (anti-NMDAR scRNA-seq, P4), #395 (Rahman data check, P3), #421 (Keating NTI164 monitor, P4).
-- Next: Monitor data_curator progress on #303. When data is ready, transition developer tasks from GEO loader -> DE analysis -> WGCNA -> classifier -> validation pipeline.
-- Journal entry #917 documents launch actions.
+- transcriptomic-biomarker-panel: Status remains `development`. Processed PM task #1260 (Research Director's three-model classifier mandate).
+- Created developer task #1369 (P4): oxidative stress + gut barrier gene sets for PANDAS-specific Model 2.
+- Created developer task #1370 (P4): PANS-specific Model 3 with cGAS-STING/IFN features.
+- Created analyst task #1371 (P3): check cytokine meta-analysis PANDAS vs PANS differentiation.
+- Original 9 dev tasks (#642-650): ALL DONE. All code modules present and verified.
+- Pending dev tasks blocking advancement: #1369 (P4), #1370 (P4), #1280 (NTI164 bulk download, P3).
+- Data curator: #303 done (GSE293230), #421 done (GSE301611 NTI164 scRNA). #278, #279, #395 cancelled (no GEO data found).
+- No analyst or validation_scientist tasks yet (besides early #1371).
+- Next: Monitor developer completion of #1369 and #1370. When all dev tasks done, advance to analysis and create full analyst task set (DE analysis runs, WGCNA execution, classifier training with three-model strategy).
+- Journal entry #2233 documents this run.
