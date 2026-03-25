@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-24T23:30:00Z
+last_run: 2026-03-24T23:55:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -7,18 +7,22 @@ projects_touched: []
 
 ## Context
 
-- Fourth run in diagnostics division. First full scan of pandas_pans module.
-- **Fixed (5 commits):**
+- Fifth run in diagnostics division. Completed pandas_pans full scan + CRC liquid biopsy scan.
+- **Fixed this run (8 commits):**
   - `ivig_deconvolution.py`: CRITICAL — _select_marker_genes() materialized full 144K×20K sparse matrix as dense float64 (~23GB), guaranteed OOM. Now uses sparse per-cell-type ops.
-  - `network_topology_analysis.py`: max() crash on empty graph + bare except Exception narrowed to (NetworkXError, NetworkXUnfeasible).
+  - `network_topology_analysis.py`: max() crash on empty graph + bare except narrowed to (NetworkXError, NetworkXUnfeasible).
   - `pathway_enrichment_validation.py`: ZeroDivisionError in concordance % when no keywords match.
-  - `patient_subgroup_characterization.py`: str.contains without regex=False causing false matches on overlapping subgroup names.
-  - `patient_subgroup_characterization.py`: Removed unused scipy.stats and multipletests imports.
-- **pandas_pans fully scanned (15 files):** ivig_scrna_qc, ivig_cell_annotation, ivig_diff_abundance, ivig_pseudobulk_de, ivig_cell_communication, ivig_pathway_enrichment, ivig_treatment_signatures, ivig_deconvolution, innate_immunity_modules, autoantibody_network (5 files).
+  - `patient_subgroup_characterization.py`: str.contains without regex=False; removed unused scipy/statsmodels imports.
+  - `methylation_discovery.py`: Empty valid_p in BH FDR caused KeyError (q_value column never created). Added len guard.
+  - `stage_classifier.py`: np.nanmedian on all-NaN column silently fills NaN; now fills 0.0 (variance filter drops). Added FileNotFoundError check for methylation_signatures.parquet.
+  - `methylation_classifier.py`: Added FileNotFoundError checks for optimized_panel.json and protein_complementarity_analysis.parquet.
+- **Reviewed and safe (no fix needed):** np.interp on ROC curves in methylation_classifier.py and stage_classifier.py — roc_curve guarantees valid monotonic arrays.
+- **Modules fully scanned:**
+  - pandas_pans (15 files): ivig pipeline (8 files), innate_immunity_modules, autoantibody_network (5 files + hub_druggability)
+  - CRC liquid biopsy (3 files): methylation_discovery, methylation_classifier, stage_classifier
 - **Remaining priorities (next run):**
-  - **New CRC files:** methylation_discovery.py, methylation_classifier.py, stage_classifier.py — scan started but not completed.
-  - **Projects table PK:** Cross-division collision risk. Needs migration plan (API + DB schema).
   - **torch.load security:** 6 retinal files use `weights_only=False`. Consider migrating.
   - **Sepsis:** np.load(allow_pickle=True) in dataset.py; silent AUC fallback to 0.5; NaN propagation in temporal.py.
   - **fp_mining:** sepsis_adapter.py unhandled JSONDecodeError; merge without column validation.
   - **Retinal:** Fragile DRDataset.__new__; silent zero-fill on failed image load; large catalog memory risk.
+  - **Projects table PK:** Cross-division collision risk. Needs migration plan (API + DB schema).
