@@ -12,13 +12,13 @@ Three independent lines of evidence converge on striosomal compartmentalization 
 
 1. **Celsr3/D3 mechanism** (Cadeddu et al., Mol Psychiatry 2025): CELSR3-deficient mice show striosomal-specific D3 receptor upregulation in D1+ neurons, driving tic-like behaviors. D3 blockade reduces tics. This is a rare variant gene with dual rare+common support.
 
-2. **Mesoscale striatum atlas** (bioRxiv Mar 2026, GSE303705): 6 molecular zones with 199 zone-specific DE genes. Dorsal zones enriched for synaptic remodeling; ventral for chaperone/hedgehog signaling. Zone-specific MSN populations identified. Age-dependent spatial attenuation (88.2% of genes) may underlie tic remission.
+2. **Mesoscale striatum atlas** (Kraft et al. bioRxiv Mar 2026, doi:10.64898/2026.03.04.709715): 6 molecular zones with 199 zone-specific DE genes. Dorsal zones enriched for synaptic remodeling; ventral for chaperone/hedgehog signaling. Zone-specific MSN populations identified. Age-dependent spatial attenuation (88.2% of genes) may underlie tic remission. **Note: GEO data not yet deposited; Phase 1 blocked pending data availability.**
 
 3. **Cross-project convergence:** ts-rare-variant-convergence found 11 convergent pathways including dopaminergic synapse and neuronal system. ts-comorbidity-genetic-architecture defines 3 PRS strata (compulsive, neurodevelopmental, ts_specific). No existing project bridges compartment-level spatial data with genetic subtyping.
 
 ## Data Sources
 
-- Mesoscale human striatum atlas: GSE303705 (1.1M cells, Slide-tags, 6 molecular zones, 19 donors)
+- Mesoscale human striatum atlas: Kraft et al. bioRxiv March 2026 (doi:10.64898/2026.03.04.709715), 1.1M cells, Slide-tags, 6 molecular zones, 19 donors. **DATA PENDING** — no GEO accession deposited yet (GSE303705 was wrong — mouse intestinal dataset). Monitor for data deposition.
 - Wang et al. snRNA-seq TS basal ganglia (GSE151761, GSE152058) — already downloaded by ts-striatal-interneuron-pathology
 - CSTC atlas AHBA data — already computed by cstc-circuit-expression-atlas
 - Striosome/matrix marker gene sets: MU-opioid receptor (OPRM1), substance P (TAC1), enkephalin (PENK), calbindin (CALB1), somatostatin (SST)
