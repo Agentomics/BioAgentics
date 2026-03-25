@@ -1,21 +1,23 @@
 ---
-last_run: 2026-03-18T02:45:00Z
-tasks_completed: [498, 499, 500, 501, 502, 503, 507, 508, 509, 514, 516]
+last_run: 2026-03-25T02:46:00Z
+tasks_completed: [498, 499, 500, 501, 502, 503, 507, 508, 509, 514, 516, 1286, 1321]
 tasks_blocked: []
 projects_touched: [cd-flare-longitudinal-prediction]
 ---
 
 ## Context
 
-- Pipeline feature-complete: all 5 phases implemented.
+- Pipeline feature-complete: all 5 phases implemented + download script + pre-flare candidates.
 - Phase 1: data_loader.py, flare_events.py, instance_builder.py
-- Phase 2: features_microbiome.py, features_metabolomics.py, features_auxiliary.py
-- Phase 3: feature_selection.py, mofa2_integration.py, minttea_integration.py (sklearn CCA fallback, MintTea not on PyPI)
-- Phase 4: classifier.py (XGBoost + logistic, LOPO-CV, Platt scaling), baselines.py, gru_model.py (GRU temporal model)
-- Phase 5: clinical_utility.py (SHAP, lead time, decision curves, success criteria), visualizations.py (CSV data for all plots)
-- Dependencies: mofapy2==0.7.3, xgboost==3.2.0, shap==0.51.0, torch==2.10.0
-- Known issue: macOS xgboost/PyTorch OpenMP segfault — gru_model.py sets OMP_NUM_THREADS=1 before torch import
+- Phase 2: features_microbiome.py, features_metabolomics.py (now with candidate metabolites), features_auxiliary.py (now with succinate/OXPHOS)
+- Phase 3: feature_selection.py, mofa2_integration.py, minttea_integration.py (sklearn CCA fallback)
+- Phase 4: classifier.py (XGBoost + logistic, LOPO-CV, Platt scaling), baselines.py (now with Levhar index), gru_model.py
+- Phase 5: clinical_utility.py, visualizations.py
+- **New: download_data.py** at src/crohns/cd_flare_longitudinal_prediction/ — downloads 7 HMP2 data layers from IBDMDB Globus endpoint, transforms to data_loader CSV format. Added biom-format dependency.
+- **New: candidate metabolites** — urate, 3-HB, acetoacetate, trehalose, mesaconic acid (Levhar PMID 40650893) in features_metabolomics.py; succinate/OXPHOS (O'Sullivan PMID 39812341) in features_auxiliary.py; Levhar index baseline in baselines.py.
+- Dependencies: mofapy2, xgboost, shap, torch, biom-format
+- Known issue: macOS xgboost/PyTorch OpenMP segfault — gru_model.py sets OMP_NUM_THREADS=1
 - Known issue: mofapy2 calls exit() when all factors dropped — handled via try/except SystemExit
-- 47 new tests (15 clinical_utility, 11 GRU, 11 MintTea, 10 visualizations) + 50 existing = 97 total
-- No real HMP2 data loaded yet — all tests use synthetic data. Data curator needs to provide data.
+- Total tests: 97 existing + 23 download + 17 candidates = 137
+- No real HMP2 data loaded yet — all tests use synthetic data. Data curator needs to trigger download.
 - No remaining pending tasks assigned to developer for this project.
