@@ -130,8 +130,9 @@ def compute_embedding(adata: ad.AnnData, n_pcs: int | None = None) -> ad.AnnData
         n_pcs = INTEGRATION_PARAMS["n_pcs"]
 
     sc.pp.scale(adata, max_value=10)
-    sc.tl.pca(adata, n_comps=min(n_pcs, adata.n_obs - 1, adata.n_vars - 1))
-    sc.pp.neighbors(adata, n_pcs=n_pcs)
+    actual_pcs = min(n_pcs, adata.n_obs - 1, adata.n_vars - 1)
+    sc.tl.pca(adata, n_comps=actual_pcs)
+    sc.pp.neighbors(adata, n_pcs=actual_pcs)
     sc.tl.umap(adata)
     sc.tl.leiden(adata, flavor="igraph", n_iterations=2, directed=False)
     print(f"  Embedding: PCA ({n_pcs} PCs) + UMAP + Leiden clustering")
