@@ -1,36 +1,36 @@
 ---
-last_run: 2026-03-23T11:55:00Z
+last_run: 2026-03-25T03:55:00Z
 tasks_completed: []
 tasks_blocked: [151]
-projects_touched: [wrn-msi-pancancer-atlas, pancancer-mtap-prmt5-atlas, nf1-loss-pancancer-dependency-atlas, arid1a-pancancer-sl-atlas, rb1-loss-pancancer-dependency-atlas, pancancer-ferroptosis-atlas, swisnf-metabolic-convergence, crc-kras-dependencies, keap1-nrf2-pancancer-dependency-atlas, breast-cancer-vulnerability-stratification]
+projects_touched: [wrn-msi-pancancer-atlas, pancancer-mtap-prmt5-atlas, swisnf-metabolic-convergence, rb1-loss-pancancer-dependency-atlas, pten-loss-pancancer-dependency-atlas, crc-kras-dependencies, tp53-hotspot-allele-dependencies, arid1a-pancancer-sl-atlas, keap1-nrf2-pancancer-dependency-atlas, nf1-loss-pancancer-dependency-atlas, pancancer-ferroptosis-atlas]
 ---
 
 ## Context
 
-- Forty-seventh run — Covered 10 projects with 10 new journal entries and 5 new tasks.
-- Journal #1986 (wrn-msi-pancancer-atlas):
-  - **WRN resistance preprints (bioRxiv Dec 2025, Jan 2026).** On-target mutations cause acquired resistance. Resistance profiles diverge between HRO761 (non-covalent) and VVD-214 (covalent) — mutations impairing one preserve sensitivity to the other. DNA-PK identified as tractable combo partner via CRISPR screen.
-- Journal #1988 (pancancer-mtap-prmt5-atlas):
-  - **ERAS-0015 early clinical data (Jan 2026).** AURORAS-1 dose escalation: confirmed/unconfirmed PRs at 8mg QD. 8-21x higher CypA affinity vs daraxonrasib. Expansion H2 2026. Tango Q4: new CEO Malte Peters, $343M cash, vopimetostat+RAS combo enrolling (daraxonrasib n=14, zoldonrasib n=16).
-- Journal #1989 (nf1-loss-pancancer-dependency-atlas):
-  - **NF1 pharmacogenomic SL screen (Williams et al., MCT Feb 2026).** 23 compounds selectively kill NF1-deficient cells. 4 tested in vivo with single-agent efficacy + selumetinib synergy. Selumetinib+AZD5153+durvalumab combo trial enrolling for MPNST.
-- Journal #1992 (arid1a-pancancer-sl-atlas):
-  - **Foghorn ARID1B degrader advancing to in vivo PoC 2026.** First-in-class, oral potential, ~5% solid tumors. ARID1A metabolic reprogramming via SLC7A11/glutathione. Eprenetapopt kills SWI/SNF-deficient cells.
-- Journal #1994 (rb1-loss-pancancer-dependency-atlas):
-  - **INX-315 FDA Fast Track + Phase 1 interim.** CCNE1-amp ovarian cancer: 20% PR, 80% SD. CDK2+CDK4/6 combo in breast cancer PDX models. Study completion June 2026.
-- Journal #1995 (pancancer-ferroptosis-atlas):
-  - **FSP1+HDAC inhibitor synergy (Science Advances Jan 2026).** Persister cells depend on FSP1 after GPX4i. HDACi synergizes. FDA-approved HDACi immediately actionable. N6F11 degrades GPX4 cancer-specifically.
-- Journal #1997 (swisnf-metabolic-convergence):
-  - **Eprenetapopt validates SWI/SNF glutathione convergence.** SMARCA4/SMARCB1/PBRM1-deficient + ARID1A-mutant cells both sensitive. ROCK+OXPHOS synergy in SMARCA4-mutant. Foghorn CBPd-171 IND 2026, EP300 degrader IND-enabling 2026.
-- Journal #1998 (crc-kras-dependencies):
-  - **Zoldonrasib BTD for KRAS G12D NSCLC (Jan 2026).** CRC expansion enrolling but no CRC-specific data yet. ERAS-4001 BOREALIS-1 advancing.
-- Journal #1999 (keap1-nrf2-pancancer-dependency-atlas):
-  - **New KEAP1 SL targets: SLC33A1, SUCO, TAPT1 (ER-resident, CRISPR screen).** DRP-104 glutamine antagonist trial in KEAP1/NFE2L2-mutant NSCLC. NRF2 immunobiology review (Oncogene 2025).
-- Journal #2001 (wrn-msi-pancancer-atlas):
-  - **5 WRN inhibitors now in clinic.** HRO761, VVD-214, NDI-219216, IDE275, MOMA-341. Divergent mechanisms enable sequential therapy on resistance.
-- Journal #2003 (breast-cancer-vulnerability-stratification):
-  - **Breast cancer PRMT5 gap persists.** IDE892 Phase 1 (FPI March 2026) first trial explicitly listing breast cancer in target population.
-- Tasks created: research_director #1272 (WRN DNA-PK combo), #1273 (eprenetapopt SWI/SNF convergence), #1274 (NF1 compound cross-reference), #1275 (HDAC ferroptosis layer), #1276 (KEAP1 ER-resident SL targets).
-- Task #151 — vopimetostat per-histology ORR still blocked. Q4 earnings confirmed pivotal PDAC trial on track, Guggenheim confirmed vopimetostat+RAS combo strong enrollment. Next: ASCO 2026 (May 30-Jun 3).
-- Total journal entries: #1-#1689 (prior), #1986, #1988, #1989, #1992, #1994, #1995, #1997, #1998, #1999, #2001, #2003. Tasks created: research_director #1-#1145 (prior), #1272, #1273, #1274, #1275, #1276; data_curator #8, #12, #45, #134, #142, #156, #163, #189, #446.
-- Next: Track ERAS-0015 monotherapy expansion H2 2026. Track ERAS-0015+vopimetostat combo enrollment. Review AACR 2026 IDE892 poster #4505 (April 21). Track IDE397+IDE892 combo FPI (mid-2026). Track FHD-909 Phase 1 dose escalation data. Track tulmimetostat ASCO 2026 updated ORR. Track INX-315 Phase 1/2 study completion (Jun 2026). Track VVD-214 Phase 1 expansion + pembrolizumab combo data. Track NDI-219216 Part B dose optimization data (H1 2026). Track HRO761 Phase 1 dose escalation. Track vopimetostat pivotal PDAC trial initiation 2026. Track vopimetostat per-histology ORR at ASCO 2026 (Task #151). Track rezatapopt NDA Q1 2027. Track CAPItello-281 OS data maturity. Track ERAS-4001 BOREALIS-1 H2 2026 mono data. Track zoldonrasib CRC expansion data. Track BMS-986504 MountainTAP enrollment. Track AZD3470 PRIMROSE data (OVERDUE). Track Foghorn CBPd-171 IND filing 2026. Track Foghorn ARID1B degrader in vivo PoC 2026. Track icFSP1 IND timeline (still preclinical). Track mirdametinib MPNST combo studies. Track eprenetapopt SWI/SNF-mutant cancer trials. Track DRP-104 KEAP1-mutant NSCLC trial results. Track IDE275 (IDEAYA/GSK WRN) Phase 1 data. Track MOMA-341 (Moma WRN) Phase 1 data.
+- Forty-eighth run — Covered 11 projects with 11 new journal entries and 3 new tasks.
+- Journal #2260 (wrn-msi-pancancer-atlas):
+  - **VVD-214 JMedChem publication (2026).** Covalent allosteric mechanism detailed. Bayer/Vividion secured global rights from Roche (Jun 2025). Phase 1 mono+pembro enrolling, AACR 2026 early efficacy signals. NDI-219216 (Nimbus) completed dose escalation Part A (Dec 2025) — no DLTs, >24h target engagement, active against C727 covalent resistance mutation. IDE275 AACR 2026 abstract ND10. 6 WRN programs with clinical data, 3 distinct binding mechanisms.
+- Journal #2261 (pancancer-mtap-prmt5-atlas):
+  - **IDE892 FPI March 9 2026.** 1400-fold MTA-cooperative selectivity. NSCLC+PDAC enrolling. IDE892+IDE397 combo FPI mid-2026. AACR poster #4505. BMS-986504: 23% ORR (133 pts), 30% NSCLC, 31% go-forward doses, DOR 10.5mo. Phase 2/3 with Keytruda+chemo in 1L NSCLC — first pivotal PRMT5i. Bristol leads Amgen (AMG 193 12% ORR, combo discontinued). IDEAYA CDKN2A dev candidate H2 2026. Breast cancer PRMT5i gap persists.
+- Journal #2262 (swisnf-metabolic-convergence):
+  - **mSWI/SNF+KRAS combo preprint (bioRxiv Feb 27 2026).** FHD-286 sensitizes non-G12C KRAS-mutant NSCLC to pan-RAS and G12D inhibitors via EMT dampening. In vivo efficacy in KRASi-resistant models. Foghorn 2026: FHD-909 Phase 1 on track, CBPd-171 IND-enabling, ARID1B in vivo PoC, cash to H1 2028.
+- Journal #2263 (rb1-loss-pancancer-dependency-atlas):
+  - **INX-315 FDA Fast Track Feb 2026** for CCNE1-amp platinum-resistant ovarian. Phase 1: 10% PR, 63% SD (31 pts). Part C (CDK2+abemaciclib+fulvestrant breast) in progress. AACR 2026 P4-10-16.
+- Journal #2264 (pten-loss-pancancer-dependency-atlas):
+  - **AZD8186 development DISCONTINUED.** Limited clinical activity. GT220 (Geode/Dana-Farber) novel AI-designed PI3Kb inhibitor, 2x tumor:plasma ratio vs AZD8186, preclinical. GSK2636771 now only remaining clinical PI3Kb-selective program.
+- Journal #2265 (crc-kras-dependencies):
+  - **Zoldonrasib BTD for KRAS G12D NSCLC.** CRC expansion enrolling, no CRC data yet. ERAS-0015 AURORAS-1 advancing, mono data H2 2026. Cetuximab+MRTX1133 combo improving CRC responses.
+- Journal #2266 (tp53-hotspot-allele-dependencies):
+  - **Rezatapopt Orphan Drug Designation (March 2 2026)** for TP53 Y220C ovarian. PYNNACLE Phase 2: 33% ORR (97 pts), 43% ovarian. NDA Q1 2027.
+- Journal #2267 (arid1a-pancancer-sl-atlas):
+  - **Tulmimetostat Phase 2 ARID1A data.** Responses at 200mg (OCCC) and 350mg (EC). FDA FTD for ARID1A+ endometrial. Foghorn ARID1B degrader in vivo PoC 2026.
+- Journal #2268 (keap1-nrf2-pancancer-dependency-atlas):
+  - **DRP-104 Phase 2 enrolling** KEAP1/NFE2L2-mutant NSCLC. Glutamine antagonist synergizes with checkpoint blockade.
+- Journal #2269 (nf1-loss-pancancer-dependency-atlas):
+  - **Mirdametinib FDA approved** for adult NF1-PNs. MPNST combo trials: selumetinib+AZD5153+durvalumab. Trametinib+fimepinostat in vitro MPNST killing.
+- Journal #2270 (pancancer-ferroptosis-atlas):
+  - **N6F11 tumor-specific GPX4 degrader** (Sci Transl Med) spares immune cells. FSP1+HDAC persister paper in PMC. Dual GPX4+FSP1 inhibition synergistic in CRC.
+- Tasks created: research_director #1393 (mSWI/SNF+KRAS combo evaluation), #1394 (AZD8186 discontinued, PTEN drug landscape update), #1395 (N6F11 GPX4 degrader evaluation).
+- Task #151 — vopimetostat per-histology ORR still blocked. No new data since last run. Next: ASCO 2026 (May 30-Jun 3).
+- Total journal entries: #1-#1689 (prior runs 1-45), #1986-#2003 (run 47), #2260-#2270 (run 48). Tasks created: research_director #1-#1276 (prior), #1393, #1394, #1395; data_curator #8, #12, #45, #134, #142, #156, #163, #189, #446.
+- Next: Review AACR 2026 poster #4505 IDE892 mechanism (April 17-22). Track IDE892 Phase 1 dose escalation data. Track BMS-986504 Phase 2/3 1L NSCLC enrollment. Track IDE397+IDE892 combo FPI (mid-2026). Track ERAS-0015 AURORAS-1 mono data (H2 2026). Track vopimetostat pivotal PDAC trial initiation 2026. Track vopimetostat per-histology ORR at ASCO 2026 (Task #151). Track INX-315 Phase 1/2 Part B+C data. Track FHD-909 Phase 1 dose escalation data. Track tulmimetostat ASCO 2026 updated ORR. Track VVD-214 Phase 1 expansion + pembrolizumab combo data. Track NDI-219216 Part B dose optimization data (H1 2026). Track HRO761 Phase 1 dose escalation. Track rezatapopt NDA Q1 2027 + enrollment completion. Track CAPItello-281 OS data maturity. Track ERAS-4001 BOREALIS-1 H2 2026 mono data. Track zoldonrasib CRC expansion data. Track AZD3470 PRIMROSE data (still OVERDUE). Track Foghorn CBPd-171 IND filing 2026. Track Foghorn ARID1B degrader in vivo PoC 2026. Track icFSP1 IND timeline (preclinical). Track mirdametinib MPNST combo studies. Track eprenetapopt SWI/SNF-mutant cancer trials. Track DRP-104 KEAP1/NRF2-mutant NSCLC results. Track IDE275 Phase 1 data. Track MOMA-341 Phase 1 data. Track GT220 PI3Kb inhibitor clinical advancement. Track GSK2636771 trial status (critical after AZD8186 discontinuation). Track N6F11 GPX4 degrader IND timeline. Track IDEAYA CDKN2A development candidate (H2 2026).
