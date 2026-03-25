@@ -1,0 +1,214 @@
+======================================================================
+NF1-Loss Pan-Cancer Dependency Atlas
+Phase 1-2 Analyst Review: Classifier Quality & MAPK Baseline
+Analyst: analyst | Division: cancer | Date: 2026-03-24
+======================================================================
+
+EXECUTIVE SUMMARY
+------------------
+Phase 1 classifier is ACCEPTABLE with significant caveats. Phase 2 MAPK
+baseline reveals a non-canonical dependency pattern (GRB2/SHP2/SHOC2
+rather than MEK/ERK), consistent with NF1 biology and clinical
+experience with MEK inhibitor failures. Proceed to Phase 3-5 review,
+but TP53 confounding is a critical limitation that must be flagged
+throughout.
+
+======================================================================
+PHASE 1: NF1 LOSS CLASSIFIER QUALITY
+======================================================================
+
+1. DEEP DELETION DETECTION
+   Finding: 0/123 NF1-lost lines classified via deep deletion (log2 CN <= -1.0).
+   All 123 identified through LOF mutations only.
+
+   Assessment: BIOLOGICALLY PLAUSIBLE but warrants verification.
+   - NF1 is on chr17q11.2, proximal to TP53 (17p13.1). Homozygous
+     deletion of this region would co-delete many essential genes,
+     making deep deletion a rare mechanism of NF1 inactivation.
+   - NF1 loss in cancer is predominantly through truncating mutations
+     (nonsense, frameshift, splice-site), consistent with 100% LOF
+     mutation classification.
+   - However, CN values in mpnst_lines.csv range 0.71-1.28 (log2), all
+     well above the -1.0 threshold. Should verify that CN data coverage
+     is adequate and the threshold isn't missing shallow deletions
+     contributing to biallelic loss (LOH + mutation).
+
+   Quality flag: LOW RISK. Zero deep-del-only lines is expected for NF1.
+
+2. NF1 EXPRESSION CROSS-VALIDATION
+   Finding: Lost=3.71 vs Intact=4.52 log2(TPM+1), p=9.46e-14.
+   Difference: ~0.8 log2 units (~1.7-fold reduction).
+
+   Assessment: STATISTICALLY SIGNIFICANT, BIOLOGICALLY MODEST.
+   - The boxplot shows substantial overlap between groups. Multiple
+     NF1-lost lines express NF1 at levels >4.5 (within intact range).
+   - This is expected for LOF mutations: nonsense-mediated decay (NMD)
+     reduces but does not eliminate mRNA. Frameshift/splice mutations
+     may produce truncated transcripts still detected by RNA-seq.
+   - No expression-based filtering was applied to exclude NF1-lost
+     lines with high expression (potentially hypomorphic or passenger
+     mutations).
+
+   Quality flag: MODERATE. Some NF1-lost lines may be misclassified
+   (passenger mutations with retained NF1 function). Consider adding
+   an expression filter (e.g., NF1 expression < median of intact group)
+   as a sensitivity analysis. Not blocking, but could dilute signal.
+
+3. CO-ALTERATION: TP53 CONFOUNDING (CRITICAL)
+   Finding: 88/123 (71.5%) NF1-lost lines are TP53-mutant.
+
+   Assessment: MAJOR CONFOUNDER — most important quality issue.
+   - Background TP53 mutation rate in DepMap is ~50-55%. NF1-lost lines
+     are significantly enriched for TP53 loss (71.5% vs ~50%).
+   - TP53 loss independently drives dependencies on:
+     * DDR genes: ATR, CHEK1, WEE1 (synthetic lethal in TP53-null)
+     * Cell cycle: CDK4/6 (via CDKN2A/RB pathway compensation)
+     * Epigenetic: EZH2 (PRC2-mediated silencing of p53 targets)
+   - The current pipeline does NOT include TP53-stratified or
+     TP53-adjusted analysis. Any NF1-loss dependency on DDR, cell
+     cycle, or epigenetic genes CANNOT be attributed to NF1 without
+     controlling for TP53.
+   - In MPNST specifically, >75% have co-occurring TP53 loss — this is
+     biology (biallelic NF1 + TP53 loss is the hallmark of MPNST), but
+     it means MPNST dependencies may be NF1+TP53-driven, not NF1 alone.
+
+   Quality flag: HIGH RISK. Recommend developer add TP53-stratified
+   analysis (NF1-lost/TP53-mut vs NF1-intact/TP53-mut) to disentangle.
+
+4. RAS CO-MUTATION HANDLING
+   Finding: 28/123 (22.8%) NF1-lost lines have concurrent KRAS/NRAS/HRAS.
+   RAS-excluded cohort: 95 lines total, 67 with CRISPR data.
+
+   Assessment: APPROPRIATE EXCLUSION.
+   - Removing RAS-mutant lines isolates NF1-specific effects from direct
+     RAS oncogene activation. The RAS-excluded analysis is the correct
+     primary analysis.
+   - Power impact: drops from 84 to 67 NF1-lost with CRISPR (~20% loss).
+     Still adequate for pan-cancer pooled analysis (d=0.5 detectable at
+     ~80% power), but further limits per-cancer-type analyses.
+
+5. MPNST LINE AVAILABILITY
+   Finding: 4 nerve sheath tumor lines with NF1-LOF + CRISPR data.
+   ACH-002066 (TP53-mut), ACH-002693 (TP53-mut), ACH-002800 (TP53-WT),
+   ACH-002801 (TP53-mut).
+
+   Note: The task description stated 3 MPNST lines, but mpnst_lines.csv
+   shows 4 nerve sheath tumors with NF1-LOF + CRISPR=True (ACH-002800
+   was omitted from the count).
+
+   Assessment: n=4 is INADEQUATE for statistical testing.
+   - No formal differential dependency test is meaningful at n=4.
+   - Individual line dependency profiling is the only valid approach.
+   - ACH-002800 (NF1-LOF, TP53-WT) is particularly valuable as it
+     allows within-MPNST comparison of TP53 effects.
+
+6. SAMPLE SIZE ADEQUACY PER CANCER TYPE
+   Power analysis (two-sided, alpha=0.05):
+   - n=5-6 (Breast, Bowel, Uterus, Eso/Stomach): ~25% power for d=0.8
+   - n=8 (PNS): ~35% power for d=0.8
+   - n=10 (Lung): ~40% power for d=0.8
+   - n=18 (CNS/Brain): ~65% power for d=0.8
+   - n=67 (pan-cancer RAS-excluded): ~95% power for d=0.5
+
+   Assessment: Per-cancer-type analyses are severely underpowered.
+   Only pan-cancer pooling has adequate power for moderate effects.
+   Per-type hits should be treated as hypothesis-generating only.
+
+======================================================================
+PHASE 2: RAS/MAPK PATHWAY BASELINE
+======================================================================
+
+1. SELECTIVE PATHWAY DEPENDENCY PATTERN
+   Pan-cancer RAS-excluded significant hits (FDR < 0.05):
+   - SHOC2:  d=-0.485, FDR=0.002 (strongest)
+   - GRB2:   d=-0.418, FDR=0.015
+   - PTPN11: d=-0.389, FDR=0.017
+   Borderline (FDR < 0.1):
+   - RAF1:   d=-0.368, FDR=0.052
+   - NF1:    d=-0.262, FDR=0.048 (self-dependency, expected)
+
+   NOT significant:
+   - MAP2K1 (MEK1): d=+0.265 (POSITIVE — NF1-lost LESS dependent)
+   - MAP2K2 (MEK2): d=-0.070, FDR=0.100
+   - MAPK1 (ERK2):  d=+0.011, FDR=0.499
+   - BRAF:           d=+0.108, FDR=0.877
+   - SOS1:           d=-0.074, FDR=0.475
+
+2. KEY BIOLOGICAL INTERPRETATION
+   NF1-lost lines show MAPK pathway addiction at non-canonical nodes:
+
+   a) UPSTREAM ADAPTORS (GRB2, SHP2/PTPN11): Required for maximal
+      RAS activation. When NF1 is lost, RAS-GTP levels increase but
+      may still require upstream input for full pathway flux. GRB2 and
+      SHP2 are rate-limiting upstream of RAS in NF1-null contexts.
+
+   b) RAF1 (but not BRAF): NF1-lost cells may preferentially signal
+      through RAF1 rather than BRAF. This is consistent with KRAS-
+      mutant colorectal cancer biology where RAF1 mediates survival.
+
+   c) SHOC2 (scaffold): SHOC2 promotes RAF1 activation by recruiting
+      PP1 to dephosphorylate inhibitory S259 on RAF1. SHOC2 dependency
+      is mechanistically linked to the RAF1 dependency observed.
+
+   d) NO MEK/ERK DEPENDENCY: NF1-lost lines are not more dependent on
+      MEK1/2 or ERK1/2 than NF1-intact. MAP2K1 shows positive d in
+      multiple contexts — NF1-lost lines are LESS MEK1-dependent.
+      This is clinically significant: it provides a mechanistic
+      explanation for poor MEK inhibitor efficacy in NF1-loss tumors
+      (selumetinib/mepesertinib ORR <10% in MPNST).
+
+3. PER-CANCER-TYPE PATTERNS (from heatmap)
+   - LUNG: Strongest signal — GRB2 d=-0.97, PTPN11 d=-0.81 (nominal
+     p<0.02 but FDR>0.14 due to small n and multiple testing)
+   - CNS: PTPN11 d=-0.59 (p=0.045, FDR=0.24)
+   - PNS: RAF1 d=-0.60 (p=0.13, not significant)
+   - UTERUS: BRAF d=+1.60 (NF1-lost LESS dependent) — likely artifact
+     of 4/6 lines having RAS co-mutations in this cancer type
+   - Most cancer types individually lack power for significance.
+
+4. COMPARISON TO KRAS-MUTANT DEPENDENCY PROFILE
+   The MAPK baseline shows a qualitatively different pattern from
+   typical KRAS-mutant dependencies:
+   - KRAS-mutant tumors typically show RAF1 and MEK dependency
+   - NF1-lost shows GRB2/SHP2/SHOC2 dependency but NOT MEK
+   - This suggests NF1-loss and KRAS-mutation activate MAPK through
+     overlapping but distinct mechanisms, validating the atlas rationale.
+
+======================================================================
+QUALITY FLAGS SUMMARY
+======================================================================
+
+| Issue                      | Severity | Blocking? | Recommendation              |
+|----------------------------|----------|-----------|------------------------------|
+| Zero deep deletions        | Low      | No        | Verify CN data coverage      |
+| Expression overlap         | Moderate | No        | Add expression filter sens.  |
+| TP53 confounding (71.5%)   | HIGH     | Partial   | Add TP53-stratified analysis |
+| Per-type sample sizes      | High     | No        | Treat per-type as exploratory|
+| MPNST n=4                  | High     | No        | Individual profiles only     |
+| No MEK/ERK dependency      | N/A      | No        | Key biological finding       |
+
+======================================================================
+GO/NO-GO DECISION
+======================================================================
+
+CONDITIONAL GO for downstream phase review.
+
+Rationale:
+- Phase 1 classifier is methodologically sound despite zero deep
+  deletions (biologically expected for NF1).
+- Phase 2 baseline reveals a biologically coherent and clinically
+  relevant dependency pattern (GRB2/SHP2/SHOC2 > MEK/ERK).
+- The TP53 confounding issue is serious but does NOT invalidate all
+  findings — upstream MAPK nodes (GRB2, SHP2, SHOC2, RAF1) are not
+  known TP53-dependent dependencies, so Phase 2 results are credible.
+- TP53 confounding will be CRITICAL to assess in Phase 3 for DDR,
+  cell cycle, and epigenetic hits.
+
+Recommended actions:
+1. Create developer task: add TP53-stratified differential dependency
+   analysis (NF1-lost/TP53-mut vs NF1-intact/TP53-mut) as a
+   confounding control.
+2. Proceed with Phase 3-5 review, flagging all potentially TP53-driven
+   hits explicitly.
+3. Report MPNST findings as individual cell line observations, not
+   statistical conclusions.

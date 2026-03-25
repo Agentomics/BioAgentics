@@ -1,0 +1,103 @@
+{
+  "task_id": 1293,
+  "analysis": "Threshold Lowering Impact Assessment",
+  "sensitivity_verification": {
+    "claimed_auc_optimized_panel": 0.896,
+    "claimed_sens_at_95spec": 0.695,
+    "recomputed_from_predictions": {
+      "auc": 0.866,
+      "sens_at_95spec": 0.5424,
+      "actual_specificity": 0.9516,
+      "threshold": 0.7248,
+      "sens_at_90spec": 0.678
+    },
+    "nested_cv_reference": {
+      "auc": 0.8706973581973582,
+      "sens_at_95spec": 0.47727272727272724,
+      "note": "Nested CV is the rigorous estimate; per-sample predictions are from a single train/test split or resubstitution"
+    },
+    "discrepancy_analysis": {
+      "optimized_panel_auc_vs_cv": 0.0253,
+      "optimized_panel_sens_vs_cv": 0.2177,
+      "explanation": "The optimized panel numbers (AUC=0.896, sens=69.5%) come from LASSO fit on the FULL dataset \u2014 this is training performance, not generalization performance. The nested CV estimate (AUC=0.871, sens=47.7%) is the honest estimate. The 69.5% claim is ~22 percentage points optimistic compared to nested CV."
+    }
+  },
+  "threshold_comparison": {
+    "old_threshold_0_30": {
+      "discovery_signatures": "previous count (unknown exact)",
+      "cfdna_validated": "previous count",
+      "protein_panel_sens_at_95spec_cv": 0.477,
+      "protein_panel_auc_cv": 0.871,
+      "cost": "$155 (original estimate)"
+    },
+    "new_threshold_0_20": {
+      "discovery_signatures": 42240,
+      "cfdna_validated": 36728,
+      "optimal_panel_auc_training": 0.896,
+      "optimal_panel_sens_at_95spec_training": 0.695,
+      "cost": "$105 (7 proteins \u00d7 $15)",
+      "note": "Training performance \u2014 needs nested CV to confirm"
+    },
+    "key_finding": "Lowering delta-beta threshold from 0.30 to 0.20 recovered more CpG signatures (42K discovery, 37K validated) but the OPTIMAL PANEL REMAINS THE SAME 7 PROTEIN MARKERS. No methylation markers entered the cost-weighted LASSO because methylation cost is set to $75/marker. The apparent sensitivity improvement (47.7% \u2192 69.5%) is an artifact of comparing nested CV vs training performance, NOT a real improvement from threshold lowering."
+  },
+  "methylation_exclusion": {
+    "lasso_cost_assumptions": {
+      "methylation_per_marker_usd": 75.0,
+      "protein_per_marker_usd": 15.0
+    },
+    "methylation_entry_point": {
+      "C": 0.23357214690901212,
+      "n_features": 19,
+      "n_methylation": 11,
+      "auc_at_entry": 1.0,
+      "diagnosis": "Overfit \u2014 n=24 methylation samples cannot support this many features"
+    },
+    "root_cause": "Two compounding problems: (1) Methylation cost set to $75/marker, but targeted bisulfite panels cost $50-100 total for ~20 CpGs (~$5/CpG). The cost penalty is ~15x too high. (2) The methylation training data has only n=24 samples. When methylation features enter the model they immediately overfit (AUC=1.0), making the LASSO path uninformative for finding the right methylation panel size.",
+    "corrected_cost_estimate": {
+      "methylation_per_cpg_corrected": "$5-7 (based on $100 panel / 15-20 CpGs)",
+      "protein_per_marker": "$15",
+      "expected_impact": "With corrected costs, methylation CpGs should enter the LASSO path earlier, but overfitting will still be a problem with n=24"
+    }
+  },
+  "panel_comparisons": {
+    "a_protein_new_threshold": {
+      "markers": [
+        "prot_MMP9",
+        "prot_CXCL8",
+        "prot_S100A4",
+        "prot_TIMP1",
+        "prot_SEPT9",
+        "prot_ERBB2",
+        "prot_SPP1"
+      ],
+      "auc_training": 0.8963914707490431,
+      "sens_95_training": 0.6949152542372882,
+      "auc_nested_cv": 0.8706973581973582,
+      "sens_95_nested_cv": 0.47727272727272724,
+      "cost": "$105",
+      "note": "Same 7 markers as old threshold \u2014 threshold change didn't affect protein selection"
+    },
+    "b_protein_old_threshold": {
+      "markers": "Same 7 proteins (MMP9, CXCL8, S100A4, TIMP1, SEPT9, ERBB2, SPP1)",
+      "auc_nested_cv": 0.8706973581973582,
+      "sens_95_nested_cv": 0.47727272727272724,
+      "cost": "$155 (old cost estimate)",
+      "note": "Identical panel, old cost estimate was higher"
+    },
+    "c_mixed_forced_methylation": {
+      "markers_from_threshold_analysis": "7 protein + 3 methylation (cg14642259, cg18601167, cg13895235)",
+      "auc_from_threshold": 0.9997,
+      "sens_95_from_threshold": 1.0,
+      "cost": "$380 (from threshold analysis)",
+      "warning": "AUC=0.9997 and sens=100% on n=24 methylation samples is CLASSIC OVERFITTING. These numbers are not reliable.",
+      "note": "Cannot be trusted until validated on independent cohort"
+    },
+    "summary": "The protein panel is identical at both thresholds. The 'improvement' from threshold lowering is a measurement artifact. The mixed panel with forced methylation shows perfect performance \u2014 which is a red flag, not a success. All methylation-containing panels need independent validation."
+  },
+  "recovered_cpgs_contribution": {
+    "note": "Threshold lowering from 0.30 to 0.20 recovered CpGs from BMP3, MGMT, RASSF1 (APC borderline)",
+    "impact_on_classifier": "NONE for protein panel \u2014 these are methylation markers, protein panel unchanged",
+    "impact_on_methylation_classifier": "The methylation-only classifier already uses 298 cMCD-gene CpGs. The recovered CpGs from BMP3/MGMT/RASSF1 are included in this pool. Top selected features (cg22418909, cg20611276, etc.) need mapping to genes to determine if recovered CpGs are among the 20 selected features.",
+    "developer_action_needed": "Map top 20 selected CpGs to gene names to identify if recovered BMP3/MGMT/RASSF1 CpGs contribute"
+  }
+}

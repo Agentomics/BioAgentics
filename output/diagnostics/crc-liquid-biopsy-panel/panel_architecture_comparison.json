@@ -1,0 +1,159 @@
+{
+  "task_id": 1291,
+  "analysis": "Panel Architecture Comparison",
+  "architectures": {
+    "A_protein_only": {
+      "method": "5-fold nested CV (n=121)",
+      "auc": 0.8706973581973582,
+      "auc_ci95": [
+        0.8147172087896326,
+        0.9266775076050837
+      ],
+      "auc_std": 0.057122601436454645,
+      "sens_at_95spec": 0.47727272727272724,
+      "sens_std": 0.19474265470375304,
+      "n_markers": 7,
+      "markers": [
+        "prot_MMP9",
+        "prot_CXCL8",
+        "prot_S100A4",
+        "prot_TIMP1",
+        "prot_SEPT9",
+        "prot_ERBB2",
+        "prot_SPP1"
+      ],
+      "cost_usd": 105,
+      "evaluation_rigor": "HIGH \u2014 proper nested CV avoids optimistic bias"
+    },
+    "B_methylation_only": {
+      "method": "LOO-CV (n=24, 12 CRC + 12 control)",
+      "auc": 0.9791666666666667,
+      "auc_se": 0.0307,
+      "auc_ci95": [
+        0.9189,
+        1
+      ],
+      "sens_at_95spec": 0.8333333333333334,
+      "sens_at_95spec_exact": "10/12",
+      "sens_ci95_binomial": [
+        0.5833,
+        1.0
+      ],
+      "n_features_selected": 20,
+      "n_features_available": 298,
+      "cost_usd_targeted_bisulfite": "50-100 (targeted panel for 20 CpGs)",
+      "evaluation_rigor": "LOW \u2014 n=24, LOO-CV, p>>n (20 features from 298 candidates on 24 samples), high overfitting risk"
+    },
+    "C_combined": {
+      "method": "Protein (n=121) + methylation score injected as single feature",
+      "auc": 0.8996719518862766,
+      "sens_at_95spec": 0.6271186440677966,
+      "sens_at_90spec": 0.711864406779661,
+      "n_protein_markers": 7,
+      "n_methylation_score": 1,
+      "cost_usd": "155-205 (proteins + targeted bisulfite)",
+      "evaluation_rigor": "MEDIUM \u2014 protein CV on n=121, methylation score from n=24 LOO-CV injected"
+    }
+  },
+  "operating_point_paradox": {
+    "observation": "Combined AUC (0.900) > protein AUC (0.866) but combined sens@95spec (62.7%) < protein sens@95spec (67.8%)",
+    "delta_auc": 0.0342,
+    "delta_sens_at_95spec": -0.0508,
+    "explanation": "AUC measures average performance across ALL operating points. Adding methylation improves overall discrimination (AUC +0.034). However, at the 95% specificity operating point specifically, the combined model's decision threshold shifts. The methylation score, derived from a tiny n=24 cohort, adds noise at this extreme operating point. The protein-only model's calibration at 95% specificity happens to be more stable because it was trained on n=121 samples. This is a known phenomenon: AUC improvement does not guarantee improvement at every operating point, especially at high-specificity thresholds where small calibration shifts can flip individual classifications.",
+    "clinical_implication": "For a screening test requiring 95% specificity, the combined model is WORSE despite higher AUC. The methylation score needs a larger training cohort to be useful at this operating point."
+  },
+  "methylation_reliability": {
+    "concern_level": "HIGH",
+    "issues": [
+      "Sample size n=24 (12 CRC, 12 control) is critically small",
+      "Feature selection: 20 features chosen from 298 candidates on 24 samples (ratio 12.4:1 features:samples) \u2014 severe overfitting risk",
+      "LOO-CV leaves only 1 sample out at a time \u2014 high variance estimator with n=24",
+      "AUC CI is extremely wide: [0.919, 1.000] (SE=0.031)",
+      "Sensitivity CI: [58.3%, 100.0%] based on only 10/12 correct detections",
+      "Feature selection performed INSIDE or OUTSIDE the LOO loop is critical \u2014 if outside, results are invalid due to data leakage",
+      "AUC=0.979 with 20 features on 24 samples is a classic overfitting signature"
+    ],
+    "comparison_to_cmcd": {
+      "cmcd_n": 636,
+      "cmcd_sensitivity": 0.8782,
+      "our_methylation_n": 24,
+      "our_methylation_sensitivity": 0.8333,
+      "verdict": "Our methylation sensitivity (83.3%) is suspiciously close to the cMCD benchmark (87.8%) but on 26x fewer samples. This is more likely overfitting than true equivalence."
+    },
+    "what_would_validate_it": [
+      "Independent test set of >=50 CRC + 50 control cfDNA methylation samples",
+      "Feature selection strictly inside the CV loop (verify with developer)",
+      "Bootstrap confidence intervals with >=1000 resamples",
+      "Comparison against permutation null distribution"
+    ]
+  },
+  "cost_analysis": {
+    "assumptions": {
+      "protein_immunoassay": "$15 per marker",
+      "targeted_bisulfite_panel": "$50-100 for a targeted panel of 20 CpGs (not per-CpG)",
+      "note": "Targeted bisulfite panels cost per-panel, not per-CpG, unlike the $75/marker assumed in LASSO optimization"
+    },
+    "architectures": {
+      "protein_only_7": {
+        "cost": "$105",
+        "sens_nested_cv": "47.7%",
+        "sens_optimized": "69.5%*",
+        "note": "*optimized is training performance, not validated"
+      },
+      "methylation_targeted_20cpg": {
+        "cost": "$50-100",
+        "sens_loo": "83.3%*",
+        "note": "*n=24, likely inflated"
+      },
+      "combined_protein_methylation": {
+        "cost": "$155-205",
+        "sens": "62.7%",
+        "note": "worse than protein-only at 95% spec"
+      },
+      "cmcd_reference": {
+        "cost": "~$200-300 (estimated for 21-marker bisulfite panel)",
+        "sens": "87.8%",
+        "note": "validated on n=636"
+      }
+    },
+    "cost_per_correct_diagnosis": {
+      "note": "At CRC prevalence 4.1% in screening-age adults",
+      "protein_only_at_cv_performance": {
+        "cost_per_test": 105,
+        "sensitivity": 0.477,
+        "cost_per_true_positive": 5369.0,
+        "nns_to_detect_1_crc": 51.1
+      },
+      "methylation_only_if_validated": {
+        "cost_per_test": 75,
+        "sensitivity": 0.833,
+        "cost_per_true_positive": 2196.0,
+        "nns_to_detect_1_crc": 29.3
+      }
+    }
+  },
+  "recommendation": {
+    "optimal_architecture": "B \u2014 Methylation-only, IF validated on larger cohort",
+    "rationale": "Methylation-only shows the highest sensitivity (83.3% at 95% spec) and lowest per-test cost ($50-100). However, this is based on n=24 LOO-CV and is almost certainly inflated. The protein-only panel is the only architecture with reliable validation (nested CV, n=121) but achieves only 47.7% sensitivity at 95% spec \u2014 below the 70% project target. The combined approach paradoxically HURTS at the 95% operating point.",
+    "recommended_path": [
+      "1. IMMEDIATE: Validate methylation classifier with developer \u2014 confirm feature selection is inside LOO loop",
+      "2. SHORT-TERM: Request developer build bootstrap validation for methylation classifier (1000 resamples)",
+      "3. MEDIUM-TERM: Acquire independent cfDNA methylation validation cohort (n>=100)",
+      "4. ARCHITECTURE: Pursue methylation-primary panel with protein-backup for methylation-negative/borderline cases",
+      "5. COST: Targeted bisulfite panel ($50-100) is more cost-effective than protein panel ($105) IF sensitivity holds"
+    ],
+    "rd_flag": {
+      "condition_met": true,
+      "condition": ">80% sensitivity achieved (methylation-only: 83.3%)",
+      "caveat": "Based on n=24 LOO-CV \u2014 validation required before escalating to research director",
+      "action": "Create RD task noting the >80% finding with prominent caveat about sample size"
+    }
+  },
+  "lasso_cost_weight_issue": {
+    "finding": "LASSO optimization uses $75 PER methylation marker, but targeted bisulfite costs $50-100 per PANEL",
+    "impact": "Methylation markers are penalized ~15x too heavily in the cost-weighted LASSO (75/marker vs ~5/marker for a 20-CpG panel)",
+    "evidence": "At C=0.127 (optimal), 0 methylation markers selected. At C=0.234, 11 methylation markers enter but AUC=1.0 (overfit on n=24)",
+    "recommendation": "Developer should re-run LASSO with corrected methylation cost: $5-7 per CpG (=$100 panel / ~15-20 CpGs) instead of $75/CpG",
+    "developer_task_needed": true
+  }
+}
