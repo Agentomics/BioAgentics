@@ -1,0 +1,121 @@
+{
+  "clinical_only": {
+    "label": "clinical_only",
+    "n_patients": 210,
+    "n_features": 3,
+    "mean_auc": 0.5307982982982983,
+    "std_auc": 0.1081690325539973,
+    "fold_aucs": [
+      0.49189189189189186,
+      0.372972972972973,
+      0.7081081081081081,
+      0.5555555555555556,
+      0.525462962962963
+    ],
+    "mean_sensitivity": 0.7333333333333334,
+    "mean_specificity": 0.5563063063063063,
+    "feature_importance": {
+      "sex_male": 0.4281567099497088,
+      "age_at_diagnosis": 0.36549129740234976,
+      "paris_a1a": 0.23852773512039818
+    }
+  },
+  "txn_only": {
+    "label": "transcriptomic_only",
+    "n_patients": 210,
+    "n_features": 22,
+    "mean_auc": 0.641041041041041,
+    "std_auc": 0.02543929870651782,
+    "fold_aucs": [
+      0.6594594594594594,
+      0.6594594594594594,
+      0.627027027027027,
+      0.5972222222222222,
+      0.662037037037037
+    ],
+    "mean_sensitivity": 0.5933333333333334,
+    "mean_specificity": 0.7923423423423424,
+    "feature_importance": {
+      "gene_CPA3": 0.9271878668851533,
+      "pathway_mmp_activity": 0.5414933996406016,
+      "pathway_emt": 0.5212846517082215,
+      "gene_HDAC1": 0.41171960959678805,
+      "gene_GREM1": 0.39024661634295815,
+      "pathway_yap_taz_targets": 0.3515649201963528,
+      "pathway_collagen_ecm": 0.3399697989240281,
+      "gene_SERPINE1": 0.30012731625379335,
+      "gene_AKAP11": 0.26928937194966673,
+      "pathway_tgfb_signaling": 0.24638884024249147,
+      "gene_FGF2": 0.23907292786399176,
+      "gene_CD38": 0.23763131900465093,
+      "pathway_wnt_signaling": 0.23535575801704903,
+      "gene_LY96": 0.21888747291401728,
+      "pathway_inflammatory_fibroblast_module": 0.214973164569757,
+      "gene_CTHRC1": 0.19941967679221623,
+      "gene_TNFSF15": 0.19631577043966383,
+      "gene_POSTN": 0.18845414591261214,
+      "gene_EHD2": 0.18606910340832233,
+      "gene_TNC": 0.18076000348081464,
+      "gene_SRM": 0.1762429014681057,
+      "gene_CYR61": 0.1316314979339847
+    }
+  },
+  "full": {
+    "label": "full_model",
+    "n_patients": 210,
+    "n_features": 25,
+    "mean_auc": 0.6504554554554555,
+    "std_auc": 0.047236945569378436,
+    "fold_aucs": [
+      0.7297297297297297,
+      0.5837837837837838,
+      0.6378378378378379,
+      0.6388888888888888,
+      0.6620370370370371
+    ],
+    "mean_sensitivity": 0.74,
+    "mean_specificity": 0.7097597597597598,
+    "feature_importance": {
+      "gene_CPA3": 1.215763495229926,
+      "sex_male": 0.8699259612093713,
+      "pathway_mmp_activity": 0.6727651833830546,
+      "pathway_emt": 0.4668435357850821,
+      "pathway_collagen_ecm": 0.3853609232612679,
+      "gene_HDAC1": 0.34667049116174053,
+      "gene_SERPINE1": 0.33003669054446216,
+      "paris_a1a": 0.32697463082788153,
+      "pathway_yap_taz_targets": 0.32014184517577216,
+      "gene_FGF2": 0.31600705368655163,
+      "gene_SRM": 0.3004022829368894,
+      "gene_CTHRC1": 0.27851728774963913,
+      "gene_LY96": 0.27164196739654367,
+      "gene_EHD2": 0.2693106328740342,
+      "pathway_inflammatory_fibroblast_module": 0.2534271519473062,
+      "gene_GREM1": 0.24880894575630919,
+      "pathway_wnt_signaling": 0.21574699528014257,
+      "gene_TNFSF15": 0.21500593337796997,
+      "gene_CD38": 0.19971205203628087,
+      "gene_TNC": 0.18534623615896692,
+      "gene_AKAP11": 0.18036106759862092,
+      "age_at_diagnosis": 0.16908095431724565,
+      "pathway_tgfb_signaling": 0.16803809886163168,
+      "gene_CYR61": 0.1209046696247815,
+      "gene_POSTN": 0.1184592456001314
+    }
+  },
+  "risk_stratification": {
+    "low": {
+      "n": 69,
+      "event_rate": 0.0
+    },
+    "medium": {
+      "n": 72,
+      "event_rate": 0.0
+    },
+    "high": {
+      "n": 69,
+      "event_rate": 0.391304347826087
+    },
+    "fold_difference_high_vs_low": Infinity
+  }
+}
