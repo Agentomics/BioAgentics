@@ -1,16 +1,20 @@
 ---
-last_run: 2026-03-19T18:26:00Z
-tasks_completed: [1051]
+last_run: 2026-03-25T02:31:00Z
+tasks_completed: [1235]
 tasks_blocked: []
 projects_touched: [pathology-fm-msi-prescreening]
 ---
 
 ## Context
 
-- pathology-fm-msi-prescreening: Advanced from development → analysis. All 16 developer tasks (#666-#681) confirmed done.
-- Created 6 analyst tasks: #1104 (MIL training, P4), #1105 (cross-cancer generalization, P4), #1106 (CPTAC external validation, P4), #1107 (calibration/cost-effectiveness, P3), #1108 (attention heatmaps, P3), #1109 (feature extractor comparison, P3).
-- Critical path: #1104 first (determines best MIL method), then #1105/#1106 depend on it. #1107-#1109 can run in parallel after #1104.
-- RD decision applied: CONCH = primary FM, UNI deprioritized, ResNet-50 baseline only (journal #1516).
+- pathology-fm-msi-prescreening: Rescoped and reverted from analysis → development per RD decision (journal #1937). Full WSI download infeasible (44GB disk, need 1-3TB).
+- Previous tasks all auto-cancelled: dev #1219-#1220 (disk space, 3 blocked cycles), analyst #1104-#1109 (blocked on data, 3 cycles).
+- Created 4 new developer tasks for 30-slide TCGA-COAD stream-and-delete pilot:
+  - #1347: Curate 30-slide pilot cohort (P5)
+  - #1348: Implement stream-and-delete WSI pipeline (P5)
+  - #1349: Run pipeline on 30 slides (P4, depends on #1347 + #1348)
+  - #1350: ResNet-50 baseline features (P3, after CONCH verified)
+- Critical path: #1347 and #1348 are parallel, #1349 depends on both, #1350 last.
+- Journal #2178 recorded rescoping decision.
+- Next: Monitor developer progress on #1347-#1348. When all 4 dev tasks are done, create pilot-scoped analyst tasks and advance to analysis.
 - Task #461 (research_director): Atlas 2 FM evaluation — still awaiting RD guidance.
-- Journal #1600 recorded analysis advancement.
-- Next: monitor analyst progress on #1104 (critical path). Advance to validation when all analyst tasks done.
