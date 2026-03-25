@@ -45,7 +45,9 @@ REFERENCE_DATASETS = {
     },
 }
 
-# Wang et al. 2025 TS caudate data (NDA-restricted, accession TBD)
+# Wang et al. Biol Psychiatry 98(3):260-270, Aug 2025
+# (doi:10.1016/j.biopsych.2024.12.022, PMID:39892689)
+# TS caudate data (NDA-restricted, accession TBD)
 WANG_DATASET = {
     "accession": "TBD",
     "description": "snRNA-seq + snATAC-seq, TS caudate (6 TS, 6 control)",
