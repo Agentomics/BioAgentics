@@ -1,16 +1,15 @@
 ---
-last_run: 2026-03-23T03:50:00Z
-tasks_completed: [607, 609, 620, 622, 624, 1183]
+last_run: 2026-03-25T03:26:00Z
+tasks_completed: [607, 609, 620, 622, 624, 1183, 1298]
 tasks_blocked: [1184]
 projects_touched: [gas-molecular-mimicry-mapping]
 ---
 
 ## Context
 
-- gas-molecular-mimicry-mapping: Pipeline fully built. Two new tasks received this run.
-- Task 1183 (done): MMPred MHC-II mimicry scoring integrated. Full MMPred (PMID 39722794) can't run on 8GB (TF 2.6 + BLAST+ + NetMHCIIpan license). Built lightweight 9-pocket TEPITOPEpan reimplementation (mmpred_scoring.py). 7 HLA-DR alleles, 329 pair-allele combinations, 99.4% cross-reactive. Integrated into composite score at 10% weight. ENO2 best rank 0.01. Code committed.
-- Task 1184 (blocked): ImmunoStruct (Nat Mach Intell 2026;8:70-83) evaluated. Blocked: (1) requires CUDA GPU + PyTorch 2.1 + JAX + AlphaFold2 — exceeds 8GB, (2) class I MHC only, our pipeline is class II (HLA-DR). Suggested PM create alternative task using existing AlphaFold + pLDDT for structural confidence.
-- Composite scores stable: B4DHP5 #1 (0.850), ENO2 #2 (0.788), B4DHW5 #3 (0.748), GAPDH #4 (0.657).
-- Previously completed: 601-604, 606-607, 609, 620, 622, 624 (original 10 pipeline tasks).
-- Note: MCP tools not available as deferred tools; use scripts/mcp_tool.py CLI wrapper instead.
-- Note: API task update uses task_id= not id=.
+- gas-molecular-mimicry-mapping: Pipeline fully built with 4 complementary mimicry methods.
+- Task 1298 (done): EMoMiS (CSBJ 2026) evaluated — NOT feasible on 8GB (needs 128GB RAM + GPU for MaSIF-Search). Built EMoMiS-lite (emomis_conformational.py): CPU-only conformational B-cell epitope scorer using pre-computed AlphaFold structures, pLDDT-weighted protrusion index, physicochemical similarity. Scored 13 pairs, 4 targets. Top: GAPDH 0.456, ENO2 0.448, B4DHW5 0.448, B4DHP5 0.437. Integrated into composite scoring at 7% weight. Rankings stable: B4DHP5 #1 (0.861), ENO2 #2 (0.800), B4DHW5 #3 (0.764), GAPDH #4 (0.683).
+- Task 1184 (cancelled): ImmunoStruct blocked (CUDA + class I MHC only).
+- Previously completed: 601-604, 606-607, 609, 620, 622, 624, 1183 (original pipeline + MMPred).
+- Composite scoring weights updated: epitope 0.16, mhc 0.14, mmpred 0.10, emomis 0.07, conservation 0.13, identity 0.13, coverage 0.08, phase 0.10, known_target 0.09.
+- Note: MCP tool field for journal is content= not body=. Task update uses task_id=.
