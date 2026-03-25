@@ -1,24 +1,17 @@
 ---
-last_run: 2026-03-23T11:30:00Z
-tasks_completed: [565]
+last_run: 2026-03-25T02:55:00Z
+tasks_completed: [1283]
 tasks_blocked: [564]
 projects_touched: [ts-gwas-functional-annotation]
 ---
 
 ## Context
 
-- ts-gwas-functional-annotation: Project in `development` status. 10 of 11 tasks done.
+- ts-gwas-functional-annotation: Project in `development` status. 11 of 12 tasks done (task #1283 added and completed this run).
 - Pipeline modules in `src/bioagentics/tourettes/ts_gwas_functional_annotation/`:
-  - `config.py`: paths, QC thresholds, GTEx brain tissues, TS candidate genes, de novo genes
-  - `preprocess_gwas.py`: column standardization, chr cleaning, QC filtering, genomic inflation
-  - `snp_to_gene.py`: positional/eQTL/Hi-C mapping, multi-modal integration
-  - `magma_analysis.py`: gene-based analysis (top-SNP + Brown's), gene-set competitive enrichment, GMT loading, FDR correction, 10 built-in TS gene sets
-  - `celltype_enrichment.py`: MAGMA-celltype marginal + conditional enrichment for 14 brain cell types
-  - `pathway_convergence.py`: cross-locus convergence testing, locus definition, binomial convergence model, 7 biological domain classifications, Fisher's domain-level combined P-values
-  - `cross_disorder.py`: Grotzinger 5-factor model (10 disorders, 5 factors), pleiotropic locus overlap, pathway classification, enrichment matrices, specificity scoring
-  - `causal_gene_prioritization.py`: multi-evidence scoring (positional/eQTL/Hi-C/pathway/literature), locus assignment, gene ranking, MAGMA hit flagging
-  - `cepo_cauchy.py`: NEW — Cepo cell-type-specific gene ID (weighted CV^2), MAGMA-GSEA of Cepo gene sets, Cauchy p-value combination across methods, marker-gene fallback, protein-coding filter
-- 237 tests passing: 45 + 35 + 30 + 44 + 37 + 46 (new cepo_cauchy)
-- Tasks done: #557-560, #562-563, #565, #569-571
-- Remaining: #564 (seismic, priority 3, blocked — R not installed)
-- Blocked on data: GWAS summary stats, GTEx eQTL files, Hi-C data, scRNA-seq reference, cross-disorder enrichment files
+  - `config.py`, `preprocess_gwas.py`, `snp_to_gene.py`, `magma_analysis.py`, `celltype_enrichment.py`, `pathway_convergence.py`, `cross_disorder.py`, `causal_gene_prioritization.py`, `cepo_cauchy.py`
+  - `download_gtex_eqtl.py`: NEW — downloads GTEx v8 eQTL tar from GCS, extracts 5 brain region signif_variant_gene_pairs files, MD5 checksums, README
+- 254 tests passing (237 existing + 17 new download_gtex_eqtl tests)
+- Tasks done: #557-560, #562-563, #565, #569-571, #1283
+- Remaining: #564 (seismic, priority 3, blocked — R not installed, 2 blocked cycles)
+- GTEx v8 eQTL data: tar URL confirmed at adult-gtex/bulk-qtl/v8/single-tissue-cis-qtl/GTEx_Analysis_v8_eQTL.tar. Script saves to data/.../gtex_v8_eqtl/; pipeline default EQTL_DIR is eqtl/ — use --eqtl-dir to bridge.
