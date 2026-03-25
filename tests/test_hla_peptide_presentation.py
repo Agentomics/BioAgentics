@@ -170,6 +170,28 @@ class TestIEDBBindingPrediction:
         peptides = load_peptides_sampled(tsv, max_peptides=2)
         assert len(peptides) == 2
 
+    def test_load_peptides_virulence_only(self, tmp_path):
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            load_peptides_sampled,
+        )
+
+        tsv = tmp_path / "peptides.tsv"
+        tsv.write_text(
+            "peptide\tprotein_accession\tprotein_name\tis_virulence_factor\n"
+            "AAAAAAAAAAAAAAAA\tP001\tM protein\tTrue\n"
+            "BBBBBBBBBBBBBBBB\tP002\tC5a peptidase\tTrue\n"
+            "CCCCCCCCCCCCCCCC\tP003\tHypothetical\tFalse\n"
+            "DDDDDDDDDDDDDDDD\tP004\tRibosomal\tFalse\n"
+        )
+
+        peptides = load_peptides_sampled(tsv, virulence_only=True)
+        assert len(peptides) == 2
+        assert all(p["is_virulence_factor"] for p in peptides)
+
+        # virulence_only=False loads all
+        all_peps = load_peptides_sampled(tsv, virulence_only=False)
+        assert len(all_peps) == 4
+
     def test_api_url_selection_by_mhc_class(self):
         from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
             IEDB_API_URLS,
