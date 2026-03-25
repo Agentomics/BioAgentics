@@ -18,10 +18,54 @@ RESULTS_DIR = DATA_DIR  # output alongside input data
 GENOME_BACKGROUND = 20_000
 
 
+def _enrichment_stats(k: int, K: int, n: int, N: int) -> dict:
+    """Compute hypergeometric/Fisher enrichment statistics for one pathway.
+
+    Parameters: k=overlap, K=pathway size, n=network size, N=genome background.
+    """
+    hyper_pval = stats.hypergeom.sf(k - 1, N, K, n)
+
+    a, b = k, n - k
+    c = max(K - k, 0)
+    d = max(N - n - c, 0)
+    _, fisher_pval = stats.fisher_exact([[a, b], [c, d]], alternative="greater")
+
+    if b > 0 and c > 0 and d > 0:
+        odds_ratio = (a * d) / (b * c)
+    else:
+        odds_ratio = np.inf
+
+    expected = (K * n) / N
+    fold_enrich = k / expected if expected > 0 else np.inf
+
+    return {
+        "expected_genes": round(expected, 2),
+        "fold_enrichment_validated": round(fold_enrich, 3),
+        "hypergeometric_pval": hyper_pval,
+        "fisher_pval": fisher_pval,
+        "odds_ratio": round(odds_ratio, 3) if odds_ratio != np.inf else "Inf",
+    }
+
+
+def _apply_fdr(result_df: pd.DataFrame) -> pd.DataFrame:
+    """Add BH FDR columns and lost-significance flag to a validation result."""
+    reject_hyper, fdr_hyper, _, _ = multipletests(
+        result_df["hypergeometric_pval"].clip(lower=1e-300), method="fdr_bh"
+    )
+    reject_fisher, fdr_fisher, _, _ = multipletests(
+        result_df["fisher_pval"].clip(lower=1e-300), method="fdr_bh"
+    )
+    result_df["hypergeometric_fdr"] = fdr_hyper
+    result_df["fisher_fdr"] = fdr_fisher
+    result_df["significant_hyper_fdr05"] = reject_hyper
+    result_df["significant_fisher_fdr05"] = reject_fisher
+    result_df["lost_significance"] = (result_df["original_fdr"] < 0.05) & ~reject_hyper
+    return result_df
+
+
 def validate_kegg_enrichment():
     """Re-compute KEGG enrichment with Fisher exact test and hypergeometric test."""
     df = pd.read_csv(DATA_DIR / "kegg_pathway_enrichment.tsv", sep="\t")
-    node_map = pd.read_csv(DATA_DIR / "kegg_node_pathway_mapping.tsv", sep="\t")
 
     with open(DATA_DIR / "kegg_mapping_stats.json") as f:
         stats_info = json.load(f)
@@ -30,73 +74,26 @@ def validate_kegg_enrichment():
 
     results = []
     for _, row in df.iterrows():
-        k = int(row["network_genes"])  # genes in network AND pathway
-        K = int(row["background_genes"])  # total genes in pathway (KEGG)
-        n = network_size  # total network genes mapped to KEGG
-        N = GENOME_BACKGROUND  # genome background
-
-        # Hypergeometric test (scipy: survival function for P(X >= k))
-        hyper_pval = stats.hypergeom.sf(k - 1, N, K, n)
-
-        # Fisher exact test (2x2 contingency table)
-        a = k           # network AND pathway
-        b = n - k       # network NOT pathway
-        c = K - k       # NOT network AND pathway
-        d = N - n - c   # NOT network NOT pathway
-        if c < 0:
-            c = 0
-            d = N - n
-        if d < 0:
-            d = 0
-        _, fisher_pval = stats.fisher_exact([[a, b], [c, d]], alternative="greater")
-
-        # Odds ratio
-        if b > 0 and c > 0 and d > 0:
-            odds_ratio = (a * d) / (b * c)
-        else:
-            odds_ratio = np.inf
-
-        # Expected genes under null
-        expected = (K * n) / N
-        fold_enrich = k / expected if expected > 0 else np.inf
-
-        results.append({
+        k = int(row["network_genes"])
+        K = int(row["background_genes"])
+        rec = {
             "pathway_id": row["pathway_id"],
             "pathway_name": row["pathway_name"],
             "network_genes": k,
             "background_genes": K,
-            "network_size": n,
-            "genome_background": N,
-            "expected_genes": round(expected, 2),
-            "fold_enrichment_validated": round(fold_enrich, 3),
+            "network_size": network_size,
+            "genome_background": GENOME_BACKGROUND,
+            **_enrichment_stats(k, K, network_size, GENOME_BACKGROUND),
             "fold_enrichment_original": round(row["fold_enrichment"], 3),
-            "hypergeometric_pval": hyper_pval,
-            "fisher_pval": fisher_pval,
             "original_pval": row["pvalue"],
             "original_fdr": row["fdr"],
-            "odds_ratio": round(odds_ratio, 3) if odds_ratio != np.inf else "Inf",
             "seed_proteins_in_pathway": row["seed_proteins_in_pathway"],
             "seed_list": row["seed_list"],
             "is_focus_pathway": row["is_focus_pathway"],
-        })
+        }
+        results.append(rec)
 
-    result_df = pd.DataFrame(results)
-
-    # Apply BH FDR correction on hypergeometric p-values
-    reject_hyper, fdr_hyper, _, _ = multipletests(
-        result_df["hypergeometric_pval"].clip(lower=1e-300), method="fdr_bh"
-    )
-    reject_fisher, fdr_fisher, _, _ = multipletests(
-        result_df["fisher_pval"].clip(lower=1e-300), method="fdr_bh"
-    )
-
-    result_df["hypergeometric_fdr"] = fdr_hyper
-    result_df["fisher_fdr"] = fdr_fisher
-    result_df["significant_hyper_fdr05"] = reject_hyper
-    result_df["significant_fisher_fdr05"] = reject_fisher
-    result_df["lost_significance"] = (result_df["original_fdr"] < 0.05) & ~reject_hyper
-
-    return result_df
+    return _apply_fdr(pd.DataFrame(results))
 
 
 def validate_reactome_enrichment():
@@ -112,63 +109,21 @@ def validate_reactome_enrichment():
     for _, row in df.iterrows():
         k = int(row["network_genes"])
         K = int(row["pathway_total_genes"])
-        n = network_size
-        N = GENOME_BACKGROUND
-
-        hyper_pval = stats.hypergeom.sf(k - 1, N, K, n)
-
-        a = k
-        b = n - k
-        c = K - k
-        d = N - n - c
-        if c < 0:
-            c = 0
-            d = N - n
-        if d < 0:
-            d = 0
-        _, fisher_pval = stats.fisher_exact([[a, b], [c, d]], alternative="greater")
-
-        if b > 0 and c > 0 and d > 0:
-            odds_ratio = (a * d) / (b * c)
-        else:
-            odds_ratio = np.inf
-
-        expected = (K * n) / N
-        fold_enrich = k / expected if expected > 0 else np.inf
-
-        results.append({
+        rec = {
             "pathway_id": row["pathway_id"],
             "pathway_name": row["pathway_name"],
             "network_genes": k,
             "pathway_total_genes": K,
-            "network_size": n,
-            "genome_background": N,
-            "expected_genes": round(expected, 2),
-            "fold_enrichment_validated": round(fold_enrich, 3),
-            "hypergeometric_pval": hyper_pval,
-            "fisher_pval": fisher_pval,
+            "network_size": network_size,
+            "genome_background": GENOME_BACKGROUND,
+            **_enrichment_stats(k, K, network_size, GENOME_BACKGROUND),
             "original_pval": row["pvalue"],
             "original_fdr": row["fdr"],
-            "odds_ratio": round(odds_ratio, 3) if odds_ratio != np.inf else "Inf",
             "is_focus_pathway": row["is_focus_pathway"],
-        })
+        }
+        results.append(rec)
 
-    result_df = pd.DataFrame(results)
-
-    reject_hyper, fdr_hyper, _, _ = multipletests(
-        result_df["hypergeometric_pval"].clip(lower=1e-300), method="fdr_bh"
-    )
-    reject_fisher, fdr_fisher, _, _ = multipletests(
-        result_df["fisher_pval"].clip(lower=1e-300), method="fdr_bh"
-    )
-
-    result_df["hypergeometric_fdr"] = fdr_hyper
-    result_df["fisher_fdr"] = fdr_fisher
-    result_df["significant_hyper_fdr05"] = reject_hyper
-    result_df["significant_fisher_fdr05"] = reject_fisher
-    result_df["lost_significance"] = (result_df["original_fdr"] < 0.05) & ~reject_hyper
-
-    return result_df
+    return _apply_fdr(pd.DataFrame(results))
 
 
 def seed_neighborhood_enrichment(kegg_node_map, extended_net):
