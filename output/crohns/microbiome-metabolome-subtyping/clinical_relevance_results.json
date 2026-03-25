@@ -1,0 +1,38 @@
+{
+  "medication_associations": {
+    "antibiotics": {
+      "subtype0_pct": 62.5,
+      "subtype1_pct": 55.9,
+      "chi2": 0.018,
+      "p": 0.8925,
+      "n0": 16,
+      "n1": 34,
+      "fisher_p": 0.7635,
+      "odds_ratio": 0.76
+    }
+  },
+  "biomarker_associations": {
+    "CRP": {
+      "subtype0_median": 3.46,
+      "subtype1_median": 1.54,
+      "subtype0_mean": 87.08,
+      "subtype1_mean": 96.38,
+      "subtype0_n": 13,
+      "subtype1_n": 31,
+      "mann_whitney_p": 0.4104
+    }
+  },
+  "hbi": {
+    "subtype0_median": 2.04,
+    "subtype1_median": 2.05,
+    "subtype0_mean": 2.9,
+    "subtype1_mean": 2.36,
+    "mann_whitney_p": 0.763
+  },
+  "surgery": {
+    "subtype0_pct": 37.5,
+    "subtype1_pct": 26.5,
+    "fisher_p": 0.5142,
+    "odds_ratio": 0.6
+  }
+}
