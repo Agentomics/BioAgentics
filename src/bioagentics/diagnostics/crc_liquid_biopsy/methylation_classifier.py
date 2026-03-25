@@ -164,12 +164,24 @@ def evaluate_combined_panel(
     expr = pd.read_parquet(data_dir / "gse164191_protein_biomarkers.parquet")
     meta = pd.read_parquet(data_dir / "gse164191_metadata.parquet")
 
-    with open(output_dir / "optimized_panel.json") as f:
+    panel_path = output_dir / "optimized_panel.json"
+    if not panel_path.exists():
+        raise FileNotFoundError(
+            f"Optimized panel not found: {panel_path}. "
+            "Run protein panel optimization first."
+        )
+    with open(panel_path) as f:
         panel = json.load(f)
     protein_markers = [f for f in panel["optimal_panel"]["features"] if f.startswith("prot_")]
 
     # Load protein complementarity analysis to get probe IDs
-    prot_analysis = pd.read_parquet(output_dir / "protein_complementarity_analysis.parquet")
+    prot_path = output_dir / "protein_complementarity_analysis.parquet"
+    if not prot_path.exists():
+        raise FileNotFoundError(
+            f"Protein complementarity analysis not found: {prot_path}. "
+            "Run protein complementarity analysis first."
+        )
+    prot_analysis = pd.read_parquet(prot_path)
     gene_names = [m.replace("prot_", "") for m in protein_markers]
 
     available_genes = [g for g in gene_names if g in prot_analysis.index]
