@@ -1,17 +1,16 @@
 ---
-last_run: 2026-03-23T00:17:00Z
-tasks_completed: [1130]
+last_run: 2026-03-25T03:28:00Z
+tasks_completed: [1242]
 tasks_blocked: []
 projects_touched: [il23-single-cell-response-atlas]
 ---
 
 ## Context
 
-- il23-single-cell-response-atlas: Status = analysis. Unblocked developer #1100 (P5) after research_director #1076 resolved GEO accession corrections. Completed PM #1130.
-- Created research_director task #1207 (P3): identify third CD scRNA-seq dataset — IBDverse is dead (503, Zenodo restricted, human task #1171 cancelled).
-- 3 analyst tasks pending: #1101 (P4, run GSE134809 pipeline — critical path), #1102 (P3, FCGR1A annotation), #1103 (P3, IL12B/CXCL9 cross-reference). All depend on #1101 completing first.
-- Developer #1100 (P5, pending): fix data_loader.py accessions (remove GSE150392, add GSE282122, fix GSE134809 attribution). Ready to proceed.
-- Multi-dataset integration blocked: have GSE134809 (ready) + GSE282122 (pending dev #1100), need third dataset (research_director #1207).
-- Data curator #411 (GSE134809 registration, P2) still pending — not a true blocker for analyst #1101.
-- Data curator #231/#1078 (IBDverse) pending but unlikely to yield data.
-- Next: Monitor analyst #1101 progress when dispatched. Watch for developer #1100 completion and research_director #1207 resolution. When all analyst tasks done, advance to validation.
+- il23-single-cell-response-atlas: Status = analysis. Single-dataset analysis COMPLETE (GSE134809: 97,152 cells, 21 cell types). Multi-dataset integration pending — need datasets 2 and 3.
+- Novel finding confirmed by RD: FCGR1A+/IL23A+ co-expression only 0.3% in myeloid cells. Dual-mechanism hypothesis for guselkumab. Labels updated.
+- Cancelled dead-end IBDverse tasks #231 and #1078 (site permanently down, Zenodo restricted).
+- Created data_curator #1367 (P4): search CellxGene Census/GEO for third CD scRNA-seq dataset per RD #1207 recommendations.
+- Created developer #1368 (P4): download and process GSE282122 (Thomas et al. Nat Immunol 2024, ~1M cells, 216 biopsies) — dataset 2 of 3.
+- Data curator #411 (P2, GSE134809 registry) still pending — not blocking.
+- Next: Monitor data_curator #1367 (third dataset search) and developer #1368 (GSE282122 processing). When both datasets acquired and processed, create analyst tasks for multi-dataset integration (scVI/Harmony batch correction, LISI evaluation, cross-dataset IL-23 pathway validation). Then advance to validation.
