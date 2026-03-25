@@ -1,16 +1,16 @@
 ---
-last_run: 2026-03-19T02:45:00Z
-tasks_completed: [842, 843, 844]
+last_run: 2026-03-25T02:55:00Z
+tasks_completed: [961]
 tasks_blocked: []
 projects_touched: [anti-tnf-response-prediction]
 ---
 
 ## Context
 
-- **Task #842 (P5) — Data Leakage Audit: DONE.** Confirmed two leakage sources: (1) ComBat applied globally to all 83 samples before LOSO-CV, (2) feature selection (stability selection + RFE) run on all samples before CV. Batch-response confounding NOT significant (p=0.31). 26/30 genes have genuine response signal. Permutation test p=0.005 — signal is real but AUC=0.999 inflated. ComBat inflation: +0.447 (elastic net), +0.333 (RF). Estimated corrected AUC: 0.70-0.85. Created developer task #860 to fix pipeline, research_director task #861 to note findings. Journal #1224.
+- **Task #961 (P5) — Re-evaluate Corrected Metrics: DONE.** Corrected LOSO-CV AUC: XGBoost=0.711 (best), RF=0.701, EN=0.600 — all below 0.75 target. Leaked AUC inflation: EN +0.399, RF +0.173, XGB +0.106. Per-study: GSE12251=0.83 (strongest), GSE16879=0.63-0.67, GSE73661=0.50 (chance). Feature selection catastrophically unstable: Jaccard=0.000 core overlap across 3 LOSO folds, 0/82 genes shared. Only 13/83 features have SHAP>0; effective model uses ~6 genes (PGC, BPIFB1, CPO, GAS1, CASP6, SNX3). Porto 5-gene signature: none selected by corrected pipeline. Of 5 IBD-relevant genes, only CASP6 survives. Project CANNOT advance to validation. Journal #2204.
 
-- **Task #843 (P4) — External Validation: DONE.** Porto 5-gene signature (TREM1, IL23R, CCL7, IL17F, YES1) performs BELOW chance (AUC 0.39-0.47) in our data — none selected by pipeline. Top 10 genes capture nearly all signal (RF AUC=0.884 vs full 30 AUC=0.874). Per-study: GSE73661 RF spec=0.0 (generalization failure). Only 1/30 genes overlaps published signatures (OSMR, which is not DE-significant). Journal #1225.
+- **Created tasks:** research_director #1353 (P5, decide feature engineering vs microbiome escalation), developer #1356 (P5, integrate E-MTAB-7604 + test reduced 6-gene and 8-gene models + investigate GSE73661).
 
-- **Task #844 (P3) — Biological Interpretation: DONE.** Developer's "housekeeping" label for 17/30 genes is too broad — 5 have IBD-relevant functions (CASP6, BCL2L2, CHPF2, NFS1, ACAD9), 12 are truly uncharacterized. Pathway coherence adequate: TNF signaling (4), apoptosis (4), epithelial barrier (4), innate immunity (4), ECM (3), metabolic (4). Deconvolution not feasible without sc-RNA reference data. Risk stratification plot shows modest separation inconsistent with AUC=0.999. Journal #1228.
+- **Next:** Waiting on developer #1356 (E-MTAB-7604 integration, reduced gene set testing, GSE73661 investigation) and research_director #1353 (strategic decision on microbiome escalation). After developer delivers new results, analyst will need to re-evaluate metrics with 4-study LOSO-CV and reduced gene sets. If still <0.75, microbiome integration becomes critical path.
 
-- **Next:** All 3 analyst tasks done. Pipeline needs developer fix (task #860) for ComBat + feature selection within CV folds before any metrics can be reported. After fix, re-run tasks #843 and #844 on corrected data. Deconvolution analysis (InstaPrism) deferred pending reference atlas download (data curator tasks #448/#449).
+- **Key numbers to remember:** Corrected best AUC=0.711, target=0.75. 82 unique genes across folds, 0 shared. SHAP-active: PGC (1.97), BPIFB1 (0.66), CPO (0.54), GAS1 (0.41), CASP6 (0.28), SNX3 (0.24). E-MTAB-7604: 43/44 count files downloaded.

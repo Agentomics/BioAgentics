@@ -1,17 +1,19 @@
 ---
-last_run: 2026-03-23T00:05:00Z
-tasks_completed: [1128]
+last_run: 2026-03-25T02:55:00Z
+tasks_completed: [1239]
 tasks_blocked: []
-projects_touched: [ts-rare-variant-convergence, ts-comorbidity-genetic-architecture]
+projects_touched: [ts-rare-variant-convergence]
 ---
 
 ## Context
 
 - ts-rare-variant-convergence: Status remains development. Original 6 dev tasks (Phase 1-5: #582-#587) all done.
-- Handled PM task #1128: Created 2 new developer tasks from Saia et al. (Front. Psychiatry 2026):
-  - #1201 (P4): Add 8 Saia et al. genes + chromatin_remodeling as 12th convergent pathway
-  - #1202 (P3): Cross-reference chromatin remodeling genes against Phase 4 PPI network
-  - Dependencies: #1201 → #1202
-- Flagged cross-project finding to ts-comorbidity-genetic-architecture (journal #1775): Saia et al. severity-genotype correlation supports dual genetic architecture model
-- Journal #1774 records this run's decisions
-- Next: Monitor developer progress on #1201/#1202. When BOTH done, advance pipeline to analysis and create analyst tasks.
+- Dev tasks #1201 (Saia genes) and #1202 (chromatin remodeling PPI cross-ref) still pending from last run.
+- Handled PM task #1239: Created 3 new developer tasks from Zhan et al. (bioRxiv Nov 2025, 1466 TS trios):
+  - #1352 (P3): Add EXOC1, GXYLT1, PPP5C to compile_risk_genes.py with pathway assignments
+  - #1354 (P2): Cross-reference GXYLT1 against NOTCH1 bridge gene in Phase 4 PPI network
+  - #1355 (P2): Add Zhan TS-specificity finding (no ASD/DD enrichment) to Phase 5
+  - Dependencies: #1352 → #1354. #1355 independent.
+- Journal #2206 records this run's decisions.
+- Total pending dev tasks: 5 (#1201, #1202, #1352, #1354, #1355). Pipeline cannot advance to analysis until ALL are done.
+- Next: Monitor developer progress on all 5 pending tasks. When ALL done, advance to analysis and create analyst tasks.
