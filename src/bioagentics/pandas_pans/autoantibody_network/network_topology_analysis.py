@@ -79,11 +79,14 @@ def hub_significance_test(G, hub_metrics_df, n_random=1000):
             G_rand = nx.configuration_model(degree_seq, seed=i)
             G_rand = nx.Graph(G_rand)  # remove multi-edges
             G_rand.remove_edges_from(nx.selfloop_edges(G_rand))
-            random_max_degrees.append(max(dict(G_rand.degree()).values()))
+            rand_degrees = dict(G_rand.degree())
+            if not rand_degrees:
+                continue
+            random_max_degrees.append(max(rand_degrees.values()))
             # Approximate betweenness on a sample for speed
             bc = nx.betweenness_centrality(G_rand, k=min(100, n_nodes))
             random_max_betweenness.append(max(bc.values()))
-        except Exception:
+        except (nx.NetworkXError, nx.NetworkXUnfeasible):
             continue
 
     # Z-scores for top hub degree
