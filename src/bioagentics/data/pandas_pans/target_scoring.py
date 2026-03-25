@@ -29,20 +29,23 @@ OUTPUT_BASE = Path("output/pandas_pans/gas-molecular-mimicry-mapping")
 EPITOPE_DIR = OUTPUT_BASE / "epitope_predictions"
 MHC_DIR = OUTPUT_BASE / "mhc_predictions"
 SEROTYPE_DIR = OUTPUT_BASE / "serotype_comparison"
+EMOMIS_DIR = OUTPUT_BASE / "emomis_analysis"
 OUTPUT_DIR = OUTPUT_BASE / "target_scoring"
 
 # Scoring weights for composite score (sum to 1.0)
 # MMPred (expanded-allele 9-pocket scoring) complements the original PSSM MHC
 # predictions.  Combined MHC evidence (mhc + mmpred) = 0.25.
+# EMoMiS-lite conformational B-cell epitope mimicry at 0.07 weight.
 WEIGHTS = {
-    "epitope": 0.18,
-    "mhc": 0.15,
+    "epitope": 0.16,
+    "mhc": 0.14,
     "mmpred": 0.10,
-    "conservation": 0.14,
-    "identity": 0.14,
-    "coverage": 0.09,
+    "emomis": 0.07,
+    "conservation": 0.13,
+    "identity": 0.13,
+    "coverage": 0.08,
     "phase": 0.10,
-    "known_target": 0.10,
+    "known_target": 0.09,
 }
 
 
@@ -89,6 +92,15 @@ def load_mmpred_scores(mhc_dir: Path) -> pd.DataFrame:
     path = mhc_dir / "mmpred_target_summary.tsv"
     if not path.exists():
         logger.warning("No MMPred predictions found at %s", path)
+        return pd.DataFrame()
+    return pd.read_csv(path, sep="\t")
+
+
+def load_emomis_scores(emomis_dir: Path) -> pd.DataFrame:
+    """Load EMoMiS-lite conformational B-cell epitope mimicry scores."""
+    path = emomis_dir / "emomis_target_summary.tsv"
+    if not path.exists():
+        logger.warning("No EMoMiS scores found at %s", path)
         return pd.DataFrame()
     return pd.read_csv(path, sep="\t")
 
@@ -151,6 +163,12 @@ def compute_composite_score(merged: pd.DataFrame) -> pd.DataFrame:
     else:
         merged["norm_mmpred"] = 0.0
 
+    # EMoMiS-lite conformational B-cell epitope mimicry (already 0-1 scale)
+    if "best_conf_score" in merged.columns:
+        merged["norm_emomis"] = normalize_column(merged["best_conf_score"].fillna(0))
+    else:
+        merged["norm_emomis"] = 0.0
+
     # Phase weight: normalize so invasive=1.0, housekeeping=0.5, colonization=0.0
     phase = merged["best_phase_weight"].fillna(1.0)
     merged["norm_phase"] = (phase - 0.5) / 1.5  # maps 0.5→0, 1.0→0.33, 2.0→1.0
@@ -163,6 +181,7 @@ def compute_composite_score(merged: pd.DataFrame) -> pd.DataFrame:
         WEIGHTS["epitope"] * merged["norm_epitope"]
         + WEIGHTS["mhc"] * merged["norm_mhc"]
         + WEIGHTS["mmpred"] * merged["norm_mmpred"]
+        + WEIGHTS["emomis"] * merged["norm_emomis"]
         + WEIGHTS["conservation"] * merged["norm_conservation"]
         + WEIGHTS["identity"] * merged["norm_identity"]
         + WEIGHTS["coverage"] * merged["norm_coverage"]
@@ -195,6 +214,7 @@ def main(argv: list[str] | None = None) -> None:
     epitopes = load_epitope_scores(EPITOPE_DIR)
     mhc = load_mhc_scores(MHC_DIR)
     mmpred = load_mmpred_scores(MHC_DIR)
+    emomis = load_emomis_scores(EMOMIS_DIR)
     conservation = load_conservation_scores(SEROTYPE_DIR)
 
     # Merge all components on human_accession
@@ -218,6 +238,12 @@ def main(argv: list[str] | None = None) -> None:
                                        "mmpred_alleles_hit"]],
                                on="human_accession", how="left")
         logger.info("  MMPred data: %d targets", len(mmpred))
+
+    if not emomis.empty:
+        merged = merged.merge(emomis[["human_accession", "best_conf_score",
+                                       "best_overlap_fraction", "best_physchem"]],
+                               on="human_accession", how="left")
+        logger.info("  EMoMiS data: %d targets", len(emomis))
 
     if not conservation.empty:
         merged = merged.merge(conservation, on="human_accession", how="left")
