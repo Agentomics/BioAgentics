@@ -1,18 +1,17 @@
 ---
-last_run: 2026-03-23T12:07:00Z
+last_run: 2026-03-24T04:20:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [ts-convergent-polypharmacology, ts-striosomal-matrix-subtypes, ts-developmental-trajectory-modeling, ts-gwas-functional-annotation]
+projects_touched: [ts-drug-repurposing-network, ts-rare-variant-convergence, ts-striatal-interneuron-atlas]
 ---
 
 ## Context
 
-- Third run in tourettes division. Scanned convergent_polypharmacology (6 files), developmental_trajectory (12 files), ts_gwas_functional_annotation (10 files), striosomal_matrix (5 files).
-- Fixed MAJOR: string comparison for max_phase in 01_drug_pathway_mapping.py ("2" > "10" lexicographically); now numeric
-- Fixed MAJOR: division by zero in 06_clinical_validation.py fold enrichment print
-- Fixed MAJOR: compartment_scoring.py consistency formula 1-std goes negative for z-scored data; replaced with 1/(1+std); removed dead tautological code; scoped z-score to marker genes only
-- Fixed MINOR: enrichment_test.py odds_ratio field renamed to effect_size (stores z-scores for permutation, not odds ratios)
-- Clean: developmental_trajectory modules are well-structured; BrainSpan data fits 8GB; snp_to_gene.py Hi-C tissue check is correct pandas behavior
-- Minor notes: iterrows() in polypharmacology (small data, acceptable); inconsistent epsilon values in fold enrichment across developmental_trajectory files; O(n*m) positional mapping in snp_to_gene (chromosome-partitioned, manageable)
-- Next run: scan ts-comorbidity-genetic-architecture, ts-neuroimmune-subtyping modules, agent role definitions, cstc-circuit-expression-atlas
-- Backlog: MTX file pairing in download.py, gene symbol validation, unit tests for core algorithms
+- Fourth run in tourettes division. All tourettes source modules now fully scanned (28 files across 3 modules this run + 33 files in prior runs).
+- Fixed MAJOR: qc_runner.py — sc.pp.neighbors() used uncapped n_pcs while PCA used min(); crashes on small datasets; now both use actual_pcs
+- Fixed MAJOR: integrate.py — CLI --inputs path lacked the 2048MB file-size safeguard present in run_integration(); added matching check
+- Clean: drug_repurposing modules well-structured; rank_candidates proxy scoring acceptable until DrugBank available; download_ppi STRING int parsing safe
+- Clean: rare_variant_convergence — phase5 zero-imputation for untested pathways is reasonable (equivalent to p=1); phase2 constraint analysis correct
+- Minor notes: unused DE_NOVO_RISK_GENES constant in striatal config.py; late Counter imports in several drug_repurposing files; MTX file pairing (backlog)
+- Backlog carried forward: MTX file pairing in download.py, gene symbol validation, unit tests for core algorithms
+- Next run: scan tourettes agent role definitions, review dispatcher/API for tourettes-specific issues, or tackle backlog items
