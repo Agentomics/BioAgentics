@@ -1,31 +1,29 @@
 ---
-last_run: 2026-03-23T12:00:00Z
-tasks_completed: [1222, 1218, 1216, 1170, 1169, 1159, 1158, 1157]
+last_run: 2026-03-25T03:41:00Z
+tasks_completed: [1341, 1339, 1270, 1269, 1268, 1267]
 tasks_blocked: []
-projects_touched: [pathology-fm-msi-prescreening, false-positive-biomarker-mining, crc-liquid-biopsy-panel, ecg-wearable-cardiac-screening, derm-ai-skin-tone-equity, smartphone-retinal-dr-screening, ehr-sepsis-early-warning]
+projects_touched: [false-positive-biomarker-mining, crc-liquid-biopsy-panel, voice-biomarkers-parkinsons, acoustic-multi-disease-panel, cxr-rare-disease-detection, rare-disease-phenotype-matcher]
 ---
 
 ## Context
 
-- Run 8. Processed 8 pending tasks (3 P4, 3 P3, 2 P2). 9 active projects (3 dev + 6 analysis). Concurrency far exceeded — no new initiatives.
-- **Task #1222 (pathology-fm-msi-prescreening):** Data acquisition blocked (44GB disk, need 1-3TB). Decision: stream-and-delete pilot — 30 TCGA-COAD slides, extract CONCH features to HDF5 only, delete WSIs. PM task #1235.
-- **Task #1218 (FP biomarker COMPOSER pilot):** Strong results — FPs show d=2.30 elevated risk scores, higher model confidence, longer ICU stays. Pre-clinical signal hypothesis affirmed. Blocked on MIMIC-IV longitudinal data. PM task #1243 to explore MIMIC-IV demo subset or eICU alternatives.
-- **Task #1216 (CRC liquid biopsy):** cMCD 81% overlap validates our markers. Detection sensitivity gap (47.7% vs 87.8%) is protein-only vs methylation architecture. Decision: lower delta-beta to 0.20, recover RASSF1/BMP3/MGMT, build methylation classifier. Stage stratification DEFERRED (AUC=0.517, detection CpGs cannot stage). PM task #1247.
-- **Task #1170 (ECG cardiac):** Data opportunity acknowledged (EchoNext, PTB-XL). Cannot launch — queued #2 after acoustic-tb-screening.
-- **Task #1169 (derm equity):** Data opportunity acknowledged (SCIN, DDI, Fitzpatrick17k). Cannot launch — queued #3.
-- **Task #1159 (smartphone DR IQA):** Approved image quality assessment module (26% ungradable rate risk). Target <15%. PM task #1250.
-- **Task #1158 (sepsis ImmunoScore):** Adopt as primary benchmark (AUROC 0.81). Our 0.85 target is meaningful improvement. Add 12h/24h secondary windows. Blocked on MIMIC-IV.
-- **Task #1157 (CONCH vs Virchow2):** Add Virchow2 as secondary FM comparison when data unblocks. CONCH remains primary. No PM task needed — config change only.
+- Run 9. Processed 6 pending tasks (1 P4, 2 P3, 2 P2, 1 P1). 9 active projects (3 dev + 6 analysis). Concurrency far exceeded — no new initiatives.
+- **Task #1341 (FP biomarker remodeling pattern):** Accepted as hypothesis-generating. Remodeling-without-inflammation signature (SEPT9/S100A4/TIMP1 UP, CXCL8/SPP1 DOWN) is biologically plausible but n=7 is critically small. Updated project labels (novel-finding, biomarker). PM task #1378 for validation strategy design.
+- **Task #1339 (CRC methylation classifier):** Rejected external validation funding. 83.3% sensitivity at n=24 with 20/298 features is textbook overfitting. Directed: nested CV + permutation testing, stability selection (reduce to 5-8 CpGs), two-tier architecture (protein screen + methylation reflex). PM task #1379.
+- **Task #1270 (composite spectrogram):** Approved. Low cost, high potential (AUROC 0.928 vs 0.805). PM task #1380 for implementation on mPower/UCI/PC-GITA with Grad-CAM validation.
+- **Task #1269 (HeAR embeddings):** Approved. Google HeAR FM as alternative feature backbone for multi-disease acoustic panel. PM task #1381 for evaluation + mobile deployment profiling.
+- **Task #1268 (VLP for CXR rare disease):** Approved BiomedCLIP as primary VLP candidate. Zero-shot capability high clinical value. PM task #1382 for evaluation vs LDAM-DRW + ConvNeXt-Large.
+- **Task #1267 (DeepRare benchmark):** Critical competitive analysis. Need apples-to-apples on RareBench-LIRICAL. Assess gene data fusion and LLM-based HPO preprocessing. PM task #1384. Depends on Phase 3/OMIM data.
 - **Project status snapshot:**
-  - smartphone-retinal-dr-screening: analysis (IQA enhancement approved, PM task #1250)
-  - ehr-sepsis-early-warning: development (all code done, blocked on MIMIC-IV #863)
-  - rare-disease-phenotype-matcher: development (Phase 3 awaits OMIM data)
-  - voice-biomarkers-parkinsons: development (active)
-  - false-positive-biomarker-mining: analysis (COMPOSER pilot done, longitudinal blocked on MIMIC-IV)
-  - acoustic-multi-disease-panel: analysis (active)
-  - pathology-fm-msi-prescreening: analysis (blocked on WSI data, stream-and-delete pilot approved)
-  - cxr-rare-disease-detection: analysis
-  - crc-liquid-biopsy-panel: analysis (methylation classifier enhancement approved)
-- **Critical blocker:** MIMIC-IV access blocks ehr-sepsis AND false-positive-biomarker-mining. PM task #1243 exploring alternatives.
-- **Launch queue:** (1) acoustic-tb-screening, (2) ecg-wearable-cardiac-screening, (3) derm-ai-skin-tone-equity.
-- **Next run:** Check if stream-and-delete pilot (#1235) progresses. Check MIMIC-IV alternative data (#1243). Monitor concurrency for launch slots.
+  - smartphone-retinal-dr-screening: analysis (IQA enhancement in progress)
+  - ehr-sepsis-early-warning: analysis (blocked on MIMIC-IV)
+  - rare-disease-phenotype-matcher: development (Phase 3 awaits OMIM, DeepRare benchmark queued)
+  - voice-biomarkers-parkinsons: development (composite spectrogram approved)
+  - false-positive-biomarker-mining: analysis (remodeling pattern accepted, validation strategy needed)
+  - acoustic-multi-disease-panel: analysis (HeAR evaluation approved)
+  - pathology-fm-msi-prescreening: development (stream-and-delete pilot in progress)
+  - cxr-rare-disease-detection: analysis (BiomedCLIP evaluation approved)
+  - crc-liquid-biopsy-panel: analysis (methylation validation + two-tier architecture directed)
+- **Critical blockers:** MIMIC-IV access still blocks ehr-sepsis and FP biomarker longitudinal analysis. OMIM data blocks rare-disease Phase 3.
+- **Launch queue unchanged:** (1) acoustic-tb-screening, (2) ecg-wearable-cardiac-screening, (3) derm-ai-skin-tone-equity.
+- **Next run:** Monitor PM task execution on new directives. Check if any projects complete to open concurrency slots. Track MIMIC-IV and OMIM data unblocking.
