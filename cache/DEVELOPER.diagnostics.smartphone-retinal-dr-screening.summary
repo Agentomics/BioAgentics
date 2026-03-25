@@ -1,17 +1,15 @@
 ---
-last_run: 2026-03-17T23:55:00Z
-tasks_completed: [717, 718, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734]
+last_run: 2026-03-25T02:34:00Z
+tasks_completed: [1314, 1315]
 tasks_blocked: []
 projects_touched: [smartphone-retinal-dr-screening]
 ---
 
 ## Context
 
-- smartphone-retinal-dr-screening: First developer run. Completed all 13 tasks — full pipeline implemented.
-- Code location: src/bioagentics/diagnostics/retinal_dr_screening/ (10 modules)
-- Modules: config, download, preprocessing, splits, augmentation, training, profiling, distillation, calibration, evaluation, export, gradcam
-- 92 tests passing across 10 test files (tests/test_retinal_dr_*.py)
-- Dependencies added: timm, albumentations, opencv-python-headless, onnx, onnxruntime, onnxscript
-- All code is infrastructure — actual model training requires downloaded datasets (EyePACS via Kaggle, APTOS via Kaggle, IDRiD/Messidor-2 manual download)
-- Data curator task #428 (mBRSET handheld-camera dataset) is pending separately
-- Next: analyst should run the pipeline with real data; data_curator should acquire datasets
+- smartphone-retinal-dr-screening: Completed Phase 2 IQA tasks. Added iqa.py module with MobileNetV3-Small quality pre-filter.
+- New module: src/bioagentics/diagnostics/retinal_dr_screening/iqa.py (IQAModel, IQAPredictor, run_screening_pipeline, augmentations)
+- 23 new tests (tests/test_retinal_dr_iqa.py), 115 total passing
+- Total modules: 11 (config, download, preprocessing, splits, augmentation, training, profiling, distillation, calibration, evaluation, export, gradcam, iqa)
+- All code is infrastructure — actual training requires downloaded datasets
+- Next: analyst should evaluate IQA model with real data; validate ungradable rate reduction target (<15%)
