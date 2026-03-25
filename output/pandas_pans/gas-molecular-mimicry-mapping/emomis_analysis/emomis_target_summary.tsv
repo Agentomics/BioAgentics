@@ -1,0 +1,5 @@
+human_accession	human_gene	best_conf_score	best_overlap_fraction	best_physchem	pairs_analyzed
+P04406	GAPDH	0.456	0.082	0.777	1
+P09104	ENO2	0.4483	0.061	0.811	4
+B4DHW5		0.4477	0.09	0.802	4
+B4DHP5		0.4372	0.051	0.815	4
