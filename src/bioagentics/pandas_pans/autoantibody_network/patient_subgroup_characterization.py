@@ -8,8 +8,6 @@ predicted symptom profiles.
 import json
 import pandas as pd
 import numpy as np
-from scipy import stats
-from statsmodels.stats.multitest import multipletests
 from pathlib import Path
 from collections import defaultdict
 import networkx as nx
