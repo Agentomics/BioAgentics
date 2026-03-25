@@ -1,16 +1,16 @@
 ---
-last_run: 2026-03-19T16:43:00Z
-tasks_completed: [991, 992, 993, 994]
+last_run: 2026-03-25T03:04:00Z
+tasks_completed: [1301, 1302, 1303, 1304]
 tasks_blocked: []
 projects_touched: [gas-molecular-mimicry-mapping]
 ---
 
 ## Context
 
-- gas-molecular-mimicry-mapping: Completed all 4 analyst tasks for the analysis phase.
-- Task #991: Scoring validation — 7-component composite scoring is robust. Top-3 (HSPA6, ENO2, MCCC1-like) stable across all weight perturbations +-0.05 and 13/14 at +-0.10.
-- Task #992: Literature cross-reference — HSPA6/DnaK is NOVEL for PANDAS (HIGH tier). ENO2 semi-known (Dale 2006). GAPDH established positive control at rank 4. HSPA6 present in autoantibody PPI network → TUBB3 connection.
-- Task #993: Statistical assessment — convergent multi-modal evidence is the strength. Individual tests limited by n=8 and pre-selection bias.
-- Task #994: Analysis summary written to output/pandas_pans/gas-molecular-mimicry-mapping/analysis_summary.md. Created task #1040 for research_director to evaluate HSPA6 novel-finding.
-- Key outputs in output/pandas_pans/gas-molecular-mimicry-mapping/target_scoring/: scoring_validation_report.md, literature_cross_reference.md, statistical_assessment.md
-- Project ready for validation and documentation phases.
+- gas-molecular-mimicry-mapping: Completed all 4 analyst tasks for the expanded-dataset analysis cycle. Project ready for documentation phase.
+- Task #1301: Expanded dataset validation — Enn/Mrp proteins produced ZERO mimicry hits (negative result, confirms specificity). emm3.93 produced 7 hits identical to canonical M3. Rankings unchanged.
+- Task #1302: MMPred assessment — 99.4% binary cross-reactivity is a methodological artifact (long alignments). Percentile rank is meaningful; ENO2 rank 0.01 is strongest. Rankings completely insensitive to MMPred weight 0.05-0.20 due to score compression. Corroborates PSSM.
+- Task #1303: Statistical robustness update — 30% hit increase does not affect FDR (same 8 targets). Conservation 6/8=75% unchanged. M3.93 qualitatively strengthens conservation. Multi-modal convergence remains the valid statistical framework.
+- Task #1304: Updated analysis_summary.md for research_writer handoff. Now 8-component composite, 7 serotypes, 55 nodes/47 edges network. All new evidence integrated.
+- Key outputs in output/pandas_pans/gas-molecular-mimicry-mapping/analysis/: expanded_dataset_validation.md, mmpred_integration_assessment.md, statistical_robustness_update.md
+- No pending analyst tasks remain. Project should advance to documentation phase.
