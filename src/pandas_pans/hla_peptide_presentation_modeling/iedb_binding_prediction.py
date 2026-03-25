@@ -130,8 +130,14 @@ def call_iedb_api(
 def load_peptides_sampled(
     peptide_tsv: Path,
     max_peptides: int | None = None,
+    virulence_only: bool = False,
 ) -> list[dict]:
     """Load peptides from Phase 2 TSV, streaming to limit memory.
+
+    Args:
+        peptide_tsv: Path to the peptide TSV file from Phase 2.
+        max_peptides: Maximum number of unique peptides to load.
+        virulence_only: If True, only load peptides flagged as virulence factors.
 
     Returns list of dicts with keys: peptide, protein_accession, protein_name,
     is_virulence_factor.
@@ -145,12 +151,15 @@ def load_peptides_sampled(
             pep = row["peptide"]
             if pep in seen:
                 continue
+            is_vf = row.get("is_virulence_factor", "False") == "True"
+            if virulence_only and not is_vf:
+                continue
             seen.add(pep)
             peptides.append({
                 "peptide": pep,
                 "protein_accession": row.get("protein_accession", ""),
                 "protein_name": row.get("protein_name", ""),
-                "is_virulence_factor": row.get("is_virulence_factor", "False") == "True",
+                "is_virulence_factor": is_vf,
             })
             if max_peptides and len(peptides) >= max_peptides:
                 break
