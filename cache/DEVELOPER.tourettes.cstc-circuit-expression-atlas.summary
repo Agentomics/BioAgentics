@@ -1,17 +1,16 @@
 ---
-last_run: 2026-03-23T02:24:00Z
-tasks_completed: [776, 777, 1175]
-tasks_blocked: []
+last_run: 2026-03-25T02:24:00Z
+tasks_completed: [776, 777, 1175, 1326]
+tasks_blocked: [1324]
 projects_touched: [cstc-circuit-expression-atlas]
 ---
 
 ## Context
 
-- Completed task #1175 (P2): HMBA cell-type taxonomy integration
-  - HMBA reference module at src/bioagentics/data/tourettes/hmba_reference.py — 17 built-in cell types, alias mapping, region queries, striosome/matrix classification
-  - Integration hooks: circuit_vulnerability (annotate_cell_type_composition), dbs_tracts (get_tract_cell_types), wgcna_cstc (annotate_modules_cell_types)
-  - 43 tests in tests/test_hmba_reference.py
-- Total: 8 modules implemented across this project (gene_sets, ahba_spatial, brainspan_trajectories, iron_pathway, wgcna_cstc, dbs_tracts, circuit_vulnerability, hmba_reference)
-- 82+ tests passing (43 hmba + 38 existing + 1 gene_sets)
-- Remaining blocked tasks: #774 (scRNA-seq deconvolution), #775 (mesoscale striatal) — both blocked on external data access
-- HMBA taxonomy provides annotation framework for when scRNA-seq data becomes available
+- Completed task #1326: Striatal cell-type deconvolution module
+  - src/bioagentics/analysis/tourettes/striatal_celltypes.py — marker-based deconvolution scoring TS risk genes across 8 striatal cell types using AHBA expression + tau specificity + bootstrap enrichment + HMBA annotation
+  - 25 tests in tests/test_striatal_celltypes.py
+  - Used AHBA bulk expression approach (not raw scRNA-seq) due to 8GB RAM constraint
+- Total: 9 modules implemented (gene_sets, ahba_spatial, brainspan_trajectories, iron_pathway, wgcna_cstc, dbs_tracts, circuit_vulnerability, hmba_reference, striatal_celltypes)
+- 107+ tests passing (25 striatal + 43 hmba + 38 existing + 1 gene_sets)
+- Task #1324 (PFC cell-type profiling): blocked on data_curator #1323 (Wang group DLPFC snRNA-seq data availability)
