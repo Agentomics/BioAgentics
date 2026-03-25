@@ -1,16 +1,14 @@
 ---
-last_run: 2026-03-22T02:15:00Z
-tasks_completed: [1123]
+last_run: 2026-03-25T02:14:00Z
+tasks_completed: [1255]
 tasks_blocked: []
 projects_touched: [swisnf-metabolic-convergence]
 ---
 
 ## Context
 
-- swisnf-metabolic-convergence: Status=development. Phases 1a-3 done. Routed GSH/eprenetapopt addendum from RD.
-- Developer completed: #1005 (Phase 1a), #1006 (Phase 1b), #1007 (Phase 2), #1008 (Phase 3).
-- Key Phase 2/3 findings: 104 convergent metabolic genes, OXPHOS dominant (34 genes, FDR=2.56e-13). HMGCR did NOT cross-validate to SMARCA4.
-- Created developer task #1211 (p4): GSH addendum — add GCLC, GCLM, GSR, GPX4, GSS to Phase 2/3 convergence analysis.
-- Updated #1010 (Phase 5) to include eprenetapopt (APR-246) in drug repurposing targets.
-- Pending developer tasks: #1211 (p4, GSH addendum), #1009 (p3, Phase 4 TCGA), #1010 (p3, Phase 5 drugs).
-- Next: Monitor developer progress. Cannot advance to analysis until #1009, #1010, #1211 all done. #1211 should run before #1009/#1010 (GSH results feed downstream).
+- swisnf-metabolic-convergence: Status=analysis. All 7 developer tasks done (#1005-#1010, #1211). Project auto-advanced to analysis on 2026-03-23.
+- Created 3 analyst tasks: #1329 (Phase 1-2 methodology + 104-gene validation), #1331 (Phase 3 pathway enrichment + OXPHOS dominance), #1332 (Phase 4 TCGA failure + Phase 5 drug repurposing).
+- Key development findings: 104 convergent metabolic genes, OXPHOS dominant (34 genes, FDR=2.56e-13). HMGCR NOT convergent (ARID1A-specific). GSH NOT convergent (ARID1A-specific). Phase 4 TCGA FAILED criterion (4% vs 50%). PRISM validates IACS-010759 for SMARCA4 (d=-0.36, p=0.007). Metformin top drug candidate (18 convergent targets).
+- RD task #1273 (eprenetapopt validation drug) is pending but assigned to research_director, not PM.
+- Next: Monitor analyst progress on #1329, #1331, #1332. Cannot advance to validation until all 3 analyst tasks done.
