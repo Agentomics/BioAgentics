@@ -211,7 +211,10 @@ def train_staging_classifier(
         mask = np.isnan(col)
         if mask.any():
             median = np.nanmedian(col)
-            X[mask, j] = median
+            if np.isnan(median):
+                X[mask, j] = 0.0  # all-NaN column; removed by variance filter below
+            else:
+                X[mask, j] = median
 
     # Remove zero-variance features
     variances = np.var(X, axis=0)
@@ -309,7 +312,13 @@ def run_stage_classifier(
     classifier_results = train_staging_classifier(meth, sample_info, stage_cpgs)
 
     # Baseline comparison: detection CpGs for staging
-    sigs = pd.read_parquet(output_dir / "methylation_signatures.parquet")
+    sigs_path = output_dir / "methylation_signatures.parquet"
+    if not sigs_path.exists():
+        raise FileNotFoundError(
+            f"Detection signatures not found: {sigs_path}. "
+            "Run methylation_discovery first."
+        )
+    sigs = pd.read_parquet(sigs_path)
     baseline_cpgs = sigs.head(50).index.tolist()
     baseline_available = [c for c in baseline_cpgs if c in meth.index]
     samples = sample_info["sample_id"].tolist()
@@ -319,7 +328,11 @@ def run_stage_classifier(
         col = X_base[:, j]
         mask = np.isnan(col)
         if mask.any():
-            X_base[mask, j] = np.nanmedian(col)
+            median = np.nanmedian(col)
+            if np.isnan(median):
+                X_base[mask, j] = 0.0
+            else:
+                X_base[mask, j] = median
     variances = np.var(X_base, axis=0)
     keep = variances > 1e-10
     X_base = X_base[:, keep]
