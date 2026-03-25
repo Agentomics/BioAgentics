@@ -33,7 +33,7 @@ class TestFisherEnrichment:
         s_res, m_res = fisher_enrichment(scores, strio_genes, gene_set_name="strio_set")
         assert s_res.compartment == "striosome"
         assert s_res.direction == "enriched"
-        assert s_res.odds_ratio > 1
+        assert s_res.effect_size > 1
         assert s_res.p_value < 0.05
 
     def test_matrix_enriched_set(self):
@@ -42,7 +42,7 @@ class TestFisherEnrichment:
         s_res, m_res = fisher_enrichment(scores, matrix_genes, gene_set_name="matrix_set")
         assert m_res.compartment == "matrix"
         assert m_res.direction == "enriched"
-        assert m_res.odds_ratio > 1
+        assert m_res.effect_size > 1
         assert m_res.p_value < 0.05
 
     def test_neutral_set_not_enriched(self):
@@ -50,8 +50,8 @@ class TestFisherEnrichment:
         neutral_genes = {f"NEUTRAL_{i}" for i in range(20)}
         s_res, m_res = fisher_enrichment(scores, neutral_genes, gene_set_name="neutral_set")
         # Neither compartment should be strongly enriched
-        assert s_res.p_value > 0.01 or s_res.odds_ratio < 2
-        assert m_res.p_value > 0.01 or m_res.odds_ratio < 2
+        assert s_res.p_value > 0.01 or s_res.effect_size < 2
+        assert m_res.p_value > 0.01 or m_res.effect_size < 2
 
     def test_empty_overlap(self):
         scores = _make_gene_scores()
