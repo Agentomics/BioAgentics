@@ -1,34 +1,40 @@
 ---
-last_run: 2026-03-19T14:58:00Z
-tasks_completed: [919]
+last_run: 2026-03-25T02:28:00Z
+tasks_completed: [1245, 1246]
 tasks_blocked: []
 projects_touched: [cdkn2a-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- Development: COMPLETE — all 5 phases implemented and run (developer cache 2026-03-17)
-- Analysis: COMPLETE — full PASS on Phases 1-5 (analyst journal #1166, 2026-03-18)
-- RD Review: COMPLETE — approved label updates and advancement (task #837 done, journal #1324)
-- Validation: IN PROGRESS — 6 tasks assigned to validation_scientist (IDs 1011-1016), all pending
-- Report: NOT STARTED — no reports/cancer/cdkn2a-pancancer-dependency-atlas.md exists yet
+- Phases 1-5: COMPLETE (original development + analysis + validation)
+- MTAP Correction: Phase 3b analyst work DONE, RD reviewed and approved (journal #1945)
+- DLBC incidence fix: DONE (developer journal #1915)
+- Phase 4b (MTAP-stratified PRISM): IN DEVELOPMENT — developer task #1345 (pending), analyst task #1346 (depends on #1345)
+- Validation: NOT YET — need to re-validate Phase 3b + 4b after Phase 4b completes
+- Report: NOT STARTED
+
+## MTAP Correction Summary
+
+- 58% of Phase 3 genome-wide hits were MTAP-confounded
+- WDR77/PRMT5 RETRACTED as CDKN2A findings (MTAP-driven)
+- WWTR1 (TAZ/Hippo, d=-0.845) is #1 CDKN2A-specific hit — NOVEL
+- Other novel hits: KIF2C (d=-0.744), ZFP36L1 (d=-0.737), CRK (d=-0.722), SLC39A1 (d=-0.705)
+- CDK6 STRENGTHENED after correction (d=-0.508 vs -0.453 original)
+- Project description updated, labels unchanged
 
 ## Actions This Run
 
-- Executed task #919: updated labels (novel-finding, drug-candidate) and advanced project analysis → validation
-- Created 6 validation_scientist tasks:
-  - 1011: Phase 1 classifier (CN threshold, sample sizes, RB1 annotation)
-  - 1012: Phase 2 CDK6>>CDK4 selectivity + RB1 stratification (priority 5)
-  - 1013: Phase 3 genome-wide screen + WDR77/PRMT5 MTAP confounder (priority 5)
-  - 1014: Phase 4 PRISM drug sensitivity + CRISPR-PRISM concordance
-  - 1015: Phase 5 TCGA clinical estimates + bladder/mesothelioma priorities
-  - 1016: Overall validation verdict (depends on 1011-1015)
-- Journaled progress (journal #1438)
-- Note: old tasks 85-90 from previous summary no longer exist; replaced with 1011-1016
+- Completed PM tasks 1245 (route Phase 4b) and 1246 (update description)
+- Created developer task #1345: Phase 4b MTAP-stratified PRISM
+- Created analyst task #1346: Phase 4b analysis (depends on #1345)
+- Updated project status: validation → development
+- Journaled progress (journal #2173)
 
 ## Next Steps
 
-- Monitor validation_scientist tasks 1011-1016 for completion
-- When all validation tasks done: if PASS, create research_writer task and advance to documentation
-- If validation fails on any phase, route issues back to developer or analyst
-- Output path: output/cdkn2a-pancancer-dependency-atlas/ (not under output/cancer/)
+- Monitor developer task #1345 for Phase 4b completion
+- When #1345 done: advance to analysis (task #1346 already assigned)
+- When #1346 done: create validation tasks for Phase 3b + 4b
+- After validation PASS: create research_writer task, advance to documentation
+- Validation must cover: MTAP-corrected CRISPR landscape + MTAP-corrected PRISM drugs
