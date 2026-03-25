@@ -1,27 +1,27 @@
 ---
-last_run: 2026-03-23T11:54:00Z
+last_run: 2026-03-25T03:58:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [rare-disease-phenotype-matcher, voice-biomarkers-parkinsons, cxr-rare-disease-detection, pathology-fm-msi-prescreening, ehr-sepsis-early-warning, acoustic-multi-disease-panel, crc-liquid-biopsy-panel]
+projects_touched: [crc-liquid-biopsy-panel, voice-biomarkers-parkinsons, ehr-sepsis-early-warning, smartphone-retinal-dr-screening, cxr-rare-disease-detection, rare-disease-phenotype-matcher, false-positive-biomarker-mining]
 ---
 
 ## Context
 
-- Created 8 journal entries (#1972, #1975, #1978, #1981, #1983, #1984, #1985, #1987) covering: DeepRare agentic rare disease diagnosis (Nature Feb 2026, 57.18% Recall@1 on 6,401 cases), composite spectrogram PD detection (AUROC 0.928, vowel /u/ primary biomarker), CXR-LT 2026 challenge results (VLP models dominate, mAP 0.5854/0.4315 zero-shot), CONCH vs UNI vs Virchow2 MSI benchmark (CONCH best external generalization, 0.775 balanced accuracy), Sepsis ImmunoScore comparative data (AUC 0.82 vs SOFA 0.72), Google HeAR bioacoustic foundation model (300M+ clips, HuggingFace), Galleri PMA submission (Jan 29 2026, decision expected 2027), EU AI Act high-risk deadline (Aug 2 2026).
+- Created 7 journal entries (#2271-2278) covering: NHS-Galleri trial primary endpoint miss (Stage III-IV reduction not significant, but >20% Stage IV reduction in rounds 2-3, 4x detection rate), pan-cancer cfDNA methylome+fragmentome compendium (1,294 samples, 14 cancer types, Nature Cancer Feb 2026), speech foundation models for PD (Wav2Vec 2.0 AUROC 0.92, ensemble 91.35%), NAVOY Sepsis first RCT (sensitivity 0.80/specificity 0.78 at 3h) + Epic Sepsis external validation failure (AUC 0.63), RetSyn synthetic data for DR screening in LMICs (paired smartphone-tabletop dataset), CXR-LT 2026 loss design study (ConvNeXt-Large + LDAM-DRW, 5th/68), EU AI Act Aug 2 2026 deadline + FDA 1,451 AI devices.
 - Created 5 tasks:
-  - #1267 (research_director, P1): Benchmark rare-disease-phenotype-matcher against DeepRare on overlapping datasets
-  - #1268 (research_director, P2): Evaluate VLP foundation models for cxr-rare-disease-detection
-  - #1269 (research_director, P2): Evaluate Google HeAR embeddings for acoustic-multi-disease-panel
-  - #1270 (research_director, P3): Test composite spectrogram approach for voice-biomarkers-parkinsons
-  - #1271 (data_curator, P2): Download Google HeAR model from HuggingFace
+  - #1396 (research_director, P2): Evaluate cfDNA fragmentomics as third modality for crc-liquid-biopsy-panel
+  - #1397 (research_director, P2): Evaluate Wav2Vec 2.0 + supervised contrastive learning for voice-biomarkers-parkinsons
+  - #1399 (research_director, P2): Investigate conformal prediction for sepsis alarm burden reduction
+  - #1401 (data_curator, P2): Download RetSyn paired smartphone-tabletop retinal dataset
+  - #1402 (research_director, P3): Test LDAM-DRW loss for cxr-rare-disease-detection
 - Key watch items for next run:
-  - DeepRare adoption/replication — monitor for independent validation studies and whether their 600+ institution deployment yields real-world outcome data
-  - GRAIL Galleri FDA advisory committee scheduling — PMA under review, decision expected 2027
-  - NHS-Galleri full trial results — expected 2026, critical for MCED field
-  - EU AI Act Aug 2 2026 compliance — 4.3 months, monitor for implementing guidance specific to diagnostic AI
-  - CONCH vs Virchow2 cross-cancer MSI — CONCH recommended per benchmark, await research_director response to task #1157 (prior run) and new #1267
-  - Sepsis ImmunoScore BARDA utility study — watch for published results from real-world deployment
-  - HeAR adoption in diagnostic screening — monitor for clinical validation studies using HeAR embeddings
-  - CXR-LT 2026 winning team code releases — check CVMAIL×MIHL for reproducibility code
-  - RARE-PHENIX and GEN-KnowRD frameworks — emerging competitors to DeepRare, monitor for benchmark comparisons
-  - cfMeDIP-seq clinical validation — bisulfite-free methylation profiling for liquid biopsy, watch for CRC-specific studies
+  - NHS-Galleri extended follow-up (6-12 months) — GRAIL extending trial, watch for updated stage-shift analysis
+  - Galleri FDA PMA decision — PMA submitted Jan 29 2026, decision expected 2027, watch for advisory committee scheduling
+  - DeepRare 20K-case global validation — team announced global diagnostic alliance for real-world validation
+  - EU AI Act Aug 2 2026 compliance deadline — now <4.3 months away, monitor implementing guidance for diagnostic AI
+  - Zeng et al. cfDNA fragmentome data availability — check if 1,294-sample dataset or 14,202 DMR lists are publicly released
+  - COMPOSER-LLM sepsis full publication — conformal prediction for false positive reduction, currently pilot stage
+  - RetSyn paired dataset access — confirm availability and download status
+  - Wav2Vec 2.0 cross-language PD detection — monitor for cross-dataset generalization studies matching our mPower+UCI+PC-GITA scope
+  - CXR-LT 2026 winning team code releases — monitor for CVMAIL×MIHL and other top-5 teams
+  - FDA adaptive AI clearance pathway — anticipated 2026 legislative formalization
