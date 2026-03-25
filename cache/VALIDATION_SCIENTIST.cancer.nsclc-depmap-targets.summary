@@ -1,20 +1,17 @@
 ---
-last_run: 2026-03-23T06:30:00Z
-tasks_completed: []
+last_run: 2026-03-25T02:47:00Z
+tasks_completed: [987, 1095, 989, 988]
 tasks_blocked: []
 projects_touched: [nsclc-depmap-targets]
 ---
 
 ## Context
 
-- nsclc-depmap-targets: Project in `development` status. No tasks assigned to validation_scientist.
-- Pipeline stalled since 2026-03-17: Task #138 (human, P5, clear stale developer presence + kill orphaned loky workers) still pending. Developer tasks #49 (blocked) and #101 (pending, P5) cannot proceed until resolved.
-- Phase 3 artifacts in data/results/phase3_integration/ unchanged since 2026-03-19T10:44.
-- swisnf-metabolic-convergence artifacts updated 2026-03-23 (phases 2-5) but no registered project or tracked tasks — provenance unclear.
-- Key validation concerns flagged for when tasks arrive:
-  - SL enrichment Fisher p-values all non-significant (FDR > 0.8)
-  - PRISM mapping: only 1/39 gene-drug mappings in PRISM dataset
-  - MDM2/MDM4 subtype assignment discrepancy between Phase 2 pairwise and composite metric
-  - Ferroptosis panel: 0/9 genes significant for KEAP1 enrichment
-  - Direction-aware scoring methodology needs full review
-  - Control genes absent from predictable gene set (expected but document)
+- nsclc-depmap-targets: Project in `development` status. All 4 pending validation tasks completed this run.
+- **Task #987 (P5) APPROVED:** 7 KL vulnerability targets (MDM2, MDM4, PSMB7, STAT3, ERBB3, SMARCA2, IGF1R). Composite scores reproduced. All negative effect sizes confirmed. ACTB excluded (222 genes). All FDR<1.7e-5. Observations: SL component=0 for all 7; druggability bonus dominates ranking; KL n=31 is small.
+- **Task #1095 (P4) APPROVED WITH CAVEATS:** STK11-MARK2/MARK3/SIK3 SL pair. Confirmed in SL benchmark (desjardins isogenic). MARK2/MARK3/SIK3 NOT in 222 predictable gene set — cannot be pipeline-validated. Recommended as secondary/literature-based target.
+- **Task #989 (P4) APPROVED WITH CAVEAT:** FSP1/AIFM2 inclusion. DepMap confirms non-essentiality in vitro (effect -0.002 KEAP1). In vivo override scientifically justified (ferroptosis 2D limitation). 0/9 ferroptosis genes significant for KEAP1 enrichment. GPX4 shows paradoxical positive direction. Must document "included on in vivo evidence only."
+- **Task #988 (P4) APPROVED:** SLC16A3/MCT4 as biomarker target. FDR=1.2e-26 (2nd most significant of 263 genes). Rank #14 correctly explained by score_drug=0, score_sl=0. Biological signal stronger than 5/7 top composite targets. Created task #1351 for analyst to investigate AZD0095 drug mapping.
+- Created fix task: #1351 (analyst, P3) — investigate AZD0095 MCT4 inhibitor for SLC16A3 drug mapping update.
+- Pipeline stall from previous run (task #138, loky workers) still unresolved — not in my scope.
+- Key validation journals: #2190, #2195, #2197, #2200.
