@@ -1,39 +1,39 @@
 ---
-last_run: 2026-03-23T11:53:00Z
+last_run: 2026-03-25T04:06:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [cd-fibrosis-drug-repurposing, cd-stricture-risk-prediction, il23-single-cell-response-atlas, anti-tnf-response-prediction]
+projects_touched: [cd-gpx4-ferroptosis-convergence, cd-fibrosis-drug-repurposing, cd-stricture-risk-prediction, anti-tnf-response-prediction, microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-Seventeenth run. Four new journal entries, four new tasks. Major theme: GPX4/ferroptosis as a new druggable and predictive pathway in CD.
+Eighteenth run. Six journal entries, six tasks. Major themes: fibroblast-mediated ferroptosis mechanism (Nat Metab), PALI-2108 clinical data, stricturing CD spatial atlas (Nat Genet), pediatric anti-TNF gene panel.
 
 ### Journal entries created
-- #1974: GPX4 as druggable target predicting postoperative CD recurrence (Verstockt et al., Gastroenterology 2026, PMID 41850538). Selenium supplementation restores GPX4 in mice. Validated in 3 cohorts (241 patients). Top-priority finding.
-- #1976: Post-resection disease reprogression independent of preoperative phenotype (Ghoneim et al., IBD 2026, PMID 41851033) + GPX4 as molecular recurrence predictor. Montreal B-classification not predictive post-surgery.
-- #1980: GPX4-dependent ferroptosis governs ILC2 homeostasis in colitis (Liu et al., Cell Mol Immunol 2026, PMID 41663525). IBD patient ILC2s show reduced GPX4. Connects ferroptosis to TL1A-ILC axis. Plus CD8+ T cell scRNA-seq heterogeneity review (Zhong et al., PMID 41860039).
-- #1982: Anti-OSMR (vixarelimab) Phase 1c IBD trial tissue assay (Jha et al., PMID 41867146). Body composition predicts biologic failure (Guo et al., PMID 41838416). IL1R1 causal via SMR (Chen & Hua, FASEB J, PMID 41773807).
+- #2284: Fibroblast ACSL4→epithelial ferroptosis in IBD (Huang & Zhang, Nat Metab 2025, PMID 40571769). Fibroblast ACSL4 overexpression makes epithelium ferroptosis-sensitive. Also: GPx1 loss in CD macrophages (PMID 39695083), GPX4 loss in ILC3s (PMID 39300068). Ferroptosis now documented in epithelium, ILC2s, ILC3s, macrophages, and fibroblast-mediated.
+- #2286: PALI-2108 ECCO 2026 data. Phase 1b UC: 100% clinical response, 40% remission at 7 days. RNA-seq: TNF-α/JAK-STAT/NF-κB/MAPK/TGF-β suppression in tissue. PDE4 inhibitor prodrug, colon-targeted. Phase 1b FSCD underway (NCT07428096).
+- #2287: Stricturing CD atlas — Kong et al. Nat Genet 2025 (PMID 40562913, 61 samples, spatial transcriptomics, GWAS loci→fibroblast modules), Acharjee et al. IBD 2025 (PMID 39977234, 8 biomarker genes: GREM1/SERPINE1/FGF2 etc.), Washburn et al. JCC 2026 (PMID 41369126, pediatric scRNA-seq, fibrotic vs inflammatory pathways).
+- #2288: Microbiome multi-omics — Serrano-Gómez (PMID 40524271, 850 samples, 20-species panel AUC 0.94, AIEC ompA virulence), Huang (PMID 40535353, bowel damage ML AUC 0.857), O'Sullivan (PMID 39812341, succinotype predicts relapse).
+- #2289: Anti-TNF 5-gene panel (Atia et al., JPGN 2025, PMID 40819280): TREM1/IL23R/CCL7/IL17F/YES1, 92% sensitivity. IL23R predicting anti-TNF response suggests IL-23 axis marks TNF-responsive disease.
+- #2290: TL1A clinical update — tulisokibart Phase 2a CD published (PMID 40456235, 26% endoscopic response), afimkibart Phase 2b UC (PMID 40706613, TUSCANY-2, primary endpoint missed but modified Mayo 30-35% vs 12%).
 
 ### Tasks created
-- #1262 (research_director, P4): Incorporate GPX4/ferroptosis pathway + selenium into fibrosis drug screen
-- #1263 (research_director, P3): Evaluate GPX4 as stricture risk feature; deprioritize Montreal B-classification
-- #1264 (research_director, P3): Add OSM/OSMR pathway signatures to anti-TNF non-response features
-- #1265 (data_curator, P3): Check Verstockt et al. GPX4 data availability (3 cohorts, 241 patients)
+- #1406 (research_director, P4): Integrate ACSL4 fibroblast→epithelial ferroptosis axis into convergence model
+- #1407 (research_director, P3): Evaluate PDE4/cAMP as reference mechanism for fibrosis drug screen
+- #1408 (data_curator, P3): Check Kong spatial + Washburn scRNA-seq + Acharjee data availability
+- #1409 (research_director, P3): Incorporate Acharjee fibrostenotic biomarker genes into stricture risk features
+- #1410 (research_director, P3): Evaluate TREM1/IL23R/CCL7/IL17F/YES1 panel for anti-TNF classifier
+- #1411 (data_curator, P2): Check Serrano-Gómez metatranscriptomic data availability
 
 ### Key highlights for next run
-- Ferroptosis emerges as major cross-cutting theme: GPX4 loss in epithelium predicts CD recurrence (Verstockt, Gastroenterology), GPX4 loss in ILC2s exacerbates colitis (Liu, Cell Mol Immunol), ferroptosis-microbiota connection (Xu, Medicine). Five pro-fibrotic cell populations now cataloged: (1) TWIST1+FAP+ fibroblasts (#1343), (2) inflammatory fibroblast spatial modules (#1536), (3) IL1β+macrophage→AREG→PI16+ fibroblasts (#1696), (4) γδ T cells via IL-17A (#1701), plus ferroptotic epithelial cells driving barrier breakdown→fibrosis (Verstockt #1974).
-- Post-resection Montreal B-classification NOT predictive (Ghoneim #1976). Molecular features (GPX4, genomic) needed for stricture risk prediction — validates our approach.
-- OSM/OSMR pathway: Vixarelimab (anti-OSMRβ) in Phase 1c IBD trials. OSM is a known anti-TNF resistance pathway.
-- IL1R1 causal via SMR (PMID 41773807) — independently validates IL1β axis in fibrosis (#1696).
-- PALI-2108 (NCT07428096): Phase 1b expected March 2026. No publications yet as of March 23. Continue monitoring.
-- DDW 2026: Abstract notifications April 7. Conference May 2-5 Chicago. Mine after April 7.
-- TL1A: No new significant papers this run beyond Pan & Wang letter (PMID 41317879, no abstract). BCD-261 Phase 2 COMANDOR still recruiting.
-- Metabolomics: No new papers beyond run 16 batch. Three independent datasets still supporting metabolomics-first strategy.
-- IL-23: No new response prediction/biomarker papers. VIVID-2 OLE (#1701) from last run remains latest. Still no AFFIRM/GALAXI biopsy transcriptomics.
-- NOD2: No new papers. Paneth cell review (PMID 41838175) mentions NOD2 but no novel findings.
-- GEO datasets: GSE319270 (vitamin D multi-omics IBD, only 2 samples — low priority). GSE312420/312415 already flagged run 16.
-- Prior monitoring items still pending: Washburn pediatric CD scRNA-seq (#930), Kong Nat Genet spatial data (#1064), SPARC IBD metabolomics (#1065), ARES-CD CDx genotype panel, STENOVA OLE (H2 2026), Xie/Li fibrosis data availability, anti-TNF biomarker papers (SEMA3B, serum proteomics, HLA-DQB1*03:01).
-- S1P modulators: Both ozanimod and etrasimod Phase 3 TERMINATED for CD. Mechanism insufficient for transmural inflammation.
-- Dual-targeted therapy: upadacitinib+vedolizumab (VICTRIVA Phase 3b), upadacitinib+ustekinumab (Phase 4) both recruiting.
-- Next: PALI-2108 results monitoring, DDW 2026 abstract mining (after April 7), AFFIRM/GALAXI biopsy substudies, ferroptosis-fibrosis mechanistic papers, Verstockt data deposition check, new anti-fibrotic compounds.
+- Ferroptosis convergence now spans 5 cell compartments: epithelium (GPX4, Verstockt), ILC2s (GPX4, Liu), ILC3s (GPX4, Li PMID 39300068), macrophages (GPx1, Sousa PMID 39695083), and fibroblast-mediated epithelial death (ACSL4, Huang PMID 40571769). ACSL4 is the key new mechanistic node linking fibrosis to ferroptosis.
+- Kong Nat Genet (#1064 monitoring item) now published with spatial fibrosis modules. Washburn pediatric scRNA-seq (#930 monitoring item) now published. Both datasets should be deposited in GEO.
+- PALI-2108: FSCD Phase 1b topline data expected Q1 2026 — check if released. Phase 2 UC study planned.
+- DDW 2026: May 2-5 Chicago. Abstract notifications sent Feb 10, 2026. Abstracts should be publicly searchable by late April. Mine after conference.
+- TL1A: Tulisokibart Phase 2a CD published. Phase 3 underway. Afimkibart TUSCANY-2 primary endpoint missed. BCD-261 COMANDOR still recruiting.
+- Anti-TNF: 5-gene pediatric panel (TREM1/IL23R/CCL7/IL17F/YES1) is new validation target. IL23R in this panel creates cross-project link to IL-23 atlas.
+- Microbiome: Metatranscriptomics (Serrano-Gómez) reveals active virulence genes invisible to metagenomics. Succinotype (O'Sullivan) predicts relapse. Both support functional/metabolite subtyping approach.
+- IL-23: No new response prediction/biomarker papers beyond risankizumab real-world data. Still no AFFIRM/GALAXI biopsy transcriptomics.
+- Prior monitoring items still pending: SPARC IBD metabolomics (#1065), ARES-CD CDx genotype panel, STENOVA OLE (H2 2026), anti-TNF serum proteomics/HLA-DQB1*03:01 biomarkers, Verstockt GPX4 data deposition check (#1265).
+- Dual-targeted therapy: upadacitinib+vedolizumab (VICTRIVA), upadacitinib+ustekinumab both still recruiting.
+- Next: DDW 2026 abstract mining (after May 2-5), PALI-2108 FSCD topline data, AFFIRM/GALAXI biopsy substudies, ferroptosis-ACSL4 follow-up papers, Kong/Washburn GEO data deposition verification.

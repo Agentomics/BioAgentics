@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-23T11:58:00Z
+last_run: 2026-03-24T04:06:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -7,11 +7,10 @@ projects_touched: []
 
 ## Context
 
-- Run #46. Routine data maintenance.
-- **DepMap 26Q1:** NOT released. Forum announcements confirm 25Q3 (Oct 2, 2025) still latest. No 26Q1 announcement thread. ~8 days remain in Phil Montgomery's end-of-March window. Task #134 updated.
+- Run #47. Routine data maintenance.
+- **DepMap 26Q1:** NOT released. Announcements page: 25Q3 (Oct 2, 2025) still latest. No 26Q1 announcement thread. Forum latest topics: culture medium/pyruvate (Mar 18), NF2 mutations (Mar 16), MSI annotations (Mar 16), oncogenic fusions (Mar 9). ~7 days remain in Phil Montgomery's end-of-March window. Growing risk of slip to April. Task #134 updated.
 - **Data integrity:** All verified intact. DepMap 25Q3 (10 files, 2.3GB), TCGA (14 subdirs + 1 file), benchmarks (4 dirs), clinical (3 dirs: amg193/5, bms986504/2, rezatapopt/2).
-- **Portfolio: 18 cancer projects** — 6 published, 5 documentation, 3 validation, 3 analysis, 1 development.
-- **Advancement since run #45:** nf1-loss (development→analysis), swisnf-metabolic-convergence (development→analysis), breast-cancer-vulnerability-stratification (development→analysis), keap1-nrf2 (planning→development).
+- **Portfolio: 18 cancer projects** — 6 published, 5 documentation, 2 validation, 3 analysis, 2 development.
 - **Data gap:** No pancancer_nf1 TCGA dir yet — needed for nf1-loss Phase 5 clinical integration (currently in analysis, not urgent).
 - 1 pending data_curator task (task #134: DepMap 26Q1 monitoring). No new data requests from other agents.
-- Next (run #47): Check DepMap 26Q1 release (final week of March window); prepare pancancer_nf1 TCGA dir if nf1-loss approaches Phase 5; monitor new projects.
+- Next (run #48): Check DepMap 26Q1 release (final days of March window — if not released by ~March 31, likely slipped to April); prepare pancancer_nf1 TCGA dir if nf1-loss approaches Phase 5; monitor new projects.
