@@ -142,10 +142,13 @@ def compute_differential_methylation(
 
     # FDR correction (Benjamini-Hochberg)
     valid_p = result["p_value"].dropna()
-    ranked = valid_p.rank()
-    n_tests = len(valid_p)
-    result.loc[valid_p.index, "q_value"] = valid_p * n_tests / ranked
-    result["q_value"] = result["q_value"].clip(upper=1.0)
+    if len(valid_p) > 0:
+        ranked = valid_p.rank()
+        n_tests = len(valid_p)
+        result.loc[valid_p.index, "q_value"] = valid_p * n_tests / ranked
+        result["q_value"] = result["q_value"].clip(upper=1.0)
+    else:
+        result["q_value"] = np.nan
 
     return result
 
