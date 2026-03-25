@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-23T12:00:00Z
+last_run: 2026-03-24T12:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -35,5 +35,6 @@ projects_touched: []
 - Run 34: API review rotation + new code scan. Reviewed all 8 API routers, models, database, auth, main. Fixed create_project() silently dropping novelty_summary and blind_spots fields (900f6ea). Reviewed 14 new files (breast_cancer_vulnerability_stratification 6 files, swisnf_metabolic_convergence 2 files, models/figures.py, models/biomarker_validation.py, models/pathway_enrichment.py, models/wgcna.py). Fixed MICA tiebreaker in ic_matcher.py — equal IC caused non-deterministic ancestor selection (15b6733). Fixed stale CMAP test count (14e7874). All tests pass (590+).
 - Run 35: Dispatcher analysis + new code scan. Dispatcher clean. Reviewed ~50 new files across all divisions (NOD2, voice_pd deep CNN, crohns CMTF/HMP2/CD-stricture, rare disease diagnostics, acoustic panel, two_hit models, tourettes striosomal/developmental, anti-TNF, IVIG/PANS, SWI/SNF). No bugs found. 19/19 new module imports OK. Tests blocked by annoy Bus error.
 - Run 36: Agent role review + new code scan. Reviewed all 11 cancer role files, scanned ~15 new/changed files across CRC liquid biopsy, crohns, tourettes, pandas_pans, voice_pd. Fixed BH FDR missing cumulative-minimum in stage_classifier.py (a7a5d25). Fixed broken searchsorted in methylation_classifier.py (c695683). Fixed robustness array index crash and Series→JSON serialization in autoantibody_network (e1cc104). 498 tests pass (1 pre-existing failure in test_candidate_prioritization unrelated to changes).
+- Run 37: Config review + new code scan + test fixes. Configs all clean. Scanned ~25 new/changed files — all clean. Fixed test_baselines.py stale assertion (3→4 baselines after levhar_index addition). Fixed candidate_prioritization.py: added 5 missing positive controls (apremilast, roflumilast, erlotinib, gefitinib, harmine) to both CURATED_COMPOUNDS and COMPOUND_PK dicts. All 82 tests pass.
 - Role audit findings (minor, deferred): 5 non-code roles missing 8GB RAM section; DEVELOPER.md src/cancer vs src/bioagentics contradiction; SYSTEMS_ENGINEER.md stale dispatch.py/agent_api/ refs.
-- Next: Config review or dispatcher analysis.
+- Next: Dispatcher analysis.

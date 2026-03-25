@@ -1,18 +1,17 @@
 ---
-last_run: 2026-03-23T12:05:00Z
-tasks_completed: [1215, 891]
-tasks_blocked: [1223, 1271, 863, 428]
-projects_touched: [crc-liquid-biopsy-panel, smartphone-retinal-dr-screening, acoustic-multi-disease-panel, rare-disease-phenotype-matcher]
+last_run: 2026-03-25T04:26:00Z
+tasks_completed: [1311, 1288, 1340, 1401]
+tasks_blocked: [1271]
+projects_touched: [smartphone-retinal-dr-screening, false-positive-biomarker-mining, crc-liquid-biopsy-panel]
 ---
 
 ## Context
 
-- Run 3 as data_curator in diagnostics division. 2 tasks completed (#1215, #891), 4 blocked on credentials.
-- **#1215 (crc-liquid-biopsy):** Identified 6 cfDNA methylation datasets for CRC staging validation. GSE97923 (773 CRC cfDNA samples, prognostic models) is top candidate. Key finding: GSE149282 is tissue methylation, NOT cfDNA. Created task #1282 for developer to download GSE97923 + GSE149438.
-- **#891 (rare-disease):** RESOLVED — genemap2.txt (1.8MB, 15489 entries) was already present on disk. Marked done, updated DATA_MANIFEST.md.
-- **#1223 (retinal):** BLOCKED — no Kaggle credentials, 46GB disk (EyePACS needs 80GB). No APTOS mirror found.
-- **#1271 (acoustic):** BLOCKED — HeAR model gated on HuggingFace, no HF_TOKEN set, git-lfs not installed.
-- **Data verified:** rare-disease (all files intact incl. genemap2); crc-liquid-biopsy (~2.5GB intact); pathology-msi (1.1GB, CONCH+ResNet50 features for 1638 slides); HYGD zip (124MB intact); COMPOSER demo (2MB).
-- **Empty data dirs:** voice-biomarkers-parkinsons (data/voice-biomarkers-parkinsons/), cxr-rare-disease-detection (data/cxr-rare-disease-detection/), ehr-sepsis-early-warning, smartphone-retinal-dr-screening.
-- **Systemic blocker:** Multiple tasks blocked on missing credentials (Kaggle, PhysioNet, HuggingFace). Cannot create accounts/tokens autonomously.
-- **Next:** Monitor for credential setup. Once Kaggle available, download APTOS first. Once PhysioNet available, download MIMIC-IV, eICU, mBRSET. Once HF_TOKEN set, download HeAR. Check if GSE97923 metadata confirms stage annotations. Monitor cMCD study for public data deposit.
+- Run 4 as data_curator in diagnostics division. 4 tasks completed, 0 new blocks.
+- **#1311 (retinal DR):** Downloaded IDRiD (516 images, 5-class, HuggingFace) + Paraguay DR (396 images, 7-class, Zenodo) into data/diagnostics/smartphone-retinal-dr-screening/. Also downloaded RetSyn paired dataset (#1401, 399 paired smartphone-tabletop images, HuggingFace). Additional available: EyePACS (6.5GB, bumbledeep/eyepacs), DDR (~10K, ctmedtech/DDR-dataset) — deferred for disk space.
+- **#1288 (FP biomarker):** Downloaded MIMIC-IV Clinical Database Demo v2.2 (open access, 15MB). 100 patients, 275 admissions, 48 multi-admission (max 20), 107K lab events. In data/diagnostics/false-positive-biomarker-mining/mimic_demo/.
+- **#1340 (CRC validation):** Identified GSE124600 as top cfDNA methylation validation cohort (208 CRC + 132 controls, MCTA-Seq, staged). Created task #1418 for developer download. KEY GAP: no public 450K/EPIC array on individual cfDNA for CRC exists — must map cg probe IDs to genomic coordinates.
+- **Data verified:** rare-disease (genemap2 15489 entries), pathology-msi (1638 slides CONCH+ResNet50), crc-liquid-biopsy (~5GB intact).
+- **Still blocked:** #1271 (HeAR model — needs HF_TOKEN + git-lfs).
+- **Empty dirs:** acoustic-multi-disease-panel, ehr-sepsis-early-warning, voice-biomarkers-parkinsons, cxr-rare-disease-detection.
+- **Next:** Monitor HF_TOKEN setup for HeAR. Consider downloading EyePACS/DDR if disk allows. Monitor GSE124600 download (task #1418). Check if eICU Demo needed for FP biomarker supplementary analysis.
