@@ -145,6 +145,25 @@ POSITIVE_CONTROLS: list[PositiveControl] = [
         evidence="STENOVA Phase 2a met primary and key secondary endpoints in "
         "fibrostenotic CD. Directly targets ALK5/SMAD2/3 axis in fibroblasts.",
     ),
+    # EGFR inhibitors (reverse AREG-driven fibroblast activation)
+    PositiveControl(
+        name="erlotinib",
+        aliases=["erlotinib", "tarceva", "osr-774"],
+        mechanism="EGFR tyrosine kinase inhibitor",
+        pathway="EGFR/AREG",
+        evidence="EGFR signaling drives fibroblast activation via AREG (amphiregulin). "
+        "Erlotinib reduces fibroblast proliferation and collagen deposition in "
+        "pulmonary and hepatic fibrosis models. Well-represented in L1000.",
+    ),
+    PositiveControl(
+        name="gefitinib",
+        aliases=["gefitinib", "iressa", "zd-1839", "zd1839"],
+        mechanism="Selective EGFR tyrosine kinase inhibitor",
+        pathway="EGFR/AREG",
+        evidence="First-generation EGFR TKI. Anti-fibrotic in bleomycin lung fibrosis "
+        "and unilateral ureteral obstruction kidney fibrosis models. "
+        "Well-represented in L1000 (small molecule, unlike cetuximab).",
+    ),
     # TWIST1 inhibitor (harmine — beta-carboline alkaloid)
     PositiveControl(
         name="harmine",
@@ -169,6 +188,7 @@ PATHWAY_CLASSES = {
     "epigenetic/HDAC": ["vorinostat", "trichostatin-a"],
     "miR-124": ["obefazimod"],
     "ALK5/TGF-beta": ["ontunisertib"],
+    "EGFR/AREG": ["erlotinib", "gefitinib"],
     "TWIST1/beta-carboline": ["harmine"],
 }
 

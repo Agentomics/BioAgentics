@@ -129,6 +129,22 @@ KONG_SPATIAL_GENES: dict[str, tuple[str, str]] = {
     "ICAM1": ("up", "spatial_module"),
 }
 
+# PI16+ universal fibroblasts (Buechler et al., Nature 2021)
+# Quiescent/progenitor fibroblast subtype that can transition to activated
+# states. AREG (amphiregulin) drives EGFR-mediated fibroblast activation.
+PI16_FIBROBLAST_GENES: dict[str, tuple[str, str]] = {
+    "PI16": ("up", "scrna_de"),       # Peptidase inhibitor 16, defining marker
+    "AREG": ("up", "scrna_de"),       # Amphiregulin, EGFR ligand, profibrotic
+    "DPP4": ("up", "scrna_de"),       # CD26, associated with PI16+ fibroblasts
+    "SFRP1": ("up", "scrna_de"),      # Secreted frizzled-related protein 1
+    "CLU": ("up", "scrna_de"),        # Clusterin, stress-response marker
+    "MFAP5": ("up", "scrna_de"),      # Microfibrillar-associated protein 5
+    "GSN": ("up", "scrna_de"),        # Gelsolin, cytoskeletal regulator
+    "CXCL12": ("up", "scrna_de"),     # SDF-1, immune cell recruitment
+    "CFD": ("up", "scrna_de"),        # Complement factor D (adipsin)
+    "PTGDS": ("up", "scrna_de"),      # Prostaglandin D2 synthase
+}
+
 # IBD Journal 2025 druggable targets (doi:10.1093/ibd/izae295)
 IBD_DRUGGABLE_TARGETS: dict[str, tuple[str, str]] = {
     "HDAC1": ("up", "druggable_target"),    # HDAC inhibitors well-characterized in L1000
@@ -168,6 +184,7 @@ def build_celltype_signature(
         ("CTHRC1_fibroblast", CTHRC1_FIBROBLAST_GENES),
         ("TWIST1_FAP_fibroblast", TWIST1_FAP_GENES),
         ("Kong_spatial_module", KONG_SPATIAL_GENES),
+        ("PI16_fibroblast", PI16_FIBROBLAST_GENES),
         ("IBD_druggable_targets", IBD_DRUGGABLE_TARGETS),
     ]
 
@@ -298,6 +315,7 @@ def derive_celltype_signature(
         ("CTHRC1_fibroblast", CTHRC1_FIBROBLAST_GENES),
         ("TWIST1_FAP_fibroblast", TWIST1_FAP_GENES),
         ("Kong_spatial_module", KONG_SPATIAL_GENES),
+        ("PI16_fibroblast", PI16_FIBROBLAST_GENES),
         ("IBD_druggable_targets", IBD_DRUGGABLE_TARGETS),
     ]:
         print(f"  {src_name}: {len(gene_dict)} genes")
