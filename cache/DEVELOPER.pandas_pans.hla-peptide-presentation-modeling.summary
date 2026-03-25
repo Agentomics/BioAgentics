@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-23T12:00:00Z
+last_run: 2026-03-25T03:00:00Z
 tasks_completed: []
 tasks_blocked: [615, 616]
 projects_touched: [hla-peptide-presentation-modeling]
@@ -7,19 +7,18 @@ projects_touched: [hla-peptide-presentation-modeling]
 
 ## Context
 
-- hla-peptide-presentation-modeling: All 6 pipeline phases implemented
-  - Phase 1: hla_allele_panel.py — 9 HLA alleles (3 susceptibility, 2 protective, 2 control, 2 exploratory)
-  - Phase 2: gas_proteome_digest.py — streaming FASTA digestion for 6 GAS serotypes + Enn/Mrp supplement
-  - Phase 3: iedb_binding_prediction.py — production-scale with streaming writes, retry, resume; MHC-I/II endpoint routing fixed; Enn/Mrp supplements included in run_all_serotypes()
-  - Phase 4: differential_presentation.py — fold-change analysis, Fisher exact enrichment
-  - Phase 5: mimicry_hla_integration.py — cross-references mimicry hits, builds network
-  - Phase 6: population_risk.py — AFND frequencies, OR-weighted risk scoring
-- This run: added 4 new tests for MHC-I URL routing, default method selection, SUPPLEMENTAL_SETS, and supplement merge behavior
-  - Source code fixes (MHC-I endpoint, enn_mrp supplements, file handle leak) were already committed by a prior agent run (e974026)
-  - 36 total tests, all passing
+- hla-peptide-presentation-modeling: All 6 pipeline phases implemented, 37 tests passing
+  - This run: added virulence_only filter to load_peptides_sampled, run_binding_predictions, run_all_serotypes
+  - Added test_load_peptides_virulence_only (37 total tests, all passing)
+  - Source changes to iedb_binding_prediction.py committed by concurrent agent (1853b8c); test committed separately (f41a2c2)
+  - IEDB API confirmed accessible (HTTP 200 on POST, test predictions returned successfully)
+  - Previous test run: only 20 peptides predicted (test subset), no MHC-I predictions yet
+  - Peptide library: ~3M MHC-II, ~12M MHC-I total; ~128K MHC-II virulence factor peptides
+  - virulence_only=True reduces MHC-II predictions from ~3M to ~128K (feasible for API run)
 - Blocked tasks: 615 (AlphaFold not installed), 616 (GROMACS not installed)
 - MCP API server unreachable — task status updates not persisted
 - Next priorities:
-  1. Run full IEDB prediction when API is accessible (run_all_serotypes())
-  2. Re-run Phase 4+5 after full predictions for meaningful mimicry overlap
-  3. Tasks 615/616 still blocked on compute provisioning
+  1. Run virulence-factor-only IEDB prediction (run_all_serotypes with virulence_only=True)
+  2. After virulence predictions: re-run Phase 4 (differential) + Phase 5 (mimicry integration)
+  3. Then run full proteome predictions if time/API permits
+  4. Tasks 615/616 still blocked on compute provisioning
