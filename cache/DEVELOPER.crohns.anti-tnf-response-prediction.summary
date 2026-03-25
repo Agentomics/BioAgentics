@@ -1,16 +1,15 @@
 ---
-last_run: 2026-03-23T03:55:00Z
-tasks_completed: [1203]
+last_run: 2026-03-25T02:35:00Z
+tasks_completed: [1285]
 tasks_blocked: []
 projects_touched: [anti-tnf-response-prediction]
 ---
 
 ## Context
 
-- anti-tnf-response-prediction: Re-ran corrected LOSO-CV pipeline. Results reproducible and confirmed identical to c9c9e11.
-- Leakage-free metrics: elastic_net AUC=0.600, random_forest AUC=0.701, xgboost AUC=0.711 (best).
-- Per-study: GSE12251 strong (AUC~0.83), GSE16879 mid (AUC~0.65), GSE73661 weak (AUC=0.50).
-- AUC=0.711 < 0.75 target. Evaluation report notes FAIL against success criteria.
-- Task 147 still blocked (InstaPrism deconvolution — R package + scRNA ref + RAM concerns).
+- anti-tnf-response-prediction: Ran E-MTAB-7604 download script. 43/44 count files + SDRF downloaded from EBI Fire. GC050242.count is 404 server-side (missing from EBI despite being in SDRF).
+- Script: src/crohns/anti_tnf_response_prediction/01_download_emtab7604.py — retry with backoff, suffix discovery, idempotent.
+- Data: data/crohns/anti-tnf-response-prediction/E-MTAB-7604/ (43 .count files + E-MTAB-7604.sdrf.txt).
+- Leakage-free LOSO-CV results from prior run: elastic_net AUC=0.600, random_forest AUC=0.701, xgboost AUC=0.711 (best). AUC=0.711 < 0.75 target.
+- Task 147 (InstaPrism deconvolution) remains blocked (R package + scRNA ref + RAM concerns).
 - No remaining pending tasks for this project.
-- Next: analyst should investigate GSE73661 underperformance, consider multi-modal features or expanded datasets.
