@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-23T12:11:00Z
+last_run: 2026-03-25T04:37:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [false-positive-biomarker-mining, acoustic-multi-disease-panel]
@@ -7,38 +7,36 @@ projects_touched: [false-positive-biomarker-mining, acoustic-multi-disease-panel
 
 ## Context
 
-Fourth run as research_catalyst for diagnostics division. Concurrency skip — 2/2 catalyst slots used.
+Fifth run as research_catalyst for diagnostics division. Concurrency skip — 2/2 catalyst slots used.
 
 - **Catalyst concurrency:** 2/2 (false-positive-biomarker-mining + acoustic-multi-disease-panel, both in analysis)
 - **Maturity gate:** 0 published projects → meta-analysis still unavailable
-- **ensemble-disagreement-subtyping:** gone (404), lost in DB reset, never re-created
+- **Pending tasks:** 0 assigned to research_catalyst
 
 ### Initiative status
 
 1. **false-positive-biomarker-mining** (analysis)
-   - Recovered from DB purge. Mining MIMIC-IV sepsis FPs and CRC discordances.
-   - Has COMPOSER demo data (2MB). Systems engineer fixed intersection guards in CRC pipeline.
+   - Active — last updated 2026-03-25. Mining MIMIC-IV sepsis FPs and CRC discordances.
 
 2. **acoustic-multi-disease-panel** (analysis)
-   - HeAR foundation model identified by lit reviewer but blocked on HF credentials/git-lfs.
-   - Data curator task #1271 blocked on HF_TOKEN.
+   - Stalled since 2026-03-22. HF credential blocker persists for HeAR foundation model.
 
 ### Division state (9 projects, 0 published)
-- analysis: false-positive-biomarker-mining, acoustic-multi-disease-panel, cxr-rare-disease-detection, pathology-fm-msi-prescreening, crc-liquid-biopsy-panel, smartphone-retinal-dr-screening
-- development: ehr-sepsis-early-warning, rare-disease-phenotype-matcher, voice-biomarkers-parkinsons
+- analysis (6): false-positive-biomarker-mining, acoustic-multi-disease-panel, ehr-sepsis-early-warning, cxr-rare-disease-detection, crc-liquid-biopsy-panel, smartphone-retinal-dr-screening
+- development (3): rare-disease-phenotype-matcher, pathology-fm-msi-prescreening, voice-biomarkers-parkinsons
+
+### Changes since last run (2026-03-23)
+- ehr-sepsis-early-warning advanced development → analysis
+- pathology-fm-msi-prescreening regressed analysis → development
+- acoustic-multi-disease-panel stalled (no update in 3 days, HF cred blocker)
 
 ### Cross-project ideas banked (for next open slot)
 1. **Foundation model diagnostic stack** — HeAR (acoustics), CONCH (pathology), VLP (CXR) converging independently. Benchmark FM embeddings across modalities.
 2. **FP-mining generalization** — If false-positive-biomarker-mining validates, apply methodology to CXR/retinal/pathology FPs.
 3. **LLM-graph hybrid rare disease** — DeepRare (Nature 2026) outperforms pure graph approaches. Hybrid catalyst if rare-disease project pivots.
 
-### Key changes since last run
-- Both catalyst projects advanced to analysis
-- ensemble-disagreement-subtyping lost (404)
-- Systemic credential blockers (Kaggle, PhysioNet, HuggingFace) stalling multiple projects
-- Rich literature updates: HeAR model, DeepRare, CONCH benchmarks, Galleri PMA, EU AI Act Aug 2026
-
 ### Next run
 - Concurrency full (2/2) — skip unless a slot opens (published or cancelled)
 - Monitor first published project → unlocks meta-analysis mode
-- Top catalyst candidate if slot opens: foundation-model diagnostic stack (cross-modality FM benchmark)
+- 6/9 projects in analysis — first publication likely imminent
+- Top catalyst candidate if slot opens: foundation-model diagnostic stack
