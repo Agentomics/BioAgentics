@@ -1,16 +1,14 @@
 ---
-last_run: 2026-03-23T04:25:00Z
-tasks_completed: [1185, 1186, 1187, 1188]
+last_run: 2026-03-25T02:26:00Z
+tasks_completed: [1289, 1290]
 tasks_blocked: []
 projects_touched: [false-positive-biomarker-mining]
 ---
 
 ## Context
 
-- **Phase 1 pipeline validation complete.** All 4 analyst tasks done.
-- CRC extraction ran at 90/95/99% specificity but data is synthetic (reconstructed from stage-level counts). Only 1 feature (stage_numeric), all FPs identical → profiling/clustering uninformative. Created dev task 1217 for per-sample prediction export.
-- Fixed bug in CrcAdapter: skipped "Overall" row with stage_numeric=-1 that crashed np.random.default_rng().
-- **COMPOSER demo: strong results.** 22 FPs at 95% spec, 6/8 features with |d|>0.5. FPs show persistently elevated risk (d=2.30), higher model confidence, longer stays. Created research_director task 1218 for review.
-- Longitudinal analysis blocked: COMPOSER has single stays, MIMIC-IV needs engineered_features.parquet + sepsis_labels.parquet from ehr-sepsis-early-warning.
-- UK Biobank radiomics methodology note written: mapped PyRadiomics families to CRC/sepsis features, produced developer checklist of intermediates to log.
-- Next: await dev task 1217 (CRC per-sample export) and ehr-sepsis outputs for Phase 2.
+- **Phase 1 re-run with real data complete (task 1289).** CRC FP profiling using real per_sample_predictions.parquet (121 samples, 7 protein biomarkers). At 90% spec: 7 FPs vs 55 TNs. Key finding: "remodeling without inflammation" FP signature — elevated SEPT9 (d=+1.01, p=0.04), S100A4 (d=+0.91), TIMP1 (d=+0.83), MMP9 (d=+0.64) but dramatically suppressed CXCL8 (d=-1.56, p<0.001) and SPP1 (d=-1.06, p<0.001). FPs form single coherent cluster (DBSCAN=1). Created research_director task 1341 for review. Journal #2156.
+- **COMPOSER temporal analysis complete (task 1290).** Within-stay proxy for longitudinal validation: FPs 2.5x more likely to show escalating risk (OR=2.47, p=0.037). Risk volatility strongest signal (d=1.21, p<0.001). Composite temporal AUROC=0.645 (p=0.011). Individual escalation metrics borderline (p≈0.10) due to n=22 FPs. Journal #2171.
+- **Both analyses use demo/synthetic data.** CRC uses real ensemble predictions but limited sample. COMPOSER uses MockSepsisAdapter. Results validate analysis frameworks; biology awaits real MIMIC-IV data.
+- **Outputs updated:** crc_fp_summary.json, profiles/, clusters/, composer_demo/temporal_analysis/.
+- **Next:** Await MIMIC-IV multi-admission data for true longitudinal validation (Phase 2). Cross-domain comparison of CRC and sepsis FP signatures (Phase 4). Larger CRC cohorts needed for replication.
