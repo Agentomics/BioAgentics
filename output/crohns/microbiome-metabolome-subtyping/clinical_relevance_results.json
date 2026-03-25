@@ -1,38 +1,111 @@
 {
   "medication_associations": {
-    "antibiotics": {
-      "subtype0_pct": 62.5,
-      "subtype1_pct": 55.9,
-      "chi2": 0.018,
-      "p": 0.8925,
-      "n0": 16,
-      "n1": 34,
-      "fisher_p": 0.7635,
-      "odds_ratio": 0.76
+    "anti_TNF": {
+      "subtype0_n": 7,
+      "subtype0_total": 16,
+      "subtype0_pct": 43.8,
+      "subtype1_n": 17,
+      "subtype1_total": 34,
+      "subtype1_pct": 50.0,
+      "chi2": 0.012,
+      "chi2_p": 0.913,
+      "fisher_or": 1.286,
+      "fisher_p": 0.7666
+    },
+    "immunomodulators": {
+      "subtype0_n": 4,
+      "subtype0_total": 16,
+      "subtype0_pct": 25.0,
+      "subtype1_n": 14,
+      "subtype1_total": 34,
+      "subtype1_pct": 41.2,
+      "chi2": 0.633,
+      "chi2_p": 0.4261,
+      "fisher_or": 2.1,
+      "fisher_p": 0.351
+    },
+    "steroids": {
+      "subtype0_n": 9,
+      "subtype0_total": 16,
+      "subtype0_pct": 56.2,
+      "subtype1_n": 15,
+      "subtype1_total": 34,
+      "subtype1_pct": 44.1,
+      "chi2": 0.248,
+      "chi2_p": 0.6188,
+      "fisher_or": 0.614,
+      "fisher_p": 0.547
+    },
+    "mesalamine_5ASA": {
+      "subtype0_n": 6,
+      "subtype0_total": 16,
+      "subtype0_pct": 37.5,
+      "subtype1_n": 11,
+      "subtype1_total": 34,
+      "subtype1_pct": 32.4,
+      "chi2": 0.001,
+      "chi2_p": 0.9694,
+      "fisher_or": 0.797,
+      "fisher_p": 0.7568
+    },
+    "infliximab": {
+      "subtype0_pct": 43.8,
+      "subtype1_pct": 32.4,
+      "fisher_or": 0.615,
+      "fisher_p": 0.5322
+    },
+    "adalimumab": {
+      "subtype0_pct": 0.0,
+      "subtype1_pct": 17.6,
+      "fisher_or": Infinity,
+      "fisher_p": 0.1587
+    },
+    "any_meds_2wk": {
+      "subtype0_median": 0.301,
+      "subtype1_median": 0.223,
+      "p": 0.4051
     }
   },
-  "biomarker_associations": {
-    "CRP": {
-      "subtype0_median": 3.46,
-      "subtype1_median": 1.54,
-      "subtype0_mean": 87.08,
-      "subtype1_mean": 96.38,
-      "subtype0_n": 13,
-      "subtype1_n": 31,
-      "mann_whitney_p": 0.4104
-    }
+  "crp": {
+    "subtype0_median": 3.46,
+    "subtype1_median": 1.54,
+    "p": 0.4104,
+    "n0": 13,
+    "n1": 31
   },
   "hbi": {
     "subtype0_median": 2.04,
     "subtype1_median": 2.05,
-    "subtype0_mean": 2.9,
-    "subtype1_mean": 2.36,
-    "mann_whitney_p": 0.763
+    "p": 0.763
   },
   "surgery": {
     "subtype0_pct": 37.5,
     "subtype1_pct": 26.5,
-    "fisher_p": 0.5142,
-    "odds_ratio": 0.6
+    "fisher_or": 0.6,
+    "fisher_p": 0.5142
+  },
+  "hbi_variability": {
+    "subtype0_median_sd": 1.88,
+    "subtype1_median_sd": 1.36,
+    "p": 0.0314
+  },
+  "active_disease_pct": {
+    "subtype0_median": 0.065,
+    "subtype1_median": 0.057,
+    "p": 0.22
+  },
+  "crp_variability": {
+    "subtype0_median_sd": 1.45,
+    "subtype1_median_sd": 0.01,
+    "p": 0.0451
+  },
+  "logistic_regression": {
+    "auc": 0.581,
+    "n": 44,
+    "coefficients": {
+      "crp_mean": -0.026,
+      "hbi_mean": -0.408,
+      "surgery_int": 0.259
+    }
   }
 }
