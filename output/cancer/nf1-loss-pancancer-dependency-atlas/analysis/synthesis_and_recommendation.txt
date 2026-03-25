@@ -1,0 +1,172 @@
+======================================================================
+NF1-Loss Pan-Cancer Dependency Atlas
+FINAL SYNTHESIS AND RECOMMENDATION
+Analyst: analyst | Division: cancer | Date: 2026-03-24
+======================================================================
+
+======================================================================
+SUCCESS CRITERIA SCORECARD
+======================================================================
+
+CRITERION 1: >=5 NF1-loss-specific dependencies with |d|>0.5 and
+FDR<0.1 in >=2 cancer types
+  STATUS: NOT MET
+  Result: 1 hit (RIT1, d=-0.646, FDR=0.071, pan-cancer only — does
+  not appear in >=2 individual cancer types at FDR<0.1).
+  Zero per-cancer-type hits survive FDR correction.
+  Sub-threshold coherent gene set (SHOC2, SPRED1, SPRED2 at FDR 0.2-0.3)
+  brings total to ~4 credible candidates, still below 5.
+
+CRITERION 2: At least 2 hits with druggable targets (clinical-stage
+or FDA-approved)
+  STATUS: PARTIALLY MET (with caveats)
+  Credibly supported druggable targets:
+    1. SHP2/PTPN11: Phase 2 validated (d=-0.389, FDR=0.017 in MAPK
+       baseline). TNO155, RMC-4630 in Phase 1/2 trials.
+    2. RAF1/C-RAF: Phase 2 borderline (d=-0.368, FDR=0.052).
+       LY3009120, Belvarafenib (pan-RAF, Phase 1/2).
+  Both are sub-threshold in genome-wide screen (FDR>0.2) but validated
+  in the targeted Phase 2 analysis with appropriate multiple testing
+  correction. Credible but marginal.
+  CDK6, ATR, CHEK1, WEE1 have drugs but DepMap CRISPR support is
+  too weak or TP53-confounded to count.
+
+CRITERION 3: Clear differentiation from KRAS-mutant dependency
+profiles (>=3 NF1-specific hits not shared with KRAS)
+  STATUS: PARTIALLY MET (quality concerns)
+  Phase 5 identified 259 NF1-specific genes vs 1 shared dependency.
+  However, the NF1-specific list is artifact-contaminated (top hits:
+  KRTAP21-1, SPRR1A = lineage bias; USP9Y, EIF1AY = sex bias).
+  After filtering artifacts, credible NF1-specific hits include:
+    RIT1, SHOC2, SPRED1, SPRED2 (at least 3 after artifact removal).
+  At the PATHWAY level, NF1 vs KRAS differentiation is clearer:
+    NF1: GRB2/SHP2/SHOC2 dependent, MEK-independent
+    KRAS: RAF1/MEK dependent
+  This qualitative distinction is the strongest finding of the atlas.
+
+CRITERION 4: MPNST-specific findings with therapeutic potential
+  STATUS: NOT MET
+  MPNST top DepMap hits (SH2D6, FKBP6, TGM6) are undruggable and
+  biologically implausible (poorly characterized genes, FDR>0.9,
+  n=8 vs n=27).
+  Recommended MPNST candidates (MEK, mTOR, CDK4/6, SHP2, BRD4, EZH2)
+  are literature-derived, not DepMap discoveries. Only SHP2 has direct
+  CRISPR support from this atlas. MEK is actually counter-indicated
+  by our data (MAP2K1 d=+0.265).
+
+======================================================================
+OVERALL SCORECARD
+======================================================================
+
+  Criterion 1 (>=5 SL hits):           NOT MET (1/5)
+  Criterion 2 (>=2 druggable targets): PARTIALLY MET (2, with caveats)
+  Criterion 3 (NF1 vs KRAS):           PARTIALLY MET (quality issues)
+  Criterion 4 (MPNST findings):        NOT MET
+
+  OVERALL: 0/4 fully met, 2/4 partially met, 2/4 not met.
+
+======================================================================
+KEY CAVEATS
+======================================================================
+
+1. TP53 CONFOUNDING (Critical)
+   71.5% of NF1-lost lines are TP53-mutant. No TP53-stratified
+   analysis was performed. All DDR, cell cycle, and some epigenetic
+   signals cannot be attributed to NF1 vs TP53. Developer task #1335
+   created to address this.
+
+2. SAMPLE SIZE LIMITATIONS
+   Per-cancer-type analyses (n=5-18) are fundamentally underpowered
+   for genome-wide discovery. The study design was appropriate for
+   pan-cancer pooling only.
+
+3. HIGH FDR BURDEN
+   160,947 tests with BH-FDR means only extreme signals survive
+   correction. The "negative" genome-wide result may partly reflect
+   insufficient power rather than absence of biology.
+
+4. PRISM COVERAGE GAP
+   Key drug classes (MEKi, mTORi, CDK4/6i, SHP2i) absent from
+   PRISM 24Q2 dataset. Pharmacological validation was not possible.
+
+5. MPNST CELL LINE SCARCITY
+   n=4 NF1-LOF nerve sheath tumors with CRISPR data is insufficient
+   for any statistical inference about MPNST-specific dependencies.
+
+6. DISCONNECT WITH PUBLISHED LITERATURE
+   Published in-vivo NF1-SL data (mTORi, CDK4/6i synergy with MEKi)
+   is NOT supported by DepMap CRISPR data. This limits the atlas's
+   ability to extend beyond known biology.
+
+======================================================================
+WHAT THE ATLAS DID FIND (Credible Positive Results)
+======================================================================
+
+Despite not meeting formal success criteria, the atlas produced one
+coherent and novel biological finding:
+
+** NF1-LOSS CREATES NON-CANONICAL MAPK PATHWAY DEPENDENCY **
+
+NF1-lost cells depend on upstream RAS regulatory nodes (GRB2, SHP2,
+SHOC2) and parallel RAS-family GTPases (RIT1, SPRED1/2 as negative
+feedback regulators) — NOT on downstream effectors (MEK1, ERK1/2).
+
+This is mechanistically distinct from KRAS-mutant dependencies
+(which are RAF1/MEK-centered) and explains clinical observations:
+  - MEK inhibitor monotherapy fails in MPNST (ORR<10%)
+  - SHP2 inhibitors are being tested in NF1-loss contexts
+  - MEK+SHP2 combos are rationally designed for NF1 (SHP2 upstream
+    of the NF1-regulated RAS node)
+
+This pathway-level finding, while not meeting individual gene-level
+success criteria, is the atlas's most valuable contribution.
+
+======================================================================
+RECOMMENDATION
+======================================================================
+
+RECOMMEND: FLAG FOR RESEARCH DIRECTOR REVIEW with specific guidance.
+
+Do NOT advance to full validation — the dataset does not support
+a standard validation pipeline (too few significant hits). Instead:
+
+1. ADVANCE TO LIMITED VALIDATION (specific scope):
+   a) SHP2/PTPN11 + RAF1: These have Phase 2 CRISPR support and
+      druggable targets. Validate with targeted CRISPR experiments
+      in NF1-mutant cell lines (confirmatory, not discovery).
+   b) RIT1: Single genome-wide hit. Validate dependency in NF1 vs
+      WT isogenic pairs if available.
+   c) SPRED1/2 synthetic lethality: Biologically novel finding.
+      Validate in NF1-isogenic systems. Could be publication-worthy
+      even without drug target.
+
+2. RETURN TO DEVELOPER for critical improvement:
+   a) TP53-stratified analysis (task #1335 already created).
+   b) Lineage-adjusted analysis (remove skin/keratin bias from
+      pan-cancer pooling, or add lineage as covariate).
+   c) Pathway-level testing (GSEA/CAMERA for RAS regulatory gene set)
+      to improve power vs individual gene testing.
+
+3. DO NOT REPORT as publication-ready:
+   a) Per-cancer-type hit lists contain >50% artifacts.
+   b) MPNST recommendations are literature-derived, not atlas-derived.
+   c) PRISM analysis is uninformative due to coverage gaps.
+   d) NF1-vs-KRAS comparison needs artifact filtering before reporting.
+
+4. SCIENTIFIC NARRATIVE for research_writer:
+   If proceeding to documentation, frame as:
+   "NF1-loss creates a distinct non-canonical MAPK dependency profile
+   centered on upstream regulatory nodes (SHP2, GRB2, SHOC2, SPRED1/2)
+   rather than canonical MEK/ERK effectors, providing mechanistic
+   rationale for SHP2 inhibitor combinations in NF1-mutant cancers."
+   This is the defensible narrative — not "we found X novel drug targets."
+
+======================================================================
+FILES PRODUCED
+======================================================================
+
+output/cancer/nf1-loss-pancancer-dependency-atlas/analysis/
+  phase1_2_review.txt            — Classifier quality & MAPK baseline
+  phase3_assessment.txt          — Genome-wide screen critical review
+  phase4_5_evaluation.txt        — Drug targets, PRISM, cross-atlas
+  synthesis_and_recommendation.txt — This document
