@@ -1,0 +1,190 @@
+======================================================================
+NF1-Loss Pan-Cancer Dependency Atlas
+Phase 4-5 Evaluation: Drug Targets, PRISM, and Cross-Atlas Comparison
+Analyst: analyst | Division: cancer | Date: 2026-03-24
+======================================================================
+
+EXECUTIVE SUMMARY
+------------------
+Phase 4 drug target mapping is built on statistically non-significant
+CRISPR data (all per-type targets FDR>0.9; only RIT1 pan-cancer at
+FDR=0.071 — and RIT1 is undruggable). PRISM analysis yields no
+mechanistically relevant NF1-selective compounds (top hits are NMDA
+antagonist, antimalarial, anti-inflammatory). MPNST candidates are
+mostly literature-derived, not DepMap-discovered. SHP2 is the only
+candidate with BOTH CRISPR evidence (Phase 2) and clinical-stage
+drugs. Phase 5 cross-atlas comparison finds 259 "NF1-specific"
+dependencies, but the list is contaminated by artifacts.
+
+======================================================================
+1. DRUGGABLE DEPENDENCY TARGETS
+======================================================================
+
+43 targets at d<-0.3 across all contexts. CRITICAL: zero have FDR<0.1
+except RIT1 pan-cancer (FDR=0.071, which has no direct inhibitors).
+
+Credibility-stratified assessment:
+
+TIER 1 — CRISPR-supported + druggable:
+  SHP2/PTPN11: d=-0.389 pan-cancer (FDR=0.556), d=-0.808 Lung (FDR=1.0)
+    Drugs: TNO155, RMC-4630, GDC-1971 (all Phase 1/2)
+    Rationale: ONLY target with Phase 2 validation (FDR=0.017 in
+    MAPK baseline). Consistent signal across Lung, Bowel, CNS.
+    SHP2 is upstream of RAS — SHP2i+MEKi combos are in clinical trials.
+    STRONGEST drug target candidate from this atlas.
+
+  RAF1/C-RAF: d=-0.368 pan-cancer (FDR=0.696), d=-0.602 PNS (FDR=0.97)
+    Drugs: LY3009120, Belvarafenib (pan-RAF, Phase 1/2)
+    Rationale: Phase 2 validated (FDR=0.052). BRAF-sparing pan-RAF
+    inhibitors are in development. RAF1 dependency is mechanistically
+    distinct from BRAF dependency in this context.
+
+TIER 2 — CRISPR-suggestive, not FDR-significant:
+  CDK6: d=-0.125 pan-cancer (FDR=0.918), d=-0.638 Bowel (FDR=0.90)
+    Drugs: Palbociclib, Ribociclib (FDA-approved)
+    Rationale: Appears in 5/7 cancer types with d<0, but pan-cancer
+    effect is small. Literature supports CDK4/6 in NF1-loss (in vivo
+    validated). Disconnect between weak CRISPR signal and published
+    efficacy may reflect cell-line vs in-vivo differences.
+
+  CHEK1: d=-0.241 pan-cancer (FDR=0.84), d=-0.729 Bowel (FDR=0.90)
+    Drugs: Prexasertib, SRA737 (Phase 1/2)
+    TP53 CONFOUND: Cannot attribute to NF1 without TP53 stratification.
+
+  ATR: d=-0.025 pan-cancer (FDR=0.98), d=-0.875 Bowel (FDR=0.91)
+    Drugs: Ceralasertib, Berzosertib (Phase 2)
+    TP53 CONFOUND: Same issue as CHEK1. Bowel signal is n=6.
+
+  WEE1: d=-0.051 pan-cancer (FDR=0.98), d=-0.691 Breast (FDR=0.96)
+    Drugs: Adavosertib, ZN-c3 (Phase 1/2)
+    TP53 CONFOUND: Same issue.
+
+TIER 3 — Undruggable but biologically informative:
+  RIT1: d=-0.646 pan-cancer (FDR=0.071)
+  SHOC2: d=-0.485 pan-cancer (FDR=0.245)
+  SPRED1: d=-0.446 pan-cancer (FDR=0.289)
+  SPRED2: d=-0.409 pan-cancer (FDR=0.245)
+  GRB2: d=-0.418 pan-cancer (FDR=0.522)
+  No clinical-stage inhibitors exist for any of these targets.
+  SHOC2 inhibitors are in preclinical development (SHP099 analog space).
+
+TIER 4 — No CRISPR support from this atlas:
+  EZH2: d=+0.115 pan-cancer (positive — NF1-lost LESS dependent)
+  BRD4: d=+0.107 pan-cancer (positive)
+  mTOR: d=+0.022 pan-cancer (null)
+  PARP1: d=+0.127 pan-cancer (positive)
+  These are NOT supported as NF1-specific dependencies by DepMap CRISPR
+  data, despite literature interest. Including them in recommendations
+  without this caveat would be misleading.
+
+======================================================================
+2. PRISM NF1-SELECTIVE COMPOUNDS
+======================================================================
+
+1,516 compounds identified. Assessment: NOISE-DOMINATED.
+
+Top 5 hits are biologically irrelevant:
+  L-689560 (d=-0.435, FDR=0.64): NMDA receptor antagonist
+  bamaquimast (d=-0.409, FDR=0.64): anti-inflammatory (H3R)
+  KAF-156 (d=-0.383, FDR=0.93): antimalarial (PfATP4)
+  CCG-1423 (d=-0.381, FDR=0.75): Rho/SRF inhibitor
+  pyrethrins (d=-0.372, FDR=0.93): insecticide
+
+None of these have plausible NF1/RAS pathway mechanisms. All FDR>0.6.
+
+Key mechanistic drug classes MISSING from PRISM 24Q2:
+  - MEK inhibitors (selumetinib, trametinib): NOT FOUND
+  - mTOR inhibitors (everolimus): NOT FOUND
+  - CDK4/6 inhibitors (palbociclib, ribociclib): NOT FOUND
+  - SHP2 inhibitors (TNO155, RMC-4630): NOT FOUND
+
+Only RAF inhibitors were found: encorafenib (d=-0.211, FDR=0.93),
+RAF709, belvarafenib, lifirafenib — none NF1-selective.
+
+Verdict: PRISM analysis is uninformative for this atlas because the
+relevant drug classes are absent from the dataset. The analysis cannot
+validate or invalidate the CRISPR-derived drug targets.
+
+======================================================================
+3. LITERATURE CROSS-REFERENCE (PMID 41036607)
+======================================================================
+
+15 published NF1-SL compounds matched. 4 with in vivo + selumetinib
+synergy validation: everolimus, temsirolimus, AZD8055 (mTORi) and
+palbociclib/ribociclib (CDK4/6i).
+
+DISCONNECT: Our DepMap CRISPR data does NOT support mTOR or CDK4/6
+as NF1-specific dependencies (both non-significant at pan-cancer level).
+This could reflect:
+  a) Cell-line screening limitations (monolayer, short-term viability
+     vs in-vivo tumor microenvironment effects)
+  b) Synthetic lethal interactions requiring drug-level perturbation
+     (partial inhibition) rather than complete genetic knockout
+  c) Context-specific effects present in vivo but not in vitro
+
+KAT6A/B + Menin inhibitors (WM-1119, PF-07248144) for NF1-loss as
+ESR1 resistance mechanism: interesting but orthogonal to the
+dependency atlas approach. Not validated by CRISPR data here.
+
+======================================================================
+4. MPNST THERAPEUTIC CANDIDATES
+======================================================================
+
+6 recommended: MEK, mTOR, CDK4/6, SHP2, BRD4, EZH2.
+
+Evidence assessment per candidate:
+
+  MEK: AGAINST from this atlas. MAP2K1 d=+0.265 (NF1-lost LESS
+    dependent). Clinical ORR<10% in MPNST confirms this.
+    Recommendation: MEKi only as backbone for combo, not monotherapy.
+
+  mTOR: NO CRISPR SUPPORT. MTOR d=+0.022. Include only based on
+    published combo (selumetinib+sirolimus) rationale, not DepMap data.
+
+  CDK4/6: WEAK CRISPR signal. CDK6 d=-0.424 in PNS (FDR=0.98).
+    Literature-supported (CDKN2A loss frequent in MPNST). Rational
+    but not a DepMap discovery.
+
+  SHP2: SUPPORTED by Phase 2 CRISPR data. Only candidate with direct
+    DepMap evidence. SHP2+MEK combo in PNS has biological rationale.
+
+  BRD4: NO CRISPR SUPPORT (d=+0.107). Literature only.
+
+  EZH2: PARADOXICAL. PRC2 loss is common in MPNST (SUZ12/EED
+    deletions), which would make EZH2 inhibition irrelevant in those
+    lines. Only MPNST lines with intact PRC2 could benefit. Not a
+    general MPNST target. No CRISPR support (d=+0.408 in PNS).
+
+Phase 5 MPNST-specific top dependencies (SH2D6, FKBP6, TGM6):
+  - Very large effects (d=-2.19, -2.16, -1.99) but ALL undruggable.
+  - All FDR>0.9 (except TGM6 FDR=0.13).
+  - SH2D6/FKBP6 are poorly characterized genes with no established
+    cancer biology. Likely noise from n=8 vs n=27 comparison.
+  - These cannot be recommended as therapeutic targets.
+
+======================================================================
+5. PHASE 5 CROSS-ATLAS: NF1 vs KRAS COMPARISON
+======================================================================
+
+Classification: 1 shared, 259 NF1-specific, 16 KRAS-specific.
+
+Quality assessment of "NF1-specific" list: POOR.
+  Top hits are artifacts (KRTAP21-1, SPRR1A, USP9Y, EIF1AY — all
+  flagged in Phase 3 as lineage/sex confounds).
+  RIT1 ranks #5 — first biologically credible NF1-specific hit.
+
+The shared dependency count (1 gene: ACADM) is suspiciously low.
+This likely reflects the stringent thresholds used rather than true
+biological independence. ACADM (medium-chain acyl-CoA dehydrogenase)
+is a metabolic enzyme with no established RAS pathway role — its
+shared status may be coincidental.
+
+Per-tumor-type recommendations contain large effect sizes (d<-2) with
+FDR>0.5 — these are noise at n=5-8 and should not be reported as
+validated targets.
+
+Key valid finding: NF1-loss and KRAS-mutation DO create distinct
+dependency profiles at the pathway level (Phase 2 showed NF1 depends
+on GRB2/SHP2/SHOC2 while KRAS typically depends on RAF1/MEK). The
+gene-level classification has too many artifacts to be informative
+without additional filtering.
