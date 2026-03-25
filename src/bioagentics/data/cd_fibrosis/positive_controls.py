@@ -145,6 +145,25 @@ POSITIVE_CONTROLS: list[PositiveControl] = [
         evidence="STENOVA Phase 2a met primary and key secondary endpoints in "
         "fibrostenotic CD. Directly targets ALK5/SMAD2/3 axis in fibroblasts.",
     ),
+    # PDE4 inhibitors (anti-inflammatory/anti-fibrotic)
+    PositiveControl(
+        name="apremilast",
+        aliases=["apremilast", "otezla", "cc-10004"],
+        mechanism="Selective PDE4 inhibitor, raises intracellular cAMP",
+        pathway="PDE4/cAMP",
+        evidence="PDE4 inhibition raises cAMP, suppressing fibroblast collagen synthesis "
+        "and inflammatory cytokine production. Approved for psoriatic arthritis. "
+        "Anti-fibrotic in hepatic fibrosis models. Well-represented in L1000.",
+    ),
+    PositiveControl(
+        name="roflumilast",
+        aliases=["roflumilast", "daxas", "daliresp"],
+        mechanism="Selective PDE4 inhibitor",
+        pathway="PDE4/cAMP",
+        evidence="Approved for severe COPD. PDE4 inhibition reduces TGF-beta-induced "
+        "myofibroblast differentiation and collagen deposition in lung fibrosis "
+        "models. Present in L1000 database.",
+    ),
     # EGFR inhibitors (reverse AREG-driven fibroblast activation)
     PositiveControl(
         name="erlotinib",
@@ -188,6 +207,7 @@ PATHWAY_CLASSES = {
     "epigenetic/HDAC": ["vorinostat", "trichostatin-a"],
     "miR-124": ["obefazimod"],
     "ALK5/TGF-beta": ["ontunisertib"],
+    "PDE4/cAMP": ["apremilast", "roflumilast"],
     "EGFR/AREG": ["erlotinib", "gefitinib"],
     "TWIST1/beta-carboline": ["harmine"],
 }

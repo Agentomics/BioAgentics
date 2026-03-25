@@ -31,9 +31,13 @@ OUTPUT_DIR = REPO_ROOT / "output" / "crohns" / "cd-fibrosis-drug-repurposing"
 VALIDATION_DIR = OUTPUT_DIR / "validation"
 
 # Key fibrosis markers to predict effects on
+# Includes collagen neoepitope genes (COL3A1, COL6A3, COL11A1, COL16A1)
+# corresponding to circulating biomarkers PRO-C3, PRO-C6, PRO-C11, PRO-C16
+# measurable in clinical trials
 FIBROSIS_MARKERS = [
     "CTHRC1", "POSTN", "SERPINE1", "GREM1", "TNC", "CD38",
     "COL1A1", "ACTA2", "FN1", "CTGF",
+    "COL3A1", "COL6A3", "COL11A1", "COL16A1",
 ]
 
 # Known compound-marker interactions from literature
@@ -44,66 +48,103 @@ KNOWN_MARKER_EFFECTS: dict[str, dict[str, float]] = {
         "COL1A1": -1.0, "ACTA2": -0.8, "FN1": -0.7, "CTGF": -0.8,
         "SERPINE1": -0.5, "TNC": -0.3, "POSTN": -0.4, "CTHRC1": -0.2,
         "GREM1": 0.0, "CD38": 0.0,
+        "COL3A1": -0.8, "COL6A3": -0.3, "COL11A1": -0.2, "COL16A1": -0.1,
     },
     "nintedanib": {
         "COL1A1": -0.7, "ACTA2": -0.6, "FN1": -0.5, "CTGF": -0.4,
         "SERPINE1": -0.3, "TNC": -0.3, "POSTN": -0.5, "CTHRC1": -0.3,
         "GREM1": -0.2, "CD38": 0.0,
+        "COL3A1": -0.6, "COL6A3": -0.3, "COL11A1": -0.2, "COL16A1": -0.1,
     },
     "vorinostat": {
         "COL1A1": -0.9, "ACTA2": -0.7, "FN1": -0.6, "CTGF": -0.5,
         "SERPINE1": -0.6, "TNC": -0.4, "POSTN": -0.5, "CTHRC1": -0.3,
         "GREM1": -0.4, "CD38": -0.3,
+        "COL3A1": -0.7, "COL6A3": -0.4, "COL11A1": -0.3, "COL16A1": -0.2,
     },
     "trichostatin-a": {
         "COL1A1": -0.9, "ACTA2": -0.8, "FN1": -0.7, "CTGF": -0.6,
         "SERPINE1": -0.7, "TNC": -0.5, "POSTN": -0.6, "CTHRC1": -0.4,
         "GREM1": -0.5, "CD38": -0.2,
+        "COL3A1": -0.8, "COL6A3": -0.5, "COL11A1": -0.3, "COL16A1": -0.2,
     },
     "obefazimod": {
         "COL1A1": -0.8, "ACTA2": -0.7, "FN1": -0.6, "CTGF": -0.4,
         "SERPINE1": -0.3, "TNC": -0.2, "POSTN": -0.3, "CTHRC1": -0.1,
         "GREM1": -0.1, "CD38": -0.2,
+        "COL3A1": -0.5, "COL6A3": -0.2, "COL11A1": -0.1, "COL16A1": -0.1,
     },
     "tofacitinib": {
         "COL1A1": -0.5, "ACTA2": -0.4, "FN1": -0.3, "CTGF": -0.3,
         "SERPINE1": -0.4, "TNC": -0.2, "POSTN": -0.2, "CTHRC1": -0.2,
         "GREM1": -0.1, "CD38": -0.3,
+        "COL3A1": -0.4, "COL6A3": -0.2, "COL11A1": -0.1, "COL16A1": -0.1,
     },
     "upadacitinib": {
         "COL1A1": -0.6, "ACTA2": -0.5, "FN1": -0.4, "CTGF": -0.4,
         "SERPINE1": -0.5, "TNC": -0.3, "POSTN": -0.3, "CTHRC1": -0.2,
         "GREM1": -0.2, "CD38": -0.4,
+        "COL3A1": -0.5, "COL6A3": -0.3, "COL11A1": -0.2, "COL16A1": -0.1,
     },
     "daratumumab": {
         "COL1A1": -0.2, "ACTA2": -0.1, "FN1": -0.1, "CTGF": -0.1,
         "SERPINE1": -0.1, "TNC": -0.1, "POSTN": -0.1, "CTHRC1": -0.1,
         "GREM1": 0.0, "CD38": -0.9,
+        "COL3A1": -0.2, "COL6A3": -0.1, "COL11A1": 0.0, "COL16A1": 0.0,
     },
     "isatuximab": {
         "COL1A1": -0.2, "ACTA2": -0.1, "FN1": -0.1, "CTGF": -0.1,
         "SERPINE1": -0.1, "TNC": -0.1, "POSTN": -0.1, "CTHRC1": -0.1,
         "GREM1": 0.0, "CD38": -0.9,
+        "COL3A1": -0.2, "COL6A3": -0.1, "COL11A1": 0.0, "COL16A1": 0.0,
     },
     "duvakitug": {
         "COL1A1": -0.6, "ACTA2": -0.5, "FN1": -0.4, "CTGF": -0.3,
         "SERPINE1": -0.3, "TNC": -0.4, "POSTN": -0.3, "CTHRC1": -0.3,
         "GREM1": -0.2, "CD38": -0.2,
+        "COL3A1": -0.5, "COL6A3": -0.2, "COL11A1": -0.2, "COL16A1": -0.1,
     },
     "tulisokibart": {
         "COL1A1": -0.5, "ACTA2": -0.4, "FN1": -0.3, "CTGF": -0.3,
         "SERPINE1": -0.3, "TNC": -0.3, "POSTN": -0.3, "CTHRC1": -0.2,
         "GREM1": -0.2, "CD38": -0.2,
+        "COL3A1": -0.4, "COL6A3": -0.2, "COL11A1": -0.1, "COL16A1": -0.1,
     },
     "ontunisertib": {
         "COL1A1": -0.8, "ACTA2": -0.7, "FN1": -0.6, "CTGF": -0.7,
         "SERPINE1": -0.6, "TNC": -0.4, "POSTN": -0.4, "CTHRC1": -0.3,
         "GREM1": -0.3, "CD38": -0.1,
+        "COL3A1": -0.7, "COL6A3": -0.3, "COL11A1": -0.3, "COL16A1": -0.1,
     },
     "harmine": {
         "COL1A1": -0.4, "ACTA2": -0.5, "FN1": -0.3, "CTGF": -0.2,
         "SERPINE1": -0.3, "TNC": -0.2, "POSTN": -0.3, "CTHRC1": -0.2,
         "GREM1": -0.1, "CD38": -0.1,
+        "COL3A1": -0.3, "COL6A3": -0.2, "COL11A1": -0.1, "COL16A1": -0.1,
+    },
+    "apremilast": {
+        "COL1A1": -0.5, "ACTA2": -0.4, "FN1": -0.3, "CTGF": -0.3,
+        "SERPINE1": -0.4, "TNC": -0.2, "POSTN": -0.2, "CTHRC1": -0.2,
+        "GREM1": -0.1, "CD38": -0.2,
+        "COL3A1": -0.4, "COL6A3": -0.2, "COL11A1": -0.1, "COL16A1": -0.1,
+    },
+    "roflumilast": {
+        "COL1A1": -0.4, "ACTA2": -0.3, "FN1": -0.3, "CTGF": -0.3,
+        "SERPINE1": -0.3, "TNC": -0.2, "POSTN": -0.2, "CTHRC1": -0.2,
+        "GREM1": -0.1, "CD38": -0.1,
+        "COL3A1": -0.3, "COL6A3": -0.2, "COL11A1": -0.1, "COL16A1": -0.1,
+    },
+    "erlotinib": {
+        "COL1A1": -0.5, "ACTA2": -0.4, "FN1": -0.4, "CTGF": -0.3,
+        "SERPINE1": -0.3, "TNC": -0.3, "POSTN": -0.3, "CTHRC1": -0.2,
+        "GREM1": -0.1, "CD38": -0.1,
+        "COL3A1": -0.4, "COL6A3": -0.2, "COL11A1": -0.2, "COL16A1": -0.1,
+    },
+    "gefitinib": {
+        "COL1A1": -0.5, "ACTA2": -0.4, "FN1": -0.3, "CTGF": -0.3,
+        "SERPINE1": -0.3, "TNC": -0.2, "POSTN": -0.3, "CTHRC1": -0.2,
+        "GREM1": -0.1, "CD38": -0.1,
+        "COL3A1": -0.4, "COL6A3": -0.2, "COL11A1": -0.1, "COL16A1": -0.1,
     },
 }
 
