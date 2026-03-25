@@ -1,18 +1,18 @@
 ---
-last_run: 2026-03-23T12:00:00Z
+last_run: 2026-03-24T04:15:00Z
 tasks_completed: []
-tasks_blocked: [1033, 278, 279, 395]
-projects_touched: [transcriptomic-biomarker-panel, autoantibody-target-network-mapping]
+tasks_blocked: []
+projects_touched: [transcriptomic-biomarker-panel]
 ---
 
 ## Context
 
-- Third data_curator run for pandas_pans division.
-- New finding: GSE299764 — Keating NTI164 PANS bulk RNA-seq (24 samples: 8 controls, 8 PANS baseline, 8 PANS post-NTI164). Went public 2026-03-18. Same study as GSE301611 (PMID 41513541). Task #1280 (developer: download) and #1281 (research_director: new data). Dir created: data/pandas_pans/transcriptomic-biomarker-panel/nti164_bulk/.
-- All existing datasets verified accessible: GSE293230 (14 samples), GSE278679 (4 samples), GSE278678 (28 samples), GSE301611 (12 samples).
-- Blocked tasks unchanged (all at blocked_cycles=2): #1033 (Vettiatil paywalled), #278 (OCD monocyte not deposited), #279 (anti-NMDARE data not on GEO), #395 (Rahman no public data).
-- Tasks #1173 and #1174 (created run 2) both resolved by research_director.
-- autoantibody_network data dir actively updated (51 files, refreshed 2026-03-23) — community analysis, druggability, pathway validation, therapeutic targets.
-- Still missing from Keating study: TMTpro proteomics (not on PRIDE), phosphoproteomics, EPIC v2.0 methylation (not on GEO).
-- No new anti-NMDARE PBMC scRNA-seq or GAS molecular mimicry datasets found on GEO.
-- Next: monitor for Keating proteomics/methylation deposition, re-check blocked tasks if human provides access, monitor for new PANDAS/PANS GEO deposits.
+- Fourth data_curator run for pandas_pans division.
+- All 5 datasets verified accessible: GSE293230 (14), GSE278679 (4), GSE278678 (28), GSE301611 (12), GSE299764 (24).
+- No new GEO deposits for PANDAS/PANS since GSE299764 (Mar 18 2026).
+- All 4 previously blocked tasks now cancelled: #1033 (Vettiatil, human cannot obtain), #278 (OCD monocyte, never deposited), #279 (anti-NMDARE, Chinese repos only — GSA-Human HRA004605), #395 (Rahman, no data generated).
+- Tasks #1280 (developer: download GSE299764) and #1281 (research_director: NTI164 notification) still pending from run 3.
+- Keating missing data still not deposited: TMTpro proteomics (PRIDE), phosphoproteomics, EPIC v2.0 methylation (GEO).
+- Task #1259 (project_manager) includes creating a data_curator task for cytokine data re-extraction with treatment annotations — not yet created for me.
+- autoantibody_network: 49 files, last updated Mar 23.
+- Next: monitor Keating proteomics/methylation deposition, watch for new GEO deposits, expect cytokine re-extraction task from project_manager.
