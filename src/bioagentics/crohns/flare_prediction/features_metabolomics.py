@@ -34,6 +34,16 @@ METABOLITE_CLASSES = {
     "acylcarnitine": ["carnitine", "acylcarnitine"],
 }
 
+# Validated pre-flare metabolite candidates (RD-approved, journal #1950).
+# Levhar PMID 40650893: urate, 3-HB, acetoacetate, trehalose, mesaconic acid.
+CANDIDATE_METABOLITES: dict[str, list[str]] = {
+    "urate": ["urate", "uric_acid", "uric acid"],
+    "3hb": ["3-hydroxybutyrate", "3_hydroxybutyrate", "beta-hydroxybutyrate", "bhb", "3-hb"],
+    "acetoacetate": ["acetoacetate", "acetoacetic"],
+    "trehalose": ["trehalose"],
+    "mesaconic_acid": ["mesaconate", "mesaconic"],
+}
+
 
 def _slope(values: list[float]) -> float:
     """Compute linear slope. Returns 0 if < 2 values."""
@@ -42,6 +52,22 @@ def _slope(values: list[float]) -> float:
     x = np.arange(len(values), dtype=float)
     result = linregress(x, values)
     return float(result.slope)
+
+
+def _find_candidate_columns(
+    df_columns: list[str], meta_cols: set[str]
+) -> dict[str, list[str]]:
+    """Match candidate metabolite names to actual DataFrame columns."""
+    candidates: dict[str, list[str]] = {}
+    feature_cols = [c for c in df_columns if c not in meta_cols]
+    for candidate, keywords in CANDIDATE_METABOLITES.items():
+        matched = []
+        for col in feature_cols:
+            col_lower = col.lower()
+            if any(kw.lower() in col_lower for kw in keywords):
+                matched.append(col)
+        candidates[candidate] = matched
+    return candidates
 
 
 def _classify_metabolite(name: str) -> str | None:
@@ -105,6 +131,9 @@ def compute_metabolomic_features(
         if cls:
             class_cols[cls].append(col)
 
+    # Match named candidate metabolites to actual columns
+    candidate_cols = _find_candidate_columns(met_reset.columns.tolist(), meta_cols)
+
     feature_rows: list[dict[str, float]] = []
 
     for window in windows:
@@ -144,6 +173,23 @@ def compute_metabolomic_features(
                 features[f"met_range__{col}"] = float(
                     np.nanmax(samples[col].values) - np.nanmin(samples[col].values)
                 )
+
+        # Named candidate metabolite features (Levhar PMID 40650893)
+        for cand_name, cand_cols in candidate_cols.items():
+            if not cand_cols:
+                features[f"met_cand_slope__{cand_name}"] = np.nan
+                features[f"met_cand_mean__{cand_name}"] = np.nan
+                features[f"met_cand_std__{cand_name}"] = np.nan
+                features[f"met_cand_range__{cand_name}"] = np.nan
+                continue
+            cand_mean_series = samples[cand_cols].mean(axis=1).tolist()
+            cand_values = samples[cand_cols].values
+            features[f"met_cand_slope__{cand_name}"] = _slope(cand_mean_series)
+            features[f"met_cand_mean__{cand_name}"] = float(np.nanmean(cand_values))
+            features[f"met_cand_std__{cand_name}"] = float(np.nanstd(cand_values))
+            features[f"met_cand_range__{cand_name}"] = float(
+                np.nanmax(cand_values) - np.nanmin(cand_values)
+            )
 
         feature_rows.append(features)
 

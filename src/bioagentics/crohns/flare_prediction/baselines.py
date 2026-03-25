@@ -139,6 +139,106 @@ def run_baseline(
     return metrics
 
 
+def extract_levhar_index_features(
+    metabolomics: pd.DataFrame | None,
+    metadata: pd.DataFrame | None,
+    windows: list[Window],
+) -> pd.DataFrame:
+    """Compute Levhar urate-to-creatinine + CRP composite index (PMID 40650893).
+
+    Index = urate / creatinine + CRP.  Falls back to urate-only if
+    creatinine or CRP columns are absent.
+
+    Parameters
+    ----------
+    metabolomics:
+        Metabolomics DataFrame with subject_id, visit_num, date.
+    metadata:
+        Clinical metadata with CRP (fecalcal_ng_ml or CRP column).
+    windows:
+        Classification windows.
+    """
+    feature_rows: list[dict[str, float]] = []
+
+    if metabolomics is None or metabolomics.empty:
+        for _ in windows:
+            feature_rows.append({
+                "levhar_index_mean": np.nan,
+                "levhar_index_slope": np.nan,
+                "levhar_index_last": np.nan,
+            })
+        result = pd.DataFrame(feature_rows, index=range(len(windows)))
+        result.index.name = "instance_id"
+        return result
+
+    met = metabolomics.reset_index() if hasattr(metabolomics.index, "names") else metabolomics.copy()
+    met["date"] = pd.to_datetime(met["date"])
+    meta_cols = {"subject_id", "visit_num", "date", "diagnosis"}
+
+    # Find urate/creatinine columns (case-insensitive)
+    cols_lower = {c: c.lower() for c in met.columns if c not in meta_cols}
+    urate_col = next((c for c, lo in cols_lower.items() if "urate" in lo or "uric" in lo), None)
+    creat_col = next((c for c, lo in cols_lower.items() if "creatinine" in lo), None)
+
+    # CRP may be in metadata
+    crp_col = None
+    crp_data: pd.DataFrame | None = None
+    if metadata is not None:
+        meta_reset = metadata.reset_index() if hasattr(metadata.index, "names") else metadata.copy()
+        for c in meta_reset.columns:
+            if c.lower() in ("crp", "fecalcal_ng_ml"):
+                crp_col = c
+                break
+        if crp_col:
+            crp_data = meta_reset[["subject_id", "visit_num", crp_col]].copy()
+            crp_data["date"] = pd.to_datetime(meta_reset["date"]) if "date" in meta_reset.columns else pd.NaT
+
+    for window in windows:
+        mask = (
+            (met["subject_id"] == window.subject_id)
+            & (met["date"] >= window.window_start)
+            & (met["date"] <= window.window_end)
+        )
+        samples = met.loc[mask].sort_values("date")
+
+        row: dict[str, float] = {}
+        if len(samples) == 0 or urate_col is None:
+            row["levhar_index_mean"] = np.nan
+            row["levhar_index_slope"] = np.nan
+            row["levhar_index_last"] = np.nan
+        else:
+            urate_vals = pd.to_numeric(samples[urate_col], errors="coerce")
+            if creat_col is not None:
+                creat_vals = pd.to_numeric(samples[creat_col], errors="coerce").replace(0, np.nan)
+                ratio = urate_vals / creat_vals
+            else:
+                ratio = urate_vals
+
+            # Add CRP if available
+            index_vals = ratio.copy()
+            if crp_data is not None and crp_col is not None:
+                crp_mask = (
+                    (crp_data["subject_id"] == window.subject_id)
+                    & (crp_data["date"] >= window.window_start)
+                    & (crp_data["date"] <= window.window_end)
+                )
+                crp_samples = crp_data.loc[crp_mask].sort_values("date")
+                if len(crp_samples) == len(samples):
+                    crp_vals = pd.to_numeric(crp_samples[crp_col], errors="coerce")
+                    index_vals = ratio.values + crp_vals.values
+
+            vals_list = pd.to_numeric(pd.Series(index_vals), errors="coerce").dropna().tolist()
+            row["levhar_index_mean"] = float(np.nanmean(vals_list)) if vals_list else np.nan
+            row["levhar_index_slope"] = _slope(vals_list)
+            row["levhar_index_last"] = float(vals_list[-1]) if vals_list else np.nan
+
+        feature_rows.append(row)
+
+    result = pd.DataFrame(feature_rows, index=range(len(windows)))
+    result.index.name = "instance_id"
+    return result
+
+
 def run_all_baselines(
     data: dict[str, pd.DataFrame | None],
     windows: list[Window],
@@ -185,6 +285,12 @@ def run_all_baselines(
         species = data.get("species")
         div_features = extract_single_marker_features("diversity", species, windows)
         results.append(run_baseline("diversity", div_features, windows))
+
+    # Levhar urate-to-creatinine+CRP index baseline (PMID 40650893)
+    metabolomics = data.get("metabolomics")
+    metadata = data.get("metadata")
+    levhar_features = extract_levhar_index_features(metabolomics, metadata, windows)
+    results.append(run_baseline("levhar_index", levhar_features, windows))
 
     logger.info("Ran %d baselines", len(results))
     return results

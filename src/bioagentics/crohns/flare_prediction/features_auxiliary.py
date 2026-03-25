@@ -31,6 +31,17 @@ KEY_PATHWAYS = {
     "oxidative_stress": ["oxidative", "reactive_oxygen", "glutathione"],
     "butyrate_production": ["butyrate", "butanoate", "butyryl"],
     "sulfur_metabolism": ["sulfur", "sulfate", "cysteine_methionine"],
+    "succinate_oxphos": [
+        "succinate",
+        "succinyl",
+        "oxidative_phosphorylation",
+        "oxphos",
+        "electron_transfer",
+        "aerobic_respiration",
+        "TCA",
+        "citric_acid",
+        "fumarate",
+    ],
 }
 
 # Inflammatory gene modules for host transcriptomics
