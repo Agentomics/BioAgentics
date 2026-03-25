@@ -179,11 +179,13 @@ def run_binding_predictions(
     max_peptides: int | None = None,
     output_base: Path | None = None,
     resume: bool = True,
+    virulence_only: bool = False,
 ) -> dict:
     """Run IEDB binding predictions for a serotype's peptides against the HLA panel.
 
     Streams results to per-serotype-allele files to stay within memory limits.
     When resume=True, skips alleles that already have output files.
+    When virulence_only=True, only predicts binding for virulence factor peptides.
     Returns prediction summary dict.
     """
     if output_base is None:
