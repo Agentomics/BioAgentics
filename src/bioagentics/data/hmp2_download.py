@@ -66,9 +66,24 @@ DATA_FILES: dict[str, dict[str, str]] = {
         "description": "HUMAnN3 MetaCyc pathway abundances",
     },
     "metabolomics": {
-        "filename": "HMP2_metabolomics.csv.gz",
+        "filename": "HMP2_metabolomics.biom",
         "url": f"{_GLOBUS_BASE}/products/HMP2/MBX/HMP2_metabolomics.biom",
-        "description": "LC-MS untargeted metabolomics (BIOM format, converted to CSV on download)",
+        "description": "LC-MS untargeted metabolomics (BIOM format)",
+    },
+    "transcriptomics": {
+        "filename": "host_tx_counts.tsv.gz",
+        "url": f"{_GLOBUS_BASE}/products/HMP2/HTX/host_tx_counts.tsv.gz",
+        "description": "Host biopsy transcriptomics (gene counts)",
+    },
+    "serology": {
+        "filename": "hmp2_serology_Compiled_ELISA_Data.tsv",
+        "url": f"{_GLOBUS_BASE}/products/HMP2/Serology/2017-10-05/hmp2_serology_Compiled_ELISA_Data.tsv",
+        "description": "Compiled ELISA serology data (ASCA, anti-CBir1, anti-OmpC)",
+    },
+    "dysbiosis": {
+        "filename": "dysbiosis_scores.tsv",
+        "url": "https://forum.biobakery.org/uploads/short-url/umwfR0kDJ6s5RXHwtIMgLaOEoOI.tsv",
+        "description": "Dysbiosis scores from Lloyd-Price et al. 2019",
     },
 }
 
