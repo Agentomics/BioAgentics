@@ -27,21 +27,41 @@ GITHUB_REPO = os.environ.get("GITHUB_REPO", "BioAgentics")
 mcp = FastMCP("bioagentics")
 
 
+class ApiError(Exception):
+    """Coordination API request failed."""
+
+
+class GhError(Exception):
+    """gh CLI command failed."""
+
+
 def _api(method: str, path: str, **kwargs) -> dict:
-    """Make an API request and return the JSON response."""
+    """Make an API request and return the JSON response.
+
+    Raises ApiError on network/HTTP/JSON errors so MCP tools surface
+    a proper tool error instead of returning an error dict that callers
+    cannot distinguish from valid data.
+    """
     try:
         resp = requests.request(
             method, f"{API_URL}{API_PREFIX}{path}", headers=HEADERS, timeout=30, **kwargs
         )
         resp.raise_for_status()
         return resp.json()
-    except (requests.RequestException, json.JSONDecodeError) as e:
+    except requests.RequestException as e:
         log.error("api error: %s %s — %s", method, path, e)
-        return {"error": str(e)}
+        raise ApiError(f"{method} {path}: {e}") from e
+    except json.JSONDecodeError as e:
+        log.error("api json parse error: %s %s — %s", method, path, e)
+        raise ApiError(f"{method} {path}: invalid JSON response") from e
 
 
 def _gh(*args: str, cwd: str | Path | None = None) -> str:
-    """Run a gh CLI command and return output."""
+    """Run a gh CLI command and return stdout.
+
+    Raises GhError on non-zero exit, timeout, or missing binary —
+    eliminates fragile 'exit code' string matching in callers.
+    """
     try:
         result = subprocess.run(
             ["gh", *args],
@@ -51,16 +71,15 @@ def _gh(*args: str, cwd: str | Path | None = None) -> str:
             timeout=60,
         )
     except FileNotFoundError:
-        return "Error: gh CLI not installed (https://cli.github.com)"
+        raise GhError("gh CLI not installed (https://cli.github.com)")
     except subprocess.TimeoutExpired:
-        return "Error: gh command timed out after 60s"
-    output = result.stdout.strip()
+        raise GhError("gh command timed out after 60s")
     if result.returncode != 0:
         err = result.stderr.strip()
-        if err:
-            output = f"{output}\n{err}".strip() if output else err
-        output += f"\n[exit code: {result.returncode}]"
-    return output
+        out = result.stdout.strip()
+        msg = f"{out}\n{err}".strip() if out and err else (err or out)
+        raise GhError(msg)
+    return result.stdout.strip()
 
 
 # ── Task Tools ──
@@ -375,8 +394,9 @@ def list_agents(status: str = "", division: str = "") -> str:
 def list_issues(limit: int = 50) -> str:
     """List open GitHub issues for this repository."""
     repo = f"{GITHUB_ORG}/{GITHUB_REPO}"
-    check = _gh("repo", "view", repo, "--json", "name")
-    if "exit code" in check:
+    try:
+        _gh("repo", "view", repo, "--json", "name")
+    except GhError:
         return f"No repo: {repo}"
 
     output = _gh(
@@ -400,8 +420,9 @@ def list_issues(limit: int = 50) -> str:
 def list_prs(limit: int = 50) -> str:
     """List open GitHub pull requests for this repository."""
     repo = f"{GITHUB_ORG}/{GITHUB_REPO}"
-    check = _gh("repo", "view", repo, "--json", "name")
-    if "exit code" in check:
+    try:
+        _gh("repo", "view", repo, "--json", "name")
+    except GhError:
         return f"No repo: {repo}"
 
     output = _gh(
