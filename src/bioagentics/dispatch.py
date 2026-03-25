@@ -14,6 +14,8 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
+from urllib.parse import quote
+
 from bioagentics.config import AgentConfig, DispatchConfig, api, load_config, setup_logging, API_URL, REPO_ROOT
 
 log = setup_logging("dispatch")
@@ -279,11 +281,12 @@ def reap_stale_blocked_tasks():
 def _project_is_idle(name: str, division: str | None = None) -> bool:
     """True if project has no active/blocked tasks but at least one done task."""
     div_filter = f"&division={division}" if division else ""
+    qname = quote(name, safe="")
     for status in ("pending", "in_progress", "blocked"):
-        task_resp = api("GET", f"/tasks?project={name}&status={status}&limit=1{div_filter}")
+        task_resp = api("GET", f"/tasks?project={qname}&status={status}&limit=1{div_filter}")
         if task_resp and task_resp.ok and task_resp.json().get("total", 0) > 0:
             return False
-    done_resp = api("GET", f"/tasks?project={name}&status=done&limit=1{div_filter}")
+    done_resp = api("GET", f"/tasks?project={qname}&status=done&limit=1{div_filter}")
     return (
         done_resp is not None
         and done_resp.ok
@@ -303,7 +306,8 @@ _STAGE_REQUIRED_ROLE = {
 def _has_done_task_from(username: str, project: str, division: str | None = None) -> bool:
     """True if at least one done task exists for this agent+project."""
     div_filter = f"&division={division}" if division else ""
-    resp = api("GET", f"/tasks?username={username}&project={project}&status=done&limit=1{div_filter}")
+    qproject = quote(project, safe="")
+    resp = api("GET", f"/tasks?username={username}&project={qproject}&status=done&limit=1{div_filter}")
     return resp is not None and resp.ok and resp.json().get("total", 0) > 0
 
 
@@ -329,7 +333,7 @@ def _advance_projects(from_status: str, to_status: str):
         if required_role and not _has_done_task_from(required_role, name, div):
             continue
 
-        patch_resp = api("PATCH", f"/projects/{name}", json={"status": to_status})
+        patch_resp = api("PATCH", f"/projects/{quote(name, safe='')}", json={"status": to_status})
         if patch_resp and patch_resp.ok:
             log.info("ADVANCE: %s/%s %s → %s (no active tasks)", div, name, from_status, to_status)
             journal(
@@ -345,8 +349,9 @@ def _advance_projects(from_status: str, to_status: str):
 def _project_has_no_tasks(name: str, division: str | None = None) -> bool:
     """True if project has zero tasks in any status."""
     div_filter = f"&division={division}" if division else ""
+    qname = quote(name, safe="")
     for status in ("pending", "in_progress", "blocked", "done", "cancelled"):
-        resp = api("GET", f"/tasks?project={name}&status={status}&limit=1{div_filter}")
+        resp = api("GET", f"/tasks?project={qname}&status={status}&limit=1{div_filter}")
         if resp and resp.ok and resp.json().get("total", 0) > 0:
             return False
     return True
@@ -355,10 +360,11 @@ def _project_has_no_tasks(name: str, division: str | None = None) -> bool:
 def _has_active_task_for(username: str, project: str, division: str | None = None) -> bool:
     """True if an active (pending/in_progress/blocked) task exists for this agent+project."""
     div_filter = f"&division={division}" if division else ""
+    qproject = quote(project, safe="")
     for st in ("pending", "in_progress", "blocked"):
         resp = api(
             "GET",
-            f"/tasks?username={username}&project={project}&status={st}&limit=1{div_filter}",
+            f"/tasks?username={username}&project={qproject}&status={st}&limit=1{div_filter}",
         )
         if resp and resp.ok and resp.json().get("total", 0) > 0:
             return True
@@ -465,10 +471,11 @@ def check_published_missing_reports():
 
         # Check if a task already exists for this (pending, in_progress, or blocked)
         has_existing = False
+        qname = quote(name, safe="")
         for st in ("pending", "in_progress", "blocked"):
             task_resp = api(
                 "GET",
-                f"/tasks?username=research_writer&project={name}&division={div}"
+                f"/tasks?username=research_writer&project={qname}&division={div}"
                 f"&status={st}&limit=1",
             )
             if task_resp and task_resp.ok and task_resp.json().get("total", 0) > 0:
