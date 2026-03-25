@@ -1,13 +1,13 @@
-"""CMAP/L1000 + iLINCS connectivity scoring pipeline for CD fibrosis drug repurposing.
+"""CMAP/L1000 + SigCom LINCS connectivity scoring pipeline for CD fibrosis drug repurposing.
 
 Queries all fibrosis signatures against LINCS compound perturbation libraries
 to identify compounds that reverse fibrotic gene expression patterns.
 
 Pipeline:
 1. Load all fibrosis signatures (bulk, cell-type, transition, GLIS3/IL-11,
-   CTHRC1/YAP-TAZ, TL1A-DR3/Rho)
-2. Query each signature against iLINCS LIB_5 (143k chemical perturbagen signatures)
-3. Optionally query against clue.io CMAP (requires CLUE_API_KEY)
+   CTHRC1/YAP-TAZ, TL1A-DR3/Rho, FAS/TWIST1, Acharjee stricture)
+2. Query each signature against SigCom LINCS l1000_cp (chemical perturbations)
+3. Optionally query against iLINCS LIB_5, clue.io CMAP, or local L1000 GCTX
 4. Rank compounds by negative concordance/connectivity (signature reversal)
 5. Prioritize hits from fibroblast-relevant cell lines
 6. Identify convergent hits across multiple signatures
@@ -17,6 +17,7 @@ Usage:
     uv run python -m bioagentics.data.cd_fibrosis.cmap_pipeline
     uv run python -m bioagentics.data.cd_fibrosis.cmap_pipeline --signatures transition
     uv run python -m bioagentics.data.cd_fibrosis.cmap_pipeline --top-n 100
+    uv run python -m bioagentics.data.cd_fibrosis.cmap_pipeline --use-sigcom
 """
 
 from __future__ import annotations
@@ -39,6 +40,7 @@ from bioagentics.data.cd_fibrosis.l1000_local import (
     DATA_DIR as L1000_DATA_DIR,
     run_local_scoring,
 )
+from bioagentics.data.cd_fibrosis.sigcom_client import SigcomClient
 
 OUTPUT_DIR = REPO_ROOT / "output" / "crohns" / "cd-fibrosis-drug-repurposing"
 SIGNATURES_DIR = OUTPUT_DIR / "signatures"
@@ -92,6 +94,54 @@ def load_all_signatures(
         print(f"  {name}: {len(up)} up, {len(down)} down genes")
 
     return loaded
+
+
+def query_sigcom_signature(
+    client: SigcomClient,
+    up_genes: list[str],
+    down_genes: list[str],
+    database: str = "l1000_cp",
+    limit: int = 50,
+) -> list[dict]:
+    """Query a signature against SigCom LINCS and return compound results.
+
+    Returns list of dicts with compound name, cell line, scores.
+    """
+    return client.query_fibrosis_signature(
+        up_genes, down_genes, database, limit
+    )
+
+
+def parse_sigcom_results(
+    results: list[dict],
+    signature_name: str,
+) -> pd.DataFrame:
+    """Parse SigCom LINCS results into standard pipeline DataFrame format.
+
+    Converts SigCom z-scores to concordance-like scores for compatibility
+    with the downstream ranking. Negative z_sum = compound reverses the
+    disease signature = anti-fibrotic candidate.
+    """
+    records = []
+    for hit in results:
+        # Use negative z_sum as concordance (negative = reversal = good)
+        z_sum = hit.get("z_sum", 0)
+        concordance = -z_sum  # Negate so negative = reversal
+
+        records.append({
+            "signature_id": hit.get("signature_id", ""),
+            "compound": hit.get("compound", "unknown"),
+            "concordance": concordance,
+            "cell_line": hit.get("cell_line", ""),
+            "concentration": "",
+            "time": "",
+            "query_signature": signature_name,
+        })
+
+    df = pd.DataFrame(records)
+    if len(df) > 0:
+        df = df.sort_values("concordance", ascending=True)
+    return df
 
 
 def query_ilincs_signature(
@@ -229,24 +279,30 @@ def run_pipeline(
     signatures_dir: Path | None = None,
     output_dir: Path | None = None,
     which_signatures: list[str] | None = None,
-    use_ilincs: bool = True,
+    use_sigcom: bool = True,
+    use_ilincs: bool = False,
     use_cmap: bool = False,
     use_local_l1000: bool = False,
     l1000_data_dir: Path | None = None,
+    sigcom_database: str = "l1000_cp",
+    sigcom_limit: int = 50,
     ilincs_library: str = "LIB_5",
     top_n: int = 200,
     delay_between_queries: float = 5.0,
 ) -> pd.DataFrame:
-    """Run the full CMAP/iLINCS connectivity scoring pipeline.
+    """Run the full CMAP/L1000 connectivity scoring pipeline.
 
     Args:
         signatures_dir: Directory with signature TSV files.
         output_dir: Output directory for results.
         which_signatures: Subset of signatures to query (default: all).
-        use_ilincs: Query iLINCS (default: True, no API key needed).
+        use_sigcom: Query SigCom LINCS API (default: True, no key needed).
+        use_ilincs: Query iLINCS (default: False, API unreliable).
         use_cmap: Query clue.io CMAP (requires CLUE_API_KEY).
         use_local_l1000: Use local L1000 GCTX data (requires download).
         l1000_data_dir: Directory containing L1000 GCTX + metadata.
+        sigcom_database: SigCom database (default: l1000_cp).
+        sigcom_limit: Max results per SigCom query (default: 50).
         ilincs_library: iLINCS library to query.
         top_n: Number of top compounds to return.
         delay_between_queries: Seconds between API calls (rate limiting).
@@ -258,7 +314,7 @@ def run_pipeline(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print("=" * 60)
-    print("CMAP/L1000 + iLINCS Connectivity Scoring Pipeline")
+    print("CMAP/L1000 Connectivity Scoring Pipeline")
     print("=" * 60)
 
     # Step 1: Load signatures
@@ -270,9 +326,46 @@ def run_pipeline(
 
     all_results: dict[str, pd.DataFrame] = {}
 
-    # Step 2: Query iLINCS
+    # Step 2: Query SigCom LINCS (primary, no auth needed)
+    if use_sigcom:
+        print(f"\n[2/6] Querying SigCom LINCS ({sigcom_database}, limit={sigcom_limit})...")
+        sigcom = SigcomClient()
+
+        for sig_name, (up_genes, down_genes) in signatures.items():
+            print(f"\n  Querying: {sig_name} ({len(up_genes)} up, {len(down_genes)} down)...")
+            try:
+                results = query_sigcom_signature(
+                    sigcom, up_genes, down_genes, sigcom_database, sigcom_limit
+                )
+                df = parse_sigcom_results(results, sig_name)
+                all_results[f"sigcom_{sig_name}"] = df
+                print(f"    Got {len(df)} results")
+
+                # Save per-signature results
+                per_sig_path = output_dir / f"sigcom_{sig_name}_hits.tsv"
+                df.to_csv(per_sig_path, sep="\t", index=False)
+
+                if len(df) > 0:
+                    top_anti = df[df["concordance"] < 0].head(5)
+                    if len(top_anti) > 0:
+                        print(f"    Top anti-fibrotic candidates:")
+                        for _, row in top_anti.iterrows():
+                            print(f"      {row['compound']:30s} "
+                                  f"concordance={row['concordance']:+.4f} "
+                                  f"cell={row['cell_line']}")
+
+                if delay_between_queries > 0:
+                    time.sleep(delay_between_queries)
+
+            except Exception as e:
+                print(f"    ERROR: {e}")
+                continue
+    else:
+        print("\n[2/6] SigCom LINCS: skipped")
+
+    # Step 3: Query iLINCS (fallback, API has been unreliable)
     if use_ilincs:
-        print(f"\n[2/5] Querying iLINCS ({ilincs_library})...")
+        print(f"\n[3/6] Querying iLINCS ({ilincs_library})...")
         ilincs = IlincsClient()
 
         for sig_name, (up_genes, down_genes) in signatures.items():
@@ -285,7 +378,6 @@ def run_pipeline(
                 all_results[f"ilincs_{sig_name}"] = df
                 print(f"    Got {len(df)} results")
 
-                # Save per-signature results
                 per_sig_path = output_dir / f"ilincs_{sig_name}_hits.tsv"
                 df.to_csv(per_sig_path, sep="\t", index=False)
 
@@ -305,11 +397,11 @@ def run_pipeline(
                 print(f"    ERROR: {e}")
                 continue
     else:
-        print("\n[2/5] iLINCS: skipped")
+        print("\n[3/6] iLINCS: skipped")
 
-    # Step 3: Query CMAP (if API key available)
+    # Step 4: Query CMAP (if API key available)
     if use_cmap:
-        print(f"\n[3/5] Querying CMAP/clue.io...")
+        print(f"\n[4/6] Querying CMAP/clue.io...")
         cmap = CmapClient()
         if not cmap.api_key:
             print("  WARNING: No CLUE_API_KEY set. Skipping CMAP queries.")
@@ -330,7 +422,7 @@ def run_pipeline(
                     print(f"    ERROR: {e}")
                     continue
     else:
-        print("\n[3/5] CMAP: skipped")
+        print("\n[4/6] CMAP: skipped")
 
     # Step 4: Local L1000 scoring (alternative to clue.io API)
     if use_local_l1000:
@@ -340,10 +432,10 @@ def run_pipeline(
         geneinfo_files = list(data_dir.glob("*gene_info*"))
 
         if not gctx_files or not siginfo_files or not geneinfo_files:
-            print(f"\n[4/5] Local L1000: data files not found in {data_dir}")
+            print(f"\n[5/6] Local L1000: data files not found in {data_dir}")
             print("  Run: uv run python -m bioagentics.data.cd_fibrosis.l1000_local --download")
         else:
-            print(f"\n[4/5] Local L1000 scoring ({gctx_files[0].name})...")
+            print(f"\n[5/6] Local L1000 scoring ({gctx_files[0].name})...")
             for sig_name, (up_genes, down_genes) in signatures.items():
                 print(f"\n  Scoring: {sig_name} ({len(up_genes)} up, {len(down_genes)} down)...")
                 try:
@@ -375,10 +467,10 @@ def run_pipeline(
                     print(f"    ERROR: {e}")
                     continue
     else:
-        print("\n[4/5] Local L1000: skipped")
+        print("\n[5/6] Local L1000: skipped")
 
-    # Step 5: Rank compounds
-    print(f"\n[5/5] Ranking compounds (top {top_n})...")
+    # Step 6: Rank compounds
+    print(f"\n[6/6] Ranking compounds (top {top_n})...")
     ranked = rank_compounds_across_signatures(all_results, top_n)
 
     if len(ranked) == 0:
@@ -423,9 +515,31 @@ def main(argv: list[str] | None = None) -> None:
         help="Signatures to query (default: all)",
     )
     parser.add_argument(
-        "--no-ilincs",
+        "--use-sigcom",
         action="store_true",
-        help="Skip iLINCS queries",
+        default=True,
+        help="Query SigCom LINCS API (default: enabled, no key needed)",
+    )
+    parser.add_argument(
+        "--no-sigcom",
+        action="store_true",
+        help="Skip SigCom LINCS queries",
+    )
+    parser.add_argument(
+        "--sigcom-database",
+        default="l1000_cp",
+        help="SigCom LINCS database (default: l1000_cp = chemical perturbations)",
+    )
+    parser.add_argument(
+        "--sigcom-limit",
+        type=int,
+        default=50,
+        help="Max results per SigCom query direction (default: 50)",
+    )
+    parser.add_argument(
+        "--use-ilincs",
+        action="store_true",
+        help="Enable iLINCS queries (API has been unreliable)",
     )
     parser.add_argument(
         "--use-cmap",
@@ -471,10 +585,13 @@ def main(argv: list[str] | None = None) -> None:
     run_pipeline(
         output_dir=args.output_dir,
         which_signatures=args.signatures,
-        use_ilincs=not args.no_ilincs,
+        use_sigcom=args.use_sigcom and not args.no_sigcom,
+        use_ilincs=args.use_ilincs,
         use_cmap=args.use_cmap,
         use_local_l1000=args.use_local_l1000,
         l1000_data_dir=args.l1000_data_dir,
+        sigcom_database=args.sigcom_database,
+        sigcom_limit=args.sigcom_limit,
         ilincs_library=args.library,
         top_n=args.top_n,
         delay_between_queries=args.delay,
