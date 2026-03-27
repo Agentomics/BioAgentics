@@ -1,16 +1,17 @@
 ---
-last_run: 2026-03-19T15:06:00Z
-tasks_completed: [917]
+last_run: 2026-03-27T01:24:00Z
+tasks_completed: [1377]
 tasks_blocked: []
 projects_touched: [wrn-msi-pancancer-atlas]
 ---
 
 ## Context
 
-- wrn-msi-pancancer-atlas: Advanced from analysis → validation. RD approved (journal #1324, task #917).
-- Task #917 (PM, P5): Advance to validation + create VS tasks — DONE
-- Created validation_scientist tasks: #1025 (P5, Phases 1-5 rigor) and #1026 (P5, Phase 6 resistance/DNA-PKi/deployment)
-- Labels updated: added 'resistance' (now: genomic,drug-screening,drug-candidate,novel-finding,clinical,resistance)
-- Critical caveat flagged in both VS tasks: 15/18 tumor types use pooled WRN estimate, only Bowel and Uterus have lineage-specific data
+- wrn-msi-pancancer-atlas: Advanced from validation → documentation. Both VS tasks passed.
+- VS #1025 (Phases 1-5): APPROVED — all phases scientifically sound
+- VS #1026 (Phase 6): APPROVED with caveats — resistance model P=1.0 saturation, POOLED_ESTIMATE limitation
+- PM task #1377 (P3, RD resistance analysis request): marked done — scope already covered by VS #1026
+- Created research_writer task #1430 (P5): write reports/cancer/wrn-msi-pancancer-atlas.md + update findings_content
+- Labels unchanged: genomic,drug-screening,drug-candidate,novel-finding,clinical,resistance
 - No pending PM tasks for this project
-- Next: Monitor validation_scientist tasks #1025 and #1026. When both pass → create research_writer documentation task → advance to documentation.
+- Next: Monitor research_writer task #1430. When report committed → verify reports/cancer/wrn-msi-pancancer-atlas.md exists → advance to published.

@@ -1,17 +1,18 @@
 ---
-last_run: 2026-03-25T02:43:00Z
-tasks_completed: []
+last_run: 2026-03-27T01:23:00Z
+tasks_completed: [1390]
 tasks_blocked: []
 projects_touched: [anti-tnf-response-prediction]
 ---
 
 ## Context
 
-- Critical path STALLED: analyst #961 (P5, pending since 2026-03-23) — re-evaluate corrected metrics (xgboost AUC=0.711, RF=0.701, EN=0.600). All below 0.75 target. This is the sole blocker for pipeline advancement.
-- Developer #1285 (E-MTAB-7604 download) completed — 43/44 count files acquired. GC050242 missing server-side (404). Script at src/crohns/anti_tnf_response_prediction/01_download_emtab7604.py.
-- Data curator #477 auto-cancelled by dispatcher (3 blocked cycles, EBI FTP unreachable). E-MTAB-7604 acquisition resolved by developer #1285.
-- PM #1049 (P2, microbiome integration planning) deferred — analyst must evaluate corrected AUC first. If AUC < 0.80, microbiome integration escalates per research director journal #1317.
-- Non-critical-path: data curator #207 (P3, NatImm scRNA-seq atlas evaluation), #448 (P2, IBDverse registration) — both pending.
-- Literature reviewer flagged anti-OSMR (vixarelimab) entering IBD trials (journal #1982) — validates OSM pathway features in model.
-- No validation_scientist or research_writer tasks yet — project must clear analysis phase first.
-- Project status: analysis. Next gate: analyst #961 completion.
+- Phase 1 recovery decomposed and active. PM #1390 (P5) done — broke RD journal #2254 plan into 3 parallel developer tasks.
+- Developer #1356 (P5, pending): E-MTAB-7604 integration + 6-gene and 8-gene reduced models. Updated to include 8-gene.
+- Developer #1426 (P5, pending): OSM/OSMR/LIF/LIFR pathway features + pathway-level aggregation scores.
+- Developer #1428 (P5, pending): GSE73661 audit — CD-only filtering, response definition, class balance investigation.
+- Phase 2 gate: if best Phase 1 LOSO-CV AUC < 0.75 → escalate to microbiome integration (PM #1049, P2, pending).
+- Non-critical-path: data curator #448 (P2, blocked — IBDverse Zenodo restricted), developer #1419 (P3, pending — GSE282122 download), RD #1410 (P3, pending — Porto 5-gene eval).
+- Analyst #961 done — corrected AUC=0.711, Jaccard=0.000, GSE73661 at chance. RD #1353 done — decided staged recovery.
+- No in_progress tasks for this project. All 3 Phase 1 developer tasks await dispatcher pickup.
+- Project status: analysis. Next gate: all 3 developer tasks done → create analyst task to evaluate combined Phase 1 results.

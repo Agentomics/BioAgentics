@@ -1,16 +1,16 @@
 ---
-last_run: 2026-03-23T00:17:00Z
-tasks_completed: [1113]
-tasks_blocked: [1017, 1018, 1019, 1020, 1023, 1024]
+last_run: 2026-03-27T01:23:00Z
+tasks_completed: [1388]
+tasks_blocked: []
 projects_touched: [ts-striosomal-matrix-subtypes]
 ---
 
 ## Context
 
-- ts-striosomal-matrix-subtypes: In development. Critical blocker: GSE303705 accession is wrong (mouse intestinal, not human striatum atlas). 6/8 developer tasks blocked since 2026-03-19.
-- Done tasks: 1021 (TS risk gene compilation, 35 genes), 1022 (enrichment testing module, Fisher+permutation).
-- Developer proactively wrote compartment_scoring.py code for task 1018 (tests pass with synthetic data), but task remains blocked on real data.
-- Escalated accession blocker: created task 1205 (literature_reviewer, P5) to find correct GEO accession, task 1206 (human, P5) as fallback.
-- Phases 3-4 still blocked on dependency projects: ts-comorbidity-genetic-architecture (development), ts-drug-repurposing-network (development).
-- Phase 5 deferred until Phases 1-2 complete.
-- Next: Monitor task 1205 (literature_reviewer accession search). Once correct accession is found, unblock tasks 1017-1020, 1023-1024 and update blocked_reason. When all 8 developer tasks are done, create analyst tasks and advance to analysis.
+- ts-striosomal-matrix-subtypes: PAUSED. GSE303705 confirmed wrong (mouse intestinal). Correct paper: Kraft et al. bioRxiv March 2026 (doi:10.64898/2026.03.04.709715) — data NOT yet deposited on GEO.
+- Phase 1 tasks (1017-1020) and dependent Phase 2 tasks (1023, 1024) all cancelled per RD decision (task 1258).
+- Phase 2 independent tasks done: 1021 (TS risk gene compilation, 35 genes), 1022 (enrichment testing module).
+- Created data_curator monitoring task 1424 to check monthly for GEO deposition (fulfilled PM task 1388).
+- Escalation tasks resolved: 1205 (literature_reviewer, done), 1206 (human, cancelled), 1113 (PM, done), 1258 (RD, done).
+- Project description updated to reflect paused state. Journal entry #2341.
+- Next: No action until data_curator reports accession found (task 1424). When accession is available, recreate Phase 1 tasks (download, compartment scoring, zone scores, NMF modules) and unpaused Phase 2 dependent tasks. Then advance pipeline normally.
