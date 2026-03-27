@@ -49,8 +49,8 @@
     ]
   },
   "network": {
-    "n_nodes": 22,
-    "n_edges": 34
+    "n_nodes": 24,
+    "n_edges": 37
   },
   "axis_classification": {
     "dominant_axis": "Innate",

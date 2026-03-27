@@ -6,6 +6,8 @@ Builds a networkx-based cytokine interaction network with:
 - CIRS/complement module (TGF-β1, MMP-9, C4a, α-MSH, C3)
 - BBB module (IL-17A → BBB disruption → S100B)
 - IFNγ epigenetic persistence node (Shammas 2026, PMID 41448185)
+- IFNγ peripheral priming node — reversible arm (Gorin 2026, PMID 40599159)
+- IL-12 Th1-polarizing node
 - Meta-analysis overlay (upregulated=red, downregulated=blue, grey=ns)
 
 Usage::
@@ -75,6 +77,10 @@ NODE_TYPES = {
     "S100B": "bbb",
     # Epigenetic persistence (Shammas 2026)
     "IFNγ_epigenetic_persistence": "epigenetic",
+    # IFNγ peripheral priming — reversible arm (Gorin 2026, PMID 40599159)
+    "IFNg_peripheral_priming": "peripheral_priming",
+    # IL-12: Th1-polarizing cytokine driving IFN-γ production
+    "IL-12": "th1",
 }
 
 # Curated cytokine-cytokine interactions (source → target)
@@ -134,6 +140,15 @@ SEED_INTERACTIONS = [
     # outlasts the immune response
     ("IFN-γ", "IFNγ_epigenetic_persistence", {"type": "epigenetic_damage", "module": "epigenetic",
      "timescale": "weeks-months", "mechanism": "chromatin_closing"}),
+
+    # IFNγ peripheral priming — reversible arm (Gorin 2026, PMID 40599159)
+    # JAK/STAT-dependent; decays when IFNγ signaling stops
+    ("IFN-γ", "IFNg_peripheral_priming", {"type": "reversible_priming", "module": "peripheral_priming",
+     "timescale": "hours", "mechanism": "JAK_STAT"}),
+
+    # IL-12: Th1-polarizing cytokine
+    ("IL-12", "IFN-γ", {"type": "differentiation", "module": "th1"}),
+    ("IL-6", "IL-12", {"type": "modulation", "module": "hub"}),
 ]
 
 
@@ -164,10 +179,15 @@ def build_network() -> nx.DiGraph:
     # Mark NLRP3 as independent arm
     G.nodes["NLRP3"]["is_independent_arm"] = True
 
-    # Mark epigenetic persistence node
+    # Mark epigenetic persistence node (irreversible arm)
     if "IFNγ_epigenetic_persistence" in G.nodes:
         G.nodes["IFNγ_epigenetic_persistence"]["timescale"] = "weeks-months"
         G.nodes["IFNγ_epigenetic_persistence"]["mechanism"] = "chromatin_closing_neurons"
+
+    # Mark peripheral priming node (reversible arm)
+    if "IFNg_peripheral_priming" in G.nodes:
+        G.nodes["IFNg_peripheral_priming"]["timescale"] = "hours"
+        G.nodes["IFNg_peripheral_priming"]["mechanism"] = "JAK_STAT_signaling"
 
     logger.info("Built network: %d nodes, %d edges", G.number_of_nodes(), G.number_of_edges())
     return G
@@ -229,6 +249,7 @@ _MODULE_CENTERS = {
     "cirs": (-0.5, -0.3),
     "bbb": (0.3, 0.6),
     "epigenetic": (0.6, 0.3),
+    "peripheral_priming": (0.6, 0.1),
     "cross_regulation": (0.5, 0.0),
 }
 
@@ -286,6 +307,9 @@ def visualize_network(
         elif etype == "epigenetic_damage":
             edge_colors.append("purple")
             edge_styles.append("dotted")
+        elif etype == "reversible_priming":
+            edge_colors.append("green")
+            edge_styles.append("dashed")
         else:
             edge_colors.append("grey")
             edge_styles.append("solid")

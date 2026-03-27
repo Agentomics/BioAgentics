@@ -152,6 +152,22 @@
       "meta_direction": "unmeasured",
       "meta_color": "lightgrey",
       "id": "IFN\u03b3_epigenetic_persistence"
+    },
+    {
+      "node_type": "peripheral_priming",
+      "timescale": "hours",
+      "mechanism": "JAK_STAT_signaling",
+      "meta_direction": "unmeasured",
+      "meta_color": "lightgrey",
+      "id": "IFNg_peripheral_priming"
+    },
+    {
+      "node_type": "th1",
+      "meta_effect": 0.9963418793920443,
+      "meta_p": 1.4281233973179042e-09,
+      "meta_direction": "up",
+      "meta_color": "red",
+      "id": "IL-12"
     }
   ],
   "edges": [
@@ -174,6 +190,14 @@
       "mechanism": "chromatin_closing",
       "source": "IFN-\u03b3",
       "target": "IFN\u03b3_epigenetic_persistence"
+    },
+    {
+      "type": "reversible_priming",
+      "module": "peripheral_priming",
+      "timescale": "hours",
+      "mechanism": "JAK_STAT",
+      "source": "IFN-\u03b3",
+      "target": "IFNg_peripheral_priming"
     },
     {
       "type": "induction",
@@ -320,6 +344,12 @@
       "target": "C3"
     },
     {
+      "type": "modulation",
+      "module": "hub",
+      "source": "IL-6",
+      "target": "IL-12"
+    },
+    {
       "type": "activation",
       "module": "inflammasome",
       "source": "NLRP3",
@@ -360,6 +390,12 @@
       "module": "bbb",
       "source": "BBB_disruption",
       "target": "S100B"
+    },
+    {
+      "type": "differentiation",
+      "module": "th1",
+      "source": "IL-12",
+      "target": "IFN-\u03b3"
     }
   ]
 }
