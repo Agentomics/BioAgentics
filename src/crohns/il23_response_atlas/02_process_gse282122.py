@@ -19,7 +19,6 @@ from pathlib import Path
 os.environ.setdefault("PANDAS_FUTURE_INFER_STRING", "0")
 
 import anndata as ad  # noqa: E402
-import pandas as pd  # noqa: E402
 import scanpy as sc  # noqa: E402
 import scipy.sparse as sp  # noqa: E402
 
@@ -145,42 +144,28 @@ def main() -> None:
                 gc.collect()
                 print(f"  Batch {batch_num}: {n_cells} cells saved to temp file")
 
-    # Concatenate all batches
-    print(f"\n  Concatenating {len(batch_results)} batches...")
-    all_adatas = []
-    for bp in batch_results:
-        adata = ad.read_h5ad(bp)
-        all_adatas.append(adata)
-
-    if not all_adatas:
+    # Concatenate all batches using disk-backed merge (8GB RAM safe)
+    if not batch_results:
         print("  ERROR: No data after QC!", file=sys.stderr)
         sys.exit(1)
 
-    if len(all_adatas) == 1:
-        final = all_adatas[0]
-    else:
-        final = ad.concat(all_adatas, join="outer", index_unique="-")
+    print(f"\n  Concatenating {len(batch_results)} batches via concat_on_disk...")
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ad.experimental.concat_on_disk(
+        in_files=[str(p) for p in batch_results],
+        out_file=str(OUTPUT_PATH),
+        join="inner",
+        index_unique="-",
+    )
 
-    del all_adatas
-    gc.collect()
-
-    # Standardize gene names (uppercase HGNC)
-    if "original_gene_name" not in final.var.columns:
-        final.var["original_gene_name"] = final.var_names.copy()
-    final.var.index = pd.Index([g.upper() for g in final.var_names])
-    keep = ~final.var.index.str.startswith("ERCC-")
-    final = final[:, keep].copy()
-    final.var_names_make_unique()
-
-    print(f"\n  Final shape: {final.shape[0]} cells x {final.shape[1]} genes")
+    # Report stats
+    final = ad.read_h5ad(OUTPUT_PATH, backed="r")
+    print(f"\n  Final shape: {final.n_obs} cells x {final.n_vars} genes")
     print(f"  Samples: {final.obs['sample'].nunique()}")
     print(f"  Median genes/cell: {final.obs['n_genes_by_counts'].median():.0f}")
     print(f"  Median mito%: {final.obs['pct_counts_mt'].median():.1f}%")
-
-    # Save
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    final.write_h5ad(OUTPUT_PATH)
     print(f"  Saved to {OUTPUT_PATH}")
+    final.file.close()
 
     # Clean up batch files
     for bp in batch_results:
