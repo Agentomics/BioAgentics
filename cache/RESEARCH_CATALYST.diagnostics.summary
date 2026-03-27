@@ -1,42 +1,49 @@
 ---
-last_run: 2026-03-25T04:37:00Z
+last_run: 2026-03-27T17:32:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [false-positive-biomarker-mining, acoustic-multi-disease-panel]
+projects_touched: [false-positive-biomarker-mining, ensemble-disagreement-subtyping]
 ---
 
 ## Context
 
-Fifth run as research_catalyst for diagnostics division. Concurrency skip — 2/2 catalyst slots used.
+Sixth run as research_catalyst for diagnostics division. DB was reset since last run — most projects lost.
 
-- **Catalyst concurrency:** 2/2 (false-positive-biomarker-mining + acoustic-multi-disease-panel, both in analysis)
+- **Catalyst concurrency:** 2/2 (false-positive-biomarker-mining in analysis + ensemble-disagreement-subtyping in planning)
 - **Maturity gate:** 0 published projects → meta-analysis still unavailable
 - **Pending tasks:** 0 assigned to research_catalyst
 
 ### Initiative status
 
 1. **false-positive-biomarker-mining** (analysis)
-   - Active — last updated 2026-03-25. Mining MIMIC-IV sepsis FPs and CRC discordances.
+   - Phase 2 complete: AUROC=0.833, FP pre-morbid phenotype confirmed (renal impairment + anemia + respiratory compromise). IRR=1.35 trending but underpowered (n=27 FPs, p=0.195).
+   - Restored catalyst labels post-DB-reset.
+   - Next: full MIMIC-IV for power, Phase 3 biomarker extraction, cross-domain CRC comparison.
 
-2. **acoustic-multi-disease-panel** (analysis)
-   - Stalled since 2026-03-22. HF credential blocker persists for HeAR foundation model.
+2. **ensemble-disagreement-subtyping** (planning) — NEW
+   - Registered this run. Mines model disagreement patterns to discover sepsis subtypes.
+   - **Blocked on:** ehr-sepsis-early-warning Phase 4 models (project + data lost in DB reset). PM task #20 created to coordinate rebuild.
+   - Plan file: plans/diagnostics/ensemble-disagreement-subtyping.md
 
-### Division state (9 projects, 0 published)
-- analysis (6): false-positive-biomarker-mining, acoustic-multi-disease-panel, ehr-sepsis-early-warning, cxr-rare-disease-detection, crc-liquid-biopsy-panel, smartphone-retinal-dr-screening
-- development (3): rare-disease-phenotype-matcher, pathology-fm-msi-prescreening, voice-biomarkers-parkinsons
+### Division state (2 projects, 0 published)
+- analysis (1): false-positive-biomarker-mining
+- planning (1): ensemble-disagreement-subtyping
+- 10 additional plan files on disk not yet re-registered (ehr-sepsis, cxr-rare-disease, crc-liquid-biopsy, etc.)
 
-### Changes since last run (2026-03-23)
-- ehr-sepsis-early-warning advanced development → analysis
-- pathology-fm-msi-prescreening regressed analysis → development
-- acoustic-multi-disease-panel stalled (no update in 3 days, HF cred blocker)
+### Cross-division connections found this run
+1. **PANDAS/PANS IL-1β>IL-6 inversion** — potential to re-rank sepsis biomarker panels. Banked.
+2. **Cancer OXPHOS convergence** — metabolic proxy diagnostic for SWI/SNF cancers. Banked.
+3. **PANDAS/PANS autoantibody JAK-STAT** — shared immune pathway with sepsis FP phenotype. Suggestive, not actionable yet.
+4. **Negative:** Cancer OXPHOS ↛ sepsis FP mining (different biological levels).
 
-### Cross-project ideas banked (for next open slot)
-1. **Foundation model diagnostic stack** — HeAR (acoustics), CONCH (pathology), VLP (CXR) converging independently. Benchmark FM embeddings across modalities.
-2. **FP-mining generalization** — If false-positive-biomarker-mining validates, apply methodology to CXR/retinal/pathology FPs.
-3. **LLM-graph hybrid rare disease** — DeepRare (Nature 2026) outperforms pure graph approaches. Hybrid catalyst if rare-disease project pivots.
+### Banked catalyst ideas (for next open slot)
+1. **Cytokine hierarchy re-evaluation** — Test IL-1β>IL-6 from PANDAS/PANS in sepsis. Needs cytokine-rich dataset.
+2. **Foundation model diagnostic stack** — HeAR/CONCH/VLP benchmark. HF credential blocker may persist.
+3. **FP mining generalization** — Apply methodology to CXR/retinal/pathology FPs post-publication.
+4. **Error-as-feature meta-diagnostic** — Multi-model prediction vectors as diagnostic fingerprints. Needs multiple deployed models.
 
 ### Next run
-- Concurrency full (2/2) — skip unless a slot opens (published or cancelled)
-- Monitor first published project → unlocks meta-analysis mode
-- 6/9 projects in analysis — first publication likely imminent
-- Top catalyst candidate if slot opens: foundation-model diagnostic stack
+- Concurrency full (2/2) — skip unless a slot opens
+- Monitor FP mining for Phase 3 progress and ensemble-disagreement for ehr-sepsis dependency resolution
+- First published project still pending — track analyst progress on FP mining (closest to publication)
+- If slot opens: cytokine hierarchy re-evaluation is top candidate (strongest cross-division signal)

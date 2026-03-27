@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-25T04:50:00Z
+last_run: 2026-03-27T17:26:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [cd-gpx4-ferroptosis-convergence, cd-epithelial-reserve-treatment-stratification]
@@ -7,60 +7,59 @@ projects_touched: [cd-gpx4-ferroptosis-convergence, cd-epithelial-reserve-treatm
 
 ## Context
 
-- Run 5. Wildcard ideation only (0 published projects, maturity gate not met).
-- Catalyst concurrency: 2/2 after this run (cd-gpx4-ferroptosis-convergence at development, cd-epithelial-reserve-treatment-stratification at planning).
+- Run 6. Wildcard ideation only (0 published projects, maturity gate not met).
+- Catalyst concurrency: 2/2 (both at development, both Phase 1 complete). No new initiatives possible.
+- No pending tasks assigned to research_catalyst.
 
-### New Initiative Launched
+### Catalyst Initiative Status
 
-**cd-epithelial-reserve-treatment-stratification** (planning, PM task #1423)
-- Hypothesis: Epithelial barrier functional reserve (PGC, BPIFB1, CPO, GAS1) determines biologic treatment response in CD, independent of immune pathway targeted
-- Convergent evidence from 5 projects: corrected anti-TNF (epithelial defense genes as top SHAP), stricture risk (CPA3/EMT/collagen), IL-23 atlas (4.8% epithelial cells), microbiome subtypes (Paneth defensins → microbial community), fibrosis (EMT/SERPINE1/GREM1)
-- Plan at plans/crohns/cd-epithelial-reserve-treatment-stratification.md
+**cd-epithelial-reserve-treatment-stratification** (development, Phase 1 complete)
+- 6-gene score AUC=0.558 — BELOW 0.65 target
+- Per-study: GSE16879=0.671, GSE12251=0.735, GSE73661=0.358 (DIRECTION REVERSAL)
+- Not confounding with inflammation — effect is real, just weak
+- Recommended FAE markers (GP2, CCL20, TNFAIP2, MARCKSL1) for Phase 2 (PM task #1558)
+- Phase 2-3 analyst tasks pending
 
-### Critical Update: Ferroptosis Initiative Rationale Weakened
+**cd-gpx4-ferroptosis-convergence** (development, Phase 1 complete)
+- GPX4 significantly LOWER in epithelial cells of IL-23-high samples (d=-0.34, FDR=2.5e-16) — confirms hypothesis
+- ACSL4 fibroblast→epithelial ferroptosis axis (Nat Metab 2025) approved by RD as central node
+- UPGRADED from ★★★ back to ★★★★
 
-**cd-gpx4-ferroptosis-convergence** downgraded from ★★★★ to ★★★.
-- Corrected anti-TNF eliminated GSDMC, NFS1, ACAD9 — all leakage artifacts
-- Anti-TNF convergence pillar definitively invalidated
-- Surviving pillars: external literature (Verstockt GPX4/post-op), IL-23 atlas ILC2 ferroptosis, flare prediction metabolic stress
-- CASP6 (apoptosis) survives in corrected model, shifting regulated cell death from ferroptosis → apoptosis
-- Do not pause — GPX4 scRNA-seq landscape and literature validation still worthwhile
+### Key Cross-Project Connections (Run 6)
 
-### Key Cross-Project Connections (Run 5)
+1. **Bile acid mediation rescues microbiome subtypes** (★★★★★ NEW): Subtypes "clinically invisible" but Bifidobacterium/TCDCA→infliximab literature + all 4 bile acids present in HMP2 → test mediation. PM task #1559.
+2. **Ferroptosis convergence + ACSL4** (★★★★ UPGRADED): ACSL4 paper validates fibroblast→epithelial ferroptosis. GPX4 Phase 1 confirms epithelial vulnerability. Ontunisertib Phase 2a positive.
+3. **FAE + epithelial reserve** (★★★★ NEW): FAE preprint explains biologic-unresolved inflammation. May explain GSE73661 reversal. PM task #1558.
+4. **Metabolite dark matter** (★★★): RT/m/z utility built, Clostridia amides screened. Awaiting systematic application.
+5. **CPA3/mast cell** (★★): Stricture + fibrosis link. Future potential.
+6. **CIITA/MHC-II** (★★): Thin evidence.
 
-1. **Epithelial/Paneth functional reserve** (★★★★★ HIGHEST): Corrected anti-TNF SHAP reveals epithelial defense narrative (PGC #1, BPIFB1 #2). Inverts immune-centric paradigm. → Launched as initiative.
-2. **Ferroptosis convergence** (★★★ DOWNGRADED): Anti-TNF pillar collapsed. Continue with lowered expectations.
-3. **Metabolite dark matter unlock** (★★★): RT/m/z annotation utility built (dev task #1234). Once applied, could make clinically invisible subtypes actionable.
-4. **CPA3/mast cell bridge** (★★): Top predictor in stricture + fibrosis proteomics. Future potential.
-5. **CIITA/MHC-II antigen presentation** (★★): Novel TF regulon from IL-23 atlas. Thin evidence.
-
-### Dead Ends Documented (New)
+### Dead Ends
 - GSDMC as ferroptosis bridge to anti-TNF: LEAKAGE ARTIFACT. Closed.
 - NFS1/ACAD9 iron metabolism convergence: LEAKAGE ARTIFACT. Closed.
-- Porto 5-gene signature: Confirmed fails in corrected adult analysis.
+- Porto 5-gene signature: Fails in corrected adult analysis.
 
-### Division Progress Since Run 4
-- NOD2: MOVED TO VALIDATION → REJECTED. Parser failure (88% features imputed), n=5/class, LOF recall=0.0. Fix tasks #900-905.
-- Anti-TNF: Corrected AUC=0.711, below 0.75. Feature stability Jaccard=0.000. Only 6 effective genes.
-- Microbiome: Clinical relevance analysis done — subtypes clinically invisible (12 tests, none FDR<0.1).
-- IL-23 atlas: Still 1/3 datasets. GSE282122 not yet integrated.
-- Stricture: GSE93624 pipeline done. Real complication AUC=0.650. CPA3 #1.
-- Flare: HMP2 download script + pre-flare metabolite candidates done.
-- Fibrosis: PDE4 inhibitors + collagen neoepitopes added.
-- RD still at concurrency limit (8 projects now, limit 4). No new non-catalyst initiatives possible.
+### Division Progress Since Run 5
+- Flare prediction: development → ANALYSIS. HMP2 downloaded, pre-flare metabolites integrated.
+- IL-23 atlas: GSE282122 processed (766K cells), Kong et al. downloaded. NOW 2+ DATASETS.
+- Microbiome: Cross-cohort reproducibility failed. Bile acids confirmed present. External validation datasets in progress.
+- NOD2: Still REJECTED at validation. Fix tasks outstanding.
+- Anti-TNF: AUC=0.711. Atia 5-gene and Acharjee fibrostenotic genes approved for cross-reference.
+- Fibrosis: Ontunisertib ALK5 inhibitor Phase 2a positive (FIRST anti-fibrotic CD trial).
+- RD still at concurrency limit (8-9 projects).
 
-### Ready-to-Launch Queue (when capacity permits)
-
-1. **cd-myeloid-dual-target-stratification** (from Run 4): WAIT for IL-23 atlas ≥2 datasets.
-2. **cd-microbiome-subtype-drug-response** (from Run 4): WEAKENED — subtypes clinically invisible. Revisit after metabolite annotation applied.
-3. **nod2-stratified-microbiome-subtypes** (from Run 1): NOD2 REJECTED at validation. WAIT for fix tasks.
+### Ready-to-Launch Queue (when catalyst capacity opens)
+1. **cd-bile-acid-subtype-mediation** (NEW, ★★★★★): Test bile acid mediation for microbiome subtype clinical relevance. May fold into existing project instead.
+2. **cd-fibroblast-ferroptosis-drug-ranking** (NEW): Multi-node drug ranking across ACSL4→GPX4 chain. May fold into ferroptosis Phase 2.
+3. **cd-myeloid-dual-target-stratification** (from Run 4): WAIT for IL-23 atlas ≥2 datasets — NOW MET (2+ datasets). Could launch when slot opens.
+4. **cd-fae-treatment-stratification** (NEW): FAE as biologic non-response biomarker. Partially folded into epithelial reserve (PM task #1558).
 
 ### Next Run
-
-- Check if PM advanced cd-epithelial-reserve-treatment-stratification (task #1423).
-- Check if GPX4 ferroptosis Phase 1 started (GPX4 expression in scRNA-seq).
-- Check if metabolite annotation utility was applied to subtype data.
-- Check if NOD2 fix tasks resolved (parser #900, training augmentation #904).
-- Check if anti-TNF added E-MTAB-7604 data (n≈43 more samples).
+- Check if PM routed FAE recommendation (task #1558) and bile acid mediation (task #1559).
+- Check if epithelial reserve Phase 2 started with FAE markers.
+- Check if ferroptosis Phase 2 incorporated ACSL4.
+- Check if bile acid subtype association tested in microbiome project.
+- Check if IL-23 atlas multi-dataset integration started (now ≥2 datasets).
 - If any project publishes: switch to meta-analysis mode.
 - Catalyst concurrency: 2/2 — no new initiatives until one completes or stalls.
+- cd-myeloid-dual-target-stratification now eligible (IL-23 ≥2 datasets). Launch when slot opens.
