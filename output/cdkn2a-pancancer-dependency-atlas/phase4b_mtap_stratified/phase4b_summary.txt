@@ -1,0 +1,43 @@
+================================================================================
+CDKN2A Pan-Cancer Dependency Atlas - Phase 4b: MTAP-Stratified PRISM Drug Sensitivity
+================================================================================
+
+PURPOSE: Deconfound CDKN2A-specific from MTAP-driven drug sensitivities.
+MTAP co-deletion rate in CDKN2A-deleted lines: 255/343 (74.3%)
+
+COHORT SIZES (RB1-intact filter):
+  CDKN2A-intact (control): 744
+  CDKN2A-del/MTAP-intact: 85
+  CDKN2A-del/MTAP-deleted: 248
+
+TARGETED DRUG VERDICTS:
+  trilaciclib (CDK4/6 inhibitor): CDKN2A-SPECIFIC
+  milademetan (MDM2 inhibitor): not significant
+  GSK3326595 (PRMT5 inhibitor (type I)): not significant
+  JNJ-64619178 (PRMT5 inhibitor (type II)): not significant
+  EPZ020411 (PRMT5 inhibitor (SAM-competitive)): not significant
+
+GENOME-WIDE DRUG SCREEN RESULTS:
+  Original CDKN2A-selective drugs: 5
+  Survived MTAP correction: 3
+  Lost after correction: 2
+  Confirmed MTAP-driven: 0
+  New after correction: 14
+
+SURVIVED (genuinely CDKN2A-specific):
+  BRD:BRD-K00003412-300-01-9: d=-0.815, FDR=5.440e-04
+  BRD:BRD-K51313569-003-03-3: d=-0.758, FDR=1.900e-02
+  BRD:BRD-K88554883-001-03-2: d=-0.661, FDR=2.838e-02
+
+WWTR1/HIPPO PATHWAY DRUGS IN PRISM:
+  Aleglitazar
+  cefmetazole
+  indeglitazar
+  saroglitazar
+
+CRISPR-PRISM CONCORDANCE (MTAP-corrected):
+  trilaciclib vs CDK6: r=0.328, p=2.859e-11
+  milademetan vs MDM2: r=0.546, p=7.905e-32
+  GSK3326595 vs PRMT5: r=0.156, p=2.063e-03
+  JNJ-64619178 vs PRMT5: r=0.186, p=2.205e-04
+  EPZ020411 vs PRMT5: r=-0.035, p=4.900e-01

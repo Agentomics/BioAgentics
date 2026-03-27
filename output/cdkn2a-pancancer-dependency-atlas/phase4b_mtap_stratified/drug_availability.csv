@@ -1,0 +1,11 @@
+drug_name,mechanism,crispr_gene,in_prism
+trilaciclib,CDK4/6 inhibitor,CDK6,True
+milademetan,MDM2 inhibitor,MDM2,True
+GSK3326595,PRMT5 inhibitor (type I),PRMT5,True
+JNJ-64619178,PRMT5 inhibitor (type II),PRMT5,True
+EPZ020411,PRMT5 inhibitor (SAM-competitive),PRMT5,True
+palbociclib,CDK4/6 inhibitor,CDK4,False
+ribociclib,CDK4/6 inhibitor,CDK4,False
+abemaciclib,CDK4/6 inhibitor,CDK4,False
+idasanutlin,MDM2 inhibitor,MDM2,False
+verteporfin,YAP/TEAD inhibitor,WWTR1,False

@@ -1,0 +1,85 @@
+{
+  "survived_cdkn2a_specific": [
+    "BRD:BRD-K00003412-300-01-9",
+    "BRD:BRD-K51313569-003-03-3",
+    "BRD:BRD-K88554883-001-03-2"
+  ],
+  "lost_after_mtap_correction": [
+    "BRD:BRD-A99367815-001-04-9",
+    "BRD:BRD-K33127281-001-05-6"
+  ],
+  "confirmed_mtap_driven": [],
+  "new_after_mtap_correction": [
+    "BRD:BRD-A16035238-001-01-7",
+    "BRD:BRD-A73385064-001-01-5",
+    "BRD:BRD-K00003165-300-01-9",
+    "BRD:BRD-K07310275-001-02-5",
+    "BRD:BRD-K09711437-001-04-3",
+    "BRD:BRD-K09821361-066-25-8",
+    "BRD:BRD-K13050541-001-01-9",
+    "BRD:BRD-K13414800-001-01-3",
+    "BRD:BRD-K28761891-001-10-1",
+    "BRD:BRD-K32842773-434-01-8",
+    "BRD:BRD-K35240538-001-26-2",
+    "BRD:BRD-K47407372-001-17-1",
+    "BRD:BRD-K62627508-001-01-5",
+    "BRD:BRD-K64925568-001-01-8"
+  ],
+  "drug_verdicts": [
+    {
+      "drug": "trilaciclib",
+      "mechanism": "CDK4/6 inhibitor",
+      "original_d": -0.5393,
+      "original_fdr": 3.2643017856113245e-08,
+      "mtap_corrected_d": -0.8151,
+      "mtap_corrected_fdr": 4.005758845929212e-07,
+      "mtap_confound_d": 0.3521,
+      "mtap_confound_fdr": 0.06312569645629598,
+      "verdict": "CDKN2A-SPECIFIC"
+    },
+    {
+      "drug": "milademetan",
+      "mechanism": "MDM2 inhibitor",
+      "original_d": -0.2779,
+      "original_fdr": 0.0229391078277688,
+      "mtap_corrected_d": -0.5497,
+      "mtap_corrected_fdr": 0.00038264435587212064,
+      "mtap_confound_d": 0.3108,
+      "mtap_confound_fdr": 0.06312569645629598,
+      "verdict": "not significant"
+    },
+    {
+      "drug": "GSK3326595",
+      "mechanism": "PRMT5 inhibitor (type I)",
+      "original_d": 0.066,
+      "original_fdr": 0.9275380965783442,
+      "mtap_corrected_d": 0.1316,
+      "mtap_corrected_fdr": 0.6689970990123933,
+      "mtap_confound_d": -0.1048,
+      "mtap_confound_fdr": 0.5567611115872784,
+      "verdict": "not significant"
+    },
+    {
+      "drug": "JNJ-64619178",
+      "mechanism": "PRMT5 inhibitor (type II)",
+      "original_d": -0.094,
+      "original_fdr": 0.4176871877018234,
+      "mtap_corrected_d": -0.0467,
+      "mtap_corrected_fdr": 0.8631403015171846,
+      "mtap_confound_d": -0.0685,
+      "mtap_confound_fdr": 0.5567611115872784,
+      "verdict": "not significant"
+    },
+    {
+      "drug": "EPZ020411",
+      "mechanism": "PRMT5 inhibitor (SAM-competitive)",
+      "original_d": -0.0285,
+      "original_fdr": 0.8640868124041247,
+      "mtap_corrected_d": -0.0088,
+      "mtap_corrected_fdr": 0.9134467594254755,
+      "mtap_confound_d": -0.0215,
+      "mtap_confound_fdr": 0.5567611115872784,
+      "verdict": "not significant"
+    }
+  ]
+}
