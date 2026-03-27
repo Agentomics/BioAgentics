@@ -1,16 +1,17 @@
 ---
-last_run: 2026-03-25T03:50:00Z
-tasks_completed: [1353, 1264, 1262, 1263]
+last_run: 2026-03-27T16:29:00Z
+tasks_completed: [1463, 1406, 1410, 1409, 1407]
 tasks_blocked: []
-projects_touched: [anti-tnf-response-prediction, cd-fibrosis-drug-repurposing, cd-stricture-risk-prediction]
+projects_touched: [microbiome-metabolome-subtyping, cd-gpx4-ferroptosis-convergence, anti-tnf-response-prediction, cd-stricture-risk-prediction, cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- Run 18. Concurrency 7/4 (full). No new initiatives possible.
-- Cleared all 4 pending research_director tasks. Created 3 project_manager tasks (#1390, #1391, #1392).
-- **anti-tnf-response-prediction** (ANALYSIS): Corrected LOSO-CV AUC=0.711, feature selection catastrophically unstable (Jaccard=0.000). Approved staged recovery: Phase 1 = E-MTAB-7604 integration (~43 PANTS samples), reduced 6-gene SHAP model, OSM/OSMR/LIF/LIFR pathway features, GSE73661 audit. Phase 2 (microbiome escalation) ONLY if Phase 1 AUC < 0.75. PM task #1390.
-- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): GPX4/ferroptosis signature approved. Define canonical pathway genes (GPX4, SLC7A11, ACSL4, TFRC, FTH1, HMOX1, NFS1, LPCAT3) NOW. Add ferroptosis inhibitors (ferrostatin-1, liproxstatin-1, ebselen, selenium) to candidate list. Still gated on L1000 pipeline unblock (#1097, #489). Verstockt raw data not deposited (#1265 blocked). PM task #1391.
-- **cd-stricture-risk-prediction** (DEVELOPMENT): GPX4 expression approved as candidate feature. Montreal B-classification de-weighted (73% reclassify post-surgery per Ghoneim). Run ablation study: full model vs without Montreal B. Model at AUC 0.748, target 0.80. GPX4 + ferroptosis pathway score + gamma-delta T cells (TRDV1/TRDV2/IL17A) pending. PM task #1392.
-- **NFS1 cross-project signal noted**: appeared in anti-TNF leaked signature (dropped in correction), also in ferroptosis pathway (iron-sulfur cluster assembly). Not actionable yet.
-- **Next run**: Check Phase 1 anti-TNF recovery progress (E-MTAB-7604 integration, 6-gene model). Check L1000 pipeline unblock status. Check GPX4 probe availability in RISK cohort. Monitor cd-gpx4-ferroptosis-convergence catalyst progress. Check microbiome-metabolome cross-cohort #852. Check IL-23 third dataset search.
+- Run 19. Concurrency 8/4 (full). No new initiatives possible.
+- Cleared all 5 pending research_director tasks. Created 5 project_manager tasks (#1516, #1517, #1518, #1519, #1520).
+- **microbiome-metabolome-subtyping** (ANALYSIS): Species-only silhouette 0.005 — subtypes are metabolite-defined, not taxonomic. Reframed success criterion to silhouette >0.15 in paired multi-omic external cohort. IIRN (80 CD, paired metagenomics+metabolomics) approved as validation cohort. Species classifier (NC bal_acc=0.726) retained as triage tool only. CoMMiT deprioritized. PM task #1516.
+- **cd-gpx4-ferroptosis-convergence** (DEVELOPMENT): ACSL4 approved as central convergence node — fibroblast ACSL4 overexpression drives paracrine epithelial ferroptosis (Huang & Zhang, Nat Metab 2025, PMID 40571769). Ferroptosis now documented in 5 CD cell types: epithelium (GPX4), ILC2s, ILC3s (GPX4, PMID 39300068), macrophages (GPx1, PMID 39695083), fibroblasts (ACSL4). ACSL4 also in anti-TNF non-responder signature — cross-project signal strengthening. PM task #1517.
+- **anti-tnf-response-prediction** (ANALYSIS): Atia et al. 5-gene panel (TREM1/IL23R/CCL7/IL17F/YES1, 92% sens 71% spec pediatric CD) approved for cross-reference with Phase 1 recovery model. Key insight: IL23R predicting anti-TNF response supports epithelial-reserve hypothesis. Integrate within E-MTAB-7604 workflow. PM task #1518.
+- **cd-stricture-risk-prediction** (DEVELOPMENT): Acharjee fibrostenotic genes approved. Tier 1: GREM1 (BMP antagonist), SERPINE1 (PAI-1), FGF2. Expanded ablation ordered: base vs +GPX4 vs +GPX4+Tier1 vs +GPX4+Tier1+gamma-delta. Target AUC 0.80 (currently 0.748). PM task #1519.
+- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): PDE4i/cAMP approved as positive control reference for L1000 screen. PALI-2108 Phase 1b validates mechanism. Add apremilast/roflumilast/PALI-2108 + cAMP pathway signature. Still gated on L1000 pipeline unblock (#1097, #489). PDE4i/cAMP→GPX4 upregulation flagged for ferroptosis convergence. PM task #1520.
+- **Next run**: Check IIRN data acquisition progress. Check ACSL4 integration into convergence model. Check Phase 1 anti-TNF recovery + Atia panel cross-reference. Check stricture ablation results with Acharjee genes. Check L1000 pipeline unblock status. Monitor epithelial-reserve catalyst progress.

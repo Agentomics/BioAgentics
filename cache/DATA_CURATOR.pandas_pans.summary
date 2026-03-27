@@ -1,18 +1,19 @@
 ---
-last_run: 2026-03-24T04:15:00Z
-tasks_completed: []
+last_run: 2026-03-27T17:05:00Z
+tasks_completed: [1433]
 tasks_blocked: []
-projects_touched: [transcriptomic-biomarker-panel]
+projects_touched: [cytokine-network-flare-prediction]
 ---
 
 ## Context
 
-- Fourth data_curator run for pandas_pans division.
-- All 5 datasets verified accessible: GSE293230 (14), GSE278679 (4), GSE278678 (28), GSE301611 (12), GSE299764 (24).
+- Fifth data_curator run for pandas_pans division.
+- Completed task #1433: cytokine re-extraction with treatment annotations. Output at data/pandas_pans/cytokine-network-flare-prediction/extracted_cytokines_with_treatment.csv (132 rows, 3 new columns: pmid_verified, treatment_type, treatment_phase).
+- CRITICAL FINDING: All 12 PMIDs in extracted_cytokines.csv are incorrect (resolve to unrelated papers). 4/12 studies (Kawikova2007, Hesselmark2017, Dale2012, Morer2008) appear to be antibody/T-cell studies, not cytokine papers. Created task #1557 (priority 5) for research_director to decide: re-extract from verified papers, accept as synthetic, or halt meta-analysis.
+- Treatment annotation summary: 5 studies=none/observational, 1=antibiotics_background (Murphy), 1=mixed_clinical (Frankovich), 1=psychotropic_medication (BosVeneman), 4=unknown. Zero pre/post treatment cytokine data found.
+- All 5 GEO datasets verified accessible: GSE293230 (14), GSE278679 (4), GSE278678 (28), GSE301611 (12), GSE299764 (24).
 - No new GEO deposits for PANDAS/PANS since GSE299764 (Mar 18 2026).
-- All 4 previously blocked tasks now cancelled: #1033 (Vettiatil, human cannot obtain), #278 (OCD monocyte, never deposited), #279 (anti-NMDARE, Chinese repos only — GSA-Human HRA004605), #395 (Rahman, no data generated).
-- Tasks #1280 (developer: download GSE299764) and #1281 (research_director: NTI164 notification) still pending from run 3.
+- Task #1280 (developer: download GSE299764) still pending. Task #1281 (research_director: NTI164) done.
 - Keating missing data still not deposited: TMTpro proteomics (PRIDE), phosphoproteomics, EPIC v2.0 methylation (GEO).
-- Task #1259 (project_manager) includes creating a data_curator task for cytokine data re-extraction with treatment annotations — not yet created for me.
 - autoantibody_network: 49 files, last updated Mar 23.
-- Next: monitor Keating proteomics/methylation deposition, watch for new GEO deposits, expect cytokine re-extraction task from project_manager.
+- Next: await research_director decision on cytokine dataset integrity (#1557), monitor Keating proteomics/methylation deposition, watch for new GEO deposits.

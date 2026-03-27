@@ -1,0 +1,157 @@
+{
+  "description": "IC Resnik performance by dominant HPO organ-system category",
+  "n_total_cases": 694,
+  "n_categories": 15,
+  "groups": {
+    "Abnormality of the genitourinary system": {
+      "hpo_category": "HP:0000119",
+      "n_cases": 30,
+      "top1_accuracy": 0.533,
+      "top5_accuracy": 0.667,
+      "top10_accuracy": 0.7,
+      "top20_accuracy": 0.8,
+      "mrr": 0.598,
+      "median_rank": 1
+    },
+    "Abnormality of head or neck": {
+      "hpo_category": "HP:0000152",
+      "n_cases": 105,
+      "top1_accuracy": 0.714,
+      "top5_accuracy": 0.819,
+      "top10_accuracy": 0.848,
+      "top20_accuracy": 0.876,
+      "mrr": 0.764,
+      "median_rank": 1
+    },
+    "Abnormality of the eye": {
+      "hpo_category": "HP:0000478",
+      "n_cases": 39,
+      "top1_accuracy": 0.487,
+      "top5_accuracy": 0.667,
+      "top10_accuracy": 0.692,
+      "top20_accuracy": 0.846,
+      "mrr": 0.57,
+      "median_rank": 2
+    },
+    "Abnormality of the ear": {
+      "hpo_category": "HP:0000598",
+      "n_cases": 7,
+      "top1_accuracy": 0.286,
+      "top5_accuracy": 0.286,
+      "top10_accuracy": 0.286,
+      "top20_accuracy": 0.429,
+      "mrr": 0.298,
+      "median_rank": 94
+    },
+    "Abnormality of the nervous system": {
+      "hpo_category": "HP:0000707",
+      "n_cases": 234,
+      "top1_accuracy": 0.632,
+      "top5_accuracy": 0.735,
+      "top10_accuracy": 0.769,
+      "top20_accuracy": 0.799,
+      "mrr": 0.683,
+      "median_rank": 1
+    },
+    "Abnormality of the endocrine system": {
+      "hpo_category": "HP:0000818",
+      "n_cases": 18,
+      "top1_accuracy": 0.611,
+      "top5_accuracy": 0.889,
+      "top10_accuracy": 0.889,
+      "top20_accuracy": 0.944,
+      "mrr": 0.744,
+      "median_rank": 1
+    },
+    "Abnormality of the integument": {
+      "hpo_category": "HP:0001574",
+      "n_cases": 27,
+      "top1_accuracy": 0.741,
+      "top5_accuracy": 0.852,
+      "top10_accuracy": 0.926,
+      "top20_accuracy": 0.963,
+      "mrr": 0.797,
+      "median_rank": 1
+    },
+    "Abnormality of the cardiovascular system": {
+      "hpo_category": "HP:0001626",
+      "n_cases": 28,
+      "top1_accuracy": 0.464,
+      "top5_accuracy": 0.714,
+      "top10_accuracy": 0.75,
+      "top20_accuracy": 0.786,
+      "mrr": 0.596,
+      "median_rank": 2
+    },
+    "Abnormality of blood and blood-forming tissues": {
+      "hpo_category": "HP:0001871",
+      "n_cases": 28,
+      "top1_accuracy": 0.679,
+      "top5_accuracy": 0.857,
+      "top10_accuracy": 0.857,
+      "top20_accuracy": 0.857,
+      "mrr": 0.749,
+      "median_rank": 1
+    },
+    "Abnormality of metabolism/homeostasis": {
+      "hpo_category": "HP:0001939",
+      "n_cases": 39,
+      "top1_accuracy": 0.769,
+      "top5_accuracy": 0.846,
+      "top10_accuracy": 0.872,
+      "top20_accuracy": 0.897,
+      "mrr": 0.8,
+      "median_rank": 1
+    },
+    "Abnormality of the respiratory system": {
+      "hpo_category": "HP:0002086",
+      "n_cases": 11,
+      "top1_accuracy": 0.727,
+      "top5_accuracy": 0.818,
+      "top10_accuracy": 0.818,
+      "top20_accuracy": 1.0,
+      "mrr": 0.77,
+      "median_rank": 1
+    },
+    "Abnormality of the immune system": {
+      "hpo_category": "HP:0002715",
+      "n_cases": 23,
+      "top1_accuracy": 0.826,
+      "top5_accuracy": 0.957,
+      "top10_accuracy": 0.957,
+      "top20_accuracy": 0.957,
+      "mrr": 0.884,
+      "median_rank": 1
+    },
+    "Abnormality of the digestive system": {
+      "hpo_category": "HP:0025031",
+      "n_cases": 11,
+      "top1_accuracy": 0.818,
+      "top5_accuracy": 0.909,
+      "top10_accuracy": 0.909,
+      "top20_accuracy": 0.909,
+      "mrr": 0.841,
+      "median_rank": 1
+    },
+    "Abnormality of the musculoskeletal system": {
+      "hpo_category": "HP:0033127",
+      "n_cases": 48,
+      "top1_accuracy": 0.688,
+      "top5_accuracy": 0.792,
+      "top10_accuracy": 0.812,
+      "top20_accuracy": 0.854,
+      "mrr": 0.738,
+      "median_rank": 1
+    },
+    "Abnormality of limbs": {
+      "hpo_category": "HP:0040064",
+      "n_cases": 38,
+      "top1_accuracy": 0.658,
+      "top5_accuracy": 0.763,
+      "top10_accuracy": 0.842,
+      "top20_accuracy": 0.921,
+      "mrr": 0.729,
+      "median_rank": 1
+    }
+  }
+}

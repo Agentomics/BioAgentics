@@ -1,0 +1,84 @@
+{
+  "description": "Comparison of our matchers against external SOTA baselines",
+  "our_results": {
+    "ic_resnik": {
+      "top1": 0.65,
+      "top5": 0.769,
+      "top10": 0.803,
+      "top20": 0.847,
+      "mrr": 0.708
+    },
+    "freq_ic": {
+      "top1": 0.476,
+      "top5": 0.635,
+      "top10": 0.702,
+      "top20": 0.756,
+      "mrr": 0.555
+    },
+    "node2vec": {
+      "top1": 0.001,
+      "top10": 0.01,
+      "mrr": 0.005,
+      "note": "undertrained"
+    },
+    "gat": {
+      "top1": 0.0,
+      "top10": 0.0,
+      "mrr": 0.0,
+      "note": "non-discriminative scores"
+    }
+  },
+  "external_baselines": {
+    "DeepRare_HPO_only": {
+      "recall_at_1": 0.644,
+      "source": "Nature 2026, doi:10.1038/s41586-025-10097-9"
+    },
+    "DeepRare_multimodal": {
+      "recall_at_1": 0.706,
+      "source": "Nature 2026"
+    },
+    "PhenoBrain_standalone": {
+      "top10_recall": 0.654,
+      "source": "npj Digital Medicine, Jan 2025"
+    },
+    "PhenoBrain_human_computer": {
+      "top10_recall": 0.813,
+      "source": "npj Digital Medicine, Jan 2025"
+    }
+  },
+  "success_criteria": {
+    "top10_ge_70pct": {
+      "target": 0.7,
+      "ic_resnik": 0.803,
+      "met": true
+    },
+    "mrr_ge_040": {
+      "target": 0.4,
+      "ic_resnik": 0.708,
+      "met": true
+    },
+    "graph_models_outperform_ic_by_10pp": {
+      "target": "10pp improvement",
+      "actual": "graph models failed",
+      "met": false
+    },
+    "top20_ge_50pct_at_20pct_completeness": {
+      "target": 0.5,
+      "actual": "not yet tested (ablation pending)",
+      "met": null
+    }
+  },
+  "analysis": {
+    "ic_vs_deeprare": "IC Resnik Recall@1 (65.0%) exceeds DeepRare HPO-only (64.4%) by 0.6pp. DeepRare multimodal (70.6%) is higher but uses additional gene/variant data we lack.",
+    "ic_vs_phenobrain": "IC Resnik Top-10 (80.3%) exceeds PhenoBrain standalone (65.4%) and approaches human+computer (81.3%). Strong result for a pure IC approach.",
+    "freq_ic_regression": "Freq-IC underperforms IC by 17.4pp on Top-1. Orphanet frequency weighting may over-penalize via excluded terms or dilute signal for diseases with mostly frequent annotations.",
+    "graph_model_gaps": "Node2vec and GAT require better training (more walks, larger dims, proper hyperparameter tuning). GAT needs harder negative sampling for the dense disease-phenotype bipartite structure. Gene data integration (after genemap2 fix) may also help.",
+    "improvement_opportunities": [
+      "Gene data fusion: integrate genemap2 gene-disease edges (after parser fix)",
+      "Better node2vec: dims=128, walks=10, length=30, epochs=5 (needs more RAM/time)",
+      "GAT improvements: harder negatives, edge-type-aware attention, larger model",
+      "LLM-based HPO extraction: use clinical notes to expand phenotype profiles",
+      "Ensemble: train weights on held-out set instead of uniform averaging"
+    ]
+  }
+}

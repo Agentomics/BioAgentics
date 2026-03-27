@@ -1,0 +1,968 @@
+{
+  "description": "IC Resnik failure mode analysis \u2014 cases where correct diagnosis not in Top-20",
+  "total_cases": 694,
+  "n_failures": 106,
+  "failure_rate": 0.153,
+  "failure_categories": {
+    "disease_not_in_db": 3,
+    "few_query_terms_le3": 32,
+    "low_overlap_lt20pct": 26,
+    "small_disease_profile_le5": 14
+  },
+  "failure_cases": [
+    {
+      "case_id": "PMID_31761904_Individual_NBAS_53",
+      "disease_id": "OMIM:614800",
+      "predicted_rank": 8278,
+      "n_query_terms": 1,
+      "n_disease_terms": 34,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    },
+    {
+      "case_id": "PMID_30658709_patient",
+      "disease_id": "OMIM:615878",
+      "predicted_rank": 6188,
+      "n_query_terms": 11,
+      "n_disease_terms": 5,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    },
+    {
+      "case_id": "PMID_32710489_Group_2_Patient_2",
+      "disease_id": "OMIM:620157",
+      "predicted_rank": 4937,
+      "n_query_terms": 5,
+      "n_disease_terms": 33,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    },
+    {
+      "case_id": "PMID_36074901_Patient_7",
+      "disease_id": "OMIM:620465",
+      "predicted_rank": 4668,
+      "n_query_terms": 7,
+      "n_disease_terms": 20,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.2857142857142857
+    },
+    {
+      "case_id": "PMID_24951643_Kinship_1_Patient_2",
+      "disease_id": "OMIM:615120",
+      "predicted_rank": 2902,
+      "n_query_terms": 5,
+      "n_disease_terms": 9,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    },
+    {
+      "case_id": "PMID_37880421_Family_3_II1",
+      "disease_id": "OMIM:620653",
+      "predicted_rank": 1886,
+      "n_query_terms": 1,
+      "n_disease_terms": 23,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_16900296_IV_5",
+      "disease_id": "OMIM:608393",
+      "predicted_rank": 1688,
+      "n_query_terms": 3,
+      "n_disease_terms": 10,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    },
+    {
+      "case_id": "PMID_24769197_patient",
+      "disease_id": "OMIM:256540",
+      "predicted_rank": 1377,
+      "n_query_terms": 17,
+      "n_disease_terms": 14,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.11764705882352941
+    },
+    {
+      "case_id": "PMID_28966590_patient",
+      "disease_id": "OMIM:610031",
+      "predicted_rank": 1258,
+      "n_query_terms": 13,
+      "n_disease_terms": 25,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.15384615384615385
+    },
+    {
+      "case_id": "PMID_37467750_Individual_10",
+      "disease_id": "OMIM:620988",
+      "predicted_rank": 1253,
+      "n_query_terms": 1,
+      "n_disease_terms": 31,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_23726037_patient",
+      "disease_id": "OMIM:604804",
+      "predicted_rank": 1229,
+      "n_query_terms": 5,
+      "n_disease_terms": 15,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.6
+    },
+    {
+      "case_id": "PMID_37761890_10",
+      "disease_id": "OMIM:616362",
+      "predicted_rank": 1217,
+      "n_query_terms": 8,
+      "n_disease_terms": 36,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.25
+    },
+    {
+      "case_id": "PMID_17886299_patient_BM2",
+      "disease_id": "OMIM:620726",
+      "predicted_rank": 1216,
+      "n_query_terms": 6,
+      "n_disease_terms": 5,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 0.16666666666666666
+    },
+    {
+      "case_id": "PMID_30968594_individual_31",
+      "disease_id": "OMIM:201910",
+      "predicted_rank": 1181,
+      "n_query_terms": 1,
+      "n_disease_terms": 12,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    },
+    {
+      "case_id": "PMID_17056636_Patient_No_3",
+      "disease_id": "OMIM:615278",
+      "predicted_rank": 975,
+      "n_query_terms": 15,
+      "n_disease_terms": 15,
+      "query_disease_overlap": 5,
+      "overlap_ratio": 0.3333333333333333
+    },
+    {
+      "case_id": "PMID_15266616_118",
+      "disease_id": "OMIM:147791",
+      "predicted_rank": 974,
+      "n_query_terms": 16,
+      "n_disease_terms": 50,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.125
+    },
+    {
+      "case_id": "PMID_29483676_proband",
+      "disease_id": "OMIM:616224",
+      "predicted_rank": 870,
+      "n_query_terms": 20,
+      "n_disease_terms": 12,
+      "query_disease_overlap": 5,
+      "overlap_ratio": 0.25
+    },
+    {
+      "case_id": "PMID_32376980_Patient_4",
+      "disease_id": "OMIM:618164",
+      "predicted_rank": 768,
+      "n_query_terms": 13,
+      "n_disease_terms": 70,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.15384615384615385
+    },
+    {
+      "case_id": "PMID_37372360_P17",
+      "disease_id": "OMIM:616831",
+      "predicted_rank": 760,
+      "n_query_terms": 4,
+      "n_disease_terms": 33,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.5
+    },
+    {
+      "case_id": "PMID_33977139_Patient_4",
+      "disease_id": "OMIM:609528",
+      "predicted_rank": 756,
+      "n_query_terms": 18,
+      "n_disease_terms": 24,
+      "query_disease_overlap": 4,
+      "overlap_ratio": 0.2222222222222222
+    },
+    {
+      "case_id": "PMID_29907796_Patient_1",
+      "disease_id": "OMIM:614608",
+      "predicted_rank": 735,
+      "n_query_terms": 12,
+      "n_disease_terms": 41,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.25
+    },
+    {
+      "case_id": "PMID_30580808_Patient_2",
+      "disease_id": "OMIM:618362",
+      "predicted_rank": 721,
+      "n_query_terms": 9,
+      "n_disease_terms": 27,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.2222222222222222
+    },
+    {
+      "case_id": "PMID_37962958_Individual_4",
+      "disease_id": "OMIM:620535",
+      "predicted_rank": 672,
+      "n_query_terms": 28,
+      "n_disease_terms": 22,
+      "query_disease_overlap": 4,
+      "overlap_ratio": 0.14285714285714285
+    },
+    {
+      "case_id": "PMID_30236613_patient",
+      "disease_id": "OMIM:105400",
+      "predicted_rank": 641,
+      "n_query_terms": 7,
+      "n_disease_terms": 13,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 0.14285714285714285
+    },
+    {
+      "case_id": "PMID_39117932_individual_12",
+      "disease_id": "OMIM:609322",
+      "predicted_rank": 636,
+      "n_query_terms": 1,
+      "n_disease_terms": 2,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    },
+    {
+      "case_id": "PMID_29605370_Ahv_14",
+      "disease_id": "OMIM:601869",
+      "predicted_rank": 583,
+      "n_query_terms": 1,
+      "n_disease_terms": 4,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_29484404_proband",
+      "disease_id": "OMIM:130600",
+      "predicted_rank": 565,
+      "n_query_terms": 7,
+      "n_disease_terms": 4,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.2857142857142857
+    },
+    {
+      "case_id": "PMID_29707406_B_III_2",
+      "disease_id": "OMIM:606854",
+      "predicted_rank": 543,
+      "n_query_terms": 5,
+      "n_disease_terms": 21,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    },
+    {
+      "case_id": "PMID_26647175_Case_1",
+      "disease_id": "OMIM:613721",
+      "predicted_rank": 527,
+      "n_query_terms": 14,
+      "n_disease_terms": 11,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.21428571428571427
+    },
+    {
+      "case_id": "PMID_27460976_proband",
+      "disease_id": "OMIM:606324",
+      "predicted_rank": 505,
+      "n_query_terms": 14,
+      "n_disease_terms": 11,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.14285714285714285
+    },
+    {
+      "case_id": "PMID_36355422_IV_8",
+      "disease_id": "OMIM:620745",
+      "predicted_rank": 428,
+      "n_query_terms": 1,
+      "n_disease_terms": 4,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_27656288_patient",
+      "disease_id": "OMIM:130010",
+      "predicted_rank": 393,
+      "n_query_terms": 9,
+      "n_disease_terms": 18,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.3333333333333333
+    },
+    {
+      "case_id": "PMID_30612693_Individual_3",
+      "disease_id": "OMIM:618443",
+      "predicted_rank": 388,
+      "n_query_terms": 4,
+      "n_disease_terms": 60,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.75
+    },
+    {
+      "case_id": "PMID_27180139_case_2",
+      "disease_id": "OMIM:604213",
+      "predicted_rank": 384,
+      "n_query_terms": 10,
+      "n_disease_terms": 15,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.2
+    },
+    {
+      "case_id": "PMID_31782611_PT22",
+      "disease_id": "OMIM:616364",
+      "predicted_rank": 373,
+      "n_query_terms": 1,
+      "n_disease_terms": 134,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_34521999_Individual_11",
+      "disease_id": "OMIM:617140",
+      "predicted_rank": 355,
+      "n_query_terms": 11,
+      "n_disease_terms": 82,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 0.09090909090909091
+    },
+    {
+      "case_id": "PMID_38459354_Family_1_proband",
+      "disease_id": "OMIM:620794",
+      "predicted_rank": 349,
+      "n_query_terms": 1,
+      "n_disease_terms": 5,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_32424628_32424628_P1",
+      "disease_id": "OMIM:616370",
+      "predicted_rank": 330,
+      "n_query_terms": 16,
+      "n_disease_terms": 13,
+      "query_disease_overlap": 4,
+      "overlap_ratio": 0.25
+    },
+    {
+      "case_id": "PMID_22647861_41_year_old_woman",
+      "disease_id": "OMIM:118600",
+      "predicted_rank": 322,
+      "n_query_terms": 11,
+      "n_disease_terms": 3,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 0.09090909090909091
+    },
+    {
+      "case_id": "PMID_24239060_index_patient_II_2",
+      "disease_id": "OMIM:255310",
+      "predicted_rank": 317,
+      "n_query_terms": 18,
+      "n_disease_terms": 25,
+      "query_disease_overlap": 5,
+      "overlap_ratio": 0.2777777777777778
+    },
+    {
+      "case_id": "PMID_30364145_proband",
+      "disease_id": "OMIM:617452",
+      "predicted_rank": 289,
+      "n_query_terms": 21,
+      "n_disease_terms": 49,
+      "query_disease_overlap": 9,
+      "overlap_ratio": 0.42857142857142855
+    },
+    {
+      "case_id": "PMID_36303223_Proband_5_from_PMID_12112661",
+      "disease_id": "OMIM:272300",
+      "predicted_rank": 283,
+      "n_query_terms": 1,
+      "n_disease_terms": 34,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    },
+    {
+      "case_id": "PMID_39721588_Individual_2",
+      "disease_id": "OMIM:621372",
+      "predicted_rank": 258,
+      "n_query_terms": 2,
+      "n_disease_terms": 61,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_35190816_STX_26865513_Patient_22",
+      "disease_id": "OMIM:612164",
+      "predicted_rank": 241,
+      "n_query_terms": 12,
+      "n_disease_terms": 24,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.16666666666666666
+    },
+    {
+      "case_id": "PMID_37951597_Family_22_Subject_2",
+      "disease_id": "OMIM:620785",
+      "predicted_rank": 228,
+      "n_query_terms": 2,
+      "n_disease_terms": 79,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_11333380_P4",
+      "disease_id": "OMIM:161800",
+      "predicted_rank": 219,
+      "n_query_terms": 4,
+      "n_disease_terms": 38,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 0.25
+    },
+    {
+      "case_id": "PMID_28371217_brother",
+      "disease_id": "OMIM:301040",
+      "predicted_rank": 210,
+      "n_query_terms": 8,
+      "n_disease_terms": 57,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 0.125
+    },
+    {
+      "case_id": "PMID_24164096_patient",
+      "disease_id": "OMIM:159950",
+      "predicted_rank": 200,
+      "n_query_terms": 7,
+      "n_disease_terms": 21,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.2857142857142857
+    },
+    {
+      "case_id": "PMID_30050362_individual_II_3",
+      "disease_id": "OMIM:228600",
+      "predicted_rank": 180,
+      "n_query_terms": 10,
+      "n_disease_terms": 17,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.2
+    },
+    {
+      "case_id": "PMID_36799992_D_II_3",
+      "disease_id": "OMIM:620971",
+      "predicted_rank": 178,
+      "n_query_terms": 1,
+      "n_disease_terms": 16,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_34038384_Family_G_1_10",
+      "disease_id": "OMIM:620755",
+      "predicted_rank": 174,
+      "n_query_terms": 1,
+      "n_disease_terms": 9,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_18256394_Patient_1",
+      "disease_id": "OMIM:176670",
+      "predicted_rank": 169,
+      "n_query_terms": 12,
+      "n_disease_terms": 13,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.16666666666666666
+    },
+    {
+      "case_id": "PMID_26981933_Family_B_individual_B4",
+      "disease_id": "OMIM:616873",
+      "predicted_rank": 159,
+      "n_query_terms": 9,
+      "n_disease_terms": 10,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 0.1111111111111111
+    },
+    {
+      "case_id": "PMID_31021519_Case_1_from_Rainger_et_al",
+      "disease_id": "OMIM:612313",
+      "predicted_rank": 155,
+      "n_query_terms": 7,
+      "n_disease_terms": 55,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.42857142857142855
+    },
+    {
+      "case_id": "PMID_19458539_patient",
+      "disease_id": "OMIM:609200",
+      "predicted_rank": 147,
+      "n_query_terms": 11,
+      "n_disease_terms": 16,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.2727272727272727
+    },
+    {
+      "case_id": "PMID_31590245_proband",
+      "disease_id": "OMIM:601144",
+      "predicted_rank": 127,
+      "n_query_terms": 3,
+      "n_disease_terms": 8,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 0.3333333333333333
+    },
+    {
+      "case_id": "PMID_28652255_V_5",
+      "disease_id": "OMIM:208920",
+      "predicted_rank": 118,
+      "n_query_terms": 5,
+      "n_disease_terms": 32,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.6
+    },
+    {
+      "case_id": "PMID_12920062_Family_A_individual_III_16",
+      "disease_id": "OMIM:115200",
+      "predicted_rank": 108,
+      "n_query_terms": 3,
+      "n_disease_terms": 11,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 0.3333333333333333
+    },
+    {
+      "case_id": "PMID_30099644_III_3",
+      "disease_id": "OMIM:600138",
+      "predicted_rank": 106,
+      "n_query_terms": 3,
+      "n_disease_terms": 11,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.6666666666666666
+    },
+    {
+      "case_id": "PMID_12189163_Sib_2",
+      "disease_id": "OMIM:219100",
+      "predicted_rank": 102,
+      "n_query_terms": 7,
+      "n_disease_terms": 24,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.2857142857142857
+    },
+    {
+      "case_id": "PMID_32710489_Group_1_Patient_7",
+      "disease_id": "OMIM:620155",
+      "predicted_rank": 101,
+      "n_query_terms": 35,
+      "n_disease_terms": 40,
+      "query_disease_overlap": 10,
+      "overlap_ratio": 0.2857142857142857
+    },
+    {
+      "case_id": "PMID_27057656_patient",
+      "disease_id": "OMIM:231050",
+      "predicted_rank": 100,
+      "n_query_terms": 16,
+      "n_disease_terms": 45,
+      "query_disease_overlap": 4,
+      "overlap_ratio": 0.25
+    },
+    {
+      "case_id": "PMID_19185281_Family_2_individual_A2HE_1",
+      "disease_id": "OMIM:270420",
+      "predicted_rank": 96,
+      "n_query_terms": 9,
+      "n_disease_terms": 16,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.2222222222222222
+    },
+    {
+      "case_id": "PMID_33964205_individual_V_2",
+      "disease_id": "OMIM:620877",
+      "predicted_rank": 94,
+      "n_query_terms": 2,
+      "n_disease_terms": 4,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_36996813_Individual_KCHYD24_1",
+      "disease_id": "OMIM:620371",
+      "predicted_rank": 91,
+      "n_query_terms": 1,
+      "n_disease_terms": 88,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_20015879_Patient",
+      "disease_id": "OMIM:185020",
+      "predicted_rank": 80,
+      "n_query_terms": 11,
+      "n_disease_terms": 5,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.2727272727272727
+    },
+    {
+      "case_id": "PMID_31068971_proband",
+      "disease_id": "OMIM:612840",
+      "predicted_rank": 77,
+      "n_query_terms": 12,
+      "n_disease_terms": 17,
+      "query_disease_overlap": 6,
+      "overlap_ratio": 0.5
+    },
+    {
+      "case_id": "PMID_18412284_Patient_II_6",
+      "disease_id": "OMIM:601414",
+      "predicted_rank": 71,
+      "n_query_terms": 6,
+      "n_disease_terms": 5,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.3333333333333333
+    },
+    {
+      "case_id": "PMID_22772371_TAA288_III_9",
+      "disease_id": "OMIM:614816",
+      "predicted_rank": 70,
+      "n_query_terms": 1,
+      "n_disease_terms": 45,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_39013458_individual_VUSM110060",
+      "disease_id": "OMIM:610253",
+      "predicted_rank": 65,
+      "n_query_terms": 1,
+      "n_disease_terms": 87,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_36586412_Individual_4b",
+      "disease_id": "OMIM:301111",
+      "predicted_rank": 62,
+      "n_query_terms": 3,
+      "n_disease_terms": 41,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_28984260_child",
+      "disease_id": "OMIM:232700",
+      "predicted_rank": 62,
+      "n_query_terms": 11,
+      "n_disease_terms": 10,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.2727272727272727
+    },
+    {
+      "case_id": "PMID_29217778_P2_D154",
+      "disease_id": "OMIM:159550",
+      "predicted_rank": 61,
+      "n_query_terms": 6,
+      "n_disease_terms": 19,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.3333333333333333
+    },
+    {
+      "case_id": "PMID_35979925_Case_8",
+      "disease_id": "OMIM:620782",
+      "predicted_rank": 56,
+      "n_query_terms": 3,
+      "n_disease_terms": 34,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_28687524_proband",
+      "disease_id": "OMIM:602342",
+      "predicted_rank": 56,
+      "n_query_terms": 23,
+      "n_disease_terms": 59,
+      "query_disease_overlap": 8,
+      "overlap_ratio": 0.34782608695652173
+    },
+    {
+      "case_id": "PMID_23335590_Subject_3301",
+      "disease_id": "OMIM:304110",
+      "predicted_rank": 52,
+      "n_query_terms": 5,
+      "n_disease_terms": 51,
+      "query_disease_overlap": 4,
+      "overlap_ratio": 0.8
+    },
+    {
+      "case_id": "PMID_33674768_Patient_68_This_study",
+      "disease_id": "OMIM:300867",
+      "predicted_rank": 47,
+      "n_query_terms": 13,
+      "n_disease_terms": 52,
+      "query_disease_overlap": 5,
+      "overlap_ratio": 0.38461538461538464
+    },
+    {
+      "case_id": "PMID_36718090_Patient_3",
+      "disease_id": "OMIM:620417",
+      "predicted_rank": 45,
+      "n_query_terms": 12,
+      "n_disease_terms": 18,
+      "query_disease_overlap": 7,
+      "overlap_ratio": 0.5833333333333334
+    },
+    {
+      "case_id": "PMID_38158857_Family_4_PATIENT_5",
+      "disease_id": "OMIM:301132",
+      "predicted_rank": 43,
+      "n_query_terms": 1,
+      "n_disease_terms": 88,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_34392356_PK_INF_602",
+      "disease_id": "OMIM:620686",
+      "predicted_rank": 42,
+      "n_query_terms": 1,
+      "n_disease_terms": 6,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_12925374_III_1",
+      "disease_id": "OMIM:606889",
+      "predicted_rank": 41,
+      "n_query_terms": 1,
+      "n_disease_terms": 22,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_31509304_F1_III_1",
+      "disease_id": "OMIM:617560",
+      "predicted_rank": 38,
+      "n_query_terms": 5,
+      "n_disease_terms": 39,
+      "query_disease_overlap": 5,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_35933355_two_year_old_ACM_proband",
+      "disease_id": "OMIM:620519",
+      "predicted_rank": 37,
+      "n_query_terms": 2,
+      "n_disease_terms": 31,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_15654695_Patient_3",
+      "disease_id": "OMIM:615982",
+      "predicted_rank": 35,
+      "n_query_terms": 5,
+      "n_disease_terms": 14,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.6
+    },
+    {
+      "case_id": "PMID_28482824_proband",
+      "disease_id": "OMIM:601088",
+      "predicted_rank": 35,
+      "n_query_terms": 11,
+      "n_disease_terms": 41,
+      "query_disease_overlap": 6,
+      "overlap_ratio": 0.5454545454545454
+    },
+    {
+      "case_id": "PMID_29110636_proband_VMFS",
+      "disease_id": "OMIM:107480",
+      "predicted_rank": 35,
+      "n_query_terms": 19,
+      "n_disease_terms": 56,
+      "query_disease_overlap": 8,
+      "overlap_ratio": 0.42105263157894735
+    },
+    {
+      "case_id": "PMID_25835445_1_III_11",
+      "disease_id": "OMIM:615582",
+      "predicted_rank": 35,
+      "n_query_terms": 2,
+      "n_disease_terms": 57,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 0.5
+    },
+    {
+      "case_id": "PMID_40146200_Family1_IV_1_P1",
+      "disease_id": "OMIM:621209",
+      "predicted_rank": 34,
+      "n_query_terms": 1,
+      "n_disease_terms": 10,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_17661815_Patient_A_II_2",
+      "disease_id": "OMIM:214800",
+      "predicted_rank": 34,
+      "n_query_terms": 5,
+      "n_disease_terms": 89,
+      "query_disease_overlap": 1,
+      "overlap_ratio": 0.2
+    },
+    {
+      "case_id": "PMID_36752199_Family_1_P2",
+      "disease_id": "OMIM:620917",
+      "predicted_rank": 31,
+      "n_query_terms": 6,
+      "n_disease_terms": 9,
+      "query_disease_overlap": 5,
+      "overlap_ratio": 0.8333333333333334
+    },
+    {
+      "case_id": "PMID_36553465_P1",
+      "disease_id": "OMIM:606574",
+      "predicted_rank": 30,
+      "n_query_terms": 11,
+      "n_disease_terms": 7,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.2727272727272727
+    },
+    {
+      "case_id": "PMID_24969041_neonate",
+      "disease_id": "OMIM:149400",
+      "predicted_rank": 27,
+      "n_query_terms": 4,
+      "n_disease_terms": 12,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.5
+    },
+    {
+      "case_id": "PMID_29050284_proband_II_5",
+      "disease_id": "OMIM:203200",
+      "predicted_rank": 27,
+      "n_query_terms": 7,
+      "n_disease_terms": 14,
+      "query_disease_overlap": 4,
+      "overlap_ratio": 0.5714285714285714
+    },
+    {
+      "case_id": "PMID_34641913_Case_presentation",
+      "disease_id": "OMIM:610042",
+      "predicted_rank": 26,
+      "n_query_terms": 4,
+      "n_disease_terms": 99,
+      "query_disease_overlap": 4,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_28258187_Patient_2",
+      "disease_id": "OMIM:618343",
+      "predicted_rank": 26,
+      "n_query_terms": 9,
+      "n_disease_terms": 41,
+      "query_disease_overlap": 6,
+      "overlap_ratio": 0.6666666666666666
+    },
+    {
+      "case_id": "PMID_29050398_Patient_11",
+      "disease_id": "OMIM:613477",
+      "predicted_rank": 25,
+      "n_query_terms": 11,
+      "n_disease_terms": 19,
+      "query_disease_overlap": 5,
+      "overlap_ratio": 0.45454545454545453
+    },
+    {
+      "case_id": "PMID_34155512_III_6",
+      "disease_id": "OMIM:620849",
+      "predicted_rank": 24,
+      "n_query_terms": 2,
+      "n_disease_terms": 9,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_36446582_Goldenberg2016_P10",
+      "disease_id": "OMIM:148050",
+      "predicted_rank": 23,
+      "n_query_terms": 4,
+      "n_disease_terms": 54,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.5
+    },
+    {
+      "case_id": "PMID_38091523_IV_1",
+      "disease_id": "OMIM:620848",
+      "predicted_rank": 23,
+      "n_query_terms": 2,
+      "n_disease_terms": 8,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_33791923_Patient_7",
+      "disease_id": "OMIM:620398",
+      "predicted_rank": 23,
+      "n_query_terms": 13,
+      "n_disease_terms": 7,
+      "query_disease_overlap": 3,
+      "overlap_ratio": 0.23076923076923078
+    },
+    {
+      "case_id": "PMID_37226891_Individual_2",
+      "disease_id": "OMIM:620779",
+      "predicted_rank": 23,
+      "n_query_terms": 6,
+      "n_disease_terms": 13,
+      "query_disease_overlap": 6,
+      "overlap_ratio": 1.0
+    },
+    {
+      "case_id": "PMID_30243293_case_report",
+      "disease_id": "OMIM:160800",
+      "predicted_rank": 21,
+      "n_query_terms": 5,
+      "n_disease_terms": 10,
+      "query_disease_overlap": 2,
+      "overlap_ratio": 0.4
+    },
+    {
+      "case_id": "PMID_16251899_Case_no_3",
+      "disease_id": "OMIM:610168",
+      "predicted_rank": 21,
+      "n_query_terms": 7,
+      "n_disease_terms": 79,
+      "query_disease_overlap": 5,
+      "overlap_ratio": 0.7142857142857143
+    },
+    {
+      "case_id": "PMID_37433783_P6",
+      "disease_id": "OMIM:601674",
+      "predicted_rank": 0,
+      "n_query_terms": 12,
+      "n_disease_terms": 0,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    },
+    {
+      "case_id": "PMID_37071997_Subject_I9",
+      "disease_id": "OMIM:620489",
+      "predicted_rank": 0,
+      "n_query_terms": 7,
+      "n_disease_terms": 0,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    },
+    {
+      "case_id": "PMID_36100156_Patient_1",
+      "disease_id": "OMIM:621193",
+      "predicted_rank": 0,
+      "n_query_terms": 22,
+      "n_disease_terms": 0,
+      "query_disease_overlap": 0,
+      "overlap_ratio": 0.0
+    }
+  ]
+}

@@ -1,27 +1,29 @@
 ---
-last_run: 2026-03-25T03:58:00Z
+last_run: 2026-03-27T16:50:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [crc-liquid-biopsy-panel, voice-biomarkers-parkinsons, ehr-sepsis-early-warning, smartphone-retinal-dr-screening, cxr-rare-disease-detection, rare-disease-phenotype-matcher, false-positive-biomarker-mining]
+projects_touched: [pathology-fm-msi-prescreening, crc-liquid-biopsy-panel, ehr-sepsis-early-warning, voice-biomarkers-parkinsons, rare-disease-phenotype-matcher, cxr-rare-disease-detection, acoustic-multi-disease-panel, smartphone-retinal-dr-screening]
 ---
 
 ## Context
 
-- Created 7 journal entries (#2271-2278) covering: NHS-Galleri trial primary endpoint miss (Stage III-IV reduction not significant, but >20% Stage IV reduction in rounds 2-3, 4x detection rate), pan-cancer cfDNA methylome+fragmentome compendium (1,294 samples, 14 cancer types, Nature Cancer Feb 2026), speech foundation models for PD (Wav2Vec 2.0 AUROC 0.92, ensemble 91.35%), NAVOY Sepsis first RCT (sensitivity 0.80/specificity 0.78 at 3h) + Epic Sepsis external validation failure (AUC 0.63), RetSyn synthetic data for DR screening in LMICs (paired smartphone-tabletop dataset), CXR-LT 2026 loss design study (ConvNeXt-Large + LDAM-DRW, 5th/68), EU AI Act Aug 2 2026 deadline + FDA 1,451 AI devices.
-- Created 5 tasks:
-  - #1396 (research_director, P2): Evaluate cfDNA fragmentomics as third modality for crc-liquid-biopsy-panel
-  - #1397 (research_director, P2): Evaluate Wav2Vec 2.0 + supervised contrastive learning for voice-biomarkers-parkinsons
-  - #1399 (research_director, P2): Investigate conformal prediction for sepsis alarm burden reduction
-  - #1401 (data_curator, P2): Download RetSyn paired smartphone-tabletop retinal dataset
-  - #1402 (research_director, P3): Test LDAM-DRW loss for cxr-rare-disease-detection
+- Created 8 journal entries (#2540-2550) covering: CONCH outperforms UNI/Virchow2 for MSI prediction (balanced acc 0.778 external, best prescreening model), multi-center cfDNA fragmentomics CRC detection (AUC 0.926, Stage I sens 94.4%, ARM-FSD features), conformal prediction 57% false alarm reduction for non-ICU sepsis (AUROC 0.99 at 6h), ParkMAE cross-linguistic PD speech model (89% fewer params than Wav2Vec2), RARE-PHENIX end-to-end LLM rare disease phenotyping (2,671 UDN patients, beats PhenoBERT), CXR-LT 2026 LDAM-DRW 30% mAP improvement over BCE, Google HeAR bioacoustic foundation model, RetSyn synthetic data for DR screening cross-device robustness.
+- Created 6 tasks:
+  - #1544 (research_director, P2): Prioritize CONCH over UNI for pathology-fm-msi-prescreening
+  - #1545 (research_director, P2): Evaluate ParkMAE as lightweight Wav2Vec2 alternative for voice-biomarkers-parkinsons
+  - #1546 (research_director, P2): Evaluate RARE-PHENIX as upstream HPO extraction for rare-disease-phenotype-matcher
+  - #1547 (research_director, P3): Evaluate Google HeAR as shared backbone for acoustic-multi-disease-panel
+  - #1549 (research_director, P2): Evaluate ARM-FSD features for crc-liquid-biopsy-panel tri-modal classifier
+  - #1550 (data_curator, P3): Download RetSyn synthetic retinal image framework
+- Regulatory correction: EU AI Act medical device deadline is Aug 2027 (not Aug 2026) — 1-year extension for MDR/IVDR-regulated devices. FDA PCCP final guidance enables adaptive AI updates without resubmission.
 - Key watch items for next run:
-  - NHS-Galleri extended follow-up (6-12 months) — GRAIL extending trial, watch for updated stage-shift analysis
-  - Galleri FDA PMA decision — PMA submitted Jan 29 2026, decision expected 2027, watch for advisory committee scheduling
-  - DeepRare 20K-case global validation — team announced global diagnostic alliance for real-world validation
-  - EU AI Act Aug 2 2026 compliance deadline — now <4.3 months away, monitor implementing guidance for diagnostic AI
-  - Zeng et al. cfDNA fragmentome data availability — check if 1,294-sample dataset or 14,202 DMR lists are publicly released
-  - COMPOSER-LLM sepsis full publication — conformal prediction for false positive reduction, currently pilot stage
-  - RetSyn paired dataset access — confirm availability and download status
-  - Wav2Vec 2.0 cross-language PD detection — monitor for cross-dataset generalization studies matching our mPower+UCI+PC-GITA scope
-  - CXR-LT 2026 winning team code releases — monitor for CVMAIL×MIHL and other top-5 teams
-  - FDA adaptive AI clearance pathway — anticipated 2026 legislative formalization
+  - Galleri FDA PMA decision — PMA submitted Jan 29 2026, no advisory committee scheduled yet, monitor for panel date
+  - CONCH MSI pan-cancer extension — current benchmark is CRC-only, watch for multi-cancer MSI studies using CONCH
+  - ParkMAE code/model release — check if weights and training code are publicly available for benchmarking
+  - RARE-PHENIX UDN dataset access — check if phenotyping annotations or model weights are released
+  - CXR-LT 2026 winning team methods — full challenge results and top-team code releases pending
+  - Conformal prediction sepsis replication — the 57% false alarm reduction needs replication on our MIMIC-IV pipeline
+  - Google HeAR model access — check API/weights availability for research use
+  - RetSyn framework code — confirm open-source availability for synthetic retinal image generation
+  - cfDNA fragmentomics multi-center data — check if ARM-FSD feature extraction code is released
+  - EU AI Act implementing guidance — monitor MDCG guidance documents for diagnostic AI compliance

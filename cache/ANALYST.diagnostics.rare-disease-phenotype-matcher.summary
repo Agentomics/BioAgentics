@@ -1,0 +1,38 @@
+---
+last_run: 2026-03-26T00:00:00Z
+tasks_completed: [1448, 1450, 1451, 1452]
+tasks_blocked: [1449]
+projects_touched: [rare-disease-phenotype-matcher]
+---
+
+## Context
+
+- Ran full benchmark on 694 stratified phenopacket cases (1 per unique disease out of 9,586 total cases, 694 unique diseases)
+- IC Resnik is best matcher: Top-1=65.0%, Top-5=76.9%, Top-10=80.3%, Top-20=84.7%, MRR=0.708 — exceeds both success criteria (Top-10 >= 70%, MRR >= 0.40)
+- Freq-IC underperforms plain IC: Top-1=47.6%, Top-10=70.2%, MRR=0.555 — frequency weighting hurts, likely due to Orphanet frequency sparsity
+- Node2vec near-random (Top-10=1.0%) — undertrained with conservative config (dim=32, walks=1, epochs=1) due to 8GB RAM constraint
+- GAT non-discriminative (0.0%) — all link prediction scores ~0.95 on dense bipartite disease-phenotype graph
+- Ensemble not evaluated — would take 86+ min calling all 4 matchers per case
+
+## Key Findings
+
+- Disease group stratification: Musculoskeletal (85.7% Top-10), Cardiovascular (84.0%), Immune (82.9%) perform best; Blood (66.7%), Ear (69.2%) weakest
+- 106 failure cases analyzed: phenotypic overlap between diseases is primary failure mode; diseases with few annotations hardest
+- IC Resnik Top-1 (65.0%) matches DeepRare HPO-only (64.4%); Top-10 (80.3%) exceeds PhenoBrain standalone (65.4%)
+- genemap2.txt parser broken (expects tabs, file uses pipes) — no gene nodes in KG. Developer task #1486 created
+- Performance optimization needed for batch evaluation. Developer task #1489 created
+
+## Blockers
+
+- Task 1449 (ablation study) blocked: IC takes ~42s/case, ablation grid (5 completeness x 4 noise x ~694 cases) = ~65K evaluations, infeasible without batch optimization
+- Gene-disease associations missing from KG due to parser bug — may improve graph-based matchers once fixed
+
+## Outputs Generated
+
+- output/diagnostics/rare-disease-phenotype-matcher/lirical_results.json (main benchmark)
+- output/diagnostics/rare-disease-phenotype-matcher/phenopacket_store_report.json
+- output/diagnostics/rare-disease-phenotype-matcher/phenopacket_store_{ic_resnik,freq_ic,node2vec,gat}_eval.json
+- output/diagnostics/rare-disease-phenotype-matcher/disease_group_stratification.json
+- output/diagnostics/rare-disease-phenotype-matcher/failure_mode_analysis.json
+- output/diagnostics/rare-disease-phenotype-matcher/baseline_comparison.json
+- Journal entries: #2505 (benchmark results), #2507 (stratification + failure modes + baseline)

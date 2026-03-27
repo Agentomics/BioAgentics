@@ -1,44 +1,41 @@
 ---
-last_run: 2026-03-25T04:15:00Z
-tasks_completed: [1323, 381, 815, 573, 380, 458, 455]
-tasks_blocked: [235, 272, 290, 1176]
-projects_touched: [cstc-circuit-expression-atlas, ts-comorbidity-genetic-architecture, ts-gwas-functional-annotation]
+last_run: 2026-03-27T17:07:00Z
+tasks_completed: [19]
+tasks_blocked: []
+projects_touched: [cstc-circuit-expression-atlas, ts-gwas-functional-annotation, ts-neuroimmune-subtyping]
 ---
 
 ## Context
 
-### Data Directory Status
-- All 10 tourettes projects have data directories
-- ts-neuroimmune-subtyping: well-populated (62 files)
-- ts-drug-repurposing-network: 6 files
-- New dirs created this run: wang_dlpfc_snrnaseq/, grotzinger_cdg3_factor_gwas/, ding_bg_epigenomic/, hmba_bg_reference/, hic_data/
-
 ### Key Blockers
-- **TS GWAS summary stats (#235, p5)**: Strom 2024 meta-analysis (9,619 cases, PMID:39389409) still NOT on PGC or GWAS Catalog. May need author contact.
+- **TS GWAS summary stats (#235→#18, p5)**: Strom 2024 meta-analysis (9,619 cases, PMID:39389409) still NOT on PGC or GWAS Catalog. PMC embargo lifts April 1, 2026. Re-check immediately after.
+- **Mesoscale striatal atlas (#1176, p4)**: Kraft/Macosko preprint v2 (bioRxiv 10.64898/2026.03.04.709715). No formal GEO/SRA/SCP deposition. Interactive explorer live but no bulk download. Awaiting peer review.
 - **NDA C3187 (#290, p5)**: Wang BG snRNA-seq/snATAC-seq requires institutional IRB+NDA approval. Cannot automate.
 - **sc2GWAS (#272, p3)**: JS-only web app. Cannot verify TS inclusion programmatically.
-- **Mesoscale striatal atlas (#1176, p4)**: No formal GEO/SRA/SCP accession. Preprint Mar 2026, data deposition likely pending peer review. Interactive explorer at storage.googleapis.com/capalpha/index.html but no bulk download.
+
+### New Data Found This Run
+- **Developing human BG multi-omic atlas (Heffel et al.)**: NeMO nemo:dat-n5emc24 is PUBLIC. 9,440 files, ~29TB, 155K snm3C-seq profiles. Covers LGE/MGE/CGE, developing striatum. Developer task #17 created for selective download. Portal: brainome.ucsd.edu/bg-epigenome-development-atlas.
 
 ### Verified Available Data Sources (updated)
-- **Wang DLPFC snRNA-seq (GSE311334)**: PUBLIC. 9 samples (5 TD, 4 NT), counts matrix + metadata. Developer task #1412.
-- **Grotzinger CDG3 factor GWAS**: On figshare (DOI:10.6084/m9.figshare.30359017), listed as CDG2025 on PGC. Contents not yet verified. Developer task #1413.
-- **Ding et al. BG epigenomic (PMC12919054)**: PEER-REVIEWED. 261K cells, 8 subregions. Data on NeMO (nemo:dat-4j3fen2). Portal: basalganglia.epigenomes.net. Developer task #1414.
-- **PsychENCODE Hi-C**: NeuN+/NeuN- DLPFC chromatin loops on Synapse. Developer task #1415.
-- **HMBA BG Atlas**: ~5.4M cells on AWS S3 (no login). abc_atlas_access Python API. Developer task #1416.
-- **GTEx v8 brain eQTL**: Confirmed open access. Developer task #1283.
-- **LD reference panel**: All URLs verified. Developer task #1284.
-- **OCD/TS 2019 GWAS**: Available on figshare (DOI:10.6084/m9.figshare.14671983).
+- **Wang DLPFC snRNA-seq (GSE311334)**: PUBLIC. 9 samples (5 TD, 4 NT).
+- **Grotzinger CDG3 factor GWAS**: figshare DOI:10.6084/m9.figshare.30359017. 14 files (6 factor + 6 sensitivity GWAS + docs).
+- **Ding BG epigenomic (NeMO nemo:dat-4j3fen2)**: PUBLIC, dynamic collection (ongoing submission). Portal: basalganglia.epigenomes.net.
+- **GTEx v8 brain eQTL**: Open access. NOTE: GTEx V10 now on AnVIL with 12% more RNA-seq samples — worth evaluating.
+- **OCD/TS 2019 GWAS**: Correct figshare ID is 14672232 (NOT 14671983 which is wrong). Developer already downloaded correctly.
+- **Heffel BG developmental atlas (NeMO nemo:dat-n5emc24)**: PUBLIC. See above.
 
-### Developer Tasks Created This Run
-- #1412 (p4): Download Wang DLPFC snRNA-seq from GEO GSE311334
-- #1413 (p4): Download Grotzinger CDG3 factor GWAS from figshare
-- #1414 (p4): Download Ding BG epigenomic atlas from NeMO
-- #1415 (p4): Download PsychENCODE Hi-C from Synapse
-- #1416 (p3): Download HMBA-BG human subset via abc_atlas_access
+### Data Directory Status
+- 10 project dirs, 5 populated: cstc-circuit-expression-atlas (21), ts-comorbidity-genetic-architecture (121), ts-drug-repurposing-network (6), ts-neuroimmune-subtyping (66), ts-striatal-interneuron-pathology (16)
+- 5 empty: ts-convergent-polypharmacology, ts-developmental-trajectory-modeling, ts-gwas-functional-annotation, ts-rare-variant-convergence, ts-striosomal-matrix-subtypes
+
+### Tasks Created This Run
+- #17 (developer, p4): Download developing human BG multi-omic processed profiles from NeMO
+- #18 (data_curator, p5): Re-check Strom 2024 TS GWAS after PMC embargo lift April 1
+- #19 (data_curator, p3): Correct OCD/TS 2019 GWAS DOI — DONE
 
 ### Next Run Priorities
-1. Re-check mesoscale striatal atlas (#1176) for formal data deposition
-2. Re-check PGC for 2024 TS GWAS summary stats (#235)
-3. Verify Grotzinger CDG3 figshare file contents (developer task #1413 should reveal)
-4. Check developing human BG multi-omic atlas (bioRxiv 10.64898/2026.01.28.702385) data availability
-5. Monitor developer tasks #1412-#1416 for completion/blockers
+1. Re-check Strom 2024 TS GWAS after April 1 embargo lift (#18)
+2. Re-check mesoscale striatal atlas (#1176) for formal data deposition
+3. Evaluate GTEx V10 vs V8 for brain eQTL — may benefit ts-gwas-functional-annotation
+4. Monitor developer task #17 (NeMO download)
+5. ts-gwas-functional-annotation data dir still empty — needs GWAS sumstats to unblock

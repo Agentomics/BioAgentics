@@ -1,26 +1,18 @@
 ---
-last_run: 2026-03-25T04:27:00Z
-tasks_completed: [1367, 1408, 930, 1064, 324, 207, 233, 228, 172, 173, 453, 436, 411, 505, 1411, 357]
-tasks_blocked: [208, 448, 271, 1065, 810]
-projects_touched: [il23-single-cell-response-atlas, cd-stricture-risk-prediction, cd-flare-longitudinal-prediction, anti-tnf-response-prediction, microbiome-metabolome-subtyping, cd-fibrosis-drug-repurposing]
+last_run: 2026-03-27T17:00:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [il23-single-cell-response-atlas, cd-epithelial-reserve-treatment-stratification, cd-gpx4-ferroptosis-convergence, anti-tnf-response-prediction, cd-stricture-risk-prediction, cd-fibrosis-drug-repurposing, microbiome-metabolome-subtyping, cd-flare-longitudinal-prediction, nod2-variant-functional-impact]
 ---
 
 ## Context
 
-- **IL-23 atlas third dataset RESOLVED (#1367)**: Kong et al. Immunity 2023 (PMID 36720220) identified as IBDverse replacement. 430K terminal ileum cells (154K epithelial, 201K immune, 76K stromal), 46 CD + 25 controls. Freely downloadable from CellxGene (collection 5c868b6f, H5AD ~2GB total). Also on Broad SCP1884. Dev task #1417 created for download.
-- **Kong Nat Genet 2025 (#1408/#1064)**: SCP2959 on Single Cell Portal (processed), phs003943 on dbGaP (controlled). GitHub has code + data files. Processed viewable but raw requires authorization.
-- **Washburn JCC 2026 (#930)**: Data likely at SCP1422/SCP1423 (Broad). 14 pediCD + 13 FGID, 254K cells. Cell-by-gene matrices should be released with peer-reviewed version.
-- **GSE282122 confirmed (#207)**: Thomas/Buckley Nat Immunol 2024 anti-TNF atlas. ~1M cells, 216 biopsies, 41 subjects. Filtered h5 files (2.8 GB) downloadable. Dev task created.
-- **PRJNA1216747 (#324)**: Rabinowitz inception cohort 16S confirmed on SRA. 73 CD, 146 runs, MiSeq. Only 2 timepoints — baseline validation only, not longitudinal modeling.
-- **IBDverse (#208/#448) STILL BLOCKED**: Zenodo restricted. CellxGene Kong 2023 is replacement.
-- **SPARC IBD (#271/#1065) BLOCKED**: Metabolomics not publicly available. Requires formal IBD Plexus request.
-- **McGregor fistula atlas (#810) BLOCKED**: dbGaP phs003943 controlled access.
-- **Sci Rep 2026 paired data (#453) AVAILABLE**: PRJNA1053872 (16S), PRJNA1057679 (shotgun), supplementary metabolomics. 80 CD + 43 HC. Dev task created.
-- **Pediatric multi-omics (#173) AVAILABLE**: MTBLS9877, PRJEB74164, PXD062519. 58 pediCD. Dev task created.
-- **IBD inception cohort (#172)**: PRJEB86986 on ENA. 23 CD + 37 UC + 20 HC. Small CD cohort.
-- **Acharjee stricture genes (#233)**: 8 key genes (LY96, AKAP11, SRM, GREM1, EHD2, SERPINE1, HDAC1, FGF2) for feature engineering. Primary data not deposited.
-- **GSE16879 (#505)**: Available but lacks B1/B2/B3 behavior annotation. Not suitable for stricture validation.
-- **Gudiño perianal scRNA-seq (#357)**: GEO accession not confirmed. GSE260833 is different study.
-- **IBDTransDB**: abbviegrc.shinyapps.io/ibdtransdb/ confirmed. 34 datasets, SQLite downloadable.
-- New dev tasks created: #1417 (CellxGene Kong download), GSE282122 download, Sci Rep 2026 data, pediatric multi-omics. Analyst task for HMP2 fatty acid amide check.
-- Journal entries: #2305-2309, #2313.
+- **No pending tasks** for data_curator this run. Full data availability audit completed.
+- **GSE282122 DOWNLOADED**: Thomas/Buckley anti-TNF atlas (8.9 GB h5ad) present at data/crohns/il23-atlas/GSE282122.h5ad. Dev task #1419 still pending — created task #1556 for developer to mark done/symlink.
+- **CellxGene Kong 2023 DONE**: Task #1417 completed. 3 h5ad files at il23-single-cell-response-atlas/cellxgene_kong2023/.
+- **Both catalyst projects data-complete**: cd-epithelial-reserve and cd-gpx4-ferroptosis both reuse existing project data (GSE134809 annotated, anti-TNF geo_cache, GSE93624, GSE282122, HMP2). No data gaps.
+- **E-MTAB-7604 confirmed**: 44 count files + sdrf metadata downloaded for anti-TNF project.
+- **NEW DATASET: GSE266616** (Zhou et al., bioRxiv 2025.03.26.645552). 380K cells scRNA-seq, terminal ileum + ascending colon, 49 donors (32 CD + 17 HC, biologic-treated). FAE→M1 macrophage biologic-resistant cascade. Companion scATAC-seq at GSE273194. 3.7 GB RAW tar, public since Dec 2024. Task #1555 created for research_director. Highly relevant for epithelial reserve project.
+- **Blocked datasets unchanged**: IBDverse (replaced by Kong CellxGene), SPARC IBD (needs IBD Plexus request), McGregor fistula (dbGaP phs003943 controlled).
+- **All core datasets verified present**: GSE134809 (annotated h5ad), anti-TNF cohorts (geo_cache), GSE93624 (245 samples), HMP2, fibrosis GEO, NOD2 (ClinVar/gnomAD/AlphaFold).
+- Journal entry: #2565. Tasks created: #1555 (research_director, GSE266616), #1556 (developer, GSE282122 status).

@@ -6,7 +6,6 @@ and assesses repurposing potential for neuropsychiatric/autoimmune indications.
 
 import json
 import pandas as pd
-import numpy as np
 from pathlib import Path
 
 DATA_DIR = Path("data/pandas_pans/autoantibody_network")
@@ -61,8 +60,8 @@ def compute_composite_score(targets_df, brain_expr_df):
     ep = df["total_enriched_pathways"]
     df["pathway_norm"] = (ep - ep.min()) / (ep.max() - ep.min()) if ep.max() > ep.min() else 0
 
-    # Cross-layer bonus
-    df["cross_layer_bonus"] = df["is_cross_layer"].astype(float) * 0.15
+    # Cross-layer flag (1.0 if cross-layer, 0.0 otherwise)
+    df["cross_layer_flag"] = df["is_cross_layer"].astype(float)
 
     # Composite score: centrality 25%, druggability 25%, brain expression 20%, pathway convergence 20%, cross-layer 10%
     df["therapeutic_rank_score"] = (
@@ -70,7 +69,7 @@ def compute_composite_score(targets_df, brain_expr_df):
         0.25 * df["druggability_score"] +
         0.20 * df["brain_norm"] +
         0.20 * df["pathway_norm"] +
-        0.10 * df["cross_layer_bonus"] / 0.15  # normalize back
+        0.10 * df["cross_layer_flag"]
     )
 
     return df.sort_values("therapeutic_rank_score", ascending=False)
@@ -122,8 +121,6 @@ def main():
     targets = pd.read_csv(DATA_DIR / "novel_therapeutic_targets.tsv", sep="\t")
     drugs = pd.read_csv(DATA_DIR / "druggability_annotations.tsv", sep="\t")
     brain_expr = pd.read_csv(DATA_DIR / "allen_expression_by_region.tsv", sep="\t")
-    hub_metrics = pd.read_csv(DATA_DIR / "hub_centrality_metrics.tsv", sep="\t")
-
     print(f"\n  Novel targets: {len(targets)}")
     print(f"  Drug annotations: {len(drugs)}")
     print(f"  Druggable targets: {targets['is_druggable'].sum()}")

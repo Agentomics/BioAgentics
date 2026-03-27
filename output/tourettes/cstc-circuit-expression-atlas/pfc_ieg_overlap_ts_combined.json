@@ -1,0 +1,105 @@
+{
+  "available": true,
+  "ts_ieg_overlap_genes": [],
+  "n_overlap": 0,
+  "per_cell_type": {
+    "IT": {
+      "n_ieg_high": 4599,
+      "n_ieg_low": 13795,
+      "mean_ts_expr_ieg_high": 4.393316268920898,
+      "mean_ts_expr_ieg_low": 15.052776336669922,
+      "ratio": 0.29186086145572915
+    },
+    "L4 IT": {
+      "n_ieg_high": 276,
+      "n_ieg_low": 827,
+      "mean_ts_expr_ieg_high": 1.2132625579833984,
+      "mean_ts_expr_ieg_low": 1.4884002208709717,
+      "ratio": 0.8151453762036059
+    },
+    "L5/6 NP": {
+      "n_ieg_high": 117,
+      "n_ieg_low": 348,
+      "mean_ts_expr_ieg_high": 10.753925323486328,
+      "mean_ts_expr_ieg_low": 14.970328330993652,
+      "ratio": 0.7183493298020764
+    },
+    "L5/6 IT Car3": {
+      "n_ieg_high": 154,
+      "n_ieg_low": 461,
+      "mean_ts_expr_ieg_high": 12.715795516967773,
+      "mean_ts_expr_ieg_low": 13.829087257385254,
+      "ratio": 0.91949636879882
+    },
+    "L6 CT": {
+      "n_ieg_high": 316,
+      "n_ieg_low": 948,
+      "mean_ts_expr_ieg_high": 13.445760726928711,
+      "mean_ts_expr_ieg_low": 15.496124267578125,
+      "ratio": 0.867685396345246
+    },
+    "L6b": {
+      "n_ieg_high": 284,
+      "n_ieg_low": 852,
+      "mean_ts_expr_ieg_high": 14.019325256347656,
+      "mean_ts_expr_ieg_low": 22.820859909057617,
+      "ratio": 0.6143206396347657
+    },
+    "PVALB": {
+      "n_ieg_high": 534,
+      "n_ieg_low": 1600,
+      "mean_ts_expr_ieg_high": 6.442078113555908,
+      "mean_ts_expr_ieg_low": 10.582892417907715,
+      "ratio": 0.6087256544964043
+    },
+    "SST": {
+      "n_ieg_high": 472,
+      "n_ieg_low": 1414,
+      "mean_ts_expr_ieg_high": 5.71861457824707,
+      "mean_ts_expr_ieg_low": 8.780385971069336,
+      "ratio": 0.6512942138408772
+    },
+    "VIP": {
+      "n_ieg_high": 278,
+      "n_ieg_low": 833,
+      "mean_ts_expr_ieg_high": 4.986615180969238,
+      "mean_ts_expr_ieg_low": 7.5349955558776855,
+      "ratio": 0.6617940440693985
+    },
+    "LAMP5": {
+      "n_ieg_high": 222,
+      "n_ieg_low": 663,
+      "mean_ts_expr_ieg_high": 4.846218109130859,
+      "mean_ts_expr_ieg_low": 7.4673261642456055,
+      "ratio": 0.6489897457988503
+    },
+    "Astrocyte": {
+      "n_ieg_high": 2154,
+      "n_ieg_low": 6462,
+      "mean_ts_expr_ieg_high": 1.2103064060211182,
+      "mean_ts_expr_ieg_low": 2.0558974742889404,
+      "ratio": 0.588699787395633
+    },
+    "Oligodendrocyte": {
+      "n_ieg_high": 6543,
+      "n_ieg_low": 19627,
+      "mean_ts_expr_ieg_high": 1.1347827911376953,
+      "mean_ts_expr_ieg_low": 1.380287766456604,
+      "ratio": 0.8221349335369718
+    },
+    "OPC": {
+      "n_ieg_high": 1094,
+      "n_ieg_low": 3279,
+      "mean_ts_expr_ieg_high": 1.7510522603988647,
+      "mean_ts_expr_ieg_low": 2.0128443241119385,
+      "ratio": 0.8699392394249984
+    },
+    "Microglia": {
+      "n_ieg_high": 766,
+      "n_ieg_low": 2297,
+      "mean_ts_expr_ieg_high": 0.35254114866256714,
+      "mean_ts_expr_ieg_low": 0.4046633243560791,
+      "ratio": 0.8711961955621963
+    }
+  }
+}

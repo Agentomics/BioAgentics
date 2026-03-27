@@ -1,0 +1,115 @@
+{
+  "gene_set": "ts_combined",
+  "n_risk_genes_scored": 43,
+  "n_cells_total": 71233,
+  "n_td_cells": 42540,
+  "n_ctl_cells": 28693,
+  "n_pfc_cell_types": 15,
+  "cells_per_type": {
+    "IT": 18394,
+    "L4 IT": 1103,
+    "L5 ET": 18,
+    "L5/6 NP": 465,
+    "L5/6 IT Car3": 615,
+    "L6 CT": 1264,
+    "L6b": 1136,
+    "PVALB": 2134,
+    "SST": 1886,
+    "VIP": 1111,
+    "LAMP5": 885,
+    "Astrocyte": 8616,
+    "Oligodendrocyte": 26170,
+    "OPC": 4373,
+    "Microglia": 3063
+  },
+  "mean_tau": 0.7633422486938717,
+  "top_genes_per_cell_type": {
+    "IT": [
+      "PTPRD",
+      "RBFOX1",
+      "NRXN1"
+    ],
+    "L4 IT": [
+      "RBFOX1",
+      "PTPRD",
+      "NRXN1"
+    ],
+    "L5 ET": [
+      "CNTNAP2",
+      "PTPRD",
+      "RBFOX1"
+    ],
+    "L5/6 NP": [
+      "RBFOX1",
+      "NRXN1",
+      "CNTNAP2"
+    ],
+    "L5/6 IT Car3": [
+      "RBFOX1",
+      "NRXN1",
+      "CNTNAP2"
+    ],
+    "L6 CT": [
+      "PTPRD",
+      "NRXN1",
+      "RBFOX1"
+    ],
+    "L6b": [
+      "PTPRD",
+      "NRXN1",
+      "RBFOX1"
+    ],
+    "PVALB": [
+      "CNTNAP2",
+      "RBFOX1",
+      "NEGR1"
+    ],
+    "SST": [
+      "CNTNAP2",
+      "RBFOX1",
+      "NRXN1"
+    ],
+    "VIP": [
+      "CNTNAP2",
+      "NRXN1",
+      "RBFOX1"
+    ],
+    "LAMP5": [
+      "RBFOX1",
+      "CNTNAP2",
+      "NRXN1"
+    ],
+    "Astrocyte": [
+      "NRXN1",
+      "FTH1",
+      "FTL"
+    ],
+    "Oligodendrocyte": [
+      "PTPRD",
+      "TF",
+      "FTH1"
+    ],
+    "OPC": [
+      "NRXN1",
+      "PTPRD",
+      "NEGR1"
+    ],
+    "Microglia": [
+      "FTL",
+      "FTH1",
+      "ASH1L"
+    ]
+  },
+  "n_de_significant": 136,
+  "ieg_overlap": {
+    "n_ts_ieg_genes": 0,
+    "overlapping_genes": []
+  },
+  "outputs": {
+    "specificity_csv": "/Users/matth/git/BioAgentics/output/tourettes/cstc-circuit-expression-atlas/pfc_specificity_ts_combined.csv",
+    "de_csv": "/Users/matth/git/BioAgentics/output/tourettes/cstc-circuit-expression-atlas/pfc_td_vs_ctl_ts_combined.csv",
+    "ieg_json": "/Users/matth/git/BioAgentics/output/tourettes/cstc-circuit-expression-atlas/pfc_ieg_overlap_ts_combined.json",
+    "heatmap_png": "/Users/matth/git/BioAgentics/output/tourettes/cstc-circuit-expression-atlas/pfc_specificity_heatmap_ts_combined.png",
+    "comparison_png": "/Users/matth/git/BioAgentics/output/tourettes/cstc-circuit-expression-atlas/pfc_vs_striatal_ts_combined.png"
+  }
+}

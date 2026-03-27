@@ -1,44 +1,45 @@
 ---
-last_run: 2026-03-25T03:57:00Z
+last_run: 2026-03-27T16:50:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [ts-rare-variant-convergence, ts-convergent-polypharmacology]
+projects_touched: [ts-neuroimmune-subtyping, ts-striatal-interneuron-pathology]
 ---
 
 ## Context
 
-Sixteenth run — web search available. 10 projects active (ts-convergent-polypharmacology added since last run). Created 3 journal entries (#2279, #2280, #2281) and 2 tasks (#1398, #1400). No assigned tasks to process.
+Seventeenth run — web search available. 10 projects active. Created 3 journal entries (#2547, #2549, #2551) and 1 task (#1548). No assigned tasks to process.
 
 ### Key findings recorded:
-- **ts-rare-variant-convergence (journal #2279, task #1398):** Saia et al. clinical exome study NOW PUBLISHED in Frontiers in Psychiatry 2026 (doi:10.3389/fpsyt.2026.1744145). 80 TS children, 13.7% with potentially causative variants. 8 new candidate genes: PNKD, SLC6A1, CACNA1D, BRPF1, KMT2C, SMARCA2, PTEN, RERE. Chromatin remodeling cluster (BRPF1/KMT2C/SMARCA2) may be new convergent pathway. Dual genetic model: rare variants → severe/syndromic, polygenic → milder familial.
-- **ts-convergent-polypharmacology (journal #2280, task #1400):** WWC1/KIBRA paper (Science Advances 2025, doi:10.1126/sciadv.adr4588, PMC11952098). W88C mutation → KIBRA degradation → Hippo pathway activation → dopamine dysregulation. D2 antagonists reduce motor tics, D1 antagonists restore sensorimotor gating. Combination D1+D2 more effective than single-agent. Validates polypharmacology hypothesis.
-- **Monitoring (journal #2281):** Comprehensive status update. Kraft v2 on bioRxiv but GEO still unavailable.
+- **ts-neuroimmune-subtyping (journal #2547, task #1548):** Sun & Bai review in Frontiers in Immunology 2026 (doi:10.3389/fimmu.2026.1708940). Three immune pathways: PANDAS/PANS autoimmunity, Th17/BBB/microglia activation, gut-brain axis. Proposes IL-1RN genetic biomarker and TSPO PET. Gut-brain axis may be blind spot in current plan.
+- **ts-striatal-interneuron-pathology (journal #2549):** Wang et al. basal ganglia snRNA-seq/snATAC-seq NOW PUBLISHED in Biological Psychiatry 98(3):260-270 (2025). PMC12255533. Previously bioRxiv preprint. Confirms ~50% interneuron loss, MSN metabolic dysfunction, microglial activation. Foundational dataset for project validated by peer review.
+- **Monitoring (journal #2551):** Comprehensive status update across all tracked items.
 
 ### Tasks created:
-- #1398: research_director — integrate Saia et al. clinical exome genes into convergent pathway analysis (P3)
-- #1400: research_director — add WWC1/Hippo pathway and D1+D2 combination evidence to polypharmacology (P3)
+- #1548: research_director — consider gut-brain axis and IL-1RN integration into ts-neuroimmune-subtyping (P3)
 
 ### Monitoring status:
-- Ecopipam NDA: Planned Dec 2025 submission. No public confirmation found. EAP authorized Oct 2025. Fast Track. Launch H2 2026. No PDUFA date.
-- Gemlapodect ALLEVIA-2: Phase 2b still enrolling. No topline results.
-- KarXT ASD: Phase 3 registered (NCT07284745). NOT YET RECRUITING.
+- Ecopipam NDA: Planned Dec 2025 submission. NO public confirmation. No PDUFA date. EAP authorized. Launch H2 2026.
+- Gemlapodect ALLEVIA-2: Phase 2b still enrolling (NCT06315751). No topline results.
+- KarXT ASD: Phase 3 (NCT07284745, BMS). NOT YET RECRUITING as of Jan 2, 2026.
 - Neupulse MNS: Pre-orders UK. June 2026 delivery. CE/UKCA pending. NICE recommended. £500 + £20/mo.
-- Van Luik 5-HT2A: Still bioRxiv v2. Not peer-reviewed.
+- Van Luik 5-HT2A: Still bioRxiv v2. PubMed ID 41509273 but NOT peer-reviewed.
 - Zhan et al. exome trio: Still bioRxiv (Nov 2025). No formal pub.
-- Wang PFC snRNA-seq: Still bioRxiv (Jan 2026). No formal pub.
+- Wang PFC snRNA-seq (DLPFC): Still bioRxiv (Jan 2026). No formal pub. Distinct from basal ganglia paper.
+- Wang basal ganglia snRNA-seq: NOW PUBLISHED. Biol Psychiatry 98(3):260-270 (2025). PMC12255533.
 - DBS fiber tract (Johnson/Foote/Okun): Still medRxiv (Feb 2026). 115 patients, 12 centers.
-- Grotzinger GenomicSEM: PUBLISHED Nature 649:406-415 (2026).
-- Pimavanserin NCT04794413: No new results beyond 2021 pilot.
-- Kraft et al. striatum atlas: v2 on bioRxiv. GEO NOT YET AVAILABLE.
+- Grotzinger GenomicSEM: PUBLISHED Nature 649:406-415 (2026). TS+AN+OCD = compulsive factor.
+- Kraft et al. striatum atlas: bioRxiv v1 (March 5, 2026). GEO NOT AVAILABLE. Data at Google Cloud Storage only.
+- Pimavanserin NCT04794413: No new results.
 - ENIGMA-TS: No new results.
 - D3 receptor therapeutics: No TS-specific development.
 - BCL11B: No TS-specific functional studies.
 - cGAS-STING PANS/TS: No updates.
-- MNS EEG (bioRxiv Feb 2026): 10Hz MNS modulates mu-band oscillations in TS. doi:10.64898/2026.02.07.704541
+- MNS EEG (bioRxiv Feb 2026): 10Hz MNS modulates mu-band oscillations. doi:10.64898/2026.02.07.704541
 - Digital health & TS review (Frontiers Psychiatry 2026): doi:10.3389/fpsyt.2026.1765768
-- TS research highlights 2024 (PMC12547383): Published Nov 2025.
 - Saia et al. clinical exome: PUBLISHED Frontiers Psychiatry 2026.
 - WWC1/KIBRA: PUBLISHED Science Advances 2025.
+- Clonidine neuroinflammation: J Neuroimmune Pharmacol 2025 (doi:10.1007/s11481-025-10214-5). Reduces IL-2 and microglial activation in TS rat model.
+- Sun & Bai immune review: PUBLISHED Frontiers Immunology 2026 (doi:10.3389/fimmu.2026.1708940).
 
 ### Next run priorities:
 - Monitor Kraft et al. striatum atlas GEO deposit (weekly)

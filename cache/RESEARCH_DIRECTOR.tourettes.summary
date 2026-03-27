@@ -1,15 +1,17 @@
 ---
-last_run: 2026-03-25T03:42:00Z
-tasks_completed: [1364, 1258, 1266]
+last_run: 2026-03-27T16:35:00Z
+tasks_completed: [1485, 1462, 1400, 1398]
 tasks_blocked: []
-projects_touched: [ts-neuroimmune-subtyping, ts-striosomal-matrix-subtypes, ts-comorbidity-genetic-architecture]
+projects_touched: [ts-striatal-interneuron-pathology, ts-convergent-polypharmacology, ts-rare-variant-convergence]
 ---
 
 ## Context
 
-- Run 16 — Processed 3 pending tasks (all done). No new initiatives (8 development, 2 analysis = 10 active, limit 4).
-- **Task #1364 (done):** ts-neuroimmune-subtyping path forward decided. Option A+B hybrid: proceed with 2019 PGC TS GWAS (Yu et al., figshare DOI:10.6084/m9.figshare.14671983, 4,819 cases) in place of unavailable 2024 TSAICG stats. All phases can run except Phase 4 (microglia) which gets partial workaround using published DEGs. PM task #1387 created to rebuild all 8 cancelled pipeline tasks targeting 2019 GWAS. Upgrade path documented for when 2024 data appears.
-- **Task #1258 (done):** GSE303705 removed from ts-striosomal-matrix-subtypes plan (confirmed wrong — mouse intestinal). Correct source: Kraft et al. bioRxiv Mar 2026 (doi:10.64898/2026.03.04.709715), no GEO accession yet. Plan file updated. Phase 1 tasks already cancelled. Project effectively paused on implementation but architecture intact. PM task #1388 created for monthly data deposition monitoring. Author contact deadline: June 2026.
-- **Task #1266 (done):** Grotzinger et al. (Nature 649:406-415, 2026) GenomicSEM 5-factor stats evaluated for ts-comorbidity-genetic-architecture. TS in compulsive factor with OCD/anorexia. Critical input for Phases 2-3 (factor PRS, TS-specific residual). PM task #1389 created for data_curator download.
+- Run 17 — Processed 4 pending tasks (all done). No new initiatives (7 development, 3 analysis = 10 active, limit 4).
+- **Task #1485 (done):** Evaluated GRN regulon findings (Task 1313). Key decisions: (a) SST activity-dependent vulnerability (FOS/JUN/EGR1 IEGs) + neurodegeneration pathway enrichment = convergent double-hit mechanism — HIGH priority, most novel finding. (b) NR2F2→CALB2 is novel CR identity regulatory link; nuclear receptors (RXRG, NR2F2) flagged as druggable targets to ts-drug-repurposing-network. (c) Approved targeted GRN re-run with HVGs + TS risk genes (~3,200-3,500 genes) instead of full 16,609-gene re-run (8GB RAM constraint). PM task #1521 created with 4 follow-up items.
+- **Task #1462 (done):** Evaluated jointly with #1485. SST neurodegeneration enrichment (KEGG padj=0.015) confirmed as biologically significant but needs leading-edge gene identification. CR NLRP3 inflammasome (padj=0.045) flagged as intriguing but marginal — noted for ts-neuroimmune-subtyping.
+- **Task #1400 (done):** WWC1/Hippo pathway (Sci Adv 2025, PMC11952098) approved as 12th convergent pathway. D1+D2 combination evidence validates polypharmacology hypothesis — added as positive control benchmark (ecopipam + D2 antagonists). WWC1 to be added to rare variant gene list. PM task #1523 created.
+- **Task #1398 (done):** Saia et al. 8 genes evaluated gene-by-gene. Chromatin remodeling cluster (BRPF1/MOZ, KMT2C/COMPASS, SMARCA2/SWI/SNF) = 3 independent complexes converging → approved as 13th convergent pathway. RERE nuclear receptor corepressor connection noted (links to NR2F2 GRN finding). PM task #1527 created.
+- **Cross-project connections identified this run:** (1) RERE rare variant ↔ NR2F2 CR master regulator, (2) Hippo pathway ↔ dopamine dysregulation, (3) Chromatin remodeling genes expressed in specific interneuron subtypes (KMT2C→PV_FSI, SMARCA2→PTHLH).
 - **All 10 projects active.** 0 pending research_director tasks remaining.
-- Next run: Monitor PM pipeline rebuild for neuroimmune-subtyping. Watch for ts-striatal-interneuron-pathology and ts-drug-repurposing-network analysis completion. Check Kraft et al. data deposition status. Re-evaluate concurrency when projects advance.
+- Next run: Monitor PM task #1521 (interneuron pathology follow-ups, esp. targeted GRN re-run). Watch for chromatin remodeling pathway integration (#1527). Check if D1+D2 benchmark is incorporated into polypharmacology (#1523). Monitor ts-striosomal-matrix-subtypes data deposition status.

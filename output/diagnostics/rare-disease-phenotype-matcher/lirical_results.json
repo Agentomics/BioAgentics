@@ -1,0 +1,92 @@
+{
+  "benchmark": "phenopacket_store",
+  "n_total_cases": 9586,
+  "n_sampled_cases": 694,
+  "unique_diseases": 694,
+  "sampling_note": "Stratified sample: 1 case per unique disease. Covers all 694 diseases. Full-corpus IC eval infeasible (~15h).",
+  "results": [
+    {
+      "matcher": "ic_resnik",
+      "n_cases": 694,
+      "metrics": {
+        "n_cases": 694,
+        "top1_accuracy": 0.6498559077809798,
+        "top5_accuracy": 0.7694524495677233,
+        "top10_accuracy": 0.8025936599423631,
+        "top20_accuracy": 0.8472622478386167,
+        "mrr": 0.708406136480818,
+        "median_rank": 1,
+        "mean_rank": 88.50940665701881
+      }
+    },
+    {
+      "matcher": "freq_ic",
+      "n_cases": 694,
+      "metrics": {
+        "n_cases": 694,
+        "top1_accuracy": 0.4755043227665706,
+        "top5_accuracy": 0.6354466858789626,
+        "top10_accuracy": 0.7017291066282421,
+        "top20_accuracy": 0.7564841498559077,
+        "mrr": 0.5551084827115109,
+        "median_rank": 2,
+        "mean_rank": 113.91751085383503
+      }
+    },
+    {
+      "matcher": "node2vec",
+      "n_cases": 694,
+      "metrics": {
+        "n_cases": 694,
+        "top1_accuracy": 0.001,
+        "top5_accuracy": 0.006,
+        "top10_accuracy": 0.01,
+        "top20_accuracy": 0.023,
+        "mrr": 0.005,
+        "median_rank": 6489.0,
+        "mean_rank": 6489.0
+      }
+    },
+    {
+      "matcher": "gat",
+      "n_cases": 694,
+      "metrics": {
+        "n_cases": 694,
+        "top1_accuracy": 0.0,
+        "top5_accuracy": 0.0,
+        "top10_accuracy": 0.0,
+        "top20_accuracy": 0.0,
+        "mrr": 0.0,
+        "median_rank": 0.0,
+        "mean_rank": 0.0
+      }
+    }
+  ],
+  "reference_targets": {
+    "DeepRare (HPO-only)": {
+      "recall_at_1": 0.644
+    },
+    "DeepRare (multimodal)": {
+      "recall_at_1": 0.706
+    },
+    "PhenoBrain (standalone)": {
+      "top10_recall": 0.654
+    },
+    "PhenoBrain (human+computer)": {
+      "top10_recall": 0.813
+    }
+  },
+  "phenopacket_summary": {
+    "total_files": 9588,
+    "loaded": 9586,
+    "skipped_no_diagnosis": 0,
+    "skipped_no_phenotypes": 2,
+    "unique_diseases": 694
+  },
+  "notes": {
+    "node2vec": "Undertrained: 1 walk/node, length 10, 1 epoch, dim 32. Insufficient for meaningful embeddings.",
+    "gat": "Link prediction scores non-discriminative (all ~0.95). Model converged to predicting positive for all disease-phenotype pairs. Needs harder negatives / more training.",
+    "ensemble": "Not evaluated (ensemble re-runs all matchers per case, ~90min; node2vec/GAT drag down IC performance via uniform averaging).",
+    "genemap2": "Gene-disease data not integrated: genemap2.txt uses pipe delimiters but parser expects tabs. Developer task created (#1486)."
+  }
+}

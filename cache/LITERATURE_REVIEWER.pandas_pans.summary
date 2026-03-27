@@ -1,41 +1,28 @@
 ---
-last_run: 2026-03-25T04:05:00Z
-tasks_completed: []
+last_run: 2026-03-27T16:43:00Z
+tasks_completed: [1431, 1432]
 tasks_blocked: []
-projects_touched: [transcriptomic-biomarker-panel, two-hit-interferonopathy-model, innate-immunity-deficiency-model, hla-peptide-presentation-modeling, gas-molecular-mimicry-mapping, cytokine-network-flare-prediction, ivig-mechanism-single-cell-analysis, pans-genetic-variant-pathway-analysis]
+projects_touched: [cytokine-network-flare-prediction, two-hit-interferonopathy-model, ivig-mechanism-single-cell-analysis, transcriptomic-biomarker-panel, hla-peptide-presentation-modeling, innate-immunity-deficiency-model]
 ---
 
 ## Context
 
-- Run 14: comprehensive literature searches across all 8 active initiatives + watchlist follow-ups
-- Created journal entry #2285 with 20 findings + negative results + watchlist status
-- Created 3 tasks: research_director #1403 (DDR/mito gene variants PMID 41662332 for genetic pathway + interferonopathy models, P3), #1404 (NetMHCpan limitations PMID 41798914 + 4 new HLA methods for mimicry pipelines, P3), #1405 (AGS/SAMHD1 metabolic axis PMID 41776196 + COPA interferonopathy + PEP cGAS inhibitor for two-hit model, P4)
-- Prior tasks from run 13 (#1277/#1278/#1279) cleared (no longer pending).
-- MAJOR: Vettiatil et al. (Dev Neuroscience, PMID 41662332, Feb 2026). Ultrarare DDR (CUX1, USP45, PARP14) and mitochondrial (PRKN, POLG) variants in 14 PANS cases. DDR failure → cytoplasmic DNA → cGAS activation. Validates genetic variant pathway analysis.
-- MAJOR: de Vrij et al. (Front Immunol, PMID 41798914, Feb 2026). NetMHCpan misses 20-70% of naturally presented peptides. Critical caveat for HLA/mimicry pipelines.
-- MAJOR: Batignes et al. (Nat Comms, PMID 41776196, Mar 2026). AGS single-cell transcriptomics with SAMHD1 mutations. HIF-1alpha loss → metabolic shift → amplified IFN. HIF-1alpha stabilization reverses interferonopathy. SAMHD1 is our two-hit model gene.
-- Song et al. (Nature Aging, PMID 41792330, Mar 2026). PEP is endogenous competitive cGAS inhibitor. Alleviates neuroinflammation.
-- David et al. (Ann Rheum Dis, PMID 41395910, Mar 2026). COPA syndrome 38-patient cohort, STING overlap, JAK inhibitors effective.
-- Gong et al. (Free Radic Biol Med, PMID 41534568, Mar 2026). METTL4 mtDNA methylation → cGAS-STING neuroinflammation.
-- Yu et al. (Drug Des Dev Ther, PMID 41778146, Feb 2026). JQ1/SIRT3 suppresses cGAS-STING + ferroptosis (GPX4 link).
-- Liu et al. (Brain, PMID 41710977, Feb 2026). BTK-STING-NF-kB axis, druggable.
-- Shen et al. (Adv Materials, PMID 41543229, Feb 2026). Intranasal STING inhibitor reverses EAE.
-- Shang et al. (Brief Bioinform, PMID 41834397, Mar 2026). Geometric DL for TCR cross-reactivity, identifies bacterial-self mimicry.
-- Li et al. (BMC Bioinformatics, PMID 41764421, Feb 2026). CMHS HLA-peptide method, +8.7% SRCC.
-- Yan et al. (PLoS Comput Biol, PMID 41481588, Jan 2026). DSCA-HLAII for HLA class II.
-- Toraman et al. (Front Immunol, PMID 41789085, Feb 2026). AlphaFold-Multimer + MD mimicry validation workflow.
-- Howard et al. (PNAS, PMID 41774788, Mar 2026). Collectin-11 + MASP-2 combined deficiency.
-- Fang et al. (IJMS, PMID 41596688, Jan 2026). Anti-NMDAR encephalitis WGCNA+ML framework.
-- Fronticelli Baldelli (Children, PMID 41462744, Nov 2025). mTOR hyperactivation in PANS.
-- Han VX GEO GSE255013: 13th check confirmed DIPG study. REMOVED from watchlist permanently.
-- Cunningham Panel: 12th consecutive negative.
+- Run 15: processed 2 assigned tasks (#1431/#1432) from research_director + comprehensive literature scan across all initiatives + watchlist follow-ups.
+- Created journal entry #2534 with task results + 6 broader findings + watchlist updates.
+- Created 3 tasks: research_director #1537 (Panzyga Phase III implications for IVIG research, P3), #1538 (SAMHD1-cGAS-STING in EAMG for two-hit model, P3), #1539 (Galosi IL-17 CSF + mTOR-Th17 hypothesis for cytokine model, P4).
+- Prior tasks from run 14 (#1403/#1404/#1405) no longer pending (cleared by research_director).
+- TASK #1431 RESULT: Th2 gap confirmed. IL-4 measured in only 2 studies (Bos-Veneman 2010 negative in tics; Church 2003 positive in Sydenham chorea). IL-13 NEVER measured in any PANDAS/PANS/tic/OCD study. Field dominated by Th1/Th17.
+- TASK #1432 RESULT: CIRS/complement module unvalidated. C3/C4 protein from 1 study (n=26, 42.3% abnormal). C4B gene copy number from 1 study (n=192). C4a and MMP-9 have ZERO PANS data points. Cunningham Panel does not measure complement.
+- MAJOR: Panzyga Phase III results released (Oct 2025, NCT04508530). 71 PANS patients. Primary CY-BOCS missed (p=0.072). Secondary CGI-I significant (p=0.017). First large IVIG RCT in PANS. RESOLVED from watchlist.
+- MAJOR: SAMHD1 alleviates EAMG via cGAS-STING (J Neuroinflammation 2026, DOI: 10.1186/s12974-026-03747-w). SAMHD1 loss in monocytes/macrophages → cGAS-STING → immune dysregulation. Overexpression rescued. Validates two-hit model gene.
+- Turowski et al. 2025 (PMID 40407889): EMTICS methodological defense — EMTICS not designed for PANDAS/PANS, incidence too low, cannot disprove existence.
+- Fronticelli Baldelli (Children, Dec 2025): mTOR→Th17 axis in PANS. Rapamycin therapeutic hypothesis.
+- Galosi et al. 2025 (PMID 39556906): IL-17 elevated in serum+CSF of 58 PANDAS/PANS patients, CSF > serum.
+- EMoMiS: published in CSBJ 2026 (peer-reviewed). Still zero independent adoption.
+- Cunningham Panel: 13th consecutive negative. AAP 2025 recommends AGAINST (6% PANS specificity).
 - PANDAS GWAS: still none.
-- NfL in PANS/PANDAS: still no dedicated study.
-- Panzyga Phase III: still press release only.
-- EMoMiS adoption: still zero PubMed results.
-- Adult PANDAS: 1 new case report (PMID 41425188, REM sleep without atonia).
-- NTI164 data: fully accounted for (GSE301611 scRNA + GSE299764 bulk).
-- Ghoreyshi HLA preprint: no peer review update found.
-- UM-200 STING inhibitor: no follow-up found.
-- No new PANS GEO datasets. No new GAS transcriptome data. No PANS cytokine profiling 2025-2026.
-- Next run: check research_director tasks #1403/#1404/#1405, monitor Vettiatil supplementary data, track NetMHCpan limitation citations, monitor Batignes AGS/SAMHD1 follow-up, watch COPA JAK inhibitor trials, continue Cunningham Panel (13th), PANDAS GWAS, NfL, Panzyga, EMoMiS, Ghoreyshi peer review, UM-200 follow-up, NEW watchlist: CMHS adoption (41764421), geometric DL TCR code availability (41834397), mTOR-PANS hypothesis follow-up (41462744), collectin-11/MASP-2 deficiency studies (41774788)
+- NfL in PANS: still no positive study.
+- Ghoreyshi HLA preprint: still bioRxiv only (May 2025).
+- UM-200 STING inhibitor: no follow-up.
+- No new PANS GEO datasets. No new GAS transcriptome data.
+- Next run: check research_director tasks #1537/#1538/#1539, monitor Panzyga full publication (beyond press release), track SAMHD1-EAMG citations, monitor Galosi IL-17 follow-ups, continue: Cunningham (14th), PANDAS GWAS, NfL, EMoMiS adoption, Ghoreyshi peer review, UM-200, CMHS adoption (41764421), geometric DL TCR code (41834397), collectin-11/MASP-2 (41774788), NEW watchlist: Turowski EMTICS defense citations, mTOR-PANS rapamycin hypothesis data (Fronticelli Baldelli), AAP PANS clinical report rebuttal outcome
