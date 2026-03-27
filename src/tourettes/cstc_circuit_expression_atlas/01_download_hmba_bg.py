@@ -95,10 +95,20 @@ def filter_human_cells(abc_cache: AbcProjectCache) -> Path:
         directory=MULTIOME_DIR, file_name="cell_metadata"
     )
 
-    # Read in chunks to stay under RAM limits
+    # Load donor table to get human donor labels
+    donor_path = abc_cache.get_file_path(
+        directory=MULTIOME_DIR, file_name="donor"
+    )
+    donors = pd.read_csv(donor_path)
+    human_donors = set(
+        donors.loc[donors["species_genus"] == "Human", "donor_label"]
+    )
+    logger.info("Human donors: %s", human_donors)
+
+    # Read in chunks, filter to human donors to stay under RAM limits
     chunks = []
     for chunk in pd.read_csv(cell_meta_path, chunksize=100_000):
-        human_chunk = chunk[chunk["species"] == "human"]
+        human_chunk = chunk[chunk["donor_label"].isin(human_donors)]
         if len(human_chunk) > 0:
             chunks.append(human_chunk)
         logger.info("  Processed chunk: %d human / %d total cells",
