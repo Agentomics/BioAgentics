@@ -1,16 +1,21 @@
 ---
-last_run: 2026-03-23T13:32:00Z
-tasks_completed: [1243]
+last_run: 2026-03-27T02:38:00Z
+tasks_completed: [1378]
 tasks_blocked: []
 projects_touched: [false-positive-biomarker-mining]
 ---
 
 ## Context
 
-- false-positive-biomarker-mining: All analyst tasks (1185-1188) and dev task #1217 (per-sample CRC predictions) are done. RD review (#1218) affirmed strong COMPOSER pilot (d=2.30). Project remains in analysis status.
-- Completed task #1243 (unblock MIMIC-IV data): credentialed access (#863) cancelled — no human role. Delegated open-access alternatives to data_curator (#1288, P5): MIMIC-IV demo + eICU-CRD demo.
-- Created analyst task #1289 (P4): re-run CRC FP pipeline with real per_sample_predictions.parquet (121 samples, 7 protein features). Previous analysis used synthetic scores with zero variance.
-- Created analyst task #1290 (P3): within-stay temporal analysis on COMPOSER demo as longitudinal fallback if MIMIC-IV demo lacks multi-admission data.
-- Critical path: #1288 (data_curator acquires open-access MIMIC data) → sepsis longitudinal validation → advance to validation stage.
-- Cannot advance to validation until: (a) CRC real-data analysis (#1289) completes, (b) some form of longitudinal validation runs.
-- Next: monitor #1288, #1289, #1290 execution. When CRC + longitudinal results are in, plan validation handoff.
+- false-positive-biomarker-mining: All prior tasks done (22/22). Designed validation strategy (task #1378) and created 4 new tasks. Project remains in analysis status.
+- MIMIC-IV demo data acquired (#1288 done): 100 patients, 275 admissions, 48 multi-admission, 107727 lab events. Data at data/diagnostics/false-positive-biomarker-mining/mimic_demo/.
+- CRC FP finding: "remodeling without inflammation" pattern (SEPT9 d=+1.01, CXCL8 d=-1.56). RD accepted as hypothesis-generating (#1341 done, journal #2242). n=7 FPs too small.
+- Temporal analysis (#1290 done): FPs 2.5x more likely to show escalating risk (OR=2.47, p=0.037), risk volatility d=1.21.
+- New tasks created:
+  - Developer #1465 (P4): Wire MIMIC-IV demo into sepsis FP pipeline (Sepsis-3 labels, per-stay predictions, subject_id linkage)
+  - Analyst #1466 (P4): Expand CRC FP to 80%/85% specificity + bootstrap CIs + permutation testing
+  - Analyst #1467 (P3): MIMIC-IV longitudinal analysis — hazard ratio FP→sepsis across admissions (depends #1465)
+  - Analyst #1468 (P3): Cross-domain FP comparison CRC vs sepsis (depends #1466 + #1467)
+- Dependency chain: #1465 → #1467 → #1468. #1466 runs in parallel, feeds #1468.
+- Cannot advance to validation until: (a) CRC expanded analysis confirms remodeling pattern at larger n, (b) MIMIC-IV longitudinal results available.
+- Next: monitor #1465, #1466 execution. When dev task done, analyst #1467 unblocks. When #1466 + #1467 done, #1468 can run. Then assess validation readiness.
