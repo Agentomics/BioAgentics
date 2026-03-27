@@ -519,6 +519,27 @@ class TestMimicryHLAIntegration:
         assert hits[0]["score"] == 0.85
 
 
+    def test_load_mimicry_hits_blast_format(self, tmp_path):
+        """Test load_mimicry_hits with DIAMOND BLAST-style headers (qseqid, human_gene)."""
+        from src.pandas_pans.hla_peptide_presentation_modeling.mimicry_hla_integration import (
+            load_mimicry_hits,
+        )
+
+        tsv = tmp_path / "hits_filtered.tsv"
+        tsv.write_text(
+            "qseqid\tsseqid\tpident\thuman_accession\thuman_gene\tknown_target\n"
+            "sp|P001|M_STRP1\tP04406|GAPDH|basal\t46.3\tP04406\tGAPDH\tTrue\n"
+            "sp|P002|SLO_STRP1\tQ00975|DRD2|caudate\t35.1\tQ00975\tDRD2\tTrue\n"
+        )
+
+        hits = load_mimicry_hits(tmp_path)
+        assert len(hits) == 2
+        assert hits[0]["gas_protein"] == "sp|P001|M_STRP1"
+        assert hits[0]["human_protein"] == "GAPDH"  # human_gene preferred
+        assert hits[0]["score"] == 46.3  # pident
+        assert hits[1]["human_protein"] == "DRD2"
+
+
 class TestPopulationRisk:
     """Tests for Phase 6: Population risk modeling."""
 

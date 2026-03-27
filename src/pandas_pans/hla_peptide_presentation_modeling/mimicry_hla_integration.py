@@ -52,10 +52,10 @@ def load_mimicry_hits(mimicry_dir: Path | None = None) -> list[dict]:
                             kl = key.lower()
                             if ("gas" in kl and "protein" in kl) or kl == "qseqid":
                                 hit["gas_protein"] = row[key]
-                            elif ("human" in kl and "protein" in kl) or kl in ("human_gene", "human_accession"):
-                                hit.setdefault("human_protein", row[key])
-                            elif kl == "sseqid" and "human_protein" not in hit:
+                            elif ("human" in kl and "protein" in kl) or kl == "human_gene":
                                 hit["human_protein"] = row[key]
+                            elif kl in ("sseqid", "human_accession"):
+                                hit.setdefault("human_protein", row[key])
                             elif "score" in kl or "similarity" in kl or kl == "pident":
                                 try:
                                     hit["score"] = float(row[key])
