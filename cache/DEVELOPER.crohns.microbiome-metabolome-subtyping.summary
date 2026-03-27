@@ -1,15 +1,17 @@
 ---
-last_run: 2026-03-27T01:29:00Z
-tasks_completed: [1420, 1421]
+last_run: 2026-03-27T16:17:00Z
+tasks_completed: [1464]
 tasks_blocked: []
 projects_touched: [microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-- microbiome-metabolome-subtyping: Completed tasks #1420 + #1421 — validation dataset download scripts
-- src/crohns/microbiome_metabolome_subtyping/01_download_iirn.py: IIRN cohort (80 CD + 43 HC), SRA run accessions via ENA for PRJNA1053872 (16S) and PRJNA1057679 (shotgun), supplementary metabolomics
-- src/crohns/microbiome_metabolome_subtyping/02_download_pediatric_multiomics.py: Pediatric 6-omics (58 CD), MetaboLights MTBLS9877, ENA PRJEB74164, PRIDE PXD062519
-- Tests: 16/16 pass (tests/test_download_iirn.py + tests/test_download_pediatric_multiomics.py)
-- All prior dev tasks (511, 513, 515, 519, 520, 521, 529, 530, 862, 894, 1234, 1420, 1421) now complete
+- microbiome-metabolome-subtyping: Completed task #1464 — R/curatedMetagenomicData export pipeline
+- Installed curatedMetagenomicData v3.18.0 (Bioconductor) + system dep gsl (Homebrew)
+- src/crohns/microbiome_metabolome_subtyping/export_curated_metagenomic.R: exports species abundance + metadata as TSV
+- Verified all 3 target studies: NielsenHB_2014 (396 samples, 148 IBD), HallAB_2017 (259 samples, 185 IBD), SchirmerM_2016 (471 samples, controls only — no IBD)
+- SchirmerM_2016 caveat: only healthy controls in curatedMetagenomicData, not usable for CD validation
+- Tests: 25/25 pass (9 new in test_download_curated_metagenomic.py + 16 existing)
+- All prior dev tasks (511, 513, 515, 519, 520, 521, 529, 530, 862, 894, 1234, 1420, 1421, 1464) now complete
 - No remaining developer tasks pending for this project
