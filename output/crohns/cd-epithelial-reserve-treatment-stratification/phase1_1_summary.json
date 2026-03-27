@@ -1,0 +1,108 @@
+{
+  "phase": "1.1",
+  "description": "Epithelial reserve score (6-gene) as anti-TNF response predictor",
+  "genes": [
+    "PGC",
+    "BPIFB1",
+    "CPO",
+    "GAS1",
+    "CASP6",
+    "SNX3"
+  ],
+  "scoring_method": "mean z-score (within-study normalization)",
+  "cv_method": "leave-one-study-out",
+  "classifier": "logistic regression (single feature)",
+  "overall_auc": 0.5581,
+  "auc_95ci": [
+    0.4367,
+    0.6792
+  ],
+  "target_auc": 0.65,
+  "target_met": false,
+  "n_samples": 83,
+  "n_responders": 40,
+  "n_non_responders": 43,
+  "per_study_results": [
+    {
+      "held_out_study": "GSE16879",
+      "n_test": 37,
+      "n_responders": 20,
+      "n_non_responders": 17,
+      "auc": 0.6706,
+      "coef": -0.7917,
+      "intercept": -0.2715
+    },
+    {
+      "held_out_study": "GSE12251",
+      "n_test": 23,
+      "n_responders": 12,
+      "n_non_responders": 11,
+      "auc": 0.7348,
+      "coef": -0.6913,
+      "intercept": -0.1382
+    },
+    {
+      "held_out_study": "GSE73661",
+      "n_test": 23,
+      "n_responders": 8,
+      "n_non_responders": 15,
+      "auc": 0.3583,
+      "coef": -1.343,
+      "intercept": 0.1318
+    }
+  ],
+  "group_comparison": {
+    "t_test": {
+      "statistic": -2.5443,
+      "p_value": 0.01285
+    },
+    "mann_whitney_u": {
+      "statistic": 644.0,
+      "p_value": 0.049534
+    }
+  },
+  "confound_check": {
+    "CRP": {
+      "available": true,
+      "spearman_r": -0.0196,
+      "p_value": 0.860422,
+      "n": 83
+    },
+    "S100A8": {
+      "available": true,
+      "spearman_r": 0.1019,
+      "p_value": 0.359192,
+      "n": 83
+    },
+    "S100A9": {
+      "available": true,
+      "spearman_r": 0.046,
+      "p_value": 0.67986,
+      "n": 83
+    },
+    "TNF": {
+      "available": true,
+      "spearman_r": -0.0441,
+      "p_value": 0.691925,
+      "n": 83
+    },
+    "IL6": {
+      "available": true,
+      "spearman_r": 0.0099,
+      "p_value": 0.929467,
+      "n": 83
+    },
+    "IL1B": {
+      "available": true,
+      "spearman_r": 0.0174,
+      "p_value": 0.87563,
+      "n": 83
+    },
+    "CXCL8": {
+      "available": true,
+      "spearman_r": 0.0692,
+      "p_value": 0.534041,
+      "n": 83
+    }
+  }
+}
