@@ -77,6 +77,10 @@ DRUG_TARGET_MAP = {
     "TXNRD1": [
         ("auranofin", "thioredoxin reductase inhibitor", "phase2", "NRF2 target gene"),
     ],
+    "SLC16A3": [
+        ("AZD0095", "MCT4 inhibitor", "preclinical",
+         "AstraZeneca clinical candidate; IC50=1.3nM, >1000x MCT1 selectivity; PMID:36525250; no registered Phase 1 trial"),
+    ],
     "SLC2A1": [],  # GLUT1 transporter
     "NCOA4": [],  # Ferritinophagy receptor
     "NMT1": [
