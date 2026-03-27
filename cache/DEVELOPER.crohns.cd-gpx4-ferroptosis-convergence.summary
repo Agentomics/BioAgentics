@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-27T06:45:00Z
+tasks_completed: [1372, 1373, 1374]
+tasks_blocked: []
+projects_touched: [cd-gpx4-ferroptosis-convergence]
+---
+
+## Context
+
+- cd-gpx4-ferroptosis-convergence: Completed all Phase 1 developer tasks (3/3)
+- Task 1372: GPX4 extracted from GSE134809 scRNA-seq. Epithelial GPX4 lower in IL-23-high (d=-0.34, FDR=2.5e-16). No ILC2 in dataset (only ILC3).
+- Task 1373: 9-gene ferroptosis scorer built. 8/21 cell types significant. Inflammatory_Mac highest ferroptosis in IL-23-high (d=0.50).
+- Task 1374: GPX4 NOT differential in bulk anti-TNF cohorts (all p>0.6). Predicted failure mode confirmed.
+- Scripts: src/crohns/cd_gpx4_ferroptosis_convergence/01_gpx4_scrnaseq.py, 02_ferroptosis_score.py, 03_gpx4_anti_tnf.py
+- Outputs: output/crohns/cd-gpx4-ferroptosis-convergence/ (6 CSV files)
+- Technical: Used h5py chunked CSR reading for memory safety (backed mode broken for column subsetting)
+- Next: Phase 2 analyst tasks (cross-compartment analysis, GPX4 + 30-gene signature)
