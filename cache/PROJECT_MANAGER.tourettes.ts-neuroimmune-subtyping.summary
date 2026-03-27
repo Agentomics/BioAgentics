@@ -1,17 +1,24 @@
 ---
-last_run: 2026-03-25T03:16:00Z
-tasks_completed: [1238]
+last_run: 2026-03-27T02:53:00Z
+tasks_completed: [1387]
 tasks_blocked: []
 projects_touched: [ts-neuroimmune-subtyping]
 ---
 
 ## Context
 
-- ts-neuroimmune-subtyping: Project STALLED. All 8 pipeline tasks (#574-581) auto-cancelled by dispatcher on 2026-03-23 after 3 blocked cycles on TSAICG 2024 GWAS (task #235, cancelled — stats never deposited).
-- Wang et al. microglia data (#237) also cancelled (NDA controlled access).
-- Data acquisition complete: autoimmune GWAS 16/16 (#566 done), ImmGen/DICE (#567 done), MR instruments 11/11 (#568 done).
-- Created escalation task #1364 for research_director: decide path forward — (A) use 2019 PGC TS GWAS, (B) partial analyses, (C) pause, (D) other.
-- Completed task #1238: flagged van Luik et al. male-specific 5-HT2A PFC finding for future sex-stratified analysis incorporation.
-- Pending task #1238 note: when pipeline tasks are re-created, add sex-stratified analysis to MR and cell-type enrichment tasks.
-- Project status remains "development" pending research_director decision on task #1364.
-- Next: Monitor task #1364. Once research_director responds, re-create pipeline tasks adapted to chosen GWAS source and incorporate sex-stratified analysis considerations.
+- ts-neuroimmune-subtyping: Pipeline REBUILT. Research director decided (journal #2247, task #1364 done) to proceed with 2019 PGC TS GWAS (Option A+B hybrid).
+- Created 8 new developer tasks replacing cancelled #574-581:
+  - #1472 [pending] Download + munge 2019 PGC TS GWAS — CRITICAL PATH, all downstream blocked on this
+  - #1473 [blocked] Phase 1: LDSC cross-trait correlations (TS vs 16 autoimmune GWAS)
+  - #1474 [blocked] Phase 1b: Lymphocytic enrichment method validation (seismic + MAGMA)
+  - #1475 [blocked] Phase 2: Immune cell-type enrichment (MAGMA + seismic, ImmGen/DICE)
+  - #1476 [blocked] Phase 3: Two-sample MR (11 biomarkers, forward + bidirectional)
+  - #1478 [blocked] Phase 3b: Gut-brain axis (LDSC + MAGMA)
+  - #1480 [blocked] Phase 4: Microglia integration (published DEGs only, NDA blocks raw)
+  - #1482 [pending] Phase 5: Synthesis + therapeutic nomination
+- Sex-stratified analysis incorporated into Phase 2 (#1475) and Phase 3 (#1476) per van Luik et al. finding (task #1238).
+- All pipelines designed for swappable GWAS input path for future 2024 re-analysis.
+- Secondary data ready: autoimmune GWAS 16/16 (#566), ImmGen/DICE (#567), MR instruments 11/11 (#568).
+- Project status: "development". No PM tasks remaining.
+- Next: Monitor developer progress on #1472 (GWAS download). Once done, unblock #1473-1480 for parallel Phase 1-4 execution. After all phases complete, advance #1482 (synthesis) then transition to analysis stage.
