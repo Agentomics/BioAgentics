@@ -1,0 +1,62 @@
+{
+  "NMP": {
+    "feature_id": "HILp_QI8592",
+    "detection_sub0": "15/15",
+    "detection_sub1": "35/35",
+    "mean_sub0": 45504.32253968254,
+    "mean_sub1": 95839.47585034014,
+    "p_value": 0.67199987100962,
+    "direction": "Sub1>Sub0",
+    "best_species_correlation": 0.20393757503001197
+  },
+  "NAMP": {
+    "feature_id": "HILn_QI3824",
+    "detection_sub0": "7/15",
+    "detection_sub1": "14/35",
+    "mean_sub0": 3916.643015873016,
+    "mean_sub1": 802.911156462585,
+    "p_value": 0.5873384595541877,
+    "direction": "Sub0>Sub1",
+    "best_species_correlation": -0.23907525152105322
+  },
+  "NAPP": {
+    "feature_id": "HILp_QI11105",
+    "detection_sub0": "15/15",
+    "detection_sub1": "35/35",
+    "mean_sub0": 186417.64904761905,
+    "mean_sub1": 336899.37159863947,
+    "p_value": 0.4587185587250222,
+    "direction": "Sub1>Sub0",
+    "best_species_correlation": 0.19202881152460982
+  },
+  "NAPeP": {
+    "feature_id": "HILp_QI11044",
+    "detection_sub0": "14/15",
+    "detection_sub1": "35/35",
+    "mean_sub0": 192810.65984126984,
+    "mean_sub1": 233083.00224489797,
+    "p_value": 0.27096075449126567,
+    "direction": "Sub1>Sub0",
+    "best_species_correlation": -0.3038418133283165
+  },
+  "NLL": {
+    "feature_id": "HILn_QI2548",
+    "detection_sub0": "5/15",
+    "detection_sub1": "11/35",
+    "mean_sub0": 1248.3585714285714,
+    "mean_sub1": 358.0442857142857,
+    "p_value": 0.663842998885748,
+    "direction": "Sub0>Sub1",
+    "best_species_correlation": -0.1954799160120232
+  },
+  "NML": {
+    "feature_id": "C8p_QI4819",
+    "detection_sub0": "15/15",
+    "detection_sub1": "35/35",
+    "mean_sub0": 43189.38317460317,
+    "mean_sub1": 85394.43755102041,
+    "p_value": 0.032500941033281404,
+    "direction": "Sub1>Sub0",
+    "best_species_correlation": 0.08139255702280913
+  }
+}
