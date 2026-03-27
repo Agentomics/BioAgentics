@@ -30,10 +30,12 @@ def extract_genes(adata_path: Path, genes: list[str]) -> tuple[pd.DataFrame, np.
     Returns obs metadata DataFrame and (n_cells, n_genes) expression matrix.
     """
     adata = ad.read_h5ad(adata_path, backed="r")
-    obs_df = adata.obs[["cell_type", "sample", "il23_high"]].copy()
-    var_names = list(adata.var_names)
-    n_cells = adata.n_obs
-    adata.file.close()
+    try:
+        obs_df = adata.obs[["cell_type", "sample", "il23_high"]].copy()
+        var_names = list(adata.var_names)
+        n_cells = adata.n_obs
+    finally:
+        adata.file.close()
 
     gene_indices = {g: var_names.index(g) for g in genes}
     gene_idx_set = set(gene_indices.values())

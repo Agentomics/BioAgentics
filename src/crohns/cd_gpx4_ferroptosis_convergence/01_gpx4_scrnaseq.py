@@ -31,10 +31,12 @@ def extract_gene_from_h5ad(adata_path: Path, gene: str) -> pd.DataFrame:
     """
     # Read obs metadata via anndata (backed — no X loaded)
     adata = ad.read_h5ad(adata_path, backed="r")
-    df = adata.obs[["cell_type", "sample", "il23_high"]].copy()
-    var_names = list(adata.var_names)
-    n_cells = adata.n_obs
-    adata.file.close()
+    try:
+        df = adata.obs[["cell_type", "sample", "il23_high"]].copy()
+        var_names = list(adata.var_names)
+        n_cells = adata.n_obs
+    finally:
+        adata.file.close()
 
     gene_idx = var_names.index(gene)
 
