@@ -1,0 +1,228 @@
+{
+  "discovery_cohort": "HMP2/IBDMDB",
+  "n_subjects": 50,
+  "n_subtype_0": 16,
+  "n_subtype_1": 34,
+  "n_species": 572,
+  "loocv": {
+    "rf": {
+      "acc": 0.6,
+      "bal_acc": 0.4908,
+      "auc": 0.6085
+    },
+    "nc": {
+      "acc": 0.5,
+      "bal_acc": 0.3676
+    }
+  },
+  "cv_5fold_3rep": {
+    "rf": {
+      "bal_acc": "0.565\u00b10.051",
+      "auc": "0.634\u00b10.025"
+    },
+    "nc": {
+      "bal_acc": "0.447\u00b10.044"
+    }
+  },
+  "permutation_test": {
+    "observed_auc": 0.6085,
+    "perm_p": 0.1188,
+    "n_permutations": 100
+  },
+  "top_20_features": [
+    [
+      "Megamonas_Megamonas_unclassified",
+      0.01547
+    ],
+    [
+      "Paraprevotella_Paraprevotella_xylaniphila",
+      0.0151
+    ],
+    [
+      "Erysipelotrichaceae_noname_Clostridium_innocuum",
+      0.01462
+    ],
+    [
+      "Blautia_Ruminococcus_obeum",
+      0.01407
+    ],
+    [
+      "Siphoviridae_noname_Propionibacterium_phage_PAD20",
+      0.01402
+    ],
+    [
+      "Bacteroides_Bacteroides_clarus",
+      0.01353
+    ],
+    [
+      "Lactobacillus_Lactobacillus_casei_paracasei",
+      0.0134
+    ],
+    [
+      "Eubacterium_Eubacterium_rectale",
+      0.01225
+    ],
+    [
+      "Parabacteroides_Parabacteroides_johnsonii",
+      0.01223
+    ],
+    [
+      "Blautia_Ruminococcus_torques",
+      0.0111
+    ],
+    [
+      "Lachnospiraceae_noname_Lachnospiraceae_bacterium_8_1_57FAA",
+      0.01086
+    ],
+    [
+      "Peptostreptococcaceae_noname_Clostridium_difficile",
+      0.01076
+    ],
+    [
+      "Akkermansia_Akkermansia_muciniphila",
+      0.01075
+    ],
+    [
+      "Klebsiella_Klebsiella_pneumoniae",
+      0.01065
+    ],
+    [
+      "Pediococcus_Pediococcus_lolii",
+      0.00999
+    ],
+    [
+      "Bacteroides_Bacteroides_coprocola",
+      0.00971
+    ],
+    [
+      "Clostridium_Clostridium_hathewayi",
+      0.00931
+    ],
+    [
+      "Paraprevotella_Paraprevotella_unclassified",
+      0.00905
+    ],
+    [
+      "Ruminococcus_Ruminococcus_bromii",
+      0.00878
+    ],
+    [
+      "Clostridium_Clostridium_sp_ATCC_BAA_442",
+      0.00816
+    ]
+  ],
+  "subtype_centroids_top10": {
+    "subtype_0": {
+      "Megamonas_Megamonas_unclassified": -0.9525,
+      "Paraprevotella_Paraprevotella_xylaniphila": -1.0152,
+      "Erysipelotrichaceae_noname_Clostridium_innocuum": 0.5613,
+      "Blautia_Ruminococcus_obeum": 5.5136,
+      "Siphoviridae_noname_Propionibacterium_phage_PAD20": -0.9473,
+      "Bacteroides_Bacteroides_clarus": -0.4573,
+      "Lactobacillus_Lactobacillus_casei_paracasei": -0.5935,
+      "Eubacterium_Eubacterium_rectale": 8.9262,
+      "Parabacteroides_Parabacteroides_johnsonii": -1.2678,
+      "Blautia_Ruminococcus_torques": 7.4193
+    },
+    "subtype_1": {
+      "Megamonas_Megamonas_unclassified": -0.0291,
+      "Paraprevotella_Paraprevotella_xylaniphila": 0.0445,
+      "Erysipelotrichaceae_noname_Clostridium_innocuum": -0.9561,
+      "Blautia_Ruminococcus_obeum": 4.8217,
+      "Siphoviridae_noname_Propionibacterium_phage_PAD20": -0.6444,
+      "Bacteroides_Bacteroides_clarus": -0.2945,
+      "Lactobacillus_Lactobacillus_casei_paracasei": -0.5966,
+      "Eubacterium_Eubacterium_rectale": 7.7125,
+      "Parabacteroides_Parabacteroides_johnsonii": 0.5762,
+      "Blautia_Ruminococcus_torques": 6.9251
+    }
+  },
+  "focused_feature_analysis": {
+    "differential_species_19": {
+      "description": "Top 19 species differentially abundant between subtypes (p<0.1 Wilcoxon)",
+      "rf_loocv": {
+        "bal_acc": 0.614,
+        "auc": 0.75
+      },
+      "nc_loocv": {
+        "bal_acc": 0.726
+      },
+      "silhouette": 0.031
+    },
+    "cmtf_top_species_40": {
+      "description": "Top 20 species per CMTF factor (factors 0-2), 40 unique",
+      "rf_loocv": {
+        "bal_acc": 0.517,
+        "auc": 0.57
+      },
+      "nc_loocv": {
+        "bal_acc": 0.465
+      },
+      "silhouette": -0.006
+    },
+    "combined_58": {
+      "description": "Union of differential + CMTF species, 58 unique",
+      "rf_loocv": {
+        "bal_acc": 0.581,
+        "auc": 0.642
+      },
+      "nc_loocv": {
+        "bal_acc": 0.665
+      },
+      "silhouette": 0.0
+    }
+  },
+  "species_only_silhouette": {
+    "all_572": 0.005,
+    "differential_19": 0.031,
+    "cmtf_top_40": -0.006,
+    "combined_58": 0.0,
+    "integrated_cmtf_reference": 0.329,
+    "interpretation": "Species-only silhouette near zero confirms subtypes are multi-omically defined. Metabolomic features are essential for cluster separation."
+  },
+  "external_validation_status": {
+    "status": "blocked",
+    "reason": "External CD cohort species abundance tables require curatedMetagenomicData (R/Bioconductor) which is not installed. Raw reads from ENA (MetaHIT PRJEB6092, PRISM PRJNA400072) available but MetaPhlAn processing exceeds 8GB RAM constraint.",
+    "candidate_cohorts": [
+      {
+        "study": "NielsenHB_2014 (MetaHIT)",
+        "bioproject": "PRJEB6092",
+        "n_ibd": "~100 IBD",
+        "data": "raw reads only"
+      },
+      {
+        "study": "HallAB_2017",
+        "n_cd": "~28 CD",
+        "data": "raw reads only"
+      },
+      {
+        "study": "SchirmerM_2016",
+        "n_ibd": "~28 IBD",
+        "data": "raw reads only"
+      },
+      {
+        "study": "IIRN (Sci Rep 2026)",
+        "bioproject": "PRJNA1057679",
+        "n_cd": "80 CD",
+        "data": "download scripts ready, not run"
+      },
+      {
+        "study": "Pediatric 6-omics (Nat Comms Med 2025)",
+        "bioproject": "PRJEB74164",
+        "n_cd": "58 CD",
+        "data": "download scripts ready, not run"
+      }
+    ],
+    "recommended_path": "Install R + curatedMetagenomicData to access pre-processed MetaPhlAn species tables for NielsenHB_2014 and HallAB_2017"
+  },
+  "tan_et_al_crossref": {
+    "pmid": "41801634",
+    "status": "unavailable",
+    "reason": "Paywalled, no public data deposit. Data curator task #1155 was auto-cancelled after 3 blocked cycles."
+  },
+  "conclusion": {
+    "internal_validation": "Best species-only classifier: Nearest Centroid with 19 differential species, LOOCV balanced accuracy 0.726, RF AUC 0.750. However, species-only silhouette is near zero (0.005-0.031 vs 0.329 integrated).",
+    "external_feasibility": "Species-only silhouette of 0.005 in the discovery cohort means the success criterion (silhouette >0.2 in external cohort) CANNOT be met with species signatures alone. The subtypes are inherently multi-omic constructs requiring metabolomics for cluster definition.",
+    "recommendation": "For true external reproducibility: (1) prioritize paired metabolomics cohorts (IIRN 80 CD, PRISM), (2) install R/curatedMetagenomicData as fallback for species-only analysis, (3) consider CoMMiT transfer learning (plan methodology section) to predict metabolite profiles from metagenomics alone."
+  }
+}
