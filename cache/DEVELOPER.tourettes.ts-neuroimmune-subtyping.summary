@@ -1,6 +1,6 @@
 ---
-last_run: 2026-03-23T10:10:00Z
-tasks_completed: [566, 568]
+last_run: 2026-03-27T05:53:00Z
+tasks_completed: [1472, 1473]
 tasks_blocked: []
 projects_touched: [ts-neuroimmune-subtyping]
 ---
@@ -8,25 +8,29 @@ projects_touched: [ts-neuroimmune-subtyping]
 ## Context
 
 ### Tasks completed this run
-- **#568 (MR instruments)**: Marked done. Fixed mono exposure — Chen 2020 (GCST90002314) had all-NA beta/SE in GWAS Catalog harmonized file. Replaced with Backman 2021 UKB exome (GCST90078992, N=418K, 42 instruments, F=65). Added NA-beta guard in extract_instruments(). Full manifest: 11/11 exposures, 53,597 instruments. Commit 613f5e7.
-- **#566 (autoimmune GWAS)**: Marked done. T1D LDSC conversion completed (59.9M SNPs). All 16/16 diseases now have LDSC files.
+- **#1472 (Download + munge 2019 PGC TS GWAS)**: Done. Downloaded from figshare (ID:14672232, NOT DOI 10.6084/m9.figshare.14671983 which is wrong). File: TS_Oct2018.gz (8.27M SNPs). Munged to LDSC format: ts_yu_2019.ldsc.tsv.gz (6.83M SNPs, INFO>=0.9, N_eff=12,783). Script: src/bioagentics/data/tourettes/neuroimmune/munge_ts_gwas.py. Commit a8e1c61.
+- **#1473 (Phase 1 LDSC genetic correlations)**: Done. 0/16 diseases FDR<0.05 (expected at N=14K). Strongest: celiac rg=0.13 (p=0.027), Hashimoto rg=0.60 (p=0.064), PBC rg=-0.38 (p=0.078). Script: src/tourettes/ts_neuroimmune_subtyping/01_ldsc_genetic_correlations.py. Commit 88e60d6.
 
-### Data Preparation Status
+### Unblocked 6 tasks
+#1474 (Phase 1b), #1475 (Phase 2), #1476 (Phase 3), #1478 (Phase 3b), #1480 (Phase 4), #1482 (Phase 5) — all now pending.
 
-**Autoimmune GWAS LDSC — COMPLETE (16/16)**
-All 16 LDSC files present: RA, SLE, MS, T1D, AA, GD, AS, CEL, PSO, PBC, CD, UC, IBD, MG, HT, VIT.
+### Data status
+- **TS GWAS**: data/tourettes/ts-neuroimmune-subtyping/ts_gwas_2019/ts_yu_2019.ldsc.tsv.gz
+- **Autoimmune GWAS (16/16)**: data/tourettes/ts-neuroimmune-subtyping/autoimmune_gwas/ldsc/
+- **MR instruments (11/11)**: data/tourettes/ts-neuroimmune-subtyping/mr_instruments/
+- **LD reference (EUR)**: data/tourettes/ts-comorbidity-genetic-architecture/reference/LDscore/ (from Zenodo 7768714)
+- **HM3 weights**: data/tourettes/ts-comorbidity-genetic-architecture/reference/1000G_Phase3_weights_hm3_no_MHC/
 
-**MR Instruments — COMPLETE (11/11)**
-All 11 instrument files verified. Manifest: 53,597 total instruments.
-- CRP: 47,617 (F=50), IL-6: 152 (F=53), TNF-α: 117 (F=21), lymph: 2,604 (F=35)
-- mono: 42 (F=65, Backman 2021), neut: 20 (F=37), NK: 2,463 (F=43), CD4: 150 (F=67)
-- IgG: 181 (F=31), CCL2: 85 (F=72), IL-17: 166 (F=21)
+### Important notes
+- figshare DOI in task descriptions (10.6084/m9.figshare.14671983) is WRONG — points to unrelated botanical paper. Correct figshare article ID is 14672232 (title: ts2019).
+- Broad Institute LDSCORE FTP is deprecated. LD scores now on Zenodo (doi:10.5281/zenodo.7768714).
+- MS genetic correlation returned NaN (negative h2 — possible LD score mismatch). May need investigation.
+- Phase 1b needs MAGMA + seismic (not yet built for this project). Phase 2 also needs MAGMA. Phase 3 needs MR pipeline.
 
-**DICE Immune References — COMPLETE**
-
-### Remaining before analysis can begin
-1. Acquire TSAICG GWAS summary statistics (task #235) — critical blocker, external dependency
-2. All 8 blocked tasks (#574, #575, #576, #577, #578, #579, #580 + one more) depend on #235
-
-### All data acquisition tasks are now done
-Only blocked on TSAICG GWAS (task #235). Once available, all analysis phases can begin.
+### Remaining pending tasks (priority order)
+1. #1474 [P5] Phase 1b: Lymphocytic enrichment (seismic + MAGMA)
+2. #1475 [P4] Phase 2: Immune cell-type enrichment (MAGMA + seismic)
+3. #1476 [P4] Phase 3: Two-sample MR (forward + bidirectional)
+4. #1478 [P4] Phase 3b: Gut-brain axis analysis
+5. #1480 [P3] Phase 4: Microglia DEG cross-reference
+6. #1482 [P3] Phase 5: Synthesis + therapeutic nomination
