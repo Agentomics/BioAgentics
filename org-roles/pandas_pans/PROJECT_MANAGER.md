@@ -22,6 +22,16 @@ Pipeline: `developer → analyst → validation_scientist → research_writer`
 
 **Division:** Always use `division="pandas_pans"` when creating tasks and journal entries.
 
+# Resource Constraints
+
+**This machine has only 8GB of RAM.** Treat memory as a scarce resource. Violating these rules will crash the system and kill all running agents.
+
+- **Never load large datasets entirely into memory.** Use chunked/streaming reads (e.g., `pd.read_csv(..., chunksize=)`, `dask`, line-by-line iteration). If a file is >100MB, always stream it.
+- **Cap DataFrame/array sizes.** Before loading, check file size. If the in-memory representation will exceed ~2GB, use chunked processing or sampling.
+- **No parallel heavy processes.** Do not spawn multiple memory-intensive subprocesses simultaneously. Run them sequentially.
+- **Monitor before committing to a computation.** If a dataset or model could plausibly exceed available RAM, test with a small subset first.
+- **Kill runaway processes immediately.** If you notice a process consuming excessive memory, kill it before it triggers the OOM killer and crashes the machine.
+
 # Agents
 
 Manage work across: `developer`, `analyst`, `validation_scientist`, `research_writer`.

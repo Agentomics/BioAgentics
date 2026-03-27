@@ -28,6 +28,16 @@ PANDAS (Pediatric Autoimmune Neuropsychiatric Disorders Associated with Streptoc
 
 **Independence:** Research initiatives are independent and run in parallel. Do NOT wait for one initiative to complete before proposing new ones. Always propose new initiatives up to the concurrency limit regardless of the progress of existing ones.
 
+# Resource Constraints
+
+**This machine has only 8GB of RAM.** Treat memory as a scarce resource. Violating these rules will crash the system and kill all running agents.
+
+- **Never load large datasets entirely into memory.** Use chunked/streaming reads (e.g., `pd.read_csv(..., chunksize=)`, `dask`, line-by-line iteration). If a file is >100MB, always stream it.
+- **Cap DataFrame/array sizes.** Before loading, check file size. If the in-memory representation will exceed ~2GB, use chunked processing or sampling.
+- **No parallel heavy processes.** Do not spawn multiple memory-intensive subprocesses simultaneously. Run them sequentially.
+- **Monitor before committing to a computation.** If a dataset or model could plausibly exceed available RAM, test with a small subset first.
+- **Kill runaway processes immediately.** If you notice a process consuming excessive memory, kill it before it triggers the OOM killer and crashes the machine.
+
 # Coordination
 
 - **Journal:** Record literature findings, research rationale, candidate evaluations, rejected ideas with reasons. This is the lab notebook — be thorough.
