@@ -1,0 +1,207 @@
+{
+  "task": "#1334",
+  "target_metabolites_found": {
+    "LCA (lithocholic acid)": [
+      "C18n_QI48 (C18-neg)",
+      "HILn_QI82 (HILIC-neg)"
+    ],
+    "DCA (deoxycholic acid)": [
+      "C18n_QI50 (C18-neg)"
+    ],
+    "UDCA (ursodeoxycholic acid)": [
+      "C18n_QI51 (C18-neg, co-eluting with hyodeoxycholate)"
+    ],
+    "CDCA (chenodeoxycholic acid)": [
+      "C18n_QI49 (C18-neg)"
+    ]
+  },
+  "total_bile_acid_features": 21,
+  "n_cd_subjects": 50,
+  "subtype_associations": [
+    {
+      "metabolite": "chenodeoxycholate (CDCA)",
+      "subtype_0_mean": 18550750.01,
+      "subtype_1_mean": 15704649.9,
+      "ratio_0_vs_1": 1.181,
+      "p_value": 0.77889,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "cholate (CA)",
+      "subtype_0_mean": 46480457.21,
+      "subtype_1_mean": 42728791.65,
+      "ratio_0_vs_1": 1.088,
+      "p_value": 1.0,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "cholate (CA, HILIC)",
+      "subtype_0_mean": 25677237.21,
+      "subtype_1_mean": 22217785.68,
+      "ratio_0_vs_1": 1.156,
+      "p_value": 0.56737,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "deoxycholate (DCA)",
+      "subtype_0_mean": 59741571.02,
+      "subtype_1_mean": 83948691.87,
+      "ratio_0_vs_1": 0.712,
+      "p_value": 0.16666,
+      "direction": "Sub1>Sub0"
+    },
+    {
+      "metabolite": "lithocholate (LCA)",
+      "subtype_0_mean": 22686869.41,
+      "subtype_1_mean": 30430777.33,
+      "ratio_0_vs_1": 0.746,
+      "p_value": 0.2484,
+      "direction": "Sub1>Sub0"
+    },
+    {
+      "metabolite": "lithocholate (LCA, HILIC)",
+      "subtype_0_mean": 16958395.57,
+      "subtype_1_mean": 26567721.87,
+      "ratio_0_vs_1": 0.638,
+      "p_value": 0.16666,
+      "direction": "Sub1>Sub0"
+    },
+    {
+      "metabolite": "hyodeoxycholate/ursodeoxycholate (UDCA)",
+      "subtype_0_mean": 10844429.72,
+      "subtype_1_mean": 8833333.83,
+      "ratio_0_vs_1": 1.228,
+      "p_value": 0.13161,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "ketodeoxycholate",
+      "subtype_0_mean": 17114793.54,
+      "subtype_1_mean": 13699908.21,
+      "ratio_0_vs_1": 1.249,
+      "p_value": 0.92544,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "alpha-muricholate",
+      "subtype_0_mean": 11327256.8,
+      "subtype_1_mean": 9352556.92,
+      "ratio_0_vs_1": 1.211,
+      "p_value": 0.53953,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "glycochenodeoxycholate (GCDCA)",
+      "subtype_0_mean": 22072719.78,
+      "subtype_1_mean": 16298063.68,
+      "ratio_0_vs_1": 1.354,
+      "p_value": 0.52587,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "glycocholate (GCA)",
+      "subtype_0_mean": 16029243.78,
+      "subtype_1_mean": 24102981.73,
+      "ratio_0_vs_1": 0.665,
+      "p_value": 0.53953,
+      "direction": "Sub1>Sub0"
+    },
+    {
+      "metabolite": "glycocholate (GCA, HILIC)",
+      "subtype_0_mean": 1689219.24,
+      "subtype_1_mean": 3881363.35,
+      "ratio_0_vs_1": 0.435,
+      "p_value": 0.58155,
+      "direction": "Sub1>Sub0"
+    },
+    {
+      "metabolite": "glycodeoxycholate (GDCA)",
+      "subtype_0_mean": 4612874.66,
+      "subtype_1_mean": 2674925.72,
+      "ratio_0_vs_1": 1.724,
+      "p_value": 0.85968,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "glycolithocholate (GLCA)",
+      "subtype_0_mean": 186999.66,
+      "subtype_1_mean": 175148.43,
+      "ratio_0_vs_1": 1.068,
+      "p_value": 0.47306,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "glycoursodeoxycholate (GUDCA)",
+      "subtype_0_mean": 5185337.14,
+      "subtype_1_mean": 452652.52,
+      "ratio_0_vs_1": 11.455,
+      "p_value": 0.90893,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "taurochenodeoxycholate (TCDCA)",
+      "subtype_0_mean": 28862988.82,
+      "subtype_1_mean": 20741482.98,
+      "ratio_0_vs_1": 1.392,
+      "p_value": 0.52587,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "taurocholate (TCA)",
+      "subtype_0_mean": 23990833.43,
+      "subtype_1_mean": 29870458.28,
+      "ratio_0_vs_1": 0.803,
+      "p_value": 0.59588,
+      "direction": "Sub1>Sub0"
+    },
+    {
+      "metabolite": "taurodeoxycholate (TDCA)",
+      "subtype_0_mean": 6178188.86,
+      "subtype_1_mean": 6231908.49,
+      "ratio_0_vs_1": 0.991,
+      "p_value": 0.53953,
+      "direction": "Sub1>Sub0"
+    },
+    {
+      "metabolite": "taurolithocholate (TLCA)",
+      "subtype_0_mean": 1607073.57,
+      "subtype_1_mean": 2580023.75,
+      "ratio_0_vs_1": 0.623,
+      "p_value": 1.0,
+      "direction": "Sub1>Sub0"
+    },
+    {
+      "metabolite": "taurohyodeoxycholate/tauroursodeoxycholate (TUDCA)",
+      "subtype_0_mean": 16904411.63,
+      "subtype_1_mean": 962253.26,
+      "ratio_0_vs_1": 17.568,
+      "p_value": 0.48599,
+      "direction": "Sub0>Sub1"
+    },
+    {
+      "metabolite": "tauro-alpha-muricholate/tauro-beta-muricholate",
+      "subtype_0_mean": 2070294.22,
+      "subtype_1_mean": 427346.13,
+      "ratio_0_vs_1": 4.845,
+      "p_value": 0.30326,
+      "direction": "Sub0>Sub1"
+    }
+  ],
+  "gpbar1_agonists_in_data": [
+    "chenodeoxycholate (CDCA)",
+    "deoxycholate (DCA)",
+    "lithocholate (LCA)",
+    "lithocholate (LCA, HILIC)",
+    "hyodeoxycholate/ursodeoxycholate (UDCA)",
+    "ketodeoxycholate",
+    "glycochenodeoxycholate (GCDCA)",
+    "glycodeoxycholate (GDCA)",
+    "glycolithocholate (GLCA)",
+    "glycoursodeoxycholate (GUDCA)",
+    "taurochenodeoxycholate (TCDCA)",
+    "taurodeoxycholate (TDCA)",
+    "taurolithocholate (TLCA)",
+    "taurohyodeoxycholate/tauroursodeoxycholate (TUDCA)"
+  ],
+  "gpbar1_note": "INT-777 (synthetic GPBAR1 agonist) not in HMP2 untargeted data. Cross-reference with cd-fibrosis-drug-repurposing L1000 screen recommended."
+}
