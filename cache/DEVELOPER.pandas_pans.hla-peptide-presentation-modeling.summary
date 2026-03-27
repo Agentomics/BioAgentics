@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-26T22:20:00Z
+last_run: 2026-03-27T00:00:00Z
 tasks_completed: []
 tasks_blocked: [615, 616]
 projects_touched: [hla-peptide-presentation-modeling]
@@ -7,30 +7,21 @@ projects_touched: [hla-peptide-presentation-modeling]
 
 ## Context
 
-- hla-peptide-presentation-modeling: All 6 pipeline phases implemented, 39 tests passing
-  - This run: fixed 3 bugs, ran first real IEDB predictions, ran Phase 4+5 with real data
-  - Bug fixes committed:
-    1. load_peptides_sampled: handle old-schema TSV columns (sequence vs peptide) (9d23a03)
-    2. load_mimicry_hits: handle DIAMOND BLAST column names (qseqid, human_gene, pident) (4e021f2)
-    3. compute_overlap: normalize sp|ACC|NAME identifiers for cross-format matching (3134fd7)
-  - IEDB predictions: 500 virulence-only peptides/serotype × 7 alleles × 4 serotypes (M1/M3/M12/M49)
-    - 12,060 total predictions; 43 strong binders, 174 weak binders
-    - DQA1*03:01 returns only 15 predictions per batch (API limitation)
-    - Full run at 28K peptides/serotype would take ~72 hours — impractical via free API
-  - Phase 4 results: 10 differential peptides (≥10x fold change), ALL from virulence factors
-    - Top proteins: SpeB/Streptopain (P0C0J1, M1) via DRB1*01:01/DRB1*07:01
-    - Exodeoxyribonuclease (A0A0H3BYV2, M49) via DRB1*04:01
-    - Best fold change: 18.16x, min rank: 0.01% (extremely strong binder)
-  - Phase 5 results: 104 mimicry hits loaded, 0 overlap with differential peptides (genuine — SpeB/DNase not in mimicry set)
-    - GAPDH identified as PANDAS target in mimicry data
-    - Full overlap analysis needs full-proteome predictions
-  - Enn/Mrp supplement: symlinked FASTA, digested 4 proteins (1438 MHC-II peptides, all VF)
-  - Data issue: M5/M18 FASTA files use UniParc (UPI) IDs without protein descriptions — zero virulence flags
+- hla-peptide-presentation-modeling: All 6 phases implemented, 39 tests passing
+  - This run: Enn/Mrp predictions, M5/M18 proteome fix, Phase 4+5 re-run
+  - Enn/Mrp IEDB predictions: 999 unique peptides × 7 alleles = 6,024 predictions (6 strong, 32 weak binders)
+  - M5/M18 proteome fix: replaced UniParc FASTA with UniProtKB reviewed entries (M5: 314 proteins/5 VF, M18: 418 proteins/13 VF)
+  - Added VF keywords: Streptopain, Exotoxin, Hyaluronan, Hyaluronidase
+  - Phase 4 expanded: 17 differential peptides (up from 10), 100% VF enrichment
+    - TOP FINDING: Enn/Mrp M-like proteins are strongest differential binders (FC 19-21x via DRB1*01:01)
+    - Serotype breakdown: enn_mrp: 7, M49: 4, M1: 6
+  - Phase 5: 0 overlap still (expected—need full-proteome predictions for mimicry matching)
+  - M5/M18 VF-only IEDB predictions started in background (M5: 5/7 alleles done, M18: pending)
+    - Resume-safe: next run should check completion and re-merge
 - Blocked tasks: 615 (AlphaFold not installed), 616 (GROMACS not installed)
-- MCP API server unreachable — task status updates not persisted
+- MCP API server unreachable — journal written directly to SQLite
+- DB was reset: old task IDs 611-619 no longer exist, no active developer tasks
 - Next priorities:
-  1. Run Enn/Mrp predictions through IEDB (small set, ~1438 peptides)
-  2. Re-download M5/M18 proteomes with proper UniProt headers to enable virulence flagging
-  3. Scale up predictions: install local NetMHCIIpan or use larger API batches
-  4. After broader predictions: re-run Phase 4+5 for overlap with mimicry
-  5. Tasks 615/616 still blocked on compute provisioning
+  1. Check M5/M18 prediction completion, merge, re-run Phase 4+5 with all 6 serotypes + supplement
+  2. Full-scale predictions needed for mimicry overlap (currently VF-only subset)
+  3. Tasks 615/616 still blocked on compute provisioning
