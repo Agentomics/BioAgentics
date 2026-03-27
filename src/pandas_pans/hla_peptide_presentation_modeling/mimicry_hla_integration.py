@@ -46,14 +46,17 @@ def load_mimicry_hits(mimicry_dir: Path | None = None) -> list[dict]:
                     reader = csv.DictReader(f, delimiter=delimiter)
                     for row in reader:
                         hit = {}
-                        # Flexible column name matching
+                        # Flexible column name matching — handles both
+                        # named-column formats and DIAMOND BLAST output
                         for key in row:
                             kl = key.lower()
-                            if "gas" in kl and "protein" in kl:
+                            if ("gas" in kl and "protein" in kl) or kl == "qseqid":
                                 hit["gas_protein"] = row[key]
-                            elif "human" in kl and "protein" in kl:
+                            elif ("human" in kl and "protein" in kl) or kl in ("human_gene", "human_accession"):
+                                hit.setdefault("human_protein", row[key])
+                            elif kl == "sseqid" and "human_protein" not in hit:
                                 hit["human_protein"] = row[key]
-                            elif "score" in kl or "similarity" in kl:
+                            elif "score" in kl or "similarity" in kl or kl == "pident":
                                 try:
                                     hit["score"] = float(row[key])
                                 except (ValueError, TypeError):
