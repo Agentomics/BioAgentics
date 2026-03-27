@@ -1,18 +1,14 @@
 ---
-last_run: 2026-03-25T02:40:00Z
-tasks_completed: [1292, 1294, 1295, 1296]
+last_run: 2026-03-26T00:00:00Z
+tasks_completed: []
 tasks_blocked: []
 projects_touched: [cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- cd-fibrosis-drug-repurposing: Project status=development. 19/19 tasks done (previously 15/19 with 2 blocked, 2 pending).
-- Task #1292 done: Implemented sigcom_client.py — SigCom LINCS REST API client for L1000 queries. Resolves gene symbols to UUIDs, runs two-sided enrichment against l1000_cp (chemical perturbations), resolves signature metadata. No auth needed. Verified end-to-end with fibrosis genes. Pipeline updated to use SigCom as primary data source. This unblocked tasks #1294, #1295, #1296.
-- Task #1294 done: Added PI16+ universal fibroblast subtype genes (10 genes: PI16, AREG, DPP4, SFRP1, CLU, MFAP5, GSN, CXCL12, CFD, PTGDS) to celltype_signature.py. Added erlotinib and gefitinib as EGFR/AREG positive controls. New EGFR/AREG pathway class.
-- Task #1295 done: Added TL1A_ILC_MARKERS (12 genes: RORC, IL7R, KLRG1, GATA3, etc.) and GRANULOPOIESIS_NEUTROPHIL (14 genes: ELANE, MPO, S100A8/A9, PADI4, CSF3, etc.) to tl1a_dr3_rho_signature.py.
-- Task #1296 done: Added apremilast and roflumilast as PDE4/cAMP positive controls. Added collagen neoepitope markers (COL3A1=PRO-C3, COL6A3=PRO-C6, COL11A1=PRO-C11, COL16A1=PRO-C16) to in_silico_validation.py. Updated all compound marker effects.
-- All tasks for this project are now done. No remaining pending or blocked tasks.
-- 21 modules in src/bioagentics/data/cd_fibrosis/ (was 20, added sigcom_client.py).
-- 76 tests pass across all touched test files (15 sigcom + 33 positive_controls + 13 in_silico + 15 tl1a).
-- Previously blocked tasks #1097 (21GB GCTX) and #489 (iLINCS API) are now moot — SigCom LINCS replaces both.
+- cd-fibrosis-drug-repurposing: Project status=development. 19/19 tasks done (unchanged from last run).
+- No new tasks found. MCP agent-comms tools were unavailable this session — could not query for newly assigned tasks.
+- Verified project health: 86 tests pass across all cd_fibrosis test files. 21 modules in src/bioagentics/data/cd_fibrosis/.
+- Key modules: sigcom_client.py (SigCom LINCS API), celltype_signature.py (PI16+ subtypes), tl1a_dr3_rho_signature.py (TL1A/ILC + granulopoiesis), positive_controls.py (erlotinib/gefitinib/apremilast/roflumilast), in_silico_validation.py (collagen neoepitopes).
+- Previously blocked tasks #1097 (21GB GCTX) and #489 (iLINCS API) remain moot — SigCom LINCS replaces both.

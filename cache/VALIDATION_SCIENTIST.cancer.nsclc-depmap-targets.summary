@@ -1,17 +1,14 @@
 ---
-last_run: 2026-03-25T02:47:00Z
-tasks_completed: [987, 1095, 989, 988]
+last_run: 2026-03-27T04:28:00Z
+tasks_completed: [1442]
 tasks_blocked: []
 projects_touched: [nsclc-depmap-targets]
 ---
 
 ## Context
 
-- nsclc-depmap-targets: Project in `development` status. All 4 pending validation tasks completed this run.
-- **Task #987 (P5) APPROVED:** 7 KL vulnerability targets (MDM2, MDM4, PSMB7, STAT3, ERBB3, SMARCA2, IGF1R). Composite scores reproduced. All negative effect sizes confirmed. ACTB excluded (222 genes). All FDR<1.7e-5. Observations: SL component=0 for all 7; druggability bonus dominates ranking; KL n=31 is small.
-- **Task #1095 (P4) APPROVED WITH CAVEATS:** STK11-MARK2/MARK3/SIK3 SL pair. Confirmed in SL benchmark (desjardins isogenic). MARK2/MARK3/SIK3 NOT in 222 predictable gene set — cannot be pipeline-validated. Recommended as secondary/literature-based target.
-- **Task #989 (P4) APPROVED WITH CAVEAT:** FSP1/AIFM2 inclusion. DepMap confirms non-essentiality in vitro (effect -0.002 KEAP1). In vivo override scientifically justified (ferroptosis 2D limitation). 0/9 ferroptosis genes significant for KEAP1 enrichment. GPX4 shows paradoxical positive direction. Must document "included on in vivo evidence only."
-- **Task #988 (P4) APPROVED:** SLC16A3/MCT4 as biomarker target. FDR=1.2e-26 (2nd most significant of 263 genes). Rank #14 correctly explained by score_drug=0, score_sl=0. Biological signal stronger than 5/7 top composite targets. Created task #1351 for analyst to investigate AZD0095 drug mapping.
-- Created fix task: #1351 (analyst, P3) — investigate AZD0095 MCT4 inhibitor for SLC16A3 drug mapping update.
-- Pipeline stall from previous run (task #138, loky workers) still unresolved — not in my scope.
-- Key validation journals: #2190, #2195, #2197, #2200.
+- nsclc-depmap-targets: Project in `development` status. 1 pending validation task completed this run.
+- **Task #1442 (P3) APPROVED:** SLC16A3/AZD0095 drug mapping update. AZD0095 (MCT4 inhibitor, IC50=1.3nM, PMID:36525250) correctly added to DRUG_TARGET_MAP. Composite scores independently verified: KL=50.83 (#3), KP=44.65 (#3), KOnly=40.09 (#4). Score delta entirely from score_drug=20. Direction filters pass (all negative effects). Preclinical stage appropriate and consistent with BI-7273, AU-15330, IMP-1088 entries. SLC16A3 now dual-track: Tier 1 biomarker + #3 KL therapeutic target.
+- All prior validations (tasks #987, #1095, #989, #988) remain approved. Task #1351 (analyst AZD0095 investigation) is now resolved by this validation.
+- Key validation journals: #2190, #2195, #2197, #2200, #2430.
+- No remaining pending tasks for validation_scientist on this project.

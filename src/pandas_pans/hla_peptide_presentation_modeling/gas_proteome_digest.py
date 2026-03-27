@@ -56,6 +56,7 @@ VIRULENCE_FACTOR_KEYWORDS = frozenset({
     "M protein", "emm", "streptolysin", "SLO", "C5a peptidase",
     "streptokinase", "DNase", "SpeB", "SpyCEP", "Sic",
     "M-related protein", "Mrp", "protein Enn", "M-like",
+    "Streptopain", "Exotoxin", "Hyaluronan", "Hyaluronidase",
 })
 
 MHC_I_LENGTHS = range(8, 12)   # 8, 9, 10, 11
@@ -205,10 +206,13 @@ def build_proteome_manifest(proteome_dir: Path) -> dict:
             protein_count = sum(1 for line in fh if line.startswith(">"))
         vf_detected = []
         with open(fasta_path) as f:
-            text = f.read()
-            for kw in ["M_protein", "C5a_peptidase", "streptolysin_O", "streptokinase", "DNase"]:
+            text = f.read().lower()
+            for kw in [
+                "M_protein", "C5a_peptidase", "streptolysin_O", "streptokinase",
+                "DNase", "Streptopain", "Exotoxin", "Hyaluronan",
+            ]:
                 readable = kw.replace("_", " ")
-                if readable.lower() in text.lower() or kw.lower() in text.lower():
+                if readable.lower() in text or kw.lower() in text:
                     vf_detected.append(kw)
 
         entry = {
