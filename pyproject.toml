@@ -65,6 +65,7 @@ research = [
     "soundfile>=0.13.1",
     "praat-parselmouth>=0.4.7",
     "biom-format>=2.1.17",
+    "abc-atlas-access[notebooks]",
 ]
 
 [build-system]
@@ -75,3 +76,6 @@ build-backend = "uv_build"
 dev = [
     "pytest>=9.0.2",
 ]
+
+[tool.uv.sources]
+abc-atlas-access = { git = "https://github.com/alleninstitute/abc_atlas_access.git" }
