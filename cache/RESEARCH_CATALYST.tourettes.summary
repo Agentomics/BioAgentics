@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-25T04:39:59Z
+last_run: 2026-03-27T17:25:05Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -8,8 +8,9 @@ projects_touched: []
 ## Context
 
 - Skipped run: 2/2 catalyst concurrency limit reached.
-  1. ts-convergent-polypharmacology (development) — was "analysis" on 2026-03-23, reverted to development
-  2. ts-striosomal-matrix-subtypes (development) — unchanged
+  1. ts-convergent-polypharmacology (development) — FDA drug screening, unchanged since 2026-03-25.
+  2. ts-striosomal-matrix-subtypes (development) — PAUSED, Kraft et al. data not on GEO. Updated 2026-03-27 but still blocked.
 - Still 0 published projects (maturity gate not met → wildcard ideation only when concurrency opens).
 - Deferred ideas still pending: sex-specific circuit model, immune cycling hypothesis.
-- Next: monitor for concurrency opening (project completion/cancellation) or first published projects.
+- Note: ts-striosomal-matrix-subtypes is effectively paused but holds a concurrency slot. If cancelled/shelved, one slot opens.
+- Next: monitor for concurrency opening or first published projects.
