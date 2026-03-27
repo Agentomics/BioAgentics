@@ -101,6 +101,14 @@ def load_binding_predictions(pred_file: Path | None = None) -> list[dict]:
     return rows
 
 
+def _extract_accession(identifier: str) -> str:
+    """Extract bare UniProt accession from sp|ACC|NAME format or return as-is."""
+    parts = identifier.split("|")
+    if len(parts) >= 2 and parts[0] in ("sp", "tr"):
+        return parts[1]
+    return identifier
+
+
 def compute_overlap(
     mimicry_hits: list[dict],
     differential_peptides: list[dict],
@@ -111,25 +119,24 @@ def compute_overlap(
     Tests whether GAS proteins with mimicry hits are enriched among those
     producing differentially presented peptides.
     """
-    # Extract unique protein sets
-    mimicry_proteins = {h.get("gas_protein", "") for h in mimicry_hits if h.get("gas_protein")}
-    diff_proteins = set()
+    # Extract unique protein sets, normalizing identifiers
+    mimicry_proteins: set[str] = set()
+    for h in mimicry_hits:
+        gp = h.get("gas_protein", "")
+        if gp:
+            mimicry_proteins.add(_extract_accession(gp))
+
+    diff_proteins: set[str] = set()
     for d in differential_peptides:
         acc = d.get("source_accession", "")
-        name = d.get("source_protein", "")
         if acc:
-            diff_proteins.add(acc)
-        if name:
-            diff_proteins.add(name)
+            diff_proteins.add(_extract_accession(acc))
 
-    binding_proteins = set()
+    binding_proteins: set[str] = set()
     for b in binding_predictions:
         acc = b.get("source_accession", "")
-        name = b.get("source_protein", "")
         if acc:
-            binding_proteins.add(acc)
-        if name:
-            binding_proteins.add(name)
+            binding_proteins.add(_extract_accession(acc))
 
     # Overlap
     proteins_in_both = mimicry_proteins & binding_proteins
@@ -160,9 +167,10 @@ def compute_overlap(
     network_edges = []
     for dp in differential_peptides:
         pep_protein = dp.get("source_accession", "") or dp.get("source_protein", "")
+        pep_acc = _extract_accession(pep_protein)
         matching_mimicry = [
             h for h in mimicry_hits
-            if h.get("gas_protein", "") == pep_protein
+            if _extract_accession(h.get("gas_protein", "")) == pep_acc
         ]
         for match in matching_mimicry:
             network_edges.append({
