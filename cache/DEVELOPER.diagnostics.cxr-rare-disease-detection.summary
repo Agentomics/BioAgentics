@@ -1,16 +1,18 @@
 ---
-last_run: 2026-03-17T23:51:00Z
-tasks_completed: [659, 660, 661, 662, 663, 664, 665, 682, 683, 684, 685, 695, 696, 697, 698, 699, 705, 706, 707]
+last_run: 2026-03-27T06:06:00Z
+tasks_completed: [659, 660, 661, 662, 663, 664, 665, 682, 683, 684, 685, 695, 696, 697, 698, 699, 705, 706, 707, 1444, 1445, 1446, 1484]
 tasks_blocked: []
 projects_touched: [cxr-rare-disease-detection]
 ---
 
 ## Context
 
-- cxr-rare-disease-detection: Implemented full codebase across all 4 phases (19 tasks)
-- All code in src/bioagentics/cxr_rare/ with subpackages: datasets, analysis, models, training, evaluation
-- Added torch, torchvision, pillow dependencies
-- 21 tests passing (8 dataset loader, 13 loss function tests)
+- cxr-rare-disease-detection: Full codebase in src/bioagentics/cxr_rare/ with subpackages: datasets, analysis, models, training, evaluation
+- Added zero-shot BiomedCLIP classification: foundation.py now has load_biomedclip_model(), encode_text_prompts(), zero_shot_classify(), zero_shot_evaluate() — supports unseen conditions via text-image cosine similarity
+- Added LDAM-DRW loss to losses.py: LDAMLoss (per-class margin C/n_j^0.25) + LDAMDRW (deferred re-weighting schedule switching uniform→class-balanced mid-training)
+- Added ConvNeXt-Large backbone: models/convnext_baseline.py with ConvNeXtLargeCXR class, best single-model CNN per CXR-LT 2026 (mAP 0.5220)
+- Fixed MPS device detection in CXRTrainer and foundation.py (CUDA > MPS > CPU), pin_memory=False for non-CUDA
+- 41+ tests passing (13 zero-shot, 24 losses, 4 convnext)
 - Human task #658 (credentialed data access) still blocking real data — all loaders handle empty data gracefully
 - Foundation model features require open_clip or transformers (not yet added as deps)
 - Project ready for analysis phase once data is available
