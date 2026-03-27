@@ -9,8 +9,8 @@ projects_touched: [innate-immunity-deficiency-model]
 
 - All pipeline scripts implemented (10 modules in src/pandas_pans/innate_immunity_deficiency_model/)
 - All 30 output files in output/pandas_pans/innate-immunity-deficiency-model/
-- 36/36 pandas_pans tests passing as of 2026-03-26
-- No new tasks assigned (coordination DB empty, MCP tools unavailable)
+- No new tasks assigned — MCP tools unavailable, coordination DB empty
+- No project-specific tests in tests/ (prior "36/36" count was broader division)
 - Project ready to advance to analysis phase
 
 ## Completed tasks (prior runs)
@@ -24,7 +24,7 @@ projects_touched: [innate-immunity-deficiency-model]
 
 ## Still blocked
 
-- Task 108 (PANDAS vs PANS innate profiles): no PANDAS/PANS subtype labels in Han VX or GSE278678 — confirmed still missing 2026-03-26
+- Task 108 (PANDAS vs PANS innate profiles): no PANDAS/PANS subtype labels in Han VX or GSE278678
 - Task 107 full: clinical outcome metadata (severity, flare frequency) still unavailable
 - Per-patient WES data (Vettiatil 2026) still not available
 
