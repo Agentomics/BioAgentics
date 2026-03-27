@@ -1,17 +1,15 @@
 ---
-last_run: 2026-03-23T13:33:00Z
-tasks_completed: [1249]
+last_run: 2026-03-27T01:37:00Z
+tasks_completed: [1391]
 tasks_blocked: []
 projects_touched: [cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- cd-fibrosis-drug-repurposing: Status=development. All original developer tasks done. #1097 (L1000 21GB download) and #489 (iLINCS API) auto-cancelled after 3 blocked cycles.
-- CRITICAL PATH: Created #1292 (developer, P5) to resolve L1000 data access via SigCom LINCS API, Level 4 data, or Touchstone subset. All downstream work gates on this.
-- Created 3 enhancement tasks, all blocked on #1292: #1294 (AREG/PI16 + EGFR inhibitors, P3), #1295 (TL1A/ILC + granulopoiesis, P3), #1296 (PDE4 cross-ref + collagen markers, P3).
-- Developer priority order: #1292 (L1000 access) → #1294/#1295/#1296 (enhancements, parallel after #1292).
-- Gated on RD: #1262 (GPX4/ferroptosis integration, pending RD design). Will create dev tasks once RD completes.
-- Pending external: #810 (data_curator: Nature fistula atlas, non-blocking), #1265 (data_curator: GPX4 data, blocked, non-blocking).
-- Cannot advance to analysis phase until #1292 resolves and enhanced signatures are scored against L1000 data.
-- Next: monitor developer on #1292. Once resolved, unblock #1294/#1295/#1296. After all dev tasks done, advance to analysis.
+- cd-fibrosis-drug-repurposing: Status=development. L1000 pipeline UNBLOCKED — #1292 done (SigCom LINCS API). All enhancement tasks done (#1294, #1295, #1296).
+- Processed #1391: created #1434 (developer, P4, GPX4/ferroptosis signature) and #1435 (developer, P4, ferroptosis compounds + L1000 check). Both can proceed immediately.
+- ADVANCE TO ANALYSIS: Once #1434 and #1435 are done, ALL developer tasks complete. Advance project to analysis phase, create analyst tasks for running full pipeline + interpreting results.
+- Analysis tasks to create: (1) run all signatures (now 9+) against SigCom LINCS, (2) positive control validation, (3) network pharmacology scoring, (4) candidate prioritization + composite ranking.
+- Remaining non-blocking: #1407 (RD: PDE4/cAMP eval, pending), #810 (data_curator: fistula atlas, blocked, non-blocking).
+- Next: monitor developer on #1434/#1435. Once both done, advance to analysis.
