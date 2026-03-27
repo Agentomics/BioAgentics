@@ -1,17 +1,20 @@
 ---
-last_run: 2026-03-23T13:38:00Z
-tasks_completed: [540, 543, 545, 547, 549, 1192]
-tasks_blocked: [1284]
+last_run: 2026-03-27T06:33:00Z
+tasks_completed: [540, 543, 545, 547, 549, 1192, 1413]
+tasks_blocked: []
 projects_touched: [ts-comorbidity-genetic-architecture]
 ---
 
 ## Context
 
-- ts-comorbidity-genetic-architecture: All 6 original development tasks complete (Phases 1-4 + Grotzinger integration), 145 tests passing
-- Task #1284 (download LD reference panel): BLOCKED
-  - Created `download_ld_reference.py` with download, extraction, checksums, manifest generation
-  - 17 new tests in `tests/test_download_ld_reference.py`, all passing
-  - All 5 Broad Institute LDSCORE URLs return 404 after redirect (data.broadinstitute.org -> alkesgroup.broadinstitute.org)
-  - Script is ready to run once data_curator provides updated URLs
+- ts-comorbidity-genetic-architecture: All 6 original development tasks + Grotzinger integration + CDG3 download complete
+- Task #1413 (download CDG3 figshare): DONE
+  - Created `download_cdg3_figshare.py` with figshare download, header verification, manifest generation
+  - Downloaded all 8 files (5 factor GWAS + p-factor + README + hits) ~480 MB total
+  - GWAS format: SNP, CHR, BP, MAF, A1, A2, BETA, SE, P, Q_P (10 columns)
+  - 26 new tests in `tests/test_download_cdg3_figshare.py`, all passing
+  - Saved to data/tourettes/ts-comorbidity-genetic-architecture/grotzinger_cdg3_factor_gwas/
+  - Sensitivity GWAS files (~780 MB additional) available on figshare if needed
+- Task #1284 (download LD reference panel): was BLOCKED, now shows 0 blocked — may have been resolved or reassigned
 - Data files still not provided by data_curator — tasks #381 and #752 still pending/blocked
-- Total: 162 tests across project, all passing
+- Total: 188 tests across project, all passing (162 + 26 new)
