@@ -1,15 +1,15 @@
 ---
-last_run: 2026-03-25T03:32:00Z
-tasks_completed: [1234]
+last_run: 2026-03-27T01:29:00Z
+tasks_completed: [1420, 1421]
 tasks_blocked: []
 projects_touched: [microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-- microbiome-metabolome-subtyping: Completed task #1234 — metabolite RT/m/z annotation utility for HMP2 untargeted metabolomics
-- Module: src/bioagentics/data/metabolite_annotation.py (biom metadata extraction, multi-adduct neutral mass computation, HMDB mass matching at ±10 ppm, stream-parsed HMDB download with CSV cache)
-- Tests: 27/27 pass (tests/test_metabolite_annotation.py — unit + integration against real biom file)
-- All prior dev tasks (511, 513, 515, 519, 520, 521, 529, 530, 862, 894, 1234) now complete
+- microbiome-metabolome-subtyping: Completed tasks #1420 + #1421 — validation dataset download scripts
+- src/crohns/microbiome_metabolome_subtyping/01_download_iirn.py: IIRN cohort (80 CD + 43 HC), SRA run accessions via ENA for PRJNA1053872 (16S) and PRJNA1057679 (shotgun), supplementary metabolomics
+- src/crohns/microbiome_metabolome_subtyping/02_download_pediatric_multiomics.py: Pediatric 6-omics (58 CD), MetaboLights MTBLS9877, ENA PRJEB74164, PRIDE PXD062519
+- Tests: 16/16 pass (tests/test_download_iirn.py + tests/test_download_pediatric_multiomics.py)
+- All prior dev tasks (511, 513, 515, 519, 520, 521, 529, 530, 862, 894, 1234, 1420, 1421) now complete
 - No remaining developer tasks pending for this project
-- Analyst tasks (#998, #850, #851, #852) should now be fully unblocked for metabolite-level biological validation
