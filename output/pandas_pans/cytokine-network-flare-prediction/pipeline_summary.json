@@ -2,6 +2,8 @@
   "pipeline": "cytokine-network-flare-prediction",
   "outputs": {
     "meta_analysis_csv": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/meta_analysis_summary.csv",
+    "within_study_ranking_csv": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/within_study_ranking_comparison.csv",
+    "within_study_il1b_il6_csv": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/within_study_IL1b_vs_IL6.csv",
     "network_image": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/cytokine_network.png",
     "network_json": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/cytokine_network.json",
     "axis_radar": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/immune_axis_radar.png",
@@ -47,6 +49,38 @@
       "IL-12",
       "IL-10"
     ]
+  },
+  "within_study_comparison": {
+    "pairs_compared": 28,
+    "concordant": 25,
+    "discordant": 3,
+    "discordant_pairs": [
+      {
+        "analytes": [
+          "IL-1\u03b2",
+          "IL-6"
+        ],
+        "pooled_rank": "IL-1\u03b2",
+        "within_study_rank": "IL-6"
+      },
+      {
+        "analytes": [
+          "IL-8",
+          "TNF-\u03b1"
+        ],
+        "pooled_rank": "IL-8",
+        "within_study_rank": "TNF-\u03b1"
+      },
+      {
+        "analytes": [
+          "IL-8",
+          "IFN-\u03b3"
+        ],
+        "pooled_rank": "IL-8",
+        "within_study_rank": "IFN-\u03b3"
+      }
+    ],
+    "note": "Pooled rankings can be composition artifacts when analytes are measured in different study pools. Within-study comparisons are the only valid cross-analyte ranking method."
   },
   "network": {
     "n_nodes": 24,

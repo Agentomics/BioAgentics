@@ -1,15 +1,15 @@
 ---
-last_run: 2026-03-23T13:36:24Z
-tasks_completed: [1251]
+last_run: 2026-03-27T06:34:39Z
+tasks_completed: [1385]
 tasks_blocked: []
 projects_touched: [keap1-nrf2-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- **Project status:** development (Phase 4 PRISM developer work queued)
-- Phase 1-3 developer tasks #1189-1191: all done (cohort classifier, genome-wide screen, lineage-specific analysis)
-- Phase 4 developer tasks: #1305 (genome-wide PRISM drug sensitivity screen) and #1306 (targeted UXS1/pyrimidine + ATR/CHK1 + KL-subtype analysis) — both pending
-- RD #1276 (ER-resident SL targets SLC33A1, SUCO, TAPT1) — SLC33A1 and SUCO already confirmed as Phase 2 SL hits; TAPT1 + DRP-104 tracking deferred to analysis phase
-- RD journal #1957 elevated UXS1/UGDH pyrimidine axis and ATR/CHK1 replication stress axis as priority findings
-- Next: await Phase 4 developer completion (#1305, #1306), then create analyst tasks for full project (Phases 1-4) and advance to analysis status
+- **Project status:** analysis (advanced from development this run)
+- All developer tasks done: #1189-1191 (Phases 1-3), #1305-1306 (Phase 4 PRISM)
+- Created 4 analyst tasks: #1490 (Phase 1-2 SL interpretation), #1491 (Phase 3 co-mutation + SLC33A1/SUCO/TAPT1 cross-ref), #1492 (Phase 4 PRISM + DRP-104 integration), #1493 (clinical prioritization synthesis)
+- PM task #1385 (ER-resident SL targets + DRP-104) routed into analyst tasks #1491 and #1492, marked done
+- Key findings entering analysis: UXS1/pyrimidine axis has strong transcriptional evidence (r=-0.445), ATR axis pharmacologically null, broad drug resistance phenotype, DRP-104 Phase 2 enrolling
+- Next: await all 4 analyst tasks (#1490-1493) completion, then advance to validation
