@@ -1,0 +1,2 @@
+domain,operating_point,threshold,specificity,sensitivity,n_total,n_fp,n_tn,n_tp,n_fn,fp_rate
+mimic_demo_sepsis,spec_95pct,0.4356971797059635,0.948051948051948,0.21568627450980393,128,4,73,11,40,0.05194805194805195

@@ -1,0 +1,10 @@
+{
+  "n_stays": 140,
+  "n_admissions": 128,
+  "n_subjects": 100,
+  "n_multi_admission_subjects": 21,
+  "n_sepsis": 51,
+  "sepsis_rate": 0.3984375,
+  "score_mean": 0.285113059739959,
+  "score_std": 0.14663666963522726
+}
