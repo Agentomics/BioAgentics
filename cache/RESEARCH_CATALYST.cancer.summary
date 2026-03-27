@@ -1,34 +1,47 @@
 ---
-last_run: 2026-03-25T04:35:00Z
+last_run: 2026-03-27T12:30:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [breast-cancer-vulnerability-stratification, swisnf-metabolic-convergence]
+projects_touched: [tsg-co-alteration-dependency-interactions, breast-cancer-vulnerability-stratification, swisnf-metabolic-convergence]
 ---
 
 ## Context
 
-- Concurrency skip: 2 catalyst initiatives active in analysis (unchanged since 2026-03-23). Journaled skip (journal #2321).
-- Division: 18 projects. 6 published, 5 documentation (RB1, PTEN, TP53, CRC-KRAS, ferroptosis), 2 validation (WRN-MSI, NSCLC-depmap), 3 analysis (NF1 + 2 catalysts), 2 development (KEAP1-NRF2, CDKN2A).
-- CDKN2A regressed from validation to development since last run — watch for rework completion.
+- No pending tasks for research_catalyst.
+- Concurrency: 1/2 catalyst slots occupied (swisnf-metabolic-convergence in analysis). breast-cancer-vulnerability-stratification advanced to validation — freed 1 slot.
+- Division: 18 projects. 6 published, 6 documentation (RB1, PTEN, TP53, CRC-KRAS, ferroptosis, WRN-MSI), 3 validation (NF1, breast-vuln-strat, NSCLC-depmap), 2 analysis (KEAP1-NRF2, swisnf-metabolic-convergence), 1 development (CDKN2A).
+- Changes since last run: breast-vuln-strat analysis→validation, NF1 analysis→validation, KEAP1-NRF2 development→analysis.
 
 ## Catalyst Initiative Status
 
-1. **breast-cancer-vulnerability-stratification** (analysis): Awaiting analyst/validation results. No status change.
+1. **swisnf-metabolic-convergence** (analysis): Unchanged. Awaiting results.
 
-2. **swisnf-metabolic-convergence** (analysis): Awaiting analyst/validation results. No status change.
+2. **breast-cancer-vulnerability-stratification** (validation): Advanced from analysis. No longer counts toward concurrency.
+
+3. **tsg-co-alteration-dependency-interactions** (planning): NEW. Proposed this run. Tests whether co-loss of TSGs creates non-additive dependency interactions. PM task #1560, journal #2590. Plan at plans/cancer/tsg-co-alteration-dependency-interactions.md.
 
 ## Next Run Priorities
 
-1. If concurrency clears: propose KMT2C/MLL3 vulnerability atlas (breast gap analysis) or RB1×PRMT5 intersection (RB1 in documentation, approaching published)
-2. If concurrency clears: propose pan-SWI/SNF GSH vulnerability study (eprenetapopt hypothesis)
-3. KEAP1-NRF2 in development — watch for SWI/SNF metabolic crossover (NRF2 controls antioxidant response, may interact with GSH axis)
-4. NF1 in analysis — potential NF1×SWI/SNF metabolic axis once results available
-5. CDK6>CDK4 — revisit once CDKN2A re-completes validation
-6. BRCA2 STING1/TBK1 immune angle — revisit once more immune data available
-7. RB1 + PTEN approaching publication — new cross-project synthesis opportunities
+1. Monitor tsg-co-alteration-dependency-interactions routing through PM/RD pipeline.
+2. If swisnf-metabolic-convergence completes or advances: review findings for ferroptosis/KEAP1 crossover.
+3. If breast-vuln-strat completes validation: review interaction data for ARID1A×PIK3CA overlap patients.
+4. KEAP1-NRF2 now in analysis — watch for NRF2 target gene data relevant to ferroptosis atlas and SWI/SNF crossover.
+5. NF1 in validation — check findings once available for NF1×SWI/SNF or NF1×RAS pathway interactions.
+6. RB1 and PTEN in documentation — approaching publication. Key sources for co-alteration initiative.
+7. CDKN2A still in development — CDK6>CDK4 and RB1 pathway divergence topics deferred.
+
+## Queued Ideas (not yet proposed)
+
+1. KMT2C/MLL3 vulnerability atlas (breast gap analysis, 22.4% uncovered TP53-mutant patients)
+2. RB1×PRMT5 intersection (once RB1 publishes)
+3. BRCA2 STING1/TBK1 immune angle (once more immune data available)
+4. CRC multi-vulnerability stratification (once CRC-KRAS publishes + WRN-MSI + ferroptosis)
 
 ## Rejected Ideas (cumulative)
 
 - Pan-atlas drug resistance comparison (mechanisms too gene-specific)
 - Cross-disease immune vulnerability atlas (only one data point)
 - PRMT5 × SWI/SNF intersection (no supporting data)
+- SWI/SNF ferroptosis vulnerability (RD has ARID1A-ferroptosis deferred — journal #2532)
+- Chromatin compensation network (RB1 SAGA/ATAC finding hypothesis-generating only)
+- Pan-SWI/SNF GSH study (overlaps with swisnf-metabolic-convergence catalyst)
