@@ -1,0 +1,37 @@
+======================================================================
+NF1-Loss Dependency Atlas - Phase 3b: TP53-Stratified Analysis
+======================================================================
+
+TP53-mutant stratum: 52 NF1-lost vs 376 NF1-intact
+TP53-WT stratum: 15 NF1-lost vs 209 NF1-intact
+
+NF1-specific (confirmed): 0 genes
+TP53-confounded: 1 genes
+NF1-specific (TP53-masked): 0 genes
+
+CONFOUND-PRONE GENE SETS
+------------------------------------------------------------
+
+  DDR:
+    CHEK1: d_unstrat=-0.241, d_tp53mut=-0.197 => not significant
+    WEE1: d_unstrat=-0.051, d_tp53mut=-0.123 => not significant
+    ATR: d_unstrat=-0.025, d_tp53mut=0.002 => not significant
+    PARP1: d_unstrat=0.127, d_tp53mut=0.096 => not significant
+
+  Cell cycle:
+    CDK2: d_unstrat=-0.150, d_tp53mut=-0.086 => not significant
+    CDK6: d_unstrat=-0.125, d_tp53mut=-0.106 => not significant
+    RB1: d_unstrat=-0.073, d_tp53mut=-0.123 => not significant
+    CCND1: d_unstrat=0.023, d_tp53mut=0.015 => not significant
+    CDK4: d_unstrat=0.077, d_tp53mut=0.054 => not significant
+
+  Epigenetic/PRC2:
+    SUZ12: d_unstrat=-0.002, d_tp53mut=-0.049 => not significant
+    DOT1L: d_unstrat=0.097, d_tp53mut=0.079 => not significant
+    EED: d_unstrat=0.101, d_tp53mut=-0.008 => not significant
+    BRD4: d_unstrat=0.107, d_tp53mut=0.300 => not significant
+    EZH2: d_unstrat=0.115, d_tp53mut=0.065 => not significant
+
+TP53-CONFOUNDED HITS (unstratified sig, stratified not sig)
+------------------------------------------------------------
+  RIT1: d_unstrat=-0.646, d_tp53mut=-0.631
