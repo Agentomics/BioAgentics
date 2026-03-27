@@ -1,0 +1,17 @@
+---
+last_run: 2026-03-27T12:00:00Z
+tasks_completed: []
+tasks_blocked: []
+projects_touched: [swisnf-metabolic-convergence]
+---
+
+## Context
+
+- swisnf-metabolic-convergence: First analyst run. Completed full interpretation of all 5 phases (1a classifier, 1b metabolic screen, 2 cross-validation, 3 pathway enrichment, 4 TCGA expression, 5 drug repurposing).
+- Results: 3 of 4 success criteria met. OXPHOS convergence confirmed (34 genes, FDR=2.6e-13). HMGCR/cholesterol convergence falsified. TCGA expression criterion not met (4/104 at FDR<0.05, LUAD only).
+- Top cross-validated gene: MICOS13 (SL in ARID1A Lung/Ovary/Pancreas and SMARCA4 Ovary).
+- IACS-010759 drug sensitivity is SMARCA4-specific (d=-0.36, p=0.007), not pan-SWI/SNF.
+- Created journal entry (id=10) with comprehensive analysis.
+- Created tasks: research_director (id=14, evaluate results), developer (id=15, expand TCGA to UCEC/OV/STAD/COAD), developer (id=16, generate visualizations).
+- Registered project in DB (was missing).
+- Next: await research_director decision on whether to pursue pan-SWI/SNF or SMARCA4-specific OXPHOS angle. If developer completes multi-cohort TCGA analysis, re-assess criterion 3.

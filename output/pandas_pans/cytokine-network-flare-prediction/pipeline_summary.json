@@ -8,9 +8,7 @@
     "axis_json": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/axis_classification.json",
     "roc_curves": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/flare_roc_curves.png",
     "prediction_csv": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/prediction_summary.csv",
-    "feature_importance": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/feature_importance_LogisticRegression.png",
-    "treatment_heatmap": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/treatment_response_heatmap.png",
-    "treatment_csv": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/treatment_response_summary.csv"
+    "feature_importance": "/Users/matth/git/BioAgentics/output/pandas_pans/cytokine-network-flare-prediction/feature_importance_LogisticRegression.png"
   },
   "dataset": {
     "n_records": 132,
@@ -75,69 +73,6 @@
     ]
   },
   "treatment_response": {
-    "treatments_analyzed": [
-      "IVIG",
-      "plasmapheresis",
-      "antibiotics",
-      "corticosteroids",
-      "rituximab"
-    ],
-    "responder_cytokines": {
-      "IVIG": [
-        "IL-6",
-        "TNF-\u03b1",
-        "IL-8",
-        "IL-17A",
-        "IL-1\u03b2",
-        "IFN-\u03b3",
-        "IL-10",
-        "IL-12",
-        "TGF-\u03b21"
-      ],
-      "plasmapheresis": [
-        "IL-6",
-        "TNF-\u03b1",
-        "IL-8",
-        "IL-17A",
-        "IL-1\u03b2",
-        "IFN-\u03b3",
-        "IL-10",
-        "IL-12",
-        "TGF-\u03b21"
-      ],
-      "antibiotics": [
-        "IL-6",
-        "TNF-\u03b1",
-        "IL-8",
-        "IL-17A",
-        "IL-1\u03b2",
-        "IFN-\u03b3",
-        "IL-10",
-        "IL-12",
-        "TGF-\u03b21"
-      ],
-      "corticosteroids": [
-        "IL-6",
-        "TNF-\u03b1",
-        "IL-8",
-        "IL-17A",
-        "IL-1\u03b2",
-        "IFN-\u03b3",
-        "IL-10",
-        "IL-12",
-        "TGF-\u03b21"
-      ],
-      "rituximab": [
-        "IL-6",
-        "TNF-\u03b1",
-        "IL-8",
-        "IL-17A",
-        "IL-1\u03b2",
-        "IFN-\u03b3",
-        "IL-10",
-        "IL-12",
-        "TGF-\u03b21"
-      ]
-    }
+    "note": "no treatment data"
   }
 }
