@@ -104,7 +104,13 @@ def load_biomedclip_encoder(device: torch.device | None = None) -> tuple[nn.Modu
     Attempts to load from open_clip or huggingface transformers.
     Returns (encoder, feature_dim).
     """
-    device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if device is None:
+        if torch.cuda.is_available():
+            device = torch.device("cuda")
+        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+            device = torch.device("mps")
+        else:
+            device = torch.device("cpu")
 
     try:
         import open_clip
@@ -146,7 +152,13 @@ def load_biomedclip_model(
     Returns (model, tokenizer, feature_dim).
     The model object exposes both vision and text encoding.
     """
-    device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if device is None:
+        if torch.cuda.is_available():
+            device = torch.device("cuda")
+        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+            device = torch.device("mps")
+        else:
+            device = torch.device("cpu")
 
     try:
         import open_clip
@@ -370,7 +382,13 @@ def extract_features(
 
     Returns (features, labels) as numpy arrays.
     """
-    device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if device is None:
+        if torch.cuda.is_available():
+            device = torch.device("cuda")
+        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+            device = torch.device("mps")
+        else:
+            device = torch.device("cpu")
     encoder.to(device)
     encoder.eval()
 

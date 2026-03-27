@@ -74,7 +74,14 @@ class CXRTrainer:
         self.config = config
         self.output_dir = Path(output_dir)
         self.experiment_name = experiment_name
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+        # Device selection: CUDA > MPS > CPU
+        if torch.cuda.is_available():
+            self.device = torch.device("cuda")
+        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+            self.device = torch.device("mps")
+        else:
+            self.device = torch.device("cpu")
 
         self.model.to(self.device)
 
@@ -84,12 +91,15 @@ class CXRTrainer:
         )
         self.scheduler = scheduler
 
+        # pin_memory only benefits CUDA transfers
+        use_pin_memory = self.device.type == "cuda"
+
         self.train_loader = DataLoader(
             train_dataset,
             batch_size=config.batch_size,
             shuffle=True,
             num_workers=config.num_workers,
-            pin_memory=True,
+            pin_memory=use_pin_memory,
             drop_last=True,
         )
         self.val_loader = DataLoader(
@@ -97,9 +107,10 @@ class CXRTrainer:
             batch_size=config.batch_size,
             shuffle=False,
             num_workers=config.num_workers,
-            pin_memory=True,
+            pin_memory=use_pin_memory,
         )
 
+        # Mixed-precision only supported on CUDA
         self.scaler = torch.amp.GradScaler("cuda") if config.mixed_precision and self.device.type == "cuda" else None
 
     def train(self) -> TrainResult:
