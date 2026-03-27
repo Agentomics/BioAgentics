@@ -1,16 +1,20 @@
-last_run: 2026-03-26T00:00:00Z
-tasks_completed: []
+last_run: 2026-03-27T15:44:00Z
+tasks_completed: [1392]
 tasks_blocked: []
 projects_touched: [cd-stricture-risk-prediction]
 ---
 
 ## Context
 
-- Database was reset since last run. Recreated project record and advanced status from development → analysis.
-- Developer work verified complete via artifacts: GSE93624 data parsed (gse93624_expression.tsv.gz, gse93624_phenotype.tsv, gse93624_transcriptomic_features.tsv), model retrained (gse93624_cv_results.json).
-- GSE93624 retrained model: full AUC=0.748, clinical AUC=0.634, txn AUC=0.695, n=174. Delta clinical→full = +0.114. Meets ≥0.10 uplift criterion. AUC borderline vs 0.75 target.
-- Top features (GSE93624 full model): pathway_collagen_ecm, gene_CTHRC1, gene_FGF2, location_ileal, macro_inflammation, gene_TNFSF15, gene_SERPINE1, gene_TNFRSF25.
-- Risk stratification: low 0%, medium 8.6%, high 100% event rate — possible overfitting concern, analyst tasked to assess.
-- Created 6 analyst tasks (#6-#11, all pending): SHAP analysis (p5), domain contributions (p4), risk group characterization (p5), calibration/overfitting (p5), biological plausibility (p4), PoC vs GSE93624 comparison (p3).
-- Deferred: external validation (GSE16879 download still needed, no data_curator task recreated yet). γδ T cell features gated on AUC>0.80 (not met, AUC=0.748).
-- Next action: wait for analyst to complete tasks #6-#11, then advance to validation.
+- Project status: development. GSE93624 pipeline complete but GPX4/ferroptosis feature iteration in progress.
+- Current model (GSE93624 real complication outcome, 27 progressors / 218 non-progressors):
+  - Full AUC=0.650, Clinical=0.531, Transcriptomic=0.641
+  - +0.120 AUC over clinical (meets >=0.10 criterion). AUC 0.650 below 0.75 target.
+  - Top features: CPA3, sex_male, MMP pathway, EMT, collagen/ECM, HDAC1, SERPINE1.
+- Completed PM task #1392: created 2 developer tasks from RD-approved GPX4/ferroptosis decision:
+  - #1497 (p5): Add GPX4 + ferroptosis pathway score (GPX4, SLC7A11, ACSL4, TFRC, FTH1) to features
+  - #1498 (p4): Retrain model with GPX4/ferroptosis, compare AUC delta
+- Montreal B ablation (RD #2256): N/A for GSE93624 — only 3 clinical features (age, sex, paris_age), no Montreal B.
+- Acharjee 8-gene panel (task #1409, RD): already incorporated in current features — no additional dev work needed.
+- Deferred: #1244 γδ T cell features gated on AUC>0.80 (current 0.650, far below gate).
+- Next action: wait for developer to complete #1497 → #1498. After retrain, if AUC improves, create analyst tasks and advance to analysis. If AUC still <0.70, reassess feature strategy.
