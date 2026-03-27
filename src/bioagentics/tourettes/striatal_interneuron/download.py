@@ -125,10 +125,88 @@ def _decompress_gz(gz_path: Path) -> Path:
     return out_path
 
 
+def _is_custom_mm(path: Path) -> bool:
+    """Check if file uses the custom MatrixMarket format with %%GENES headers."""
+    with open(path, "r") as f:
+        return f.readline().startswith("%%MatrixMarket")
+
+
+def _parse_custom_mm(path: Path):
+    """Parse custom MatrixMarket format with %%GENES and %%CELL_BARCODES headers.
+
+    Returns (csr_matrix, gene_names, cell_barcodes).
+    Matrix shape is genes x cells (rows=genes, cols=cells).
+    """
+    import numpy as np
+    from scipy.sparse import coo_matrix
+
+    genes: list[str] = []
+    barcodes: list[str] = []
+    header_lines = 0
+    n_rows = 0
+    n_cols = 0
+    nnz = 0
+
+    with open(path, "r") as f:
+        for line in f:
+            header_lines += 1
+            if line.startswith("%%GENES"):
+                genes.extend(line.rstrip("\n").split("\t")[1:])
+            elif line.startswith("%%CELL_BARCODES"):
+                barcodes.extend(line.rstrip("\n").split("\t")[1:])
+            elif line.startswith("%%"):
+                continue  # %%MatrixMarket header
+            else:
+                # Dimensions line: rows cols nnz
+                parts = line.strip().split("\t")
+                n_rows, n_cols, nnz = int(parts[0]), int(parts[1]), int(parts[2])
+                break
+
+    if nnz == 0:
+        raise ValueError(f"No dimensions line found in {path}")
+
+    print(f"    Format: custom MatrixMarket ({n_rows} genes x {n_cols} cells, {nnz:,} nonzeros)")
+    print(f"    Parsed {len(genes)} gene names, {len(barcodes)} cell barcodes")
+
+    # Read coordinate data in chunks to limit peak memory (8GB constraint)
+    import pandas as pd
+
+    chunk_size = 5_000_000
+    row_chunks: list[np.ndarray] = []
+    col_chunks: list[np.ndarray] = []
+    data_chunks: list[np.ndarray] = []
+
+    reader = pd.read_csv(
+        path,
+        sep="\t",
+        skiprows=header_lines,
+        header=None,
+        names=["row", "col", "val"],
+        dtype={"row": np.int32, "col": np.int32, "val": np.int32},
+        chunksize=chunk_size,
+    )
+    for chunk in reader:
+        row_chunks.append(chunk["row"].values - 1)  # convert to 0-indexed
+        col_chunks.append(chunk["col"].values - 1)
+        data_chunks.append(chunk["val"].values)
+
+    rows = np.concatenate(row_chunks)
+    cols = np.concatenate(col_chunks)
+    data = np.concatenate(data_chunks)
+    del row_chunks, col_chunks, data_chunks
+
+    mat = coo_matrix((data, (rows, cols)), shape=(n_rows, n_cols)).tocsr()
+    del rows, cols, data
+
+    return mat, genes, barcodes
+
+
 def dge_to_h5ad(dge_path: Path, output_path: Path) -> Path:
     """Convert a DGE text file (genes x cells) to h5ad format.
 
-    DGE format: tab-separated, first column is gene name, remaining columns are cell barcodes.
+    Supports two formats:
+    - Custom MatrixMarket with %%GENES/%%CELL_BARCODES headers (GSE151761)
+    - Standard tab-delimited DGE (first column = gene name, remaining = cell barcodes)
     """
     if output_path.exists():
         print(f"  Cached h5ad: {output_path.name}")
@@ -138,15 +216,35 @@ def dge_to_h5ad(dge_path: Path, output_path: Path) -> Path:
     import pandas as pd
 
     print(f"  Converting DGE to h5ad: {dge_path.name}")
-    df = pd.read_csv(dge_path, sep="\t", index_col=0)
-    # DGE is genes x cells — transpose to cells x genes for AnnData
-    adata = ad.AnnData(X=df.T.values, obs=pd.DataFrame(index=df.columns), var=pd.DataFrame(index=df.index))
+
+    is_mm = _is_custom_mm(dge_path)
+
+    if is_mm:
+        mat, genes, barcodes = _parse_custom_mm(dge_path)
+        # Matrix is genes x cells — transpose to cells x genes for AnnData
+        X = mat.T.tocsr()
+        del mat
+        adata = ad.AnnData(
+            X=X,
+            obs=pd.DataFrame(index=pd.Index(barcodes, dtype="object")),
+            var=pd.DataFrame(index=pd.Index(genes, dtype="object")),
+        )
+    else:
+        # Standard tab-delimited DGE format
+        df = pd.read_csv(dge_path, sep="\t", index_col=0)
+        # DGE is genes x cells — transpose to cells x genes for AnnData
+        adata = ad.AnnData(
+            X=df.T.values,
+            obs=pd.DataFrame(index=pd.Index(df.columns, dtype="object")),
+            var=pd.DataFrame(index=pd.Index(df.index, dtype="object")),
+        )
+
     adata.obs_names_make_unique()
     adata.var_names_make_unique()
 
     # Store source metadata
     adata.uns["source_file"] = dge_path.name
-    adata.uns["source_format"] = "dge_text"
+    adata.uns["source_format"] = "custom_mm" if is_mm else "dge_text"
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     adata.write_h5ad(output_path)
@@ -181,9 +279,11 @@ def mtx_to_h5ad(
     # Read sparse matrix (genes x cells in MTX format)
     X = mmread(str(mtx_path)).T.tocsr()  # transpose to cells x genes
 
-    # Read metadata
+    # Read metadata — force object dtype on indices to avoid ArrowStringArray issues
     obs = pd.read_csv(coldata_path, sep="\t", index_col=0)
     var = pd.read_csv(rowdata_path, sep="\t", index_col=0)
+    obs.index = obs.index.astype("object")
+    var.index = var.index.astype("object")
 
     adata = ad.AnnData(X=X, obs=obs, var=var)
     adata.obs_names_make_unique()
