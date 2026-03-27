@@ -94,6 +94,11 @@ COMPOUND_PK: dict[str, dict] = {
     "vorinostat": {"route": "oral", "mol_type": "small_molecule", "gut_relevant": True},
     "trichostatin-a": {"route": "oral", "mol_type": "small_molecule", "gut_relevant": True},
     "ontunisertib": {"route": "oral", "mol_type": "small_molecule", "gut_relevant": True},
+    "apremilast": {"route": "oral", "mol_type": "small_molecule", "gut_relevant": True},
+    "roflumilast": {"route": "oral", "mol_type": "small_molecule", "gut_relevant": True},
+    "erlotinib": {"route": "oral", "mol_type": "small_molecule", "gut_relevant": True},
+    "gefitinib": {"route": "oral", "mol_type": "small_molecule", "gut_relevant": True},
+    "harmine": {"route": "oral", "mol_type": "small_molecule", "gut_relevant": True},
     # Biologics (IV/SC)
     "duvakitug": {"route": "iv", "mol_type": "biologic", "gut_relevant": True},
     "tulisokibart": {"route": "iv", "mol_type": "biologic", "gut_relevant": True},
@@ -174,6 +179,31 @@ CURATED_COMPOUNDS: dict[str, dict] = {
         "target_genes": "TGFBR1",
         "groups": "investigational",
         "indication": "Phase 2a for stricturing CD (STENOVA met endpoints)",
+    },
+    "apremilast": {
+        "target_genes": "PDE4A;PDE4B;PDE4C;PDE4D",
+        "groups": "approved",
+        "indication": "Approved for psoriatic arthritis; anti-fibrotic via cAMP elevation",
+    },
+    "roflumilast": {
+        "target_genes": "PDE4A;PDE4B;PDE4C;PDE4D",
+        "groups": "approved",
+        "indication": "Approved for severe COPD; reduces TGF-beta-driven fibrosis",
+    },
+    "erlotinib": {
+        "target_genes": "EGFR",
+        "groups": "approved",
+        "indication": "Approved for NSCLC/pancreatic cancer; anti-fibrotic in lung/liver models",
+    },
+    "gefitinib": {
+        "target_genes": "EGFR",
+        "groups": "approved",
+        "indication": "Approved for NSCLC; anti-fibrotic in lung/kidney fibrosis models",
+    },
+    "harmine": {
+        "target_genes": "TWIST1;DYRK1A",
+        "groups": "experimental",
+        "indication": "TWIST1 inhibitor; anti-fibrotic in CD mouse model (PMID 39024569)",
     },
 }
 

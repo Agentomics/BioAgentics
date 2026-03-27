@@ -13,7 +13,8 @@ from bioagentics.data.hmp2_download import (
 
 def test_data_files_structure():
     """DATA_FILES dict has required keys and values."""
-    required_keys = {"metadata", "taxonomic", "pathways", "metabolomics"}
+    required_keys = {"metadata", "taxonomic", "pathways", "metabolomics",
+                      "transcriptomics", "serology", "dysbiosis"}
     assert required_keys == set(DATA_FILES.keys())
 
     for key, info in DATA_FILES.items():

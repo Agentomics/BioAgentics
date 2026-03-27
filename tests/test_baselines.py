@@ -89,7 +89,7 @@ class TestRunAllBaselines:
             "species": _make_marker_data(windows, "diversity", seed=44),
         }
         results = run_all_baselines(data, windows)
-        assert len(results) == 3
+        assert len(results) == 4
 
 
 class TestCompareModels:
