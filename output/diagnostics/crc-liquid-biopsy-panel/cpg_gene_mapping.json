@@ -1,49 +1,34 @@
 {
   "selected_cpgs": [
     {
-      "cpg_id": "cg22418909",
-      "gene_name": "SFRP1;SFRP1",
+      "cpg_id": "cg24319902",
+      "gene_name": "SFRP1",
       "cmcd_genes": [
         "SFRP1"
       ],
+      "is_cmcd": true,
       "individual_auc": 1.0,
       "rank": 1
     },
     {
-      "cpg_id": "cg20611276",
-      "gene_name": "EYA4;EYA4;EYA4",
+      "cpg_id": "cg20275528",
+      "gene_name": "SEPT9",
       "cmcd_genes": [
-        "EYA4"
+        "SEPT9"
       ],
+      "is_cmcd": true,
       "individual_auc": 1.0,
       "rank": 2
     },
     {
-      "cpg_id": "cg06132028",
-      "gene_name": "EYA4;EYA4;EYA4",
+      "cpg_id": "cg15246805",
+      "gene_name": "EYA4",
       "cmcd_genes": [
         "EYA4"
       ],
+      "is_cmcd": true,
       "individual_auc": 1.0,
       "rank": 3
-    },
-    {
-      "cpg_id": "cg21296676",
-      "gene_name": "EYA4;EYA4;EYA4",
-      "cmcd_genes": [
-        "EYA4"
-      ],
-      "individual_auc": 1.0,
-      "rank": 4
-    },
-    {
-      "cpg_id": "cg17664182",
-      "gene_name": "CRTAC1",
-      "cmcd_genes": [
-        "TAC1"
-      ],
-      "individual_auc": 1.0,
-      "rank": 5
     },
     {
       "cpg_id": "cg25927227",
@@ -51,17 +36,49 @@
       "cmcd_genes": [
         "SFRP1"
       ],
+      "is_cmcd": true,
+      "individual_auc": 1.0,
+      "rank": 4
+    },
+    {
+      "cpg_id": "cg11942956",
+      "gene_name": "EYA4",
+      "cmcd_genes": [
+        "EYA4"
+      ],
+      "is_cmcd": true,
+      "individual_auc": 1.0,
+      "rank": 5
+    },
+    {
+      "cpg_id": "cg04917226",
+      "gene_name": "TWIST1",
+      "cmcd_genes": [
+        "TWIST1"
+      ],
+      "is_cmcd": true,
       "individual_auc": 1.0,
       "rank": 6
     },
     {
-      "cpg_id": "cg00519829",
-      "gene_name": "CRTAC1",
+      "cpg_id": "cg12152919",
+      "gene_name": "EYA4",
       "cmcd_genes": [
-        "TAC1"
+        "EYA4"
       ],
+      "is_cmcd": true,
       "individual_auc": 1.0,
       "rank": 7
+    },
+    {
+      "cpg_id": "cg03202804",
+      "gene_name": "SFRP2",
+      "cmcd_genes": [
+        "SFRP2"
+      ],
+      "is_cmcd": true,
+      "individual_auc": 1.0,
+      "rank": 8
     },
     {
       "cpg_id": "cg11354906",
@@ -69,71 +86,9 @@
       "cmcd_genes": [
         "SFRP2"
       ],
-      "individual_auc": 1.0,
-      "rank": 8
-    },
-    {
-      "cpg_id": "cg09649901",
-      "gene_name": "EYA4;EYA4;EYA4",
-      "cmcd_genes": [
-        "EYA4"
-      ],
+      "is_cmcd": true,
       "individual_auc": 1.0,
       "rank": 9
-    },
-    {
-      "cpg_id": "cg12840719",
-      "gene_name": "CDKN2A;CDKN2A;CDKN2A",
-      "cmcd_genes": [
-        "CDKN2A"
-      ],
-      "individual_auc": 1.0,
-      "rank": 10
-    },
-    {
-      "cpg_id": "cg05164933",
-      "gene_name": "SFRP2",
-      "cmcd_genes": [
-        "SFRP2"
-      ],
-      "individual_auc": 1.0,
-      "rank": 11
-    },
-    {
-      "cpg_id": "cg24115032",
-      "gene_name": "APCDD1L",
-      "cmcd_genes": [
-        "APC"
-      ],
-      "individual_auc": 1.0,
-      "rank": 12
-    },
-    {
-      "cpg_id": "cg21291134",
-      "gene_name": "APCS",
-      "cmcd_genes": [
-        "APC"
-      ],
-      "individual_auc": 1.0,
-      "rank": 13
-    },
-    {
-      "cpg_id": "cg05457563",
-      "gene_name": "APC2",
-      "cmcd_genes": [
-        "APC"
-      ],
-      "individual_auc": 1.0,
-      "rank": 14
-    },
-    {
-      "cpg_id": "cg12152919",
-      "gene_name": "EYA4;EYA4;EYA4",
-      "cmcd_genes": [
-        "EYA4"
-      ],
-      "individual_auc": 1.0,
-      "rank": 15
     },
     {
       "cpg_id": "cg10942078",
@@ -141,35 +96,19 @@
       "cmcd_genes": [
         "SFRP2"
       ],
+      "is_cmcd": true,
       "individual_auc": 1.0,
-      "rank": 16
+      "rank": 10
     },
     {
-      "cpg_id": "cg23487201",
-      "gene_name": "APCDD1L",
+      "cpg_id": "cg27366815",
+      "gene_name": "ZNF304",
       "cmcd_genes": [
-        "APC"
+        "ZNF304"
       ],
+      "is_cmcd": true,
       "individual_auc": 1.0,
-      "rank": 17
-    },
-    {
-      "cpg_id": "cg23207990",
-      "gene_name": "SFRP2",
-      "cmcd_genes": [
-        "SFRP2"
-      ],
-      "individual_auc": 1.0,
-      "rank": 18
-    },
-    {
-      "cpg_id": "cg10169241",
-      "gene_name": "APC2",
-      "cmcd_genes": [
-        "APC"
-      ],
-      "individual_auc": 1.0,
-      "rank": 19
+      "rank": 11
     },
     {
       "cpg_id": "cg23292160",
@@ -177,21 +116,105 @@
       "cmcd_genes": [
         "SFRP2"
       ],
+      "is_cmcd": true,
+      "individual_auc": 1.0,
+      "rank": 12
+    },
+    {
+      "cpg_id": "cg01162672",
+      "gene_name": "EYA4",
+      "cmcd_genes": [
+        "EYA4"
+      ],
+      "is_cmcd": true,
+      "individual_auc": 1.0,
+      "rank": 13
+    },
+    {
+      "cpg_id": "cg01805282",
+      "gene_name": "EYA4",
+      "cmcd_genes": [
+        "EYA4"
+      ],
+      "is_cmcd": true,
+      "individual_auc": 1.0,
+      "rank": 14
+    },
+    {
+      "cpg_id": "cg17486234",
+      "gene_name": "SFRP1",
+      "cmcd_genes": [
+        "SFRP1"
+      ],
+      "is_cmcd": true,
+      "individual_auc": 1.0,
+      "rank": 15
+    },
+    {
+      "cpg_id": "cg20980055",
+      "gene_name": "EYA4",
+      "cmcd_genes": [
+        "EYA4"
+      ],
+      "is_cmcd": true,
+      "individual_auc": 1.0,
+      "rank": 16
+    },
+    {
+      "cpg_id": "cg23121156",
+      "gene_name": "SFRP2",
+      "cmcd_genes": [
+        "SFRP2"
+      ],
+      "is_cmcd": true,
+      "individual_auc": 1.0,
+      "rank": 17
+    },
+    {
+      "cpg_id": "cg14515453",
+      "gene_name": "TWIST1",
+      "cmcd_genes": [
+        "TWIST1"
+      ],
+      "is_cmcd": true,
+      "individual_auc": 1.0,
+      "rank": 18
+    },
+    {
+      "cpg_id": "cg20611276",
+      "gene_name": "EYA4",
+      "cmcd_genes": [
+        "EYA4"
+      ],
+      "is_cmcd": true,
+      "individual_auc": 1.0,
+      "rank": 19
+    },
+    {
+      "cpg_id": "cg12973591",
+      "gene_name": "TFPI2",
+      "cmcd_genes": [
+        "TFPI2"
+      ],
+      "is_cmcd": true,
       "individual_auc": 1.0,
       "rank": 20
     }
   ],
   "cmcd_genes_represented": [
-    "APC",
-    "CDKN2A",
     "EYA4",
+    "SEPT9",
     "SFRP1",
     "SFRP2",
-    "TAC1"
+    "TFPI2",
+    "TWIST1",
+    "ZNF304"
   ],
   "cmcd_genes_missing": [
+    "APC",
     "BMP3",
     "C20orf194",
+    "CDKN2A",
     "GATA4",
     "GATA5",
     "LIFR",
@@ -200,15 +223,17 @@
     "RASSF1",
     "RUNX3",
     "SDC2",
-    "SEPT9",
-    "TFPI2",
-    "TWIST1",
-    "VIM",
-    "ZNF304"
+    "TAC1",
+    "VIM"
   ],
   "n_selected": 20,
-  "n_cmcd_genes_in_selection": 6,
+  "n_cmcd_genes_in_selection": 7,
   "n_cmcd_genes_total": 21,
-  "source": "Methylation classifier feature selection (top 20 by individual AUC from 298 cMCD candidates)",
+  "recovered_genes_in_top20": {
+    "BMP3": false,
+    "MGMT": false,
+    "RASSF1": false
+  },
+  "source": "Methylation classifier feature selection (top 20 by individual AUC from cMCD candidates)",
   "dataset": "GSE149282 cfDNA (12 CRC, 12 control)"
 }
