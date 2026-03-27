@@ -1,3 +1,4 @@
+import logging
 import os
 
 from sqlalchemy import (
@@ -12,6 +13,8 @@ from sqlalchemy import (
     text,
 )
 from sqlalchemy.orm import sessionmaker
+
+log = logging.getLogger(__name__)
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./db.sqlite")
 
@@ -169,7 +172,7 @@ def init_db():
                 conn.execute(text("DROP TABLE IF EXISTS agents"))
                 conn.commit()
         except Exception:
-            pass
+            log.warning("Migration failed: agents table PK upgrade", exc_info=True)
         # Migrate runs table: add cache token columns if missing
         try:
             cols = conn.execute(text("PRAGMA table_info(runs)")).fetchall()
@@ -179,7 +182,7 @@ def init_db():
                 conn.execute(text("ALTER TABLE runs ADD COLUMN cache_creation_tokens INTEGER"))
                 conn.commit()
         except Exception:
-            pass
+            log.warning("Migration failed: runs cache token columns", exc_info=True)
         # Migrate projects table: add plan_content and findings_content if missing
         try:
             cols = conn.execute(text("PRAGMA table_info(projects)")).fetchall()
@@ -189,7 +192,7 @@ def init_db():
                 conn.execute(text("ALTER TABLE projects ADD COLUMN findings_content TEXT"))
                 conn.commit()
         except Exception:
-            pass
+            log.warning("Migration failed: projects plan/findings columns", exc_info=True)
         # Migrate projects table: add plain_summary and impact_score if missing
         try:
             cols = conn.execute(text("PRAGMA table_info(projects)")).fetchall()
@@ -199,7 +202,7 @@ def init_db():
                 conn.execute(text("ALTER TABLE projects ADD COLUMN impact_score TEXT"))
                 conn.commit()
         except Exception:
-            pass
+            log.warning("Migration failed: projects summary/impact columns", exc_info=True)
         # Migrate projects table: add novelty_summary and blind_spots if missing
         try:
             cols = conn.execute(text("PRAGMA table_info(projects)")).fetchall()
@@ -209,7 +212,7 @@ def init_db():
                 conn.execute(text("ALTER TABLE projects ADD COLUMN blind_spots TEXT"))
                 conn.commit()
         except Exception:
-            pass
+            log.warning("Migration failed: projects novelty/blindspots columns", exc_info=True)
         # Migrate all tables: add division column if missing
         for tbl_name in ("journal", "tasks", "runs", "projects"):
             try:
@@ -220,7 +223,7 @@ def init_db():
                     conn.execute(text(f"UPDATE {tbl_name} SET division = 'cancer' WHERE division IS NULL"))
                     conn.commit()
             except Exception:
-                pass
+                log.warning("Migration failed: %s division column", tbl_name, exc_info=True)
         # Migrate tasks table: add blocked_cycles if missing
         try:
             cols = conn.execute(text("PRAGMA table_info(tasks)")).fetchall()
@@ -231,5 +234,5 @@ def init_db():
                 )
                 conn.commit()
         except Exception:
-            pass
+            log.warning("Migration failed: tasks blocked_cycles column", exc_info=True)
     metadata.create_all(engine)
