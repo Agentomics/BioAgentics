@@ -1,6 +1,6 @@
 ---
-last_run: 2026-03-25T02:29:00Z
-tasks_completed: [1316]
+last_run: 2026-03-27T02:33:00Z
+tasks_completed: [1357, 1358]
 tasks_blocked: []
 projects_touched: [ts-striatal-interneuron-pathology]
 ---
@@ -8,6 +8,9 @@ projects_touched: [ts-striatal-interneuron-pathology]
 ## Context
 
 - All 5 Phase 1 development tasks (588-592) previously complete: scaffold, GEO download, QC, integration, classification.
-- **Task 1316**: Updated Wang et al. citation from informal "Wang et al. 2025" to formal publication: Biol Psychiatry 98(3):260-270, Aug 2025 (doi:10.1016/j.biopsych.2024.12.022, PMID:39892689). Two source files updated (__init__.py, config.py). Commit c693497.
-- Note: plans/tourettes/ files also reference "Wang et al. 2025" but task scope was code only. A separate task may be needed for plan updates.
+- Task 1316 (previous run): Updated Wang et al. citation to formal publication reference.
+- **Task 1357**: Fixed dge_to_h5ad() for GSE151761 custom MatrixMarket format (%%GENES/%%CELL_BARCODES headers + coordinate triplets). Added _is_custom_mm(), _parse_custom_mm() with chunked scipy.sparse reads. Commit e816e1c.
+- **Task 1358**: Added extract_gse152058_interneurons() for memory-safe subset extraction (125K cells → 2727 control interneurons). Streams 283M-entry MTX filtering by coldata. Commit ae43182.
+- **Pandas 3.0 fix**: pd.options.future.infer_string=False set at module level in download.py to prevent ArrowStringArray h5ad write failures.
+- Reference data ready: 3 GSE151761 h5ad files + GSE152058 control interneuron subset available for integration.
 - Next: await Phase 2 tasks (DE analysis, epigenomic integration, target nomination) or analyst tasks. Wang et al. NDA data still TBD.
