@@ -2,57 +2,66 @@
   "corrected_loo_cv": {
     "auc": 0.8819444444444444,
     "sensitivity_at_95spec": 0.75,
-    "note": "Feature selection performed INSIDE each LOO fold (no data leakage)"
+    "method": "LOO-CV with feature selection INSIDE each fold (LogisticRegressionCV)",
+    "max_features_per_fold": 20,
+    "n_candidate_features": 298,
+    "n_samples": 24
   },
-  "bootstrap_validation": {
-    "n_bootstrap": 10,
+  "original_loo_cv": {
+    "auc": 0.979,
+    "sensitivity_at_95spec": 0.833,
+    "method": "LOO-CV with feature selection OUTSIDE (leaked)",
+    "note": "From methylation_classifier.py - feature selection on full dataset before CV"
+  },
+  "bootstrap_ci": {
+    "method": "Bootstrap CI from LOO-CV prediction-label pairs",
+    "n_valid_resamples": 1000,
     "auc": {
-      "mean": 0.8753251998975685,
-      "median": 0.908994708994709,
-      "std": 0.1047488491031723,
-      "ci_2.5": 0.6385279605263158,
-      "ci_97.5": 0.9494755244755245
+      "mean": 0.8818524012578338,
+      "median": 0.8918067226890756,
+      "std": 0.07448366430317081,
+      "ci_lower": 0.7213616071428571,
+      "ci_upper": 1.0
     },
     "sensitivity_at_95spec": {
-      "mean": 0.6441376678876679,
-      "median": 0.6904761904761905,
-      "std": 0.17287579167696784,
-      "ci_2.5": 0.2815625,
-      "ci_97.5": 0.8307692307692308
+      "mean": 0.7474445059197768,
+      "median": 0.75,
+      "std": 0.1309931398570605,
+      "ci_lower": 0.46153846153846156,
+      "ci_upper": 1.0
     }
   },
-  "permutation_test": {
-    "n_permutations": 5,
+  "oob_bootstrap": {
+    "method": "Out-of-bag bootstrap (train on resample, test on OOB)",
+    "n_valid_resamples": 999,
+    "auc": {
+      "mean": 1.0,
+      "median": 1.0,
+      "std": 0.0,
+      "ci_lower": 1.0,
+      "ci_upper": 1.0
+    },
+    "sensitivity_at_95spec": {
+      "mean": 1.0,
+      "median": 1.0,
+      "std": 0.0,
+      "ci_lower": 1.0,
+      "ci_upper": 1.0
+    }
+  },
+  "permutation_null": {
+    "n_permutations": 500,
     "null_auc": {
-      "mean": 0.24166666666666664,
-      "median": 0.2638888888888889,
-      "std": 0.16915959664116742,
-      "ci_2.5": 0.021527777777777785,
-      "ci_97.5": 0.45624999999999993
+      "mean": 0.4282361111111111,
+      "std": 0.17893320868775672,
+      "p95": 0.7083333333333333
     },
     "null_sensitivity_at_95spec": {
-      "mean": 0.016666666666666666,
-      "median": 0.0,
-      "std": 0.03333333333333333
+      "mean": 0.05183333333333333,
+      "std": 0.10175938395166426,
+      "p95": 0.25
     }
   },
-  "comparison_to_original": {
-    "original_auc": 0.979,
-    "original_sens_at_95spec": 0.833,
-    "corrected_auc": 0.8819444444444444,
-    "corrected_sens_at_95spec": 0.75,
-    "auc_drop": 0.09705555555555556,
-    "note": "Original had feature selection OUTSIDE LOO loop (data leakage)"
-  },
-  "statistical_significance": {
-    "z_score": 3.7850514572695366,
-    "permutation_p_approx": "< 0.2"
-  },
-  "data": {
-    "n_samples": 24,
-    "n_features_total": 298,
-    "n_features_selected_per_fold": 20,
-    "n_crc": 12,
-    "n_control": 12
-  }
+  "p_value_auc": 0.0,
+  "overfitting_assessment": "MODERATE overfitting detected. Original AUC (leaked): 0.979 -> Corrected AUC: 0.882 (drop: 0.097). Bootstrap 95% CI: [0.721, 1.000]. OOB bootstrap median AUC: 1.000. Permutation p-value: 0.0000."
 }
