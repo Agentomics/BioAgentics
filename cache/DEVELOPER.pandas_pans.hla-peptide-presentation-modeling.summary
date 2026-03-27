@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-27T00:10:00Z
+last_run: 2026-03-27T00:30:00Z
 tasks_completed: []
 tasks_blocked: [615, 616]
 projects_touched: [hla-peptide-presentation-modeling]
@@ -8,24 +8,21 @@ projects_touched: [hla-peptide-presentation-modeling]
 ## Context
 
 - hla-peptide-presentation-modeling: All 6 phases implemented, 40 tests passing
-  - This run accomplishments:
-    1. Enn/Mrp IEDB predictions: 999 unique peptides × 7 alleles = 6,024 predictions (6 strong, 32 weak binders)
-    2. M5/M18 proteome fix: replaced UniParc FASTA with UniProtKB reviewed entries (M5: 314 proteins, M18: 418 proteins)
-    3. VF false positive bug fix: "M protein" matched "system protein" substring. Now uses regex word-boundary. M5: 5→0 VF, M18: 13→6 VF
-    4. Phase 4+5 re-run with expanded data: 17 differential peptides (up from 10), 100% VF enrichment
-  - KEY FINDING: Enn/Mrp M-like surface proteins are strongest differential binders (FC 19-21x via DRB1*01:01)
-    - Serotype breakdown: enn_mrp: 7, M49: 4, M1: 6
-    - This supports hypothesis that M-like proteins are primary PANDAS autoantigens
-  - Phase 5: 0 mimicry overlap (expected—mimicry proteins not in VF-only prediction subset)
-  - M5 reviewed set lacks M protein (emm gene) entry — only 314 Swiss-Prot proteins, 0 VF
-  - M18 VF-only IEDB predictions running in background (2,940 VF peptides × 7 alleles)
-    - Resume-safe: check for m18_*_mhc_ii.tsv files, re-merge and re-run Phase 4+5
-  - Stale M5 prediction files deleted (were based on false VF data)
-- Blocked tasks: 615 (AlphaFold not installed), 616 (GROMACS not installed)
-- MCP API server unreachable — journal written directly to SQLite
-- DB was reset: old task IDs 611-619 no longer exist, no active developer tasks
+  - This run: Enn/Mrp + M18 IEDB predictions, M5/M18 proteome fix, VF false-positive bug fix, Phase 4+5 re-run
+  - Bug fix: "M protein" VF keyword matched "system protein" substring → regex word-boundary detection
+  - M5/M18 proteomes re-downloaded from UniProtKB (replaced UniParc with no annotations)
+    - M5: 314 reviewed proteins, 0 VF (emm gene product not in Swiss-Prot reviewed set)
+    - M18: 418 reviewed proteins, 6 VF (SpeB, C5a, SLO, SpeA, SpeC, Hyaluronan synthase)
+  - IEDB predictions completed: Enn/Mrp (6,024) + M18 VF-only (17,730) → merged 35,814 total
+  - Phase 4 FINAL: 32 differential peptides (≥10x FC), 100% VF enrichment
+    - TOP: M18 Streptolysin O (FC 22-31x via DRB1*04:01, DRB1*01:01, DRB1*07:01) — 15 peptides
+    - Enn/Mrp M-like proteins (FC 16-21x via DRB1*01:01) — 7 peptides
+    - M49 Exodeoxyribonuclease (FC 12-18x) — 4 peptides
+    - M1 SpeB (FC 10-16x) — 6 peptides
+  - Phase 5: 0 mimicry overlap (expected—VF-only predictions don't cover mimicry protein set)
+- Blocked: 615 (AlphaFold), 616 (GROMACS)
+- DB reset: old task IDs gone, no active developer tasks
 - Next priorities:
-  1. Check M18 prediction completion, merge, re-run Phase 4+5
-  2. Full-scale predictions (all proteins, not VF-only) needed for mimicry overlap
-  3. Consider running NetMHCIIpan locally for scale (IEDB API too slow for full proteomes)
-  4. Tasks 615/616 still blocked on compute provisioning
+  1. Full-proteome predictions (all proteins not just VF) for mimicry overlap analysis
+  2. Local NetMHCIIpan installation for scale (IEDB API too slow, DQA1 limited)
+  3. Tasks 615/616 blocked on compute provisioning
