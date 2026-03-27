@@ -1,0 +1,120 @@
+{
+  "phase": "1.2",
+  "description": "Head-to-head comparison of epithelial vs immune pathway scores",
+  "cv_method": "leave-one-study-out",
+  "classifier": "logistic regression (single feature)",
+  "pathway_aucs": {
+    "epithelial_reserve": {
+      "auc": 0.5581,
+      "auc_95ci": [
+        0.4367,
+        0.6792
+      ],
+      "n_genes": 6
+    },
+    "tnf_signaling": {
+      "auc": 0.6645,
+      "auc_95ci": [
+        0.5407,
+        0.7754
+      ],
+      "n_genes": 15
+    },
+    "il23_th17": {
+      "auc": 0.4802,
+      "auc_95ci": [
+        0.3485,
+        0.6022
+      ],
+      "n_genes": 13
+    },
+    "integrin_trafficking": {
+      "auc": 0.6907,
+      "auc_95ci": [
+        0.5696,
+        0.7977
+      ],
+      "n_genes": 12
+    }
+  },
+  "delong_tests": {
+    "epithelial_vs_tnf_signaling": {
+      "auc_a": 0.5581,
+      "auc_b": 0.6645,
+      "diff": -0.1064,
+      "z": -1.3962,
+      "p_value": 0.162669
+    },
+    "epithelial_vs_il23_th17": {
+      "auc_a": 0.5581,
+      "auc_b": 0.4802,
+      "diff": 0.0779,
+      "z": 1.0184,
+      "p_value": 0.308473
+    },
+    "epithelial_vs_integrin_trafficking": {
+      "auc_a": 0.5581,
+      "auc_b": 0.6907,
+      "diff": -0.1326,
+      "z": -1.5865,
+      "p_value": 0.112635
+    }
+  },
+  "target_outperforms_by_005": false,
+  "gene_sets": {
+    "epithelial_reserve": [
+      "PGC",
+      "BPIFB1",
+      "CPO",
+      "GAS1",
+      "CASP6",
+      "SNX3"
+    ],
+    "tnf_signaling": [
+      "TNFRSF1A",
+      "TNFRSF1B",
+      "NFKB1",
+      "NFKB2",
+      "RELA",
+      "TRAF2",
+      "TRADD",
+      "RIPK1",
+      "BIRC2",
+      "BIRC3",
+      "TNFAIP3",
+      "IKBKG",
+      "MAP3K7",
+      "CHUK",
+      "IKBKB"
+    ],
+    "il23_th17": [
+      "IL23R",
+      "IL23A",
+      "IL12RB1",
+      "RORC",
+      "IL17A",
+      "IL17F",
+      "IL22",
+      "IL21",
+      "STAT3",
+      "CCR6",
+      "IL6ST",
+      "TYK2",
+      "JAK2"
+    ],
+    "integrin_trafficking": [
+      "ITGA4",
+      "ITGB7",
+      "MADCAM1",
+      "VCAM1",
+      "ICAM1",
+      "SELL",
+      "SELP",
+      "CCL25",
+      "CCR9",
+      "GPR15",
+      "ITGAE",
+      "ITGB1"
+    ]
+  }
+}
