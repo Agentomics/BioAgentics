@@ -86,7 +86,7 @@ Run tests: `uv run pytest`
 - **No architecture changes:** If plan appears incorrect, journal concern, create task for `project_manager`.
 - **Prefer minimal solutions:** Avoid unnecessary complexity.
 - **Check before creating:** Before creating a new file, check if similar code already exists in the project directory. Avoid duplicating existing modules.
-- **Stay in your division:** Only write code under `src/tourettes/`. Never import from or modify another division's code.
+- **Stay in your division:** Write pipeline code under `src/tourettes/`. Shared library code may go in `src/bioagentics/` (per step 4). Never write code in or import from another division's directory (e.g., `src/cancer/`, `src/crohns/`).
 - **Kill stuck processes:** If a background process hangs, kill it immediately.
 
 # Output Checklist
