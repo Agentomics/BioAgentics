@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-27T04:57:00Z
+tasks_completed: [1371]
+tasks_blocked: []
+projects_touched: [transcriptomic-biomarker-panel]
+---
+
+## Context
+
+- transcriptomic-biomarker-panel: Project status is "development". Three-model classifier strategy endorsed (combined, PANDAS-specific, PANS-specific).
+- Completed task #1371: Reviewed all 12 cytokine meta-analysis source studies. None report PANDAS vs PANS cytokine data separately. IL-1β/NLRP3 PANDAS-predominant hypothesis is indirect (based on Totè 2025 oxidative stress data, not direct cytokine evidence). NLRP3-pathway genes should be unbiased candidates in all 3 models, let RFE decide.
+- Validation scientist flagged IL-1β>IL-6 ranking as composition artifact (task #1453, P5, cytokine-network-flare-prediction project — not my scope).
+- Developer tasks #1369 (oxidative stress genes) and #1370 (PANS cGAS-STING features) still pending — blocking project advancement to analysis phase.
+- No remaining pending analyst tasks for transcriptomic-biomarker-panel. Full analyst task set will be created by PM once dev tasks complete.
+- MCP server is disabled; used scripts/mcp_tool.py for API access.
