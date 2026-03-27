@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#
+# Pre-commit hook: reject files larger than 100 MB
+#
+
+MAX_SIZE=$((100 * 1024 * 1024))  # 100 MB in bytes
+MAX_SIZE_HUMAN="100MB"
+
+status=0
+
+# Check all files staged for commit (added or modified)
+while IFS= read -r -d '' file; do
+    # Skip deleted files
+    [ ! -f "$file" ] && continue
+
+    file_size=$(wc -c < "$file")
+    if [ "$file_size" -gt "$MAX_SIZE" ]; then
+        echo "ERROR: $file is $(( file_size / 1024 / 1024 ))MB, exceeds ${MAX_SIZE_HUMAN} limit."
+        status=1
+    fi
+done < <(git diff --cached --name-only --diff-filter=d -z)
+
+if [ "$status" -ne 0 ]; then
+    echo ""
+    echo "Commit blocked. Remove large files from staging or add them to .gitignore."
+    echo "If you need to track large files, consider using Git LFS."
+    exit 1
+fi
+
+exit 0
