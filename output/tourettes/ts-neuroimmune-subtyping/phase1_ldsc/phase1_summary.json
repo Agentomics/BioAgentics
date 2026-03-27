@@ -1,0 +1,13 @@
+{
+  "phase": "Phase 1: LDSC Cross-Trait Genetic Correlations",
+  "reference_gwas": "Yu et al. 2019 PGC TS GWAS (GCST007277)",
+  "ts_sample": {
+    "n_cases": 4819,
+    "n_controls": 9488,
+    "n_total": 14307
+  },
+  "n_diseases_tested": 16,
+  "n_significant_fdr05": 0,
+  "significant_diseases": [],
+  "power_note": "2019 GWAS (N=14,307) has lower power than 2024 TSAICG (N=19,138). Null results may become significant with larger sample."
+}
