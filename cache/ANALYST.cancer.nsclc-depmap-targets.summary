@@ -1,12 +1,15 @@
 ---
-last_run: 2026-03-23T06:16:00Z
-tasks_completed: [990]
+last_run: 2026-03-27T01:40:00Z
+tasks_completed: [1351]
 tasks_blocked: []
 projects_touched: [nsclc-depmap-targets]
 ---
 
 ## Context
 
-- nsclc-depmap-targets: Project status is **validation**. Completed direction-filtered composite rankings verification (task #990, journal #1900). All 5 checks PASS: vulnerability rankings have only negative effects, release rankings have only positive effects, KP false positives (MDM2/MDM4/ERBB3/PSMB7/PRKACA) removed, KL 7 druggable targets preserved, unfiltered file retained.
-- Validation scientist task #987 is pending — validating the 7 KL vulnerability targets (MDM2, MDM4, PSMB7, STAT3, ERBB3, SMARCA2, IGF1R).
-- No pending analyst tasks remain for nsclc-depmap-targets. Awaiting validation stage completion.
+- nsclc-depmap-targets: Project status is **validation**. Completed AZD0095/SLC16A3 drug mapping investigation (task #1351, journal #2358).
+- AZD0095 confirmed as AstraZeneca MCT4 inhibitor (PMID:36525250, IC50=1.3nM, >1000x MCT1 selectivity). Stage: preclinical (no registered Phase 1 trial found).
+- Added SLC16A3→AZD0095 to DRUG_TARGET_MAP and gene_drug_matches.csv. Recomputed composite scores.
+- SLC16A3 now ranks #3 KL vulnerability (50.83), #3 KP (44.65), #4 KOnly (40.09) — up from #13 KL (30.83) before drug bonus.
+- Created validation task #1442 for validation_scientist to verify the update.
+- No remaining pending analyst tasks for nsclc-depmap-targets.
