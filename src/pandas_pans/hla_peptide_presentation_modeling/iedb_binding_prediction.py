@@ -148,8 +148,9 @@ def load_peptides_sampled(
     with open(peptide_tsv) as f:
         reader = csv.DictReader(f, delimiter="\t")
         for row in reader:
-            pep = row["peptide"]
-            if pep in seen:
+            # Handle both old schema (sequence/source_*) and new schema (peptide/protein_*)
+            pep = row.get("peptide") or row.get("sequence", "")
+            if not pep or pep in seen:
                 continue
             is_vf = row.get("is_virulence_factor", "False") == "True"
             if virulence_only and not is_vf:
@@ -157,8 +158,8 @@ def load_peptides_sampled(
             seen.add(pep)
             peptides.append({
                 "peptide": pep,
-                "protein_accession": row.get("protein_accession", ""),
-                "protein_name": row.get("protein_name", ""),
+                "protein_accession": row.get("protein_accession") or row.get("source_accession", ""),
+                "protein_name": row.get("protein_name") or row.get("source_protein", ""),
                 "is_virulence_factor": is_vf,
             })
             if max_peptides and len(peptides) >= max_peptides:

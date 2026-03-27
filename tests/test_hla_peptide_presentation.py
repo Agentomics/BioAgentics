@@ -192,6 +192,32 @@ class TestIEDBBindingPrediction:
         all_peps = load_peptides_sampled(tsv, virulence_only=False)
         assert len(all_peps) == 4
 
+    def test_load_peptides_old_schema(self, tmp_path):
+        """Test load_peptides_sampled with Phase 2 old-format TSV (sequence/source_*)."""
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            load_peptides_sampled,
+        )
+
+        tsv = tmp_path / "peptides.tsv"
+        tsv.write_text(
+            "sequence\tlength\tposition_start\tposition_end\tsource_protein\tsource_accession\tserotype\tis_virulence_factor\tvirulence_flags\n"
+            "AAAAAAAAAAAAAAAA\t15\t0\t15\tM protein\tP001\tM12\tTrue\tM protein\n"
+            "BBBBBBBBBBBBBBBB\t15\t1\t16\tC5a peptidase\tP002\tM12\tTrue\tC5a peptidase\n"
+            "CCCCCCCCCCCCCCCC\t15\t2\t17\tHypothetical\tP003\tM12\tFalse\t\n"
+        )
+
+        peptides = load_peptides_sampled(tsv)
+        assert len(peptides) == 3
+        assert peptides[0]["peptide"] == "AAAAAAAAAAAAAAAA"
+        assert peptides[0]["protein_name"] == "M protein"
+        assert peptides[0]["protein_accession"] == "P001"
+        assert peptides[0]["is_virulence_factor"] is True
+        assert peptides[2]["is_virulence_factor"] is False
+
+        # virulence_only works with old schema too
+        vf_only = load_peptides_sampled(tsv, virulence_only=True)
+        assert len(vf_only) == 2
+
     def test_api_url_selection_by_mhc_class(self):
         from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
             IEDB_API_URLS,
