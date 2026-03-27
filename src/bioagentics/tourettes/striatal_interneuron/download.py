@@ -21,8 +21,14 @@ import shutil
 from pathlib import Path
 from urllib.parse import urljoin
 
+import pandas as pd
 import requests
 from requests.adapters import HTTPAdapter
+
+# Disable pandas 3.0 Arrow-backed strings to avoid h5ad write failures.
+# anndata's internal categorical conversion produces ArrowStringArray
+# categories that h5py cannot serialize.
+pd.options.future.infer_string = False
 
 from bioagentics.tourettes.striatal_interneuron.config import (
     REFERENCE_DIR,
@@ -318,6 +324,157 @@ def validate_h5ad(path: Path) -> bool:
         return False
 
 
+# Cell types to extract for the reference interneuron atlas
+GSE152058_INTERNEURON_TYPES = [
+    "PV_Interneuron",
+    "GABAergic_Interneuron",
+    "Cholinergic_Interneuron",
+    "FOXP2_Neur",
+]
+
+
+def extract_gse152058_interneurons(
+    mtx_path: Path,
+    coldata_path: Path,
+    rowdata_path: Path,
+    output_path: Path,
+    cell_types: list[str] | None = None,
+    condition: str = "Control",
+) -> Path:
+    """Extract control interneuron cells from GSE152058 without loading full matrix.
+
+    The full MTX (125K cells, 3.6GB) exceeds 8GB RAM when loaded.
+    This streams the MTX coordinate data, keeping only entries for
+    target cells, to produce a small h5ad suitable for integration.
+
+    Args:
+        mtx_path: Sparse matrix file (.mtx), genes x cells
+        coldata_path: Cell metadata TSV (barcodes/observations)
+        rowdata_path: Gene metadata TSV (features/variables)
+        output_path: Destination h5ad path
+        cell_types: Cell types to extract (default: interneuron types)
+        condition: Condition to filter on (default: "Control")
+    """
+    if output_path.exists():
+        print(f"  Cached h5ad: {output_path.name}")
+        return output_path
+
+    import numpy as np
+    import pandas as pd
+
+    if cell_types is None:
+        cell_types = GSE152058_INTERNEURON_TYPES
+
+    # Step 1: Read coldata to identify target cell indices
+    print(f"  Reading coldata to identify {condition} interneurons...")
+    coldata = pd.read_csv(coldata_path, sep="\t", index_col=0)
+    mask = (coldata["Condition"] == condition) & (coldata["CellType"].isin(cell_types))
+    target_positions = set(np.where(mask.values)[0])  # 0-indexed positions
+
+    n_target = len(target_positions)
+    print(f"    Found {n_target} target cells out of {len(coldata)} total")
+    print(f"    Types: {coldata.loc[mask, 'CellType'].value_counts().to_dict()}")
+
+    # Build index remapping: old_col_idx -> new_col_idx (0-based, contiguous)
+    sorted_positions = sorted(target_positions)
+    col_remap = {old: new for new, old in enumerate(sorted_positions)}
+
+    # Extract target cell metadata
+    obs = coldata.iloc[sorted_positions].copy()
+    obs.index = obs.index.astype("object")
+
+    # Read gene metadata
+    var = pd.read_csv(rowdata_path, sep="\t", index_col=0)
+    var.index = var.index.astype("object")
+    n_genes = len(var)
+
+    del coldata, mask
+
+    # Step 2: Stream MTX file, keeping only target cell entries
+    print(f"  Streaming MTX to extract {n_target} cells (memory-safe)...")
+    from scipy.sparse import coo_matrix
+
+    # Parse MTX header to find data start
+    header_lines = 0
+    mtx_rows = 0
+    mtx_cols = 0
+    mtx_nnz = 0
+    with open(mtx_path, "r") as f:
+        for line in f:
+            header_lines += 1
+            if line.startswith("%"):
+                continue
+            # Dimensions line
+            parts = line.strip().split()
+            mtx_rows, mtx_cols, mtx_nnz = int(parts[0]), int(parts[1]), int(parts[2])
+            break
+
+    if mtx_nnz == 0:
+        raise ValueError(f"No dimensions line found in {mtx_path}")
+
+    print(f"    MTX dimensions: {mtx_rows} genes x {mtx_cols} cells, {mtx_nnz:,} nonzeros")
+
+    # Stream coordinate data in chunks, filtering to target columns
+    chunk_size = 5_000_000
+    row_acc: list[np.ndarray] = []
+    col_acc: list[np.ndarray] = []
+    data_acc: list[np.ndarray] = []
+    kept = 0
+
+    reader = pd.read_csv(
+        mtx_path,
+        sep=r"\s+",
+        skiprows=header_lines,
+        header=None,
+        names=["row", "col", "val"],
+        dtype={"row": np.int32, "col": np.int32, "val": np.int32},
+        chunksize=chunk_size,
+    )
+    for chunk in reader:
+        # MTX is 1-indexed; convert col to 0-indexed for lookup
+        col_0 = chunk["col"].values - 1
+        in_target = np.array([c in target_positions for c in col_0])
+        if not in_target.any():
+            continue
+
+        rows_kept = chunk["row"].values[in_target] - 1  # 0-indexed genes
+        cols_kept = np.array([col_remap[c] for c in col_0[in_target]], dtype=np.int32)
+        data_kept = chunk["val"].values[in_target]
+
+        row_acc.append(rows_kept)
+        col_acc.append(cols_kept)
+        data_acc.append(data_kept)
+        kept += len(rows_kept)
+
+    print(f"    Kept {kept:,} nonzeros for {n_target} cells")
+
+    # Step 3: Build sparse matrix and AnnData
+    import anndata as ad
+
+    rows = np.concatenate(row_acc)
+    cols = np.concatenate(col_acc)
+    data = np.concatenate(data_acc)
+    del row_acc, col_acc, data_acc
+
+    # Matrix: genes x cells, then transpose to cells x genes
+    X = coo_matrix((data, (rows, cols)), shape=(n_genes, n_target)).T.tocsr()
+    del rows, cols, data
+
+    adata = ad.AnnData(X=X, obs=obs, var=var)
+    adata.obs_names_make_unique()
+    adata.var_names_make_unique()
+
+    adata.uns["source_file"] = mtx_path.name
+    adata.uns["source_format"] = "mtx_subset"
+    adata.uns["subset_condition"] = condition
+    adata.uns["subset_cell_types"] = cell_types
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    adata.write_h5ad(output_path)
+    print(f"  Wrote h5ad: {output_path.name} ({adata.n_obs} cells x {adata.n_vars} genes)")
+    return output_path
+
+
 def _download_and_decompress(suppl_url: str, filenames: list[str], dest_dir: Path) -> list[Path]:
     """Download files and decompress .gz, returning paths to final files."""
     paths: list[Path] = []
@@ -362,7 +519,12 @@ def download_gse151761(dest_dir: Path) -> list[Path]:
 
 
 def download_gse152058(dest_dir: Path) -> list[Path]:
-    """Download and convert human snRNA-seq data from GSE152058."""
+    """Download and extract control interneuron subset from GSE152058.
+
+    The full dataset (125K cells, 3.6GB MTX) is too large for 8GB RAM.
+    Instead of loading the full matrix, this extracts only control
+    interneuron cells (~2.7K cells) using streaming subset extraction.
+    """
     accession = "GSE152058"
     suppl_url = _geo_suppl_url(accession)
     all_files = list_geo_supplementary(accession)
@@ -375,7 +537,7 @@ def download_gse152058(dest_dir: Path) -> list[Path]:
     print(f"  Selected {len(targets)} human snRNA files from {len(all_files)} total")
     raw_paths = _download_and_decompress(suppl_url, targets, dest_dir)
 
-    # Group by prefix and convert MTX sets to h5ad
+    # Group by prefix
     mtx_files = [p for p in raw_paths if p.suffix == ".mtx"]
     coldata_files = [p for p in raw_paths if "coldata" in p.name]
     rowdata_files = [p for p in raw_paths if "rowdata" in p.name]
@@ -383,9 +545,11 @@ def download_gse152058(dest_dir: Path) -> list[Path]:
     h5ad_paths: list[Path] = []
 
     if mtx_files and coldata_files and rowdata_files:
-        # Match MTX with its metadata files by common prefix
-        h5ad_path = dest_dir / f"{accession}_human_snRNA.h5ad"
-        mtx_to_h5ad(mtx_files[0], coldata_files[0], rowdata_files[0], h5ad_path)
+        # Extract control interneurons only (memory-safe for 8GB RAM)
+        h5ad_path = dest_dir / f"{accession}_control_interneurons.h5ad"
+        extract_gse152058_interneurons(
+            mtx_files[0], coldata_files[0], rowdata_files[0], h5ad_path,
+        )
         if validate_h5ad(h5ad_path):
             h5ad_paths.append(h5ad_path)
     else:
