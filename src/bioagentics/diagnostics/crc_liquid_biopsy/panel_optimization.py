@@ -33,7 +33,8 @@ DATA_DIR = REPO_ROOT / "data" / "diagnostics" / "crc-liquid-biopsy-panel"
 OUTPUT_DIR = REPO_ROOT / "output" / "diagnostics" / "crc-liquid-biopsy-panel"
 
 # Assay cost estimates (USD per marker)
-METHYLATION_COST = 75.0  # Bisulfite PCR per target
+# Targeted bisulfite panel: $50-100 for ~15-20 CpGs => ~$5/CpG
+METHYLATION_COST = 5.0  # Per-CpG cost in targeted bisulfite panel
 PROTEIN_COST = 15.0  # Immunoassay per target
 
 
@@ -178,6 +179,8 @@ def build_combined_feature_matrix(
 def cost_weighted_lasso(
     X: pd.DataFrame,
     y: np.ndarray,
+    methylation_cost: float = METHYLATION_COST,
+    protein_cost: float = PROTEIN_COST,
 ) -> list[dict]:
     """Run cost-weighted LASSO to select optimal marker panels.
 
@@ -192,7 +195,7 @@ def cost_weighted_lasso(
     penalties = np.ones(len(feature_names))
     for i, name in enumerate(feature_names):
         if name.startswith("meth_"):
-            penalties[i] = METHYLATION_COST / PROTEIN_COST  # ~5x penalty
+            penalties[i] = methylation_cost / protein_cost
         else:
             penalties[i] = 1.0
 
@@ -234,7 +237,7 @@ def cost_weighted_lasso(
         # Estimate cost
         meth_count = sum(1 for s in selected if s.startswith("meth_"))
         prot_count = len(selected) - meth_count
-        est_cost = meth_count * METHYLATION_COST + prot_count * PROTEIN_COST
+        est_cost = meth_count * methylation_cost + prot_count * protein_cost
 
         panels.append(
             {
@@ -281,6 +284,7 @@ def run_optimization(
     data_dir: Path = DATA_DIR,
     output_dir: Path = OUTPUT_DIR,
     force: bool = False,
+    methylation_cost: float = METHYLATION_COST,
 ) -> dict:
     """Run LASSO panel optimization pipeline."""
     output_path = output_dir / "optimized_panel.json"
@@ -293,9 +297,10 @@ def run_optimization(
     prot_features = load_protein_features(output_dir, data_dir)
 
     X, y = build_combined_feature_matrix(meth_features, prot_features)
-    panels = cost_weighted_lasso(X, y)
 
-    logger.info("Generated %d unique panels:", len(panels))
+    panels = cost_weighted_lasso(X, y, methylation_cost=methylation_cost)
+
+    logger.info("Generated %d unique panels (meth cost=$%.0f/CpG):", len(panels), methylation_cost)
     for p in panels:
         logger.info(
             "  %d features (meth=%d, prot=%d): AUC=%.3f, sens@95spec=%.3f, cost=$%.0f",
@@ -320,7 +325,7 @@ def run_optimization(
         "optimal_panel": optimal,
         "all_panels": panels,
         "cost_assumptions": {
-            "methylation_per_marker_usd": METHYLATION_COST,
+            "methylation_per_marker_usd": methylation_cost,
             "protein_per_marker_usd": PROTEIN_COST,
         },
     }
@@ -333,26 +338,61 @@ def run_optimization(
     return result
 
 
+def _print_panel(result: dict, label: str = "Optimal Panel") -> None:
+    """Print panel summary."""
+    optimal = result["optimal_panel"]
+    cost = result["cost_assumptions"]["methylation_per_marker_usd"]
+    print(f"\n=== {label} (meth cost=${cost:.0f}/CpG) ===")
+    print(f"Features: {optimal['n_features']} ({optimal['n_methylation']} methylation, {optimal['n_protein']} protein)")
+    print(f"AUC: {optimal['auc']:.3f}")
+    print(f"Sensitivity at 95% specificity: {optimal['sensitivity_at_95spec']:.3f}")
+    print(f"Estimated cost: ${optimal['estimated_cost_usd']:.0f}")
+    print(f"Selected markers:")
+    for f in optimal["features"]:
+        marker_type = "methylation" if f.startswith("meth_") else "protein"
+        print(f"  {f} ({marker_type})")
+
+
 def main():
     parser = argparse.ArgumentParser(description="LASSO panel optimization")
     parser.add_argument("--data-dir", type=Path, default=DATA_DIR)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument("--force", action="store_true")
+    parser.add_argument("--methylation-cost", type=float, default=METHYLATION_COST,
+                        help="Per-CpG methylation assay cost in USD (default: 5)")
+    parser.add_argument("--sensitivity-analysis", action="store_true",
+                        help="Run at both $5 and $10 per CpG and compare")
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
-    result = run_optimization(args.data_dir, args.output_dir, force=args.force)
 
-    optimal = result["optimal_panel"]
-    print(f"\n=== Optimal Panel ===")
-    print(f"Features: {optimal['n_features']} ({optimal['n_methylation']} methylation, {optimal['n_protein']} protein)")
-    print(f"AUC: {optimal['auc']:.3f}")
-    print(f"Sensitivity at 95% specificity: {optimal['sensitivity_at_95spec']:.3f}")
-    print(f"Estimated cost: ${optimal['estimated_cost_usd']:.0f}")
-    print(f"\nSelected markers:")
-    for f in optimal["features"]:
-        marker_type = "methylation" if f.startswith("meth_") else "protein"
-        print(f"  {f} ({marker_type})")
+    if args.sensitivity_analysis:
+        # Run at both cost levels and save comparison
+        results = {}
+        for cost in [5.0, 10.0]:
+            result = run_optimization(
+                args.data_dir, args.output_dir, force=True, methylation_cost=cost,
+            )
+            results[f"${cost:.0f}_per_cpg"] = result
+            _print_panel(result, f"Panel at ${cost:.0f}/CpG")
+
+        # Save comparison
+        comparison_path = args.output_dir / "cost_sensitivity_comparison.json"
+        with open(comparison_path, "w") as f:
+            json.dump(results, f, indent=2)
+        print(f"\nCost sensitivity comparison saved to {comparison_path}")
+
+        # Final run at default cost saves as optimized_panel.json
+        run_optimization(
+            args.data_dir, args.output_dir, force=True,
+            methylation_cost=METHYLATION_COST,
+        )
+    else:
+        result = run_optimization(
+            args.data_dir, args.output_dir, force=args.force,
+            methylation_cost=args.methylation_cost,
+        )
+        _print_panel(result)
 
 
 if __name__ == "__main__":
