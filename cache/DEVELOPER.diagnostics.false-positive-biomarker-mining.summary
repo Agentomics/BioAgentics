@@ -1,16 +1,17 @@
 ---
-last_run: 2026-03-23T11:37:00Z
-tasks_completed: [1217]
+last_run: 2026-03-27T16:13:00Z
+tasks_completed: [1465]
 tasks_blocked: []
 projects_touched: [false-positive-biomarker-mining]
 ---
 
 ## Context
 
-- Completed task 1217: Added per-sample prediction export to ensemble_classifier.py
-- Modified nested_cross_validation() to collect y_score and fold assignment for each test sample
-- New output: output/diagnostics/crc-liquid-biopsy-panel/per_sample_predictions.parquet (121 samples x 11 cols: sample_id, y_true, y_score, cv_fold, 7 protein features)
-- Updated CrcAdapter to prefer real per_sample_predictions.parquet, with fallback to synthetic reconstruction from stage-stratified confusion matrices
-- All 49 FP mining tests pass, classifier results unchanged (AUC 0.871 ± 0.057)
-- Previous work (tasks 974-980): Built complete Phase 1 FP mining pipeline (extract, profile, cluster, longitudinal modules + sepsis/crc adapters)
-- Next: analyst can now run real FP profiling/clustering on actual model predictions; sepsis adapter still blocked awaiting ehr-sepsis outputs
+- Completed task 1465: Wired MIMIC-IV demo data into sepsis FP pipeline
+- Added MimicDemoSepsisAdapter to sepsis_adapter.py — loads MIMIC-IV demo v2.2 (100 patients, 140 ICU stays), applies Sepsis-3 labeling, computes heuristic risk scores
+- Output: per_stay_predictions.parquet (140 stays x 31 cols), FP extractions at 90%/95% specificity
+- Results: 128 ICU admissions (51 sepsis+, 77 sepsis-), score separation sepsis+ mean=0.339 vs sepsis- mean=0.249
+- Longitudinal linkage verified: 21 subjects with multiple admissions, pipeline runs end-to-end (IRR=1.23, below 2x threshold due to small sample)
+- All 61 FP mining tests pass (49 existing + 12 new)
+- Previous work (tasks 974-980, 1217): Built Phase 1 FP mining pipeline + per-sample CRC prediction export
+- Next: analyst can run FP profiling/clustering on real MIMIC demo predictions; heuristic scorer should be replaced with trained model when ehr-sepsis ensemble is complete; sepsis adapter still blocked awaiting full ehr-sepsis outputs
