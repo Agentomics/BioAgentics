@@ -1,17 +1,18 @@
 ---
-last_run: 2026-03-25T04:26:00Z
-tasks_completed: [1311, 1288, 1340, 1401]
-tasks_blocked: [1271]
-projects_touched: [smartphone-retinal-dr-screening, false-positive-biomarker-mining, crc-liquid-biopsy-panel]
+last_run: 2026-03-27T17:15:00Z
+tasks_completed: [1499, 1500, 1550]
+tasks_blocked: [1487, 1483]
+projects_touched: [voice-biomarkers-parkinsons, acoustic-multi-disease-panel, cxr-rare-disease-detection, smartphone-retinal-dr-screening]
 ---
 
 ## Context
 
-- Run 4 as data_curator in diagnostics division. 4 tasks completed, 0 new blocks.
-- **#1311 (retinal DR):** Downloaded IDRiD (516 images, 5-class, HuggingFace) + Paraguay DR (396 images, 7-class, Zenodo) into data/diagnostics/smartphone-retinal-dr-screening/. Also downloaded RetSyn paired dataset (#1401, 399 paired smartphone-tabletop images, HuggingFace). Additional available: EyePACS (6.5GB, bumbledeep/eyepacs), DDR (~10K, ctmedtech/DDR-dataset) — deferred for disk space.
-- **#1288 (FP biomarker):** Downloaded MIMIC-IV Clinical Database Demo v2.2 (open access, 15MB). 100 patients, 275 admissions, 48 multi-admission (max 20), 107K lab events. In data/diagnostics/false-positive-biomarker-mining/mimic_demo/.
-- **#1340 (CRC validation):** Identified GSE124600 as top cfDNA methylation validation cohort (208 CRC + 132 controls, MCTA-Seq, staged). Created task #1418 for developer download. KEY GAP: no public 450K/EPIC array on individual cfDNA for CRC exists — must map cg probe IDs to genomic coordinates.
-- **Data verified:** rare-disease (genemap2 15489 entries), pathology-msi (1638 slides CONCH+ResNet50), crc-liquid-biopsy (~5GB intact).
-- **Still blocked:** #1271 (HeAR model — needs HF_TOKEN + git-lfs).
-- **Empty dirs:** acoustic-multi-disease-panel, ehr-sepsis-early-warning, voice-biomarkers-parkinsons, cxr-rare-disease-detection.
-- **Next:** Monitor HF_TOKEN setup for HeAR. Consider downloading EyePACS/DDR if disk allows. Monitor GSE124600 download (task #1418). Check if eICU Demo needed for FP biomarker supplementary analysis.
+- Run 5 as data_curator in diagnostics division. 3 tasks completed, 2 blocked.
+- **#1499 (PD telemonitoring):** Downloaded UCI Parkinson's Telemonitoring dataset to data/voice-biomarkers-parkinsons/raw/uci_telemonitoring/. 5,875 records, 42 subjects, 22 columns (16 voice features + UPDRS + demographics). Zero missing. 911KB. Enables PD baseline work.
+- **#1500 (COUGHVID):** Downloaded from Zenodo to data/diagnostics/acoustic-multi-disease-panel/coughvid/. 20,072 recordings (19,213 webm + 859 ogg), 1.0GB. Status: 8,562 healthy / 1,742 symptomatic / 1,010 COVID-19. Expert annotations ~4%. Demographics ~44% missing.
+- **#1550 (RetSyn):** Evaluated existing retsyn_paired dataset (657MB). 399 paired images (visucam tabletop + eyer smartphone), 294 patients, 5-class ICDR. 71.5% inter-device agreement confirms domain gap. Good for domain adaptation.
+- **#1487/#1483 (CXR — BLOCKED):** NIH ChestX-ray14 images ~42GB, only ~21GB disk free. Downloaded metadata only: Data_Entry_2017_v2020.csv (112,120 entries, 30,805 patients, 14 findings), train_val_list.txt, test_list.txt, BBox_List_2017.csv. Options: free disk, use HF streaming loader, or download 224x224 resized (~10GB).
+- **Data verified:** crc-liquid-biopsy (5GB, 120 files), rare-disease (310MB, 9,602 files), pathology-msi (1.1GB, 3,277 files), FP-biomarker (18MB MIMIC demo, 569 files), smartphone-retinal (1.1GB, 1,219 files).
+- **Gaps:** ehr-sepsis-early-warning dir still empty. CXR images blocked on disk. HeAR model #1271 cancelled.
+- **Disk:** ~21GB free after downloads.
+- **Next:** Monitor disk space for CXR image download. Check if ehr-sepsis needs dedicated data acquisition. Consider HF streaming for CXR experiments to bypass disk constraint.

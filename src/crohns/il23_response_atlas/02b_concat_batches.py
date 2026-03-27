@@ -67,19 +67,28 @@ def main() -> None:
     gc.collect()
 
     if needs_upper or has_ercc:
-        print("  Post-processing gene names (uppercase + remove ERCC)...")
-        # Need to load into memory for var modification - do it with minimal obs
-        adata = ad.read_h5ad(tmp_concat)
-        if "original_gene_name" not in adata.var.columns:
-            adata.var["original_gene_name"] = adata.var_names.copy()
-        adata.var.index = pd.Index([g.upper() for g in adata.var_names])
-        keep = ~adata.var.index.str.startswith("ERCC-")
-        adata = adata[:, keep].copy()
-        adata.var_names_make_unique()
-        print(f"  After cleanup: {adata.n_obs} cells x {adata.n_vars} genes")
-        adata.write_h5ad(OUTPUT_PATH)
-        del adata
-        gc.collect()
+        print("  Pre-processing batch files (uppercase + remove ERCC)...")
+        # Fix gene names in each batch individually to avoid loading the full
+        # concatenated file into memory (OOM risk on 8GB machine).
+        tmp_concat.unlink()
+        for bp in batches:
+            a = ad.read_h5ad(bp)
+            if "original_gene_name" not in a.var.columns:
+                a.var["original_gene_name"] = a.var_names.copy()
+            a.var.index = pd.Index([g.upper() for g in a.var_names])
+            keep = ~a.var.index.str.startswith("ERCC-")
+            a = a[:, keep].copy()
+            a.var_names_make_unique()
+            a.write_h5ad(bp)
+            del a
+            gc.collect()
+        print("  Re-concatenating cleaned batches...")
+        ad.experimental.concat_on_disk(
+            in_files=[str(p) for p in batches],
+            out_file=str(OUTPUT_PATH),
+            join="inner",
+            index_unique="-",
+        )
     else:
         # Just rename the tmp file
         tmp_concat.rename(OUTPUT_PATH)
