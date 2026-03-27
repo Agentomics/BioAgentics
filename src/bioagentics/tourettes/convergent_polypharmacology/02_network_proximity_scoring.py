@@ -34,6 +34,25 @@ import pandas as pd
 
 from bioagentics.config import REPO_ROOT
 
+# Supplementary curated drugs not in ChEMBL TSV (must match 01_drug_pathway_mapping.py)
+SUPPLEMENTARY_DRUGS: dict[str, dict] = {
+    "PIMAVANSERIN": {
+        "targets": {"HTR2A", "HTR2C"},
+        "chembl_id": "CHEMBL1214124",
+        "max_phase": 4,
+    },
+    "ARIPIPRAZOLE": {
+        "targets": {"DRD2", "DRD3", "HTR2A", "HTR2C"},
+        "chembl_id": "CHEMBL1112",
+        "max_phase": 4,
+    },
+    "GUANFACINE": {
+        "targets": {"ADRA2A"},
+        "chembl_id": "CHEMBL1383",
+        "max_phase": 4,
+    },
+}
+
 # --- Paths ---
 NETWORK_PATH = (
     REPO_ROOT / "output" / "tourettes" / "ts-drug-repurposing-network" / "ts_disease_network.graphml"
@@ -216,6 +235,10 @@ def main() -> None:
     # Load drugs
     print("\n3. Loading ChEMBL drugs...")
     drugs = load_chembl_drugs(CHEMBL_PATH)
+    # Merge supplementary curated drugs
+    for name, info in SUPPLEMENTARY_DRUGS.items():
+        if name not in drugs:
+            drugs[name] = set(info["targets"])
     print(f"   {len(drugs)} named compounds")
 
     # Filter to drugs with at least one target in the network

@@ -5,7 +5,7 @@ Cross-reference top-scoring combinations with existing clinical practice:
    pathway coverage?
 2. Do clinical combinations score higher than random drug pairs?
    (permutation test, p < 0.01)
-3. Test dual-circuit hypothesis: 5-HT2A + D3 antagonist combination
+3. Test dual-circuit hypothesis: 5-HT2A + D1/D2 antagonist combinations
 
 Inputs:
   - output/tourettes/ts-convergent-polypharmacology/safe_combinations.csv
@@ -84,11 +84,17 @@ CLINICAL_COMBINATIONS: list[dict] = [
 ]
 
 # Dual-circuit hypothesis combinations
+# Tests 5-HT2A (cortical) + dopamine antagonist (striatal) pairs
 DUAL_CIRCUIT_COMBOS: list[dict] = [
     {
         "drug_a": "PIMAVANSERIN",  # 5-HT2A inverse agonist
         "drug_b": "ECOPIPAM",     # D1 antagonist (striosome-selective)
         "hypothesis": "5-HT2A/PFC + D1/striosome dual-circuit targeting",
+    },
+    {
+        "drug_a": "PIMAVANSERIN",  # 5-HT2A inverse agonist
+        "drug_b": "ARIPIPRAZOLE", # D2 partial agonist
+        "hypothesis": "5-HT2A/cortical + D2/striatal dual-circuit; both FDA-approved",
     },
     {
         "drug_a": "KETANSERIN",    # 5-HT2A antagonist
@@ -259,18 +265,49 @@ def main() -> None:
     print("\n4. Testing dual-circuit hypothesis...")
     for dc in DUAL_CIRCUIT_COMBOS:
         combo = find_combination_score(safe_combos, dc["drug_a"], dc["drug_b"])
+
+        cov_a = coverage.get(dc["drug_a"], coverage.get(dc["drug_a"].upper(), 0))
+        cov_b = coverage.get(dc["drug_b"], coverage.get(dc["drug_b"].upper(), 0))
+        agent_a = agents.get(dc["drug_a"], agents.get(dc["drug_a"].upper(), {}))
+        agent_b = agents.get(dc["drug_b"], agents.get(dc["drug_b"].upper(), {}))
+
+        dc_result = {
+            "drug_a": dc["drug_a"],
+            "drug_b": dc["drug_b"],
+            "clinical_usage": f"Dual-circuit hypothesis: {dc['hypothesis']}",
+            "evidence": "van Luik et al. bioRxiv 2026; computational dual-circuit model",
+            "pathways_a": cov_a,
+            "pathways_b": cov_b,
+            "targets_a": agent_a.get("targets", ""),
+            "targets_b": agent_b.get("targets", ""),
+            "classes_a": agent_a.get("target_classes", ""),
+            "classes_b": agent_b.get("target_classes", ""),
+        }
+
         if combo:
+            dc_result["n_pathways_union"] = combo["n_pathways_union"]
+            dc_result["adjusted_score"] = float(combo["adjusted_score"])
+            dc_result["combo_score"] = float(combo["combo_score"])
+            dc_result["ddi_severity"] = combo["ddi_severity"]
+            dc_result["covered_pathways"] = combo["covered_pathways"]
+            dc_result["found_in_screening"] = True
             print(f"   {dc['drug_a']} + {dc['drug_b']}: "
                   f"adj_score={float(combo['adjusted_score']):.3f}, "
                   f"pathways={combo['n_pathways_union']}")
         else:
-            # Check if individual drugs are in our dataset
+            dc_result["n_pathways_union"] = ""
+            dc_result["adjusted_score"] = 0.0
+            dc_result["combo_score"] = 0.0
+            dc_result["ddi_severity"] = ""
+            dc_result["covered_pathways"] = ""
+            dc_result["found_in_screening"] = False
             in_a = dc["drug_a"] in agents or dc["drug_a"].upper() in agents
             in_b = dc["drug_b"] in agents or dc["drug_b"].upper() in agents
             print(f"   {dc['drug_a']} + {dc['drug_b']}: not in screening set "
                   f"(drug_a={'found' if in_a else 'missing'}, "
                   f"drug_b={'found' if in_b else 'missing'})")
         print(f"     Hypothesis: {dc['hypothesis']}")
+        clinical_results.append(dc_result)
 
     # Save clinical validation results
     val_path = OUTPUT_DIR / "clinical_validation.csv"
@@ -313,19 +350,30 @@ def main() -> None:
     print("FINAL SUMMARY - ALL PHASES")
     print("=" * 60)
 
-    print("\n[Phase 1] Drug-Pathway Mapping:")
-    print(f"  - 230 drugs mapped to 11 convergent pathways")
+    n_drugs = len(coverage)
+    n_combos = len(safe_combos)
+    found_count = sum(
+        1 for r in clinical_results
+        if r["found_in_screening"] and r["clinical_usage"].startswith("Dual-circuit") is False
+    )
+    dc_found = sum(
+        1 for r in clinical_results
+        if r["found_in_screening"] and r["clinical_usage"].startswith("Dual-circuit")
+    )
+
+    print(f"\n[Phase 1] Drug-Pathway Mapping:")
+    print(f"  - {n_drugs} drugs mapped to 11 convergent pathways")
     print(f"  - 4/11 pathways directly druggable, 7 are druggability gaps")
     print(f"  - Top agents: clozapine (5 target classes), olanzapine/risperidone (4)")
 
-    print("\n[Phase 2] Combination Screening:")
-    print(f"  - 1,225 pairs screened, 1,224 passed safety filter")
-    print(f"  - Top clinical pair: ecopipam+clonidine (adj=0.472)")
+    print(f"\n[Phase 2] Combination Screening:")
+    print(f"  - {n_combos} combinations passed safety filter")
+    print(f"  - Top clinical pair: ecopipam+clonidine")
     print(f"  - Coverage ceiling: 4/11 pathways (limited by current drug targets)")
 
-    print("\n[Phase 3] Clinical Validation:")
-    found_count = sum(1 for r in clinical_results if r["found_in_screening"])
-    print(f"  - {found_count}/{len(CLINICAL_COMBINATIONS)} clinical combinations found in screening")
+    print(f"\n[Phase 3] Clinical Validation:")
+    print(f"  - {found_count}/{len(CLINICAL_COMBINATIONS)} clinical combinations found")
+    print(f"  - {dc_found}/{len(DUAL_CIRCUIT_COMBOS)} dual-circuit hypothesis combos found")
     if clinical_scores:
         print(f"  - Mean clinical score: {mean_clin:.4f} vs random: {mean_rand:.4f}")
         print(f"  - Permutation test p={p_val:.4f} ({'significant' if significant else 'not significant'})")

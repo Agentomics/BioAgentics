@@ -106,6 +106,36 @@ TARGET_PATHWAY_MEMBERSHIP: dict[str, list[str]] = {
     "hsa04330": [],
 }
 
+# Supplementary curated drugs not present in the ChEMBL bioactivity TSV.
+# Added to ensure key pharmacological agents are included in screening.
+# Format: {compound_name: {"targets": set[str], "chembl_id": str, "max_phase": int}}
+SUPPLEMENTARY_DRUGS: dict[str, dict] = {
+    # Pimavanserin: FDA-approved 5-HT2A inverse agonist (Nuplazid).
+    # Primary target HTR2A (Ki ~0.087 nM), secondary HTR2C.
+    # Cortical mechanism relevant to TS dual-circuit hypothesis.
+    # Source: van Luik et al. bioRxiv 2026; ChEMBL CHEMBL1214124.
+    "PIMAVANSERIN": {
+        "targets": {"HTR2A", "HTR2C"},
+        "chembl_id": "CHEMBL1214124",
+        "max_phase": 4,
+    },
+    # Aripiprazole: FDA-approved D2 partial agonist / 5-HT2A antagonist.
+    # Key TS drug missing from ChEMBL TSV extract; needed for dual-circuit combos.
+    # Targets: DRD2 (Ki ~0.34 nM), HTR2A (Ki ~3.4 nM), DRD3, HTR2C.
+    "ARIPIPRAZOLE": {
+        "targets": {"DRD2", "DRD3", "HTR2A", "HTR2C"},
+        "chembl_id": "CHEMBL1112",
+        "max_phase": 4,
+    },
+    # Guanfacine: FDA-approved alpha-2A adrenergic agonist for TS/ADHD.
+    # Missing from ChEMBL TSV extract; needed for clinical combination validation.
+    "GUANFACINE": {
+        "targets": {"ADRA2A"},
+        "chembl_id": "CHEMBL1383",
+        "max_phase": 4,
+    },
+}
+
 
 def load_convergent_pathways(path: Path) -> list[dict]:
     """Load the 11 convergent pathways from Phase 4 results."""
@@ -302,6 +332,19 @@ def main() -> None:
     print("\n2. Loading ChEMBL drug-target data...")
     drugs = load_chembl_drugs(CHEMBL_PATH)
     print(f"   {len(drugs)} named compounds with pChEMBL >= 6.0")
+
+    # Merge supplementary curated drugs not in ChEMBL TSV
+    added_supp = []
+    for name, info in SUPPLEMENTARY_DRUGS.items():
+        if name not in drugs:
+            drugs[name] = {
+                "targets": set(info["targets"]),
+                "chembl_id": info["chembl_id"],
+                "max_phase": info["max_phase"],
+            }
+            added_supp.append(name)
+    if added_supp:
+        print(f"   Added {len(added_supp)} supplementary drugs: {', '.join(added_supp)}")
 
     all_targets = set()
     for d in drugs.values():

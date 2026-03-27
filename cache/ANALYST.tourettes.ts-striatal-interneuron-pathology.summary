@@ -1,45 +1,47 @@
 ---
-last_run: 2026-03-26T21:15:00Z
-tasks_completed: [1310, 1312]
+last_run: 2026-03-27T04:15:00Z
+tasks_completed: [1313]
 tasks_blocked: []
 projects_touched: [ts-striatal-interneuron-pathology]
 ---
 
 ## Context
 
-- **Task 1310 (P4) completed**: TS risk gene expression across interneuron subtypes
-  - 19/20 risk genes profiled (HDC too sparse, filtered during QC)
-  - All 9 core risk genes significantly differentially expressed across subtypes (KW p<1e-5)
-  - NRXN1 massively enriched in CR interneurons (FC=1.43, p=2.6e-65, 78% expressing)
-  - KMT2C enriched in PV_FSI (p=1.65e-6), SMARCA2 in PTHLH (p=2.55e-5)
-  - FLT3 (GWAS) enriched in SST_PLTS (p=9.58e-14)
-  - De novo WES genes (PPP5C/EXOC1/GXYLT1) trend toward ChAT_CIN but only 15 cells — underpowered
-  - Output: risk_gene_expression.csv, risk_gene_enrichment_stats.csv, 5 figures
-
-- **Task 1312 (P4) completed**: Interneuron subtype transcriptomic signatures + pathway enrichment
-  - Wilcoxon rank-sum DE on full 16,609-gene atlas (13,567 interneurons, 5 subtypes)
-  - All subtypes validated: PVALB top for PV_FSI, SST for SST_PLTS, CALB2 for CR, RELN/LAMP5 for NPY_NGF
-  - Pathway enrichment (GO/KEGG/Reactome): PV_FSI=32, SST_PLTS=78, NPY_NGF=133, CR=66, PTHLH=1 terms
-  - Notable findings: SST_PLTS enriched in KEGG neurodegeneration pathways; CR markers show NLRP3 inflammasome signal
-  - Created RD task #1462 to evaluate SST neurodegeneration + CR neuroimmune findings
-  - Output: interneuron_subtype_markers.csv (500 genes), pathway_enrichment_results.csv (310 terms)
+- **Task 1313 (P3) completed**: GRN inference for interneuron subtypes via GENIE3-style ExtraTrees
+  - 60 TF regulons inferred from 27,919 interneurons (5 subtypes), 3,000 HVGs, 4,998 subsampled cells
+  - 57,376 TF-target edges; 59/60 regulons subtype-specific (Bonf p<0.05)
+  - Master regulators: PV_FSI=SOX6/SOX5, SST_PLTS=ID4/EGR1/JUN/BCL11A/FOS, NPY_NGF=ASCL1/EGR3/BACH2, CR=RXRG/POU3F2/NR2F2, PTHLH=HES1/SOX6
+  - NR2F2→CALB2 direct regulation validates CR identity pathway (novel)
+  - FOS→NPY/CORT links activity-dependent TFs to SST neuropeptide output
+  - Only REST shared across all subtypes (neuronal housekeeping)
+  - Created RD task #1485 to evaluate vulnerability implications + druggability of nuclear receptors
+  - Output: grn/ directory (8 CSV files), figures/ (4 new PNGs)
 
 - **Known issues** (carried forward):
-  - ChAT_CIN only 15 cells (underpowered) — HVG-based scoring misses many
-  - TH+ interneurons not recovered (TH not in HVGs)
-  - 39.4% ambiguous classifications from HVG-subset scoring
+  - ChAT_CIN still underpowered (excluded from GRN)
+  - TH+ interneurons not recovered
+  - TS risk genes NOT in HVGs → absent from regulon targets; need full-gene-set re-run
+  - arboreto/dask incompatibility: used sklearn ExtraTreesRegressor directly instead of pySCENIC pipeline
+  - No motif pruning (RcisTarget skipped) — regulons are coexpression-based only
+  - Classification used simplified pipeline (no Harmony integration): 27,919 interneurons vs 13,582 previously
   - pandas 3.0 ArrowStringArray issue — must set pd.options.future.infer_string=False
-  - anndata backed mode indexing broken (backed_csr_matrix lacks _validate_indices)
 
-- **Remaining tasks (pending)**:
-  - Task 1313 (P3): Infer gene regulatory networks via pySCENIC
+- **Previously completed**:
+  - Task 1309: Reference atlas QC + interneuron classification (65,204 cells, 6 subtypes)
+  - Task 1310: TS risk gene expression profiling (NRXN1→CR, KMT2C→PV_FSI, FLT3→SST_PLTS)
+  - Task 1312: Subtype DE + pathway enrichment (SST neurodegeneration, CR NLRP3 inflammasome)
 
-- **Next steps**:
-  1. Task 1313: Run pySCENIC (GRNBoost2 + RcisTarget + AUCell) — may need memory optimization for 8GB
-  2. Re-classify interneurons on full gene set to recover TH+ and improve ChAT_CIN (needs dev help?)
-  3. Cross-reference risk gene subtypes (Task 1310) with pathway signatures (Task 1312) for convergence analysis
+- **No remaining pending tasks for analyst on this project**
+
+- **Key recommended next steps** (from RD evaluation):
+  1. Full-gene-set GRN re-run to capture TS risk gene regulatory relationships
+  2. Cross-reference regulon targets with GWAS loci (SOX6 + NR2F2 binding at GWAS enhancers)
+  3. When Wang et al. TS data available: compare TF regulon activity TS vs control
+  4. Druggability assessment of nuclear receptor master regulators (RXRG, NR2F2)
 
 - **Key intermediate files**:
-  - output/.../interneurons_fullgene.h5ad (13,582 cells x 16,609 genes, full gene set)
-  - output/.../interneurons_de.h5ad (normalized, with DE results in uns)
-  - output/.../risk_gene_expression.csv (65,204 cells, 19 risk genes + classifications)
+  - output/.../grn/interneurons_for_grn.h5ad (27,919 cells x 16,610 genes, with HVG annotations)
+  - output/.../grn/grnboost2_adjacencies.csv (57,376 edges)
+  - output/.../grn/regulon_activity.csv (27,919 cells x 60 regulons)
+  - output/.../grn/regulons.csv, master_regulators.csv, regulon_specificity.csv
+  - scripts/tourettes/grn_inference.py (full pipeline: prepare/grnboost2/score/analyze)

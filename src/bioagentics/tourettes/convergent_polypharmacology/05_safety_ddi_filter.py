@@ -112,6 +112,42 @@ KNOWN_DDIS: dict[frozenset[str], dict] = {
         "mechanism": "No known PK interaction; complementary D1/alpha2 mechanisms",
         "recommendation": "Favorable combination for TS",
     },
+    # Pimavanserin DDIs (CYP3A4 substrate)
+    frozenset({"PIMAVANSERIN", "PIMOZIDE"}): {
+        "severity": "major",
+        "mechanism": "Additive QTc prolongation; both prolong cardiac repolarization",
+        "recommendation": "Contraindicated combination",
+    },
+    frozenset({"PIMAVANSERIN", "HALOPERIDOL"}): {
+        "severity": "moderate",
+        "mechanism": "Additive QTc prolongation risk; monitor ECG",
+        "recommendation": "Use with caution; ECG monitoring recommended",
+    },
+    frozenset({"PIMAVANSERIN", "ARIPIPRAZOLE"}): {
+        "severity": "minor",
+        "mechanism": "No significant PK interaction; complementary 5-HT2A/D2 mechanisms",
+        "recommendation": "Dual-circuit combination: cortical (5-HT2A) + striatal (D2)",
+    },
+    frozenset({"PIMAVANSERIN", "ECOPIPAM"}): {
+        "severity": "minor",
+        "mechanism": "No known PK interaction; complementary 5-HT2A/D1 mechanisms",
+        "recommendation": "Dual-circuit combination: cortical (5-HT2A) + striosomal (D1)",
+    },
+    frozenset({"PIMAVANSERIN", "RISPERIDONE"}): {
+        "severity": "moderate",
+        "mechanism": "Overlapping 5-HT2A antagonism; risperidone already has strong 5-HT2A activity",
+        "recommendation": "Redundant serotonergic mechanism; limited complementarity",
+    },
+    frozenset({"PIMAVANSERIN", "CLONIDINE"}): {
+        "severity": "minor",
+        "mechanism": "No significant PK interaction; complementary 5-HT2A/alpha2 mechanisms",
+        "recommendation": "Favorable combination for TS",
+    },
+    frozenset({"PIMAVANSERIN", "GUANFACINE"}): {
+        "severity": "minor",
+        "mechanism": "No significant PK interaction; complementary 5-HT2A/alpha2 mechanisms",
+        "recommendation": "Favorable combination for TS",
+    },
 }
 
 # Pharmacodynamic interaction classes:

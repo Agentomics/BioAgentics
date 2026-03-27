@@ -68,6 +68,7 @@ PRIORITY_DRUGS = {
     "ARIPIPRAZOLE", "ECOPIPAM", "RISPERIDONE", "CLONIDINE", "GUANFACINE",
     "HALOPERIDOL", "PIMOZIDE", "TOPIRAMATE", "FLUPHENAZINE", "XANOMELINE",
     "PITOLISANT", "CANNABIDIOL", "N-ACETYLCYSTEINE", "RILUZOLE", "FLUVOXAMINE",
+    "PIMAVANSERIN",  # 5-HT2A inverse agonist; cortical dual-circuit candidate
 }
 
 # Extended set: well-known CNS drugs from ChEMBL data

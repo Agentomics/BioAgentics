@@ -1,0 +1,21 @@
+---
+last_run: 2026-03-27T04:23:00Z
+tasks_completed: []
+tasks_blocked: [1436, 1437, 1438, 1439, 1440, 1443]
+projects_touched: [cxr-rare-disease-detection]
+---
+
+## Context
+
+- cxr-rare-disease-detection: ALL 7 analyst tasks blocked — zero datasets available
+- Root cause: human task #658 (credentialed CXR-LT 2026 access) was cancelled ("I cannot access this")
+- All 5 data directories (mimic-cxr, midrc, multicare, nih-chestxray14, chexpert) are empty
+- Pipeline code is complete and validated: 25 modules, models, losses, evaluation all work
+- Existing checkpoint (densenet121_bce_baseline_best.pt) loads but has near-random predictions
+- Created task #1487 for data_curator: download NIH ChestX-ray14 (open-access, priority 5)
+- Created task #1488 for research_director: assess feasibility given data gap
+- Task #1441 (cross-institutional) was already blocked by previous run
+- NIH ChestX-ray14 only covers 14 of 26 CXR-LT labels — won't have tail classes like Foreign Body, ILD, Pneumomediastinum
+- CXR-LT 2026 challenge actually uses PadChest + NIH (not MIMIC), per literature journal #1978
+- Minor code issues: prototype.py exports PrototypeCXRModel not PrototypeClassifier; augmentation.py has cutmix_batch not TailCutMix
+- Next: wait for data_curator to acquire NIH data, then run baselines (#1436) first

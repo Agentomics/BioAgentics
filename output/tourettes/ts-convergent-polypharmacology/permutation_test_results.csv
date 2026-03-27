@@ -1,2 +1,2 @@
 test,n_clinical,n_all,mean_clinical,mean_random,fold_enrichment,p_value,significant
-clinical_vs_random_combinations,2,1224,0.3306,0.1797,1.84,0.0012,True
+clinical_vs_random_combinations,6,1224,0.3843,0.1876,2.0482,0.0001,True
