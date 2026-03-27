@@ -1,35 +1,45 @@
 ---
-last_run: 2026-03-24T22:10:00Z
-tasks_completed: [1309]
+last_run: 2026-03-26T21:15:00Z
+tasks_completed: [1310, 1312]
 tasks_blocked: []
 projects_touched: [ts-striatal-interneuron-pathology]
 ---
 
 ## Context
 
-- **Task 1309 (P5) completed**: Reference atlas QC and interneuron subtype classification
-  - Downloaded GSE151761 (3 datasets, custom MatrixMarket DGE format — wrote custom parser)
-  - Downloaded GSE152058 (125K cells, too large for 8GB RAM to process whole)
-  - QC: 65,204 cells post-filtering (adHumInt 61,139 + DS 2,950 + 10X 1,115)
-  - Harmony integration: batch silhouette 0.013 (excellent), 3K HVGs, 29 Leiden clusters
-  - Marker-based classification: 6/7 interneuron subtypes detected (TH missing from HVGs)
-  - Broad types: Oligo 23%, Interneuron 20.6%, MSN_D2 18.5%, Astro 18.4%, MSN_D1 9.4%
-  - 39.4% ambiguous classifications (expected on HVG-subset with non-interneuron cells)
-  - Output: classified.h5ad + 5 UMAP figures in output/tourettes/ts-striatal-interneuron-pathology/
+- **Task 1310 (P4) completed**: TS risk gene expression across interneuron subtypes
+  - 19/20 risk genes profiled (HDC too sparse, filtered during QC)
+  - All 9 core risk genes significantly differentially expressed across subtypes (KW p<1e-5)
+  - NRXN1 massively enriched in CR interneurons (FC=1.43, p=2.6e-65, 78% expressing)
+  - KMT2C enriched in PV_FSI (p=1.65e-6), SMARCA2 in PTHLH (p=2.55e-5)
+  - FLT3 (GWAS) enriched in SST_PLTS (p=9.58e-14)
+  - De novo WES genes (PPP5C/EXOC1/GXYLT1) trend toward ChAT_CIN but only 15 cells — underpowered
+  - Output: risk_gene_expression.csv, risk_gene_enrichment_stats.csv, 5 figures
 
-- **Known issues**:
-  - download.py dge_to_h5ad doesn't handle MatrixMarket format (dev task #1357)
-  - pandas 3.0 ArrowStringArray causes anndata h5ad write failures — must set pd.options.future.infer_string=False
-  - GSE152058 needs subsetting to control interneurons only (dev task #1358)
-  - TH+ interneurons not recovered — need full-gene scoring, not HVG-subset
-  - sc.pp.scale on large sparse matrices OOMs — must subset to HVGs first
+- **Task 1312 (P4) completed**: Interneuron subtype transcriptomic signatures + pathway enrichment
+  - Wilcoxon rank-sum DE on full 16,609-gene atlas (13,567 interneurons, 5 subtypes)
+  - All subtypes validated: PVALB top for PV_FSI, SST for SST_PLTS, CALB2 for CR, RELN/LAMP5 for NPY_NGF
+  - Pathway enrichment (GO/KEGG/Reactome): PV_FSI=32, SST_PLTS=78, NPY_NGF=133, CR=66, PTHLH=1 terms
+  - Notable findings: SST_PLTS enriched in KEGG neurodegeneration pathways; CR markers show NLRP3 inflammasome signal
+  - Created RD task #1462 to evaluate SST neurodegeneration + CR neuroimmune findings
+  - Output: interneuron_subtype_markers.csv (500 genes), pathway_enrichment_results.csv (310 terms)
+
+- **Known issues** (carried forward):
+  - ChAT_CIN only 15 cells (underpowered) — HVG-based scoring misses many
+  - TH+ interneurons not recovered (TH not in HVGs)
+  - 39.4% ambiguous classifications from HVG-subset scoring
+  - pandas 3.0 ArrowStringArray issue — must set pd.options.future.infer_string=False
+  - anndata backed mode indexing broken (backed_csr_matrix lacks _validate_indices)
 
 - **Remaining tasks (pending)**:
-  - Task 1310 (P4): Profile TS risk gene expression across interneuron subtypes
-  - Task 1312 (P4): Build interneuron subtype transcriptomic signatures and pathway enrichment
   - Task 1313 (P3): Infer gene regulatory networks via pySCENIC
 
 - **Next steps**:
-  1. Re-score interneuron subtypes on full gene set (recover TH+)
-  2. Filter to interneuron cells and re-cluster for refined taxonomy
-  3. Begin Task 1310/1312 (both P4, can proceed in parallel after refined classification)
+  1. Task 1313: Run pySCENIC (GRNBoost2 + RcisTarget + AUCell) — may need memory optimization for 8GB
+  2. Re-classify interneurons on full gene set to recover TH+ and improve ChAT_CIN (needs dev help?)
+  3. Cross-reference risk gene subtypes (Task 1310) with pathway signatures (Task 1312) for convergence analysis
+
+- **Key intermediate files**:
+  - output/.../interneurons_fullgene.h5ad (13,582 cells x 16,609 genes, full gene set)
+  - output/.../interneurons_de.h5ad (normalized, with DE results in uns)
+  - output/.../risk_gene_expression.csv (65,204 cells, 19 risk genes + classifications)
