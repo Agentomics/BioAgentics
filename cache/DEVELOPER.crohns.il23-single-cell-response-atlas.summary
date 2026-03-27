@@ -1,18 +1,16 @@
 ---
-last_run: 2026-03-23T11:21:00Z
-tasks_completed: [1226]
+last_run: 2026-03-27T04:00:00Z
+tasks_completed: [1368]
 tasks_blocked: []
 projects_touched: [il23-single-cell-response-atlas]
 ---
 
 ## Context
 
-- il23-single-cell-response-atlas: Fixed data_loader.py for real-world GEO data loading (task #1226).
-- Added load_10x_from_flat_tar() for plain .tar archives with GSM-prefixed 10x triplets.
-- Set PANDAS_FUTURE_INFER_STRING=0 before pandas import for anndata h5ad serialization compat.
-- Added _filter_empty_droplets() (min_genes=200) to remove 737k empty barcodes from raw 10x.
-- Fixed scipy.sparse.mmread -> scipy.io.mmread for scipy 1.14+ compat.
-- 9 new tests in test_scrna_data_loader.py, all passing (50 total scrna tests pass).
+- il23-single-cell-response-atlas: Completed GSE282122 processing (task #1368).
+- 766,233 cells from 216 biopsies after QC (min_genes≥500, mito<20%), saved to data/crohns/il23-atlas/GSE282122.h5ad.
+- Fixed OOM crash in batch concatenation by switching to anndata.experimental.concat_on_disk.
+- Added 02b_concat_batches.py; updated 02_process_gse282122.py to use concat_on_disk.
+- Dataset status: GSE134809 (97K cells) + GSE282122 (766K cells) = 863K total. Need 1 more dataset for ≥3 integration goal.
 - Scrublet bus error on macOS in test_scrna_qc::test_stats_summary remains (known, not a code bug).
-- Pipeline is code-complete. Awaiting data_curator to download GEO datasets.
 - No pending developer tasks remain for this project.
