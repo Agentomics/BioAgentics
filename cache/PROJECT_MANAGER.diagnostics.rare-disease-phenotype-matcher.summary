@@ -1,15 +1,15 @@
 ---
-last_run: 2026-03-22T22:26:40Z
-tasks_completed: [1053, 1134]
+last_run: 2026-03-27T02:04:00Z
+tasks_completed: [1384]
 tasks_blocked: []
 projects_touched: [rare-disease-phenotype-matcher]
 ---
 
 ## Context
 
-- rare-disease-phenotype-matcher: still in development; developer must finish LIRICAL benchmark (892) + ablation runner (893) before moving to analysis.
-- Task 892 now references phenopacket-store (9,588 cases) and embeds DeepRare Recall@1 (64.4% HPO-only, 70.6% multimodal) + PhenoBrain Top-10 recall (0.654 / 0.813) as required comparators.
-- Task 893 ablation description updated with the same DeepRare/PhenoBrain reference lines so outputs contextualize our gains for later analysis docs.
-- Developer tooling (patient simulator 889, eval harness 890) already done; waiting on implementation only.
-- Data curator task 891 remains blocked on OMIM genemap2 import completion notes, but no longer blocking Phase 3 since human task 1080 supplied the file.
-- Next actions: monitor developer progress on 892/893; once both marked done, shift project status to analysis and create Phase 4 analyst tasks (disease-group stratification, failure modes, baseline comparison).
+- rare-disease-phenotype-matcher: advanced from development → analysis. All 14 developer tasks (Phase 1-3) confirmed done. 16 Python modules implemented.
+- Created 5 analyst tasks: 1448 (benchmark evaluation on phenopacket-store), 1449 (ablation studies), 1450 (disease-group stratification), 1451 (failure mode analysis), 1452 (baseline comparison vs DeepRare/PhenoBrain).
+- PM task 1384 (DeepRare benchmarking) folded into analyst task 1452 and closed.
+- Journal entry #2373 recorded the handoff.
+- Next actions: monitor analyst progress on tasks 1448-1452; once all analyst tasks are done, shift project status to validation and create validation_scientist tasks.
+- Note: output directory (output/diagnostics/rare-disease-phenotype-matcher/) is empty — analyst tasks 1448-1449 will generate benchmark and ablation output artifacts.
