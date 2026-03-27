@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-24T00:00:00Z
+last_run: 2026-03-27T00:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [voice-biomarkers-parkinsons]
@@ -8,14 +8,16 @@ projects_touched: [voice-biomarkers-parkinsons]
 ## Context
 
 - voice-biomarkers-parkinsons: All 7 methodology phases fully implemented and tested.
-- All 79 voice_pd tests pass (verified 2026-03-24).
-- Codebase status — all complete (32 source files):
+- All 79 voice_pd tests pass (verified 2026-03-27).
+- Fixed 11 failing tests in robustness module: augmentation.py and cross_dataset.py were missing from src/bioagentics/voice_pd/robustness/. Created both modules plus __init__.py. Committed as 9ea923a.
+- Codebase lives at src/bioagentics/voice_pd/ (not src/diagnostics/voice_pd/).
+- Codebase status — all complete (35 source files):
   - Phase 1: preprocessing, config, utils
   - Phase 2: features/ (acoustic, pitch, mfcc, temporal, pipeline)
   - Phase 3: deep/ (spectrogram, cnn_model, train)
   - Phase 4: models/ (classical GBM, ensemble with late/early/stacked fusion)
-  - Phase 5: robustness/ (augmentation, cross_dataset, quality_tiers)
+  - Phase 5: robustness/ (__init__, augmentation, cross_dataset, quality_tiers)
   - Phase 6: mobile/ (converter, protocol, benchmark)
   - Phase 7: data_loaders/ (uci_speech, uci_telemonitoring, mpower, pcgita, italian)
-- No new tasks assigned this run. Project ready for analysis phase.
-- Note: MCP tools not available — could not check/update agent-comms tasks or write journal entry.
+- No new tasks assigned this run. MCP tools not available.
+- Project ready for analysis phase.
