@@ -69,8 +69,9 @@ def hedges_g(n1: int, m1: float, s1: float, n2: int, m2: float, s2: float) -> tu
     j = 1 - 3 / (4 * df - 1)
     g = d * j
 
-    # Variance of g
-    v = (n1 + n2) / (n1 * n2) + g**2 / (2 * (n1 + n2))
+    # Variance of g (Borenstein et al. 2009, eq. 4.24 & 4.27)
+    v_d = (n1 + n2) / (n1 * n2) + d**2 / (2 * (n1 + n2))
+    v = j**2 * v_d
     return float(g), float(v)
 
 
@@ -354,6 +355,130 @@ def sensitivity_analysis(
         results[str(group_val)] = ma
 
     return results
+
+
+def within_study_comparison(
+    dataset: CytokineDataset,
+    analyte_a: str = "IL-1β",
+    analyte_b: str = "IL-6",
+    condition_a: str = "flare",
+    condition_b: str = "remission",
+) -> pd.DataFrame:
+    """Compare two analytes using only studies that measured both.
+
+    This is the only valid method for cross-analyte ranking because
+    pooled meta-analytic estimates draw from different study pools per
+    analyte, making direct comparison a composition artifact.
+
+    Returns a DataFrame with per-study Hedges' g for each analyte and
+    the within-study difference (g_analyte_a - g_analyte_b).
+    """
+    pairs_a = dataset.paired_effects(analyte_a, condition_a, condition_b)
+    pairs_b = dataset.paired_effects(analyte_b, condition_a, condition_b)
+
+    if pairs_a.empty or pairs_b.empty:
+        return pd.DataFrame()
+
+    shared_studies = sorted(set(pairs_a["study_id"]) & set(pairs_b["study_id"]))
+    if not shared_studies:
+        return pd.DataFrame()
+
+    rows = []
+    for sid in shared_studies:
+        row_a = pairs_a[pairs_a["study_id"] == sid].iloc[0]
+        row_b = pairs_b[pairs_b["study_id"] == sid].iloc[0]
+
+        g_a, v_a = hedges_g(
+            row_a["n_a"], row_a["mean_a"], row_a["sd_a"],
+            row_a["n_b"], row_a["mean_b"], row_a["sd_b"],
+        )
+        g_b, v_b = hedges_g(
+            row_b["n_a"], row_b["mean_a"], row_b["sd_a"],
+            row_b["n_b"], row_b["mean_b"], row_b["sd_b"],
+        )
+
+        if np.isfinite(g_a) and np.isfinite(g_b):
+            rows.append({
+                "study_id": sid,
+                "n": int(row_a["n_a"]),
+                f"g_{analyte_a}": round(g_a, 4),
+                f"g_{analyte_b}": round(g_b, 4),
+                "delta": round(g_a - g_b, 4),
+                "larger_effect": analyte_a if g_a > g_b else analyte_b,
+            })
+
+    return pd.DataFrame(rows)
+
+
+def run_within_study_comparisons(
+    dataset: CytokineDataset,
+    meta_results: list[MetaAnalysisResult],
+    output_dir: Path | None = None,
+) -> pd.DataFrame:
+    """Run within-study paired comparisons for all analyte pairs with shared studies.
+
+    Produces a CSV of within-study effect size comparisons and flags
+    cases where the pooled ranking disagrees with within-study evidence.
+    """
+    if output_dir is None:
+        output_dir = OUTPUT_DIR
+
+    # Build lookup of pooled effects
+    pooled = {r.analyte: r.pooled_effect for r in meta_results}
+
+    # Compare all analyte pairs (only those with >= 2 shared studies)
+    analytes = sorted(pooled.keys(), key=lambda a: pooled[a], reverse=True)
+    all_rows = []
+
+    for i, a in enumerate(analytes):
+        for b in analytes[i + 1:]:
+            comp = within_study_comparison(dataset, a, b)
+            if len(comp) < 2:
+                continue
+
+            n_a_wins = (comp["larger_effect"] == a).sum()
+            n_b_wins = (comp["larger_effect"] == b).sum()
+            k = len(comp)
+            pooled_rank = a if pooled[a] > pooled[b] else b
+            within_study_rank = a if n_a_wins > n_b_wins else b
+
+            all_rows.append({
+                "analyte_1": a,
+                "analyte_2": b,
+                "k_shared": k,
+                "pooled_g_1": round(pooled[a], 3),
+                "pooled_g_2": round(pooled[b], 3),
+                "pooled_rank": pooled_rank,
+                f"within_study_wins_{a}": int(n_a_wins),
+                f"within_study_wins_{b}": int(n_b_wins),
+                "within_study_rank": within_study_rank,
+                "ranking_concordant": pooled_rank == within_study_rank,
+            })
+
+    summary_df = pd.DataFrame(all_rows)
+
+    # Also save the detailed IL-1β vs IL-6 comparison (the key artifact)
+    il1b_il6 = within_study_comparison(dataset, "IL-1β", "IL-6")
+    if not il1b_il6.empty:
+        detail_path = output_dir / "within_study_IL1b_vs_IL6.csv"
+        il1b_il6.to_csv(detail_path, index=False)
+        logger.info("Saved IL-1β vs IL-6 within-study comparison: %s", detail_path)
+
+    if not summary_df.empty:
+        summary_path = output_dir / "within_study_ranking_comparison.csv"
+        summary_df.to_csv(summary_path, index=False)
+        logger.info("Saved within-study ranking comparison: %s", summary_path)
+
+        discordant = summary_df[~summary_df["ranking_concordant"]]
+        if len(discordant) > 0:
+            logger.warning(
+                "COMPOSITION ARTIFACT DETECTED: %d analyte pairs have pooled rankings "
+                "that disagree with within-study evidence: %s",
+                len(discordant),
+                [(r["analyte_1"], r["analyte_2"]) for _, r in discordant.iterrows()],
+            )
+
+    return summary_df
 
 
 def results_to_dataframe(results: list[MetaAnalysisResult]) -> pd.DataFrame:
