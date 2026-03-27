@@ -1,14 +1,14 @@
 ---
-last_run: 2026-03-25T02:14:00Z
-tasks_completed: [1255]
+last_run: 2026-03-27T01:48:00Z
+tasks_completed: [1383]
 tasks_blocked: []
 projects_touched: [swisnf-metabolic-convergence]
 ---
 
 ## Context
 
-- swisnf-metabolic-convergence: Status=analysis. All 7 developer tasks done (#1005-#1010, #1211). Project auto-advanced to analysis on 2026-03-23.
-- Created 3 analyst tasks: #1329 (Phase 1-2 methodology + 104-gene validation), #1331 (Phase 3 pathway enrichment + OXPHOS dominance), #1332 (Phase 4 TCGA failure + Phase 5 drug repurposing).
-- Key development findings: 104 convergent metabolic genes, OXPHOS dominant (34 genes, FDR=2.56e-13). HMGCR NOT convergent (ARID1A-specific). GSH NOT convergent (ARID1A-specific). Phase 4 TCGA FAILED criterion (4% vs 50%). PRISM validates IACS-010759 for SMARCA4 (d=-0.36, p=0.007). Metformin top drug candidate (18 convergent targets).
-- RD task #1273 (eprenetapopt validation drug) is pending but assigned to research_director, not PM.
-- Next: Monitor analyst progress on #1329, #1331, #1332. Cannot advance to validation until all 3 analyst tasks done.
+- swisnf-metabolic-convergence: Status=analysis. All 7 developer tasks done. 4 analyst tasks pending: #1329 (Phase 1-2 methodology), #1331 (Phase 3 pathway enrichment), #1332 (Phase 4-5 TCGA+drugs), #1447 (SLC7A11+ROCK addendum).
+- Routed PM task #1383 (RD eprenetapopt/SLC7A11/ROCK addendum) → created analyst task #1447. SLC7A11 and ROCK1/2 are absent from KEGG metabolic filter, not in existing results — analyst must compute from raw DepMap data.
+- Key: SLC7A11 could flip the GSH-not-convergent conclusion if it shows convergent signal. ROCK+OXPHOS synergy is a new 4th axis.
+- RD task #1393 (mSWI/SNF+KRAS combo preprint) is pending but assigned to research_director, not PM.
+- Next: Monitor analyst progress on #1329, #1331, #1332, #1447. Cannot advance to validation until all 4 analyst tasks done.
