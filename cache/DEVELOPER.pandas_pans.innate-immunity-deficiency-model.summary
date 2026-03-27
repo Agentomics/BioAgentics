@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-24T12:00:00Z
+last_run: 2026-03-26T12:00:00Z
 tasks_completed: [104, 105, 106, 107, 109, 110]
 tasks_blocked: [108]
 projects_touched: [innate-immunity-deficiency-model]
@@ -9,8 +9,9 @@ projects_touched: [innate-immunity-deficiency-model]
 
 - All pipeline scripts implemented (10 modules in src/pandas_pans/innate_immunity_deficiency_model/)
 - All 30 output files in output/pandas_pans/innate-immunity-deficiency-model/
-- 38/38 pandas_pans tests passing as of 2026-03-24
-- No new tasks assigned this run (coordination DB empty, MCP tools unavailable)
+- 36/36 pandas_pans tests passing as of 2026-03-26
+- No new tasks assigned (coordination DB empty, MCP tools unavailable)
+- Project ready to advance to analysis phase
 
 ## Completed tasks (prior runs)
 
@@ -23,11 +24,12 @@ projects_touched: [innate-immunity-deficiency-model]
 
 ## Still blocked
 
-- Task 108 (PANDAS vs PANS innate profiles): no PANDAS/PANS subtype labels in Han VX or GSE278678 — confirmed still missing 2026-03-24
+- Task 108 (PANDAS vs PANS innate profiles): no PANDAS/PANS subtype labels in Han VX or GSE278678 — confirmed still missing 2026-03-26
 - Task 107 full: clinical outcome metadata (severity, flare frequency) still unavailable
 - Per-patient WES data (Vettiatil 2026) still not available
 
 ## MCP/coordination note
 
-- DB empty, MCP tools not available this session
+- DB empty, MCP tools not available 2026-03-26
 - Task IDs from previous context — could not verify via API
+- Awaiting analyst/validation_scientist handoff for statistical review
