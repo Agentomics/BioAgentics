@@ -7,6 +7,7 @@ and writes results as streamed TSV files to avoid memory overload.
 
 import csv
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -52,12 +53,29 @@ SEROTYPES = {
     },
 }
 
-VIRULENCE_FACTOR_KEYWORDS = frozenset({
-    "M protein", "emm", "streptolysin", "SLO", "C5a peptidase",
-    "streptokinase", "DNase", "SpeB", "SpyCEP", "Sic",
+# Substring-matched keywords — long/specific enough to avoid false positives
+_VF_SUBSTRING_KEYWORDS = frozenset({
+    "emm", "streptolysin", "C5a peptidase",
+    "streptokinase", "DNase", "SpeB", "SpyCEP",
     "M-related protein", "Mrp", "protein Enn", "M-like",
     "Streptopain", "Exotoxin", "Hyaluronan", "Hyaluronidase",
 })
+
+# Regex-matched keywords — short/ambiguous terms that need word-boundary checks
+# to avoid false positives (e.g. "M protein" matching "system protein")
+_VF_REGEX_PATTERNS = [
+    re.compile(r"(?<![a-z])M protein", re.IGNORECASE),  # "M protein" not preceded by lowercase
+    re.compile(r"\bSLO\b"),                              # "SLO" as whole word (case-sensitive)
+    re.compile(r"\bSic\b"),                              # "Sic" as whole word (case-sensitive)
+]
+
+
+def _is_virulence_factor(description: str) -> bool:
+    """Check if a protein description indicates a virulence factor."""
+    desc_lower = description.lower()
+    if any(kw.lower() in desc_lower for kw in _VF_SUBSTRING_KEYWORDS):
+        return True
+    return any(pat.search(description) for pat in _VF_REGEX_PATTERNS)
 
 MHC_I_LENGTHS = range(8, 12)   # 8, 9, 10, 11
 MHC_II_LENGTH = 15
@@ -85,7 +103,7 @@ def parse_fasta_streaming(fasta_path: Path):
             if line.startswith(">"):
                 if accession:
                     seq = "".join(seq_parts)
-                    is_vf = any(kw.lower() in description.lower() for kw in VIRULENCE_FACTOR_KEYWORDS)
+                    is_vf = _is_virulence_factor(description)
                     yield ProteinRecord(accession, description, seq, is_vf)
                 header = line[1:].split(None, 1)
                 accession = header[0].split("|")[1] if "|" in header[0] else header[0]
@@ -96,7 +114,7 @@ def parse_fasta_streaming(fasta_path: Path):
 
     if accession:
         seq = "".join(seq_parts)
-        is_vf = any(kw.lower() in description.lower() for kw in VIRULENCE_FACTOR_KEYWORDS)
+        is_vf = _is_virulence_factor(description)
         yield ProteinRecord(accession, description, seq, is_vf)
 
 
@@ -206,14 +224,18 @@ def build_proteome_manifest(proteome_dir: Path) -> dict:
             protein_count = sum(1 for line in fh if line.startswith(">"))
         vf_detected = []
         with open(fasta_path) as f:
-            text = f.read().lower()
+            text = f.read()
+            text_lower = text.lower()
             for kw in [
-                "M_protein", "C5a_peptidase", "streptolysin_O", "streptokinase",
+                "C5a_peptidase", "streptolysin_O", "streptokinase",
                 "DNase", "Streptopain", "Exotoxin", "Hyaluronan",
             ]:
                 readable = kw.replace("_", " ")
-                if readable.lower() in text or kw.lower() in text:
+                if readable.lower() in text_lower or kw.lower() in text_lower:
                     vf_detected.append(kw)
+            # Word-boundary check for "M protein" to avoid "system protein" false positives
+            if re.search(r"(?<![a-z])M protein", text, re.IGNORECASE):
+                vf_detected.insert(0, "M_protein")
 
         entry = {
             "serotype": serotype,

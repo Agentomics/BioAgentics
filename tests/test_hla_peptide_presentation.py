@@ -670,10 +670,10 @@ class TestDigestEnnMrpIntegration:
 
     def test_enn_mrp_virulence_keywords(self):
         from src.pandas_pans.hla_peptide_presentation_modeling.gas_proteome_digest import (
-            VIRULENCE_FACTOR_KEYWORDS,
+            _VF_SUBSTRING_KEYWORDS,
         )
 
-        keywords_lower = {kw.lower() for kw in VIRULENCE_FACTOR_KEYWORDS}
+        keywords_lower = {kw.lower() for kw in _VF_SUBSTRING_KEYWORDS}
         assert "mrp" in keywords_lower
         assert "m-related protein" in keywords_lower
         assert "protein enn" in keywords_lower
@@ -695,3 +695,25 @@ class TestDigestEnnMrpIntegration:
         assert len(proteins) == 2
         assert proteins[0].is_virulence_factor  # "M-related protein" matched
         assert proteins[1].is_virulence_factor  # "Enn" matched
+
+    def test_system_protein_not_false_positive(self, tmp_path):
+        """'M protein' should NOT match 'system protein' (substring false positive)."""
+        from src.pandas_pans.hla_peptide_presentation_modeling.gas_proteome_digest import (
+            parse_fasta_streaming,
+        )
+
+        fasta = tmp_path / "test.fasta"
+        fasta.write_text(
+            ">sp|X001|KUP_STRPG Probable potassium transport system protein Kup OS=GAS\n"
+            "ACDEFGHIKLMNPQRSTVWY\n"
+            ">sp|X002|UVRB_STRPG UvrABC system protein B OS=GAS\n"
+            "ACDEFGHIKLMNPQRSTVWY\n"
+            ">tr|X003|EMM1_STRP1 M protein type 1 OS=GAS GN=emm1\n"
+            "ACDEFGHIKLMNPQRSTVWY\n"
+        )
+
+        proteins = list(parse_fasta_streaming(fasta))
+        assert len(proteins) == 3
+        assert not proteins[0].is_virulence_factor  # Kup is NOT a VF
+        assert not proteins[1].is_virulence_factor  # UvrB is NOT a VF
+        assert proteins[2].is_virulence_factor       # M protein IS a VF
