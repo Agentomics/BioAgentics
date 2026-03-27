@@ -1,0 +1,292 @@
+{
+  "stability_selection": {
+    "n_subsamples": 500,
+    "subsample_fraction": 0.7,
+    "stability_threshold": 0.6,
+    "n_stable_features": 3,
+    "stable_cpgs": [
+      "cg26449787",
+      "cg25927227",
+      "cg12840719"
+    ],
+    "feature_ranking": [
+      {
+        "cpg_id": "cg26449787",
+        "selection_frequency": 0.958,
+        "is_stable": true
+      },
+      {
+        "cpg_id": "cg25927227",
+        "selection_frequency": 0.716,
+        "is_stable": true
+      },
+      {
+        "cpg_id": "cg12840719",
+        "selection_frequency": 0.682,
+        "is_stable": true
+      },
+      {
+        "cpg_id": "cg04203646",
+        "selection_frequency": 0.526,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg05457563",
+        "selection_frequency": 0.288,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg01328892",
+        "selection_frequency": 0.28,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg21291134",
+        "selection_frequency": 0.264,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg20286200",
+        "selection_frequency": 0.246,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg20980055",
+        "selection_frequency": 0.23,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg20230721",
+        "selection_frequency": 0.218,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg05062333",
+        "selection_frequency": 0.218,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg03306486",
+        "selection_frequency": 0.186,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg10782703",
+        "selection_frequency": 0.182,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg15246805",
+        "selection_frequency": 0.18,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg09649901",
+        "selection_frequency": 0.15,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg20330472",
+        "selection_frequency": 0.148,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg11664500",
+        "selection_frequency": 0.116,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg14287112",
+        "selection_frequency": 0.092,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg01805282",
+        "selection_frequency": 0.09,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg24446548",
+        "selection_frequency": 0.076,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg17839237",
+        "selection_frequency": 0.076,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg00240432",
+        "selection_frequency": 0.072,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg20275528",
+        "selection_frequency": 0.07,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg09799658",
+        "selection_frequency": 0.064,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg19333963",
+        "selection_frequency": 0.06,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg18817392",
+        "selection_frequency": 0.05,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg26818735",
+        "selection_frequency": 0.05,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg02884239",
+        "selection_frequency": 0.048,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg10094078",
+        "selection_frequency": 0.048,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg11354906",
+        "selection_frequency": 0.034,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg05085230",
+        "selection_frequency": 0.03,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg10146880",
+        "selection_frequency": 0.03,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg22871668",
+        "selection_frequency": 0.028,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg14343214",
+        "selection_frequency": 0.026,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg24788771",
+        "selection_frequency": 0.024,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg11336061",
+        "selection_frequency": 0.022,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg27313572",
+        "selection_frequency": 0.02,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg21607030",
+        "selection_frequency": 0.018,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg03892781",
+        "selection_frequency": 0.018,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg08712932",
+        "selection_frequency": 0.016,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg10303967",
+        "selection_frequency": 0.016,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg09626984",
+        "selection_frequency": 0.016,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg27366815",
+        "selection_frequency": 0.016,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg18174928",
+        "selection_frequency": 0.016,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg07996594",
+        "selection_frequency": 0.014,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg04221877",
+        "selection_frequency": 0.014,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg04444661",
+        "selection_frequency": 0.014,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg23356017",
+        "selection_frequency": 0.014,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg21253087",
+        "selection_frequency": 0.014,
+        "is_stable": false
+      },
+      {
+        "cpg_id": "cg12587766",
+        "selection_frequency": 0.014,
+        "is_stable": false
+      }
+    ]
+  },
+  "stable_classifier": {
+    "n_features": 3,
+    "features": [
+      "cg26449787",
+      "cg12840719",
+      "cg25927227"
+    ],
+    "auc": 0.0,
+    "sensitivity_at_90spec": 0.0,
+    "sensitivity_at_95spec": 0.0,
+    "method": "LogisticRegression L2, LOO-CV (no internal feature selection needed)"
+  },
+  "comparison": {
+    "original_20cpg_auc": 0.979,
+    "original_20cpg_sens95": 0.833,
+    "stable_auc": 0.0,
+    "stable_sens95": 0.0,
+    "n_original_features": 20,
+    "n_stable_features": 3,
+    "note": "Original used feature selection outside LOO (data leakage). Stable classifier uses pre-selected robust features."
+  },
+  "data": {
+    "n_samples": 24,
+    "n_candidate_features": 298,
+    "n_crc": 12,
+    "n_control": 12
+  }
+}

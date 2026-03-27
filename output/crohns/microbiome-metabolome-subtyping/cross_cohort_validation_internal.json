@@ -1,0 +1,140 @@
+{
+  "discovery_cohort": "HMP2/IBDMDB",
+  "n_subjects": 50,
+  "n_subtype_0": 16,
+  "n_subtype_1": 34,
+  "n_species": 572,
+  "loocv": {
+    "rf": {
+      "acc": 0.6,
+      "bal_acc": 0.4908,
+      "auc": 0.6085
+    },
+    "nc": {
+      "acc": 0.5,
+      "bal_acc": 0.3676
+    }
+  },
+  "cv_5fold_3rep": {
+    "rf": {
+      "bal_acc": "0.565\u00b10.051",
+      "auc": "0.634\u00b10.025"
+    },
+    "nc": {
+      "bal_acc": "0.447\u00b10.044"
+    }
+  },
+  "permutation_test": {
+    "observed_auc": 0.6085,
+    "perm_p": 0.1188,
+    "n_permutations": 100
+  },
+  "top_20_features": [
+    [
+      "Megamonas_Megamonas_unclassified",
+      0.01547
+    ],
+    [
+      "Paraprevotella_Paraprevotella_xylaniphila",
+      0.0151
+    ],
+    [
+      "Erysipelotrichaceae_noname_Clostridium_innocuum",
+      0.01462
+    ],
+    [
+      "Blautia_Ruminococcus_obeum",
+      0.01407
+    ],
+    [
+      "Siphoviridae_noname_Propionibacterium_phage_PAD20",
+      0.01402
+    ],
+    [
+      "Bacteroides_Bacteroides_clarus",
+      0.01353
+    ],
+    [
+      "Lactobacillus_Lactobacillus_casei_paracasei",
+      0.0134
+    ],
+    [
+      "Eubacterium_Eubacterium_rectale",
+      0.01225
+    ],
+    [
+      "Parabacteroides_Parabacteroides_johnsonii",
+      0.01223
+    ],
+    [
+      "Blautia_Ruminococcus_torques",
+      0.0111
+    ],
+    [
+      "Lachnospiraceae_noname_Lachnospiraceae_bacterium_8_1_57FAA",
+      0.01086
+    ],
+    [
+      "Peptostreptococcaceae_noname_Clostridium_difficile",
+      0.01076
+    ],
+    [
+      "Akkermansia_Akkermansia_muciniphila",
+      0.01075
+    ],
+    [
+      "Klebsiella_Klebsiella_pneumoniae",
+      0.01065
+    ],
+    [
+      "Pediococcus_Pediococcus_lolii",
+      0.00999
+    ],
+    [
+      "Bacteroides_Bacteroides_coprocola",
+      0.00971
+    ],
+    [
+      "Clostridium_Clostridium_hathewayi",
+      0.00931
+    ],
+    [
+      "Paraprevotella_Paraprevotella_unclassified",
+      0.00905
+    ],
+    [
+      "Ruminococcus_Ruminococcus_bromii",
+      0.00878
+    ],
+    [
+      "Clostridium_Clostridium_sp_ATCC_BAA_442",
+      0.00816
+    ]
+  ],
+  "subtype_centroids_top10": {
+    "subtype_0": {
+      "Megamonas_Megamonas_unclassified": -0.9525,
+      "Paraprevotella_Paraprevotella_xylaniphila": -1.0152,
+      "Erysipelotrichaceae_noname_Clostridium_innocuum": 0.5613,
+      "Blautia_Ruminococcus_obeum": 5.5136,
+      "Siphoviridae_noname_Propionibacterium_phage_PAD20": -0.9473,
+      "Bacteroides_Bacteroides_clarus": -0.4573,
+      "Lactobacillus_Lactobacillus_casei_paracasei": -0.5935,
+      "Eubacterium_Eubacterium_rectale": 8.9262,
+      "Parabacteroides_Parabacteroides_johnsonii": -1.2678,
+      "Blautia_Ruminococcus_torques": 7.4193
+    },
+    "subtype_1": {
+      "Megamonas_Megamonas_unclassified": -0.0291,
+      "Paraprevotella_Paraprevotella_xylaniphila": 0.0445,
+      "Erysipelotrichaceae_noname_Clostridium_innocuum": -0.9561,
+      "Blautia_Ruminococcus_obeum": 4.8217,
+      "Siphoviridae_noname_Propionibacterium_phage_PAD20": -0.6444,
+      "Bacteroides_Bacteroides_clarus": -0.2945,
+      "Lactobacillus_Lactobacillus_casei_paracasei": -0.5966,
+      "Eubacterium_Eubacterium_rectale": 7.7125,
+      "Parabacteroides_Parabacteroides_johnsonii": 0.5762,
+      "Blautia_Ruminococcus_torques": 6.9251
+    }
+  }
+}
