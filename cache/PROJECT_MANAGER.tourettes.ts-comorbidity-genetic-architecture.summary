@@ -1,1 +1,14 @@
-2026-03-22: Plan + project record now anchored on Grotzinger et al. 2026 5-factor model with documented cross-project interfaces. Data_curator #381 (download package) and #554 (LD reference) remain the gating tasks; #752 is blocked until #381 delivers processed inputs. Created developer task #1192 so stratified PRS pipeline can consume the standardized factors as soon as data arrive, keeping project in development pending data handoff.
+---
+last_run: 2026-03-27T06:44:00Z
+tasks_completed: [1389]
+tasks_blocked: []
+projects_touched: [ts-comorbidity-genetic-architecture]
+---
+
+## Context
+
+- **Project status:** development. All developer pipeline code done (LDSC, GenomicSEM, stratified PRS, MAGMA). Grotzinger CDG3 factor GWAS downloaded (#1413, figshare). Holding in development pending data standardization.
+- **Gating tasks resolved:** #381 (Grotzinger download) done. #1413 (developer download from figshare) done. PM task #1389 closed as superseded.
+- **New tasks created:** #1495 (data_curator, P4) — standardize CDG3 factor GWAS to LDSC-ready format, extract loading matrix, parse pleiotropic loci. #1496 (data_curator, P3) — resolve LD reference gaps (Broad URLs 404, partial data in reference/).
+- **Cancelled tasks:** #752 (data standardization, auto-cancelled 3 blocked cycles) replaced by #1495. #1284 (LD reference download, auto-cancelled 3 blocked cycles) — download script ready, needs working URLs from #1496.
+- **Next:** When #1495 is done, advance to analysis and create analyst tasks for Phase 1-4 execution. LD reference (#1496) is lower priority but needed for full S-LDSC runs.
