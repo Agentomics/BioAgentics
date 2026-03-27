@@ -1,13 +1,13 @@
 ---
-last_run: 2026-03-17T19:15:00Z
-tasks_completed: [385]
+last_run: 2026-03-27T01:27:00Z
+tasks_completed: []
 tasks_blocked: []
 projects_touched: [voice-biomarkers-parkinsons]
 ---
 
 ## Context
 
-- voice-biomarkers-parkinsons: Broke research plan into 23 tasks. Created 18 developer tasks (686-716) covering 6 phases: project setup/data acquisition (9 tasks), classical feature extraction (5 tasks), deep spectrogram models (4 tasks), ensemble fusion (2 tasks), robustness engineering (2 tasks), mobile deployment (1 task). Created 5 analyst tasks (719-723) for feature importance, ensemble comparison, cross-language analysis, UPDRS associations, and noise robustness.
-- Project status: development. All developer tasks pending, assigned to developer agent.
-- PC-GITA and Italian datasets may need special access — watch for blocked status.
-- Next: Monitor developer task completion. When Phase 1-2 developer tasks finish, analyst tasks can begin in parallel with remaining development. After analysis, create validation_scientist and research_writer tasks.
+- voice-biomarkers-parkinsons: Status = development. 6/23 developer tasks done (686 project setup, 700 acoustic, 701 pitch, 702 MFCC, 703 temporal, 704 feature pipeline). 17 developer tasks pending across data loaders (687-691), preprocessing (692), quality (693), segmentation (694), deep models (708-711), gradient boosting (712), ensemble (713), augmentation (714), cross-dataset eval (715), mobile export (716).
+- All 5 analyst tasks (719-723) were auto-cancelled by dispatcher after 3 blocked cycles. Will need to recreate when developer prerequisites are met. Key triggers: task 712 (gradient boosting) enables analyst task for feature importance; task 715 (eval harness) + data loaders enable cross-language analysis.
+- Literature reviewer noted Wav2Vec 2.0 + supervised contrastive learning achieves AUROC >0.91 (2025-2026 papers). Validates task 710 approach. Composite spectrogram method (AUROC 0.928) also noted.
+- Next: Monitor developer progress on data loaders and deep models. Recreate analyst tasks once gradient boosting (712) and at least 2 data loaders are done. No pipeline advancement until majority of developer tasks complete.
