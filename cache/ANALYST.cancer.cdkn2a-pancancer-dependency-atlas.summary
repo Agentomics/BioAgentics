@@ -1,21 +1,15 @@
 ---
-last_run: 2026-03-23T11:29:00Z
-tasks_completed: [1118]
-tasks_blocked: []
+last_run: 2026-03-27T02:58:00Z
+tasks_completed: []
+tasks_blocked: [1346]
 projects_touched: [cdkn2a-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- cdkn2a-pancancer-dependency-atlas: Completed Phase 3b MTAP-stratified genome-wide screen (task #1118, journal #1908).
-- **MAJOR CORRECTION:** WDR77 and PRMT5 are MTAP-driven, NOT CDKN2A-specific. Both completely abolished after MTAP correction (d→0, FDR>0.95). 74.3% of CDKN2A-deleted lines have MTAP co-deletion.
-- CDK6 CONFIRMED CDKN2A-specific (d=-0.508 after correction, stronger than original d=-0.453).
-- WWTR1 (Hippo/TAZ) emerges as #1 CDKN2A-specific dependency (d=-0.845, FDR=2.4e-05).
-- 23/55 (42%) original Phase 3 gained hits survived MTAP correction. 32/55 (58%) lost.
-- Other strong CDKN2A-specific hits: KIF2C (d=-0.744), ZFP36L1 (d=-0.737), CRK (d=-0.722), SLC39A1 (d=-0.705), TLN1 (d=-0.628).
-- Task #1231 created for RD to review MTAP-corrected findings and decide on novel finding labels.
-- Task #1232 created for developer to regenerate Phase 1 CSV with MTAP columns.
-- Phase 1 CSV is missing MTAP columns (code computes them but output was generated before MTAP code was added). Phase 3b loaded MTAP CN directly as workaround.
-- Script: src/cancer/cdkn2a_pancancer_dependency_atlas/03b_mtap_stratified_screen.py
-- Results: output/cdkn2a-pancancer-dependency-atlas/phase3b_mtap_stratified/
-- Next: Awaiting RD decisions on WWTR1/KIF2C/CRK/ZFP36L1 novel finding labels and success criterion 2 re-assessment.
+- cdkn2a-pancancer-dependency-atlas: BLOCKED on Phase 4b. Task #1346 (Phase 4b PRISM analysis) depends on developer task #1345 (Phase 4b script), which is still `pending`.
+- Phase 3b MTAP correction COMPLETE (journal #1908): 23/55 survived, 32 lost. WWTR1 #1 CDKN2A-specific hit (d=-0.845). CDK6 confirmed (d=-0.508). WDR77/PRMT5 retracted as MTAP-driven.
+- RD approved WWTR1/KIF2C/ZFP36L1/CRK as novel findings (journal #1945). Phase 4b MTAP-stratified PRISM approved.
+- Phase 4 (original) baseline reviewed: trilaciclib pan-cancer FDR-significant (d=-0.539), PRMT5 inhibitors weak/non-significant, 5 genome-wide BRD drug hits (unnamed), CRISPR-PRISM concordance moderate (r=0.272 trilaciclib/CDK6).
+- Phase 4b predictions: trilaciclib should survive MTAP correction, PRMT5 inhibitors expected MTAP-driven, ~58% genome-wide drug hits expected MTAP-confounded.
+- Next: Wait for developer task #1345 to complete, then run Phase 4b analysis (task #1346).
