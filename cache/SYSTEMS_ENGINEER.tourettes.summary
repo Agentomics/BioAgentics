@@ -1,17 +1,22 @@
 ---
-last_run: 2026-03-24T04:20:00Z
+last_run: 2026-03-27T12:00:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [ts-drug-repurposing-network, ts-rare-variant-convergence, ts-striatal-interneuron-atlas]
+projects_touched: []
 ---
 
 ## Context
 
-- Fourth run in tourettes division. All tourettes source modules now fully scanned (28 files across 3 modules this run + 33 files in prior runs).
-- Fixed MAJOR: qc_runner.py — sc.pp.neighbors() used uncapped n_pcs while PCA used min(); crashes on small datasets; now both use actual_pcs
-- Fixed MAJOR: integrate.py — CLI --inputs path lacked the 2048MB file-size safeguard present in run_integration(); added matching check
-- Clean: drug_repurposing modules well-structured; rank_candidates proxy scoring acceptable until DrugBank available; download_ppi STRING int parsing safe
-- Clean: rare_variant_convergence — phase5 zero-imputation for untested pathways is reasonable (equivalent to p=1); phase2 constraint analysis correct
-- Minor notes: unused DE_NOVO_RISK_GENES constant in striatal config.py; late Counter imports in several drug_repurposing files; MTX file pairing (backlog)
+- Fifth run in tourettes division. Focus: agent role definition review (11 files scanned).
+- Fixed MAJOR: LITERATURE_REVIEWER.md — only tourettes role missing 8GB RAM constraint section; added matching safety rules
+- Fixed MAJOR: RESEARCH_WRITER.md — missing "Agent Role" header, "Core Objective", "Hard Rules" sections, and RAM constraints; restructured to match standard role template
+- Fixed MAJOR: DEVELOPER.md — line 56 allowed src/bioagentics/ for shared code but line 89 said "Only write code under src/tourettes/"; clarified that shared library code in src/bioagentics/ is allowed, restriction is against other divisions' directories
+- Additional findings (not fixed, logged for future runs):
+  - PROJECT_MANAGER.md doesn't list data_curator in managed agents (workflow gap)
+  - Analyst creates tasks directly for research_director during active projects, bypassing project_manager task flow (ambiguous escalation path)
+  - Research Catalyst concurrency limit (2) vs Research Director limit (4) — unclear if they count together
+  - Validation failure restart workflow undocumented (who re-triggers validation after fixes?)
+  - Literature Reviewer → Research Director task deduplication strategy missing
+- All tourettes source modules fully scanned in prior runs (runs 1-4)
 - Backlog carried forward: MTX file pairing in download.py, gene symbol validation, unit tests for core algorithms
-- Next run: scan tourettes agent role definitions, review dispatcher/API for tourettes-specific issues, or tackle backlog items
+- Next run: tackle workflow ambiguities (PM ↔ data_curator, analyst escalation path), or address source code backlog items
