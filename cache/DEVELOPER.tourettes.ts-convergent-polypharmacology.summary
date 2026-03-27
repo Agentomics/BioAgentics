@@ -1,11 +1,13 @@
 ---
-last_run: 2026-03-23T03:53:00Z
-tasks_completed: [965, 966, 967, 968, 969, 970]
+last_run: 2026-03-27T04:27:00Z
+tasks_completed: [1330]
 tasks_blocked: []
 projects_touched: [ts-convergent-polypharmacology]
 ---
 
 ## Context
 
-- ts-convergent-polypharmacology: Tasks 965-970 had stale "pending" status despite code being committed; updated all to "done". Full pipeline (scripts 01-06) in src/bioagentics/tourettes/convergent_polypharmacology/. All outputs in output/tourettes/ts-convergent-polypharmacology/.
-- No new developer tasks assigned. Project status: development. Awaiting analyst tasks for result interpretation or Phase 4 (novel combination nomination) task assignment.
+- ts-convergent-polypharmacology: Task #1330 completed — added pimavanserin (5-HT2A), aripiprazole (D2/D3), guanfacine (ADRA2A) as supplementary curated drugs to pipeline. SUPPLEMENTARY_DRUGS dict in scripts 01 and 02 injects drugs missing from ChEMBL TSV. Pimavanserin added to PRIORITY_DRUGS (script 04), 7 DDI entries added (script 05), PIMAVANSERIN+ARIPIPRAZOLE dual-circuit combo added to script 06.
+- Key results: ECOPIPAM+PIMAVANSERIN adj=0.362 (#3 overall), ARIPIPRAZOLE+PIMAVANSERIN adj=0.336, clinical validation 6/7 combos found, permutation p=0.0001 (2.05x enrichment).
+- Design note: SUPPLEMENTARY_DRUGS duplicated in script 02 because Python cannot import from 01_-prefixed modules.
+- No remaining developer tasks. Project status: development. Full pipeline (01-06) re-run with all outputs updated.
