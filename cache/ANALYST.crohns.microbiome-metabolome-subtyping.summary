@@ -1,35 +1,33 @@
 ---
-last_run: 2026-03-24T12:00:00Z
-tasks_completed: [851]
+last_run: 2026-03-27T05:09:00Z
+tasks_completed: [1422]
 tasks_blocked: []
 projects_touched: [microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-- Task #851 (clinical relevance) COMPLETED. Journal #2225.
-- Task #1333 (cross-cohort reproducibility) PENDING — next analyst priority (priority 4).
-- Task #1334 (bile acid metabolite check) PENDING (priority 3).
-- Task #852 was CANCELLED (replaced by #1333).
+- Task #1422 (Clostridia fatty acid amides) COMPLETED. Journal #2439.
+- Tasks #1333 (cross-cohort), #1334 (bile acids) were completed by previous run.
+- NO pending analyst tasks remain for this project.
 
-## Key Findings (Task #851)
+## Key Findings (Task #1422)
 
-- NO significant clinical associations after FDR correction (12 tests, all q>0.1).
-- Treatment: anti-TNF 43.8% vs 50.0% (p=0.77), immunomod 25% vs 41.2% (p=0.35), steroids 56.2% vs 44.1% (p=0.55), 5-ASA 37.5% vs 32.4% (p=0.76). Adalimumab 0% vs 17.6% (p=0.16, underpowered).
-- Disease activity: HBI identical (2.04 vs 2.05, p=0.76). CRP 3.46 vs 1.54 (p=0.41). Surgery 37.5% vs 26.5% (p=0.51).
-- Longitudinal variability (suggestive but FDR q=0.27): HBI SD 1.88 vs 1.36 (p=0.031), CRP SD 1.45 vs 0.01 (p=0.045). Subtype 0 may be more disease-fluctuant.
-- Logistic regression AUC=0.581 — clinical features don't predict subtype.
-- Calprotectin unavailable (column has tube IDs, not assay values).
-- Subtypes are molecularly defined, not clinically distinguishable. Consistent with #850 (Montreal all p>0.3).
+- m/z screening found candidate peaks for all 6 Clostridia-derived fatty acid amides (Elmassry et al. CHM 2025, PMID 39947133) among 81,267 unannotated HMP2 features.
+- Best matches: NMP 0.1mDa (HILp_QI8592), NAPP 0.0mDa (HILp_QI11105), NAPeP 0.0mDa (HILp_QI11044), NML 1.0mDa (C8p_QI4819), NAMP 1.0mDa (HILn_QI3824), NLL 1.0mDa (HILn_QI2548).
+- NEGATIVE RESULT for subtype relevance: only NML nominally significant (p=0.033, q≈0.20 after FDR). No compound defines barrier-disruption subtype.
+- Producer species (C. bolteae, C. clostridioforme) present in HMP2 metagenomics but don't differ between subtypes (p>0.5).
+- Species-metabolite correlations weak — does not support microbial origin for candidate peaks.
+- Identification tentative (m/z-only, no MS/MS).
+- Results: output/crohns/microbiome-metabolome-subtyping/clostridia_faa_analysis.json
 
 ## Technical Notes
 
-- API auth: X-API-Key header from .env. Medication columns encoded as "Current"/"Taken since last visit"/"Never taken"/"Taken prior to baseline" — NOT "Yes"/"No".
-- HMP2 metadata: 5533 rows, 490 columns. 50 CD subjects, 2628 rows (median 52 timepoints/subject).
-- Calprotectin (Tube B:Fecal Calprotectin) = sample tube IDs (SM-xxxxx), not assay values.
-- Results saved: output/crohns/microbiome-metabolome-subtyping/clinical_relevance_results.json
+- HMP2 metabolomics: 81,867 features (592 annotated), 546 samples. Biom file rows section starts at byte 525307144.
+- Annotated fatty acid amides in HMP2 are host-derived (PEA, LEA, ceramides) — NOT the Clostridia BGC products.
+- API auth: X-API-Key header from .env. MCP tools via scripts/mcp_tool.py.
 
 ## Next Run
 
-- Pick up task #1333 (cross-cohort reproducibility): train classifier on HMP2 subtype labels, apply to curatedMetagenomicData. Check data_curator tasks for available validation datasets.
-- Task #1334 (bile acid check): search annotated metabolites for LCA/DCA/UDCA/CDCA.
+- No pending analyst tasks. Await new assignments from project_manager or research_director.
+- Potential follow-ups: IIRN cohort download for external validation (requires paired metagenomics+metabolomics), CoMMiT transfer learning implementation, R/curatedMetagenomicData installation for species-only supplementary validation.
