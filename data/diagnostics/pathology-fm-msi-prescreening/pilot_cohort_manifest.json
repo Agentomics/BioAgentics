@@ -1,0 +1,302 @@
+[
+  {
+    "case_id": "a8b4284d-cbbb-43e3-897b-d04af4bfba74",
+    "file_uuid": "9fa06e23-f31e-488e-9263-5823cd89e777",
+    "patient_id": "TCGA-AZ-6598",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.3777,
+    "msisensor_score": 43.27,
+    "file_name": "TCGA-AZ-6598-01Z-00-DX1.1fc4cd61-4524-413b-b36d-ad438785bc06.svs",
+    "file_size_bytes": 783755825
+  },
+  {
+    "case_id": "955464c8-9c62-430c-87b8-107db5c980a8",
+    "file_uuid": "4d52a92f-7495-41ec-8606-5fff12413940",
+    "patient_id": "TCGA-AD-6889",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.3414,
+    "msisensor_score": 40.44,
+    "file_name": "TCGA-AD-6889-01Z-00-DX1.5269A81E-5391-4875-8F2A-6505BC5BBFD9.svs",
+    "file_size_bytes": 420566141
+  },
+  {
+    "case_id": "bc42fe2d-1a33-428d-a601-b1871f4c8d9b",
+    "file_uuid": "3918b8a1-e2d2-4ecc-97ea-a8ad81474088",
+    "patient_id": "TCGA-AA-3966",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.296,
+    "msisensor_score": 43.67,
+    "file_name": "TCGA-AA-3966-01Z-00-DX1.7bc0c76e-f2d9-4abd-b63c-dad01aa4b1f7.svs",
+    "file_size_bytes": 440709222
+  },
+  {
+    "case_id": "764c97c9-01d3-45cb-86bd-f8a52b5468da",
+    "file_uuid": "8e58762c-e960-4319-b329-09ea285fc8c1",
+    "patient_id": "TCGA-AA-A02R",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.2923,
+    "msisensor_score": 32.62,
+    "file_name": "TCGA-AA-A02R-01Z-00-DX1.B332C84C-EE97-4855-B773-9B5CBFA45096.svs",
+    "file_size_bytes": 784086292
+  },
+  {
+    "case_id": "85e95dda-6198-464a-9187-fd0832bebb72",
+    "file_uuid": "fa3a810e-09c6-4342-8923-1fe70546d9de",
+    "patient_id": "TCGA-AA-3492",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.2602,
+    "msisensor_score": 35.82,
+    "file_name": "TCGA-AA-3492-01Z-00-DX1.32D79909-71D5-4843-847E-AECA5DBC963D.svs",
+    "file_size_bytes": 9013124
+  },
+  {
+    "case_id": "c21d2c68-920f-4526-b754-286579c049f3",
+    "file_uuid": "5fe3d9b5-c3f6-46d7-a06d-84e395017cf6",
+    "patient_id": "TCGA-AA-3663",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.2565,
+    "msisensor_score": 41.51,
+    "file_name": "TCGA-AA-3663-01Z-00-DX1.9AEDC003-2062-4876-8993-A5CEE4DDE1A9.svs",
+    "file_size_bytes": 12572176
+  },
+  {
+    "case_id": "654c6f5c-3e5c-49f0-b53f-87cd9797d7c9",
+    "file_uuid": "bb860990-f9de-41cb-8e51-4a28f26aad61",
+    "patient_id": "TCGA-AA-3947",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.2515,
+    "msisensor_score": 40.0,
+    "file_name": "TCGA-AA-3947-01Z-00-DX1.77005e19-8a8e-4b82-89e9-c81af9b41193.svs",
+    "file_size_bytes": 701254788
+  },
+  {
+    "case_id": "19d1a5fc-3ce9-4e43-a364-a4150bcf911b",
+    "file_uuid": "001b7d97-9425-43c3-a9a3-a36cb3d2a591",
+    "patient_id": "TCGA-A6-2686",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.2375,
+    "msisensor_score": 41.35,
+    "file_name": "TCGA-A6-2686-01Z-00-DX1.0540a027-2a0c-46c7-9af0-7b8672631de7.svs",
+    "file_size_bytes": 497633503
+  },
+  {
+    "case_id": "cc22913d-2dda-48bb-82aa-9960b73f3e44",
+    "file_uuid": "a8903dd1-b3ec-4b10-89f3-142fab914157",
+    "patient_id": "TCGA-NH-A5IV",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.2012,
+    "msisensor_score": 41.02,
+    "file_name": "TCGA-NH-A5IV-01Z-00-DX1.1A6F9F12-C00E-47F2-9400-541BA230EFBE.svs",
+    "file_size_bytes": 1564882941
+  },
+  {
+    "case_id": "4c6c8d3d-e4a3-490a-9211-cfbe7e6ee25b",
+    "file_uuid": "103810e8-c721-4242-b729-270097a23469",
+    "patient_id": "TCGA-A6-5665",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.1824,
+    "msisensor_score": 46.78,
+    "file_name": "TCGA-A6-5665-01Z-00-DX1.3ad2c249-d138-4037-a59b-4747ce2b789a.svs",
+    "file_size_bytes": 168725275
+  },
+  {
+    "case_id": "eed7405f-f8f3-41a4-a0e7-242f23087f59",
+    "file_uuid": "d5b766d5-9f09-46a2-84c4-2eec944efc7f",
+    "patient_id": "TCGA-CM-6171",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.1813,
+    "msisensor_score": 43.0,
+    "file_name": "TCGA-CM-6171-01Z-00-DX1.74d4391e-3dbc-4ad4-b188-3b11ac65e6d8.svs",
+    "file_size_bytes": 905712995
+  },
+  {
+    "case_id": "a6f98ee5-9638-4ebe-804b-fba54aea9f90",
+    "file_uuid": "2fcfc546-8fa2-4f4f-92e1-12b4f6434a51",
+    "patient_id": "TCGA-CK-6746",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.1685,
+    "msisensor_score": 36.05,
+    "file_name": "TCGA-CK-6746-01Z-00-DX1.0aae8eec-1e82-494b-8779-d79fea8bec0c.svs",
+    "file_size_bytes": 696389971
+  },
+  {
+    "case_id": "7a481097-14a3-4916-9632-d899c25fd284",
+    "file_uuid": "c10e5c0e-dc3c-4032-86ef-70a1a4f1195f",
+    "patient_id": "TCGA-AA-A022",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.1662,
+    "msisensor_score": 43.0,
+    "file_name": "TCGA-AA-A022-01Z-00-DX1.2673F279-5DF6-4E71-92B2-A589DD8F583B.svs",
+    "file_size_bytes": 749369164
+  },
+  {
+    "case_id": "d7ebd11a-1339-4b28-be90-a788d2cfa706",
+    "file_uuid": "3da5c30e-042f-4dca-965e-0852ca2d8987",
+    "patient_id": "TCGA-AA-3811",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.1337,
+    "msisensor_score": 38.84,
+    "file_name": "TCGA-AA-3811-01Z-00-DX1.369d7946-911e-4e97-8ae7-32ef12b6b106.svs",
+    "file_size_bytes": 300952708
+  },
+  {
+    "case_id": "613aa3e8-a70b-45a9-9c08-0c2346c8bf00",
+    "file_uuid": "5fb8d491-f1b7-4284-b982-a965b12edcd3",
+    "patient_id": "TCGA-AD-A5EJ",
+    "msi_label": "MSI-H",
+    "mantis_score": 1.0934,
+    "msisensor_score": 22.4,
+    "file_name": "TCGA-AD-A5EJ-01Z-00-DX1.FA56CEAF-8B70-45EF-A2C9-8AA7BEB3D88A.svs",
+    "file_size_bytes": 149648896
+  },
+  {
+    "case_id": "d761bc06-dee8-478a-be99-8af9c504e49c",
+    "file_uuid": "aaab8c27-dbc8-4221-9b14-97834e3b756f",
+    "patient_id": "TCGA-AA-3684",
+    "msi_label": "MSS",
+    "mantis_score": 0.2513,
+    "msisensor_score": 0.09,
+    "file_name": "TCGA-AA-3684-01Z-00-DX1.c6be6ea4-fa92-4499-b458-85c3a8b1e3b6.svs",
+    "file_size_bytes": 975409112
+  },
+  {
+    "case_id": "80809d79-92e1-4d6c-ba2e-0a9589997792",
+    "file_uuid": "83e92efd-308c-424d-a818-6400ff676b16",
+    "patient_id": "TCGA-AA-A01C",
+    "msi_label": "MSS",
+    "mantis_score": 0.2539,
+    "msisensor_score": 0.1,
+    "file_name": "TCGA-AA-A01C-01Z-00-DX1.C69C8FC3-04A2-46B8-8577-7A7F082248CB.svs",
+    "file_size_bytes": 465560132
+  },
+  {
+    "case_id": "35620be9-3ba5-4be7-9e00-83103e6a92e6",
+    "file_uuid": "25d00401-5200-417f-8955-ddba65eebdb7",
+    "patient_id": "TCGA-AA-A02E",
+    "msi_label": "MSS",
+    "mantis_score": 0.2544,
+    "msisensor_score": 1.66,
+    "file_name": "TCGA-AA-A02E-01Z-00-DX1.04D47621-9DCF-437C-A4D6-44D17579FE6D.svs",
+    "file_size_bytes": 638400086
+  },
+  {
+    "case_id": "d4e1472a-7b5f-46f4-acb7-b961f634e28e",
+    "file_uuid": "b2cba6c5-173a-42cc-b0aa-93100222d08b",
+    "patient_id": "TCGA-AA-A024",
+    "msi_label": "MSS",
+    "mantis_score": 0.2567,
+    "msisensor_score": 0.75,
+    "file_name": "TCGA-AA-A024-01Z-00-DX1.5F24A31C-2F11-4768-9906-7BAB578C742D.svs",
+    "file_size_bytes": 1122599358
+  },
+  {
+    "case_id": "0a815133-0edd-4422-89f2-2f067b6f2156",
+    "file_uuid": "acf9470e-04dd-481b-9510-97a3a149f02b",
+    "patient_id": "TCGA-AA-3848",
+    "msi_label": "MSS",
+    "mantis_score": 0.2571,
+    "msisensor_score": 0.66,
+    "file_name": "TCGA-AA-3848-01Z-00-DX1.bb018b1c-7748-4865-b00f-42edc35b5047.svs",
+    "file_size_bytes": 369381732
+  },
+  {
+    "case_id": "d17a2ab0-faef-40de-a87d-1291868b200d",
+    "file_uuid": "53772800-a81b-4652-a891-6a9898de8283",
+    "patient_id": "TCGA-AA-3679",
+    "msi_label": "MSS",
+    "mantis_score": 0.2575,
+    "msisensor_score": 0.41,
+    "file_name": "TCGA-AA-3679-01Z-00-DX1.b3445f8e-b143-4f24-9edd-8abdcb6b139b.svs",
+    "file_size_bytes": 305678090
+  },
+  {
+    "case_id": "c83d38fc-e011-4f75-a100-96513611f3e9",
+    "file_uuid": "f69aeb1a-626a-4dfa-bf5f-60ff674f26aa",
+    "patient_id": "TCGA-QG-A5YV",
+    "msi_label": "MSS",
+    "mantis_score": 0.2586,
+    "msisensor_score": 0.0,
+    "file_name": "TCGA-QG-A5YV-01Z-00-DX1.9B7FD3EA-D1AB-44B3-B728-820939EF56EA.svs",
+    "file_size_bytes": 2029458767
+  },
+  {
+    "case_id": "44c2854e-3f8c-48e1-b4d5-1b5778d4fce4",
+    "file_uuid": "ae0b360c-6eb7-49ae-8cdb-ccaacfec7cfe",
+    "patient_id": "TCGA-AA-3858",
+    "msi_label": "MSS",
+    "mantis_score": 0.2586,
+    "msisensor_score": 0.37,
+    "file_name": "TCGA-AA-3858-01Z-00-DX1.6336815f-9887-4f74-a15d-78e7f6cacb59.svs",
+    "file_size_bytes": 76257166
+  },
+  {
+    "case_id": "192da41f-f0a5-494e-8eb9-96bcdae56ff8",
+    "file_uuid": "cd7bddd5-0f09-4891-a11a-b18cae6b9b53",
+    "patient_id": "TCGA-AA-3819",
+    "msi_label": "MSS",
+    "mantis_score": 0.261,
+    "msisensor_score": 0.25,
+    "file_name": "TCGA-AA-3819-01Z-00-DX1.cd674efa-b953-4721-9468-ec6ad8b6f567.svs",
+    "file_size_bytes": 237808674
+  },
+  {
+    "case_id": "f3b9defb-88ed-4c95-9feb-7197d869676c",
+    "file_uuid": "d32f8922-be9a-4841-9131-7d966c18e27d",
+    "patient_id": "TCGA-AA-3680",
+    "msi_label": "MSS",
+    "mantis_score": 0.2615,
+    "msisensor_score": 0.33,
+    "file_name": "TCGA-AA-3680-01Z-00-DX1.9eef1b8f-c3c1-486f-83e7-a88182ce892a.svs",
+    "file_size_bytes": 355788840
+  },
+  {
+    "case_id": "41658cf8-0de1-4a97-bb60-0f0107c84e00",
+    "file_uuid": "b7c23d21-c9b8-4d40-b32d-01a7081e5189",
+    "patient_id": "TCGA-AA-3675",
+    "msi_label": "MSS",
+    "mantis_score": 0.2618,
+    "msisensor_score": 0.31,
+    "file_name": "TCGA-AA-3675-01Z-00-DX1.9afbbb26-2574-46af-8154-5f39bab6f01a.svs",
+    "file_size_bytes": 202032336
+  },
+  {
+    "case_id": "abb0d53f-f74e-45dc-8fbb-40863016f3c6",
+    "file_uuid": "88237eee-faf0-41eb-bc75-b89affd0c3cb",
+    "patient_id": "TCGA-AA-3681",
+    "msi_label": "MSS",
+    "mantis_score": 0.263,
+    "msisensor_score": 0.52,
+    "file_name": "TCGA-AA-3681-01Z-00-DX1.576342cf-0f40-404a-b3c5-b33103f86777.svs",
+    "file_size_bytes": 226334092
+  },
+  {
+    "case_id": "a06c09a8-0951-49f4-a765-5147bbcae109",
+    "file_uuid": "08ef38c6-068b-420d-b629-d7778492c0a9",
+    "patient_id": "TCGA-AA-3664",
+    "msi_label": "MSS",
+    "mantis_score": 0.2631,
+    "msisensor_score": 0.79,
+    "file_name": "TCGA-AA-3664-01Z-00-DX1.bd07e7ef-0acb-43d8-a4f6-15b3442d2ed5.svs",
+    "file_size_bytes": 458131871
+  },
+  {
+    "case_id": "0b8de222-119a-40f3-8beb-12b9d933225b",
+    "file_uuid": "98b7c182-b122-429c-af4f-45be155b56f8",
+    "patient_id": "TCGA-AA-3856",
+    "msi_label": "MSS",
+    "mantis_score": 0.2645,
+    "msisensor_score": 0.3,
+    "file_name": "TCGA-AA-3856-01Z-00-DX1.973974e7-fcfe-4866-bc0c-50645c6c304b.svs",
+    "file_size_bytes": 619340700
+  },
+  {
+    "case_id": "d651f9ba-8746-46c4-852c-6c2992c7d10e",
+    "file_uuid": "5fa14139-2603-4f30-a508-ec94432dc9e6",
+    "patient_id": "TCGA-AA-3667",
+    "msi_label": "MSS",
+    "mantis_score": 0.2649,
+    "msisensor_score": 0.71,
+    "file_name": "TCGA-AA-3667-01Z-00-DX1.28dc3612-1c43-4727-a134-698cc4315dc3.svs",
+    "file_size_bytes": 325517958
+  }
+]
