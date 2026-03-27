@@ -1,4 +1,4 @@
-last_run: 2026-03-24T02:16:00Z
+last_run: 2026-03-26T00:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [cd-stricture-risk-prediction]
@@ -6,12 +6,11 @@ projects_touched: [cd-stricture-risk-prediction]
 
 ## Context
 
-- Project status: development. No changes this cycle.
-- Critical path: developer tasks #1297 (parse GSE93624, p5) → #1299 (transcriptomic features, p4) → #1300 (retrain model, p4). All 3 still pending — awaiting developer dispatch.
-- No blocked or in_progress tasks anywhere in the project.
-- Proof-of-concept model (deep_ulcer surrogate) achieved AUC 0.748. New model with real complication outcome (GSE93624, 27/245 progressors) expected to be comparable or better.
-- Pending RD task #1263: evaluate GPX4 as feature, deprioritize Montreal B-classification — awaiting RD cycle.
-- Deferred PM task #1244: γδ T cell features (TRDV1, TRDV2, IL17A) gated on model AUC>0.80 after retrain.
-- Class imbalance warning: 27/245 (~11%) positive rate — developer instructed to handle.
-- External validation dataset GSE16879 download still pending (#505, data_curator, p2).
-- Next action: once developer completes #1297/#1299/#1300, advance project to analysis and create analyst tasks.
+- Database was reset since last run. Recreated project record and advanced status from development → analysis.
+- Developer work verified complete via artifacts: GSE93624 data parsed (gse93624_expression.tsv.gz, gse93624_phenotype.tsv, gse93624_transcriptomic_features.tsv), model retrained (gse93624_cv_results.json).
+- GSE93624 retrained model: full AUC=0.748, clinical AUC=0.634, txn AUC=0.695, n=174. Delta clinical→full = +0.114. Meets ≥0.10 uplift criterion. AUC borderline vs 0.75 target.
+- Top features (GSE93624 full model): pathway_collagen_ecm, gene_CTHRC1, gene_FGF2, location_ileal, macro_inflammation, gene_TNFSF15, gene_SERPINE1, gene_TNFRSF25.
+- Risk stratification: low 0%, medium 8.6%, high 100% event rate — possible overfitting concern, analyst tasked to assess.
+- Created 6 analyst tasks (#6-#11, all pending): SHAP analysis (p5), domain contributions (p4), risk group characterization (p5), calibration/overfitting (p5), biological plausibility (p4), PoC vs GSE93624 comparison (p3).
+- Deferred: external validation (GSE16879 download still needed, no data_curator task recreated yet). γδ T cell features gated on AUC>0.80 (not met, AUC=0.748).
+- Next action: wait for analyst to complete tasks #6-#11, then advance to validation.
