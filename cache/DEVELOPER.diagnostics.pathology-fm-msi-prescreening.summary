@@ -1,16 +1,17 @@
 ---
-last_run: 2026-03-23T11:41:00Z
-tasks_completed: [1221]
-tasks_blocked: [1219, 1220]
+last_run: 2026-03-27T08:00:00Z
+tasks_completed: [1348, 1349, 1350]
+tasks_blocked: []
 projects_touched: [pathology-fm-msi-prescreening]
 ---
 
 ## Context
 
-- pathology-fm-msi-prescreening: Curated real MSI labels from cBioPortal TCGA PanCanAtlas (MANTIS + MSIsensor scores), replacing synthetic labels
-- Task 1221 done: 1558/1636 cases (95.2%) now have real MSI labels; MSI-H rates match published literature across all 4 cancer types
-- Task 1219 blocked: 44GB disk free, need 1-3TB for WSI downloads; requires external storage or cloud compute
-- Task 1220 blocked: depends on task 1219 (WSI download)
-- Key finding: GDC API molecular_tests/MSIsensor endpoints return 0 results for TCGA; must use cBioPortal as MSI data source
-- Important: MANTIS classification should use binary threshold (>=0.4 = MSI-H, <0.4 = MSS); MSI-L is a PCR concept, not applicable to computational scores
-- 158 tests passing across all pathology_msi test files
+- pathology-fm-msi-prescreening: Implemented stream-and-delete WSI processing pipeline (stream_pipeline.py)
+- Task 1348 done: New module at src/bioagentics/models/pathology_msi/stream_pipeline.py — downloads WSI from GDC, tiles at 20x, extracts features (CONCH/UNI2/ResNet50), saves HDF5, deletes WSI. 8GB RAM safe with batch_size=16, uses tempfile.TemporaryDirectory
+- Task 1349 done: Verified all 30 pilot CONCH features complete (512-d, 2204 patches, 4.3MB)
+- Task 1350 done: Verified all 30 pilot ResNet-50 features complete (2048-d, 2308 patches)
+- 167 pathology_msi tests passing (9 new for stream_pipeline)
+- No pending developer tasks remain for this project
+- Prior context: Real MSI labels from cBioPortal (1558/1636 cases, 95.2%), MANTIS binary threshold >=0.4 = MSI-H
+- Disk: ~24GB free; stream-and-delete pipeline designed for this constraint

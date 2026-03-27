@@ -1,15 +1,14 @@
 ---
-last_run: 2026-03-25T02:35:00Z
-tasks_completed: [1285]
+last_run: 2026-03-27T00:00:00Z
+tasks_completed: []
 tasks_blocked: []
 projects_touched: [anti-tnf-response-prediction]
 ---
 
 ## Context
 
-- anti-tnf-response-prediction: Ran E-MTAB-7604 download script. 43/44 count files + SDRF downloaded from EBI Fire. GC050242.count is 404 server-side (missing from EBI despite being in SDRF).
-- Script: src/crohns/anti_tnf_response_prediction/01_download_emtab7604.py — retry with backoff, suffix discovery, idempotent.
-- Data: data/crohns/anti-tnf-response-prediction/E-MTAB-7604/ (43 .count files + E-MTAB-7604.sdrf.txt).
-- Leakage-free LOSO-CV results from prior run: elastic_net AUC=0.600, random_forest AUC=0.701, xgboost AUC=0.711 (best). AUC=0.711 < 0.75 target.
-- Task 147 (InstaPrism deconvolution) remains blocked (R package + scRNA ref + RAM concerns).
-- No remaining pending tasks for this project.
+- anti-tnf-response-prediction: No work performed — MCP tools unavailable in this session, could not query for pending tasks or write journal entries.
+- Current state unchanged from prior run: LOSO-CV best AUC=0.711 (xgboost), below 0.75 target. GSE73661 is weakest fold (AUC=0.500). Pipeline fully built (download, processing, batch correction, feature selection, classification, evaluation).
+- Data: 6 datasets downloaded (GSE16879, GSE12251, GSE73661, GSE100833, GSE57945, E-MTAB-7604). E-MTAB-7604 has 43/44 count files (GC050242.count is 404 server-side).
+- Task 147 (InstaPrism deconvolution) remains blocked (R package + scRNA ref + RAM concerns on 8GB machine).
+- No remaining pending tasks known from prior run. Next run should re-check for newly assigned tasks via MCP.
