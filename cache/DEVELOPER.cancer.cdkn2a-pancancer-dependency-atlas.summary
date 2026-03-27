@@ -1,22 +1,25 @@
 ---
-last_run: 2026-03-23T12:00:00Z
-tasks_completed: [422, 423, 424, 425, 426, 1119, 1232]
+last_run: 2026-03-26T12:00:00Z
+tasks_completed: [422, 423, 424, 425, 426, 1119, 1232, 1345]
 tasks_blocked: []
 projects_touched: [cdkn2a-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- All 5 phases of cdkn2a-pancancer-dependency-atlas are implemented and run successfully
-- Phase 1 (01_cdkn2a_classifier.py): 343 deleted, 744 intact, 13 qualifying cancer types. CN threshold=0.3. Output CSV now includes MTAP_CN_log2 and MTAP_co_deleted columns (255/343 del lines are MTAP-co-deleted).
-- Phase 2 (02_cdk46_effect_sizes.py): CDK6 ROBUST in 7 contexts. CDK4: 0 ROBUST. RB1 loss abolishes CDK4/6 dependency. MDM2 dependency confirmed in TP53-WT context.
-- Phase 3 (03_genomewide_screen.py): 250K tests, 57 gained dependencies. Top: WDR77 (d=-0.581), PRMT5 (d=-0.486), CDK6 (d=-0.453). Phase 3b: MTAP-stratified screen also implemented.
-- Phase 4 (04_prism_drug_sensitivity.py): trilaciclib pan-cancer d=-0.539 FDR=3.26e-08, milademetan d=-0.278 FDR=2.29e-02.
-- Phase 5 (05_tcga_integration.py): 24 TCGA types, ~119,953 CDKN2A-del patients/yr, ~112,391 CDK4/6i-eligible. Priority: BLCA (14.0), OV (13.6), SKCM (12.9), BRCA (12.1). 14 clinical trial gaps.
-- 2026-03-23: Fixed DLBC incidence (80,620→22,000 DLBCL-specific). Regenerated Phase 1 CSV with MTAP columns. No remaining developer tasks.
+- All 5 phases + Phase 3b + Phase 4b of cdkn2a-pancancer-dependency-atlas are implemented and run successfully
+- Phase 4b (04b_mtap_stratified_prism.py): MTAP-stratified PRISM drug sensitivity reanalysis
+  - Trilaciclib CDK4/6i: CDKN2A-SPECIFIC (d=-0.815, strengthened from -0.539 after MTAP correction)
+  - PRMT5 inhibitors: not significant in either original or corrected (|d|<0.15)
+  - Milademetan MDM2i: not significant originally (d=-0.278), but corrected d=-0.550 — potential masked signal
+  - No WWTR1/Hippo drugs (verteporfin, TEAD inhibitors) in PRISM 24Q2
+  - Genome-wide: 3/5 original drug hits survived MTAP correction (60% retention)
+  - CRISPR-PRISM concordance improved for trilaciclib-CDK6 (r=0.272→0.328)
+- Analyst task #1346 (Phase 4b analysis) was blocked on this task — now unblocked
+- No remaining developer tasks for this project
 
 ## Critical notes for future runs
 - CN data file is PortalOmicsCNGeneLog2.csv (values 0 to ~1.7), NOT OmicsCNGene.csv. HOMDEL threshold must be ~0.3, not -1.0.
 - Expression file has extra metadata columns that must be dropped before gene lookups.
-- MCP tools not available as deferred tools; use direct API: `from bioagentics.config import api; api('PATCH', '/tasks/ID', json={...})`
 - Task update is PATCH not PUT. Journal create needs 'username' and 'content' fields.
+- Phase 1 CSV now includes MTAP_CN_log2 and MTAP_co_deleted columns.
