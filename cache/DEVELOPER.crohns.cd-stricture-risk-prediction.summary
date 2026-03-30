@@ -1,19 +1,20 @@
 ---
-last_run: 2026-03-25T03:12:00Z
-tasks_completed: [1297, 1299, 1300]
+last_run: 2026-03-29T04:15:00Z
+tasks_completed: [1497, 1498]
 tasks_blocked: []
 projects_touched: [cd-stricture-risk-prediction]
 ---
 
 ## Context
 
-- GSE93624 pipeline complete: 04_gse93624_phenotype.py, 05_gse93624_transcriptomic_features.py, 06_gse93624_model.py
-- GSE93624: 245 RISK cohort samples (210 CD, 35 controls), 27 complication progressors
-- Downloaded 245 per-sample TMM-normalized expression files (13,769 genes) from GEO
-- 23 transcriptomic features computed (7 pathway scores + 16 genes), good coverage (73-93%), only TNFRSF25 missing
-- Model results with ACTUAL complication outcome: full AUC 0.650, clinical-only 0.531, +0.120 improvement
-- AUC below 0.75 target but real complication is harder than deep_ulcer surrogate (was 0.748)
-- Risk stratification: all 27 progressors concentrated in high-risk tertile (39.1% event rate vs 0% in low/medium)
-- Top features: CPA3, sex_male, MMP pathway, EMT, collagen/ECM, HDAC1, SERPINE1
-- Previous GSE57945 pipeline (scripts 01-03) still intact with deep_ulcer surrogate results
-- No remaining pending tasks for this project — consider: SHAP analysis, external validation, more clinical features
+- GSE93624 pipeline complete: scripts 04-06 all updated
+- Added GPX4 as individual candidate gene + ferroptosis pathway (GPX4, SLC7A11, ACSL4, TFRC, FTH1) to 05_gse93624_transcriptomic_features.py
+- Gene coverage: 4/5 ferroptosis genes present in Affymetrix arrays (ACSL4 missing)
+- Total features: 25 (was 23) — 8 pathway scores + 17 candidate genes
+- Model AUC: 0.638 (was 0.650, within CV noise) — AUC still below 0.75 target
+- GPX4 ranked 4th in LR importance (0.4647), ferroptosis pathway 13th in SHAP (0.1923)
+- Top features: CPA3, sex_male, MMP pathway, GPX4, EMT, HDAC1
+- Risk stratification: all 27 progressors in high-risk tertile (39.1% vs 0% low/medium)
+- SHAP analysis added to 06_gse93624_model.py — outputs gse93624_shap_importance.json
+- Previous GSE57945 pipeline (scripts 01-03) still intact with deep_ulcer surrogate
+- No remaining pending tasks — next steps: external validation cohort, more clinical features, or model architecture changes to improve AUC
