@@ -1,11 +1,19 @@
 """Download LD reference panel and baseline-LD annotations for LDSC pipelines.
 
-Downloads from the Broad Institute (Alkes Group):
-1. EUR LD scores (eur_w_ld_chr)
-2. 1000G Phase 3 plink files
-3. Baseline-LD annotations (Phase 1)
-4. HM3 regression weights (no HLA)
+Downloads from Zenodo (mirrors of Broad/Alkes Group data):
+1. EUR LD scores (1000G Phase 3)
+2. 1000G Phase 3 plink files (for LD clumping in PRS)
+3. Baseline-LD v2.2 annotations (for S-LDSC partitioned heritability)
+4. HM3 regression weights (no MHC)
 5. HapMap3 SNP list
+6. 1000G Phase 3 allele frequencies
+
+NOTE: Original Broad Institute URLs (data.broadinstitute.org/alkesgroup/LDSCORE/)
+are now dead (404). Data moved to requester-pays GCS bucket. Zenodo mirrors
+provide free access to the core reference files.
+
+Primary mirror: https://zenodo.org/records/7768714
+Extended mirror: https://zenodo.org/records/10515792 (adds v2.3, hm3 list)
 
 All data is hg19/GRCh37 build. Saved to:
   data/tourettes/ts-comorbidity-genetic-architecture/reference/
@@ -21,44 +29,52 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-BASE_URL = "https://data.broadinstitute.org/alkesgroup/LDSCORE"
+ZENODO_BASE = "https://zenodo.org/records/7768714/files"
+ZENODO_EXT = "https://zenodo.org/records/10515792/files"
 DATA_DIR = Path("data/tourettes/ts-comorbidity-genetic-architecture/reference")
 
 DOWNLOADS = [
     {
         "name": "EUR LD scores",
-        "url": f"{BASE_URL}/eur_w_ld_chr.tar.bz2",
-        "filename": "eur_w_ld_chr.tar.bz2",
-        "extract_dir": "eur_w_ld_chr",
+        "url": f"{ZENODO_BASE}/1000G_Phase3_ldscores.tgz",
+        "filename": "1000G_Phase3_ldscores.tgz",
+        "extract_dir": "LDscore",
         "description": "Pre-computed European LD scores for h2/rg estimation",
     },
     {
         "name": "1000G Phase 3 plink files",
-        "url": f"{BASE_URL}/1000G_Phase3_plinkfiles.tgz",
+        "url": f"{ZENODO_BASE}/1000G_Phase3_plinkfiles.tgz",
         "filename": "1000G_Phase3_plinkfiles.tgz",
         "extract_dir": "1000G_Phase3_plinkfiles",
-        "description": "Reference genotypes for LD score computation",
+        "description": "Reference genotypes for LD clumping in PRS",
     },
     {
-        "name": "Baseline-LD annotations",
-        "url": f"{BASE_URL}/1000G_Phase1_baseline_ldscores.tgz",
-        "filename": "1000G_Phase1_baseline_ldscores.tgz",
-        "extract_dir": "baseline",
-        "description": "Functional annotation categories for S-LDSC partitioned heritability",
+        "name": "Baseline-LD v2.2 annotations",
+        "url": f"{ZENODO_BASE}/1000G_Phase3_baselineLD_v2.2_ldscores.tgz",
+        "filename": "1000G_Phase3_baselineLD_v2.2_ldscores.tgz",
+        "extract_dir": "baselineLD_v2.2",
+        "description": "Functional annotation categories for S-LDSC partitioned heritability (v2.2)",
     },
     {
-        "name": "HM3 regression weights (no HLA)",
-        "url": f"{BASE_URL}/weights_hm3_no_hla.tgz",
-        "filename": "weights_hm3_no_hla.tgz",
-        "extract_dir": "weights_hm3_no_hla",
-        "description": "LD-aware regression weights excluding HLA region",
+        "name": "HM3 regression weights (no MHC)",
+        "url": f"{ZENODO_BASE}/1000G_Phase3_weights_hm3_no_MHC.tgz",
+        "filename": "1000G_Phase3_weights_hm3_no_MHC.tgz",
+        "extract_dir": "1000G_Phase3_weights_hm3_no_MHC",
+        "description": "LD-aware regression weights excluding MHC region",
     },
     {
-        "name": "HapMap3 SNPs",
-        "url": f"{BASE_URL}/hapmap3_snps.tgz",
-        "filename": "hapmap3_snps.tgz",
-        "extract_dir": "hapmap3_snps",
-        "description": "HapMap3 SNP list used for filtering GWAS summary stats",
+        "name": "HapMap3 SNP list",
+        "url": f"{ZENODO_EXT}/hm3_no_MHC.list.txt",
+        "filename": "hm3_no_MHC.list.txt",
+        "extract_dir": None,
+        "description": "HapMap3 SNP list for filtering GWAS summary stats",
+    },
+    {
+        "name": "1000G Phase 3 allele frequencies",
+        "url": f"{ZENODO_BASE}/1000G_Phase3_frq.tgz",
+        "filename": "1000G_Phase3_frq.tgz",
+        "extract_dir": "1000G_Phase3_frq",
+        "description": "Reference allele frequencies for QC and strand alignment",
     },
 ]
 
@@ -109,26 +125,35 @@ def download_all(data_dir: Path | None = None, skip_existing: bool = True) -> di
 
     results = {}
     for item in DOWNLOADS:
-        extract_path = data_dir / item["extract_dir"]
-        archive_path = data_dir / item["filename"]
+        file_path = data_dir / item["filename"]
+        extract_dir = item["extract_dir"]
 
-        if skip_existing and extract_path.exists():
-            logger.info("Skipping %s (already exists at %s)", item["name"], extract_path)
-            results[item["name"]] = extract_path
-            continue
+        if extract_dir is not None:
+            extract_path = data_dir / extract_dir
+            if skip_existing and extract_path.exists():
+                logger.info("Skipping %s (already exists at %s)", item["name"], extract_path)
+                results[item["name"]] = extract_path
+                continue
+        else:
+            # Plain file (no extraction needed)
+            if skip_existing and file_path.exists():
+                logger.info("Skipping %s (already exists at %s)", item["name"], file_path)
+                results[item["name"]] = file_path
+                continue
 
-        _download_file(item["url"], archive_path)
+        _download_file(item["url"], file_path)
 
-        md5 = _md5sum(archive_path)
+        md5 = _md5sum(file_path)
         logger.info("%s MD5: %s", item["filename"], md5)
 
-        _extract_archive(archive_path, data_dir)
-
-        # Remove archive after successful extraction to save disk space
-        archive_path.unlink()
-        logger.info("Removed archive %s after extraction", archive_path.name)
-
-        results[item["name"]] = extract_path
+        if extract_dir is not None:
+            _extract_archive(file_path, data_dir)
+            # Remove archive after successful extraction to save disk space
+            file_path.unlink()
+            logger.info("Removed archive %s after extraction", file_path.name)
+            results[item["name"]] = data_dir / extract_dir
+        else:
+            results[item["name"]] = file_path
 
     # Write manifest
     _write_manifest(data_dir, results)
@@ -143,8 +168,8 @@ def _write_manifest(data_dir: Path, results: dict[str, Path]) -> None:
         "=" * 40,
         "",
         "Genome Build: hg19 / GRCh37",
-        "Source: Broad Institute (Alkes Group LDSCORE)",
-        f"Base URL: {BASE_URL}",
+        "Source: Broad Institute (Alkes Group) via Zenodo mirrors",
+        f"Zenodo: {ZENODO_BASE.rsplit('/files', 1)[0]}",
         "",
         "Datasets:",
         "",
