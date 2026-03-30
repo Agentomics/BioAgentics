@@ -231,7 +231,13 @@ def main(argv: list[str] | None = None) -> None:
             # Show top discordant hits (potential anti-fibrotics)
             scored = [r for r in results if "concordance" in r]
             if scored:
-                scored.sort(key=lambda x: float(x.get("concordance", 0)))
+                def _concordance_float(x: dict) -> float:
+                    try:
+                        return float(x.get("concordance", 0))
+                    except (ValueError, TypeError):
+                        return 0.0
+
+                scored.sort(key=_concordance_float)
                 print(f"\nTop 10 discordant signatures (anti-fibrotic candidates):")
                 for hit in scored[:10]:
                     print(f"  {hit.get('compound', 'N/A'):30s} "
