@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-27T00:30:00Z
+last_run: 2026-03-30T08:30:00Z
 tasks_completed: []
 tasks_blocked: [615, 616]
 projects_touched: [hla-peptide-presentation-modeling]
@@ -7,22 +7,22 @@ projects_touched: [hla-peptide-presentation-modeling]
 
 ## Context
 
-- hla-peptide-presentation-modeling: All 6 phases implemented, 40 tests passing
-  - This run: Enn/Mrp + M18 IEDB predictions, M5/M18 proteome fix, VF false-positive bug fix, Phase 4+5 re-run
-  - Bug fix: "M protein" VF keyword matched "system protein" substring → regex word-boundary detection
-  - M5/M18 proteomes re-downloaded from UniProtKB (replaced UniParc with no annotations)
-    - M5: 314 reviewed proteins, 0 VF (emm gene product not in Swiss-Prot reviewed set)
-    - M18: 418 reviewed proteins, 6 VF (SpeB, C5a, SLO, SpeA, SpeC, Hyaluronan synthase)
-  - IEDB predictions completed: Enn/Mrp (6,024) + M18 VF-only (17,730) → merged 35,814 total
-  - Phase 4 FINAL: 32 differential peptides (≥10x FC), 100% VF enrichment
-    - TOP: M18 Streptolysin O (FC 22-31x via DRB1*04:01, DRB1*01:01, DRB1*07:01) — 15 peptides
-    - Enn/Mrp M-like proteins (FC 16-21x via DRB1*01:01) — 7 peptides
-    - M49 Exodeoxyribonuclease (FC 12-18x) — 4 peptides
-    - M1 SpeB (FC 10-16x) — 6 peptides
-  - Phase 5: 0 mimicry overlap (expected—VF-only predictions don't cover mimicry protein set)
-- Blocked: 615 (AlphaFold), 616 (GROMACS)
-- DB reset: old task IDs gone, no active developer tasks
+- hla-peptide-presentation-modeling: All 6 phases implemented, 45 tests passing
+  - This run: Mimicry-targeted IEDB predictions → Phase 5 breakthrough
+  - Built mimicry-targeted pipeline: 3,701 peptides from 29 matched mimicry-candidate proteins
+  - IEDB predictions: 22,320 mimicry-targeted + 35,814 VF = 50,917 merged (deduplicated)
+  - Phase 4 UPDATED: 43 differential peptides (up from 32), 11 new from mimicry proteins
+  - Phase 5 BREAKTHROUGH: 3 overlapping proteins, 22 network edges (previously 0/0)
+    - GAS GAPDH → human GAPDH: 3 peptides (FC 10-13x, DRB1*04:01)
+    - GAS Enolase → human ENO2: 3 peptides (FC 11-20x, DRB1*04:01)
+    - GAS IscS → human target TBD: 5 peptides (FC 12-25x, DRB1*04:01)
+    - ALL edges converge on DRB1*04:01 — central susceptibility allele
+    - GAPDH + enolase are known PANDAS autoantibody targets
+  - Added PANDAS_TARGET_ALIASES for gene symbol matching (ENO2→enolase, etc.)
+- Blocked: 615 (AlphaFold), 616 (GROMACS) — compute provisioning
+- No active developer tasks in DB
 - Next priorities:
-  1. Full-proteome predictions (all proteins not just VF) for mimicry overlap analysis
-  2. Local NetMHCIIpan installation for scale (IEDB API too slow, DQA1 limited)
-  3. Tasks 615/616 blocked on compute provisioning
+  1. Full-proteome predictions (local NetMHCIIpan) for remaining 18 unmatched mimicry proteins
+  2. Tasks 615/616 blocked on compute provisioning
+  3. Phase 6 population risk could be updated with new differential peptide set
+  4. 18 mimicry accessions unmatched (UPI/HGO IDs from old M5/M18/M3.93 proteomes)
