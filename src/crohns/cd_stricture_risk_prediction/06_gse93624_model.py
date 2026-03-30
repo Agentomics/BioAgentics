@@ -255,6 +255,49 @@ def risk_stratification(X: pd.DataFrame, y: pd.Series) -> dict:
     return strat
 
 
+def shap_analysis(X: pd.DataFrame, y: pd.Series, output_dir: Path) -> dict:
+    """Compute SHAP feature importance using the full XGBoost model."""
+    try:
+        import shap
+        from xgboost import XGBClassifier
+    except ImportError:
+        print("WARNING: shap or xgboost not installed, skipping SHAP analysis")
+        return {}
+
+    X_filled = X.fillna(0)
+    scaler = StandardScaler()
+    X_s = pd.DataFrame(scaler.fit_transform(X_filled), columns=X.columns, index=X.index)
+
+    n_pos = int(y.sum())
+    model = XGBClassifier(
+        n_estimators=100, max_depth=3, learning_rate=0.1,
+        scale_pos_weight=(len(y) - n_pos) / max(n_pos, 1),
+        eval_metric="logloss", n_jobs=1, random_state=42, verbosity=0,
+    )
+    model.fit(X_s, y)
+
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(X_s)
+
+    mean_abs_shap = np.abs(shap_values).mean(axis=0)
+    shap_ranking = sorted(
+        zip(X.columns, mean_abs_shap), key=lambda x: -x[1]
+    )
+
+    print("\nSHAP Feature Importance (mean |SHAP|):")
+    for i, (feat, val) in enumerate(shap_ranking[:15]):
+        print(f"  {i+1}. {feat}: {val:.4f}")
+
+    shap_dict = {feat: float(val) for feat, val in shap_ranking}
+
+    shap_path = output_dir / "gse93624_shap_importance.json"
+    with open(shap_path, "w") as f:
+        json.dump(shap_dict, f, indent=2)
+    print(f"\nSHAP values saved: {shap_path}")
+
+    return shap_dict
+
+
 def main() -> None:
     X, y = load_and_merge_features(DATA_DIR)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -281,6 +324,10 @@ def main() -> None:
     # Full model
     results_all["full"] = nested_cv(X, y, label="full_model")
 
+    # SHAP analysis
+    shap_dict = shap_analysis(X, y, OUTPUT_DIR)
+    results_all["shap_importance"] = shap_dict
+
     # Risk stratification
     strat = risk_stratification(X, y)
     results_all["risk_stratification"] = strat
@@ -300,7 +347,7 @@ def main() -> None:
     full_auc = results_all["full"]["mean_auc"]
     print(f"\nFull model improvement over clinical-only: {full_auc - clin_auc:+.3f} AUC")
 
-    print(f"\nTop 10 features (full model):")
+    print(f"\nTop 10 features (full model, LR importance):")
     for i, (feat, imp) in enumerate(list(results_all["full"]["feature_importance"].items())[:10]):
         print(f"  {i+1}. {feat}: {imp:.4f}")
 
