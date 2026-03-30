@@ -1,6 +1,6 @@
 ---
-last_run: 2026-03-25T02:55:00Z
-tasks_completed: [1239]
+last_run: 2026-03-29T12:00:00Z
+tasks_completed: [1527]
 tasks_blocked: []
 projects_touched: [ts-rare-variant-convergence]
 ---
@@ -8,12 +8,10 @@ projects_touched: [ts-rare-variant-convergence]
 ## Context
 
 - ts-rare-variant-convergence: Status remains development. Original 6 dev tasks (Phase 1-5: #582-#587) all done.
-- Dev tasks #1201 (Saia genes) and #1202 (chromatin remodeling PPI cross-ref) still pending from last run.
-- Handled PM task #1239: Created 3 new developer tasks from Zhan et al. (bioRxiv Nov 2025, 1466 TS trios):
-  - #1352 (P3): Add EXOC1, GXYLT1, PPP5C to compile_risk_genes.py with pathway assignments
-  - #1354 (P2): Cross-reference GXYLT1 against NOTCH1 bridge gene in Phase 4 PPI network
-  - #1355 (P2): Add Zhan TS-specificity finding (no ASD/DD enrichment) to Phase 5
-  - Dependencies: #1352 → #1354. #1355 independent.
-- Journal #2206 records this run's decisions.
-- Total pending dev tasks: 5 (#1201, #1202, #1352, #1354, #1355). Pipeline cannot advance to analysis until ALL are done.
-- Next: Monitor developer progress on all 5 pending tasks. When ALL done, advance to analysis and create analyst tasks.
+- Handled PM task #1527 (RD journal #2513): Saia et al. integration with updated requirements.
+  - Updated dev task #1201 (P4): Now targets 13th convergent pathway (was 12th), added SLC6A1 GABAergic verification, added interneuron expression references.
+  - Created dev task #1601 (P2): RERE cross-project annotation linking NR2F2 corepressor to ts-striatal-interneuron-pathology GRN. Depends on #1201.
+- Journal #2644 records this run's decisions.
+- Total pending dev tasks: 7 (#1201, #1574, #1352, #1202, #1355, #1354, #1601). Dependencies: #1201→#1202, #1201→#1601, #1352→#1354.
+- Pipeline cannot advance to analysis until ALL 7 dev tasks are done.
+- Next: Monitor developer progress on all 7 pending tasks. When ALL done, advance to analysis and create analyst tasks.

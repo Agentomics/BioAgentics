@@ -1,0 +1,84 @@
+{
+  "method": "Leave-One-Subject-Out Cross-Validation",
+  "task": "PD severity classification (UPDRS >= median)",
+  "n_subjects_evaluated": 14,
+  "n_subjects_total": 42,
+  "pooled_auroc": 0.3688,
+  "mean_auroc": 0.4389,
+  "std_auroc": 0.0385,
+  "optimal_threshold": Infinity,
+  "sensitivity_at_optimal": 0.0,
+  "specificity_at_optimal": 1.0,
+  "per_subject": [
+    {
+      "subject": 3,
+      "n_samples": 144,
+      "auroc": 0.448
+    },
+    {
+      "subject": 4,
+      "n_samples": 137,
+      "auroc": 0.4407
+    },
+    {
+      "subject": 8,
+      "n_samples": 150,
+      "auroc": 0.4047
+    },
+    {
+      "subject": 12,
+      "n_samples": 107,
+      "auroc": 0.4151
+    },
+    {
+      "subject": 13,
+      "n_samples": 112,
+      "auroc": 0.4095
+    },
+    {
+      "subject": 17,
+      "n_samples": 144,
+      "auroc": 0.4041
+    },
+    {
+      "subject": 23,
+      "n_samples": 138,
+      "auroc": 0.4282
+    },
+    {
+      "subject": 26,
+      "n_samples": 130,
+      "auroc": 0.3672
+    },
+    {
+      "subject": 28,
+      "n_samples": 134,
+      "auroc": 0.4698
+    },
+    {
+      "subject": 31,
+      "n_samples": 130,
+      "auroc": 0.4994
+    },
+    {
+      "subject": 33,
+      "n_samples": 135,
+      "auroc": 0.4522
+    },
+    {
+      "subject": 36,
+      "n_samples": 129,
+      "auroc": 0.5065
+    },
+    {
+      "subject": 38,
+      "n_samples": 149,
+      "auroc": 0.4817
+    },
+    {
+      "subject": 40,
+      "n_samples": 142,
+      "auroc": 0.4176
+    }
+  ]
+}

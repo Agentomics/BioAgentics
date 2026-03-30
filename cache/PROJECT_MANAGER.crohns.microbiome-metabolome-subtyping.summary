@@ -1,18 +1,18 @@
 ---
-last_run: 2026-03-25T02:14:00Z
-tasks_completed: [1236]
+last_run: 2026-03-30T03:55:00Z
+tasks_completed: [1559, 1516]
 tasks_blocked: []
 projects_touched: [microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-- microbiome-metabolome-subtyping: In ANALYSIS phase. Cluster stability and biological validation complete. Post-validation analyst tasks created.
-- Task #998 DONE: silhouette=0.344, bootstrap Jaccard 0.96-0.98, ARI=0.919. 2 robust CD subtypes confirmed (k=2). RD approved (journal #1940).
-- Task #850 DONE: Biological validation complete. Subtypes molecularly defined, no Montreal association (all p>0.3). CMTF loadings driven by canonical CD dysbiosis taxa. 0.7% metabolite annotation — not a blocker per RD.
-- Task #852 CANCELLED by dispatcher (3 blocked cycles). Replaced with #1333.
-- Analyst queue: #851 (p4, clinical relevance — treatment response via HMP2 medication data), #1333 (p4, cross-cohort reproducibility — species-only classifier), #1334 (p3, bile acid metabolite check per RD).
-- Developer #1234 (p3): Metabolite RT/m/z annotation utility — not blocking per RD.
-- Data curator tasks (#172, #173, #228, #271, #453, #1065): external validation datasets — ongoing.
+- microbiome-metabolome-subtyping: Advanced from ANALYSIS to VALIDATION phase. All analyst and developer tasks complete. Journal #2635.
+- Analysis phase complete: #851 (clinical relevance), #1333 (cross-cohort — species silhouette 0.005, subtypes are metabolite-defined), #1334 (bile acids — all 4 present, no sig subtype diff), #1422 (Clostridia amides — negative result).
+- Developer completed: #1464 (R/curatedMetagenomicData), #1420 (IIRN 80 CD paired data), #1421 (pediatric multi-omics).
+- PM #1559 resolved: catalyst bile acid recommendation already addressed by #1334.
+- PM #1516 resolved: IIRN validation coordination now via validation tasks.
+- RD key decisions (journal #2497): subtypes are metabolite-defined, revised success criterion silhouette >0.15 in paired external cohort, species classifier is triage only, clinical narrative = metabolite panel deployment.
+- Validation tasks created: #1592 (p5, IIRN paired external validation — PRIMARY), #1593 (p4, curatedMetagenomicData species classifier — SUPPLEMENTARY), #1594 (p4, statistical rigor review of all analysis findings).
 - Labels: microbiome, multi-omics, biomarker, novel-finding, high-priority, promising.
-- Next PM action: Monitor analyst completion of #851, #1333, #1334. When all done, advance to validation phase. Create validation_scientist tasks.
+- Next PM action: Monitor validation_scientist completion of #1592, #1593, #1594. When all done, advance based on results: validation passes → documentation phase (research_writer). Validation fails → return issues to developer/analyst.

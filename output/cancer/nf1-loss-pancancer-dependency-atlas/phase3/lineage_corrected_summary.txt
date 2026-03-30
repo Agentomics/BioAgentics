@@ -1,0 +1,50 @@
+======================================================================
+NF1-Loss Pan-Cancer Dependency Atlas - Phase 3c: Lineage Correction
+======================================================================
+
+Method: Residualize CRISPR scores by subtracting per-lineage means,
+  then run MannWhitney U + Cohen's d on residuals.
+Context: Pan-cancer RAS-excluded (910 cell lines)
+Lineages: 30 (16 with NF1-lost lines)
+Genes tested: 17931
+
+Significant gained dependencies (FDR<0.1, |d|>0.5): 1
+Significant lost dependencies: 0
+
+LINEAGE ARTIFACTS REMOVED
+------------------------------------------------------------
+Genes that were significant before correction but not after:
+  RIT1: uncorr_d=-0.646 (FDR=7.140e-02) -> corr_d=-0.541 (FDR=4.681e-01)
+
+TOP LINEAGE-CORRECTED HITS (gained dependencies)
+------------------------------------------------------------
+  CSNK2A3: d=-0.647, FDR=9.387e-01, composite=0.0
+  USP9Y: d=-0.602, FDR=9.056e-01, composite=0.0
+  KRTAP21-1: d=-0.602, FDR=9.563e-01, composite=0.0
+  RPS2: d=-0.592, FDR=9.056e-01, composite=0.0
+  SPRR1A: d=-0.579, FDR=9.056e-01, composite=0.0
+  RIT1: d=-0.541, FDR=4.681e-01, composite=0.2
+  SPRED2: d=-0.522, FDR=3.110e-02, composite=0.8 ***
+  SRRM5: d=-0.521, FDR=7.021e-01, composite=0.1
+  SPRED1: d=-0.499, FDR=4.681e-01, composite=0.2
+  SRCAP: d=-0.491, FDR=9.028e-01, composite=0.0
+  NRDC: d=-0.483, FDR=9.056e-01, composite=0.0
+  SPRR2F: d=-0.481, FDR=9.977e-01, composite=0.0
+  SHOC2: d=-0.477, FDR=4.863e-01, composite=0.1
+  EIF1AY: d=-0.474, FDR=9.989e-01, composite=0.0
+  GNAI3: d=-0.472, FDR=7.245e-01, composite=0.1
+  PRKCE: d=-0.448, FDR=9.056e-01, composite=0.0
+  CCN3: d=-0.446, FDR=7.245e-01, composite=0.1
+  GUCA1ANB-GUCA1A: d=-0.434, FDR=9.989e-01, composite=0.0
+  GRB2: d=-0.433, FDR=7.816e-01, composite=0.0
+  PRPF39: d=-0.430, FDR=7.021e-01, composite=0.1
+  OR10T2: d=-0.427, FDR=9.056e-01, composite=0.0
+  PRKAR1A: d=-0.425, FDR=9.056e-01, composite=0.0
+  WDR70: d=-0.423, FDR=9.977e-01, composite=0.0
+  INTS4: d=-0.421, FDR=9.977e-01, composite=0.0
+  RAD51: d=-0.419, FDR=7.021e-01, composite=0.1
+  SH2D6: d=-0.416, FDR=9.977e-01, composite=0.0
+  VRK2: d=-0.412, FDR=9.056e-01, composite=0.0
+  TIGD1: d=-0.411, FDR=9.989e-01, composite=0.0
+  GNAQ: d=-0.411, FDR=7.816e-01, composite=0.0
+  SMG6: d=-0.407, FDR=8.353e-01, composite=0.0

@@ -1,18 +1,20 @@
 ---
-last_run: 2026-03-25T03:23:00Z
-tasks_completed: [1253]
+last_run: 2026-03-30T03:50:00Z
+tasks_completed: [1514]
 tasks_blocked: []
 projects_touched: [innate-immunity-deficiency-model]
 ---
 
 ## Context
 
-- innate-immunity-deficiency-model: Status development (unchanged). 7 developer tasks pending, none picked up yet.
-  - P5: gene module config (1027), lectin complement extraction (1028)
-  - P4: cytokine classifier (1029), Vettiatil variant extraction (1030), NTI164 QC (1365), NTI164 innate expression quantification (1366)
-  - P3: innate deficiency scoring pipeline (1032)
-  - Cancelled: 1031 (Han VX data unavailable, replaced by 1366 using NTI164 data)
-- Handled PM task #1253: broke NTI164 scRNA-seq integration into 2 developer sub-tasks (1365, 1366). Analyst tasks (NTI164 vs Han VX comparison, cGAS-STING check) held until development completes.
-- NTI164 scRNA-seq (GSE301611, 12 samples) downloaded at data/pandas_pans/transcriptomic-biomarker-panel/nti164_scrna/. Second independent PANS dataset — high value.
-- Scope note: #1253 item 2 (transcriptomic-biomarker-panel adaptation) belongs to that project's PM, not created here.
-- Next: Monitor developer progress on all 7 tasks. When all done, create analyst tasks and advance to analysis. Priority: P5 tasks first (1027, 1028).
+- innate-immunity-deficiency-model: Status development (unchanged). Reconciled developer work — 5 tasks marked done (1027-1030, 1032), verified via git commits and output files. Developer had MCP unavailable during runs.
+- Key developer findings: FCN1 FC=1.40 in PANS, ISGs elevated (OAS1 FC=1.64, ISG15 FC=1.58), but composite deficiency score does NOT separate PANS from controls (p>0.3). ENO2/CAMK2A validated as mimicry + autoantibody seeds.
+- Handled PM task #1514: Created 2 new developer tasks from literature integration:
+  - #1590 (P3): MASP pathway activity scoring (Keat et al. Long COVID methodology)
+  - #1591 (P3): cGAS-STING activation gene signature (Zhang et al. SLE methods)
+- 4 developer tasks still pending:
+  - P4: NTI164 QC (1365), NTI164 innate expression (1366)
+  - P3: MASP scoring (1590), cGAS-STING signature (1591)
+- Cannot advance to analysis until all developer tasks done. Priority: P4 tasks first.
+- Code note: Developer code at src/pandas_pans/innate_immunity_deficiency_model/ (outside src/bioagentics/ namespace).
+- Next: Monitor developer progress on remaining 4 tasks. When all done, create analyst tasks and advance to analysis.

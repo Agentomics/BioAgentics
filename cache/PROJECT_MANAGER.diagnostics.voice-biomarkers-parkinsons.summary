@@ -1,14 +1,15 @@
 ---
-last_run: 2026-03-27T16:23:00Z
-tasks_completed: [1380]
+last_run: 2026-03-30T04:05:00Z
+tasks_completed: [1525]
 tasks_blocked: []
 projects_touched: [voice-biomarkers-parkinsons]
 ---
 
 ## Context
 
-- voice-biomarkers-parkinsons: Status = development. 6/27 developer tasks done (686 project setup, 700 acoustic, 701 pitch, 702 MFCC, 703 temporal, 704 feature pipeline). 21 developer tasks pending across data loaders (687-691), preprocessing (692-694), deep models (708-711), gradient boosting (712), ensemble (713), augmentation (714), cross-dataset eval (715), mobile export (716), and new composite spectrogram tasks (1507-1510).
-- Decomposed task 1380 (composite spectrogram approach, RD-approved) into 4 developer tasks: 1507 (composite spectrogram generation, p4), 1508 (CNN classifier, p3), 1509 (Grad-CAM vowel analysis, p2), 1510 (benchmark vs baselines, p3).
-- All 5 analyst tasks (719-723) remain cancelled (auto-cancelled after 3 blocked cycles). Will recreate when: gradient boosting (712) done enables feature importance analysis; cross-dataset eval (715) + data loaders enable cross-language analysis.
-- RD task 1397 (evaluate Wav2Vec 2.0 + supervised contrastive learning) still pending.
-- Next: Monitor developer progress on data loaders (687-691) and high-priority tasks (692, 708, 709, 712, 713, 715, 1507). No pipeline advancement until majority of developer tasks complete. Recreate analyst tasks once gradient boosting (712) and at least 2 data loaders are done.
+- voice-biomarkers-parkinsons: Status = development. 11/30 developer tasks done. Composite spectrogram pipeline complete (1506-1510 all done). 19 developer tasks pending: data loaders (687-691), preprocessing (692-694), deep models (708-711), gradient boosting (712), ensemble (713), noise aug (714), cross-dataset eval (715), mobile export (716), plus new Wav2Vec 2.0 tasks 1606 (contrastive fine-tuning) and 1607 (FM+classical fusion).
+- Decomposed PM task 1525 into dev tasks 1606, 1607. Task 710 (frozen wav2vec extraction) already existed. Analyst tasks for Wav2Vec 2.0 track deferred until dev work completes.
+- All 5 analyst tasks (719-723) remain cancelled. Recreate when: gradient boosting (712) done + at least 2 data loaders (687-691) done.
+- RD task 1545 (evaluate ParkMAE as lightweight Wav2Vec alternative) pending — no PM action needed yet.
+- Note: tasks 1506 and 1507 are duplicates (same title, both done).
+- Next: Monitor developer progress on data loaders (687-691) and high-priority tasks (692, 708, 709, 712, 713, 715). No pipeline advancement until majority of developer tasks complete. Recreate analyst tasks once gradient boosting (712) and at least 2 data loaders are done. Create Wav2Vec 2.0 analyst tasks once 710+1606+1607 complete.

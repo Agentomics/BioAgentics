@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-26T18:00:00Z
+last_run: 2026-03-29T12:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [ts-developmental-trajectory-modeling]
@@ -8,7 +8,7 @@ projects_touched: [ts-developmental-trajectory-modeling]
 ## Context
 
 - ts-developmental-trajectory-modeling: ALL 5 PHASES COMPLETE — no new tasks assigned
-- 131 tests pass (verified 2026-03-26 evening run); no regressions
+- 131 tests pass (verified 2026-03-29); no regressions
 - Pipeline location: src/bioagentics/tourettes/developmental_trajectory/ (steps 01-10)
 - Output location: output/tourettes/ts-developmental-trajectory-modeling/
 - MCP tools / task API still unavailable — cannot query or update task statuses

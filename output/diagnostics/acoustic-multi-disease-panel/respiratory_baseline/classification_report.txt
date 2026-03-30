@@ -1,0 +1,12 @@
+Respiratory Condition Classification Report
+Dataset: COUGHVID
+Test AUROC: 0.5907
+
+              precision    recall  f1-score   support
+
+     healthy       0.55      0.52      0.54        61
+ respiratory       0.53      0.56      0.55        59
+
+    accuracy                           0.54       120
+   macro avg       0.54      0.54      0.54       120
+weighted avg       0.54      0.54      0.54       120

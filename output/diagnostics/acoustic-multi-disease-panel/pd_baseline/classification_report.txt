@@ -1,0 +1,14 @@
+PD Severity Classification Report
+Dataset: UCI PD Telemonitoring
+UPDRS threshold: 27.6
+Model: GradientBoostingClassifier
+Test AUROC: 0.6487
+
+                    precision    recall  f1-score   support
+
+           mild_PD       0.49      0.70      0.58       451
+moderate_severe_PD       0.67      0.45      0.54       592
+
+          accuracy                           0.56      1043
+         macro avg       0.58      0.58      0.56      1043
+      weighted avg       0.59      0.56      0.55      1043

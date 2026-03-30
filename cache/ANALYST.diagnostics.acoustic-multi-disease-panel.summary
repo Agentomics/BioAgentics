@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-29T22:30:00Z
+tasks_completed: [1501, 1502, 1504]
+tasks_blocked: [1503]
+projects_touched: [acoustic-multi-disease-panel]
+---
+
+## Context
+
+- Phase 2 baselines: BOTH FAILED
+  - PD severity (UCI PD Telemonitoring): LOSO-CV AUROC=0.369. Dataset has no healthy controls (all 42 subjects have PD). Between-subject voice variability dominates severity signal.
+  - Respiratory (COUGHVID): 5-fold CV AUROC=0.524. Self-reported crowd-sourced labels too noisy for handcrafted features.
+  - MCI: deferred (ADReSS/DementiaBank requires restricted access)
+- Feature importance analysis (task #1503): BLOCKED — meaningless without working classifiers
+- Created task #1589 for data_curator: download UCI Parkinson's Dataset with healthy controls
+- Created task #1600 for research_director: review baseline failures, decide path forward
+- Phase 2 summary written to output/diagnostics/acoustic-multi-disease-panel/phase2_baselines.md
+- Project cannot advance to Phase 3 (multi-disease panel) until 2+ conditions achieve AUROC >= 0.75
+- Key recommendations: (1) better datasets with clinical labels, (2) try deep learning on spectrograms, (3) may need to pivot project scope

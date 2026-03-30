@@ -1,20 +1,19 @@
-last_run: 2026-03-27T15:44:00Z
-tasks_completed: [1392]
+last_run: 2026-03-29T04:04:00Z
+tasks_completed: [1519]
 tasks_blocked: []
 projects_touched: [cd-stricture-risk-prediction]
 ---
 
 ## Context
 
-- Project status: development. GSE93624 pipeline complete but GPX4/ferroptosis feature iteration in progress.
+- Project status: development. GPX4/ferroptosis feature iteration blocking pipeline advancement.
 - Current model (GSE93624 real complication outcome, 27 progressors / 218 non-progressors):
   - Full AUC=0.650, Clinical=0.531, Transcriptomic=0.641
   - +0.120 AUC over clinical (meets >=0.10 criterion). AUC 0.650 below 0.75 target.
   - Top features: CPA3, sex_male, MMP pathway, EMT, collagen/ECM, HDAC1, SERPINE1.
-- Completed PM task #1392: created 2 developer tasks from RD-approved GPX4/ferroptosis decision:
+- Blocking developer tasks (both pending since 2026-03-27):
   - #1497 (p5): Add GPX4 + ferroptosis pathway score (GPX4, SLC7A11, ACSL4, TFRC, FTH1) to features
   - #1498 (p4): Retrain model with GPX4/ferroptosis, compare AUC delta
-- Montreal B ablation (RD #2256): N/A for GSE93624 — only 3 clinical features (age, sex, paris_age), no Montreal B.
-- Acharjee 8-gene panel (task #1409, RD): already incorporated in current features — no additional dev work needed.
+- Completed PM task #1519: Acknowledged RD Acharjee Tier 1 directive (journal #2500). Verified GREM1, SERPINE1, FGF2 already in GSE93624 feature set. Noted AUC discrepancy: RD "currently 0.748" is old surrogate, real outcome is 0.650. Plan: after #1497 completes, create expanded ablation task (base vs +GPX4 vs +GPX4+Tier1 vs full+gamma-delta) replacing #1498.
 - Deferred: #1244 γδ T cell features gated on AUC>0.80 (current 0.650, far below gate).
-- Next action: wait for developer to complete #1497 → #1498. After retrain, if AUC improves, create analyst tasks and advance to analysis. If AUC still <0.70, reassess feature strategy.
+- Next action: wait for developer to complete #1497. Then create expanded ablation developer task. After ablation results, if AUC improves sufficiently, create analyst tasks and advance to analysis.
