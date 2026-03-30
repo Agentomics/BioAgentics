@@ -68,6 +68,13 @@ def _get_oof_predictions(
     imputer = SimpleImputer(strategy="median")
     scaler = StandardScaler()
     X_clean = scaler.fit_transform(imputer.fit_transform(X))
+
+    # Drop all-NaN columns (median of all-NaN → NaN after impute + scale)
+    nan_cols = np.isnan(X_clean).all(axis=0)
+    if nan_cols.any():
+        logger.warning("OOF: dropping %d all-NaN columns after imputation", nan_cols.sum())
+        X_clean = X_clean[:, ~nan_cols]
+
     X_seq, _ = build_sequences(X_clean, y)
 
     for fold_i, (train_idx, test_idx) in enumerate(cv.split(X, y)):
@@ -300,6 +307,13 @@ def _get_test_predictions(
     imp2 = SimpleImputer(strategy="median")
     X_train_clean = scaler.fit_transform(imp2.fit_transform(X_train))
     X_test_clean = scaler.transform(imp2.transform(X_test))
+
+    # Drop all-NaN columns (median of all-NaN → NaN after impute + scale)
+    nan_cols = np.isnan(X_train_clean).all(axis=0)
+    if nan_cols.any():
+        logger.warning("Test preds: dropping %d all-NaN columns", nan_cols.sum())
+        X_train_clean = X_train_clean[:, ~nan_cols]
+        X_test_clean = X_test_clean[:, ~nan_cols]
 
     X_seq_train, _ = build_sequences(X_train_clean, y_train)
     X_seq_test, _ = build_sequences(X_test_clean, np.zeros(len(X_test)))
