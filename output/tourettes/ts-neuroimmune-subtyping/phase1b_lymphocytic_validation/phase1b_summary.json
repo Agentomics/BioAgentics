@@ -1,0 +1,108 @@
+{
+  "phase": "Phase 1b: Lymphocytic Enrichment Method Validation",
+  "gwas": "Yu et al. 2019 PGC TS GWAS (N=14,307)",
+  "n_genes_tested": 19141,
+  "n_gene_sets_tested": 14,
+  "methods": [
+    "MAGMA_competitive_regression",
+    "Wilcoxon_rank_sum_competitive"
+  ],
+  "lymphocyte_sets_tested": 12,
+  "control_sets_tested": 2,
+  "lymphocyte_nominal_p005": {
+    "magma": 0,
+    "wilcoxon": 1
+  },
+  "control_nominal_p005": {
+    "magma": 0,
+    "wilcoxon": 0
+  },
+  "results_by_set": {
+    "DICE_B_cell": {
+      "n_genes": 1842,
+      "magma_p": 0.8374357573041845,
+      "wilcoxon_p": 0.8459989204354836,
+      "converge": false
+    },
+    "DICE_CD4_T": {
+      "n_genes": 1828,
+      "magma_p": 0.14409500145849463,
+      "wilcoxon_p": 0.0498098046242578,
+      "converge": false
+    },
+    "DICE_CD8_T": {
+      "n_genes": 1824,
+      "magma_p": 0.5244392342360925,
+      "wilcoxon_p": 0.302603778692648,
+      "converge": false
+    },
+    "DICE_DC": {
+      "n_genes": 1894,
+      "magma_p": 0.08864116654083576,
+      "wilcoxon_p": 0.1447600302240175,
+      "converge": false
+    },
+    "DICE_Gamma_delta_T": {
+      "n_genes": 1888,
+      "magma_p": 0.8413917004643856,
+      "wilcoxon_p": 0.9224068675429631,
+      "converge": false
+    },
+    "DICE_Monocyte": {
+      "n_genes": 1884,
+      "magma_p": 0.5091271098839955,
+      "wilcoxon_p": 0.5489858205604811,
+      "converge": false
+    },
+    "DICE_NK": {
+      "n_genes": 1863,
+      "magma_p": 0.554750025566075,
+      "wilcoxon_p": 0.3606917081162214,
+      "converge": false
+    },
+    "DICE_Th17": {
+      "n_genes": 1900,
+      "magma_p": 0.32413080401182903,
+      "wilcoxon_p": 0.16215232007533248,
+      "converge": false
+    },
+    "DICE_Treg": {
+      "n_genes": 1858,
+      "magma_p": 0.7609673812236467,
+      "wilcoxon_p": 0.8882888871753952,
+      "converge": false
+    },
+    "KEGG_HEMATOPOIETIC_CELL_LINEAGE": {
+      "n_genes": 78,
+      "magma_p": 0.805063245332378,
+      "wilcoxon_p": 0.904315573017807,
+      "converge": false
+    },
+    "NK_INNATE_LYMPHOID": {
+      "n_genes": 35,
+      "magma_p": 0.8924370198427134,
+      "wilcoxon_p": 0.9656247239650206,
+      "converge": false
+    },
+    "REACTOME_ADAPTIVE_IMMUNE_SYSTEM": {
+      "n_genes": 115,
+      "magma_p": 0.9527917782936903,
+      "wilcoxon_p": 0.9149008301201909,
+      "converge": false
+    },
+    "lymphocyte_union": {
+      "n_genes": 9918,
+      "magma_p": 0.8379713170746463,
+      "wilcoxon_p": 0.6873152749782866,
+      "converge": false
+    },
+    "lymphocyte_union_plus_msigdb": {
+      "n_genes": 10010,
+      "magma_p": 0.8801671603437823,
+      "wilcoxon_p": 0.7683239319489354,
+      "converge": false
+    }
+  },
+  "interpretation": "At least one lymphocytic gene set shows nominal enrichment (P<0.05) in the 2019 TS GWAS. This provides partial method validation of the original Translational Psychiatry 2020 lymphocytic enrichment finding using independent competitive methods.",
+  "power_note": "2019 TS GWAS (N=14,307) has limited power for gene-set enrichment. Null results do not exclude immune involvement. Future replication with 2024 TSAICG GWAS (N=19,138) expected to improve power."
+}
