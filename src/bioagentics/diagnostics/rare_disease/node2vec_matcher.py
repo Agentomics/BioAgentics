@@ -313,6 +313,8 @@ def rank_diseases(
 ) -> list[RankResult]:
     """Rank diseases by cosine similarity to query embedding.
 
+    Uses batched matrix cosine similarity instead of per-disease calls.
+
     Args:
         matcher: Node2VecMatcher with trained embeddings.
         query_hpo_terms: Patient's HPO term IDs.
@@ -330,15 +332,29 @@ def rank_diseases(
 
     query_vec_2d = query_vec.reshape(1, -1)
 
-    results: list[RankResult] = []
+    # Separate diseases with/without embeddings for batched computation
+    has_embed_ids: list[str] = []
+    has_embed_indices: list[int] = []
+    no_embed_ids: list[str] = []
     for disease_id in disease_ids:
-        disease_vec = matcher.get_embedding(disease_id)
-        if disease_vec is None:
-            results.append(RankResult(disease_id=disease_id, score=0.0))
-            continue
+        idx = matcher.word2idx.get(disease_id)
+        if idx is not None:
+            has_embed_ids.append(disease_id)
+            has_embed_indices.append(idx)
+        else:
+            no_embed_ids.append(disease_id)
 
-        sim = cosine_similarity(query_vec_2d, disease_vec.reshape(1, -1))[0, 0]
-        results.append(RankResult(disease_id=disease_id, score=float(sim)))
+    results: list[RankResult] = []
+
+    if has_embed_indices:
+        # Batch cosine similarity: query [1, D] vs disease_matrix [N, D]
+        disease_matrix = matcher.embeddings[has_embed_indices]
+        sims = cosine_similarity(query_vec_2d, disease_matrix)[0]
+        for disease_id, sim in zip(has_embed_ids, sims):
+            results.append(RankResult(disease_id=disease_id, score=float(sim)))
+
+    for disease_id in no_embed_ids:
+        results.append(RankResult(disease_id=disease_id, score=0.0))
 
     results.sort(key=lambda r: r.score, reverse=True)
     for i, r in enumerate(results):

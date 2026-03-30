@@ -356,12 +356,15 @@ class GATMatcher:
         return probs.mean().item()
 
 
+@torch.no_grad()
 def rank_diseases(
     matcher: GATMatcher,
     query_hpo_terms: list[str],
     disease_ids: list[str],
 ) -> list[RankResult]:
     """Rank diseases by GAT link prediction scores.
+
+    Encodes the graph once and batches link predictions across all diseases.
 
     Args:
         matcher: GATMatcher with trained model.
@@ -371,11 +374,55 @@ def rank_diseases(
     Returns:
         List of RankResult sorted by score descending.
     """
+    valid_terms = [t for t in query_hpo_terms if t in matcher.node2idx]
+
+    # Diseases without node index or no valid query terms get score 0
+    if not valid_terms:
+        results = [
+            RankResult(disease_id=d, score=0.0, rank=i + 1)
+            for i, d in enumerate(disease_ids)
+        ]
+        return results
+
+    # Encode graph once
+    matcher.model.eval()
+    z = matcher.model.encode(matcher.graph_edge_index)
+
+    term_indices = [matcher.node2idx[t] for t in valid_terms]
+    n_terms = len(term_indices)
+
+    # Separate diseases with/without node indices
+    scoreable_ids: list[str] = []
+    scoreable_disease_indices: list[int] = []
+    no_node_ids: list[str] = []
+    for d in disease_ids:
+        if d in matcher.node2idx:
+            scoreable_ids.append(d)
+            scoreable_disease_indices.append(matcher.node2idx[d])
+        else:
+            no_node_ids.append(d)
+
     results: list[RankResult] = []
 
-    for disease_id in disease_ids:
-        score = matcher.score_disease(query_hpo_terms, disease_id)
-        results.append(RankResult(disease_id=disease_id, score=score))
+    if scoreable_disease_indices:
+        # Build batched src/dst for all (disease, term) pairs
+        # src: each disease repeated n_terms times; dst: term indices tiled
+        n_diseases = len(scoreable_disease_indices)
+        src = torch.tensor(
+            [d_idx for d_idx in scoreable_disease_indices for _ in range(n_terms)],
+            dtype=torch.long,
+        )
+        dst = torch.tensor(term_indices * n_diseases, dtype=torch.long)
+        logits = matcher.model.predict_link(z, src, dst)
+        probs = torch.sigmoid(logits)
+
+        # Reshape to [n_diseases, n_terms] and average per disease
+        scores = probs.view(n_diseases, n_terms).mean(dim=1)
+        for disease_id, score in zip(scoreable_ids, scores):
+            results.append(RankResult(disease_id=disease_id, score=score.item()))
+
+    for disease_id in no_node_ids:
+        results.append(RankResult(disease_id=disease_id, score=0.0))
 
     results.sort(key=lambda r: r.score, reverse=True)
     for i, r in enumerate(results):
