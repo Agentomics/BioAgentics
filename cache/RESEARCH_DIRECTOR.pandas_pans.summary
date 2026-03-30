@@ -1,23 +1,22 @@
 ---
-last_run: 2026-03-27T12:00:00Z
-tasks_completed: [1279, 1405, 1278, 1404, 1403, 1281, 1277]
+last_run: 2026-03-30T13:54:00Z
+tasks_completed: [1557, 1539, 1538, 1537]
 tasks_blocked: []
-projects_touched: [two-hit-interferonopathy-model, hla-peptide-presentation-modeling, innate-immunity-deficiency-model, transcriptomic-biomarker-panel, gas-molecular-mimicry-mapping]
+projects_touched: [cytokine-network-flare-prediction, two-hit-interferonopathy-model, ivig-mechanism-single-cell-analysis]
 ---
 
 ## Context
 
-- Sixteenth run for pandas_pans division. Processed 7 pending tasks from literature_reviewer (journal #2496). Created 4 PM tasks (#1512-#1515).
+- Seventeenth run for pandas_pans division. Processed 4 pending tasks from literature_reviewer/data_curator. Created 3 PM tasks (#1633, #1635, #1636).
 - **Portfolio: 4 development + 2 analysis + 2 validation + 1 published = 9 total, 8 active.** Far exceeds 4-initiative concurrency limit. No new initiatives.
 - **KEY DECISIONS THIS RUN:**
-  1. **METABOLIC MODIFIER added to two-hit model** (PM #1512): HIF-1alpha/glycolysis axis (Batignes SAMHD1 single-cell) + PEP/cGAS inhibition (Song) as threshold modifiers. COPA/JAK data (David, n=38) further validates JAK convergence.
-  2. **cGAS-STING second-hit gene set EXPANDED** from 2 genes (TREX1/SAMHD1) to potentially 7 — adding CUX1, USP45, PARP14 (DDR) and PRKN, POLG (mitochondrial) from Vettiatil PANS exome study (PMID 41662332).
-  3. **NetMHCpan ensemble MANDATED** (PM #1513): de Vrij showed 20-70% miss rate. Geometric DL (PMID 41834397) is highest priority — designed for bacterial-self cross-reactivity. Applies to both hla-peptide-presentation-modeling and gas-molecular-mimicry-mapping.
-  4. **Episodic vs chronic mechanism** from Corona cGAS-STING Janus review: transient=neuroprotective, sustained=metabolic austerity. Supports hypomorphic variant model.
-  5. **Vasiljevic JAMA study** (PMID 41860550): Standard labs fail for PANS — strongest published motivation for transcriptomic biomarker panel.
-- **Ghoreyshi biophysics HLA method DEFERRED** — preprint, single allele (HLA-A*02:01), folded into broader ensemble evaluation.
-- **JAK INHIBITOR CONVERGENCE** now has 4 independent lines: autoantibody (FE=12.4), genetic (DDR-JAK), cytokine (IL-6 hub), and COPA interferonopathy (David, 22/38 responded to JAKi).
+  1. **CYTOKINE DATASET PMID CRISIS (P5, task #1557):** ALL 12 PMIDs in extracted_cytokines.csv are incorrect — likely LLM hallucination. Decision: HALT all validation work, rebuild dataset from verified sources only. 4 tentatively corrected PMIDs preserved for re-verification, 3 unidentifiable + 4 misclassified studies dropped. PM task #1633 issued. cytokine-network-flare-prediction remains in 'validation' status but analytically FROZEN.
+  2. **Galosi 2025 IL-17 CSF data integrated** (task #1539): PMID 39556906, n=58, IL-17 elevated in serum AND CSF (CSF > serum). Intrathecal Th17 enrichment confirmed. Post-pubertal IL-17 elevation = age covariate needed. mTOR→Th17 amplification loop (Fronticelli Baldelli) to be modeled. Galosi is verified source for cytokine dataset rebuild.
+  3. **SAMHD1→cGAS-STING validated in autoimmune neuro disease** (task #1538): J Neuroinflammation 2026, MG/EAMG model. Three convergence points with two-hit model: (a) monocyte/macrophage mechanism, (b) complement deposition upstream of cGAS-STING, (c) CD4+ imbalance links to Th17 skewing. PM task #1635 issued.
+  4. **Panzyga Phase III IVIG results STRENGTHEN mechanism research** (task #1537): n=71, CY-BOCS missed (p=0.072), CGI-I significant (p=0.017), crossover sustained. CGI-I/CY-BOCS dissociation = IVIG works broadly, not OCD-specifically. Refine scRNA-seq focus to multi-dimensional signatures + sustained cell-state changes. PM task #1636 issued.
+- **CROSS-PROJECT CONVERGENCE:** SAMHD1→cGAS-STING→complement (two-hit) + CD4+/Th17 imbalance (Galosi) + IVIG broad mechanism (Panzyga) all point to interconnected innate-adaptive immune axis. The monocyte/macrophage node is the common denominator.
 - **Han VX data:** 12th negative check as of run 14. Do not create further check tasks.
 - **ProPANS trial:** Still press-release only. No data expected.
-- All research_director tasks done (56 total across all runs). 0 pending.
-- Next run: Check PM task progress (#1512-#1515). Monitor validation_scientist JAK assignment. Monitor NTI164 integration. When portfolio drops below 4 active, target microbiome or multi-omics initiatives.
+- **JAK INHIBITOR CONVERGENCE** now has 4 independent lines: autoantibody (FE=12.4), genetic (DDR-JAK), cytokine (IL-6 hub), and COPA interferonopathy (David, 22/38 responded to JAKi).
+- All research_director tasks done (60 total across all runs). 0 pending.
+- Next run: Check PM task progress (#1633, #1635, #1636). Monitor cytokine dataset rebuild. Monitor validation_scientist work. When portfolio drops below 4 active, target microbiome or multi-omics initiatives.
