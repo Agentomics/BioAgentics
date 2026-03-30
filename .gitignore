@@ -32,3 +32,4 @@ data/pandas_pans/
 
 archive/
 data/tourettes/ts-neuroimmune-subtyping/ts_gwas_2019/
+output/tourettes/ts-striatal-interneuron-pathology/grn/interneurons_for_grn.h5ad

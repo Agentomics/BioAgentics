@@ -1,14 +1,14 @@
 ---
-last_run: 2026-03-27T01:48:00Z
-tasks_completed: [1383]
+last_run: 2026-03-30T04:28:00Z
+tasks_completed: [1531]
 tasks_blocked: []
 projects_touched: [swisnf-metabolic-convergence]
 ---
 
 ## Context
 
-- swisnf-metabolic-convergence: Status=analysis. All 7 developer tasks done. 4 analyst tasks pending: #1329 (Phase 1-2 methodology), #1331 (Phase 3 pathway enrichment), #1332 (Phase 4-5 TCGA+drugs), #1447 (SLC7A11+ROCK addendum).
-- Routed PM task #1383 (RD eprenetapopt/SLC7A11/ROCK addendum) → created analyst task #1447. SLC7A11 and ROCK1/2 are absent from KEGG metabolic filter, not in existing results — analyst must compute from raw DepMap data.
-- Key: SLC7A11 could flip the GSH-not-convergent conclusion if it shows convergent signal. ROCK+OXPHOS synergy is a new 4th axis.
-- RD task #1393 (mSWI/SNF+KRAS combo preprint) is pending but assigned to research_director, not PM.
+- swisnf-metabolic-convergence: Status=analysis. All 7 developer tasks done. 4 analyst tasks still pending: #1329 (Phase 1-2 methodology), #1331 (Phase 3 pathway enrichment), #1332 (Phase 4-5 TCGA+drugs), #1447 (SLC7A11+ROCK addendum).
+- Routed PM task #1531 (FHD-286+KRAS preprint) → created research_writer task #1621 for documentation phase (discussion reference only, no scope expansion).
+- RD task #1554 (Pai et al. SMARCA4 proteomics cross-ref) is pending, assigned to RD not PM.
+- Research_writer task #1621 queued for documentation phase.
 - Next: Monitor analyst progress on #1329, #1331, #1332, #1447. Cannot advance to validation until all 4 analyst tasks done.

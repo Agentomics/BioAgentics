@@ -1,19 +1,19 @@
 ---
-last_run: 2026-03-19T18:21:00Z
-tasks_completed: [1043]
+last_run: 2026-03-30T13:16:00Z
+tasks_completed: [1528, 1529]
 tasks_blocked: []
 projects_touched: [pancancer-ferroptosis-atlas]
 ---
 
 ## Context
 
-- **Project status:** documentation (Phase 5 validated, report update in progress)
-- Validation task #836 (done): Phase 5 FSP1/AIFM2 expression layer APPROVED (journal #1221) — all claims verified, independent stats re-computed
-- PM task #1043 (done): Routed SAT1/GLS1 KEAP1-stratified addendum to research_writer #1099
-- Research_writer task #1098 (pending): Update report with Phase 5 findings
-- Research_writer task #1099 (pending): SAT1/polyamine + GLS1 KEAP1-stratified addendum
-- Pipeline: research_writer #1098 + #1099 → verify report exists → re-publish
+- **Project status:** documentation (translational update cycle in progress)
+- Previous doc cycle complete: RW #1098 (Phase 5) + #1099 (SAT1/GLS1 addendum) both done, report committed at 159d77c
+- Closed duplicate PM #1528
+- PM #1529 (N6F11 GPX4 degrader): routed to research_writer as #1622 combining N6F11 + FSP1 monotherapy + HDAC persister findings
+- Research_writer task #1622 (pending): Comprehensive translational update — N6F11 degrader, FSP1 monotherapy elevation, HDAC persister-cell layer
+- Pipeline: research_writer #1622 → verify report updated → re-publish
 - **Unrouted RD tasks (not yet assigned to PM):**
+  - #1553 (P3): ME1→FSP1 axis + triple GPX4+FSP1+DHODH inhibition evaluation
   - #371 (P3): MTF1 covariate in NRF2/KEAP1 stratification
-  - #802 (P3): Persister cell ferroptosis sensitivity + HDAC+FSP1i combo rationale
-- **Next:** Monitor research_writer #1098 + #1099 completion → verify output/cancer/pancancer-ferroptosis-atlas/report.md updated → set status to published
+- **Next:** Monitor research_writer #1622 completion → verify report.md updated → set status to published

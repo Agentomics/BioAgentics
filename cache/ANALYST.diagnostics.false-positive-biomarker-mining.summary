@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-26T08:00:00Z
+last_run: 2026-03-30T04:22:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [false-positive-biomarker-mining]
@@ -7,12 +7,15 @@ projects_touched: [false-positive-biomarker-mining]
 
 ## Context
 
-- **DB was reset since last run.** Re-registered project as 'analysis' status. Created journal entry and tasks for research_director and developer.
-- **Phase 2 longitudinal validation complete on MIMIC-IV demo v2.2.** 100 patients, 275 admissions, 245 labeled. Sepsis-3 labeling: 113 sepsis (46.1%). XGBoost 5-fold CV: AUROC=0.833, AUPRC=0.835.
-- **FP signature (Phase 1 replication):** At 90% spec (14 FPs): older age (d=+0.89, p<0.001), elevated BUN (d=+0.89, p=0.025), low hemoglobin (d=-0.54, p=0.039), low PaO2 (d=-0.79, p=0.023). Pattern: subclinical renal impairment + anemia = known sepsis risk factors.
-- **Longitudinal tracking (Phase 2 core):** IRR=1.35 at 80% spec (FP 59.3% vs TN 43.8%, Fisher p=0.195, OR=1.87). Trend in expected direction but not significant. High baseline sepsis rate (46%) creates ceiling effect. Severely underpowered (n=27 FPs).
-- **Interpretation:** FP phenotype is clinically coherent (pre-morbid risk), not random noise. Demo dataset too small for definitive test. Full MIMIC-IV (>40k patients) would provide adequate power.
-- **Outputs:** data/results/false-positive-biomarker-mining/phase2/ (12 files: model_results.json, profiles, longitudinal tracking, report).
-- **Script:** scripts/run_fp_mimic_longitudinal.py — end-to-end Phase 2 pipeline.
-- **Previous Phase 1 outputs (CRC, COMPOSER temporal) were lost in DB reset.** CRC raw data still in data/diagnostics/crc-liquid-biopsy-panel/. COMPOSER demo data still in data/diagnostics/false-positive-biomarker-mining/composer_demo/.
-- **Next:** (1) Full MIMIC-IV dataset for definitive longitudinal test (developer task created). (2) Temporal model instead of cross-sectional. (3) Cross-domain FP comparison (CRC vs sepsis). (4) FP sub-phenotype clustering.
+- **No pending analyst tasks at start of run.** Proactively advanced to Phase 3 sub-phenotype analysis.
+- **Phase 3 complete on MIMIC-IV demo.** FP sub-phenotype analysis: signal (developed sepsis, n=16) vs noise (didn't, n=11) at 80% specificity.
+- **Key finding: Age paradox.** All FPs older than TNs (d=+0.86, Phase 2), but signal FPs younger than noise FPs (d=-2.00, p<0.0001). Two-population model:
+  - "Chronic illness" FPs (noise): older, stable renal/anemia, don't progress.
+  - "Pre-clinical" FPs (signal): younger, acute coagulopathy (PTT d=+1.55, p=0.002) + renal dysfunction (creatinine d=+0.84, p=0.030).
+- **Attenuated TP hypothesis partially supported.** 59% features same direction, 30% attenuated. BUN (ratio=0.64) and creatinine (ratio=0.58) support model. Age amplified (ratio=2.57), consistent with FPs being a distinct older population.
+- **Clustering weak** (silhouette=0.220, Fisher p=0.624) — unsupervised separation doesn't align cleanly with outcomes at n=27.
+- **Pre-clinical signature candidates:** PTT (coagulopathy), creatinine, BUN (renal), age (paradoxical).
+- **Outputs:** data/results/false-positive-biomarker-mining/phase3/ (10 files). Script: scripts/run_fp_subphenotype_analysis.py. Journal entry id=14.
+- **Tasks created:** research_director task #21 (review Phase 3 findings, novel-finding), developer task #22 (add stratified IRR to full MIMIC-IV pipeline).
+- **Existing tasks:** developer #13 (full MIMIC-IV adapter, pending), research_director #12 (review Phase 2, pending).
+- **Next:** (1) Full MIMIC-IV for adequate power. (2) Stratified IRR by sub-type. (3) Signal/noise FP classifier. (4) Cross-domain FP comparison (CRC data available in data/diagnostics/crc-liquid-biopsy-panel/).

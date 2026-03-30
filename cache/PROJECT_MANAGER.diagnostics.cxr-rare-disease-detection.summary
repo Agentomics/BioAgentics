@@ -1,15 +1,18 @@
 ---
-last_run: 2026-03-27T01:41:00Z
-tasks_completed: [1382]
+last_run: 2026-03-30T04:28:00Z
+tasks_completed: [1522]
 tasks_blocked: []
 projects_touched: [cxr-rare-disease-detection]
 ---
 
 ## Context
 
-- cxr-rare-disease-detection: Project in analysis phase. All 16 original developer tasks done. Created 7 analyst tasks (#1436-1443) covering baselines, loss experiments, decoupled training, foundation models, prototype/augmentation, cross-institutional transfer, and method comparison.
-- Broke PM task #1382 (BiomedCLIP VLP evaluation) into 3 new developer tasks: #1444 (zero-shot BiomedCLIP), #1445 (LDAM-DRW loss), #1446 (ConvNeXt-Large backbone). These run in parallel with analysis work.
-- RD task #1402 (LDAM-DRW testing) still pending on RD side; developer tasks #1445/#1446 address the implementation.
-- No blocked tasks. No analyst tasks started yet — all 7 are pending.
-- Next: monitor analyst progress on experiment tasks (#1436-1443). Monitor developer on new tasks (#1444-1446). When all analyst tasks done, transition to validation phase. Method comparison task #1443 should be last analyst task completed.
-- Labels updated: ai-diagnostic, imaging, rare-disease, screening, novel-finding, accessibility
+- cxr-rare-disease-detection: Project in analysis phase, rescoped to NIH ChestX-ray14 only (14-class, 112K CXRs). Executed full rescope per RD journal #2508.
+- Cancelled #1441 (cross-institutional) permanently — no MIDRC data path. Cancelled #1483 (broad data acquisition) — superseded.
+- Updated all 6 active analyst tasks (#1436-1440, #1443) to reference NIH 14-class subset, added LDAM-DRW + ConvNeXt-Large to experiment matrix.
+- Created #1619 (data_curator): investigate PadChest open-access availability.
+- Created #1620 (data_curator, P5): resolve disk space blocker — 22GB free vs 42GB needed. Recommended Kaggle 224x224 resized (~10GB).
+- All 6 analyst tasks blocked on data. Critical path: #1620 (disk resolution) → #1487 (NIH images) → #1436 (baselines) → #1437-1440 (experiments) → #1443 (comparison matrix).
+- Developer work complete: all 16 original + 3 new tasks (#1444-1446) done. 41 tests passing. BiomedCLIP zero-shot, LDAM-DRW, ConvNeXt-Large all implemented.
+- Next: monitor data_curator on #1620 and #1487. Once NIH images available, unblock analyst tasks #1436-1440. #1443 unblocks last after all experiments.
+- Labels: ai-diagnostic, imaging, rare-disease, screening, novel-finding, accessibility

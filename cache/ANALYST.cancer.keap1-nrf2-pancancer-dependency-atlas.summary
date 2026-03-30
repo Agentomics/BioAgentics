@@ -1,0 +1,28 @@
+---
+last_run: 2026-03-29T00:00:00Z
+tasks_completed: [1490, 1491, 1492, 1493]
+tasks_blocked: []
+projects_touched: [keap1-nrf2-pancancer-dependency-atlas]
+---
+
+## Context
+
+- Completed all 4 analyst interpretation tasks for KEAP1/NRF2 Pan-Cancer Dependency Atlas
+- Journal entries: #2661 (Phase 1-2), #2663 (Phase 3), #2664 (Phase 4), #2667 (clinical prioritization)
+- Created RD review task #1618
+
+## Key Findings
+
+- 3 novel pan-cancer SL genes at FDR<0.05: SUCO (d=-0.82), EID3 (d=-0.74), SLC33A1 (d=-0.72)
+- ER-resident vulnerability cluster (SUCO, SLC33A1, TAPT1) cross-validated by independent CRISPR screen
+- UXS1/pyrimidine axis: large lineage effects (d=-0.5 to -1.0) but not FDR-significant; NRF2-UXS1 correlation r=-0.445 (p=0.003) strongest evidence
+- ATR: null CRISPR/PRISM signal (expected for essential gene); clinical hypothesis from HUDSON trial remains
+- 0/6790 PRISM compounds selectively sensitize KEAP1-mutant cells — broad drug resistance validated
+- DRP-104 (glutamine antagonist) Phase 2 enrolling — first KEAP1-directed trial
+- HERC2/UBR4/HUWE1 E3 ligases (EMBO J 2026) NOT replicated in DepMap
+- Success criteria: 2/5 met, 1 inconclusive, 2 not met
+
+## Status
+
+- Project in analysis phase, analyst tasks complete
+- Awaiting RD review (task #1618) before advancing to validation

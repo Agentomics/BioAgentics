@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-26T00:00:00Z
+last_run: 2026-03-29T00:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: [cd-fibrosis-drug-repurposing]
@@ -7,8 +7,8 @@ projects_touched: [cd-fibrosis-drug-repurposing]
 
 ## Context
 
-- cd-fibrosis-drug-repurposing: Project status=development. 19/19 tasks done (unchanged from last run).
+- cd-fibrosis-drug-repurposing: Project status=development. 19/19 tasks done (unchanged).
 - No new tasks found. MCP agent-comms tools were unavailable this session — could not query for newly assigned tasks.
-- Verified project health: 86 tests pass across all cd_fibrosis test files. 21 modules in src/bioagentics/data/cd_fibrosis/.
-- Key modules: sigcom_client.py (SigCom LINCS API), celltype_signature.py (PI16+ subtypes), tl1a_dr3_rho_signature.py (TL1A/ILC + granulopoiesis), positive_controls.py (erlotinib/gefitinib/apremilast/roflumilast), in_silico_validation.py (collagen neoepitopes).
+- Verified project health: 295 tests pass across 15 cd_fibrosis test files. 21 modules in src/bioagentics/data/cd_fibrosis/.
+- Key modules: sigcom_client.py (SigCom LINCS API), celltype_signature.py (PI16+ subtypes), tl1a_dr3_rho_signature.py (TL1A/ILC + granulopoiesis), positive_controls.py (erlotinib/gefitinib/apremilast/roflumilast), in_silico_validation.py (collagen neoepitopes), candidate_prioritization.py (curated data + clinical benchmarks).
 - Previously blocked tasks #1097 (21GB GCTX) and #489 (iLINCS API) remain moot — SigCom LINCS replaces both.

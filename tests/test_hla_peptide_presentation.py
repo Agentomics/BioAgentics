@@ -333,6 +333,134 @@ class TestIEDBBindingPrediction:
         assert "ENN_MRP" in serotypes
 
 
+    def test_derived_sets_constant(self):
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            DERIVED_SETS,
+        )
+
+        assert "mimicry_targeted" in DERIVED_SETS
+
+    def test_get_mimicry_accessions(self):
+        from unittest.mock import patch
+
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            _get_mimicry_accessions,
+        )
+
+        mock_hits = [
+            {"gas_protein": "sp|P001|PROT1", "human_protein": "GAPDH"},
+            {"gas_protein": "tr|Q002|PROT2", "human_protein": "DRD1"},
+            {"gas_protein": "UPI000012DD03", "human_protein": "tubulin"},
+        ]
+        with patch(
+            "src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction.load_mimicry_hits",
+            return_value=mock_hits,
+        ):
+            accs = _get_mimicry_accessions()
+        assert accs == {"P001", "Q002", "UPI000012DD03"}
+
+    def test_build_mimicry_targeted_library(self, tmp_path):
+        from unittest.mock import patch
+
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            build_mimicry_targeted_library,
+        )
+
+        # Create a peptide library with 3 proteins, 2 of which are mimicry candidates
+        plib = tmp_path / "peptide_libraries"
+        plib.mkdir(parents=True)
+        tsv = plib / "m1_mhc_ii_peptides.tsv"
+        tsv.write_text(
+            "sequence\tlength\tposition_start\tposition_end\tsource_protein\tsource_accession\tserotype\tis_virulence_factor\tvirulence_flags\n"
+            "AAAAAAAAAAAAAAAA\t15\t0\t15\tM protein\tP001\tM1\tTrue\tM protein\n"
+            "BBBBBBBBBBBBBBBB\t15\t1\t16\tC5a peptidase\tQ002\tM1\tTrue\tC5a\n"
+            "CCCCCCCCCCCCCCCC\t15\t2\t17\tHypothetical\tP099\tM1\tFalse\t\n"
+        )
+
+        mock_hits = [
+            {"gas_protein": "sp|P001|PROT1", "human_protein": "GAPDH"},
+            {"gas_protein": "tr|Q002|PROT2", "human_protein": "DRD1"},
+        ]
+        with patch(
+            "src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction.load_mimicry_hits",
+            return_value=mock_hits,
+        ):
+            out = build_mimicry_targeted_library(mhc_class="II", output_base=tmp_path)
+
+        assert out.exists()
+        with open(out) as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            rows = list(reader)
+        # P001 and Q002 match, P099 does not
+        assert len(rows) == 2
+        accs = {r["source_accession"] for r in rows}
+        assert accs == {"P001", "Q002"}
+
+    def test_merge_deduplicates_peptide_allele_pairs(self, tmp_path):
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            PREDICTION_FIELDNAMES,
+            merge_serotype_predictions,
+        )
+
+        pred_dir = tmp_path / "binding_predictions"
+        pred_dir.mkdir(parents=True)
+
+        # Same peptide+allele in two different sets
+        for label in ["m1", "mimicry_targeted"]:
+            path = pred_dir / f"{label}_DRB1_07_01_mhc_ii.tsv"
+            with open(path, "w", newline="") as f:
+                writer = csv.DictWriter(f, fieldnames=PREDICTION_FIELDNAMES, delimiter="\t")
+                writer.writeheader()
+                writer.writerow({
+                    "peptide": "SAMEPEPTIDE12345", "allele": "DRB1*07:01", "ic50": 100.0,
+                    "percentile_rank": 0.3, "binding_class": "strong_binder",
+                    "method": "netmhciipan", "source_protein": "M protein",
+                    "source_accession": "P001", "serotype": label.upper(),
+                    "is_virulence_factor": True,
+                })
+
+        merged = merge_serotype_predictions(
+            serotypes=["M1"], mhc_class="II", output_base=tmp_path, include_derived=True
+        )
+        with open(merged) as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            rows = list(reader)
+        # Deduplicated: same peptide+allele → only 1 row
+        assert len(rows) == 1
+
+    def test_merge_includes_derived_sets(self, tmp_path):
+        from src.pandas_pans.hla_peptide_presentation_modeling.iedb_binding_prediction import (
+            PREDICTION_FIELDNAMES,
+            merge_serotype_predictions,
+        )
+
+        pred_dir = tmp_path / "binding_predictions"
+        pred_dir.mkdir(parents=True)
+
+        for label, pep in [("m1", "AAAAAAA"), ("mimicry_targeted", "BBBBBBB")]:
+            path = pred_dir / f"{label}_DRB1_07_01_mhc_ii.tsv"
+            with open(path, "w", newline="") as f:
+                writer = csv.DictWriter(f, fieldnames=PREDICTION_FIELDNAMES, delimiter="\t")
+                writer.writeheader()
+                writer.writerow({
+                    "peptide": pep, "allele": "DRB1*07:01", "ic50": 100.0,
+                    "percentile_rank": 0.3, "binding_class": "strong_binder",
+                    "method": "netmhciipan", "source_protein": "test",
+                    "source_accession": "P001", "serotype": label.upper(),
+                    "is_virulence_factor": True,
+                })
+
+        merged = merge_serotype_predictions(
+            serotypes=["M1"], mhc_class="II", output_base=tmp_path, include_derived=True
+        )
+        with open(merged) as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            rows = list(reader)
+        assert len(rows) == 2
+        peptides = {r["peptide"] for r in rows}
+        assert "BBBBBBB" in peptides  # derived set included
+
+
 class TestDifferentialPresentation:
     """Tests for Phase 4: Differential analysis."""
 
