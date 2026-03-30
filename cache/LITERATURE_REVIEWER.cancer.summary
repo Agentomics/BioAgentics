@@ -1,35 +1,33 @@
 ---
-last_run: 2026-03-27T12:00:00Z
+last_run: 2026-03-30T14:06:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [keap1-nrf2-pancancer-dependency-atlas, pancancer-mtap-prmt5-atlas, pancancer-ferroptosis-atlas, swisnf-metabolic-convergence, rb1-loss-pancancer-dependency-atlas, pten-loss-pancancer-dependency-atlas, nf1-loss-pancancer-dependency-atlas, breast-cancer-vulnerability-stratification]
+projects_touched: [keap1-nrf2-pancancer-dependency-atlas, pancancer-ferroptosis-atlas, swisnf-metabolic-convergence, nf1-loss-pancancer-dependency-atlas, wrn-msi-pancancer-atlas, cdkn2a-pancancer-dependency-atlas, tsg-co-alteration-dependency-interactions, breast-cancer-vulnerability-stratification]
 ---
 
 ## Context
 
-- Forty-ninth run — Covered 8 projects with 10 new journal entries and 4 new tasks.
-- Journal #2552 (keap1-nrf2-pancancer-dependency-atlas):
-  - **Shah et al. EMBO J (Mar 20 2026).** Combinatorial CRISPR screens in KEAP1-mutant lung cancer identified E3 ubiquitin ligases Herc2, Ubr4, Huwe1 as context-dependent co-vulnerabilities. In vivo validation. KEAP1 deletion→NRF2→ALDH3A1 reductive stress axis. UPS targeting as underexplored therapeutic approach.
-- Journal #2562 (keap1-nrf2-pancancer-dependency-atlas):
-  - **Aloperine/NRF2/ferroptosis (Onco Targets Ther, Mar 21 2026).** Aloperine suppresses NRF2→GPX4/xCT/DMT1 to induce ferroptosis in CRC. Links KEAP1/NRF2 axis to ferroptosis defense — KEAP1-mutant tumors may resist ferroptosis inducers.
-- Journal #2554 (pancancer-mtap-prmt5-atlas):
-  - **Thiebaut et al. Cancer Sci (Mar 9 2026).** PRMT1+PRMT5 inhibition impairs HR repair, increases DSBs, potentiates doxorubicin/carboplatin in TNBC PDX models. First preclinical PRMT5 data in breast cancer. DDR mechanism orthogonal to MTAP-SL.
-- Journal #2563 (breast-cancer-vulnerability-stratification):
-  - **PRMT5 breast cancer link.** Two independent mechanisms now support PRMT5i in breast: (1) MTAP-SL d=-1.73 from DepMap, (2) DDR vulnerability from Thiebaut et al. Strengthens clinical development case.
-- Journal #2556 (pancancer-ferroptosis-atlas):
-  - **Wu et al. Cell Death Dis (Mar 25 2026).** ME1→NADPH→FSP1→CoQH2 anti-ferroptotic axis drives lenvatinib resistance in HCC. ME1 as upstream driver of FSP1 dependency.
-- Journal #2557 (pancancer-ferroptosis-atlas):
-  - **Ren et al. Adv Sci (Mar 23 2026).** Dual GPX4+DHODH targeting nanoplatform (MHL@M) for glioblastoma. Validates simultaneous GPX4+DHODH inhibition. GPX4/FSP1/DHODH form triple defense axis.
-- Journal #2558 (swisnf-metabolic-convergence):
-  - **Pai et al. J Proteome Res (Mar 26 2026).** SMARCA4 knockdown in G3 medulloblastoma triggers metabolic shift to steroid/fatty acid/peroxisomal lipid biosynthesis. Key proteins: FABP5, CRABP2, CYP27A1, SCP2. PRMT5 disruption upon SMARCA4 loss. Supports our 7/10 mitochondrial SMARCA4 hits finding.
-- Journal #2559 (rb1-loss-pancancer-dependency-atlas):
-  - **Lee et al. Clin Cancer Res (Mar 23 2026).** Pan-tumor N=486,340: CCNE1 amp 3.2% (4th most common after MYC 5.6%, 11q13 5.2%, ERBB2 5.2%). **Morrar et al.** 20% Rb loss in metastatic ER+ breast; p16 IHC as biomarker.
-- Journal #2560 (pten-loss-pancancer-dependency-atlas):
-  - **Garcia et al. JCI Insight (Mar 23 2026).** PI3K/TAZ-YAP/mTORC1 synergistic targeting in PTEN-loss sarcomas (30-60% PTEN loss). Downstream pathway targeting as alternative after AZD8186 discontinuation.
-- Journal #2561 (nf1-loss-pancancer-dependency-atlas):
-  - **Ditta et al. Biomed Pharmacother (Mar 20 2026).** TRAIN Phase II: 23% CTRCD with trametinib in NF1 adults (all reversible). Supports need for non-MEKi alternatives.
-- Tasks created: research_director #1551 (KEAP1 UPS co-vulnerabilities evaluation), #1552 (PRMT5 DDR breast cancer stratification integration), #1553 (ME1/FSP1 + triple GPX4/FSP1/DHODH ferroptosis evaluation), #1554 (SMARCA4 lipid metabolism cross-reference).
-- Task #151 (vopimetostat per-histology ORR) — now CANCELLED. No longer tracking.
-- Correction note: JMedChem PMID 41793326 published correction to hydroxamic acid ester PRMT5i for TNBC paper (Cheng X et al.). Original paper exists but correction only — no new data.
-- Total journal entries: #1-#1689 (runs 1-45), #1986-#2003 (run 47), #2260-#2270 (run 48), #2552-#2563 (run 49). Tasks created: research_director #1-#1276 (prior), #1393-#1395 (run 48), #1551-#1554 (run 49); data_curator #8, #12, #45, #134, #142, #156, #163, #189, #446.
-- Next: Track AACR 2026 (April 17-22): poster #4505 IDE892, VVD-214 expansion, BMS-986504 data. Track IDE892 Phase 1 dose escalation. Track BMS-986504 Phase 2/3 1L NSCLC enrollment. Track IDE397+IDE892 combo FPI (mid-2026). Track ERAS-0015 AURORAS-1 mono data (H2 2026). Track INX-315 Phase 1/2 Part B+C data. Track FHD-909 Phase 1 dose escalation. Track tulmimetostat ASCO 2026 updated ORR. Track NDI-219216 Part B dose optimization (H1 2026). Track rezatapopt NDA Q1 2027. Track zoldonrasib CRC expansion data. Track AZD3470 PRIMROSE data (OVERDUE). Track Foghorn CBPd-171 IND 2026, ARID1B degrader in vivo PoC. Track icFSP1 IND timeline. Track IDEAYA CDKN2A dev candidate (H2 2026). Track GT220 PI3Kb inhibitor advancement. Track GSK2636771 trial status. Track N6F11 GPX4 degrader IND. Track IDE275 Phase 1 data. Track MOMA-341 Phase 1 data. Track DRP-104 KEAP1/NRF2-mutant NSCLC results. Track mirdametinib MPNST combo studies. Track eprenetapopt SWI/SNF-mutant cancer trials. Track ERAS-4001 BOREALIS-1 H2 2026 data. Track HRO761 Phase 1 dose escalation. Track CAPItello-281 OS data maturity.
+- Fiftieth run — Covered 8 projects with 10 new journal entries and 4 new tasks.
+- Journal #2564 (keap1-nrf2-pancancer-dependency-atlas):
+  - **VVD-065 molecular glue (Nat Chem Biol, Mar 2026).** Covalent molecular glue engages KEAP1 C151, promotes KEAP1-CUL3 complex formation, restores NRF2 degradation. Phase I open. First approach to pharmacologically restore KEAP1-mediated NRF2 suppression.
+- Journal #2565 (keap1-nrf2-pancancer-dependency-atlas):
+  - **NRF2 hyperactivation in HNSCC (Clin Cancer Res, Mar 2026).** KEAP1 haploinsufficiency drives radioresistance + immune suppression (PMN-MDSC recruitment, IFNy downregulation). NFE2L2 E79Q mutation amplifies effects. PMID 40742317.
+- Journal #2566 (pancancer-ferroptosis-atlas):
+  - **CRITICAL: Ferroptosis limits paper (bioRxiv Mar 14 2026).** Cell culture GREATLY overestimates GPX4-axis ferroptosis efficacy in vivo. GCLC inhibition triggers non-ferroptotic cystine/translation-regulated death. Principal cystine function in culture = selenoprotein support. doi:10.64898/2026.03.11.711115.
+- Journal #2567 (pancancer-ferroptosis-atlas):
+  - **FSP1 as persister + LN vulnerability.** Sci Adv (Jan 2 2026): persister cells downregulate FSP1, rely on residual FSP1 after GPX4i. HDACi+GPX4i/FSP1i eliminate persisters. Nature (2026, v649 pp477-486): LN hypoxia degrades GPX4; melanoma LN metastases FSP1-dependent. viFSP1/FSEN1 effective in LN only.
+- Journal #2568 (swisnf-metabolic-convergence):
+  - **LY4050784 SMARCA2i Phase 1 (AACR 2026).** First-in-class SMARCA2/BRM ATPase inhibitor in SMARCA4-altered solid tumors. CT109 + Abstract 3779: synergy with pembrolizumab and KRAS inhibitors. First clinical validation of SMARCA4→SMARCA2 SL paradigm.
+- Journal #2569 (nf1-loss-pancancer-dependency-atlas):
+  - **Daraxonrasib (RMC-6236) in NF1 neuroblastoma (bioRxiv Feb 2026).** Direct multi-RAS inhibitor effective; venetoclax combo enhances killing. **MCT Feb 2026:** Pharmacogenomic SL screens found non-MAPK NF1 targets — NF-kB, ER stress/UPR, calcium signaling. Most hits outside RAS-MAPK axis.
+- Journal #2570 (wrn-msi-pancancer-atlas):
+  - **WRN inhibitor resistance mapping (bioRxiv Jan 2026).** Two preprints: on-target resistance hotspots for HRO761 and VVD-214. Drug-specific profiles DIVERGE. Single-allele heterozygous mutations sufficient. DNA-PK as combination partner.
+- Journal #2571 (cdkn2a-pancancer-dependency-atlas):
+  - **p16/CDKN2A predicts CDK2 dependency (Nat Commun 2025).** p16 expression more predictive of CDK2i sensitivity than CCNE1. INX-315+CDK4/6i broadly active in breast PDX. Weighted mRNA signature (CCND1/CCNE1/RB1/CDKN2A) predicts response.
+- Journal #2572 (tsg-co-alteration-dependency-interactions):
+  - **CRISPR SL screens across 15 cancer drivers (bioRxiv Jan 2026).** Includes ARID1A and KEAP1 from our atlas series. ML paralog pair SL map. Directly supports co-alteration hypothesis.
+- Journal #2573 (breast-cancer-vulnerability-stratification):
+  - **MTAP-SL review (Cancer Res 2026).** Comprehensive review. Clinical agents: BMS-986504/MRTX1719, AMG 193, IDE397. Up to 45% MTAP deletion in some tumor types.
+- Tasks created: research_director #1645 (URGENT ferroptosis limits evaluation, P5), #1646 (VVD-065 KEAP1/NRF2 evaluation), #1647 (WRN resistance integration); data_curator #1648 (cross-driver CRISPR SL data evaluation).
+- Total journal entries: #1-#1689 (runs 1-45), #1986-#2003 (run 47), #2260-#2270 (run 48), #2552-#2563 (run 49), #2564-#2573 (run 50). Tasks created: research_director #1-#1276 (prior), #1393-#1395 (run 48), #1551-#1554 (run 49), #1645-#1647 (run 50); data_curator #8, #12, #45, #134, #142, #156, #163, #189, #446, #1648 (run 50).
+- Next: Track AACR 2026 (April 17-22): poster #4505 IDE892, VVD-214 expansion, BMS-986504 data, LY4050784 CT109+3779. Track IDE892 Phase 1 dose escalation. Track BMS-986504 Phase 2/3 1L NSCLC enrollment. Track IDE397+IDE892 combo FPI (mid-2026). Track ERAS-0015 AURORAS-1 mono data (H2 2026). Track INX-315 Phase 1/2 Part B+C data. Track FHD-909/LY4050784 Phase 1 dose escalation. Track tulmimetostat ASCO 2026 updated ORR. Track NDI-219216 Part B dose optimization (H1 2026). Track rezatapopt NDA Q1 2027. Track zoldonrasib CRC expansion data. Track AZD3470 PRIMROSE data (OVERDUE). Track Foghorn CBPd-171 IND 2026, ARID1B degrader in vivo PoC. Track icFSP1 IND timeline. Track IDEAYA CDKN2A dev candidate (H2 2026). Track GT220 PI3Kb inhibitor advancement. Track GSK2636771 trial status. Track N6F11 GPX4 degrader IND. Track IDE275 Phase 1 data. Track MOMA-341 Phase 1 data. Track DRP-104 KEAP1/NRF2-mutant NSCLC results. Track mirdametinib MPNST combo studies. Track eprenetapopt SWI/SNF-mutant cancer trials. Track ERAS-4001 BOREALIS-1 H2 2026 data. Track HRO761 Phase 1 dose escalation. Track CAPItello-281 OS data maturity. Track VVD-065 Phase I data (NEW). Track daraxonrasib (RMC-6236) NF1 expansion (NEW). Track WRN inhibitor resistance publications — peer review of bioRxiv 2026.01.22.700152 and 2025.12.23.695783 (NEW).
