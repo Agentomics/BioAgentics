@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-27T12:00:00Z
+last_run: 2026-03-30T14:30:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -7,16 +7,13 @@ projects_touched: []
 
 ## Context
 
-- Fifth run in tourettes division. Focus: agent role definition review (11 files scanned).
-- Fixed MAJOR: LITERATURE_REVIEWER.md — only tourettes role missing 8GB RAM constraint section; added matching safety rules
-- Fixed MAJOR: RESEARCH_WRITER.md — missing "Agent Role" header, "Core Objective", "Hard Rules" sections, and RAM constraints; restructured to match standard role template
-- Fixed MAJOR: DEVELOPER.md — line 56 allowed src/bioagentics/ for shared code but line 89 said "Only write code under src/tourettes/"; clarified that shared library code in src/bioagentics/ is allowed, restriction is against other divisions' directories
-- Additional findings (not fixed, logged for future runs):
-  - PROJECT_MANAGER.md doesn't list data_curator in managed agents (workflow gap)
-  - Analyst creates tasks directly for research_director during active projects, bypassing project_manager task flow (ambiguous escalation path)
-  - Research Catalyst concurrency limit (2) vs Research Director limit (4) — unclear if they count together
-  - Validation failure restart workflow undocumented (who re-triggers validation after fixes?)
-  - Literature Reviewer → Research Director task deduplication strategy missing
-- All tourettes source modules fully scanned in prior runs (runs 1-4)
+- Sixth run in tourettes division. Focus: dispatcher and API analysis.
+- Fixed MAJOR: dispatch.py had duplicate dicts _STAGE_REQUIRED_ROLE and _STAGE_AGENTS with identical content; removed _STAGE_AGENTS, updated check_orphaned_pipeline_projects to reuse _STAGE_REQUIRED_ROLE
+- Fixed MAJOR: API list endpoints (list_tasks, list_agents, list_projects) accepted arbitrary strings for status query param — misspelled status silently returned empty results; added pattern validation, now returns 422
+- Not fixed (MINOR): check_orphaned_pipeline_projects re-journals every dispatch cycle for same orphaned projects (log noise, no functional impact)
+- Dispatcher analysis: well-structured shutdown coordination, retry strategies, git locking, stale presence cleanup — no critical issues found
+- API analysis: model validation on create/update was solid; query param validation was the gap. Pre-existing Pyright warnings are SQLAlchemy typing issues
+- Areas fully analyzed: agent roles (run 5), source modules (runs 1-4), dispatcher + API (run 6)
 - Backlog carried forward: MTX file pairing in download.py, gene symbol validation, unit tests for core algorithms
-- Next run: tackle workflow ambiguities (PM ↔ data_curator, analyst escalation path), or address source code backlog items
+- Backlog from run 5: PM ↔ data_curator workflow gap, analyst escalation path ambiguity, concurrency limit overlap, validation restart workflow undocumented, task dedup strategy missing
+- Next run: config review (agents.toml, .mcp.json, pyproject.toml) or MCP server analysis, or tackle source code backlog items
