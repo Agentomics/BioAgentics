@@ -114,19 +114,20 @@ def batch_correct_fold(
     test_expr: pd.DataFrame,
     train_meta: pd.DataFrame,
     test_meta: pd.DataFrame,
+    test_correction: str = "zscore",
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Within-fold batch correction for LOSO-CV (no data leakage).
 
-    Fits ComBat on training samples only, then applies the learned parameters
-    to the held-out test samples. When the test set is a single study,
-    ComBat cannot estimate batch for an unseen batch — in that case we use
-    a mean-shift approach: center the test study to the training mean.
+    Fits ComBat on training samples only, then applies a correction to the
+    held-out test samples. Since the test set is a single unseen study,
+    ComBat cannot estimate its batch parameters directly.
 
     Args:
         train_expr: genes x train_samples expression matrix
         test_expr: genes x test_samples expression matrix
         train_meta: metadata for training samples (must have sample_id, study, response_status)
         test_meta: metadata for test samples
+        test_correction: "zscore" (z-score normalization) or "meanshift" (mean-shift only)
 
     Returns:
         (corrected_train, corrected_test) expression matrices
@@ -155,14 +156,20 @@ def batch_correct_fold(
     # Correct training batches
     corrected_train = pycombat(train_expr, train_batch, mod=mod)
 
-    # For test set: mean-shift correction
-    # Center test samples to have the same gene-wise mean as corrected training
     train_gene_mean = corrected_train.mean(axis=1)
-    test_gene_mean = test_expr.mean(axis=1)
 
-    # Shift test expression so its mean matches the corrected training mean
-    shift = train_gene_mean - test_gene_mean
-    corrected_test = test_expr.add(shift, axis=0)
+    if test_correction == "zscore":
+        # Z-score: map test distribution to match training mean + std
+        train_gene_std = corrected_train.std(axis=1).replace(0, 1)
+        test_gene_mean = test_expr.mean(axis=1)
+        test_gene_std = test_expr.std(axis=1).replace(0, 1)
+        corrected_test = (test_expr.subtract(test_gene_mean, axis=0)).divide(test_gene_std, axis=0)
+        corrected_test = corrected_test.multiply(train_gene_std, axis=0).add(train_gene_mean, axis=0)
+    else:
+        # Mean-shift: only adjust the center
+        test_gene_mean = test_expr.mean(axis=1)
+        shift = train_gene_mean - test_gene_mean
+        corrected_test = test_expr.add(shift, axis=0)
 
     logger.info(
         "Fold ComBat complete: train %s, test %s",

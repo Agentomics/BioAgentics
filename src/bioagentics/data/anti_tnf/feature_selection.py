@@ -126,7 +126,7 @@ def rfe_selection(
         )
     else:
         estimator = RandomForestClassifier(
-            n_estimators=100, random_state=42, n_jobs=-1,
+            n_estimators=100, random_state=42, n_jobs=1,
         )
 
     rfe = RFE(estimator, n_features_to_select=n_features, step=0.1)
@@ -338,7 +338,7 @@ def select_features_fold(
         X_train: samples x genes training expression
         y_train: binary response labels for training
         max_genes: max number of genes to select
-        n_stability_iters: iterations for stability selection (reduced for speed in CV)
+        n_stability_iters: iterations for stability selection
     """
     # Pre-filter to top variable genes for efficiency (top 2000 by variance)
     gene_var = X_train.var(axis=0).sort_values(ascending=False)

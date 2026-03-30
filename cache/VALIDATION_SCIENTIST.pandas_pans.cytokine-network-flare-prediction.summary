@@ -1,16 +1,14 @@
 ---
-last_run: 2026-03-27T02:10:00Z
-tasks_completed: [1361, 1363]
-tasks_blocked: [1359, 1360]
+last_run: 2026-03-30T03:28:00Z
+tasks_completed: []
+tasks_blocked: [1494]
 projects_touched: [cytokine-network-flare-prediction]
 ---
 
 ## Context
 
-- Validated all 4 pending tasks for cytokine-network-flare-prediction project (validation phase).
-- **Task #1359 (meta-analysis, P5) -- BLOCKED**: Code is correct (Hedges' g, DerSimonian-Laird independently verified). CRITICAL finding: IL-1b > IL-6 ranking is a composition artifact -- in all 3 shared studies, IL-6 > IL-1b. Created analyst task #1453 (P5) and developer task #1454 (IL-6 forest plot mismatch, P4).
-- **Task #1360 (network, P4) -- BLOCKED**: IL-6 hub confirmed (degree 16, most connected). NLRP3 independent arm correct. Two issues: IFNg peripheral-priming node missing (only irreversible arm implemented, dev task #1455), IL-12 absent from network despite significant meta-analysis result (dev task #1456).
-- **Task #1361 (axis classification, P4) -- APPROVED**: Innate axis dominant (score 1.36), robust to all 7 leave-one-out removals. Flare signature distinguished from infection by IL-10 downregulation.
-- **Task #1363 (treatment response, P3) -- APPROVED with caveats**: Code correct post-fix (#1228), but output artifacts are stale (generated with old fallback code). No treatment-annotated data available. Data curator task #1433 already tracks this gap.
-- Fix tasks created: #1453 (analyst, IL-1b/IL-6 artifact), #1454 (dev, IL-6 forest plot), #1455 (dev, IFNg peripheral node), #1456 (dev, IL-12 network node)
-- Next: Re-validate #1359 and #1360 after fix tasks are resolved.
+- **Task #1494 (within-study paired comparison, P3) -- BLOCKED on data integrity**: Code review PASS — within_study_comparison() and run_within_study_comparisons() are statistically sound, pipeline integration correct, output files verified. However, task #1557 (P5, research_director) reports ALL 12 PMIDs in cytokine dataset are incorrect (possible LLM hallucination). 4 studies are antibody/T-cell papers, not cytokine. 3 studies unmatched to any published paper. Cannot scientifically validate results built on unverified data.
+- **Tasks #1359/#1360 auto-cancelled** by dispatcher (3 blocked cycles). Fix tasks #1453-#1456 all completed but moot given PMID crisis.
+- **Prior approvals #1361 (axis classification) and #1363 (treatment response)** should be considered provisional until #1557 resolved.
+- **Project MUST NOT advance to documentation** until research_director resolves #1557 (re-extract from verified papers, accept as synthetic, or halt).
+- Next: Re-validate #1494 after #1557 resolved. If data re-extracted, all prior validations need re-review.

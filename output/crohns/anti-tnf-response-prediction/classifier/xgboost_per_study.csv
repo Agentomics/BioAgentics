@@ -1,4 +1,4 @@
 study,n_samples,n_responder,n_non_responder,n_features,auc,balanced_accuracy,sensitivity,specificity,best_params
-GSE16879,37,20,17,30,0.6279411764705882,0.5779411764705883,0.7058823529411765,0.45,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}"
-GSE12251,23,12,11,30,0.8333333333333333,0.6931818181818181,0.6363636363636364,0.75,"{'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 100}"
-GSE73661,23,8,15,30,0.5,0.5,1.0,0.0,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}"
+GSE16879,37,20,17,30,0.5852941176470589,0.5102941176470588,0.47058823529411764,0.55,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}"
+GSE12251,23,12,11,30,0.8181818181818181,0.7348484848484849,0.6363636363636364,0.8333333333333334,"{'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 100}"
+GSE73661,23,8,15,30,0.44999999999999996,0.45,0.4,0.5,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}"

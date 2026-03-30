@@ -93,10 +93,11 @@ MODELS = {
     "elastic_net": {
         "estimator": LogisticRegression(
             penalty="elasticnet", solver="saga", max_iter=5000, random_state=42,
+            class_weight="balanced",
         ),
         "param_grid": {
-            "C": [0.01, 0.1, 1.0, 10.0],
-            "l1_ratio": [0.1, 0.5, 0.9],
+            "C": [0.001, 0.01, 0.05, 0.1, 0.5, 1.0, 5.0, 10.0],
+            "l1_ratio": [0.1, 0.3, 0.5, 0.7, 0.9],
         },
     },
     "random_forest": {
@@ -119,6 +120,9 @@ MODELS = {
         },
     },
 }
+
+# Models that benefit from z-score test batch correction (linear models)
+ZSCORE_MODELS = {"elastic_net"}
 
 
 def loso_cv(
@@ -162,10 +166,13 @@ def loso_cv(
         test_meta = metadata[metadata["sample_id"].isin(test_samples)]
 
         # Step 1: Within-fold batch correction
+        # Use z-score normalization for linear models, mean-shift for trees
+        test_correction = "zscore" if model_name in ZSCORE_MODELS else "meanshift"
         train_expr = expr[train_samples]
         test_expr = expr[test_samples]
         corrected_train, corrected_test = batch_correct_fold(
             train_expr, test_expr, train_meta, test_meta,
+            test_correction=test_correction,
         )
 
         # Step 2: Within-fold feature selection (on training data only)
@@ -199,15 +206,21 @@ def loso_cv(
         n_min_class = min(np.bincount(y_train_arr))
         n_splits = max(2, min(5, n_min_class))
         inner_cv = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
+
         grid = GridSearchCV(
             cfg["estimator"], cfg["param_grid"],
             cv=inner_cv, scoring="roc_auc", n_jobs=1, refit=True,
         )
         grid.fit(X_train_s, y_train_arr)
 
-        # Step 6: Predict
+        # Step 6: Predict with optimized threshold (Youden's J on training)
         y_prob = grid.predict_proba(X_test_s)[:, 1]
-        y_pred = (y_prob >= 0.5).astype(int)
+        train_prob = grid.predict_proba(X_train_s)[:, 1]
+        fpr_t, tpr_t, thresholds_t = roc_curve(y_train_arr, train_prob)
+        j_scores = tpr_t - fpr_t
+        opt_threshold = thresholds_t[np.argmax(j_scores)]
+        opt_threshold = np.clip(opt_threshold, 0.3, 0.7)  # guard against extreme thresholds
+        y_pred = (y_prob >= opt_threshold).astype(int)
 
         # Per-study metrics
         try:
@@ -424,6 +437,75 @@ def run_classifier_pipeline(
                 for f in res["fold_features"]
             ])
             fold_df.to_csv(output_dir / f"{model_name}_fold_features.csv", index=False)
+
+    # Build ensemble: AUC-weighted average of per-sample probabilities
+    if len(results) > 1:
+        first_res = next(iter(results.values()))
+        ens_y_true = first_res["y_true"]
+        ens_studies = first_res["studies"]
+        # Weight each model by its aggregate AUC
+        aucs = np.array([r["aggregate"]["auc"] for r in results.values()])
+        weights = aucs / aucs.sum()
+        ens_y_prob = np.average(
+            [r["y_prob"] for r in results.values()], axis=0, weights=weights,
+        )
+        # Use Youden threshold on pooled training predictions
+        fpr_e, tpr_e, thr_e = roc_curve(ens_y_true, ens_y_prob)
+        j_e = tpr_e - fpr_e
+        ens_threshold = np.clip(thr_e[np.argmax(j_e)], 0.3, 0.7)
+        ens_y_pred = (ens_y_prob >= ens_threshold).astype(int)
+
+        try:
+            ens_auc = roc_auc_score(ens_y_true, ens_y_prob)
+        except ValueError:
+            ens_auc = np.nan
+
+        ens_agg = {
+            "auc": ens_auc,
+            "balanced_accuracy": balanced_accuracy_score(ens_y_true, ens_y_pred),
+            "sensitivity": recall_score(ens_y_true, ens_y_pred, zero_division=0),
+            "specificity": recall_score(1 - ens_y_true, 1 - ens_y_pred, zero_division=0),
+            "accuracy": accuracy_score(ens_y_true, ens_y_pred),
+            "precision": precision_score(ens_y_true, ens_y_pred, zero_division=0),
+        }
+        # Compute per-study ensemble metrics
+        ens_per_study = []
+        for study_name in np.unique(ens_studies):
+            mask = ens_studies == study_name
+            yt = ens_y_true[mask]
+            yp = ens_y_prob[mask]
+            ypd = ens_y_pred[mask]
+            try:
+                s_auc = roc_auc_score(yt, yp)
+            except ValueError:
+                s_auc = np.nan
+            ens_per_study.append({
+                "study": study_name,
+                "n_samples": len(yt),
+                "n_responder": int((yt == 0).sum()),
+                "n_non_responder": int((yt == 1).sum()),
+                "auc": s_auc,
+                "balanced_accuracy": balanced_accuracy_score(yt, ypd),
+            })
+        ens_per_study_df = pd.DataFrame(ens_per_study)
+        ens_per_study_df.to_csv(output_dir / "ensemble_per_study.csv", index=False)
+
+        results["ensemble"] = {
+            "model": "ensemble",
+            "aggregate": ens_agg,
+            "y_true": ens_y_true,
+            "y_prob": ens_y_prob,
+            "y_pred": ens_y_pred,
+            "studies": ens_studies,
+            "per_study": ens_per_study_df,
+            "fold_features": [],
+        }
+        all_metrics.append({"model": "ensemble", **ens_agg})
+        logger.info(
+            "ensemble aggregate: AUC=%.3f, BA=%.3f, Sens=%.3f, Spec=%.3f",
+            ens_agg["auc"], ens_agg["balanced_accuracy"],
+            ens_agg["sensitivity"], ens_agg["specificity"],
+        )
 
     # Save aggregate comparison
     metrics_df = pd.DataFrame(all_metrics)
