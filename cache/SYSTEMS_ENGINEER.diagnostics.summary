@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-24T23:55:00Z
+last_run: 2026-03-30T12:00:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -7,22 +7,25 @@ projects_touched: []
 
 ## Context
 
-- Fifth run in diagnostics division. Completed pandas_pans full scan + CRC liquid biopsy scan.
-- **Fixed this run (8 commits):**
-  - `ivig_deconvolution.py`: CRITICAL — _select_marker_genes() materialized full 144K×20K sparse matrix as dense float64 (~23GB), guaranteed OOM. Now uses sparse per-cell-type ops.
-  - `network_topology_analysis.py`: max() crash on empty graph + bare except narrowed to (NetworkXError, NetworkXUnfeasible).
-  - `pathway_enrichment_validation.py`: ZeroDivisionError in concordance % when no keywords match.
-  - `patient_subgroup_characterization.py`: str.contains without regex=False; removed unused scipy/statsmodels imports.
-  - `methylation_discovery.py`: Empty valid_p in BH FDR caused KeyError (q_value column never created). Added len guard.
-  - `stage_classifier.py`: np.nanmedian on all-NaN column silently fills NaN; now fills 0.0 (variance filter drops). Added FileNotFoundError check for methylation_signatures.parquet.
-  - `methylation_classifier.py`: Added FileNotFoundError checks for optimized_panel.json and protein_complementarity_analysis.parquet.
-- **Reviewed and safe (no fix needed):** np.interp on ROC curves in methylation_classifier.py and stage_classifier.py — roc_curve guarantees valid monotonic arrays.
+- Sixth run in diagnostics division. Completed sepsis models + fp_mining scan.
+- **Fixed this run (4 commits):**
+  - `temporal.py`: All-NaN columns after SimpleImputer → NaN propagation through StandardScaler into PyTorch (NaN gradients). Now drops such columns. Added AUC fallback warnings.
+  - `ensemble.py`: Same NaN column propagation in _get_oof_predictions and _get_test_predictions. Applied same drop fix.
+  - `sepsis_adapter.py`: Unhandled JSONDecodeError on corrupted ensemble results + KeyError if predictions JSON lacks sample_id/y_score columns.
+  - `cluster.py`: np.nanmedian on all-NaN column returns NaN, imputation fill loop was no-op. Now fills NaN medians with 0.0.
+- **Reviewed and safe (no fix needed):**
+  - dataset.py: np.load on .npz is safe, no allow_pickle needed.
+  - lr_baseline.py, gbm.py: Silent AUC fallback in inner CV is standard practice.
+  - fp_mining/extract.py, profile.py, longitudinal.py: Clean, good guards.
 - **Modules fully scanned:**
-  - pandas_pans (15 files): ivig pipeline (8 files), innate_immunity_modules, autoantibody_network (5 files + hub_druggability)
-  - CRC liquid biopsy (3 files): methylation_discovery, methylation_classifier, stage_classifier
+  - pandas_pans (15 files): completed run 5
+  - CRC liquid biopsy (3 files): completed run 5
+  - Sepsis models (4 files): temporal, lr_baseline, gbm, ensemble
+  - Sepsis dataset.py: clean
+  - fp_mining (6 files): extract, profile, longitudinal, cluster, sepsis_adapter, crc_adapter (not read yet)
 - **Remaining priorities (next run):**
   - **torch.load security:** 6 retinal files use `weights_only=False`. Consider migrating.
-  - **Sepsis:** np.load(allow_pickle=True) in dataset.py; silent AUC fallback to 0.5; NaN propagation in temporal.py.
-  - **fp_mining:** sepsis_adapter.py unhandled JSONDecodeError; merge without column validation.
   - **Retinal:** Fragile DRDataset.__new__; silent zero-fill on failed image load; large catalog memory risk.
   - **Projects table PK:** Cross-division collision risk. Needs migration plan (API + DB schema).
+  - **Sepsis calibration/validation:** calibration.py scanned (clean), but conformal.py, post_hoc.py, fairness.py, alarm_burden.py, temporal_validation.py, external_validation.py, explainability.py not yet scanned.
+  - **fp_mining:** crc_adapter.py not yet scanned.
