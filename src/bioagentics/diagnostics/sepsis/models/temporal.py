@@ -206,10 +206,12 @@ def train_and_evaluate(
     try:
         auroc = float(roc_auc_score(y_test, y_prob))
     except ValueError:
+        logger.warning("roc_auc_score failed (single class in y_test?), defaulting to 0.5")
         auroc = 0.5
     try:
         auprc = float(average_precision_score(y_test, y_prob))
     except ValueError:
+        logger.warning("average_precision_score failed, defaulting to 0.0")
         auprc = 0.0
 
     return model, {"auroc": auroc, "auprc": auprc}
@@ -271,6 +273,13 @@ def evaluate_temporal_nested_cv(
     imputer = SimpleImputer(strategy="median")
     scaler = StandardScaler()
     X_clean = scaler.fit_transform(imputer.fit_transform(X))
+
+    # Drop columns that are still NaN after imputation (all-NaN input columns
+    # produce NaN median, leaving NaN after impute + scale → NaN gradients).
+    nan_cols = np.isnan(X_clean).all(axis=0)
+    if nan_cols.any():
+        logger.warning("Dropping %d all-NaN columns after imputation", nan_cols.sum())
+        X_clean = X_clean[:, ~nan_cols]
 
     # Build sequences
     X_seq, y_seq = build_sequences(X_clean, y)
