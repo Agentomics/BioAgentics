@@ -12,8 +12,8 @@ projects_touched: [cxr-rare-disease-detection, acoustic-multi-disease-panel, crc
 - **#1589 (UCI Parkinsons Speech):** Downloaded to data/voice-biomarkers-parkinsons/raw/uci_speech/. 195 recordings, 32 subjects (24 PD + 8 healthy), 22 voice features. Enables PD detection baseline with healthy controls.
 - **#1599 (cfDNA fragmentomics):** GSE149282 = EPIC array (no BAM). GSE164191 = microarray (no BAM). GSE124600 = MCTA-Seq with SRA reads (SRP189785, 340 samples) but targeted, not WGS. DELFI (EGA) ideal but controlled access. RD task #1669 created for strategy decision.
 - **#1653 (RetSyn):** Dataset released on HuggingFace (smartretina2025/paired_retina, MIT, 327 patients, Galaxy S10 + tabletop). Complements existing retsyn_paired. Developer task #1668 created.
-- **#1619 (PadChest):** 1.02TB, requires access application, no HF streaming. Not feasible with 20GB free.
+- **#1619 (PadChest):** Full 1.13TB infeasible. BUT: 224x224 resized version (12.89GB) on Academic Torrents — no credentials needed. 174 labels (100% NIH-14 overlap + 160 rare findings). torchxrayvision built-in support. RD task #1670 created to decide if disk cost is worth it.
 - **Data verified:** All diagnostics subdirs checked. ehr-sepsis still empty (credentialed access cancelled). All others intact.
 - **Disk:** ~20GB free (96% used). No change from last run.
-- **Tasks created:** #1667 (dev, CXR streaming P5), #1668 (dev, smartretina download P3), #1669 (RD, cfDNA strategy P4).
-- **Next:** Monitor developer progress on CXR streaming DataLoader (#1667). Monitor RD decision on fragmentomics strategy (#1669). Check for new tasks.
+- **Tasks created:** #1667 (dev, CXR streaming P5), #1668 (dev, smartretina download P3), #1669 (RD, cfDNA strategy P4), #1670 (RD, PadChest download decision P3).
+- **Next:** Monitor developer progress on CXR streaming DataLoader (#1667). Monitor RD decisions on fragmentomics (#1669) and PadChest (#1670). Check for new tasks.
