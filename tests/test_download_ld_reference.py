@@ -8,9 +8,10 @@ from unittest.mock import patch
 import pytest
 
 from tourettes.ts_comorbidity_genetic_architecture.download_ld_reference import (
-    BASE_URL,
     DATA_DIR,
     DOWNLOADS,
+    ZENODO_BASE,
+    ZENODO_EXT,
     _extract_archive,
     _md5sum,
     _write_manifest,
@@ -21,26 +22,28 @@ from tourettes.ts_comorbidity_genetic_architecture.download_ld_reference import 
 class TestDownloadConfig:
     """Validate download configuration."""
 
-    def test_base_url_points_to_broad(self):
-        assert "broadinstitute.org" in BASE_URL
+    def test_base_url_points_to_zenodo(self):
+        assert "zenodo.org" in ZENODO_BASE
 
-    def test_five_datasets_defined(self):
-        assert len(DOWNLOADS) == 5
+    def test_six_datasets_defined(self):
+        assert len(DOWNLOADS) == 6
 
     def test_all_entries_have_required_keys(self):
         required = {"name", "url", "filename", "extract_dir", "description"}
         for item in DOWNLOADS:
             assert required.issubset(item.keys()), f"Missing keys in {item['name']}"
 
-    def test_all_urls_start_with_base(self):
+    def test_all_urls_start_with_zenodo(self):
         for item in DOWNLOADS:
-            assert item["url"].startswith(BASE_URL), f"Bad URL for {item['name']}"
+            ok = item["url"].startswith(ZENODO_BASE) or item["url"].startswith(ZENODO_EXT)
+            assert ok, f"Bad URL for {item['name']}"
 
-    def test_filenames_are_archives(self):
+    def test_filenames_are_archives_or_plain(self):
         for item in DOWNLOADS:
-            assert item["filename"].endswith((".tar.bz2", ".tgz", ".tar.gz")), (
-                f"Not an archive: {item['filename']}"
-            )
+            if item["extract_dir"] is not None:
+                assert item["filename"].endswith((".tar.bz2", ".tgz", ".tar.gz")), (
+                    f"Not an archive: {item['filename']}"
+                )
 
     def test_data_dir_is_correct(self):
         assert "ts-comorbidity-genetic-architecture" in str(DATA_DIR)
@@ -50,9 +53,10 @@ class TestDownloadConfig:
         names = {d["name"] for d in DOWNLOADS}
         assert "EUR LD scores" in names
         assert "1000G Phase 3 plink files" in names
-        assert "Baseline-LD annotations" in names
-        assert "HM3 regression weights (no HLA)" in names
-        assert "HapMap3 SNPs" in names
+        assert "Baseline-LD v2.2 annotations" in names
+        assert "HM3 regression weights (no MHC)" in names
+        assert "HapMap3 SNP list" in names
+        assert "1000G Phase 3 allele frequencies" in names
 
 
 class TestMd5Sum:
@@ -125,7 +129,10 @@ class TestWriteManifest:
         assert "Broad Institute" in content
 
     def test_manifest_lists_all_datasets(self, tmp_path):
-        results = {d["name"]: tmp_path / d["extract_dir"] for d in DOWNLOADS}
+        results = {
+            d["name"]: tmp_path / (d["extract_dir"] or d["filename"])
+            for d in DOWNLOADS
+        }
         _write_manifest(tmp_path, results)
         content = (tmp_path / "README.txt").read_text()
         for d in DOWNLOADS:
@@ -138,25 +145,30 @@ class TestDownloadAll:
 
     @patch("tourettes.ts_comorbidity_genetic_architecture.download_ld_reference._download_file")
     def test_skip_existing(self, mock_dl, tmp_path):
-        # Pre-create all extracted dirs so everything is skipped
+        # Pre-create all extracted dirs / plain files so everything is skipped
         for d in DOWNLOADS:
-            (tmp_path / d["extract_dir"]).mkdir()
+            if d["extract_dir"] is not None:
+                (tmp_path / d["extract_dir"]).mkdir()
+            else:
+                (tmp_path / d["filename"]).write_text("placeholder")
 
         results = download_all(data_dir=tmp_path, skip_existing=True)
         mock_dl.assert_not_called()
-        assert len(results) == 5
+        assert len(results) == 6
 
     @patch("tourettes.ts_comorbidity_genetic_architecture.download_ld_reference._download_file")
     def test_downloads_missing(self, mock_dl, tmp_path):
         # Create archives that _download_file would produce
         def fake_download(url, dest):
-            # Create a minimal tgz with the expected extract dir
             matching = [d for d in DOWNLOADS if d["url"] == url]
             if not matching:
                 return
             item = matching[0]
+            if item["extract_dir"] is None:
+                # Plain file — just write content
+                dest.write_text("placeholder")
+                return
             with tarfile.open(dest, "w:bz2" if dest.name.endswith(".bz2") else "w:gz") as tf:
-                # Add a dummy file inside expected dir
                 import io
                 data = b"dummy"
                 info = tarfile.TarInfo(name=f"{item['extract_dir']}/dummy.txt")
@@ -166,8 +178,8 @@ class TestDownloadAll:
         mock_dl.side_effect = fake_download
 
         results = download_all(data_dir=tmp_path, skip_existing=True)
-        assert mock_dl.call_count == 5
-        assert len(results) == 5
+        assert mock_dl.call_count == 6
+        assert len(results) == 6
         # Check manifest was written
         assert (tmp_path / "README.txt").exists()
 
@@ -176,6 +188,9 @@ class TestDownloadAll:
         def fake_download(url, dest):
             matching = [d for d in DOWNLOADS if d["url"] == url]
             item = matching[0]
+            if item["extract_dir"] is None:
+                dest.write_text("placeholder")
+                return
             import io
             with tarfile.open(dest, "w:bz2" if dest.name.endswith(".bz2") else "w:gz") as tf:
                 data = b"x"
@@ -186,8 +201,9 @@ class TestDownloadAll:
         mock_dl.side_effect = fake_download
         download_all(data_dir=tmp_path, skip_existing=False)
 
-        # Archives should be removed after extraction
+        # Archives should be removed after extraction; plain files stay
         for d in DOWNLOADS:
-            assert not (tmp_path / d["filename"]).exists(), (
-                f"Archive {d['filename']} should have been removed"
-            )
+            if d["extract_dir"] is not None:
+                assert not (tmp_path / d["filename"]).exists(), (
+                    f"Archive {d['filename']} should have been removed"
+                )
