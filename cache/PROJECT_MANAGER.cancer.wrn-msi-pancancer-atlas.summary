@@ -1,17 +1,15 @@
 ---
-last_run: 2026-03-27T01:24:00Z
-tasks_completed: [1377]
+last_run: 2026-03-30T13:46:00Z
+tasks_completed: [1532]
 tasks_blocked: []
 projects_touched: [wrn-msi-pancancer-atlas]
 ---
 
 ## Context
 
-- wrn-msi-pancancer-atlas: Advanced from validation → documentation. Both VS tasks passed.
-- VS #1025 (Phases 1-5): APPROVED — all phases scientifically sound
-- VS #1026 (Phase 6): APPROVED with caveats — resistance model P=1.0 saturation, POOLED_ESTIMATE limitation
-- PM task #1377 (P3, RD resistance analysis request): marked done — scope already covered by VS #1026
-- Created research_writer task #1430 (P5): write reports/cancer/wrn-msi-pancancer-atlas.md + update findings_content
+- wrn-msi-pancancer-atlas: Still in documentation. Main report committed (bf05bd9, task #1430 done).
+- PM #1532 (clinical landscape concordance): done — routed to research_writer as task #1626 (P4).
+- RW #1626: Add clinical landscape concordance section (RO7589831 Phase 1, HRO-761, NDI-219216, pembrolizumab benchmarks, DNA-PKi combo). Status: pending.
 - Labels unchanged: genomic,drug-screening,drug-candidate,novel-finding,clinical,resistance
-- No pending PM tasks for this project
-- Next: Monitor research_writer task #1430. When report committed → verify reports/cancer/wrn-msi-pancancer-atlas.md exists → advance to published.
+- No pending PM tasks for this project.
+- Next: Monitor RW task #1626. When clinical landscape section committed → verify report updated → advance to published.
