@@ -8,6 +8,7 @@ import pytest
 
 from bioagentics.diagnostics.rare_disease.gene_disease_mapper import (
     GeneDiseaseAssociation,
+    _detect_genemap2_format,
     parse_genemap2,
     parse_phenotype_entry,
     build_gene_disease_map,
@@ -36,11 +37,29 @@ chr1\t10000\t20000\t1p36\t1p36\t100100\tTEST1\tTest gene\tTEST1\t9999\tENSG00000
 """)
 
 
+# Pipe-delimited (legacy) genemap2 format:
+# Sort|Month|Day|Year|Location|Symbols|Status|Title|MIM|Method|Comments|Disorders|Mouse|Refs
+GENEMAP2_PIPE_ROWS = textwrap.dedent("""\
+7.31|6|8|89|7q31.2|CFTR, ABCC7|P|CF transmembrane conductance regulator|602421|REa||Cystic fibrosis, 219700 (3), Autosomal recessive; Congenital bilateral absence of vas deferens, 277180 (3), Autosomal recessive|4(Cftr)|
+4.16|4|14|11|4p16.3|HTT, HD, IT15|P|Huntingtin|613004|REa||Huntington disease, 143100 (3), Autosomal dominant|4(Htt)|
+1.4|4|14|11|1p36.11|HMGCL|P|3-hydroxy-3-methylglutaryl-Coenzyme A lyase|613898|REa||HMG-CoA lyase deficiency, 246450 (3)|4(Hmgcl)|
+1.99|1|1|00|1p36|NOPHENOGENE|P|Test no phenotype|999999|REa||||
+""")
+
+
 @pytest.fixture
 def genemap2_file(tmp_path: Path) -> Path:
     """Write minimal genemap2 to a temp file."""
     p = tmp_path / "genemap2.txt"
     p.write_text(GENEMAP2_HEADER + GENEMAP2_ROWS, encoding="utf-8")
+    return p
+
+
+@pytest.fixture
+def genemap2_pipe_file(tmp_path: Path) -> Path:
+    """Write minimal pipe-delimited genemap2 to a temp file."""
+    p = tmp_path / "genemap2_pipe.txt"
+    p.write_text(GENEMAP2_PIPE_ROWS, encoding="utf-8")
     return p
 
 
@@ -246,3 +265,55 @@ class TestParseAndBuild:
         gene_map, disease_map = parse_and_build(genemap2_file, output_dir=tmp_path)
         assert len(gene_map) == 4  # CFTR, HTT, HBB, DMD
         assert len(disease_map) == 7  # 7 unique OMIM disease IDs
+
+
+# --- Tests: pipe-delimited format ---
+
+
+class TestDetectGenemap2Format:
+    def test_tab_format(self):
+        line = "chr7\t117559590\t117706482\t7q31.2\t7q31.2\t602421\tCFTR\tName\tCFTR\n"
+        delim, gene_col, mim_col, pheno_col, min_fields = _detect_genemap2_format(line)
+        assert delim == "\t"
+        assert gene_col == 8
+        assert mim_col == 5
+        assert pheno_col == 12
+        assert min_fields == 13
+
+    def test_pipe_format(self):
+        line = "1.1|5|13|13|1pter-p36.13|CTRCT8|P|Cataract|115665|Fd||Cataract 8 (2)||\n"
+        delim, gene_col, mim_col, pheno_col, min_fields = _detect_genemap2_format(line)
+        assert delim == "|"
+        assert gene_col == 5
+        assert mim_col == 8
+        assert pheno_col == 11
+        assert min_fields == 12
+
+
+class TestPipeDelimitedGenemap2:
+    def test_parses_pipe_format(self, genemap2_pipe_file):
+        assocs = parse_genemap2(genemap2_pipe_file)
+        # CFTR: 2 phenotypes, HTT: 1, HMGCL: 1, NOPHENOGENE: 0 = 4
+        assert len(assocs) == 4
+
+    def test_gene_symbol_uses_first_in_list(self, genemap2_pipe_file):
+        assocs = parse_genemap2(genemap2_pipe_file)
+        cftr = [a for a in assocs if a.gene_symbol == "CFTR"]
+        assert len(cftr) == 2  # Cystic fibrosis + CBAVD
+
+    def test_gene_mim_correct(self, genemap2_pipe_file):
+        assocs = parse_genemap2(genemap2_pipe_file)
+        cftr = [a for a in assocs if a.gene_symbol == "CFTR"]
+        assert all(a.gene_mim == "602421" for a in cftr)
+
+    def test_phenotype_parsing(self, genemap2_pipe_file):
+        assocs = parse_genemap2(genemap2_pipe_file)
+        htt = [a for a in assocs if a.gene_symbol == "HTT"]
+        assert len(htt) == 1
+        assert htt[0].disease_mim == "143100"
+        assert "Autosomal dominant" in htt[0].inheritance_patterns
+
+    def test_skips_empty_phenotype(self, genemap2_pipe_file):
+        assocs = parse_genemap2(genemap2_pipe_file)
+        nophenogene = [a for a in assocs if a.gene_symbol == "NOPHENOGENE"]
+        assert len(nophenogene) == 0

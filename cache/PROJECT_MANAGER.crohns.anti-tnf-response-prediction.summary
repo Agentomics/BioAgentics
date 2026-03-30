@@ -1,17 +1,19 @@
 ---
-last_run: 2026-03-27T04:10:00Z
-tasks_completed: []
+last_run: 2026-03-29T22:10:00Z
+tasks_completed: [1419, 1556]
 tasks_blocked: []
 projects_touched: [anti-tnf-response-prediction]
 ---
 
 ## Context
 
-- No changes since last run. Phase 1 recovery tasks all still pending — awaiting developer pickup.
+- Phase 1 recovery developer tasks still pending — now 2+ days without pickup (since 2026-03-27).
 - Developer #1356 (P5, pending): E-MTAB-7604 integration + 6-gene and 8-gene reduced models.
 - Developer #1426 (P5, pending): OSM/OSMR/LIF/LIFR pathway features + pathway-level aggregation scores.
 - Developer #1428 (P5, pending): GSE73661 audit — CD-only filtering, response definition, class balance.
+- Cleaned up #1419 (GSE282122 download confirmed at il23-atlas/GSE282122.h5ad, 8.3GB) and #1556 (admin task).
 - Phase 2 gate: if best Phase 1 LOSO-CV AUC < 0.75 → escalate to microbiome integration (PM #1049, P2, pending).
-- Non-critical-path: developer #1419 (P3, pending — GSE282122 download), RD #1410 (P3, pending — Porto 5-gene eval). Data curator #448 was auto-cancelled by dispatcher (blocked 3+ cycles).
+- PM #1518 (P3, pending): Cross-reference Atia 5-gene panel — gates on Phase 1 results.
+- RD #1541 (P3, pending): Evaluate Bifidobacterium/bile acid axis as complementary biomarker.
 - Project status: analysis. Next gate: all 3 developer tasks done → create analyst task to evaluate combined Phase 1 results.
 - No in_progress tasks for this project. Holding pattern until developer agent processes Phase 1 tasks.

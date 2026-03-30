@@ -142,8 +142,25 @@ def parse_phenotype_entry(entry: str) -> dict:
     }
 
 
+def _detect_genemap2_format(line: str) -> tuple[str, int, int, int, int]:
+    """Detect genemap2 file format from a data line.
+
+    Returns:
+        (delimiter, gene_col, mim_col, pheno_col, min_fields)
+    """
+    if "\t" in line:
+        # Standard OMIM API tab-delimited genemap2
+        # Cols: Chr, Start, End, CytoLoc, CompCytoLoc, MIM[5], Symbols,
+        #       Name, ApprovedSymbol[8], EntrezID, EnsemblID, Comments, Phenotypes[12], Mouse
+        return "\t", 8, 5, 12, 13
+    # Legacy pipe-delimited genemap2
+    # Cols: Sort, Month, Day, Year, Location, Symbols[5], Status,
+    #       Title, MIM[8], Method, Comments, Disorders[11], Mouse, Refs
+    return "|", 5, 8, 11, 12
+
+
 def parse_genemap2(path: Path) -> list[GeneDiseaseAssociation]:
-    """Parse OMIM genemap2 tab-delimited file.
+    """Parse OMIM genemap2 file (tab- or pipe-delimited).
 
     Args:
         path: Path to genemap2.txt file.
@@ -154,20 +171,34 @@ def parse_genemap2(path: Path) -> list[GeneDiseaseAssociation]:
     associations: list[GeneDiseaseAssociation] = []
 
     with open(path, encoding="utf-8") as f:
+        # Detect format from first non-comment line
+        delimiter = "\t"
+        gene_col, mim_col, pheno_col, min_fields = 8, 5, 12, 13
+        for line in f:
+            if not line.startswith("#"):
+                delimiter, gene_col, mim_col, pheno_col, min_fields = (
+                    _detect_genemap2_format(line)
+                )
+                break
+        f.seek(0)
+
         for line in f:
             # Skip comment lines
             if line.startswith("#"):
                 continue
 
-            fields = line.rstrip("\n").split("\t")
+            fields = line.rstrip("\n").split(delimiter)
 
-            # genemap2 has at least 13 columns; phenotype info is in column 13 (0-indexed: 12)
-            if len(fields) < 13:
+            if len(fields) < min_fields:
                 continue
 
-            gene_symbol = fields[8].strip() if len(fields) > 8 else ""
-            gene_mim = fields[5].strip() if len(fields) > 5 else ""
-            phenotypes_str = fields[12].strip() if len(fields) > 12 else ""
+            gene_symbol = fields[gene_col].strip() if len(fields) > gene_col else ""
+            gene_mim = fields[mim_col].strip() if len(fields) > mim_col else ""
+            phenotypes_str = fields[pheno_col].strip() if len(fields) > pheno_col else ""
+
+            # Pipe-delimited format has comma-separated gene symbols; use first
+            if delimiter == "|" and "," in gene_symbol:
+                gene_symbol = gene_symbol.split(",")[0].strip()
 
             if not gene_symbol or not phenotypes_str:
                 continue
