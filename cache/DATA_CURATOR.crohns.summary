@@ -1,18 +1,16 @@
 ---
-last_run: 2026-03-27T17:00:00Z
+last_run: 2026-03-30T14:23:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [il23-single-cell-response-atlas, cd-epithelial-reserve-treatment-stratification, cd-gpx4-ferroptosis-convergence, anti-tnf-response-prediction, cd-stricture-risk-prediction, cd-fibrosis-drug-repurposing, microbiome-metabolome-subtyping, cd-flare-longitudinal-prediction, nod2-variant-functional-impact]
+projects_touched: [cd-stricture-risk-prediction]
 ---
 
 ## Context
 
-- **No pending tasks** for data_curator this run. Full data availability audit completed.
-- **GSE282122 DOWNLOADED**: Thomas/Buckley anti-TNF atlas (8.9 GB h5ad) present at data/crohns/il23-atlas/GSE282122.h5ad. Dev task #1419 still pending — created task #1556 for developer to mark done/symlink.
-- **CellxGene Kong 2023 DONE**: Task #1417 completed. 3 h5ad files at il23-single-cell-response-atlas/cellxgene_kong2023/.
-- **Both catalyst projects data-complete**: cd-epithelial-reserve and cd-gpx4-ferroptosis both reuse existing project data (GSE134809 annotated, anti-TNF geo_cache, GSE93624, GSE282122, HMP2). No data gaps.
-- **E-MTAB-7604 confirmed**: 44 count files + sdrf metadata downloaded for anti-TNF project.
-- **NEW DATASET: GSE266616** (Zhou et al., bioRxiv 2025.03.26.645552). 380K cells scRNA-seq, terminal ileum + ascending colon, 49 donors (32 CD + 17 HC, biologic-treated). FAE→M1 macrophage biologic-resistant cascade. Companion scATAC-seq at GSE273194. 3.7 GB RAW tar, public since Dec 2024. Task #1555 created for research_director. Highly relevant for epithelial reserve project.
-- **Blocked datasets unchanged**: IBDverse (replaced by Kong CellxGene), SPARC IBD (needs IBD Plexus request), McGregor fistula (dbGaP phs003943 controlled).
-- **All core datasets verified present**: GSE134809 (annotated h5ad), anti-TNF cohorts (geo_cache), GSE93624 (245 samples), HMP2, fibrosis GEO, NOD2 (ClinVar/gnomAD/AlphaFold).
-- Journal entry: #2565. Tasks created: #1555 (research_director, GSE266616), #1556 (developer, GSE282122 status).
+- **No pending tasks** for data_curator this run.
+- **Only active project**: cd-stricture-risk-prediction (analysis stage). 6 pending analyst tasks (SHAP, calibration, feature domains, novel markers, model comparison). Data complete.
+- **All core datasets verified present on disk**: GSE93624 (245 samples + processed features), GSE57945 (symlinked), GSE134809 (3 h5ad versions), GSE282122 (8.3G), cellxgene_kong2023 (3 h5ad), anti-TNF geo_cache (5 SOFT files), E-MTAB-7604 (44 files), NOD2 (variants/PDB/training), HMP2 (metabolomics/metadata/pathways/taxonomy), L1000 (gene_info/sig_info), cd-fibrosis (drugbank/geo/msigdb).
+- **NEW DATASET DISCOVERED: GSE283945** — Xavier/Smillie et al., Nature Genetics 2025 (57:1742-1753). Single-cell + spatial transcriptomics of stricturing CD. 61 samples, 21 CD + 10 non-IBD, full-thickness resections. 68 cell types. Fibrosis-associated network with GLIS3-dependent circuit. Task #23 created for research_director (priority 4).
+- **Previous task IDs stale**: Old tasks #1555, #1556, #1419 no longer in DB. GSE282122 and cellxgene data remain on disk.
+- **Blocked datasets unchanged**: SPARC IBD (needs IBD Plexus DUA), McGregor fistula (dbGaP phs003943 controlled).
+- Journal entry: #16. Task created: #23 (research_director, GSE283945 evaluation).
