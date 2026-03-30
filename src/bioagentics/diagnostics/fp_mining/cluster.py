@@ -41,8 +41,9 @@ def prepare_features(
 
     X = df[feature_cols].values.astype(float)
 
-    # Impute NaNs with column medians
+    # Impute NaNs with column medians (use 0 for all-NaN columns)
     col_medians = np.nanmedian(X, axis=0)
+    col_medians = np.where(np.isnan(col_medians), 0.0, col_medians)
     nan_mask = np.isnan(X)
     for j in range(X.shape[1]):
         X[nan_mask[:, j], j] = col_medians[j]
