@@ -892,6 +892,17 @@ def run_agent(config: AgentConfig, project: str | None = None) -> int:
                             capture_output=True, cwd=REPO_ROOT,
                         )
 
+                # Pull before push to incorporate any remote changes
+                pull = subprocess.run(
+                    ["git", "pull", "--rebase", "--no-edit"],
+                    capture_output=True, cwd=REPO_ROOT,
+                )
+                if pull.returncode != 0:
+                    log.warning(
+                        "git pull --rebase failed for %s (exit %d): %s",
+                        config.role, pull.returncode,
+                        pull.stderr.decode(errors="replace").strip(),
+                    )
                 push = subprocess.run(
                     ["git", "push"], capture_output=True, cwd=REPO_ROOT,
                 )
