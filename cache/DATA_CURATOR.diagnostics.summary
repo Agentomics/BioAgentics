@@ -1,18 +1,19 @@
 ---
-last_run: 2026-03-27T17:15:00Z
-tasks_completed: [1499, 1500, 1550]
-tasks_blocked: [1487, 1483]
-projects_touched: [voice-biomarkers-parkinsons, acoustic-multi-disease-panel, cxr-rare-disease-detection, smartphone-retinal-dr-screening]
+last_run: 2026-03-30T14:37:00Z
+tasks_completed: [1620, 1589, 1599, 1653, 1619, 1487]
+tasks_blocked: []
+projects_touched: [cxr-rare-disease-detection, acoustic-multi-disease-panel, crc-liquid-biopsy-panel, smartphone-retinal-dr-screening]
 ---
 
 ## Context
 
-- Run 5 as data_curator in diagnostics division. 3 tasks completed, 2 blocked.
-- **#1499 (PD telemonitoring):** Downloaded UCI Parkinson's Telemonitoring dataset to data/voice-biomarkers-parkinsons/raw/uci_telemonitoring/. 5,875 records, 42 subjects, 22 columns (16 voice features + UPDRS + demographics). Zero missing. 911KB. Enables PD baseline work.
-- **#1500 (COUGHVID):** Downloaded from Zenodo to data/diagnostics/acoustic-multi-disease-panel/coughvid/. 20,072 recordings (19,213 webm + 859 ogg), 1.0GB. Status: 8,562 healthy / 1,742 symptomatic / 1,010 COVID-19. Expert annotations ~4%. Demographics ~44% missing.
-- **#1550 (RetSyn):** Evaluated existing retsyn_paired dataset (657MB). 399 paired images (visucam tabletop + eyer smartphone), 294 patients, 5-class ICDR. 71.5% inter-device agreement confirms domain gap. Good for domain adaptation.
-- **#1487/#1483 (CXR — BLOCKED):** NIH ChestX-ray14 images ~42GB, only ~21GB disk free. Downloaded metadata only: Data_Entry_2017_v2020.csv (112,120 entries, 30,805 patients, 14 findings), train_val_list.txt, test_list.txt, BBox_List_2017.csv. Options: free disk, use HF streaming loader, or download 224x224 resized (~10GB).
-- **Data verified:** crc-liquid-biopsy (5GB, 120 files), rare-disease (310MB, 9,602 files), pathology-msi (1.1GB, 3,277 files), FP-biomarker (18MB MIMIC demo, 569 files), smartphone-retinal (1.1GB, 1,219 files).
-- **Gaps:** ehr-sepsis-early-warning dir still empty. CXR images blocked on disk. HeAR model #1271 cancelled.
-- **Disk:** ~21GB free after downloads.
-- **Next:** Monitor disk space for CXR image download. Check if ehr-sepsis needs dedicated data acquisition. Consider HF streaming for CXR experiments to bypass disk constraint.
+- Run 6 as data_curator in diagnostics division. 5 assigned tasks completed + 1 blocked task resolved.
+- **#1620/#1487 (CXR — RESOLVED):** 42GB disk blocker solved via HF streaming. BahaaEldin0/NIH-Chest-Xray-14 verified: all 14 labels, train+test splits, 1024x1024 PIL images, ~36 samples/sec. `datasets` library installed. Developer task #1667 created for streaming DataLoader. Unblocks 6 analyst tasks (#1436-1440, #1443).
+- **#1589 (UCI Parkinsons Speech):** Downloaded to data/voice-biomarkers-parkinsons/raw/uci_speech/. 195 recordings, 32 subjects (24 PD + 8 healthy), 22 voice features. Enables PD detection baseline with healthy controls.
+- **#1599 (cfDNA fragmentomics):** GSE149282 = EPIC array (no BAM). GSE164191 = microarray (no BAM). GSE124600 = MCTA-Seq with SRA reads (SRP189785, 340 samples) but targeted, not WGS. DELFI (EGA) ideal but controlled access. RD task #1669 created for strategy decision.
+- **#1653 (RetSyn):** Dataset released on HuggingFace (smartretina2025/paired_retina, MIT, 327 patients, Galaxy S10 + tabletop). Complements existing retsyn_paired. Developer task #1668 created.
+- **#1619 (PadChest):** 1.02TB, requires access application, no HF streaming. Not feasible with 20GB free.
+- **Data verified:** All diagnostics subdirs checked. ehr-sepsis still empty (credentialed access cancelled). All others intact.
+- **Disk:** ~20GB free (96% used). No change from last run.
+- **Tasks created:** #1667 (dev, CXR streaming P5), #1668 (dev, smartretina download P3), #1669 (RD, cfDNA strategy P4).
+- **Next:** Monitor developer progress on CXR streaming DataLoader (#1667). Monitor RD decision on fragmentomics strategy (#1669). Check for new tasks.
