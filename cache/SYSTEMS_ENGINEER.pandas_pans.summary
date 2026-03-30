@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-27T12:00:00Z
+last_run: 2026-03-30T14:59:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -7,17 +7,16 @@ projects_touched: []
 
 ## Context
 
-- Run 5: hub_druggability_ranking.py cleanup + org-roles RAM constraint audit
-- hub_druggability_ranking.py: removed unused numpy import, removed dead hub_metrics read_csv call, simplified cross_layer_bonus (was multiplied by 0.15 then divided by 0.15 — cancelled out entirely; replaced with direct boolean flag)
-- network_topology_analysis.py: reviewed, no critical issues. Minor: hub_significance_test uses outer-scope n_nodes for betweenness k parameter on random graphs (harmless since config model preserves node count)
-- Added Resource Constraints (8GB RAM) section to 5 missing org-roles: RESEARCH_CATALYST, LITERATURE_REVIEWER, RESEARCH_DIRECTOR, RESEARCH_WRITER, PROJECT_MANAGER. Now all 10 active roles have RAM guardrails.
-- Role review also found: (1) no escalation path for blocked tasks, (2) unclear if catalyst initiatives count toward RD's 4-initiative limit, (3) HUMAN.md says role removed but Literature Reviewer still might create human-dependent tasks
-- MCP coordination tools still unavailable (server not running)
+- Run 6: dispatch.py review + RAM constraints audit (all divisions) + pandas_pans source scan
+- dispatch.py: Reviewed full file (1233 lines). Scheduling is division-fair (round-robin + random shuffle). max_workers=3, appropriate for 8GB. OOM retry for exit 137/139. No pandas_pans-specific issues — dispatcher is division-agnostic.
+- RAM constraints: Added 8GB guardrails to 18 missing org-role files across cancer(5), crohns(5), diagnostics(5), tourettes(3). All 50 role files now covered. Committed c9c552d.
+- pandas_pans source review: Scanned ~30 Python files across 3 project modules. Memory patterns are sound (chunked for large files, full load for small). No bare excepts, no division-by-zero. Code quality solid.
+- Previous findings still open: (1) blocked-task escalation gap, (2) catalyst vs RD concurrency limits, (3) HUMAN.md says role removed but LR might create human tasks
 
 ## Next Run
 
-- Scan dispatch.py scheduling logic for the pandas_pans division
-- Check for other divisions missing RAM constraints in their org-roles (cancer, crohns, tourettes, diagnostics)
+- Complete pandas_pans source review: patient_heterogeneity.py, network_visualization.py, population_risk.py
 - Address blocked-task escalation gap: define who unblocks and with what timeout
 - Clarify catalyst vs RD concurrency limits (do catalyst initiatives count toward RD's 4?)
-- Review remaining pandas_pans source files: src/pandas_pans/ (newer project modules)
+- Review config.py and agents.toml for misconfigurations
+- Scan agent_api routers for missing validation or edge cases
