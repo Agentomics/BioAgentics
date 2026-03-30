@@ -21,6 +21,15 @@ PANDAS_TARGETS = [
     "DRD1", "DRD2", "tubulin", "CaMKII", "GAPDH", "enolase", "GM1 synthase",
 ]
 
+# Gene symbol aliases for PANDAS targets (for matching BLAST hit identifiers)
+PANDAS_TARGET_ALIASES: dict[str, list[str]] = {
+    "enolase": ["ENO1", "ENO2", "ENO3"],
+    "tubulin": ["TUBA", "TUBB"],
+    "GAPDH": ["G3P"],
+    "CaMKII": ["CAMK2A", "CAMK2B", "CAMK2G"],
+    "GM1 synthase": ["B4GALNT1"],
+}
+
 
 def load_mimicry_hits(mimicry_dir: Path | None = None) -> list[dict]:
     """Load molecular mimicry hits from the gas-molecular-mimicry-mapping project.
@@ -157,10 +166,19 @@ def compute_overlap(
     except ValueError:
         odds_ratio, p_value = float("nan"), 1.0
 
-    # Check PANDAS targets
+    # Check PANDAS targets (match by name and gene symbol aliases)
+    def _matches_target(target: str, human_protein: str) -> bool:
+        hp = human_protein.lower()
+        if target.lower() in hp:
+            return True
+        for alias in PANDAS_TARGET_ALIASES.get(target, []):
+            if alias.lower() in hp:
+                return True
+        return False
+
     pandas_in_mimicry = [
         t for t in PANDAS_TARGETS
-        if any(t.lower() in h.get("human_protein", "").lower() for h in mimicry_hits)
+        if any(_matches_target(t, h.get("human_protein", "")) for h in mimicry_hits)
     ]
 
     # Build network edges (HLA -> peptide -> human mimic)
