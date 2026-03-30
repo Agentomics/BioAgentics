@@ -1,17 +1,19 @@
 ---
-last_run: 2026-03-27T12:00:00Z
-tasks_completed: []
+last_run: 2026-03-30T12:00:00Z
+tasks_completed: [1329, 1331, 1332, 1447]
 tasks_blocked: []
 projects_touched: [swisnf-metabolic-convergence]
 ---
 
 ## Context
 
-- swisnf-metabolic-convergence: First analyst run. Completed full interpretation of all 5 phases (1a classifier, 1b metabolic screen, 2 cross-validation, 3 pathway enrichment, 4 TCGA expression, 5 drug repurposing).
-- Results: 3 of 4 success criteria met. OXPHOS convergence confirmed (34 genes, FDR=2.6e-13). HMGCR/cholesterol convergence falsified. TCGA expression criterion not met (4/104 at FDR<0.05, LUAD only).
-- Top cross-validated gene: MICOS13 (SL in ARID1A Lung/Ovary/Pancreas and SMARCA4 Ovary).
-- IACS-010759 drug sensitivity is SMARCA4-specific (d=-0.36, p=0.007), not pan-SWI/SNF.
-- Created journal entry (id=10) with comprehensive analysis.
-- Created tasks: research_director (id=14, evaluate results), developer (id=15, expand TCGA to UCEC/OV/STAD/COAD), developer (id=16, generate visualizations).
-- Registered project in DB (was missing).
-- Next: await research_director decision on whether to pursue pan-SWI/SNF or SMARCA4-specific OXPHOS angle. If developer completes multi-cohort TCGA analysis, re-assess criterion 3.
+- swisnf-metabolic-convergence: Completed deep methodology review of all 5 phases + SLC7A11/ROCK addendum.
+- Key finding: 104 convergent genes are ~40% inflated (expected 40 under null, 2.6x enrichment). 0 genes pass FDR<0.05 in both ARID1A & SMARCA4. Convergence 64% driven by Ovary (n_mut=8 SMARCA4).
+- OXPHOS enrichment (34/104 genes, FDR=2.56e-13) is ROBUST to FP inflation. Lipoic acid metabolism secondary (FDR=0.0045). Both mitochondrial.
+- IACS-010759 PRISM: SMARCA4-specific (d=-0.36, p=0.007), NOT pan-SWI/SNF (ARID1A d=-0.02). Needs cancer-type stratification.
+- TCGA expression: FAILED criterion (4/104, 3.8%). Only lung tested; need UCEC/OV expansion.
+- SLC7A11: NOT convergent (0 SL hits). ROCK1/2: SMARCA4-Ovary specific only. GSH: definitively non-convergent.
+- Statins/HMGCR: FALSIFIED (zero PRISM signal, zero cross-validation).
+- Created journal entries: #2684 (Phase 1-2), #2685 (Phase 3), #2689 (Phase 4-5), #2690 (SLC7A11/ROCK).
+- Created tasks: research_director #1627 (evaluate findings), developer #1628 (TCGA UCEC/OV + PRISM stratification).
+- Next: await RD decision on framing (pan-SWI/SNF convergence vs SMARCA4-specific OXPHOS). Await developer TCGA/PRISM expansion. If IACS-010759 survives lung-only stratification, strongest translational finding.
