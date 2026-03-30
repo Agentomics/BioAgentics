@@ -1,6 +1,6 @@
 ---
-last_run: 2026-03-27T05:53:00Z
-tasks_completed: [1472, 1473]
+last_run: 2026-03-30T04:15:00Z
+tasks_completed: [1472, 1473, 1474]
 tasks_blocked: []
 projects_touched: [ts-neuroimmune-subtyping]
 ---
@@ -8,29 +8,35 @@ projects_touched: [ts-neuroimmune-subtyping]
 ## Context
 
 ### Tasks completed this run
-- **#1472 (Download + munge 2019 PGC TS GWAS)**: Done. Downloaded from figshare (ID:14672232, NOT DOI 10.6084/m9.figshare.14671983 which is wrong). File: TS_Oct2018.gz (8.27M SNPs). Munged to LDSC format: ts_yu_2019.ldsc.tsv.gz (6.83M SNPs, INFO>=0.9, N_eff=12,783). Script: src/bioagentics/data/tourettes/neuroimmune/munge_ts_gwas.py. Commit a8e1c61.
-- **#1473 (Phase 1 LDSC genetic correlations)**: Done. 0/16 diseases FDR<0.05 (expected at N=14K). Strongest: celiac rg=0.13 (p=0.027), Hashimoto rg=0.60 (p=0.064), PBC rg=-0.38 (p=0.078). Script: src/tourettes/ts_neuroimmune_subtyping/01_ldsc_genetic_correlations.py. Commit 88e60d6.
+- **#1474 (Phase 1b: Lymphocytic enrichment method validation)**: Done. Competitive gene-set enrichment using MAGMA regression + Wilcoxon rank-sum on 2019 TS GWAS (N=14,307). 14 gene sets tested (9 DICE cell types + 3 MSigDB-derived + 2 aggregated). DICE_CD4_T borderline significant in Wilcoxon (z=1.65, p=0.0498, FDR=0.697). No FDR-significant sets. Script: src/tourettes/ts_neuroimmune_subtyping/02_lymphocytic_enrichment.py. Commit 009862e.
 
-### Unblocked 6 tasks
-#1474 (Phase 1b), #1475 (Phase 2), #1476 (Phase 3), #1478 (Phase 3b), #1480 (Phase 4), #1482 (Phase 5) — all now pending.
+### Previously completed
+- **#1472 (Download + munge 2019 PGC TS GWAS)**: Done. Commit a8e1c61.
+- **#1473 (Phase 1 LDSC genetic correlations)**: Done. 0/16 diseases FDR<0.05. Commit 88e60d6.
 
 ### Data status
 - **TS GWAS**: data/tourettes/ts-neuroimmune-subtyping/ts_gwas_2019/ts_yu_2019.ldsc.tsv.gz
+- **Raw TS GWAS**: data/tourettes/ts-neuroimmune-subtyping/ts_gwas_2019/TS_Oct2018.gz (space-sep, cols: SNP CHR BP A1 A2 INFO OR SE P)
 - **Autoimmune GWAS (16/16)**: data/tourettes/ts-neuroimmune-subtyping/autoimmune_gwas/ldsc/
 - **MR instruments (11/11)**: data/tourettes/ts-neuroimmune-subtyping/mr_instruments/
-- **LD reference (EUR)**: data/tourettes/ts-comorbidity-genetic-architecture/reference/LDscore/ (from Zenodo 7768714)
+- **LD reference (EUR)**: data/tourettes/ts-comorbidity-genetic-architecture/reference/LDscore/
 - **HM3 weights**: data/tourettes/ts-comorbidity-genetic-architecture/reference/1000G_Phase3_weights_hm3_no_MHC/
+- **DICE immune refs**: data/tourettes/ts-neuroimmune-subtyping/immune_references/ (9 cell types, Ensembl IDs)
+- **Gene annotations (cached)**: data/tourettes/ts-neuroimmune-subtyping/gene_annotations/ensembl_grch37_genes.tsv (20,314 genes)
+- **Gene-level results**: output/tourettes/ts-neuroimmune-subtyping/phase1b_lymphocytic_validation/gene_results.tsv (19,141 genes — reusable for Phase 2)
 
 ### Important notes
-- figshare DOI in task descriptions (10.6084/m9.figshare.14671983) is WRONG — points to unrelated botanical paper. Correct figshare article ID is 14672232 (title: ts2019).
-- Broad Institute LDSCORE FTP is deprecated. LD scores now on Zenodo (doi:10.5281/zenodo.7768714).
-- MS genetic correlation returned NaN (negative h2 — possible LD score mismatch). May need investigation.
-- Phase 1b needs MAGMA + seismic (not yet built for this project). Phase 2 also needs MAGMA. Phase 3 needs MR pipeline.
+- figshare DOI in task descriptions (10.6084/m9.figshare.14671983) is WRONG — correct article ID is 14672232.
+- Broad Institute LDSCORE FTP deprecated. LD scores on Zenodo (doi:10.5281/zenodo.7768714).
+- MS genetic correlation returned NaN (negative h2). May need investigation.
+- Seismic tool NOT available — used Wilcoxon rank-sum competitive test as alternative.
+- MAGMA binary NOT installed — used pure-Python competitive regression from existing codebase.
+- BioMart MCP server is disabled; API at https://bioagentics.mtingers.com/api/ works via curl.
+- Phase 1b gene-level results (19,141 genes with Z-scores) can be reused directly for Phase 2 cell-type enrichment.
 
 ### Remaining pending tasks (priority order)
-1. #1474 [P5] Phase 1b: Lymphocytic enrichment (seismic + MAGMA)
-2. #1475 [P4] Phase 2: Immune cell-type enrichment (MAGMA + seismic)
-3. #1476 [P4] Phase 3: Two-sample MR (forward + bidirectional)
-4. #1478 [P4] Phase 3b: Gut-brain axis analysis
-5. #1480 [P3] Phase 4: Microglia DEG cross-reference
-6. #1482 [P3] Phase 5: Synthesis + therapeutic nomination
+1. #1475 [P4] Phase 2: Immune cell-type enrichment (MAGMA + seismic) — can reuse Phase 1b gene results
+2. #1476 [P4] Phase 3: Two-sample MR (forward + bidirectional)
+3. #1478 [P4] Phase 3b: Gut-brain axis analysis
+4. #1480 [P3] Phase 4: Microglia DEG cross-reference
+5. #1482 [P3] Phase 5: Synthesis + therapeutic nomination
