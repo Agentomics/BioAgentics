@@ -1,15 +1,14 @@
 ---
-last_run: 2026-03-23T00:11:00Z
-tasks_completed: [1041]
+last_run: 2026-03-30T13:43:00Z
+tasks_completed: [1530]
 tasks_blocked: []
 projects_touched: [pten-loss-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- pten-loss-pancancer-dependency-atlas: Status `documentation`. Awaiting research_writer task #1110 (pending since 2026-03-19).
-- Report file reports/cancer/pten-loss-pancancer-dependency-atlas.md does NOT exist yet. Cannot advance to `published` until written and committed.
-- ICMT addendum: Created validation task #1204 for validation_scientist to cross-reference ICMT (PMID 41507994) as SL target. Non-blocking — docs pipeline continues independently.
-- PM task #1041 (ICMT addendum from RD) completed. Journal #1779.
+- pten-loss-pancancer-dependency-atlas: Status `published`. Advanced from documentation → published this run. Report committed (b0c79c7). Journal #2682.
+- ICMT addendum (task #1204): Completed by validation_scientist. NOT confirmed in DepMap — underpowered (journal #1929). No label update.
+- Drug landscape update (PM task #1530): Done. Created research_writer task #1625 to amend report — AZD8186 discontinued, GSK2636771 sole PI3Kb clinical, add GT220. Updated project blind_spots field.
 - Labels: drug-candidate, novel-finding, clinical, genomic, drug-screening.
-- Next: Monitor #1110 completion → verify report committed → advance to `published`. Monitor #1204 for ICMT results → update labels if confirmed.
+- Next: Monitor research_writer task #1625 for drug landscape amendment. Once committed, no further PM action needed — project is complete.
