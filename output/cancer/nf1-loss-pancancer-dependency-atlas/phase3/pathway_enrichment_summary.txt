@@ -1,0 +1,46 @@
+======================================================================
+NF1-Loss Pan-Cancer Dependency Atlas - Phase 3d: Pathway Enrichment
+======================================================================
+
+Permutations: 10000
+Tests: competitive permutation (mean effect vs random sets),
+       Wilcoxon rank-sum (set genes vs genome background).
+
+LINEAGE-CORRECTED RESULTS
+------------------------------------------------------------
+  RAS upstream regulatory        mean_d=-0.429  perm_p=0.0000  wilcox_p=0.0000  z=-8.92  n=7/7 ***
+    Genes: GRB2,PTPN11,RIT1,SHOC2,SOS1,SPRED1,SPRED2
+  RAS/MAPK core                  mean_d=-0.081  perm_p=0.0185  wilcox_p=0.1518  z=-2.09  n=12/12 ***
+    Genes: BRAF,GRB2,KRAS,MAP2K1,MAP2K2,MAPK1,MAPK3,NF1,NRAS,PTPN11,RAF1,SOS1
+  mTOR/PI3K                      mean_d=-0.057  perm_p=0.1461  wilcox_p=0.1089  z=-1.07  n=7/7
+    Genes: AKT1,AKT2,MTOR,PIK3CA,PIK3CB,RICTOR,RPTOR
+  Cell cycle                     mean_d=-0.029  perm_p=0.3365  wilcox_p=0.3284  z=-0.41  n=5/5
+    Genes: CCND1,CDK2,CDK4,CDK6,RB1
+  Epigenetic/PRC2                mean_d=+0.060  perm_p=0.8756  wilcox_p=0.9289  z=+1.16  n=5/5
+    Genes: BRD4,DOT1L,EED,EZH2,SUZ12
+  DNA damage response            mean_d=-0.079  perm_p=0.1199  wilcox_p=0.1935  z=-1.17  n=4/4
+    Genes: ATR,CHEK1,PARP1,WEE1
+  RAS feedback                   mean_d=+0.069  perm_p=0.9461  wilcox_p=0.9018  z=+1.58  n=7/7
+    Genes: DUSP4,DUSP6,ERF,RASA2,SPRY1,SPRY2,SPRY4
+
+UNCORRECTED RESULTS
+------------------------------------------------------------
+  RAS upstream regulatory        mean_d=-0.409  perm_p=0.0000  wilcox_p=0.0000  z=-8.11  n=7/7 ***
+    Genes: GRB2,PTPN11,RIT1,SHOC2,SOS1,SPRED1,SPRED2
+  RAS/MAPK core                  mean_d=-0.091  perm_p=0.0116  wilcox_p=0.1084  z=-2.28  n=12/12 ***
+    Genes: BRAF,GRB2,KRAS,MAP2K1,MAP2K2,MAPK1,MAPK3,NF1,NRAS,PTPN11,RAF1,SOS1
+  mTOR/PI3K                      mean_d=-0.049  perm_p=0.1844  wilcox_p=0.1177  z=-0.91  n=7/7
+    Genes: AKT1,AKT2,MTOR,PIK3CA,PIK3CB,RICTOR,RPTOR
+  Cell cycle                     mean_d=-0.050  perm_p=0.2145  wilcox_p=0.1825  z=-0.79  n=5/5
+    Genes: CCND1,CDK2,CDK4,CDK6,RB1
+  Epigenetic/PRC2                mean_d=+0.084  perm_p=0.9293  wilcox_p=0.9679  z=+1.46  n=5/5
+    Genes: BRD4,DOT1L,EED,EZH2,SUZ12
+  DNA damage response            mean_d=-0.048  perm_p=0.2556  wilcox_p=0.2827  z=-0.66  n=4/4
+    Genes: ATR,CHEK1,PARP1,WEE1
+  RAS feedback                   mean_d=+0.064  perm_p=0.9137  wilcox_p=0.8961  z=+1.37  n=7/7
+    Genes: DUSP4,DUSP6,ERF,RASA2,SPRY1,SPRY2,SPRY4
+
+INTERPRETATION
+------------------------------------------------------------
+  The RAS upstream regulatory module shows SIGNIFICANT coordinated enhanced dependency (mean_d=-0.429, p=0.0000).
+  This is based on 7 of 7 genes present in the DepMap CRISPR data.
