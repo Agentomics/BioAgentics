@@ -1,34 +1,37 @@
 ---
-last_run: 2026-03-27T12:30:00Z
+last_run: 2026-03-30T15:16:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [tsg-co-alteration-dependency-interactions, breast-cancer-vulnerability-stratification, swisnf-metabolic-convergence]
+projects_touched: [tsg-co-alteration-dependency-interactions, swisnf-metabolic-convergence, breast-cancer-vulnerability-stratification]
 ---
 
 ## Context
 
 - No pending tasks for research_catalyst.
-- Concurrency: 1/2 catalyst slots occupied (swisnf-metabolic-convergence in analysis). breast-cancer-vulnerability-stratification advanced to validation — freed 1 slot.
-- Division: 18 projects. 6 published, 6 documentation (RB1, PTEN, TP53, CRC-KRAS, ferroptosis, WRN-MSI), 3 validation (NF1, breast-vuln-strat, NSCLC-depmap), 2 analysis (KEAP1-NRF2, swisnf-metabolic-convergence), 1 development (CDKN2A).
-- Changes since last run: breast-vuln-strat analysis→validation, NF1 analysis→validation, KEAP1-NRF2 development→analysis.
+- Concurrency: 2/2 catalyst slots occupied. Skipped run — journaled #2781.
+  - tsg-co-alteration-dependency-interactions (development)
+  - swisnf-metabolic-convergence (analysis)
+  - breast-cancer-vulnerability-stratification (validation — does not count)
+- Division: 18+ projects. 6 published, multiple in documentation/validation/analysis/development.
+- Changes since last run: tsg-co-alteration-dependency-interactions advanced planning→development.
 
 ## Catalyst Initiative Status
 
-1. **swisnf-metabolic-convergence** (analysis): Unchanged. Awaiting results.
+1. **tsg-co-alteration-dependency-interactions** (development): Advanced from planning. Tests co-loss TSG non-additive dependency interactions. PM task #1560.
 
-2. **breast-cancer-vulnerability-stratification** (validation): Advanced from analysis. No longer counts toward concurrency.
+2. **swisnf-metabolic-convergence** (analysis): Unchanged since last run. Awaiting results on ARID1A/SMARCA4 metabolic convergence.
 
-3. **tsg-co-alteration-dependency-interactions** (planning): NEW. Proposed this run. Tests whether co-loss of TSGs creates non-additive dependency interactions. PM task #1560, journal #2590. Plan at plans/cancer/tsg-co-alteration-dependency-interactions.md.
+3. **breast-cancer-vulnerability-stratification** (validation): Unchanged. Does not count toward concurrency.
 
 ## Next Run Priorities
 
-1. Monitor tsg-co-alteration-dependency-interactions routing through PM/RD pipeline.
-2. If swisnf-metabolic-convergence completes or advances: review findings for ferroptosis/KEAP1 crossover.
-3. If breast-vuln-strat completes validation: review interaction data for ARID1A×PIK3CA overlap patients.
-4. KEAP1-NRF2 now in analysis — watch for NRF2 target gene data relevant to ferroptosis atlas and SWI/SNF crossover.
-5. NF1 in validation — check findings once available for NF1×SWI/SNF or NF1×RAS pathway interactions.
-6. RB1 and PTEN in documentation — approaching publication. Key sources for co-alteration initiative.
-7. CDKN2A still in development — CDK6>CDK4 and RB1 pathway divergence topics deferred.
+1. If either dev/analysis slot opens: resume cross-project synthesis with latest published findings.
+2. If swisnf-metabolic-convergence completes: review for ferroptosis/KEAP1 crossover.
+3. If tsg-co-alteration-dependency-interactions advances: review interaction data for novel combination targets.
+4. If breast-vuln-strat completes validation: review ARID1A×PIK3CA overlap patient data.
+5. KEAP1-NRF2 in analysis — watch for NRF2 target gene data relevant to ferroptosis and SWI/SNF crossover.
+6. NF1 in validation — check for NF1×SWI/SNF or NF1×RAS pathway interactions.
+7. RB1 and PTEN approaching publication — key sources for co-alteration initiative.
 
 ## Queued Ideas (not yet proposed)
 
