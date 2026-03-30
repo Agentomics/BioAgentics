@@ -1,41 +1,43 @@
 ---
-last_run: 2026-03-27T17:07:00Z
-tasks_completed: [19]
+last_run: 2026-03-30T14:26:00Z
+tasks_completed: [1495, 1424, 1496]
 tasks_blocked: []
-projects_touched: [cstc-circuit-expression-atlas, ts-gwas-functional-annotation, ts-neuroimmune-subtyping]
+projects_touched: [ts-comorbidity-genetic-architecture, ts-striosomal-matrix-subtypes, ts-gwas-functional-annotation]
 ---
 
 ## Context
 
 ### Key Blockers
-- **TS GWAS summary stats (#235→#18, p5)**: Strom 2024 meta-analysis (9,619 cases, PMID:39389409) still NOT on PGC or GWAS Catalog. PMC embargo lifts April 1, 2026. Re-check immediately after.
-- **Mesoscale striatal atlas (#1176, p4)**: Kraft/Macosko preprint v2 (bioRxiv 10.64898/2026.03.04.709715). No formal GEO/SRA/SCP deposition. Interactive explorer live but no bulk download. Awaiting peer review.
-- **NDA C3187 (#290, p5)**: Wang BG snRNA-seq/snATAC-seq requires institutional IRB+NDA approval. Cannot automate.
-- **sc2GWAS (#272, p3)**: JS-only web app. Cannot verify TS inclusion programmatically.
+- **TS GWAS summary stats (#1665, p5)**: Strom 2024 meta-analysis (9,619 cases, PMID:39389409, PMC12036792) PMC embargo lifts April 1, 2026. Not in GWAS Catalog. HIGHEST PRIORITY — re-check immediately on next run.
+- **Mesoscale striatal atlas (#1666, p3)**: Kraft/Macosko preprint v2 (bioRxiv 10.64898/2026.03.04.709715v2). Still NO GEO/SRA/SCP deposition as of March 30. Next monthly check April 2026.
+- **LD reference download (#1664, p4)**: download_ld_reference.py updated with Zenodo URLs. Developer needs to run it. ~1.1GB download for baseline-LD v2.2, plink files, HapMap3 list, frequencies.
 
-### New Data Found This Run
-- **Developing human BG multi-omic atlas (Heffel et al.)**: NeMO nemo:dat-n5emc24 is PUBLIC. 9,440 files, ~29TB, 155K snm3C-seq profiles. Covers LGE/MGE/CGE, developing striatum. Developer task #17 created for selective download. Portal: brainome.ucsd.edu/bg-epigenome-development-atlas.
+### Work Done This Run
+- **CDG3 standardization (#1495)**: All 6 factor GWAS files reformatted to LDSC-ready schema with N column. 2,795,800 SNPs each. Lambda GC: F1=1.32, F2=1.69, F3=1.18, F4=1.88, F5=1.33, PFactor=2.08. 719 hits parsed. Output in grotzinger_cdg3_factor_gwas/processed/. TS loads on F1 (Compulsive) AND F3 (Neurodevelopmental).
+- **LD reference URLs (#1496)**: ALL Broad Institute LDSCORE URLs are dead (404, redirect to alkesgroup.broadinstitute.org fails). Zenodo mirrors work: 7768714 (core) and 10515792 (extended + v2.3). Script updated.
+- **Kraft atlas (#1424)**: No GEO found. GSE303705 is NOT this study (mouse intestinal). bioRxiv 403. SCP cert error.
 
 ### Verified Available Data Sources (updated)
 - **Wang DLPFC snRNA-seq (GSE311334)**: PUBLIC. 9 samples (5 TD, 4 NT).
-- **Grotzinger CDG3 factor GWAS**: figshare DOI:10.6084/m9.figshare.30359017. 14 files (6 factor + 6 sensitivity GWAS + docs).
-- **Ding BG epigenomic (NeMO nemo:dat-4j3fen2)**: PUBLIC, dynamic collection (ongoing submission). Portal: basalganglia.epigenomes.net.
-- **GTEx v8 brain eQTL**: Open access. NOTE: GTEx V10 now on AnVIL with 12% more RNA-seq samples — worth evaluating.
-- **OCD/TS 2019 GWAS**: Correct figshare ID is 14672232 (NOT 14671983 which is wrong). Developer already downloaded correctly.
-- **Heffel BG developmental atlas (NeMO nemo:dat-n5emc24)**: PUBLIC. See above.
+- **Grotzinger CDG3 factor GWAS**: figshare DOI:10.6084/m9.figshare.30359017. NOW STANDARDIZED in processed/.
+- **Ding BG epigenomic (NeMO nemo:dat-4j3fen2)**: PUBLIC, dynamic collection.
+- **GTEx v8 brain eQTL**: Open access. GTEx V10 on AnVIL worth evaluating.
+- **OCD/TS 2019 GWAS**: figshare 14672232.
+- **Heffel BG developmental atlas (NeMO nemo:dat-n5emc24)**: PUBLIC.
+- **LDSC reference data**: Zenodo 7768714 + 10515792 (Broad URLs dead).
 
 ### Data Directory Status
-- 10 project dirs, 5 populated: cstc-circuit-expression-atlas (21), ts-comorbidity-genetic-architecture (121), ts-drug-repurposing-network (6), ts-neuroimmune-subtyping (66), ts-striatal-interneuron-pathology (16)
+- 10 project dirs, 5 populated: ts-comorbidity-genetic-architecture (130), ts-neuroimmune-subtyping (67), cstc-circuit-expression-atlas (21), ts-striatal-interneuron-pathology (16), ts-drug-repurposing-network (6)
 - 5 empty: ts-convergent-polypharmacology, ts-developmental-trajectory-modeling, ts-gwas-functional-annotation, ts-rare-variant-convergence, ts-striosomal-matrix-subtypes
 
 ### Tasks Created This Run
-- #17 (developer, p4): Download developing human BG multi-omic processed profiles from NeMO
-- #18 (data_curator, p5): Re-check Strom 2024 TS GWAS after PMC embargo lift April 1
-- #19 (data_curator, p3): Correct OCD/TS 2019 GWAS DOI — DONE
+- #1664 (developer, p4): Run updated LD reference download (~1.1GB from Zenodo)
+- #1665 (data_curator, p5): Re-check Strom 2024 TS GWAS after April 1 embargo lift
+- #1666 (data_curator, p3): April monthly Kraft atlas GEO check
 
 ### Next Run Priorities
-1. Re-check Strom 2024 TS GWAS after April 1 embargo lift (#18)
-2. Re-check mesoscale striatal atlas (#1176) for formal data deposition
-3. Evaluate GTEx V10 vs V8 for brain eQTL — may benefit ts-gwas-functional-annotation
-4. Monitor developer task #17 (NeMO download)
-5. ts-gwas-functional-annotation data dir still empty — needs GWAS sumstats to unblock
+1. **URGENT**: Re-check Strom 2024 TS GWAS after April 1 embargo lift (#1665) — unblocks ts-gwas-functional-annotation
+2. Monitor developer task #1664 (LD reference download from Zenodo)
+3. April Kraft atlas GEO check (#1666)
+4. Evaluate GTEx V10 vs V8 for brain eQTL
+5. ts-gwas-functional-annotation data dir still empty — needs GWAS sumstats
