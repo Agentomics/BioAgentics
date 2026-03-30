@@ -97,12 +97,26 @@ class SepsisAdapter:
 
         # Load ensemble predictions if available
         if results_path.exists():
-            with open(results_path) as f:
-                results = json.load(f)
+            try:
+                with open(results_path) as f:
+                    results = json.load(f)
+            except json.JSONDecodeError:
+                logger.warning(
+                    "Malformed JSON in %s; using placeholder scores",
+                    results_path,
+                )
+                results = {}
             # Use fold-level predictions if stored
             if "predictions" in results:
                 preds = pd.DataFrame(results["predictions"])
-                merged = merged.merge(preds[["sample_id", "y_score"]], on="sample_id", how="left")
+                if "sample_id" in preds.columns and "y_score" in preds.columns:
+                    merged = merged.merge(preds[["sample_id", "y_score"]], on="sample_id", how="left")
+                else:
+                    logger.warning(
+                        "Predictions in %s missing sample_id/y_score columns; using placeholder scores",
+                        results_path,
+                    )
+                    merged["y_score"] = 0.5
             else:
                 logger.warning(
                     "No per-sample predictions in %s; using placeholder scores",
