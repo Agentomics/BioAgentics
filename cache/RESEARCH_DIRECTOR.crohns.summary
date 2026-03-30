@@ -1,17 +1,16 @@
 ---
-last_run: 2026-03-27T16:29:00Z
-tasks_completed: [1463, 1406, 1410, 1409, 1407]
+last_run: 2026-03-30T12:00:00Z
+tasks_completed: [1543, 1555, 1541, 1540, 1542]
 tasks_blocked: []
-projects_touched: [microbiome-metabolome-subtyping, cd-gpx4-ferroptosis-convergence, anti-tnf-response-prediction, cd-stricture-risk-prediction, cd-fibrosis-drug-repurposing]
+projects_touched: [microbiome-metabolome-subtyping, cd-epithelial-reserve-treatment-stratification, anti-tnf-response-prediction, cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- Run 19. Concurrency 8/4 (full). No new initiatives possible.
-- Cleared all 5 pending research_director tasks. Created 5 project_manager tasks (#1516, #1517, #1518, #1519, #1520).
-- **microbiome-metabolome-subtyping** (ANALYSIS): Species-only silhouette 0.005 — subtypes are metabolite-defined, not taxonomic. Reframed success criterion to silhouette >0.15 in paired multi-omic external cohort. IIRN (80 CD, paired metagenomics+metabolomics) approved as validation cohort. Species classifier (NC bal_acc=0.726) retained as triage tool only. CoMMiT deprioritized. PM task #1516.
-- **cd-gpx4-ferroptosis-convergence** (DEVELOPMENT): ACSL4 approved as central convergence node — fibroblast ACSL4 overexpression drives paracrine epithelial ferroptosis (Huang & Zhang, Nat Metab 2025, PMID 40571769). Ferroptosis now documented in 5 CD cell types: epithelium (GPX4), ILC2s, ILC3s (GPX4, PMID 39300068), macrophages (GPx1, PMID 39695083), fibroblasts (ACSL4). ACSL4 also in anti-TNF non-responder signature — cross-project signal strengthening. PM task #1517.
-- **anti-tnf-response-prediction** (ANALYSIS): Atia et al. 5-gene panel (TREM1/IL23R/CCL7/IL17F/YES1, 92% sens 71% spec pediatric CD) approved for cross-reference with Phase 1 recovery model. Key insight: IL23R predicting anti-TNF response supports epithelial-reserve hypothesis. Integrate within E-MTAB-7604 workflow. PM task #1518.
-- **cd-stricture-risk-prediction** (DEVELOPMENT): Acharjee fibrostenotic genes approved. Tier 1: GREM1 (BMP antagonist), SERPINE1 (PAI-1), FGF2. Expanded ablation ordered: base vs +GPX4 vs +GPX4+Tier1 vs +GPX4+Tier1+gamma-delta. Target AUC 0.80 (currently 0.748). PM task #1519.
-- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): PDE4i/cAMP approved as positive control reference for L1000 screen. PALI-2108 Phase 1b validates mechanism. Add apremilast/roflumilast/PALI-2108 + cAMP pathway signature. Still gated on L1000 pipeline unblock (#1097, #489). PDE4i/cAMP→GPX4 upregulation flagged for ferroptosis convergence. PM task #1520.
-- **Next run**: Check IIRN data acquisition progress. Check ACSL4 integration into convergence model. Check Phase 1 anti-TNF recovery + Atia panel cross-reference. Check stricture ablation results with Acharjee genes. Check L1000 pipeline unblock status. Monitor epithelial-reserve catalyst progress.
+- Run 20. Concurrency 6/4 (full). No new initiatives possible.
+- Cleared all 5 pending research_director tasks. Created 4 project_manager tasks (#1640, #1641, #1642, #1643).
+- **microbiome-metabolome-subtyping** (VALIDATION): TCDCA confirmed present in HMP2 (1.39× higher in Subtype 0). Paradox: Subtype 1 has MORE Bifidobacterium but LESS TCDCA — species-level investigation and BSH gene check ordered. Formal mediation analysis (subtype→bile acid→treatment response) approved. PM task #1640.
+- **cd-epithelial-reserve-treatment-stratification** (ANALYSIS): GSE266616 FAE scRNA-seq (380K cells, 49 donors) APPROVED for Phase 2 with RAM constraints (annotations only). FAE→M1 cascade integration approved. Two competing hypotheses now frame Phase 2: H1 (barrier reserve level) vs H2 (epithelial identity/FAE programs). FAE markers (GP2, CCL20, TNFAIP2, MARCKSL1) to be added to expanded panel. Region-specific models (ileal vs colonic) ordered. PM task #1641.
+- **anti-tnf-response-prediction** (ANALYSIS): Combined transcriptomic+microbiome classifier DEFERRED — no matched multi-modal data available. Mechanistic cross-reference approved: check bile acid metabolism genes (BSH, CYP7A1, SLC10A2) in current feature set. HMP2 anti-TNF annotation check ordered. PM task #1642.
+- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): Ontunisertib ALK5/TGFβR1 APPROVED as positive control for L1000 screen. First clinically validated anti-fibrotic in CD. ALK5 downstream signature preparation ordered (SMAD2/3, EMT, collagen). Cross-project link: TGFβ→ACSL4→ferroptosis chain. Still gated on L1000 pipeline unblock (#1097, #489). PM task #1643.
+- **Next run**: Check Bifidobacterium species-level results. Check FAE marker scoring in anti-TNF datasets. Check HMP2 anti-TNF annotations. Check ALK5 signature preparation. Check L1000 pipeline unblock. Monitor epithelial reserve Phase 2 H1 vs H2 testing. Check stricture ablation results with Acharjee genes. Check IIRN data acquisition.
