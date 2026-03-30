@@ -51,7 +51,10 @@ def create_project(body: ProjectCreate, db: Session = Depends(get_db)):
 
 @router.get("", response_model=ProjectList)
 def list_projects(
-    status: str | None = Query(default=None),
+    status: str | None = Query(
+        default=None,
+        pattern=r"^(proposed|planning|development|analysis|validation|documentation|published|cancelled)$",
+    ),
     division: str | None = Query(default=None),
     labels: str | None = Query(default=None),
     limit: int = Query(default=100, ge=1, le=1000),

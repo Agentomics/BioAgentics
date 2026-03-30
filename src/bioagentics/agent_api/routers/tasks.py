@@ -59,7 +59,7 @@ def list_tasks(
     username: str | None = Query(default=None),
     division: str | None = Query(default=None),
     project: str | None = Query(default=None),
-    status: str | None = Query(default=None),
+    status: str | None = Query(default=None, pattern=r"^(pending|in_progress|blocked|done|cancelled)$"),
     priority: int | None = Query(default=None, ge=1, le=5),
     older_than: str | None = Query(default=None),
     search: str | None = Query(default=None, max_length=200),

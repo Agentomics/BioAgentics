@@ -54,7 +54,7 @@ def register_agent(body: AgentRegister, db: Session = Depends(get_db)):
 
 @router.get("", response_model=AgentList)
 def list_agents(
-    status: str | None = Query(default=None),
+    status: str | None = Query(default=None, pattern=r"^(running|idle)$"),
     division: str | None = Query(default=None),
     project: str | None = Query(default=None),
     db: Session = Depends(get_db),
