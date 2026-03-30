@@ -175,10 +175,12 @@ def _write_manifest(data_dir: Path, results: dict[str, Path]) -> None:
         "",
     ]
     for item in DOWNLOADS:
-        extract_path = results.get(item["name"], data_dir / item["extract_dir"])
+        fallback = data_dir / item["extract_dir"] if item["extract_dir"] else data_dir / item["filename"]
+        extract_path = results.get(item["name"], fallback)
         lines.append(f"  {item['name']}")
         lines.append(f"    File: {item['filename']}")
-        lines.append(f"    Dir:  {extract_path.name}/")
+        if item["extract_dir"]:
+            lines.append(f"    Dir:  {extract_path.name}/")
         lines.append(f"    Desc: {item['description']}")
         lines.append("")
 
@@ -187,7 +189,7 @@ def _write_manifest(data_dir: Path, results: dict[str, Path]) -> None:
         "  - All data uses hg19/GRCh37 coordinates",
         "  - GWAS summary statistics must be in hg19 or lifted over before use",
         "  - EUR LD scores are European-ancestry specific",
-        "  - Baseline-LD annotations are from 1000G Phase 1",
+        "  - Baseline-LD v2.2 annotations for S-LDSC partitioned heritability",
         "  - HapMap3 SNPs are the standard filter set for LDSC rg/h2",
         "",
     ])
