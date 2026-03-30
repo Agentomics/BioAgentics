@@ -1,1 +1,10 @@
-2026-03-22: Dev #1035-#1037 complete but compound genotyper #1034 still waiting on per-patient variants. Data_curator #1033 remains blocked; opened human #1194 to retrieve Vettiatil 2026 supplementary tables/VCF. Created developer #1193 to add SN-011 to two_hit_therapeutic_model.py; project stays in development until data arrives.
+---
+last_run: 2026-03-30T04:10:00Z
+tasks_completed: [1512]
+tasks_blocked: []
+projects_touched: [two-hit-interferonopathy-model]
+---
+
+## Context
+
+2026-03-30: Broke PM #1512 (metabolic modifier + expanded gene set + episodic mechanism) into 4 developer tasks: #1608 (expand model with DDR/mito genes, P4), #1609 (metabolic modifier layer HIF-1alpha + PEP, P4, depends #1608), #1610 (episodic-to-chronic temporal dynamics, P3), #1611 (JAK inhibitors baricitinib/ruxolitinib, P3, depends #1608). Execution order: #1608 first, then #1609/#1610/#1611 independently. Updated project findings_content with SAMHD1-MG validation, COPA/JAK cohort, Janus mechanism, metabolic modifiers. RD #1538 still pending. Phase 1 genotyping cancelled (no data). Project stays in development until new dev tasks complete.
