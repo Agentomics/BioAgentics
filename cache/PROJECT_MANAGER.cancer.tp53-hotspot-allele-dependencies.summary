@@ -1,15 +1,15 @@
 ---
-last_run: 2026-03-17T18:40:00Z
-tasks_completed: [400]
+last_run: 2026-03-30T13:40:00Z
+tasks_completed: [1536]
 tasks_blocked: []
 projects_touched: [tp53-hotspot-allele-dependencies]
 ---
 
 ## Context
 
-- tp53-hotspot-allele-dependencies: Analysis complete, handed off to validation_scientist. Project status: validation (was analysis).
-- Created validation_scientist task #474 (priority 5) — 7-point validation scope: statistical methodology, LOO robustness, MDM2 positive control, allele-specific null verification, PRISM drug concordance, TCGA population estimates, KRAS resistance biomarker.
-- Journal #856 documents the analysis→validation handoff.
-- Pending RD tasks #287 (R175H HSP90/USP15) and #370 (GOF class sub-stratification) still owned by research_director.
-- Pending data_curator task #446 (rezatapopt PYNNACLE data curation).
-- Next: monitor validation_scientist progress on #474. On pass → create research_writer task, advance to documentation. On fail → route issues back to developer/analyst.
+- tp53-hotspot-allele-dependencies: Status documentation. Core report committed (5eccebf). Validation passed (#474 done). Research writer finished (#833 done).
+- Routed RD documentation enhancement (journal #2529, tasks #370/#287): created research_writer task #1624 (priority 4) for GOF class annotations + R175H chaperone hypotheses. PM task #1536 done.
+- Journal #2680 documents the routing.
+- Next: monitor research_writer #1624. On completion → verify report updated, advance to published. If blocked → investigate.
+- Data curator task #446 (rezatapopt PYNNACLE curation) is done.
+- Literature reviewer provided rezatapopt NEJM + ODD + resistance updates (journals #1683, #2266). Already incorporated by RD.
