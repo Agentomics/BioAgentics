@@ -410,18 +410,9 @@ def check_planning_projects():
         )
 
 
-# Expected agent role for each pipeline stage
-_STAGE_AGENTS = {
-    "development": "developer",
-    "analysis": "analyst",
-    "validation": "validation_scientist",
-    "documentation": "research_writer",
-}
-
-
 def check_orphaned_pipeline_projects():
     """Warn about projects in an active pipeline stage with zero tasks."""
-    for stage, expected_agent in _STAGE_AGENTS.items():
+    for stage, expected_agent in _STAGE_REQUIRED_ROLE.items():
         resp = api("GET", f"/projects?status={stage}&limit=100")
         if not resp or not resp.ok:
             continue
