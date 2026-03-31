@@ -8,9 +8,12 @@ Pathway logic:
   GAS infection → pathogen DNA release → cytosolic DNA
   TREX1 (exonuclease) degrades cytosolic DNA
   SAMHD1 (dNTPase) restricts dNTP pools, limiting DNA accumulation
+  DDR failure (CUX1/USP45/PARP14) → unrepaired nuclear DNA → cytosolic leakage
+  Mitochondrial impairment (PRKN/POLG) → mtDNA leakage → cytosolic DNA
   Cytosolic DNA → cGAS detection → 2'3'-cGAMP → STING → TBK1 → IRF3 → IFN-β
 
-Loss-of-function variants in TREX1/SAMHD1 reduce DNA clearance, lowering the
+Loss-of-function variants in TREX1/SAMHD1 reduce DNA clearance, while DDR and
+mitochondrial variants add additional cytosolic DNA sources, lowering the
 threshold for infection-triggered type I IFN storms.
 
 Usage:
@@ -38,6 +41,11 @@ OUTPUT_DIR = Path("output/pandas_pans/two-hit-interferonopathy-model")
 PATHWAY_GENES = {
     "TREX1": "3'-5' exonuclease; degrades cytosolic DNA",
     "SAMHD1": "dNTPase; restricts dNTP pools, limits DNA accumulation",
+    "CUX1": "Transcription factor; DDR regulation; haploinsufficiency",
+    "USP45": "Deubiquitinase; base excision repair",
+    "PARP14": "ADP-ribosyltransferase; immune-DDR crosstalk",
+    "PRKN": "E3 ubiquitin ligase; mitophagy; mitochondrial DAMPs regulation",
+    "POLG": "Mitochondrial DNA polymerase gamma; mtDNA maintenance",
     "MB21D1": "cGAS (cyclic GMP-AMP synthase); detects cytosolic dsDNA",
     "TMEM173": "STING (stimulator of IFN genes); activated by 2'3'-cGAMP",
     "TBK1": "TANK-binding kinase 1; phosphorylates IRF3",
@@ -58,6 +66,8 @@ class GenotypeScenario:
     name: str
     trex1_activity: float  # 0.0 (null) to 1.0 (wild-type)
     samhd1_activity: float  # 0.0 (null) to 1.0 (wild-type)
+    ddr_activity: float = 1.0  # 0.0 (null) to 1.0 (wild-type); CUX1/USP45/PARP14
+    mito_activity: float = 1.0  # 0.0 (null) to 1.0 (wild-type); PRKN/POLG
     description: str = ""
 
 
@@ -118,6 +128,28 @@ DEFAULT_SCENARIOS: list[GenotypeScenario] = [
         samhd1_activity=0.1,
         description="Compound LOF — both severely impaired (AGS-like)",
     ),
+    GenotypeScenario(
+        name="ddr_impaired",
+        trex1_activity=1.0,
+        samhd1_activity=1.0,
+        ddr_activity=0.3,
+        description="DDR impaired (CUX1/USP45/PARP14) — nuclear DNA leakage into cytosol",
+    ),
+    GenotypeScenario(
+        name="mito_impaired",
+        trex1_activity=1.0,
+        samhd1_activity=1.0,
+        mito_activity=0.3,
+        description="Mitochondrial impaired (PRKN/POLG) — mtDNA leakage into cytosol",
+    ),
+    GenotypeScenario(
+        name="triple_hit",
+        trex1_activity=0.5,
+        samhd1_activity=1.0,
+        ddr_activity=0.3,
+        mito_activity=0.3,
+        description="Triple hit — TREX1 het + DDR + mito impaired (multi-axis vulnerability)",
+    ),
 ]
 
 # GAS DNA exposure levels to simulate (normalized 0-1)
@@ -144,6 +176,8 @@ def simulate_pathway(
     gas_dna: float,
     trex1_activity: float,
     samhd1_activity: float,
+    ddr_activity: float = 1.0,
+    mito_activity: float = 1.0,
     cgas_k: float = 0.3,
     sting_k: float = 0.4,
     tbk1_k: float = 0.4,
@@ -154,13 +188,16 @@ def simulate_pathway(
     Model: GAS DNA → [TREX1/SAMHD1 clearance] → cytosolic DNA →
            cGAS → cGAMP → STING → TBK1 → IRF3 → IFN-β
 
-    TREX1 and SAMHD1 act as negative regulators (DNA clearance).
-    Their loss-of-function increases cytosolic DNA accumulation.
+    Additional cytosolic DNA sources:
+      DDR failure (CUX1/USP45/PARP14) → unrepaired nuclear DNA leakage
+      Mitochondrial impairment (PRKN/POLG) → mtDNA leakage
 
     Args:
         gas_dna: GAS pathogen DNA exposure level (0-1).
         trex1_activity: TREX1 enzymatic activity (0=null, 1=WT).
         samhd1_activity: SAMHD1 enzymatic activity (0=null, 1=WT).
+        ddr_activity: DDR gene activity (0=null, 1=WT). CUX1/USP45/PARP14.
+        mito_activity: Mitochondrial gene activity (0=null, 1=WT). PRKN/POLG.
         cgas_k: cGAS half-activation threshold.
         sting_k: STING half-activation threshold.
         tbk1_k: TBK1 half-activation threshold.
@@ -175,7 +212,13 @@ def simulate_pathway(
     # TREX1 degrades DNA directly; SAMHD1 restricts dNTP pools
     # Clearance = TREX1 * 0.7 + SAMHD1 * 0.3 (TREX1 is primary)
     clearance = trex1_activity * 0.7 + samhd1_activity * 0.3
-    state.cytosolic_dna = gas_dna * (1.0 - clearance * 0.9)
+
+    # DDR failure → unrepaired nuclear DNA → cytosolic leakage
+    ddr_leakage = (1.0 - ddr_activity) * 0.3
+    # Mitochondrial impairment → mtDNA leakage
+    mito_leakage = (1.0 - mito_activity) * 0.25
+
+    state.cytosolic_dna = gas_dna * (1.0 - clearance * 0.9) + ddr_leakage + mito_leakage
     state.cytosolic_dna = max(0.0, min(1.0, state.cytosolic_dna))
 
     # cGAS detects cytosolic dsDNA via sigmoidal activation
@@ -220,7 +263,7 @@ def run_genotype_simulations(
             "model_type": "semi-quantitative steady-state (Hill functions)",
             "description": (
                 "Simulates cGAS-STING pathway activation under different "
-                "TREX1/SAMHD1 genotype scenarios and GAS DNA exposure levels"
+                "TREX1/SAMHD1/DDR/mitochondrial genotype scenarios and GAS DNA exposure levels"
             ),
         },
         "dna_exposure_levels": dna_exposures,
@@ -228,13 +271,16 @@ def run_genotype_simulations(
     }
 
     for scenario in scenarios:
-        logger.info("Simulating: %s (TREX1=%.1f, SAMHD1=%.1f)",
-                     scenario.name, scenario.trex1_activity, scenario.samhd1_activity)
+        logger.info("Simulating: %s (TREX1=%.1f, SAMHD1=%.1f, DDR=%.1f, MITO=%.1f)",
+                     scenario.name, scenario.trex1_activity, scenario.samhd1_activity,
+                     scenario.ddr_activity, scenario.mito_activity)
 
         scenario_data = {
             "description": scenario.description,
             "trex1_activity": scenario.trex1_activity,
             "samhd1_activity": scenario.samhd1_activity,
+            "ddr_activity": scenario.ddr_activity,
+            "mito_activity": scenario.mito_activity,
             "exposure_results": [],
         }
 
@@ -243,6 +289,8 @@ def run_genotype_simulations(
                 gas_dna=dna,
                 trex1_activity=scenario.trex1_activity,
                 samhd1_activity=scenario.samhd1_activity,
+                ddr_activity=scenario.ddr_activity,
+                mito_activity=scenario.mito_activity,
             )
             scenario_data["exposure_results"].append({
                 "gas_dna_input": round(dna, 3),
@@ -259,11 +307,16 @@ def run_genotype_simulations(
             gas_dna=0.5,
             trex1_activity=scenario.trex1_activity,
             samhd1_activity=scenario.samhd1_activity,
+            ddr_activity=scenario.ddr_activity,
+            mito_activity=scenario.mito_activity,
         )
         scenario_data["ifn_at_moderate_infection"] = round(moderate_state.ifn_output, 4)
 
         # Summary: threshold DNA exposure to trigger >50% IFN
-        threshold = _find_ifn_threshold(scenario.trex1_activity, scenario.samhd1_activity)
+        threshold = _find_ifn_threshold(
+            scenario.trex1_activity, scenario.samhd1_activity,
+            scenario.ddr_activity, scenario.mito_activity,
+        )
         scenario_data["dna_threshold_50pct_ifn"] = round(threshold, 4) if threshold is not None else None
 
         results["scenarios"][scenario.name] = scenario_data
@@ -274,13 +327,18 @@ def run_genotype_simulations(
 def _find_ifn_threshold(
     trex1_activity: float,
     samhd1_activity: float,
+    ddr_activity: float = 1.0,
+    mito_activity: float = 1.0,
     target_ifn: float = 0.5,
     resolution: int = 100,
 ) -> float | None:
     """Find the minimum DNA exposure that produces >= target IFN output."""
     for i in range(resolution + 1):
         dna = i / resolution
-        state = simulate_pathway(dna, trex1_activity, samhd1_activity)
+        state = simulate_pathway(
+            dna, trex1_activity, samhd1_activity,
+            ddr_activity=ddr_activity, mito_activity=mito_activity,
+        )
         if state.ifn_output >= target_ifn:
             return dna
     return None
@@ -305,12 +363,20 @@ def plot_ifn_response_curves(
         "samhd1_lof": "#C0392B",
         "compound_het": "#8E44AD",
         "compound_lof": "#2C3E50",
+        "ddr_impaired": "#3498DB",
+        "mito_impaired": "#1ABC9C",
+        "triple_hit": "#E91E63",
     }
 
     for name, data in scenarios.items():
         ifn_values = [r["ifn_output"] for r in data["exposure_results"]]
         color = colors.get(name, "#95A5A6")
-        label = f"{name} (TREX1={data['trex1_activity']}, SAMHD1={data['samhd1_activity']})"
+        parts = [f"TREX1={data['trex1_activity']}", f"SAMHD1={data['samhd1_activity']}"]
+        if data.get("ddr_activity", 1.0) != 1.0:
+            parts.append(f"DDR={data['ddr_activity']}")
+        if data.get("mito_activity", 1.0) != 1.0:
+            parts.append(f"MITO={data['mito_activity']}")
+        label = f"{name} ({', '.join(parts)})"
         ax.plot(dna_levels, ifn_values, marker="o", color=color, label=label, linewidth=2)
 
     ax.set_xlabel("GAS DNA Exposure Level", fontsize=12)

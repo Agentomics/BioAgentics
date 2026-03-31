@@ -1,0 +1,770 @@
+{
+  "metadata": {
+    "pathway_genes": {
+      "TREX1": "3'-5' exonuclease; degrades cytosolic DNA",
+      "SAMHD1": "dNTPase; restricts dNTP pools, limits DNA accumulation",
+      "CUX1": "Transcription factor; DDR regulation; haploinsufficiency",
+      "USP45": "Deubiquitinase; base excision repair",
+      "PARP14": "ADP-ribosyltransferase; immune-DDR crosstalk",
+      "PRKN": "E3 ubiquitin ligase; mitophagy; mitochondrial DAMPs regulation",
+      "POLG": "Mitochondrial DNA polymerase gamma; mtDNA maintenance",
+      "MB21D1": "cGAS (cyclic GMP-AMP synthase); detects cytosolic dsDNA",
+      "TMEM173": "STING (stimulator of IFN genes); activated by 2'3'-cGAMP",
+      "TBK1": "TANK-binding kinase 1; phosphorylates IRF3",
+      "IRF3": "Interferon regulatory factor 3; transcription factor for IFN-\u03b2"
+    },
+    "model_type": "semi-quantitative steady-state (Hill functions)",
+    "description": "Simulates cGAS-STING pathway activation under different TREX1/SAMHD1/DDR/mitochondrial genotype scenarios and GAS DNA exposure levels"
+  },
+  "dna_exposure_levels": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.5,
+    0.7,
+    1.0
+  ],
+  "scenarios": {
+    "wild_type": {
+      "description": "Normal TREX1 and SAMHD1 \u2014 full DNA clearance",
+      "trex1_activity": 1.0,
+      "samhd1_activity": 1.0,
+      "ddr_activity": 1.0,
+      "mito_activity": 1.0,
+      "exposure_results": [
+        {
+          "gas_dna_input": 0.0,
+          "cytosolic_dna": 0.0,
+          "cgas_activity": 0.0,
+          "sting_activity": 0.0,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.1,
+          "cytosolic_dna": 0.01,
+          "cgas_activity": 0.0011,
+          "sting_activity": 0.0,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.2,
+          "cytosolic_dna": 0.02,
+          "cgas_activity": 0.0044,
+          "sting_activity": 0.0001,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.3,
+          "cytosolic_dna": 0.03,
+          "cgas_activity": 0.0099,
+          "sting_activity": 0.0006,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.5,
+          "cytosolic_dna": 0.05,
+          "cgas_activity": 0.027,
+          "sting_activity": 0.0041,
+          "tbk1_activity": 0.0001,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.7,
+          "cytosolic_dna": 0.07,
+          "cgas_activity": 0.0516,
+          "sting_activity": 0.0148,
+          "tbk1_activity": 0.0014,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 1.0,
+          "cytosolic_dna": 0.1,
+          "cgas_activity": 0.1,
+          "sting_activity": 0.0534,
+          "tbk1_activity": 0.0175,
+          "irf3_activity": 0.0012,
+          "ifn_output": 0.0012
+        }
+      ],
+      "ifn_at_moderate_infection": 0.0,
+      "dna_threshold_50pct_ifn": null
+    },
+    "trex1_het": {
+      "description": "Heterozygous TREX1 LOF \u2014 partial DNA clearance (carrier)",
+      "trex1_activity": 0.5,
+      "samhd1_activity": 1.0,
+      "ddr_activity": 1.0,
+      "mito_activity": 1.0,
+      "exposure_results": [
+        {
+          "gas_dna_input": 0.0,
+          "cytosolic_dna": 0.0,
+          "cgas_activity": 0.0,
+          "sting_activity": 0.0,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.1,
+          "cytosolic_dna": 0.0415,
+          "cgas_activity": 0.0188,
+          "sting_activity": 0.002,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.2,
+          "cytosolic_dna": 0.083,
+          "cgas_activity": 0.0711,
+          "sting_activity": 0.0277,
+          "tbk1_activity": 0.0048,
+          "irf3_activity": 0.0001,
+          "ifn_output": 0.0001
+        },
+        {
+          "gas_dna_input": 0.3,
+          "cytosolic_dna": 0.1245,
+          "cgas_activity": 0.1469,
+          "sting_activity": 0.1085,
+          "tbk1_activity": 0.0686,
+          "irf3_activity": 0.0185,
+          "ifn_output": 0.0185
+        },
+        {
+          "gas_dna_input": 0.5,
+          "cytosolic_dna": 0.2075,
+          "cgas_activity": 0.3236,
+          "sting_activity": 0.3713,
+          "tbk1_activity": 0.4629,
+          "irf3_activity": 0.4615,
+          "ifn_output": 0.4615
+        },
+        {
+          "gas_dna_input": 0.7,
+          "cytosolic_dna": 0.2905,
+          "cgas_activity": 0.4839,
+          "sting_activity": 0.5691,
+          "tbk1_activity": 0.6694,
+          "irf3_activity": 0.6419,
+          "ifn_output": 0.6419
+        },
+        {
+          "gas_dna_input": 1.0,
+          "cytosolic_dna": 0.415,
+          "cgas_activity": 0.6568,
+          "sting_activity": 0.7087,
+          "tbk1_activity": 0.7584,
+          "irf3_activity": 0.697,
+          "ifn_output": 0.697
+        }
+      ],
+      "ifn_at_moderate_infection": 0.4615,
+      "dna_threshold_50pct_ifn": 0.53
+    },
+    "samhd1_het": {
+      "description": "Heterozygous SAMHD1 LOF \u2014 partial dNTP restriction",
+      "trex1_activity": 1.0,
+      "samhd1_activity": 0.5,
+      "ddr_activity": 1.0,
+      "mito_activity": 1.0,
+      "exposure_results": [
+        {
+          "gas_dna_input": 0.0,
+          "cytosolic_dna": 0.0,
+          "cgas_activity": 0.0,
+          "sting_activity": 0.0,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.1,
+          "cytosolic_dna": 0.0235,
+          "cgas_activity": 0.0061,
+          "sting_activity": 0.0002,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.2,
+          "cytosolic_dna": 0.047,
+          "cgas_activity": 0.024,
+          "sting_activity": 0.0032,
+          "tbk1_activity": 0.0001,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.3,
+          "cytosolic_dna": 0.0705,
+          "cgas_activity": 0.0523,
+          "sting_activity": 0.0152,
+          "tbk1_activity": 0.0014,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.5,
+          "cytosolic_dna": 0.1175,
+          "cgas_activity": 0.133,
+          "sting_activity": 0.0907,
+          "tbk1_activity": 0.0489,
+          "irf3_activity": 0.0095,
+          "ifn_output": 0.0095
+        },
+        {
+          "gas_dna_input": 0.7,
+          "cytosolic_dna": 0.1645,
+          "cgas_activity": 0.2312,
+          "sting_activity": 0.2316,
+          "tbk1_activity": 0.2511,
+          "irf3_activity": 0.2014,
+          "ifn_output": 0.2014
+        },
+        {
+          "gas_dna_input": 1.0,
+          "cytosolic_dna": 0.235,
+          "cgas_activity": 0.3803,
+          "sting_activity": 0.4492,
+          "tbk1_activity": 0.5578,
+          "irf3_activity": 0.5545,
+          "ifn_output": 0.5545
+        }
+      ],
+      "ifn_at_moderate_infection": 0.0095,
+      "dna_threshold_50pct_ifn": 0.93
+    },
+    "trex1_lof": {
+      "description": "TREX1 LOF (hypomorphic) \u2014 severely reduced DNA clearance",
+      "trex1_activity": 0.1,
+      "samhd1_activity": 1.0,
+      "ddr_activity": 1.0,
+      "mito_activity": 1.0,
+      "exposure_results": [
+        {
+          "gas_dna_input": 0.0,
+          "cytosolic_dna": 0.0,
+          "cgas_activity": 0.0,
+          "sting_activity": 0.0,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.1,
+          "cytosolic_dna": 0.0667,
+          "cgas_activity": 0.0471,
+          "sting_activity": 0.0124,
+          "tbk1_activity": 0.001,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.2,
+          "cytosolic_dna": 0.1334,
+          "cgas_activity": 0.1651,
+          "sting_activity": 0.1332,
+          "tbk1_activity": 0.0999,
+          "irf3_activity": 0.0384,
+          "ifn_output": 0.0384
+        },
+        {
+          "gas_dna_input": 0.3,
+          "cytosolic_dna": 0.2001,
+          "cgas_activity": 0.3079,
+          "sting_activity": 0.3484,
+          "tbk1_activity": 0.4314,
+          "irf3_activity": 0.4268,
+          "ifn_output": 0.4268
+        },
+        {
+          "gas_dna_input": 0.5,
+          "cytosolic_dna": 0.3335,
+          "cgas_activity": 0.5527,
+          "sting_activity": 0.6328,
+          "tbk1_activity": 0.7145,
+          "irf3_activity": 0.6713,
+          "ifn_output": 0.6713
+        },
+        {
+          "gas_dna_input": 0.7,
+          "cytosolic_dna": 0.4669,
+          "cgas_activity": 0.7078,
+          "sting_activity": 0.7386,
+          "tbk1_activity": 0.7732,
+          "irf3_activity": 0.7051,
+          "ifn_output": 0.7051
+        },
+        {
+          "gas_dna_input": 1.0,
+          "cytosolic_dna": 0.667,
+          "cgas_activity": 0.8317,
+          "sting_activity": 0.796,
+          "tbk1_activity": 0.7984,
+          "irf3_activity": 0.7183,
+          "ifn_output": 0.7183
+        }
+      ],
+      "ifn_at_moderate_infection": 0.6713,
+      "dna_threshold_50pct_ifn": 0.33
+    },
+    "samhd1_lof": {
+      "description": "SAMHD1 LOF (hypomorphic) \u2014 severely reduced dNTP restriction",
+      "trex1_activity": 1.0,
+      "samhd1_activity": 0.1,
+      "ddr_activity": 1.0,
+      "mito_activity": 1.0,
+      "exposure_results": [
+        {
+          "gas_dna_input": 0.0,
+          "cytosolic_dna": 0.0,
+          "cgas_activity": 0.0,
+          "sting_activity": 0.0,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.1,
+          "cytosolic_dna": 0.0343,
+          "cgas_activity": 0.0129,
+          "sting_activity": 0.0009,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.2,
+          "cytosolic_dna": 0.0686,
+          "cgas_activity": 0.0497,
+          "sting_activity": 0.0137,
+          "tbk1_activity": 0.0012,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.3,
+          "cytosolic_dna": 0.1029,
+          "cgas_activity": 0.1053,
+          "sting_activity": 0.0588,
+          "tbk1_activity": 0.0212,
+          "irf3_activity": 0.0018,
+          "ifn_output": 0.0018
+        },
+        {
+          "gas_dna_input": 0.5,
+          "cytosolic_dna": 0.1715,
+          "cgas_activity": 0.2463,
+          "sting_activity": 0.255,
+          "tbk1_activity": 0.2889,
+          "irf3_activity": 0.2503,
+          "ifn_output": 0.2503
+        },
+        {
+          "gas_dna_input": 0.7,
+          "cytosolic_dna": 0.2401,
+          "cgas_activity": 0.3904,
+          "sting_activity": 0.4623,
+          "tbk1_activity": 0.5719,
+          "irf3_activity": 0.5668,
+          "ifn_output": 0.5668
+        },
+        {
+          "gas_dna_input": 1.0,
+          "cytosolic_dna": 0.343,
+          "cgas_activity": 0.5666,
+          "sting_activity": 0.6442,
+          "tbk1_activity": 0.7217,
+          "irf3_activity": 0.6757,
+          "ifn_output": 0.6757
+        }
+      ],
+      "ifn_at_moderate_infection": 0.2503,
+      "dna_threshold_50pct_ifn": 0.64
+    },
+    "compound_het": {
+      "description": "Compound heterozygous \u2014 both partially impaired (PANS two-hit)",
+      "trex1_activity": 0.5,
+      "samhd1_activity": 0.5,
+      "ddr_activity": 1.0,
+      "mito_activity": 1.0,
+      "exposure_results": [
+        {
+          "gas_dna_input": 0.0,
+          "cytosolic_dna": 0.0,
+          "cgas_activity": 0.0,
+          "sting_activity": 0.0,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.1,
+          "cytosolic_dna": 0.055,
+          "cgas_activity": 0.0325,
+          "sting_activity": 0.0059,
+          "tbk1_activity": 0.0002,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.2,
+          "cytosolic_dna": 0.11,
+          "cgas_activity": 0.1185,
+          "sting_activity": 0.0734,
+          "tbk1_activity": 0.0326,
+          "irf3_activity": 0.0042,
+          "ifn_output": 0.0042
+        },
+        {
+          "gas_dna_input": 0.3,
+          "cytosolic_dna": 0.165,
+          "cgas_activity": 0.2322,
+          "sting_activity": 0.2333,
+          "tbk1_activity": 0.2538,
+          "irf3_activity": 0.2049,
+          "ifn_output": 0.2049
+        },
+        {
+          "gas_dna_input": 0.5,
+          "cytosolic_dna": 0.275,
+          "cgas_activity": 0.4566,
+          "sting_activity": 0.5404,
+          "tbk1_activity": 0.6461,
+          "irf3_activity": 0.6254,
+          "ifn_output": 0.6254
+        },
+        {
+          "gas_dna_input": 0.7,
+          "cytosolic_dna": 0.385,
+          "cgas_activity": 0.6222,
+          "sting_activity": 0.6859,
+          "tbk1_activity": 0.7462,
+          "irf3_activity": 0.6901,
+          "ifn_output": 0.6901
+        },
+        {
+          "gas_dna_input": 1.0,
+          "cytosolic_dna": 0.55,
+          "cgas_activity": 0.7707,
+          "sting_activity": 0.7701,
+          "tbk1_activity": 0.7875,
+          "irf3_activity": 0.7127,
+          "ifn_output": 0.7127
+        }
+      ],
+      "ifn_at_moderate_infection": 0.6254,
+      "dna_threshold_50pct_ifn": 0.4
+    },
+    "compound_lof": {
+      "description": "Compound LOF \u2014 both severely impaired (AGS-like)",
+      "trex1_activity": 0.1,
+      "samhd1_activity": 0.1,
+      "ddr_activity": 1.0,
+      "mito_activity": 1.0,
+      "exposure_results": [
+        {
+          "gas_dna_input": 0.0,
+          "cytosolic_dna": 0.0,
+          "cgas_activity": 0.0,
+          "sting_activity": 0.0,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.1,
+          "cytosolic_dna": 0.091,
+          "cgas_activity": 0.0843,
+          "sting_activity": 0.0385,
+          "tbk1_activity": 0.0092,
+          "irf3_activity": 0.0003,
+          "ifn_output": 0.0003
+        },
+        {
+          "gas_dna_input": 0.2,
+          "cytosolic_dna": 0.182,
+          "cgas_activity": 0.269,
+          "sting_activity": 0.2899,
+          "tbk1_activity": 0.3444,
+          "irf3_activity": 0.3217,
+          "ifn_output": 0.3217
+        },
+        {
+          "gas_dna_input": 0.3,
+          "cytosolic_dna": 0.273,
+          "cgas_activity": 0.453,
+          "sting_activity": 0.5365,
+          "tbk1_activity": 0.6427,
+          "irf3_activity": 0.623,
+          "ifn_output": 0.623
+        },
+        {
+          "gas_dna_input": 0.5,
+          "cytosolic_dna": 0.455,
+          "cgas_activity": 0.697,
+          "sting_activity": 0.7326,
+          "tbk1_activity": 0.7704,
+          "irf3_activity": 0.7036,
+          "ifn_output": 0.7036
+        },
+        {
+          "gas_dna_input": 0.7,
+          "cytosolic_dna": 0.637,
+          "cgas_activity": 0.8185,
+          "sting_activity": 0.7907,
+          "tbk1_activity": 0.7962,
+          "irf3_activity": 0.7172,
+          "ifn_output": 0.7172
+        },
+        {
+          "gas_dna_input": 1.0,
+          "cytosolic_dna": 0.91,
+          "cgas_activity": 0.902,
+          "sting_activity": 0.8211,
+          "tbk1_activity": 0.8082,
+          "irf3_activity": 0.7232,
+          "ifn_output": 0.7232
+        }
+      ],
+      "ifn_at_moderate_infection": 0.7036,
+      "dna_threshold_50pct_ifn": 0.24
+    },
+    "ddr_impaired": {
+      "description": "DDR impaired (CUX1/USP45/PARP14) \u2014 nuclear DNA leakage into cytosol",
+      "trex1_activity": 1.0,
+      "samhd1_activity": 1.0,
+      "ddr_activity": 0.3,
+      "mito_activity": 1.0,
+      "exposure_results": [
+        {
+          "gas_dna_input": 0.0,
+          "cytosolic_dna": 0.21,
+          "cgas_activity": 0.3289,
+          "sting_activity": 0.3789,
+          "tbk1_activity": 0.4729,
+          "irf3_activity": 0.4722,
+          "ifn_output": 0.4722
+        },
+        {
+          "gas_dna_input": 0.1,
+          "cytosolic_dna": 0.22,
+          "cgas_activity": 0.3497,
+          "sting_activity": 0.4082,
+          "tbk1_activity": 0.5102,
+          "irf3_activity": 0.5101,
+          "ifn_output": 0.5101
+        },
+        {
+          "gas_dna_input": 0.2,
+          "cytosolic_dna": 0.23,
+          "cgas_activity": 0.3702,
+          "sting_activity": 0.436,
+          "tbk1_activity": 0.543,
+          "irf3_activity": 0.5411,
+          "ifn_output": 0.5411
+        },
+        {
+          "gas_dna_input": 0.3,
+          "cytosolic_dna": 0.24,
+          "cgas_activity": 0.3902,
+          "sting_activity": 0.4621,
+          "tbk1_activity": 0.5716,
+          "irf3_activity": 0.5666,
+          "ifn_output": 0.5666
+        },
+        {
+          "gas_dna_input": 0.5,
+          "cytosolic_dna": 0.26,
+          "cgas_activity": 0.4289,
+          "sting_activity": 0.5093,
+          "tbk1_activity": 0.6185,
+          "irf3_activity": 0.6047,
+          "ifn_output": 0.6047
+        },
+        {
+          "gas_dna_input": 0.7,
+          "cytosolic_dna": 0.28,
+          "cgas_activity": 0.4656,
+          "sting_activity": 0.5501,
+          "tbk1_activity": 0.6541,
+          "irf3_activity": 0.6312,
+          "ifn_output": 0.6312
+        },
+        {
+          "gas_dna_input": 1.0,
+          "cytosolic_dna": 0.31,
+          "cgas_activity": 0.5164,
+          "sting_activity": 0.6007,
+          "tbk1_activity": 0.6928,
+          "irf3_activity": 0.6575,
+          "ifn_output": 0.6575
+        }
+      ],
+      "ifn_at_moderate_infection": 0.6047,
+      "dna_threshold_50pct_ifn": 0.08
+    },
+    "mito_impaired": {
+      "description": "Mitochondrial impaired (PRKN/POLG) \u2014 mtDNA leakage into cytosol",
+      "trex1_activity": 1.0,
+      "samhd1_activity": 1.0,
+      "ddr_activity": 1.0,
+      "mito_activity": 0.3,
+      "exposure_results": [
+        {
+          "gas_dna_input": 0.0,
+          "cytosolic_dna": 0.175,
+          "cgas_activity": 0.2539,
+          "sting_activity": 0.2666,
+          "tbk1_activity": 0.3076,
+          "irf3_activity": 0.2746,
+          "ifn_output": 0.2746
+        },
+        {
+          "gas_dna_input": 0.1,
+          "cytosolic_dna": 0.185,
+          "cgas_activity": 0.2755,
+          "sting_activity": 0.2998,
+          "tbk1_activity": 0.3597,
+          "irf3_activity": 0.341,
+          "ifn_output": 0.341
+        },
+        {
+          "gas_dna_input": 0.2,
+          "cytosolic_dna": 0.195,
+          "cgas_activity": 0.297,
+          "sting_activity": 0.3323,
+          "tbk1_activity": 0.4083,
+          "irf3_activity": 0.4,
+          "ifn_output": 0.4
+        },
+        {
+          "gas_dna_input": 0.3,
+          "cytosolic_dna": 0.205,
+          "cgas_activity": 0.3183,
+          "sting_activity": 0.3637,
+          "tbk1_activity": 0.4525,
+          "irf3_activity": 0.4503,
+          "ifn_output": 0.4503
+        },
+        {
+          "gas_dna_input": 0.5,
+          "cytosolic_dna": 0.225,
+          "cgas_activity": 0.36,
+          "sting_activity": 0.4223,
+          "tbk1_activity": 0.5271,
+          "irf3_activity": 0.5264,
+          "ifn_output": 0.5264
+        },
+        {
+          "gas_dna_input": 0.7,
+          "cytosolic_dna": 0.245,
+          "cgas_activity": 0.4001,
+          "sting_activity": 0.4745,
+          "tbk1_activity": 0.5846,
+          "irf3_activity": 0.5775,
+          "ifn_output": 0.5775
+        },
+        {
+          "gas_dna_input": 1.0,
+          "cytosolic_dna": 0.275,
+          "cgas_activity": 0.4566,
+          "sting_activity": 0.5404,
+          "tbk1_activity": 0.6461,
+          "irf3_activity": 0.6254,
+          "ifn_output": 0.6254
+        }
+      ],
+      "ifn_at_moderate_infection": 0.5264,
+      "dna_threshold_50pct_ifn": 0.43
+    },
+    "triple_hit": {
+      "description": "Triple hit \u2014 TREX1 het + DDR + mito impaired (multi-axis vulnerability)",
+      "trex1_activity": 0.5,
+      "samhd1_activity": 1.0,
+      "ddr_activity": 0.3,
+      "mito_activity": 0.3,
+      "exposure_results": [
+        {
+          "gas_dna_input": 0.0,
+          "cytosolic_dna": 0.385,
+          "cgas_activity": 0.6222,
+          "sting_activity": 0.6859,
+          "tbk1_activity": 0.7462,
+          "irf3_activity": 0.6901,
+          "ifn_output": 0.6901
+        },
+        {
+          "gas_dna_input": 0.1,
+          "cytosolic_dna": 0.4265,
+          "cgas_activity": 0.669,
+          "sting_activity": 0.7163,
+          "tbk1_activity": 0.7623,
+          "irf3_activity": 0.6992,
+          "ifn_output": 0.6992
+        },
+        {
+          "gas_dna_input": 0.2,
+          "cytosolic_dna": 0.468,
+          "cgas_activity": 0.7088,
+          "sting_activity": 0.7391,
+          "tbk1_activity": 0.7735,
+          "irf3_activity": 0.7053,
+          "ifn_output": 0.7053
+        },
+        {
+          "gas_dna_input": 0.3,
+          "cytosolic_dna": 0.5095,
+          "cgas_activity": 0.7426,
+          "sting_activity": 0.7567,
+          "tbk1_activity": 0.7816,
+          "irf3_activity": 0.7096,
+          "ifn_output": 0.7096
+        },
+        {
+          "gas_dna_input": 0.5,
+          "cytosolic_dna": 0.5925,
+          "cgas_activity": 0.7959,
+          "sting_activity": 0.7813,
+          "tbk1_activity": 0.7923,
+          "irf3_activity": 0.7152,
+          "ifn_output": 0.7152
+        },
+        {
+          "gas_dna_input": 0.7,
+          "cytosolic_dna": 0.6755,
+          "cgas_activity": 0.8353,
+          "sting_activity": 0.7974,
+          "tbk1_activity": 0.7989,
+          "irf3_activity": 0.7186,
+          "ifn_output": 0.7186
+        },
+        {
+          "gas_dna_input": 1.0,
+          "cytosolic_dna": 0.8,
+          "cgas_activity": 0.8767,
+          "sting_activity": 0.8126,
+          "tbk1_activity": 0.8049,
+          "irf3_activity": 0.7216,
+          "ifn_output": 0.7216
+        }
+      ],
+      "ifn_at_moderate_infection": 0.7152,
+      "dna_threshold_50pct_ifn": 0.0
+    }
+  }
+}

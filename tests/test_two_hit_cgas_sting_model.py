@@ -72,12 +72,60 @@ class TestSimulatePathway:
                     state.ifn_output]:
             assert 0.0 <= val <= 1.0
 
+    def test_ddr_impairment_increases_cytosolic_dna(self):
+        """DDR impairment should increase cytosolic DNA even without infection."""
+        wt = simulate_pathway(gas_dna=0.0, trex1_activity=1.0, samhd1_activity=1.0, ddr_activity=1.0)
+        ddr_lof = simulate_pathway(gas_dna=0.0, trex1_activity=1.0, samhd1_activity=1.0, ddr_activity=0.0)
+        assert ddr_lof.cytosolic_dna > wt.cytosolic_dna
+
+    def test_mito_impairment_increases_cytosolic_dna(self):
+        """Mitochondrial impairment should increase cytosolic DNA even without infection."""
+        wt = simulate_pathway(gas_dna=0.0, trex1_activity=1.0, samhd1_activity=1.0, mito_activity=1.0)
+        mito_lof = simulate_pathway(gas_dna=0.0, trex1_activity=1.0, samhd1_activity=1.0, mito_activity=0.0)
+        assert mito_lof.cytosolic_dna > wt.cytosolic_dna
+
+    def test_ddr_leakage_magnitude(self):
+        """Full DDR loss should contribute 0.3 to cytosolic DNA."""
+        state = simulate_pathway(gas_dna=0.0, trex1_activity=1.0, samhd1_activity=1.0, ddr_activity=0.0)
+        assert abs(state.cytosolic_dna - 0.3) < 0.01
+
+    def test_mito_leakage_magnitude(self):
+        """Full mito loss should contribute 0.25 to cytosolic DNA."""
+        state = simulate_pathway(gas_dna=0.0, trex1_activity=1.0, samhd1_activity=1.0, mito_activity=0.0)
+        assert abs(state.cytosolic_dna - 0.25) < 0.01
+
+    def test_triple_hit_higher_than_single(self):
+        """Triple hit (TREX1+DDR+mito) should produce more IFN than any single axis."""
+        trex1_only = simulate_pathway(gas_dna=0.5, trex1_activity=0.5, samhd1_activity=1.0)
+        ddr_only = simulate_pathway(gas_dna=0.5, trex1_activity=1.0, samhd1_activity=1.0, ddr_activity=0.3)
+        triple = simulate_pathway(gas_dna=0.5, trex1_activity=0.5, samhd1_activity=1.0,
+                                  ddr_activity=0.3, mito_activity=0.3)
+        assert triple.ifn_output > trex1_only.ifn_output
+        assert triple.ifn_output > ddr_only.ifn_output
+
+    def test_backward_compatible_defaults(self):
+        """Default ddr/mito=1.0 should not change existing scenario results."""
+        old = simulate_pathway(gas_dna=0.5, trex1_activity=0.5, samhd1_activity=0.5)
+        new = simulate_pathway(gas_dna=0.5, trex1_activity=0.5, samhd1_activity=0.5,
+                               ddr_activity=1.0, mito_activity=1.0)
+        assert old.ifn_output == new.ifn_output
+
+    def test_output_bounded_with_all_impaired(self):
+        """All outputs should stay in [0, 1] even with maximum impairment."""
+        state = simulate_pathway(gas_dna=1.0, trex1_activity=0.0, samhd1_activity=0.0,
+                                 ddr_activity=0.0, mito_activity=0.0)
+        for val in [state.cytosolic_dna, state.cgas_activity, state.cgamp_level,
+                    state.sting_activity, state.tbk1_activity, state.irf3_activity,
+                    state.ifn_output]:
+            assert 0.0 <= val <= 1.0
+
 
 class TestRunGenotypSimulations:
     def test_returns_all_scenarios(self):
         results = run_genotype_simulations()
         assert "scenarios" in results
         assert len(results["scenarios"]) == len(DEFAULT_SCENARIOS)
+        assert len(DEFAULT_SCENARIOS) == 10
 
     def test_scenario_has_exposure_results(self):
         results = run_genotype_simulations()
