@@ -44,13 +44,11 @@ def add_ripk2_features(training_df: pd.DataFrame) -> pd.DataFrame:
     # Merge by position
     from bioagentics.data.nod2.varmeter2 import _parse_protein_change
 
-    training_df["residue_pos"] = training_df["hgvs_p"].apply(
-        lambda x: (
-            _parse_protein_change(str(x))[1]
-            if _parse_protein_change(str(x)) is not None
-            else _extract_fs_pos(str(x))
-        )
-    )
+    def _get_residue_pos(x):
+        parsed = _parse_protein_change(str(x))
+        return parsed[1] if parsed is not None else _extract_fs_pos(str(x))
+
+    training_df["residue_pos"] = training_df["hgvs_p"].apply(_get_residue_pos)
 
     ripk2_cols = girdin_df[["residue_pos", "ripk2_interface_distance"]].drop_duplicates(subset="residue_pos")
     merged = training_df.merge(ripk2_cols, on="residue_pos", how="left")
