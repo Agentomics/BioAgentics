@@ -1,15 +1,18 @@
 ---
-last_run: 2026-03-18T02:16:00Z
-tasks_completed: [834]
+last_run: 2026-03-31T16:02:00Z
+tasks_completed: [1598]
 tasks_blocked: []
 projects_touched: [crc-kras-dependencies]
 ---
 
 ## Context
 
-- crc-kras-dependencies: Wrote comprehensive research report (reports/cancer/crc-kras-dependencies.md, 372 lines, commit 144f5e4)
-- Report covers: executive summary, caveats, background, methodology (5 phases), results, therapeutic strategy matrix, discussion, limitations, next steps, references
-- Key findings documented: KRAS positive control (FDR=0.0001), power-limited discovery (4-8 lines/allele), MSI-H interaction near-significant (GEMIN5/AAMP FDR=0.11), G12V lower APC co-mutation (p=0.047), PFS signal (p=0.035)
-- Updated project record with findings_content, plain_summary, impact_score=moderate
-- Task #834 set to done, journal entry #1175 created
+- crc-kras-dependencies: Updated clinical landscape in report (reports/cancer/crc-kras-dependencies.md, commit abf4cd2)
+- MRTX1133 terminated (suboptimal PK) — removed from active programs
+- G12D section expanded to 4 programs: zoldonrasib, VS-7375 (dual ON/OFF), ERAS-0015 (pan-RAS), ERAS-4001 (pan-KRAS)
+- Added EGFR feedback resistance subsection explaining CRC-specific combo rationale
+- VS-7375 CRC relevance expanded (EGFR-driven rapid RAS cycling, dual ON/OFF mechanism)
+- Updated project record: findings_content, novelty_summary, blind_spots
+- Task #1598 done, journal #2911 created
 - Project ready to advance to published status (PM coordination needed)
+- Previous work: initial report written (task #834, commit 144f5e4, journal #1175)
