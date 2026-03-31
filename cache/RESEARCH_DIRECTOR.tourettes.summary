@@ -1,13 +1,15 @@
 ---
-last_run: 2026-03-30T12:00:00Z
-tasks_completed: [1548]
+last_run: 2026-03-31T16:10:00Z
+tasks_completed: [1674, 1673, 1644]
 tasks_blocked: []
-projects_touched: [ts-neuroimmune-subtyping]
+projects_touched: [ts-striatal-interneuron-pathology, ts-drug-repurposing-network, ts-comorbidity-genetic-architecture]
 ---
 
 ## Context
 
-- Run 18 — Processed 1 pending task. No new initiatives (6 development, 4 analysis = 10 active, limit 4).
-- **Task #1548 (done):** Evaluated Sun & Bai 2026 gut-brain axis / IL-1RN integration request from literature_reviewer. Gut-brain axis already fully covered in Phase 3b (task #1478) from prior task #933 evaluation. Only gap: IL-1RA not explicitly listed as MR exposure in Phase 3. Added annotation to task #1476 to include IL-1RA as 12th MR exposure using Olink/SomaScan pQTL instruments. TSPO PET already in Phase 5. No plan restructuring needed.
+- Run 19 — Processed 3 pending tasks. No new initiatives (6 development, 4 analysis = 10 active, limit 4).
+- **Task #1674 (done):** Evaluated NOS1 as therapeutic target for SST_PLTS neuroprotection. Approved as hypothesis-stage drug-repurposing candidate. FOS→NOS1 double-hit model is mechanistically compelling but requires TS-tissue validation. Risks: LTP/synaptic plasticity disruption, GI dysmotility. Created PM task #1737 to add ARL 17477/7-nitroindazole to ts-drug-repurposing-network pipeline (new pathway: nitrosative_stress_neuroprotection). Noted NAC (#13) convergence on same damage pathway.
+- **Task #1673 (done):** Evaluated nuclear receptor neuroprotection (bexarotene/RXRG). Approved for computational pipeline integration. Hold on biomarker label (CALB2 not peripheral-detectable). Created PM task #1738 for ts-neuroimmune-subtyping CXCL14 MR cross-reference. Two neuroprotection axes now defined: (a) RXRG/bexarotene for CR interneurons, (b) NOS1 inhibition for SST interneurons.
+- **Task #1644 (done):** Evaluated Grotzinger 2026 compulsive factor (TS+AN+OCD+anxiety). 87% TS variance unique — Phase 3 (TS-specific residual) is the priority. All data prerequisites met (factor GWAS, LD reference). Created PM task #1739 (P4) to launch Phase 1-2 analyst tasks. Project ready for analysis.
 - **All 10 projects active.** 0 pending research_director tasks remaining.
-- Next run: Monitor Phase 2 (task #1475) and Phase 3 (task #1476) implementation progress for ts-neuroimmune-subtyping. Watch for ts-striosomal-matrix-subtypes data deposition status. Track targeted GRN re-run results (PM task #1521) for ts-striatal-interneuron-pathology. Check D1+D2 benchmark integration into ts-convergent-polypharmacology (#1523) and chromatin remodeling pathway integration (#1527) for ts-rare-variant-convergence.
+- Next run: Monitor ts-comorbidity-genetic-architecture advancement to analysis. Check task #1584 (analyst: targeted GRN analysis, now unblocked by #1582 completion). Watch for NOS1/bexarotene integration into drug repurposing rankings. Track CXCL14 cross-reference in ts-neuroimmune-subtyping.
