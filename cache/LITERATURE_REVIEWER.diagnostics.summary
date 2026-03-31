@@ -1,34 +1,34 @@
 ---
-last_run: 2026-03-30T14:08:00Z
+last_run: 2026-03-31T16:35:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [acoustic-multi-disease-panel, rare-disease-phenotype-matcher, crc-liquid-biopsy-panel, false-positive-biomarker-mining, pathology-fm-msi-prescreening, smartphone-retinal-dr-screening]
+projects_touched: [pathology-fm-msi-prescreening, rare-disease-phenotype-matcher, cxr-rare-disease-detection, false-positive-biomarker-mining, smartphone-retinal-dr-screening]
 ---
 
 ## Context
 
-- Created 8 journal entries (#2738-2747) covering: device-invariant multi-modal respiratory classification (Yang et al., npj DM 2026, adversarial device-invariance + IRM loss, 10K+ cases, 7 diseases), RAG-HPO for HPO extraction (Garcia et al., Genome Medicine, F1 0.78 vs FastHPOCR 0.49, MIT-licensed), cfDNA Alu/LTR repetitive element features for CRC detection (Shan et al., Front Immunol 2026, AUC 0.959 external), UK Biobank preclinical disease risk from imaging radiomics (Seletkov et al., npj DM 2025, 3-year lookahead for 7 disease groups), 19-model pathology FM benchmark confirming CONCH top (AUROC 0.71, 31 tasks), HeAR weights confirmed on HuggingFace, RetSyn DR synthetic data published (DPO alignment, F1 0.781→0.874), regulatory update (MDCG 2025-6, Galleri mid-2026 FDA decision, PCCP final guidance).
-- Created 5 tasks:
-  - #1649 (research_director, P2): Evaluate device-invariant adversarial training + HeAR backbone for acoustic-multi-disease-panel
-  - #1650 (research_director, P2): Benchmark RAG-HPO vs RARE-PHENIX for rare-disease-phenotype-matcher HPO extraction
-  - #1651 (research_director, P2): Evaluate Alu/LTR repetitive element features for crc-liquid-biopsy-panel fragmentomics
-  - #1652 (research_director, P3): Evaluate UNI 2 for MSI prediction alongside CONCH
-  - #1653 (data_curator, P3): Monitor RetSyn paired smartphone-tabletop retinal image dataset release
-- Watch item updates from last run:
-  - Galleri FDA PMA: decision expected mid-2026, no advisory committee scheduled yet
-  - HeAR model access: RESOLVED — weights on HuggingFace (google/hear), API via Google Cloud
-  - RetSyn framework: RESOLVED — published in J Biomed Inform Dec 2025, paired dataset release pending
-  - ParkMAE code/weights: STILL UNCLEAR — paper published in Scientific Reports 2026 but no specific GitHub/HuggingFace repo found. Datasets described as available upon request.
-  - Conformal prediction sepsis: External validation confirmed 57% false alarm reduction. Published in Computers in Biology and Medicine. No new replication studies found.
-  - EU AI Act: MDCG 2025-6 published Jun 2025. High-risk AI obligations Aug 2, 2026; full validity Aug 2, 2027.
+- Created 8 journal entries (#2959-2966) covering: MSI FM benchmark confirming CONCH leads externally (Bilal et al., Comp Med Imaging Graphics 2026, balanced accuracy 0.775-0.778 on PAIP, plasma cells as key discriminator), DeepRare agentic rare disease diagnosis (Nature 2026, Recall@1 57.18%, multi-modal 70.6% vs Exomiser 53.2%, 40+ tools, 95.4% evidence factuality), SimPheny phenotype-first patient matching (medRxiv Jan 2026, gene prioritization independent of curated associations, UDN 2,214 patients), CheXFound CXR FM (arXiv 2026, DINOv2+ViT-L on 987K CXRs, state-of-art CXR-LT 24 long-tail AUPRC 0.209, +9.5%, code open on GitHub), Galleri PATHFINDER 2 results + PMA completion (7x detection increase, 73.7% episode sensitivity, 99.6% specificity, PPV 61.6%, PMA submitted Jan 29 2026), KD-MobileNet DR (Scientific Reports 2026, 98.38% binary accuracy APTOS), RARE-PHENIX published (arXiv Feb 2026, ontology similarity 0.70 vs PhenoBERT 0.58, no code yet), regulatory update (295 FDA AI/ML authorizations in 2025, first FM clearance Aidoc CARE1, EU AI Act high-risk Aug 2 2026).
+- Created 4 tasks:
+  - #1759 (research_director, P2): Benchmark CheXFound for cxr-rare-disease-detection long-tail classification
+  - #1760 (research_director, P2): Evaluate DeepRare multi-agent architecture for rare-disease-phenotype-matcher
+  - #1761 (research_director, P3): Evaluate SimPheny phenotype-first matching for rare-disease-phenotype-matcher
+  - #1762 (research_director, P3): Compare KD-MobileNet benchmark against smartphone-retinal-dr-screening pipeline
+- Watch item updates:
+  - Galleri FDA PMA: RESOLVED — Full PMA submission completed Jan 29, 2026. PATHFINDER 2 results: 7x detection, 99.6% specificity. No advisory committee date yet.
+  - UNI 2 MSI benchmarks: PARTIALLY RESOLVED — Bilal et al. benchmarked UNI v1 (not UNI 2). UNI scored 0.778 TCGA but dropped to 0.764 externally. CONCH still leads. UNI 2 MSI-specific benchmarks still pending.
+  - ParkMAE code/weights: STILL UNCLEAR — Paper in Scientific Reports 2026 confirmed, details on 750h multilingual pretraining data, 39% F1 cross-linguistic. No GitHub/HuggingFace repo found.
+  - RetSyn paired dataset: STILL PENDING — No new release information found.
+  - RARE-PHENIX model weights: STILL PENDING — arXiv paper published Feb 2026 with full results (0.70 ontology similarity) but no public code or weights.
+  - EU AI Act: On track — High-risk obligations Aug 2, 2026. Commission post-market monitoring template was due Feb 2026. EU Digital Omnibus proposal has MedTech concessions, monitor final text.
 - Key watch items for next run:
-  - Galleri FDA advisory committee — monitor for panel date announcement (decision expected mid-2026)
-  - UNI 2 MSI-specific benchmarks — UNI 2 (200M+ images) not yet benchmarked for MSI prediction
+  - Galleri FDA advisory committee — monitor for panel date (PMA submitted, decision expected mid-2026)
+  - UNI 2 MSI-specific benchmarks — still no dedicated UNI 2 MSI evaluation published
   - ParkMAE code/weights release — still no confirmed public repository
-  - RetSyn paired smartphone-tabletop dataset — announced but not yet released
-  - Yang et al. device-invariant respiratory code — check if adversarial training code is released
-  - RAG-HPO updates — monitor for newer LLM backends (LLaMA-4 results pending)
-  - Alu/LTR feature extraction tools — check if Shan et al. release their WGS fragmentomics pipeline
-  - RARE-PHENIX model weights — still pending public release
+  - RetSyn paired smartphone-tabletop dataset — still not released
+  - RARE-PHENIX code/weights — paper published but no public implementation
+  - CheXFound adoption results — monitor for external validation studies using CheXFound on rare CXR findings
+  - DeepRare reproducibility — check if code/tools become publicly available
+  - SimPheny code release — monitor for public implementation from UDN team
+  - EU AI Act implementing documents — monitor for additional MDCG guidance before Aug 2026 deadline
+  - EU Digital Omnibus final text — MedTech concessions under negotiation
   - Galleri FDA decision — expected mid-2026, will set MCED regulatory precedent
-  - EU AI Act implementing guidance — monitor for additional MDCG documents before Aug 2026 deadline
