@@ -1,0 +1,188 @@
+{
+  "phase": "2.2",
+  "description": "NNLS deconvolution of anti-TNF bulk using IL-23 scRNA-seq atlas reference",
+  "reference_atlas": "GSE134809_annotated.h5ad",
+  "deconvolution_method": "NNLS (non-negative least squares) on top 2000 variable genes, log1p reference",
+  "n_samples": 83,
+  "mean_proportions": {
+    "epithelial": 0.424602,
+    "immune": 0.125889,
+    "stromal": 0.184985
+  },
+  "loso_cv_results": {
+    "epithelial_proportion": {
+      "overall_auc": 0.5262,
+      "auc_95ci": [
+        0.3998,
+        0.6476
+      ],
+      "per_study": [
+        {
+          "held_out_study": "GSE16879",
+          "n_test": 37,
+          "auc": 0.5324,
+          "coef": 0.1694
+        },
+        {
+          "held_out_study": "GSE12251",
+          "n_test": 23,
+          "auc": 0.6136,
+          "coef": 0.3183
+        },
+        {
+          "held_out_study": "GSE73661",
+          "n_test": 23,
+          "auc": 0.8583,
+          "coef": 0.1391
+        }
+      ]
+    },
+    "immune_proportion": {
+      "overall_auc": 0.616,
+      "auc_95ci": [
+        0.4834,
+        0.7352
+      ],
+      "per_study": [
+        {
+          "held_out_study": "GSE16879",
+          "n_test": 37,
+          "auc": 0.5662,
+          "coef": -0.7816
+        },
+        {
+          "held_out_study": "GSE12251",
+          "n_test": 23,
+          "auc": 0.6667,
+          "coef": -0.4596
+        },
+        {
+          "held_out_study": "GSE73661",
+          "n_test": 23,
+          "auc": 0.7333,
+          "coef": -0.5261
+        }
+      ]
+    },
+    "stromal_proportion": {
+      "overall_auc": 0.6669,
+      "auc_95ci": [
+        0.5491,
+        0.7837
+      ],
+      "per_study": [
+        {
+          "held_out_study": "GSE16879",
+          "n_test": 37,
+          "auc": 0.7353,
+          "coef": -0.5214
+        },
+        {
+          "held_out_study": "GSE12251",
+          "n_test": 23,
+          "auc": 0.697,
+          "coef": -0.5378
+        },
+        {
+          "held_out_study": "GSE73661",
+          "n_test": 23,
+          "auc": 0.7667,
+          "coef": -0.6848
+        }
+      ]
+    },
+    "goblet_proportion": {
+      "overall_auc": 0.6302,
+      "auc_95ci": [
+        0.503,
+        0.7509
+      ],
+      "per_study": [
+        {
+          "held_out_study": "GSE16879",
+          "n_test": 37,
+          "auc": 0.5941,
+          "coef": 0.6185
+        },
+        {
+          "held_out_study": "GSE12251",
+          "n_test": 23,
+          "auc": 0.7803,
+          "coef": 0.3464
+        },
+        {
+          "held_out_study": "GSE73661",
+          "n_test": 23,
+          "auc": 0.5,
+          "coef": 0.4108
+        }
+      ]
+    }
+  },
+  "per_study_associations": {
+    "epithelial_proportion": [
+      {
+        "study": "GSE16879",
+        "n_resp": 20,
+        "n_non_resp": 17,
+        "resp_mean": 0.595795,
+        "non_resp_mean": 0.562764,
+        "t_p": 0.705339,
+        "mwu_p": 0.748912
+      },
+      {
+        "study": "GSE12251",
+        "n_resp": 12,
+        "n_non_resp": 11,
+        "resp_mean": 0.257963,
+        "non_resp_mean": 0.223838,
+        "t_p": 0.45636,
+        "mwu_p": 0.372171
+      },
+      {
+        "study": "GSE73661",
+        "n_resp": 8,
+        "n_non_resp": 15,
+        "resp_mean": 0.38608,
+        "non_resp_mean": 0.34084,
+        "t_p": 0.013446,
+        "mwu_p": 0.004169
+      }
+    ],
+    "immune_proportion": [
+      {
+        "study": "GSE16879",
+        "n_resp": 20,
+        "n_non_resp": 17,
+        "resp_mean": 0.059254,
+        "non_resp_mean": 0.076295,
+        "t_p": 0.496386,
+        "mwu_p": 0.495152
+      },
+      {
+        "study": "GSE12251",
+        "n_resp": 12,
+        "n_non_resp": 11,
+        "resp_mean": 0.110213,
+        "non_resp_mean": 0.258202,
+        "t_p": 0.051769,
+        "mwu_p": 0.184669
+      },
+      {
+        "study": "GSE73661",
+        "n_resp": 8,
+        "n_non_resp": 15,
+        "resp_mean": 0.150953,
+        "non_resp_mean": 0.173087,
+        "t_p": 0.032511,
+        "mwu_p": 0.075503
+      }
+    ]
+  },
+  "comparison_to_phase1": {
+    "phase1_reserve_auc": 0.558,
+    "epithelial_proportion_auc": 0.5262,
+    "delta": -0.0318
+  },
+  "success_criterion": "epithelial proportion correlates with response (p<0.05) in \u22652/3 cohorts"
+}
