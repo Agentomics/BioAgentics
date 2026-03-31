@@ -43,9 +43,14 @@ LOF_CLASSES = {
 SWISNF_GENES = ["ARID1A", "SMARCA4"]
 
 # Available TCGA cancer types with expression + mutation data
+# "expr" can be a directory of STAR-Counts TSVs or a slim CSV matrix
 TCGA_COHORTS = {
     "LUAD": {"expr": TCGA_DIR / "luad" / "expression", "mut": TCGA_DIR / "luad" / "mutations"},
     "LUSC": {"expr": TCGA_DIR / "lusc" / "expression", "mut": TCGA_DIR / "lusc" / "mutations"},
+    "UCEC": {"expr": TCGA_DIR / "ucec" / "ucec_expression_slim.csv", "mut": TCGA_DIR / "ucec" / "mutations"},
+    "OV": {"expr": TCGA_DIR / "ov" / "ov_expression_slim.csv", "mut": TCGA_DIR / "ov" / "mutations"},
+    "STAD": {"expr": TCGA_DIR / "stad" / "stad_expression_slim.csv", "mut": TCGA_DIR / "stad" / "mutations"},
+    "COAD": {"expr": TCGA_DIR / "coad" / "coad_expression_slim.csv", "mut": TCGA_DIR / "coad" / "mutations"},
 }
 
 
@@ -141,23 +146,26 @@ def compute_differential_expression(
     return df.sort_values("p_value").reset_index(drop=True)
 
 
-def process_cohort(
-    cohort_name: str,
-    expr_dir: Path,
-    mut_dir: Path,
-    convergent_genes: list[str],
-) -> pd.DataFrame:
-    """Process a single TCGA cohort: load data, classify, compute DE."""
-    print(f"\n--- {cohort_name} ---")
+def load_expression_data(expr_path: Path) -> pd.DataFrame:
+    """Load expression data from either a directory of TSVs or a slim CSV matrix.
 
-    # Load expression matrix
-    print(f"  Loading expression data from {expr_dir.name}/...")
-    expr_matrix = load_tcga_expression_matrix(expr_dir)
+    Returns a DataFrame indexed by patient barcode with gene columns.
+    """
+    if expr_path.is_file() and expr_path.suffix == ".csv":
+        # Slim CSV matrix (patient x gene) — already has patient barcodes as index
+        print(f"  Loading slim expression matrix from {expr_path.name}...")
+        expr_matrix = pd.read_csv(expr_path, index_col=0)
+        print(f"    {expr_matrix.shape[0]} patients, {expr_matrix.shape[1]} genes")
+        return expr_matrix
+
+    # Directory of STAR-Counts TSV files
+    print(f"  Loading expression data from {expr_path.name}/...")
+    expr_matrix = load_tcga_expression_matrix(expr_path)
     print(f"    {expr_matrix.shape[0]} samples, {expr_matrix.shape[1]} genes")
 
     # Build UUID-to-patient mapping
     print("  Building UUID-to-patient mapping...")
-    uuid_to_patient = build_uuid_to_patient_map(expr_dir)
+    uuid_to_patient = build_uuid_to_patient_map(expr_path)
     print(f"    {len(uuid_to_patient)} UUID-patient mappings")
 
     # Remap expression index from UUID to patient barcode
@@ -167,6 +175,27 @@ def process_cohort(
     if unmapped.any():
         print(f"    Dropping {unmapped.sum()} unmapped samples")
         expr_matrix = expr_matrix[~unmapped]
+
+    # Remove duplicate patients (keep first)
+    if expr_matrix.index.duplicated().any():
+        n_dup = expr_matrix.index.duplicated().sum()
+        print(f"    Removing {n_dup} duplicate patient entries")
+        expr_matrix = expr_matrix[~expr_matrix.index.duplicated(keep="first")]
+
+    return expr_matrix
+
+
+def process_cohort(
+    cohort_name: str,
+    expr_path: Path,
+    mut_dir: Path,
+    convergent_genes: list[str],
+) -> pd.DataFrame:
+    """Process a single TCGA cohort: load data, classify, compute DE."""
+    print(f"\n--- {cohort_name} ---")
+
+    # Load expression matrix (handles both directory and slim CSV)
+    expr_matrix = load_expression_data(expr_path)
 
     # Remove duplicate patients (keep first)
     if expr_matrix.index.duplicated().any():
@@ -240,12 +269,14 @@ def main() -> None:
     # Process each TCGA cohort
     all_results = []
     for cohort_name, paths in TCGA_COHORTS.items():
-        if not paths["expr"].exists() or not paths["mut"].exists():
+        expr_path = paths["expr"]
+        mut_path = paths["mut"]
+        if not expr_path.exists() or not mut_path.exists():
             print(f"\n--- {cohort_name}: SKIP (data not available) ---")
             continue
 
         de_results = process_cohort(
-            cohort_name, paths["expr"], paths["mut"], convergent_genes,
+            cohort_name, expr_path, mut_path, convergent_genes,
         )
         if len(de_results) > 0:
             all_results.append(de_results)
@@ -296,33 +327,40 @@ def main() -> None:
 
     # Correlation with dependency (do depleted genes show expression changes?)
     print("\n--- Dependency-expression correlation ---")
-    # Get min Cohen's d per gene from combined screen
-    combined_screen = pd.concat([
-        arid1a_screen[arid1a_screen["cancer_type"].str.contains("Lung", na=False)],
-        smarca4_screen[smarca4_screen["cancer_type"].str.contains("Lung", na=False)],
-    ])
+    # Get min Cohen's d per gene from all screens (best effect across cancer types)
+    combined_screen = pd.concat([arid1a_screen, smarca4_screen])
 
     if len(combined_screen) > 0:
         dep_min_d = combined_screen.groupby("gene")["cohens_d"].min()
 
-        # Get expression log2fc per gene (use lung cohorts)
-        lung_de = combined[combined["cohort"].isin(["LUAD", "LUSC"])]
-        if len(lung_de) > 0:
-            expr_fc = lung_de.groupby("gene")["log2fc"].mean()
+        # Get mean expression log2fc per gene across ALL cohorts
+        expr_fc = combined.groupby("gene")["log2fc"].mean()
 
-            # Merge
-            shared = set(dep_min_d.index) & set(expr_fc.index)
-            if len(shared) > 10:
-                dep_vals = dep_min_d.loc[sorted(shared)].values
-                expr_vals = expr_fc.loc[sorted(shared)].values
-                r, p = stats.spearmanr(dep_vals, expr_vals)
-                print(f"  Spearman correlation (dependency d vs expression log2FC): r={r:.3f}, p={p:.2e}")
-                print(f"  N genes: {len(shared)}")
-                pd.DataFrame({
-                    "gene": sorted(shared),
-                    "dependency_d": dep_vals,
-                    "expression_log2fc": expr_vals,
-                }).to_csv(OUTPUT_DIR / "dependency_expression_correlation.csv", index=False)
+        # Merge
+        shared = set(dep_min_d.index) & set(expr_fc.index)
+        if len(shared) > 10:
+            shared_sorted = sorted(shared)
+            dep_vals = dep_min_d.loc[shared_sorted].values
+            expr_vals = expr_fc.loc[shared_sorted].values
+            r, p = stats.spearmanr(dep_vals, expr_vals)
+            print(f"  Spearman correlation (dependency d vs expression log2FC): r={r:.3f}, p={p:.2e}")
+            print(f"  N genes: {len(shared)}")
+            pd.DataFrame({
+                "gene": shared_sorted,
+                "dependency_d": dep_vals,
+                "expression_log2fc": expr_vals,
+            }).to_csv(OUTPUT_DIR / "dependency_expression_correlation.csv", index=False)
+
+    # Per-cohort summary
+    print("\n--- Per-cohort summary ---")
+    for cohort in combined["cohort"].unique():
+        cohort_data = combined[combined["cohort"] == cohort]
+        cohort_sig = cohort_data[cohort_data["fdr"] < 0.05]
+        n_mut = cohort_data["n_mut"].iloc[0] if len(cohort_data) > 0 else 0
+        print(
+            f"  {cohort:6s}: {len(cohort_data)} genes tested, "
+            f"{len(cohort_sig)} sig (FDR<0.05), n_mut={n_mut}"
+        )
 
     # OXPHOS-specific analysis
     print("\n--- OXPHOS gene expression in SWI/SNF-mutant ---")
