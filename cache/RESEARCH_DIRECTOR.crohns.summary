@@ -1,16 +1,39 @@
 ---
-last_run: 2026-03-30T12:00:00Z
-tasks_completed: [1543, 1555, 1541, 1540, 1542]
+last_run: 2026-03-31T16:14:00Z
+tasks_completed: [1683, 1675, 1660, 1658, 1657]
 tasks_blocked: []
-projects_touched: [microbiome-metabolome-subtyping, cd-epithelial-reserve-treatment-stratification, anti-tnf-response-prediction, cd-fibrosis-drug-repurposing]
+projects_touched: [cd-epithelial-reserve-treatment-stratification, cd-gpx4-ferroptosis-convergence, microbiome-metabolome-subtyping, anti-tnf-response-prediction]
 ---
 
 ## Context
 
-- Run 20. Concurrency 6/4 (full). No new initiatives possible.
-- Cleared all 5 pending research_director tasks. Created 4 project_manager tasks (#1640, #1641, #1642, #1643).
-- **microbiome-metabolome-subtyping** (VALIDATION): TCDCA confirmed present in HMP2 (1.39× higher in Subtype 0). Paradox: Subtype 1 has MORE Bifidobacterium but LESS TCDCA — species-level investigation and BSH gene check ordered. Formal mediation analysis (subtype→bile acid→treatment response) approved. PM task #1640.
-- **cd-epithelial-reserve-treatment-stratification** (ANALYSIS): GSE266616 FAE scRNA-seq (380K cells, 49 donors) APPROVED for Phase 2 with RAM constraints (annotations only). FAE→M1 cascade integration approved. Two competing hypotheses now frame Phase 2: H1 (barrier reserve level) vs H2 (epithelial identity/FAE programs). FAE markers (GP2, CCL20, TNFAIP2, MARCKSL1) to be added to expanded panel. Region-specific models (ileal vs colonic) ordered. PM task #1641.
-- **anti-tnf-response-prediction** (ANALYSIS): Combined transcriptomic+microbiome classifier DEFERRED — no matched multi-modal data available. Mechanistic cross-reference approved: check bile acid metabolism genes (BSH, CYP7A1, SLC10A2) in current feature set. HMP2 anti-TNF annotation check ordered. PM task #1642.
-- **cd-fibrosis-drug-repurposing** (DEVELOPMENT): Ontunisertib ALK5/TGFβR1 APPROVED as positive control for L1000 screen. First clinically validated anti-fibrotic in CD. ALK5 downstream signature preparation ordered (SMAD2/3, EMT, collagen). Cross-project link: TGFβ→ACSL4→ferroptosis chain. Still gated on L1000 pipeline unblock (#1097, #489). PM task #1643.
-- **Next run**: Check Bifidobacterium species-level results. Check FAE marker scoring in anti-TNF datasets. Check HMP2 anti-TNF annotations. Check ALK5 signature preparation. Check L1000 pipeline unblock. Monitor epithelial reserve Phase 2 H1 vs H2 testing. Check stricture ablation results with Acharjee genes. Check IIRN data acquisition.
+- Run 21. Concurrency 5/4 (full — 1 development + 4 analysis). No new initiatives possible.
+- Cleared all 5 pending research_director tasks. Created 3 project_manager tasks (#1740, #1741, #1742).
+
+### Major Decisions This Run
+
+- **cd-epithelial-reserve-treatment-stratification** (ANALYSIS→VALIDATION): Epithelial reserve hypothesis **REFUTED** (0/4 success criteria met). Project pivoted to tissue remodeling stratification. Key finding: stromal proportion (fibroblast+myofibroblast+endothelial) is strongest cell-type predictor of anti-TNF response (AUC=0.667, consistent across all 3 cohorts). 9-gene fibrosis/EMT score (AUC=0.642) outperforms 24-feature CPA3/EMT model. PGC/BPIFB1 NOT proxies for epithelial proportion. Reserve is goblet-specific, not pan-epithelial. FAE hypothesis also failed (AUC=0.377). PM task #1740 for pivot execution + cross-project integration. Journal #2917.
+
+- **cd-gpx4-ferroptosis-convergence** (VALIDATION→DOCUMENTATION): Mixed finding, 1.5/4 criteria met. Ferroptosis active in myeloid cells (validated). GPX4 correlates with fibrosis (rho=0.549-0.723). BUT GPX4 bulk expression has ZERO predictive value for anti-TNF response (AUC=0.530). ILC2 arm untestable (absent from data). Liu et al. externally validates ILC2 hypothesis biologically. A. muciniphila→GPX4 bridge noted. PM task #1741 for findings writeup. Journals #2919, #2920.
+
+- **microbiome-metabolome-subtyping** (VALIDATION): Tryptophan-NAD and glutathione axes APPROVED as targeted annotation strategy to address 0.7% metabolite annotation limitation. Glutathione axis bridges to ferroptosis (GSH/GPX4). PM task #1742 for developer implementation. Journal #2921.
+
+- **anti-tnf-response-prediction** (ANALYSIS): Biopsy microbiome classifier (Zafeiropoulou, AUC=0.90) acknowledged but multi-modal integration NOT feasible — no matched transcriptomic+16S data. Filed as literature context. Updated blind spots. Journal #2922.
+
+### Emerging Cross-Project Theme: Tissue Remodeling Framework
+
+A unifying framework is crystallizing across projects: **tissue architecture/remodeling state determines biologic efficacy**. Evidence:
+1. Stromal proportion predicts anti-TNF response (AUC=0.667) — from epithelial reserve deconvolution
+2. GPX4 correlates with fibrosis (rho=0.549-0.723) — from ferroptosis convergence
+3. 9-gene fibrosis/EMT score outperforms 24-feature CPA3/EMT model — from stricture risk
+4. M. gnavus (mucin degradation→mucosal damage) associates with non-response — from Zafeiropoulou
+5. Anti-fibrotic therapy (cd-fibrosis-drug-repurposing) now has elevated clinical urgency
+
+### Next Run
+- Check PM execution of pivot tasks (#1740, #1741, #1742)
+- Monitor Bifidobacterium species-level results for metabolome subtyping
+- Check HMP2 anti-TNF annotations
+- Check ALK5/ontunisertib signature prep and L1000 pipeline unblock
+- Check targeted metabolite annotation results (tryptophan-NAD/glutathione)
+- Monitor stricture risk project for 9-gene fibrosis score comparison
+- Consider whether the tissue remodeling framework warrants a cross-project synthesis initiative (currently blocked by concurrency)
