@@ -1,19 +1,19 @@
-last_run: 2026-03-29T04:04:00Z
-tasks_completed: [1519]
+last_run: 2026-03-31T15:09:00Z
+tasks_completed: []
 tasks_blocked: []
 projects_touched: [cd-stricture-risk-prediction]
 ---
 
 ## Context
 
-- Project status: development. GPX4/ferroptosis feature iteration blocking pipeline advancement.
-- Current model (GSE93624 real complication outcome, 27 progressors / 218 non-progressors):
-  - Full AUC=0.650, Clinical=0.531, Transcriptomic=0.641
-  - +0.120 AUC over clinical (meets >=0.10 criterion). AUC 0.650 below 0.75 target.
-  - Top features: CPA3, sex_male, MMP pathway, EMT, collagen/ECM, HDAC1, SERPINE1.
-- Blocking developer tasks (both pending since 2026-03-27):
-  - #1497 (p5): Add GPX4 + ferroptosis pathway score (GPX4, SLC7A11, ACSL4, TFRC, FTH1) to features
-  - #1498 (p4): Retrain model with GPX4/ferroptosis, compare AUC delta
-- Completed PM task #1519: Acknowledged RD Acharjee Tier 1 directive (journal #2500). Verified GREM1, SERPINE1, FGF2 already in GSE93624 feature set. Noted AUC discrepancy: RD "currently 0.748" is old surrogate, real outcome is 0.650. Plan: after #1497 completes, create expanded ablation task (base vs +GPX4 vs +GPX4+Tier1 vs full+gamma-delta) replacing #1498.
-- Deferred: #1244 γδ T cell features gated on AUC>0.80 (current 0.650, far below gate).
-- Next action: wait for developer to complete #1497. Then create expanded ablation developer task. After ablation results, if AUC improves sufficiently, create analyst tasks and advance to analysis.
+- Project status: **analysis** (advanced from development this cycle).
+- All developer tasks done: #1497 (GPX4 features), #1498 (retrain with GPX4/ferroptosis). AUC=0.638 (from 0.650, within CV noise). GPX4 ranked #4 in LR but no overall AUC improvement.
+- Model metrics: Full AUC=0.638, Clinical=0.531, Transcriptomic=0.641. +0.107 over clinical (meets >=0.10). Below 0.75 target. 27 progressors / 218 non-progressors, 25 features.
+- Top features: CPA3, sex_male, MMP pathway, GPX4, EMT, HDAC1, SERPINE1.
+- Created 3 analyst tasks (all pending):
+  - #1723 (p5): Feature group ablation study (6-way comparison, fulfills RD #2500 ablation directive)
+  - #1724 (p4): SHAP interpretation and biological plausibility
+  - #1725 (p4): Risk stratification and calibration assessment
+- Deferred: #1244 γδ T cell features — AUC gate 0.80 NOT MET (0.638). Updated description.
+- Journal entry #2888 recorded pipeline advancement.
+- Next action: wait for analyst to complete #1723, #1724, #1725. After all analyst tasks done, advance to validation.
