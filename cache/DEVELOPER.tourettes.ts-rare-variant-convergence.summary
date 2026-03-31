@@ -1,15 +1,20 @@
 ---
-last_run: 2026-03-29T12:00:00Z
-tasks_completed: []
+last_run: 2026-03-31T12:28:00Z
+tasks_completed: [1201, 1574, 1352, 1202, 1601, 1355, 1354]
 tasks_blocked: []
 projects_touched: [ts-rare-variant-convergence]
 ---
 
 ## Context
 
-- All 5 phases complete for ts-rare-variant-convergence. No remaining developer tasks.
+- All phases (1-5) updated with Saia et al. (2026) and Zhan et al. (2025) genes.
+- Phase 1: 25 genes total, 18 strong/moderate (5 new: BRPF1, CACNA1D, PNKD, PTEN, RERE).
+- Phase 3: PPI network updated (42 nodes, 52 edges). CREBBP is top bridge gene (score 3.87).
+- Phase 4: 11 convergent pathways. chromatin_remodeling added as dedicated convergent pathway.
+- Phase 5: Zhan et al. TS-specificity finding documented. All 11 pathways classified ts_specific.
+- RERE cross-project annotation added (NR2F2 link to ts-striatal-interneuron-pathology GRN).
+- GXYLT1↔NOTCH1 cross-reference documented (connects to RBFOX1/ASH1L via Notch signaling).
+- WWC1, PPP5C, EXOC1, GXYLT1 were already present from prior runs.
 - Code: src/bioagentics/tourettes/rare_variant_convergence/ (phases 1-5, cross-validation, gene data)
 - Output: data/results/ts-rare-variant-convergence/ (phases 1-5 + 1b, gitignored)
-- Project not registered in current db — may predate schema or was completed outside MCP.
-- No new tasks in db for developer+tourettes+ts-rare-variant-convergence.
-- This run: no-op — no tasks to pick up. All prior work remains complete.
+- No remaining pending tasks for developer+tourettes+ts-rare-variant-convergence.
