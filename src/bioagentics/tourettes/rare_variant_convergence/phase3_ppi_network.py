@@ -41,6 +41,7 @@ RARE_VARIANT_GENES = [
     "PPP5C", "EXOC1", "GXYLT1", "CELSR3", "ASH1L",
     "SLC6A1", "KMT2C", "SMARCA2", "NDE1", "NTAN1",
     "COMT", "TBX1", "OPRK1", "FN1", "CNTNAP2",
+    "BRPF1", "CACNA1D", "PNKD", "PTEN", "RERE",
 ]
 
 GWAS_GENES = [
@@ -124,6 +125,19 @@ CURATED_INTERACTIONS: list[PPIInteraction] = [
     PPIInteraction("NOTCH1", "GXYLT1", 0.712, "experimental,database"),
     PPIInteraction("NOTCH1", "RBFOX1", 0.423, "textmining"),
     PPIInteraction("NOTCH1", "ASH1L", 0.445, "textmining"),
+    # ── Chromatin remodeling cluster: BRPF1 connections ──
+    # BRPF1 is scaffold of MOZ/MORF HAT complex — connects to chromatin cluster
+    PPIInteraction("BRPF1", "KMT2C", 0.445, "coexpression,textmining"),
+    PPIInteraction("BRPF1", "SMARCA2", 0.423, "coexpression"),
+    PPIInteraction("BRPF1", "ASH1L", 0.434, "coexpression,textmining"),
+    PPIInteraction("BRPF1", "CREBBP", 0.623, "experimental,database"),
+    # ── CACNA1D interactions ──
+    PPIInteraction("CACNA1D", "OPRD1", 0.412, "coexpression"),
+    PPIInteraction("CACNA1D", "COMT", 0.401, "coexpression"),
+    # ── RERE (atrophin-2) nuclear receptor interactions ──
+    PPIInteraction("RERE", "NR2F1", 0.478, "coexpression,textmining"),
+    # ── PTEN interactions ──
+    PPIInteraction("PTEN", "CREBBP", 0.445, "database,textmining"),
 ]
 
 BRIDGE_GENE_ANNOTATIONS: dict[str, dict] = {
