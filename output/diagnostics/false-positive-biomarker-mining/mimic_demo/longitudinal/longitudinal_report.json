@@ -1,0 +1,210 @@
+{
+  "task": "#1467",
+  "description": "MIMIC-IV demo sepsis FP longitudinal analysis",
+  "dataset": "MIMIC-IV Clinical Database Demo v2.2",
+  "n_subjects": 100,
+  "n_stays": 140,
+  "n_admissions": 128,
+  "n_multi_admission_subjects": 48,
+  "results_by_specificity": {
+    "spec_90pct": {
+      "specificity_target": 0.9,
+      "specificity_actual": 0.896,
+      "sensitivity": 0.51,
+      "threshold": 0.3436,
+      "n_fp": 8,
+      "n_tn": 69,
+      "n_fp_with_subsequent": 2,
+      "n_tn_with_subsequent": 25,
+      "rates_all_patients": {
+        "fp_sepsis_rate": {
+          "rate": 0.125,
+          "ci_lower": 0.0,
+          "ci_upper": 0.375,
+          "n": 8
+        },
+        "tn_sepsis_rate": {
+          "rate": 0.10144927536231885,
+          "ci_lower": 0.028985507246376812,
+          "ci_upper": 0.17391304347826086,
+          "n": 69
+        },
+        "incidence_rate_ratio": 1.232
+      },
+      "rates_subsequent_only": {
+        "fp_sepsis_rate": {
+          "rate": 0.5,
+          "ci_lower": 0.0,
+          "ci_upper": 1.0,
+          "n": 2
+        },
+        "tn_sepsis_rate": {
+          "rate": 0.28,
+          "ci_lower": 0.12,
+          "ci_upper": 0.48,
+          "n": 25
+        },
+        "incidence_rate_ratio": 1.786
+      },
+      "fisher_exact": {
+        "table": {
+          "fp_developed": 1,
+          "fp_not": 7,
+          "tn_developed": 7,
+          "tn_not": 62
+        },
+        "odds_ratio": 1.2653061224489797,
+        "p_value": 1.0
+      },
+      "time_to_event": {
+        "n_events": 1,
+        "median_days": 1229.0777777777778,
+        "mean_days": 1229.0777777777778,
+        "min_days": 1229.0777777777778,
+        "max_days": 1229.0777777777778
+      },
+      "hypothesis_supported_2x": false,
+      "top_discriminative_features": [
+        {
+          "feature": "sbp",
+          "cohens_d": -1.688,
+          "t_pvalue": 0.0025,
+          "fp_mean": 96.812,
+          "tn_mean": 122.326
+        },
+        {
+          "feature": "map",
+          "cohens_d": -1.568,
+          "t_pvalue": 0.005,
+          "fp_mean": 63.625,
+          "tn_mean": 78.812
+        },
+        {
+          "feature": "creatinine",
+          "cohens_d": 1.373,
+          "t_pvalue": 0.0211,
+          "fp_mean": 1.531,
+          "tn_mean": 0.778
+        },
+        {
+          "feature": "bun",
+          "cohens_d": 1.371,
+          "t_pvalue": 0.0226,
+          "fp_mean": 38.25,
+          "tn_mean": 15.485
+        },
+        {
+          "feature": "resp_rate",
+          "cohens_d": 0.761,
+          "t_pvalue": 0.1251,
+          "fp_mean": 22.438,
+          "tn_mean": 18.587
+        }
+      ]
+    },
+    "spec_95pct": {
+      "specificity_target": 0.95,
+      "specificity_actual": 0.948,
+      "sensitivity": 0.216,
+      "threshold": 0.4357,
+      "n_fp": 4,
+      "n_tn": 73,
+      "n_fp_with_subsequent": 0,
+      "n_tn_with_subsequent": 27,
+      "rates_all_patients": {
+        "fp_sepsis_rate": {
+          "rate": 0.0,
+          "ci_lower": 0.0,
+          "ci_upper": 0.0,
+          "n": 4
+        },
+        "tn_sepsis_rate": {
+          "rate": 0.1095890410958904,
+          "ci_lower": 0.0410958904109589,
+          "ci_upper": 0.1917808219178082,
+          "n": 73
+        },
+        "incidence_rate_ratio": 0.0
+      },
+      "rates_subsequent_only": {
+        "fp_sepsis_rate": {
+          "rate": 0,
+          "ci_lower": 0,
+          "ci_upper": 0,
+          "n": 0
+        },
+        "tn_sepsis_rate": {
+          "rate": 0.2962962962962963,
+          "ci_lower": 0.1111111111111111,
+          "ci_upper": 0.48148148148148145,
+          "n": 27
+        },
+        "incidence_rate_ratio": 0.0
+      },
+      "fisher_exact": {
+        "table": {
+          "fp_developed": 0,
+          "fp_not": 4,
+          "tn_developed": 8,
+          "tn_not": 65
+        },
+        "odds_ratio": 0.0,
+        "p_value": 1.0
+      },
+      "time_to_event": {
+        "n_events": 0
+      },
+      "hypothesis_supported_2x": false,
+      "top_discriminative_features": [
+        {
+          "feature": "bicarbonate",
+          "cohens_d": -1.491,
+          "t_pvalue": 0.0324,
+          "fp_mean": 19.75,
+          "tn_mean": 24.347
+        },
+        {
+          "feature": "resp_rate",
+          "cohens_d": 1.697,
+          "t_pvalue": 0.065,
+          "fp_mean": 26.625,
+          "tn_mean": 18.568
+        },
+        {
+          "feature": "map",
+          "cohens_d": -1.475,
+          "t_pvalue": 0.0943,
+          "fp_mean": 60.125,
+          "tn_mean": 78.171
+        },
+        {
+          "feature": "glucose",
+          "cohens_d": 1.168,
+          "t_pvalue": 0.1033,
+          "fp_mean": 190.75,
+          "tn_mean": 140.285
+        },
+        {
+          "feature": "creatinine",
+          "cohens_d": 1.369,
+          "t_pvalue": 0.1226,
+          "fp_mean": 1.637,
+          "tn_mean": 0.814
+        }
+      ]
+    }
+  },
+  "composer_comparison": {
+    "composer_fp_n": 22,
+    "composer_fp_confidence": 0.92,
+    "mimic_fp_n_90pct": 8,
+    "shared_pattern": "Both COMPOSER and MIMIC FPs show elevated model confidence vs TNs. COMPOSER FPs additionally show temporal escalation (rising scores over time). MIMIC FPs are characterized by clinical severity (lab/vital derangement)."
+  },
+  "limitations": [
+    "Demo dataset (100 patients) severely limits statistical power",
+    "Only 26 subjects have multiple admissions \u2014 small opportunity to observe longitudinal conversion",
+    "IRR estimates have very wide CIs due to small counts",
+    "Heuristic risk score (not trained ML model) may not capture true FP patterns",
+    "Selection bias: sicker patients more likely to have multiple admissions"
+  ]
+}

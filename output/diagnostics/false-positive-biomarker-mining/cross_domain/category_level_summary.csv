@@ -1,0 +1,13 @@
+domain,category,n_features,mean_abs_d,n_significant
+composer_sepsis,temporal_risk,4,1.7069999999999999,4
+sepsis,renal,2,1.3719999999999999,2
+sepsis,hemodynamic,3,1.2683333333333333,2
+crc,inflammatory,2,0.996,1
+sepsis,other,1,0.795,0
+crc,tissue_remodeling,4,0.78725,3
+sepsis,hepatic,4,0.6467499999999999,0
+composer_sepsis,monitoring_intensity,2,0.5449999999999999,2
+sepsis,respiratory,3,0.532,0
+sepsis,metabolic,6,0.4415,0
+crc,other,1,0.392,0
+sepsis,hematologic,6,0.26416666666666666,0

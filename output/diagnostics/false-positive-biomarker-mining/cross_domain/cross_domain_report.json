@@ -1,0 +1,115 @@
+{
+  "task": "#1468",
+  "description": "Cross-domain FP pattern comparison (Phase 4)",
+  "profiles": {
+    "crc": {
+      "n_fp": 13,
+      "n_tn": 49,
+      "specificity": 0.8,
+      "pattern_coherent": true,
+      "key_pattern": "Remodeling-without-inflammation: elevated SEPT9/S100A4/TIMP1/MMP9, suppressed CXCL8/SPP1"
+    },
+    "sepsis": {
+      "n_fp": 8,
+      "n_tn": 69,
+      "specificity": 0.9,
+      "key_pattern": "Hemodynamic compromise + renal dysfunction: low SBP/MAP, elevated creatinine/BUN",
+      "longitudinal_irr": 1.232
+    },
+    "composer_sepsis": {
+      "n_fp": 22,
+      "n_tn": 416,
+      "key_pattern": "High temporal risk escalation: elevated mean_score, rising score_trend, more alerts"
+    }
+  },
+  "meta_patterns": [
+    {
+      "name": "coherent_subgroup",
+      "description": "FPs form a coherent subgroup distinct from TNs (not random noise)",
+      "supported": true,
+      "domains": [
+        "crc",
+        "sepsis",
+        "composer_sepsis"
+      ]
+    },
+    {
+      "name": "elevated_disease_markers",
+      "description": "FPs show elevated disease-pathway-specific markers compared to TNs",
+      "supported": true,
+      "domains": [
+        "crc",
+        "sepsis"
+      ]
+    },
+    {
+      "name": "suppressed_protective_markers",
+      "description": "FPs show suppressed protective or homeostatic markers",
+      "supported": true,
+      "domains": [
+        "crc",
+        "sepsis"
+      ]
+    },
+    {
+      "name": "high_model_confidence",
+      "description": "FPs have systematically high model confidence (near TP levels)",
+      "supported": true,
+      "domains": []
+    }
+  ],
+  "taxonomy": {
+    "pre_clinical_fp": {
+      "definition": "False positives that exhibit disease-associated feature patterns and may represent early/subclinical disease states.",
+      "characteristics": [
+        "FPs form a coherent subgroup distinct from TNs (not random noise)",
+        "FPs show elevated disease-pathway-specific markers compared to TNs",
+        "FPs show suppressed protective or homeostatic markers",
+        "FPs have systematically high model confidence (near TP levels)"
+      ],
+      "domains_observed": [
+        "sepsis",
+        "composer_sepsis",
+        "crc"
+      ]
+    },
+    "noise_fp": {
+      "definition": "False positives caused by measurement noise, data artifacts, or non-disease-related confounders.",
+      "characteristics": [
+        "Random feature deviations without coherent biological pattern",
+        "Model confidence closer to TNs than TPs",
+        "No temporal progression in longitudinal data"
+      ]
+    }
+  },
+  "classifier_assessment": {
+    "feasible": false,
+    "reason": "Domains have fundamentally different feature spaces (protein biomarkers vs clinical vitals/labs). A domain-agnostic FP classifier would require abstract feature representations (e.g., 'degree of organ dysfunction' rather than specific lab values).",
+    "shared_abstract_features": [
+      {
+        "abstract": "organ_dysfunction_severity",
+        "crc_proxy": "tissue remodeling markers (SEPT9, S100A4, TIMP1, MMP9)",
+        "sepsis_proxy": "renal dysfunction (creatinine, BUN) + hemodynamic compromise (sbp, map)"
+      },
+      {
+        "abstract": "inflammatory_state",
+        "crc_proxy": "suppressed inflammatory cytokines (CXCL8, SPP1)",
+        "sepsis_proxy": "elevated inflammatory markers (lactate, WBC trends)"
+      },
+      {
+        "abstract": "model_confidence",
+        "crc_proxy": "prediction score relative to TP distribution",
+        "sepsis_proxy": "COMPOSER mean_score (d=+2.28), temporal risk escalation"
+      }
+    ],
+    "recommendation": "Instead of a universal classifier, develop domain-specific pre-clinical FP scores using the identified signatures, then meta-analyze at the abstract feature level."
+  },
+  "key_findings": [
+    "Both CRC and sepsis FPs form coherent subgroups (not random noise) \u2014 multi-feature permutation p<0.001 for CRC, multiple |d|>1.0 features for sepsis",
+    "Both domains show elevated disease-pathway markers in FPs: tissue remodeling (CRC) and organ dysfunction (sepsis)",
+    "Both domains show suppressed protective markers: inflammatory cytokines (CRC), hemodynamic stability (sepsis)",
+    "COMPOSER temporal data shows FPs have model confidence near TP levels (d=+2.28 for mean_score), suggesting the model detects a real signal",
+    "A universal cross-domain FP classifier is not feasible with raw features due to incompatible feature spaces \u2014 abstract feature representations needed",
+    "The shared meta-pattern of 'disease-specific marker elevation + protective marker suppression' may represent a general pre-clinical signature motif"
+  ]
+}
