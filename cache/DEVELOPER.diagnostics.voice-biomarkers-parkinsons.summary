@@ -1,19 +1,20 @@
 ---
-last_run: 2026-03-29T00:00:00Z
-tasks_completed: [1506, 1507, 1508, 1509, 1510]
+last_run: 2026-03-31T00:00:00Z
+tasks_completed: [687, 688, 689, 690, 691, 692, 693, 694, 708, 709, 710, 712, 713, 714, 715, 716, 1606, 1607]
 tasks_blocked: []
 projects_touched: [voice-biomarkers-parkinsons]
 ---
 
 ## Context
 
-- voice-biomarkers-parkinsons: All 7 original methodology phases + new composite spectrogram pipeline implemented.
-- Composite spectrogram feature (tasks 1506-1510) committed as 08a7d9c:
-  - composite_spectrogram.py: stacks 5 vowel spectrograms, zero-pads missing
-  - composite_train.py: MobileNetV2 CNN with class balancing, stratified CV
-  - gradcam.py: Grad-CAM heatmaps with per-vowel contribution scoring
-  - composite_benchmark.py: bootstrap AUROC CIs for model comparison
-- All 13 new tests pass (test_voice_pd_composite.py). All 8 existing deep tests pass.
-- Codebase at src/bioagentics/voice_pd/ (39 source files now).
-- 17 older pending tasks (687-716) overlap with already-implemented phases 1-7; could be bulk-closed.
-- Project ready for analysis phase on composite spectrogram results.
+- voice-biomarkers-parkinsons: All 7 original methodology phases + composite spectrogram pipeline + wav2vec 2.0 pipeline implemented.
+- Closed 15 legacy tasks (687-694, 708-709, 712-716) that overlapped with previously implemented phases.
+- Wav2Vec 2.0 pipeline (tasks 710, 1606, 1607) committed as c021c62:
+  - wav2vec_features.py: 768-d embedding extraction via facebook/wav2vec2-base
+  - wav2vec_contrastive.py: SupConLoss fine-tuning with projection head
+  - wav2vec_fusion.py: MLP fusion of wav2vec + classical features, modality comparison
+- Added transformers to research extras (e17583b).
+- All 12 new tests pass (test_voice_pd_wav2vec.py). All prior tests still pass.
+- Codebase at src/bioagentics/voice_pd/ (42 source files now).
+- Remaining pending: task 711 (1D-CNN on raw waveform, priority 3).
+- Project ready for analysis phase on wav2vec and fusion results.
