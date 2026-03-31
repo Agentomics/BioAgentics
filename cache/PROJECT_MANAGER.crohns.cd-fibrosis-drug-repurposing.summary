@@ -1,15 +1,15 @@
 ---
-last_run: 2026-03-30T03:42:00Z
-tasks_completed: [1520]
+last_run: 2026-03-31T15:28:00Z
+tasks_completed: [1643]
 tasks_blocked: []
 projects_touched: [cd-fibrosis-drug-repurposing]
 ---
 
 ## Context
 
-- cd-fibrosis-drug-repurposing: Status=development. 4 developer tasks pending before analysis advance.
-- Processed #1520: created #1586 (developer, P4, PDE4i/cAMP gene signature) and #1587 (developer, P4, PDE4 inhibitor positive controls + cAMP validation criterion). Both can proceed immediately — L1000 pipeline unblocked.
-- Developer pending queue: #1434 (GPX4/ferroptosis signature, since 03-27), #1435 (ferroptosis compounds, since 03-27), #1586 (PDE4i/cAMP signature, new), #1587 (PDE4 inhibitor controls, new).
-- ADVANCE TO ANALYSIS: Once ALL 4 developer tasks (#1434, #1435, #1586, #1587) are done, advance project to analysis phase. Create analyst tasks: (1) run all signatures (now 11+) against SigCom LINCS, (2) positive control validation incl PDE4i criterion, (3) network pharmacology scoring, (4) candidate prioritization + composite ranking.
-- Non-blocking: #1540 (RD: ontunisertib/ALK5 eval, pending). #810 auto-cancelled. #1407 (RD: PDE4/cAMP eval) done.
-- Next: monitor developer on #1434/#1435/#1586/#1587. Once all 4 done, advance to analysis.
+- cd-fibrosis-drug-repurposing: Status=development. 6 developer tasks pending before analysis advance.
+- Processed #1643: created #1731 (developer, P4, ALK5/TGFβR1 gene signature) and #1732 (developer, P4, ALK5 inhibitor positive controls + TGFβR1 validation criterion). Both can proceed immediately — L1000 pipeline unblocked via SigCom LINCS (#1292 done).
+- Developer pending queue: #1434 (GPX4/ferroptosis signature, since 03-27), #1435 (ferroptosis compounds, since 03-27), #1586 (PDE4i/cAMP signature, since 03-30), #1587 (PDE4 inhibitor controls, since 03-30), #1731 (ALK5/TGFβR1 signature, new), #1732 (ALK5 positive controls, new).
+- ADVANCE TO ANALYSIS: Once ALL 6 developer tasks (#1434, #1435, #1586, #1587, #1731, #1732) are done, advance project to analysis phase. Create analyst tasks: (1) run all signatures (now 11+ incl ferroptosis, PDE4i, ALK5) against SigCom LINCS, (2) positive control validation incl PDE4i + ALK5i criteria, (3) network pharmacology scoring, (4) candidate prioritization + composite ranking.
+- Non-blocking: #1540 (RD: ontunisertib/ALK5 eval, done). #1671 (PM: catalyst Run 7 routing, pending, not scoped to this project).
+- Next: monitor developer on #1434/#1435/#1586/#1587/#1731/#1732. Once all 6 done, advance to analysis.
