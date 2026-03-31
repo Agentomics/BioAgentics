@@ -1,0 +1,56 @@
+{
+  "atlases_tested": 4,
+  "atlases_with_sufficient_data": 4,
+  "atlases_tp53_weakens_sl": 2,
+  "atlases_strong_negative_r": 2,
+  "correlations": [
+    {
+      "atlas": "PTEN-loss",
+      "n_cancer_types": 9,
+      "spearman_r_mean_d": -0.5,
+      "spearman_p_mean_d": 0.1704706607870538,
+      "spearman_r_median_d": -0.5167,
+      "spearman_p_median_d": 0.15439012098622507,
+      "spearman_r_abs_d": 0.5,
+      "spearman_p_abs_d": 0.1704706607870538,
+      "tp53_weakens_sl": "False",
+      "sufficient_data": true
+    },
+    {
+      "atlas": "RB1-loss",
+      "n_cancer_types": 18,
+      "spearman_r_mean_d": -0.0939,
+      "spearman_p_mean_d": 0.7108992592881783,
+      "spearman_r_median_d": -0.2879,
+      "spearman_p_median_d": 0.24661488879554871,
+      "spearman_r_abs_d": 0.0093,
+      "spearman_p_abs_d": 0.9708223763257615,
+      "tp53_weakens_sl": "False",
+      "sufficient_data": true
+    },
+    {
+      "atlas": "KEAP1-loss",
+      "n_cancer_types": 5,
+      "spearman_r_mean_d": 0.6,
+      "spearman_p_mean_d": 0.28475697986529386,
+      "spearman_r_median_d": 0.7,
+      "spearman_p_median_d": 0.1881204043741873,
+      "spearman_r_abs_d": -0.6,
+      "spearman_p_abs_d": 0.28475697986529386,
+      "tp53_weakens_sl": "True",
+      "sufficient_data": true
+    },
+    {
+      "atlas": "NF1-loss",
+      "n_cancer_types": 7,
+      "spearman_r_mean_d": 0.4286,
+      "spearman_p_mean_d": 0.3373683110858241,
+      "spearman_r_median_d": 0.1071,
+      "spearman_p_median_d": 0.8191508555699912,
+      "spearman_r_abs_d": -0.4286,
+      "spearman_p_abs_d": 0.3373683110858241,
+      "tp53_weakens_sl": "True",
+      "sufficient_data": true
+    }
+  ]
+}

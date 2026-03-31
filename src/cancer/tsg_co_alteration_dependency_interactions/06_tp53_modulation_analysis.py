@@ -316,7 +316,7 @@ def main() -> None:
         "correlations": correlation_results,
     }
     with open(out_dir / "phase4_tp53_modulation_summary.json", "w") as f:
-        json.dump(summary, f, indent=2)
+        json.dump(summary, f, indent=2, default=str)
     print(f"Saved: {out_dir / 'phase4_tp53_modulation_summary.json'}")
 
     print(f"\nSummary:")
