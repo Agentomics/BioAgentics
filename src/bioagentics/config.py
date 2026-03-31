@@ -39,15 +39,17 @@ API_KEY = os.environ.get("API_KEY", "")
 HEADERS = {"X-API-Key": API_KEY, "Content-Type": "application/json"}
 
 # Read api.prefix from agents.toml at import time (both dispatch and MCP server need it)
-API_PREFIX = os.environ.get("API_PREFIX", "")
+# Precedence: env var > agents.toml > empty string
 _toml_path = REPO_ROOT / "agents.toml"
+_toml_prefix = ""
 if _toml_path.exists():
     with open(_toml_path, "rb") as _f:
         _toml_data = tomllib.load(_f)
     if "api" in _toml_data and "prefix" in _toml_data["api"]:
-        API_PREFIX = _toml_data["api"]["prefix"].rstrip("/")
+        _toml_prefix = _toml_data["api"]["prefix"].rstrip("/")
     del _f, _toml_data
-del _toml_path
+API_PREFIX = os.environ.get("API_PREFIX", _toml_prefix)
+del _toml_path, _toml_prefix
 
 
 @dataclass
