@@ -15,7 +15,7 @@ from pathlib import Path
 import numpy as np
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import DataLoader, Dataset, IterableDataset
 
 from bioagentics.cxr_rare.config import DEFAULT_TRAIN_CONFIG, OUTPUT_DIR, TrainConfig
 from bioagentics.cxr_rare.evaluation.metrics import evaluate
@@ -94,11 +94,17 @@ class CXRTrainer:
         # pin_memory only benefits CUDA transfers
         use_pin_memory = self.device.type == "cuda"
 
+        # IterableDataset (e.g. HF streaming) cannot use shuffle or
+        # multi-worker loading without explicit sharding, so we disable
+        # both when the dataset is iterable-style.
+        train_iterable = isinstance(train_dataset, IterableDataset)
+        val_iterable = isinstance(val_dataset, IterableDataset)
+
         self.train_loader = DataLoader(
             train_dataset,
             batch_size=config.batch_size,
-            shuffle=True,
-            num_workers=config.num_workers,
+            shuffle=not train_iterable,
+            num_workers=0 if train_iterable else config.num_workers,
             pin_memory=use_pin_memory,
             drop_last=True,
         )
@@ -106,7 +112,7 @@ class CXRTrainer:
             val_dataset,
             batch_size=config.batch_size,
             shuffle=False,
-            num_workers=config.num_workers,
+            num_workers=0 if val_iterable else config.num_workers,
             pin_memory=use_pin_memory,
         )
 
