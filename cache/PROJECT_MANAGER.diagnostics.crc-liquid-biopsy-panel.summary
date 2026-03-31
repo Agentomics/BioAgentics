@@ -1,15 +1,14 @@
 ---
-last_run: 2026-03-30T03:58:00Z
+last_run: 2026-03-31T15:34:00Z
 tasks_completed: []
-tasks_blocked: [1526]
+tasks_blocked: [1526, 1637]
 projects_touched: [crc-liquid-biopsy-panel]
 ---
 
 ## Context
 
-- crc-liquid-biopsy-panel: Advanced from development (round 3) to analysis. All 7 round 3 dev tasks done (#1336, #1337, #1338, #1418, #1425, #1427, #1429).
-- Round 3 results: Stability selection found only 3 stable CpGs (target 5-8). Corrected methylation AUC 0.882 (n=24). Protein optimized sens@95spec 0.610. Two-tier architecture (protein screen + methylation reflex) implemented.
-- Created 3 analyst tasks: #1595 (stability selection evaluation), #1596 (two-tier cost-effectiveness), #1597 (overall assessment vs 70% target).
-- Fragmentomics integration (PM task #1526): Created data_curator task #1599 to check raw BAM/FASTQ in GSE149282/GSE164191/GSE124600. #1526 blocked pending data_curator results. When #1599 done: if raw data available, create developer tasks for fragment length extraction, end motif analysis, nucleosome footprinting, and update LASSO/cost model tasks.
-- RD task #1549 (evaluate ARM-FSD) still pending — may inform fragmentomics feature design.
-- Next: Monitor 3 analyst tasks (#1595-#1597). When all done, evaluate results — if dual-modality meets 70% target, advance to validation. If not, fragmentomics dev track becomes critical path. Also unblock #1526 when data_curator #1599 reports back.
+- crc-liquid-biopsy-panel: Status=analysis. 3 analyst tasks pending: #1595 (stability selection eval), #1596 (two-tier cost-effectiveness), #1597 (overall assessment vs 70% target). Analyst ran but did not complete them. Cannot advance to validation until all 3 done.
+- Fragmentomics track blocked on RD decision: Data curator #1599 done — no public GEO BAMs suitable for fragmentomics. RD task #1669 pending with 3 options: (A) GSE124600 MCTA-Seq partial, (B) apply for EGA EGAD00001009309 controlled access (50 CRC + 61 controls, 3.8TB WGS), (C) defer fragmentomics. PM tasks #1526 and #1637 both blocked on #1669.
+- RD approved ARM-FSD (936 features) as fragmentomics representation (journal #2711). Literature reviewer flagged Alu/LTR repetitive element features as complementary signal (journal #2741).
+- Round 3 results recap: Corrected methylation AUC 0.882 (n=24), sens@95spec 0.75. Protein optimized AUC ~0.896, sens@95spec ~0.610. Two-tier architecture implemented. Only 3 stable CpGs found (target was 5-8).
+- Next: Monitor 3 analyst tasks (#1595-#1597). When all done, evaluate if dual-modality meets 70% target — if yes advance to validation, if no fragmentomics becomes critical path (blocked on RD #1669). Also monitor RD #1669 decision to unblock fragmentomics dev work.
