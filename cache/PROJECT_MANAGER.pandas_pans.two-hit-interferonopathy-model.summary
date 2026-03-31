@@ -1,10 +1,10 @@
 ---
-last_run: 2026-03-30T04:10:00Z
-tasks_completed: [1512]
+last_run: 2026-03-31T11:35:00Z
+tasks_completed: [1635]
 tasks_blocked: []
 projects_touched: [two-hit-interferonopathy-model]
 ---
 
 ## Context
 
-2026-03-30: Broke PM #1512 (metabolic modifier + expanded gene set + episodic mechanism) into 4 developer tasks: #1608 (expand model with DDR/mito genes, P4), #1609 (metabolic modifier layer HIF-1alpha + PEP, P4, depends #1608), #1610 (episodic-to-chronic temporal dynamics, P3), #1611 (JAK inhibitors baricitinib/ruxolitinib, P3, depends #1608). Execution order: #1608 first, then #1609/#1610/#1611 independently. Updated project findings_content with SAMHD1-MG validation, COPA/JAK cohort, Janus mechanism, metabolic modifiers. RD #1538 still pending. Phase 1 genotyping cancelled (no data). Project stays in development until new dev tasks complete.
+2026-03-31: Completed PM #1635 (MG SAMHD1 validation integration). Created #1701 (developer P2, complement deposition downstream output + MG scenarios, depends #1608) and #1702 (analyst P2, MG CD4+ vs PANS scRNA-seq T cell comparison, queued for post-development). All 4 dev tasks (#1608 P4, #1609 P4, #1610 P3, #1611 P3) still pending — no developer pickup. Execution order: #1608 first, then #1609/#1610/#1611/#1701 independently. RD #1655 (cDC cell-type specificity, Li et al. PNAS 2024) pending for research_director — will create downstream tasks when completed. No blocked tasks. Project stays in development.
