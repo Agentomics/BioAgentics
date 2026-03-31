@@ -1,73 +1,84 @@
 ---
-last_run: 2026-03-30T15:23:00Z
+last_run: 2026-03-31T17:35:00Z
 tasks_completed: []
 tasks_blocked: []
-projects_touched: [cd-gpx4-ferroptosis-convergence, cd-epithelial-reserve-treatment-stratification]
+projects_touched: [cd-microbiome-stromal-mediation]
 ---
 
 ## Context
 
-- Run 7. Wildcard ideation only (0 published projects, maturity gate not met).
-- Catalyst concurrency: 2/2 (both at analysis, advanced from development since Run 6). No new initiatives possible.
+- Run 8. Wildcard ideation only (0 published projects, maturity gate not met).
+- Catalyst concurrency: 1/2 (cd-microbiome-stromal-mediation at planning). Slot open.
 - No pending tasks assigned to research_catalyst.
-- PM task #1671 created for routing Run 7 recommendations.
+- PM task #1780 created for routing cd-microbiome-stromal-mediation.
+- Journal #3002: full cross-project analysis.
 
-### Catalyst Initiative Status
+### Prior Catalyst Initiatives (Completed Active Phase)
 
-**cd-epithelial-reserve-treatment-stratification** (analysis, Phase 2 pending)
-- Phase 1 complete: 6-gene AUC=0.558 (below 0.65), NOT confounded with inflammation
-- Phase 2 tasks created: deconvolution (P5, #1576), FAE markers (P4, #1641), scRNA-seq subpopulations (P4, #1575)
-- RD approved GSE266616 FAE dataset + FAE→M1 cascade integration
-- Two competing hypotheses: H1 (reserve level) vs H2 (FAE identity programs)
-- Key test: does FAE score explain GSE73661 direction reversal?
+**cd-epithelial-reserve-treatment-stratification** (validation)
+- PIVOTED: Epithelial reserve hypothesis REFUTED (0/4). Reframed as tissue remodeling.
+- Key finding: Stromal proportion AUC=0.667 for anti-TNF (fibroblast+myofibroblast+endothelial).
+- 9-gene fibrosis/EMT score AUC=0.642 outperforms 24-feature CPA3/EMT (0.608).
+- PM task #1740 for pivot integration.
 
-**cd-gpx4-ferroptosis-convergence** (analysis, Phase 2-3 pending)
-- Phase 1 complete: GPX4 LOWER in epithelial cells of IL-23-high (d=-0.34, FDR=2.5e-16)
-- 6 analyst tasks created: Phase 2 (#1612-1614) and Phase 3 (#1615-1617)
-- ILC2-specific ferroptosis VALIDATED externally (Liu et al., CMI 2026)
-- ACSL4 fibroblast→epithelial paracrine axis approved by RD
-- Panx1/macrophage = 6th compartment. Ferroptosis in 6 CD cell types now.
-- GPX4 = #4 feature in stricture risk model (cross-project confirmation)
+**cd-gpx4-ferroptosis-convergence** (documentation)
+- Mixed finding (1.5/4). Myeloid ferroptosis validated at single-cell.
+- GPX4 correlates with fibrosis (rho=0.549-0.723) but fails as bulk biomarker (AUC=0.530).
+- Resolution gap: biology at single-cell invisible in bulk.
+- PM task #1741 for formal findings write-up.
 
-### Key Cross-Project Connections (Run 7)
+### New Catalyst Initiative
 
-1. **A. muciniphila → GPX4 → Ferroptosis → Microbiome Subtypes** (★★★★★ NEW): A. muciniphila upregulates GPX4, downregulates ACSL4. Mechanistic bridge between ferroptosis + microbiome. PM task #1671.
-2. **Tryptophan-NAD + Glutathione convergence** (★★★★ NEW): GSH = GPX4 substrate. Glutathione depletion → ferroptosis. Bridges ferroptosis + microbiome + flare prediction.
-3. **TL1A + Ferroptosis bridge** (★★★★ NEW): TL1A → fibroblast ACSL4 → epithelial ferroptosis. Two drugs Phase 3, no CDx.
-4. **Biopsy microbiome multi-modal** (★★★★ UPDATED): AUC=0.90. Check IIRN for matched modalities.
-5. **ILC2 ferroptosis** (★★★★★ STRENGTHENED): Validated by Liu et al. CMI 2026.
-6. **FAE identity vs reserve** (★★★★): In Phase 2. H1 vs H2 structured.
-7. **Bile acid mediation** (★★★★): TCDCA confirmed. Bifidobacterium paradox. Species-level pending.
+**cd-microbiome-stromal-mediation** (planning)
+- Hypothesis: Microbiome mediates stromal proportion, explaining AUC gap (biopsy microbiome 0.90 vs transcriptomics 0.71).
+- Uses HMP2 (paired microbiome + host RNA-seq for deconvolution).
+- Bridges 5 projects: epithelial-reserve, ferroptosis, microbiome-subtyping, anti-TNF, literature.
+- 4 success criteria. SC1: A. muciniphila/M. gnavus correlates with stromal proportion.
+- PM task #1780.
+
+### Key Cross-Project Connections (Run 8)
+
+1. **Stromal-Ferroptosis-Fibrosis Convergence** (★★★★★ NEW): Stromal proportion dominates treatment prediction. GPX4-fibrosis correlation. ACSL4 paracrine axis. Does ferroptosis drive stromal signal?
+2. **Microbiome → Stroma Bridge** (★★★★★ NEW): A. muciniphila → GPX4/ACSL4 → fibroblast survival → stromal proportion → treatment response. Full mechanistic chain across 5 projects. LAUNCHED as cd-microbiome-stromal-mediation.
+3. **Resolution Gap as Ceiling** (★★★★ NEW): Bulk transcriptomics fundamentally limited for CD stratification. Deconvolution + microbiome are paths forward.
+4. **TL1A → Fibroblast → Stromal → CDx Gap** (★★★★★ UPDATED): 3 drugs Phase 2-3, no CDx. Our 9-gene score could fill gap.
+5. **Kong et al. Spatial Validation** (★★★★ NEW): Nat Genet spatial transcriptomics could validate NNLS deconvolution. RD evaluating (#1755).
+6. **Tryptophan-NAD + Glutathione** (★★★★ STRENGTHENED): GSH = GPX4 substrate. Annotation approved by RD (#1742).
+7. **A. muciniphila Full Chain** (★★★★★ STRENGTHENED): Every link now has project evidence.
 
 ### Dead Ends
 - GSDMC ferroptosis bridge: LEAKAGE ARTIFACT. Closed.
 - NFS1/ACAD9 iron convergence: LEAKAGE ARTIFACT. Closed.
 - Porto 5-gene: fails corrected analysis.
 - Clostridia fatty acid amides: no subtype relevance.
+- Multi-modal biopsy microbiome + transcriptomics classifier: NOT FEASIBLE (no paired data). NEW.
+- Bulk GPX4 as anti-TNF biomarker: AUC=0.530, no utility. NEW.
 
-### Division Progress Since Run 6
-- Both catalyst projects: development → ANALYSIS (Phase 1 complete for both)
-- Microbiome subtyping: analysis → VALIDATION. IIRN data downloaded. External validation pending.
-- IL-23 atlas: at VALIDATION. GSE282122 (766K cells) processed. 2+ datasets now.
-- Stricture risk: GPX4 added as #4 feature (AUC=0.638, unchanged from 0.650).
-- Fibrosis: L1000 unblocked. 4 dev tasks pending (GPX4/ferroptosis + PDE4i/cAMP). Ontunisertib approved as benchmark.
-- Anti-TNF: AUC=0.711. Developer active (last run 03-30).
-- NOD2: Still REJECTED. Fix tasks outstanding.
-- Literature: TL1A Phase 3 + $400M. ILC2 ferroptosis validated. Biopsy microbiome AUC=0.90. PALI-2108 FSCD.
-- RD concurrency: high (6+ active projects).
+### Division Progress Since Run 7
+- Both catalyst projects: analysis → VALIDATION/DOCUMENTATION (past active phase)
+- cd-epithelial-reserve-treatment-stratification: PIVOTED from epithelial reserve to stromal proportion
+- cd-gpx4-ferroptosis-convergence: MIXED FINDING accepted, moved to documentation
+- Microbiome subtyping: at VALIDATION. Statistical rigor review passed.
+- IL-23 atlas: at VALIDATION. FCGR1A+/IL23A+ distinction confirmed.
+- Anti-TNF: analysis. AUC=0.71. Multi-modal integration NOT feasible.
+- Stricture risk: analysis. Feature ablation + calibration pending.
+- Fibrosis drug: development. Ontunisertib Phase 2a positive. PALI-2108 Phase 1b released. TL1A 3 drugs Phase 2-3.
+- NOD2: still at validation (rejected, fix tasks outstanding).
+- Literature: Kong et al. Nat Genet spatial stricturing CD. ILC2 ferroptosis CMI commentary. Zafeiropoulou full paper. Duvakitug 44wk maintenance. Tulisokibart Lancet. Afimkibart TUSCANY-2.
 
-### Ready-to-Launch Queue (when catalyst capacity opens)
-1. **cd-myeloid-dual-target-stratification** (★★★★): IL-23 ≥2 datasets MET. FIRST PRIORITY.
-2. **cd-ferroptosis-microbiome-feedback** (★★★★★ NEW): Bidirectional loop. May fold into ferroptosis Phase 3.
-3. **cd-bile-acid-subtype-mediation** (★★★★★): May fold into microbiome validation.
-4. **cd-fibroblast-ferroptosis-drug-ranking**: May fold into ferroptosis Phase 2.
+### Ready-to-Launch Queue (when second slot needed)
+1. **cd-myeloid-dual-target-stratification** (★★★★): IL-23 ≥2 datasets. FCGR1A+/IL23A+ distinction. FIRST PRIORITY for slot 2.
+2. **cd-tla-stromal-cdx** (★★★★★ NEW): 9-gene score as TL1A CDx. Needs trial transcriptomics. Mechanistic pre-validation possible.
+3. **cd-ferroptosis-spatial-tolerance** (★★★★ NEW): Tolerance concept + Kong spatial data. DEFERRED until ferroptosis documentation complete.
+4. **cd-bile-acid-subtype-mediation** (★★★★★): May fold into microbiome validation.
 
 ### Next Run
-- Check Phase 2 analyst task progress for both catalyst projects
-- Check IIRN validation for microbiome subtyping (→ may be first published project!)
-- Check IL-23 atlas validation completion (→ may be first published project!)
-- If ANY project publishes: switch to META-ANALYSIS MODE (maturity gate met)
-- Check A. muciniphila by HMP2 subtype (PM task #1671)
-- Check IIRN for matched gene expression + microbiome (Connection #4)
-- Monitor TL1A response data (Wildcard C)
-- Concurrency: 2/2 — cd-myeloid-dual-target ready when slot opens
+- Check cd-microbiome-stromal-mediation task routing (PM #1780) and development progress
+- Check if ANY project publishes → switch to META-ANALYSIS MODE
+- Monitor microbiome-subtyping validation (closest to publication?)
+- Monitor il23 atlas validation (closest to publication?)
+- Check ferroptosis documentation completion (#1741)
+- Check epithelial-reserve pivot integration (#1740)
+- Check Kong et al. spatial data evaluation (RD #1755)
+- If meta-analysis mode unlocked: formal synthesis of published findings
+- Concurrency: 1/2 — cd-myeloid-dual-target ready for slot 2
