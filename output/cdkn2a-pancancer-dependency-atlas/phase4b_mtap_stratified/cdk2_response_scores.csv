@@ -1,0 +1,1688 @@
+ModelID,OncotreeLineage,CDKN2A_status,RB1_status,MTAP_co_deleted,CCNE1_amplified,CDK2_response_score,CDK2_predicted_responder
+ACH-000772,Soft Tissue,unknown,intact,False,False,4.917727222926642,True
+ACH-002021,Uterus,intact,intact,False,False,4.8899859265802785,True
+ACH-000258,Breast,intact,lost,False,False,4.820829202974953,True
+ACH-000713,Ovary/Fallopian Tube,intact,intact,False,False,4.616397141102282,True
+ACH-000509,Lymphoid,deleted,intact,True,False,4.349914157543326,True
+ACH-001454,Bowel,unknown,intact,False,False,4.3161516389213865,True
+ACH-000905,Bladder/Urinary Tract,intact,lost,False,False,4.257104536467126,True
+ACH-001530,Uterus,intact,intact,False,False,4.220981307047542,True
+ACH-000878,Lung,deleted,lost,True,False,4.11176986848246,True
+ACH-000109,Lung,unknown,intact,False,False,4.096996354195223,True
+ACH-000447,Lung,deleted,lost,True,False,4.083545974873174,True
+ACH-001440,Testis,intact,intact,False,False,4.060097412109416,True
+ACH-000068,Lymphoid,deleted,intact,True,False,4.006043376333405,True
+ACH-000216,Esophagus/Stomach,deleted,intact,True,True,3.9899819679519295,True
+ACH-000364,Bone,intact,intact,False,False,3.9563794609209446,True
+ACH-000516,Bone,intact,lost,False,False,3.850995932274529,True
+ACH-002781,Bone,deleted,intact,False,False,3.8058916138575296,True
+ACH-000880,Esophagus/Stomach,intact,intact,False,False,3.8053759036740766,True
+ACH-000928,Uterus,intact,intact,False,False,3.792676502858705,True
+ACH-000807,CNS/Brain,deleted,intact,True,True,3.7377859181033566,True
+ACH-001408,Bladder/Urinary Tract,unknown,intact,False,False,3.6916583810855395,True
+ACH-000196,Breast,intact,intact,False,True,3.6352443859366064,True
+ACH-000868,Lung,unknown,intact,False,False,3.5808530134002057,True
+ACH-000318,Esophagus/Stomach,deleted,intact,True,False,3.5667408574193464,True
+ACH-001719,Ovary/Fallopian Tube,unknown,intact,False,False,3.559804366946087,True
+ACH-001529,Uterus,unknown,intact,False,False,3.545127134828734,True
+ACH-000035,Lung,deleted,intact,True,False,3.5070164152998267,True
+ACH-000332,Pancreas,deleted,intact,False,False,3.477675593095562,True
+ACH-003183,Soft Tissue,intact,lost,False,False,3.4569358128091436,True
+ACH-000620,Liver,intact,intact,False,False,3.445488138138775,True
+ACH-000397,Uterus,intact,intact,False,True,3.4100864233611725,True
+ACH-000671,Liver,intact,intact,False,False,3.405663250044083,True
+ACH-003100,Lymphoid,deleted,intact,True,False,3.3813691549509515,True
+ACH-000609,CNS/Brain,unknown,intact,False,False,3.3137031502504026,True
+ACH-000625,Liver,unknown,lost,False,False,3.2940425650811793,True
+ACH-000286,Bowel,intact,intact,False,True,3.25664427375465,True
+ACH-000425,Skin,unknown,intact,False,False,3.2488897483998063,True
+ACH-000994,Uterus,intact,intact,False,False,3.219123491583355,True
+ACH-002796,Soft Tissue,intact,intact,False,False,3.172143580934848,True
+ACH-000547,Bladder/Urinary Tract,intact,intact,False,False,3.1629715292743827,True
+ACH-001671,Testis,intact,intact,False,False,3.147511553694543,True
+ACH-003107,Lymphoid,deleted,lost,True,False,3.146872878059712,True
+ACH-000378,Lung,deleted,intact,True,True,3.1167252768790554,True
+ACH-000377,Ampulla of Vater,deleted,intact,False,False,3.0963425275269874,True
+ACH-000031,Pancreas,unknown,intact,False,False,3.094858952969287,True
+ACH-000873,Esophagus/Stomach,unknown,intact,False,False,3.088984610453727,True
+ACH-001711,CNS/Brain,intact,intact,False,False,3.061040330372566,True
+ACH-000939,Uterus,intact,lost,False,False,3.059215523779635,True
+ACH-000645,Pleura,deleted,intact,False,False,3.055346538793188,True
+ACH-001672,Testis,unknown,intact,False,False,3.0536622604509756,True
+ACH-001210,Kidney,intact,intact,False,False,3.053099930830347,True
+ACH-002678,Lymphoid,intact,lost,False,False,3.0159851203468824,True
+ACH-002650,Lung,deleted,intact,True,False,2.9974754064224722,True
+ACH-001680,Lymphoid,intact,intact,False,False,2.9726577188509617,True
+ACH-000274,Skin,unknown,intact,False,False,2.9613161453928507,True
+ACH-000192,Uterus,intact,lost,False,True,2.9478841005716356,True
+ACH-000150,Lung,deleted,intact,True,False,2.921879306349127,True
+ACH-001421,Eye,intact,lost,False,False,2.9109487745225957,True
+ACH-000657,Ovary/Fallopian Tube,intact,intact,False,False,2.9087564817994846,True
+ACH-002785,Soft Tissue,intact,lost,False,False,2.9075674931537216,True
+ACH-001630,Ovary/Fallopian Tube,unknown,intact,False,False,2.901660341362324,True
+ACH-001569,Skin,unknown,intact,False,False,2.8915595946479824,True
+ACH-000624,Breast,deleted,intact,True,True,2.8710913014128376,True
+ACH-001164,Soft Tissue,intact,intact,False,False,2.854274761551873,True
+ACH-000887,CNS/Brain,deleted,intact,True,False,2.826430822853572,True
+ACH-000111,Breast,intact,intact,False,False,2.820092421764886,True
+ACH-003012,Lung,deleted,intact,True,True,2.819651206108036,True
+ACH-000116,Ovary/Fallopian Tube,intact,intact,False,False,2.8196469468681675,True
+ACH-001378,Pancreas,unknown,intact,False,False,2.8188622349382264,True
+ACH-001390,Breast,unknown,intact,False,False,2.811021595229537,True
+ACH-000578,Lung,unknown,intact,False,False,2.8106052642074646,True
+ACH-000013,Ovary/Fallopian Tube,intact,intact,False,True,2.8070540123133503,True
+ACH-000959,Bowel,intact,intact,False,False,2.7926211969161026,True
+ACH-000982,Bowel,intact,intact,False,False,2.7896009024983424,True
+ACH-000757,Lung,unknown,intact,False,False,2.7791184942510796,True
+ACH-002497,Lung,intact,lost,False,False,2.777577216437492,True
+ACH-000242,Bladder/Urinary Tract,unknown,intact,False,False,2.7695548920184425,True
+ACH-000626,Lymphoid,unknown,lost,False,False,2.7638497385310603,True
+ACH-000574,Ovary/Fallopian Tube,intact,intact,False,True,2.762390450831229,True
+ACH-002034,Lung,intact,intact,False,False,2.760244916752687,True
+ACH-000215,CNS/Brain,deleted,lost,True,False,2.7521910160947476,True
+ACH-000323,CNS/Brain,deleted,lost,True,False,2.7473391131386107,True
+ACH-000861,Lung,deleted,intact,False,True,2.7408629154726807,True
+ACH-000961,Uterus,intact,lost,False,False,2.7360256532932756,True
+ACH-000430,Ovary/Fallopian Tube,unknown,intact,False,False,2.7298592073165966,True
+ACH-000478,Liver,deleted,intact,True,False,2.700717384315591,True
+ACH-000420,Liver,deleted,intact,True,False,2.6970966385083788,True
+ACH-001632,Ovary/Fallopian Tube,unknown,intact,False,False,2.6951243985069007,True
+ACH-000581,Esophagus/Stomach,deleted,intact,True,False,2.6881646177030927,True
+ACH-003187,Soft Tissue,intact,lost,False,False,2.683633247470034,True
+ACH-000389,CNS/Brain,deleted,intact,True,False,2.630560430326913,True
+ACH-000098,CNS/Brain,deleted,intact,True,False,2.6252033036553963,True
+ACH-000350,Bowel,deleted,intact,True,False,2.618299658500349,True
+ACH-000675,Lung,unknown,intact,False,False,2.6134728591584406,True
+ACH-000356,Esophagus/Stomach,deleted,intact,True,False,2.6106153966741994,True
+ACH-000837,Lung,deleted,intact,True,False,2.5920495260129317,True
+ACH-002795,Soft Tissue,intact,intact,False,False,2.5871152816758567,True
+ACH-000791,Lung,deleted,intact,True,False,2.585967818113399,True
+ACH-002461,Skin,unknown,intact,False,False,2.567684733141162,True
+ACH-000164,Pancreas,deleted,intact,True,False,2.56439303586326,True
+ACH-001849,Biliary Tract,unknown,intact,False,False,2.5622040480730344,True
+ACH-000278,Ovary/Fallopian Tube,intact,intact,False,False,2.5563062278299142,True
+ACH-000881,Skin,deleted,intact,True,False,2.552139550643088,True
+ACH-000984,Uterus,unknown,lost,False,False,2.5508292359175924,True
+ACH-000755,Breast,unknown,intact,False,False,2.543999557900561,True
+ACH-000142,Bladder/Urinary Tract,deleted,intact,True,False,2.5334670225032587,True
+ACH-002647,Biliary Tract,deleted,intact,True,False,2.530755865519514,True
+ACH-002027,Uterus,intact,intact,False,False,2.529381989524484,True
+ACH-002291,Testis,intact,intact,False,False,2.5293464732913993,True
+ACH-001502,Testis,intact,intact,False,False,2.5277917658319904,True
+ACH-000075,CNS/Brain,deleted,intact,True,False,2.524585436359211,True
+ACH-000243,Pancreas,deleted,intact,True,False,2.522591549229797,True
+ACH-000118,Pancreas,deleted,intact,True,False,2.5134724232579413,True
+ACH-000001,Ovary/Fallopian Tube,intact,intact,False,True,2.5080953442566667,True
+ACH-001591,Lung,deleted,lost,True,False,2.492898968092635,True
+ACH-000635,Ovary/Fallopian Tube,intact,intact,False,False,2.4746228713620706,True
+ACH-001989,Skin,intact,lost,False,False,2.4680186118717997,True
+ACH-000688,Ovary/Fallopian Tube,intact,lost,False,False,2.4678624793356936,True
+ACH-000324,Ovary/Fallopian Tube,deleted,intact,False,False,2.4671792252027016,True
+ACH-001061,Bowel,intact,intact,False,False,2.4626780001378847,True
+ACH-000066,Lung,unknown,intact,False,False,2.4622658268000293,True
+ACH-000681,Lung,deleted,intact,True,False,2.4608168897387337,True
+ACH-000867,Lung,intact,intact,False,False,2.4436842330914876,True
+ACH-003191,Bone,intact,lost,False,False,2.436908152801304,True
+ACH-000678,Esophagus/Stomach,intact,intact,False,True,2.4324128614883476,True
+ACH-000621,Breast,intact,intact,False,True,2.4197819927054236,True
+ACH-001550,Skin,unknown,lost,False,False,2.4052534788857827,True
+ACH-000766,Lung,deleted,intact,True,False,2.400905731073652,True
+ACH-002526,Lung,deleted,intact,True,False,2.3996631032222684,True
+ACH-001668,Testis,intact,intact,False,False,2.398801444392857,True
+ACH-000379,Lung,unknown,intact,False,False,2.3976443470936255,True
+ACH-002403,Skin,unknown,lost,False,False,2.393133170260363,True
+ACH-000452,Esophagus/Stomach,deleted,intact,True,False,2.3866272533647526,True
+ACH-000596,Lung,deleted,intact,True,False,2.3849945739997818,True
+ACH-000239,Esophagus/Stomach,unknown,intact,False,False,2.3830156990006093,True
+ACH-001341,Cervix,unknown,intact,False,False,2.380488157880774,True
+ACH-000892,Lung,unknown,intact,False,False,2.3796281424329373,True
+ACH-000417,Pancreas,deleted,intact,False,False,2.3787713394577485,True
+ACH-000736,Esophagus/Stomach,intact,intact,False,False,2.372282344815054,True
+ACH-000144,Esophagus/Stomach,intact,lost,False,False,2.3718020589002577,True
+ACH-000252,Bowel,unknown,intact,False,False,2.3701726149518714,True
+ACH-000601,Pancreas,deleted,intact,True,False,2.369383810747103,True
+ACH-000293,Uterus,intact,intact,False,True,2.3628945179628786,True
+ACH-000093,Pancreas,deleted,intact,False,False,2.3587751840954203,True
+ACH-000327,Lung,unknown,intact,False,False,2.347214399755427,True
+ACH-000304,Skin,deleted,intact,False,False,2.3447146515256394,True
+ACH-000997,Bowel,intact,intact,False,False,2.3258853060623803,True
+ACH-000573,Breast,intact,intact,False,False,2.321206372258876,True
+ACH-002215,Lymphoid,deleted,lost,False,False,2.3208317168492525,True
+ACH-000696,Ovary/Fallopian Tube,intact,intact,False,False,2.31350847315826,True
+ACH-000121,Lung,unknown,intact,False,False,2.292714350344225,True
+ACH-001412,Bladder/Urinary Tract,unknown,intact,False,False,2.288195744463656,True
+ACH-000627,Lung,deleted,intact,False,False,2.283818363572494,True
+ACH-000354,Pancreas,deleted,intact,True,False,2.2622870538027327,True
+ACH-000228,Head and Neck,deleted,intact,True,False,2.257731202241673,True
+ACH-000759,Breast,intact,intact,False,False,2.240935204975137,True
+ACH-003455,Skin,unknown,intact,False,False,2.2369565824147735,True
+ACH-000849,Breast,intact,lost,False,False,2.232272273067653,True
+ACH-002075,Lung,intact,lost,False,True,2.2311256232810006,True
+ACH-000595,CNS/Brain,deleted,intact,False,False,2.218603925588761,True
+ACH-000173,Uterus,unknown,intact,False,False,2.21394801590377,True
+ACH-002067,Bone,intact,intact,False,True,2.2125679728258314,True
+ACH-000558,CNS/Brain,unknown,intact,False,False,2.206994507094663,True
+ACH-000896,Bladder/Urinary Tract,intact,lost,False,False,2.2062744662077676,True
+ACH-000719,Ovary/Fallopian Tube,deleted,intact,True,False,2.2059130855797333,True
+ACH-001193,Bone,intact,lost,False,False,2.202308745980888,True
+ACH-000802,Bladder/Urinary Tract,deleted,intact,True,False,2.201619137298803,True
+ACH-000028,Breast,unknown,intact,False,False,2.2004730075215537,True
+ACH-000326,Myeloid,deleted,intact,True,False,2.191917748189934,True
+ACH-000381,Bowel,intact,intact,False,False,2.1917768523620595,True
+ACH-000414,Lung,unknown,intact,False,False,2.1885501950044484,True
+ACH-000919,Esophagus/Stomach,intact,intact,False,False,2.1847774015875996,True
+ACH-000209,Biliary Tract,unknown,intact,False,False,2.1821009521533794,True
+ACH-000693,Esophagus/Stomach,deleted,intact,False,False,2.1819545919637537,True
+ACH-001976,Skin,intact,lost,False,False,2.1813956913556902,True
+ACH-001211,Soft Tissue,intact,intact,False,False,2.1712833721004996,True
+ACH-000234,Kidney,deleted,intact,False,False,2.171132364502583,True
+ACH-000461,Biliary Tract,deleted,intact,False,False,2.1632568386704962,True
+ACH-000901,Lung,deleted,intact,True,False,2.152862912095537,True
+ACH-000966,Ovary/Fallopian Tube,intact,intact,False,False,2.1516378619830676,True
+ACH-000816,Lung,intact,lost,False,False,2.147870089829329,True
+ACH-000415,Head and Neck,deleted,intact,False,False,2.133596024652938,True
+ACH-000894,Lung,deleted,intact,False,False,2.1312897263981014,True
+ACH-000460,Ovary/Fallopian Tube,intact,intact,False,True,2.1277995160557133,True
+ACH-000737,Lung,unknown,intact,False,False,2.124490386569779,True
+ACH-000943,Bowel,intact,intact,False,False,2.120916716598378,True
+ACH-001662,Breast,intact,intact,False,True,2.114342473511542,True
+ACH-000580,Skin,deleted,intact,True,False,2.112431654826461,True
+ACH-000073,Lymphoid,unknown,intact,False,False,2.109896598336581,True
+ACH-001848,Biliary Tract,deleted,intact,True,False,2.1081297446062885,True
+ACH-000153,Pleura,deleted,intact,True,False,2.0966228738319357,True
+ACH-001430,Bone,deleted,intact,True,False,2.0895450639281723,True
+ACH-001398,Kidney,deleted,intact,True,False,2.069705160734621,True
+ACH-000236,Bowel,unknown,intact,False,False,2.0678082560483153,True
+ACH-000893,Lung,unknown,intact,False,False,2.0653740339670783,True
+ACH-001376,Pancreas,unknown,intact,False,False,2.064726227120106,True
+ACH-000110,Esophagus/Stomach,unknown,intact,False,False,2.0646273222860874,True
+ACH-000210,Bone,deleted,intact,True,False,2.060766459847639,True
+ACH-001280,Soft Tissue,intact,intact,False,False,2.0591831033054717,True
+ACH-000813,Lung,unknown,lost,False,False,2.056717091857761,True
+ACH-000496,Lung,intact,intact,False,False,2.056077753172299,True
+ACH-000717,Esophagus/Stomach,unknown,intact,False,False,2.0548391773963,True
+ACH-000930,Breast,intact,intact,False,True,2.052159752201227,True
+ACH-000669,Lung,deleted,intact,True,False,2.040971241482969,True
+ACH-000361,Liver,deleted,intact,True,False,2.038734651737741,True
+ACH-000227,Peripheral Nervous System,intact,intact,False,False,2.0295973771408127,True
+ACH-000449,Uterus,unknown,intact,False,False,2.011800487133744,True
+ACH-000739,Liver,intact,intact,False,False,2.0036216009513717,True
+ACH-001345,Bowel,unknown,intact,False,False,2.0010706694563445,True
+ACH-002446,Esophagus/Stomach,deleted,intact,True,False,1.9935904150948003,True
+ACH-002690,Bone,intact,intact,False,True,1.9934410247368062,True
+ACH-000345,Peripheral Nervous System,intact,intact,False,False,1.9801770104682448,True
+ACH-000481,Lung,deleted,intact,True,False,1.976973296552928,True
+ACH-000958,Bowel,intact,intact,False,False,1.9749051240556985,True
+ACH-000527,Ovary/Fallopian Tube,intact,intact,False,False,1.9732890470464646,True
+ACH-000744,Lung,unknown,intact,False,False,1.9726076404362507,True
+ACH-000655,CNS/Brain,deleted,intact,True,False,1.9691837268332408,True
+ACH-001796,Soft Tissue,unknown,intact,False,False,1.9667994343357216,True
+ACH-000344,Esophagus/Stomach,deleted,intact,True,False,1.9570421420868254,True
+ACH-000866,Lung,intact,lost,False,False,1.9568509309303608,True
+ACH-000768,Breast,deleted,intact,True,False,1.9548596554133333,True
+ACH-000971,Bowel,intact,intact,False,False,1.952078687052071,True
+ACH-000799,Skin,deleted,intact,True,False,1.943379692204031,True
+ACH-000444,Lung,deleted,intact,True,False,1.938452546978466,True
+ACH-000993,Uterus,unknown,intact,False,False,1.9345182976697168,True
+ACH-000823,Esophagus/Stomach,unknown,intact,False,False,1.9315130412659227,True
+ACH-002074,Lung,intact,lost,False,True,1.9228622080577962,True
+ACH-001624,CNS/Brain,deleted,intact,True,False,1.9074771813345959,True
+ACH-003121,Lung,intact,lost,False,False,1.9003616981413627,True
+ACH-000265,Pancreas,deleted,intact,True,False,1.9002446748125252,True
+ACH-000269,CNS/Brain,unknown,intact,False,False,1.8991059325344728,True
+ACH-000307,Pancreas,deleted,intact,False,False,1.8988128141050518,True
+ACH-000828,Breast,unknown,intact,False,False,1.883580794033901,True
+ACH-000409,Ovary/Fallopian Tube,intact,intact,False,False,1.8782181670041416,True
+ACH-000174,Thyroid,deleted,intact,True,False,1.8777485210069862,True
+ACH-000439,Myeloid,intact,intact,False,False,1.8637880938968028,True
+ACH-001415,Bladder/Urinary Tract,unknown,lost,False,False,1.8575936778702151,True
+ACH-001495,Uterus,unknown,intact,False,False,1.8569637915534214,True
+ACH-000250,Kidney,deleted,intact,False,False,1.8560973145258894,True
+ACH-000584,Ovary/Fallopian Tube,unknown,intact,False,False,1.8552600624685232,True
+ACH-001676,Head and Neck,intact,intact,False,False,1.8461322553968365,True
+ACH-000337,Lung,deleted,intact,True,False,1.838989328052547,True
+ACH-001001,Bone,deleted,intact,True,False,1.8384936143931807,True
+ACH-000972,Uterus,unknown,intact,False,False,1.8380791667430223,True
+ACH-001075,Lung,deleted,intact,True,False,1.8369875135892784,True
+ACH-000009,Bowel,intact,intact,False,False,1.8318056319493492,True
+ACH-000631,CNS/Brain,unknown,intact,False,False,1.8264119397028806,True
+ACH-000097,Breast,intact,intact,False,False,1.8128790202830414,True
+ACH-000499,Bone,intact,intact,False,True,1.8108435712494306,True
+ACH-000763,Lymphoid,deleted,intact,False,False,1.79677560610758,True
+ACH-000891,Lung,unknown,intact,False,False,1.7905715831822906,True
+ACH-000593,Bladder/Urinary Tract,deleted,intact,True,False,1.789843609496449,True
+ACH-001033,CNS/Brain,unknown,intact,False,False,1.7894854356897443,True
+ACH-000331,Pleura,deleted,intact,True,False,1.7888708221492315,True
+ACH-000172,Soft Tissue,intact,intact,False,False,1.7823578048613689,True
+ACH-000619,Head and Neck,unknown,intact,False,False,1.7821541761988682,True
+ACH-000890,Lung,deleted,intact,False,False,1.7797118086354582,True
+ACH-000957,Bowel,intact,intact,False,False,1.773937496129009,True
+ACH-001407,Bladder/Urinary Tract,unknown,lost,False,False,1.7723029474900267,True
+ACH-001551,Skin,unknown,lost,False,False,1.7697344035837577,True
+ACH-001409,Bladder/Urinary Tract,unknown,intact,False,False,1.7695374372410322,True
+ACH-000217,Liver,intact,intact,False,False,1.7601660643509152,True
+ACH-000733,Lung,unknown,intact,False,False,1.7556098528413826,True
+ACH-000459,Kidney,unknown,intact,False,False,1.7495968607104742,True
+ACH-001109,Kidney,unknown,intact,False,False,1.7467464755840347,True
+ACH-000433,Kidney,deleted,intact,False,False,1.7463077249766563,True
+ACH-001844,Biliary Tract,unknown,intact,False,False,1.7430207714990222,True
+ACH-000600,Kidney,unknown,intact,False,False,1.7387080766213119,True
+ACH-000244,CNS/Brain,deleted,intact,True,False,1.7371777898441243,True
+ACH-001983,Skin,deleted,intact,True,False,1.7295946360319445,True
+ACH-001302,Peripheral Nervous System,intact,intact,False,False,1.726645511046267,True
+ACH-000591,CNS/Brain,unknown,intact,False,False,1.7229266566017465,True
+ACH-002485,Lymphoid,deleted,intact,True,False,1.7223573583020446,True
+ACH-000805,Skin,deleted,intact,False,False,1.7147490388161706,True
+ACH-000775,Lung,unknown,intact,False,False,1.7145650959300132,True
+ACH-000503,Head and Neck,deleted,intact,True,False,1.712589290031387,True
+ACH-000731,Lung,unknown,intact,False,False,1.7125317105011355,True
+ACH-000384,Bladder/Urinary Tract,unknown,intact,False,False,1.7091441726761603,True
+ACH-002847,Skin,deleted,intact,True,False,1.706305686308814,True
+ACH-000488,Esophagus/Stomach,deleted,intact,False,False,1.7039636713384252,True
+ACH-000975,Lung,intact,intact,False,True,1.6957720048798517,True
+ACH-000522,Bladder/Urinary Tract,deleted,intact,True,False,1.6840846077067977,True
+ACH-001526,Bone,intact,lost,False,False,1.676703540990068,True
+ACH-000280,Ovary/Fallopian Tube,deleted,intact,True,False,1.6764955719903678,True
+ACH-000555,Kidney,unknown,intact,False,False,1.6752755763213896,True
+ACH-000831,Uterus,deleted,intact,True,False,1.6706641509304596,True
+ACH-000322,Skin,deleted,intact,True,False,1.6705339109512656,True
+ACH-000554,Breast,intact,intact,False,False,1.6663543054814902,True
+ACH-000473,Bladder/Urinary Tract,deleted,intact,True,False,1.6647450211110302,True
+ACH-000465,Skin,unknown,intact,False,False,1.6600585054128176,True
+ACH-000785,Lung,deleted,intact,True,False,1.6479582530179253,True
+ACH-002004,Skin,deleted,intact,False,False,1.6464842353879958,True
+ACH-000195,Myeloid,deleted,intact,True,False,1.6427892553453474,True
+ACH-000899,Skin,deleted,intact,True,False,1.6384748136589447,True
+ACH-000553,Lung,unknown,intact,False,False,1.6376720818436405,True
+ACH-000158,Lymphoid,unknown,intact,False,False,1.6361385813345475,True
+ACH-001321,Thyroid,unknown,intact,False,False,1.6351728912012418,True
+ACH-002535,Bowel,intact,intact,False,False,1.6219469805904712,True
+ACH-001853,Liver,unknown,lost,False,False,1.6192120520809128,True
+ACH-002528,Kidney,deleted,intact,True,False,1.6182211736301677,True
+ACH-002533,Kidney,deleted,intact,False,False,1.6161817028562038,True
+ACH-000376,CNS/Brain,deleted,intact,True,False,1.6130795160444396,True
+ACH-000477,Skin,deleted,intact,True,False,1.6107869729681898,True
+ACH-000311,Lung,deleted,intact,False,False,1.609940508599966,True
+ACH-000811,Ovary/Fallopian Tube,deleted,intact,False,False,1.608172563903873,True
+ACH-000886,Lung,unknown,intact,False,False,1.6050526330218953,True
+ACH-001855,Biliary Tract,unknown,intact,False,False,1.5988890159376574,True
+ACH-000349,Breast,deleted,intact,True,False,1.5988287823705325,True
+ACH-000536,Breast,deleted,intact,False,False,1.5943758489662547,True
+ACH-000530,Lung,intact,intact,False,False,1.5907397640696395,True
+ACH-000640,Skin,unknown,intact,False,False,1.5853190050445023,True
+ACH-000026,Bladder/Urinary Tract,unknown,intact,False,False,1.585204470720563,True
+ACH-001329,CNS/Brain,unknown,intact,False,False,1.579682002718148,True
+ACH-000535,Pancreas,deleted,intact,True,False,1.5791976676269215,True
+ACH-000711,Breast,intact,intact,False,False,1.5777041005119516,True
+ACH-000282,Lung,unknown,intact,False,False,1.5732910144749073,True
+ACH-000705,Lung,deleted,intact,True,False,1.5712299449934464,True
+ACH-000441,Skin,deleted,intact,True,False,1.570469440372058,True
+ACH-000305,Esophagus/Stomach,unknown,intact,False,False,1.5644814615424179,True
+ACH-000504,CNS/Brain,intact,intact,False,False,1.5644397918594786,True
+ACH-000834,Bladder/Urinary Tract,deleted,intact,False,False,1.5604889852750274,True
+ACH-001340,Ovary/Fallopian Tube,unknown,intact,False,False,1.5574008560652435,True
+ACH-000333,Ovary/Fallopian Tube,unknown,intact,False,False,1.557247173970885,True
+ACH-000092,Pleura,deleted,intact,True,False,1.5517237023289943,True
+ACH-003105,Skin,deleted,intact,True,False,1.5490774126162874,True
+ACH-000990,Uterus,unknown,intact,False,False,1.5473807777185749,True
+ACH-000310,Peripheral Nervous System,intact,intact,False,False,1.5440608430925944,True
+ACH-000569,Pleura,unknown,intact,False,False,1.5421672305422298,True
+ACH-001022,Bone,unknown,intact,False,False,1.5383317510497245,True
+ACH-001377,Pancreas,unknown,intact,False,False,1.5351322398394616,True
+ACH-000900,Lung,intact,intact,False,False,1.5343481792190823,True
+ACH-000276,Breast,deleted,intact,True,False,1.5294288434656067,True
+ACH-001845,Biliary Tract,unknown,intact,False,False,1.5293705877851824,True
+ACH-000605,Esophagus/Stomach,deleted,intact,True,True,1.528558588625184,True
+ACH-000320,Pancreas,deleted,intact,True,False,1.5282118781168987,True
+ACH-001820,Breast,unknown,intact,False,False,1.5259287504676855,True
+ACH-000674,Esophagus/Stomach,deleted,intact,True,False,1.5258153522511517,True
+ACH-000003,Bowel,unknown,intact,False,False,1.5229760928421923,True
+ACH-000139,Pancreas,deleted,intact,True,False,1.5155267546142508,True
+ACH-000262,Kidney,deleted,intact,True,False,1.5108252833585143,True
+ACH-001031,CNS/Brain,intact,intact,False,False,1.5086184147019466,True
+ACH-001654,Esophagus/Stomach,unknown,intact,False,False,1.5046053358831621,True
+ACH-000617,Ovary/Fallopian Tube,intact,intact,False,True,1.503112802978437,True
+ACH-000704,Ovary/Fallopian Tube,intact,intact,False,False,1.4972382988386639,True
+ACH-002782,Soft Tissue,deleted,intact,True,True,1.493571541651443,True
+ACH-000572,Skin,deleted,intact,False,False,1.4889100579272625,True
+ACH-000400,Bowel,intact,intact,False,False,1.4877119615777472,True
+ACH-000374,Breast,intact,intact,False,False,1.4857627352207627,True
+ACH-002026,Uterus,intact,intact,False,False,1.4731593666166547,True
+ACH-000019,Breast,deleted,intact,True,False,1.468921115820438,True
+ACH-002048,Soft Tissue,intact,intact,False,False,1.4544679062621944,True
+ACH-000114,Pancreas,deleted,intact,True,False,1.4544080722653474,True
+ACH-000848,Liver,intact,intact,False,False,1.4470453846190678,True
+ACH-001067,CNS/Brain,intact,lost,False,False,1.4467946647312142,True
+ACH-000208,CNS/Brain,unknown,intact,False,False,1.4434676271684435,True
+ACH-000888,Lung,deleted,intact,False,False,1.4427750639913484,True
+ACH-000211,CNS/Brain,deleted,intact,True,False,1.4386809848220041,True
+ACH-000701,Ovary/Fallopian Tube,intact,intact,False,False,1.4367819296559587,True
+ACH-000592,CNS/Brain,deleted,intact,True,False,1.4363660949705648,True
+ACH-000721,Breast,deleted,intact,True,False,1.4346677673745991,True
+ACH-002928,Skin,intact,intact,False,False,1.4327859880681324,True
+ACH-000011,Bladder/Urinary Tract,deleted,intact,True,False,1.4323327857651142,True
+ACH-002011,Eye,unknown,intact,False,False,1.4321975201446313,True
+ACH-001373,Ovary/Fallopian Tube,unknown,intact,False,False,1.4296771759608724,True
+ACH-001099,Soft Tissue,intact,intact,False,False,1.428869514833075,True
+ACH-001303,Peripheral Nervous System,intact,intact,False,False,1.4274043928542426,True
+ACH-000486,Bladder/Urinary Tract,deleted,intact,True,False,1.4272304417965314,True
+ACH-001536,Biliary Tract,unknown,intact,False,False,1.4270187815260864,True
+ACH-001413,Bladder/Urinary Tract,unknown,intact,False,False,1.4263118064684837,True
+ACH-000448,Lung,deleted,intact,True,False,1.4262821192054929,True
+ACH-002512,Skin,deleted,intact,True,False,1.4185979697405116,True
+ACH-000788,Skin,deleted,lost,False,False,1.4169052518682705,True
+ACH-000169,Soft Tissue,intact,intact,False,False,1.4165494871852888,True
+ACH-000517,Pancreas,deleted,intact,True,False,1.4162897812145232,True
+ACH-000865,Esophagus/Stomach,deleted,intact,False,False,1.414743830167173,True
+ACH-000776,CNS/Brain,deleted,intact,True,False,1.4076141961085753,True
+ACH-000159,Kidney,deleted,intact,True,False,1.4066197916112722,True
+ACH-002802,Peripheral Nervous System,deleted,intact,False,False,1.4057253340113784,True
+ACH-000646,Ovary/Fallopian Tube,unknown,intact,False,False,1.4019687990122738,True
+ACH-000200,CNS/Brain,deleted,intact,False,False,1.4015783509097777,True
+ACH-000647,Esophagus/Stomach,intact,lost,False,False,1.3981399906707501,True
+ACH-000897,Thyroid,unknown,lost,False,False,1.3880019009029636,True
+ACH-000562,Lung,unknown,intact,False,False,1.3858154020262223,True
+ACH-001847,Biliary Tract,unknown,intact,False,False,1.3788994342085403,True
+ACH-002886,Bowel,intact,intact,False,False,1.3778226717634858,True
+ACH-001981,Skin,deleted,intact,True,False,1.376906654835835,True
+ACH-000176,Lung,unknown,intact,False,False,1.376118685723951,True
+ACH-001979,Skin,deleted,intact,True,False,1.3745291154124377,True
+ACH-000102,CNS/Brain,unknown,lost,False,False,1.3693749484209012,True
+ACH-000665,Lung,deleted,intact,False,False,1.3685617544787045,True
+ACH-000673,CNS/Brain,deleted,intact,True,False,1.3673115220873175,True
+ACH-000882,Skin,deleted,intact,True,False,1.362401205291718,True
+ACH-001547,Pleura,deleted,intact,False,False,1.3623249001735434,True
+ACH-000932,Esophagus/Stomach,intact,intact,False,False,1.3589667794945295,True
+ACH-001394,Breast,unknown,intact,False,False,1.3573519368351195,True
+ACH-001437,Testis,unknown,intact,False,False,1.3527989964050082,True
+ACH-000008,Skin,deleted,intact,True,False,1.350093989302718,True
+ACH-000587,Lung,intact,intact,False,False,1.3494591944542975,True
+ACH-001623,CNS/Brain,deleted,intact,True,False,1.3467089185026024,True
+ACH-000774,Lung,unknown,intact,False,False,1.3456650958953442,True
+ACH-001670,CNS/Brain,deleted,intact,True,False,1.3437678500843182,True
+ACH-003470,Thyroid,unknown,intact,False,False,1.3390525314658228,True
+ACH-000096,Kidney,intact,intact,False,False,1.336224853418093,True
+ACH-002061,Myeloid,deleted,intact,True,False,1.3303925278150235,True
+ACH-001978,Skin,deleted,intact,True,False,1.321466266806577,True
+ACH-002834,Bone,deleted,intact,False,False,1.3178407111616939,True
+ACH-000212,Breast,intact,intact,False,True,1.3173353784409731,True
+ACH-000160,CNS/Brain,deleted,intact,True,False,1.3157944274911615,True
+ACH-000859,Breast,intact,intact,False,False,1.3071276919075479,True
+ACH-001716,Peripheral Nervous System,unknown,intact,False,False,1.3035103417290077,True
+ACH-000352,Breast,intact,intact,False,False,1.298269404196361,True
+ACH-000380,Lymphoid,unknown,intact,False,False,1.292876658040112,True
+ACH-002044,Head and Neck,deleted,intact,True,False,1.2903013707181334,True
+ACH-000308,Ovary/Fallopian Tube,intact,intact,False,False,1.286936947145744,True
+ACH-002846,Skin,deleted,intact,True,False,1.2844598832196232,True
+ACH-000700,Lung,deleted,intact,True,False,1.2815380446019522,True
+ACH-000998,Bowel,unknown,intact,False,False,1.2810172657521925,True
+ACH-000289,CNS/Brain,unknown,intact,False,False,1.2806593505132096,True
+ACH-000789,Lung,unknown,intact,False,False,1.2741606492131525,True
+ACH-002440,Thyroid,unknown,intact,False,False,1.2722137278903807,True
+ACH-001673,Biliary Tract,unknown,intact,False,False,1.271738889458786,True
+ACH-001301,Peripheral Nervous System,intact,intact,False,False,1.2681816403443846,True
+ACH-000761,Esophagus/Stomach,unknown,intact,False,False,1.2667430087406406,True
+ACH-000663,Ovary/Fallopian Tube,deleted,intact,False,False,1.263250149003499,True
+ACH-000052,Bone,deleted,intact,True,False,1.2603315296896846,True
+ACH-000317,Kidney,deleted,intact,False,False,1.2584743867166719,False
+ACH-000190,Myeloid,deleted,intact,False,False,1.2573998678825062,False
+ACH-000875,Lung,unknown,intact,False,False,1.2569180982636698,False
+ACH-000628,Lung,intact,lost,False,False,1.2568998395101993,False
+ACH-000745,Lymphoid,unknown,intact,False,False,1.2526026749209846,False
+ACH-000089,Bowel,unknown,intact,False,False,1.2511867541964299,False
+ACH-000268,Biliary Tract,unknown,intact,False,False,1.2465567460584315,False
+ACH-000437,CNS/Brain,deleted,intact,True,False,1.240637009019815,False
+ACH-000152,CNS/Brain,intact,intact,False,False,1.2395190513208019,False
+ACH-001605,CNS/Brain,unknown,lost,False,False,1.238801798940945,False
+ACH-000450,Skin,deleted,intact,False,False,1.2382629725764074,False
+ACH-000471,Liver,deleted,intact,True,False,1.2360540651759755,False
+ACH-001465,Peripheral Nervous System,intact,intact,False,False,1.2353138836890494,False
+ACH-003469,Thyroid,unknown,intact,False,False,1.2350612312551175,False
+ACH-000808,Biliary Tract,unknown,lost,False,False,1.2329760255693014,False
+ACH-000002,Myeloid,unknown,intact,False,False,1.223386874754027,False
+ACH-000955,Bowel,intact,intact,False,False,1.2231834353433169,False
+ACH-000883,CNS/Brain,intact,lost,False,False,1.2182773356417285,False
+ACH-001494,Biliary Tract,deleted,intact,True,False,1.2128077168086044,False
+ACH-001431,Bone,deleted,intact,True,False,1.2100333728370758,False
+ACH-000963,Bowel,intact,intact,False,False,1.2054442107950503,False
+ACH-000485,Esophagus/Stomach,unknown,intact,False,False,1.204593879662022,False
+ACH-000999,Bowel,unknown,lost,False,False,1.202378794297786,False
+ACH-001541,Lymphoid,unknown,intact,False,False,1.2020591777232945,False
+ACH-000100,Soft Tissue,unknown,intact,False,False,1.200383946506104,False
+ACH-001375,Pancreas,unknown,intact,False,False,1.2001199788144767,False
+ACH-000181,Head and Neck,unknown,intact,False,False,1.1918776110542437,False
+ACH-001996,Biliary Tract,deleted,intact,True,False,1.1848375438067742,False
+ACH-000126,CNS/Brain,deleted,intact,True,False,1.184297992490476,False
+ACH-000824,Esophagus/Stomach,unknown,intact,False,False,1.184111508308427,False
+ACH-002531,Lung,deleted,intact,False,False,1.1819405770496405,False
+ACH-000793,Esophagus/Stomach,intact,intact,False,False,1.1757586258168844,False
+ACH-000231,CNS/Brain,intact,intact,False,False,1.1701229995376838,False
+ACH-001856,Biliary Tract,unknown,intact,False,False,1.1671979116050362,False
+ACH-003181,Soft Tissue,deleted,intact,True,False,1.1667553007989737,False
+ACH-000454,Lung,deleted,intact,False,False,1.1631291351002724,False
+ACH-000155,Pancreas,deleted,intact,True,False,1.157156872043513,False
+ACH-002688,Bone,intact,intact,False,True,1.1566758069692118,False
+ACH-000457,Kidney,deleted,intact,True,False,1.1559461156467608,False
+ACH-000213,Pancreas,unknown,intact,False,False,1.1548108706721711,False
+ACH-000283,CNS/Brain,deleted,intact,True,False,1.1527087497706285,False
+ACH-000203,Peripheral Nervous System,intact,intact,False,False,1.1480932837872213,False
+ACH-000442,Lung,unknown,intact,False,False,1.144189038127905,False
+ACH-000730,Skin,deleted,intact,True,False,1.142181652429741,False
+ACH-000738,CNS/Brain,deleted,intact,True,False,1.141669316039173,False
+ACH-002705,Esophagus/Stomach,intact,intact,False,False,1.140965379949848,False
+ACH-000330,Breast,deleted,intact,True,False,1.1357615853310619,False
+ACH-001743,Soft Tissue,unknown,intact,False,False,1.1354621865407066,False
+ACH-002524,Ovary/Fallopian Tube,deleted,intact,True,False,1.1345736984582329,False
+ACH-000604,Myeloid,unknown,intact,False,False,1.1271702163108257,False
+ACH-000463,Lung,deleted,intact,False,False,1.1249529794124515,False
+ACH-000533,Kidney,intact,intact,False,False,1.123811376705314,False
+ACH-000818,Breast,intact,intact,False,False,1.1232439709571955,False
+ACH-001813,Bone,intact,intact,False,False,1.113620714196271,False
+ACH-000275,Fibroblast,unknown,intact,False,False,1.1047893768687074,False
+ACH-000248,Breast,intact,intact,False,False,1.1002131685621575,False
+ACH-001578,Testis,intact,intact,False,False,1.1000191734037101,False
+ACH-000501,Bowel,unknown,intact,False,False,1.0959904395437043,False
+ACH-000550,Skin,deleted,intact,True,False,1.0956422195356375,False
+ACH-000017,Breast,intact,intact,False,False,1.0954609867012222,False
+ACH-000973,Bladder/Urinary Tract,intact,lost,False,False,1.0937947042407485,False
+ACH-000256,Ovary/Fallopian Tube,intact,intact,False,True,1.0889793620528088,False
+ACH-000650,Skin,unknown,intact,False,False,1.0824806979191643,False
+ACH-001370,Ovary/Fallopian Tube,unknown,intact,False,False,1.0807232296049611,False
+ACH-000161,Lung,unknown,intact,False,False,1.078522504463529,False
+ACH-002689,Bone,intact,lost,False,False,1.0760440788083343,False
+ACH-000610,Lung,intact,lost,False,True,1.0743680882893858,False
+ACH-000902,Breast,unknown,intact,False,False,1.0735551027055783,False
+ACH-000634,CNS/Brain,deleted,intact,True,False,1.0725859164997693,False
+ACH-000163,Head and Neck,deleted,intact,True,False,1.0684491952989696,False
+ACH-001128,Soft Tissue,intact,intact,False,False,1.0681236146646922,False
+ACH-001971,Skin,unknown,intact,False,False,1.06811954310627,False
+ACH-001050,Soft Tissue,unknown,intact,False,False,1.0664584749620467,False
+ACH-002002,Skin,deleted,intact,False,False,1.0628888910665717,False
+ACH-002789,Soft Tissue,intact,intact,False,False,1.0549839293223058,False
+ACH-000947,Ovary/Fallopian Tube,intact,intact,False,False,1.0519026630817585,False
+ACH-000597,Soft Tissue,unknown,intact,False,False,1.0501499934710177,False
+ACH-002433,Bone,intact,intact,False,False,1.049073424614761,False
+ACH-000103,Ovary/Fallopian Tube,unknown,intact,False,False,1.048126257805862,False
+ACH-000044,Breast,intact,intact,False,False,1.0479814320910854,False
+ACH-001838,Biliary Tract,unknown,intact,False,False,1.0451080855551107,False
+ACH-001559,Pleura,unknown,intact,False,False,1.045086016433063,False
+ACH-001190,Skin,intact,intact,False,False,1.0446533131144105,False
+ACH-000582,Skin,deleted,intact,True,False,1.044601379060233,False
+ACH-001552,Skin,unknown,lost,False,False,1.0431007741655165,False
+ACH-000353,Esophagus/Stomach,unknown,intact,False,False,1.0391160619362176,False
+ACH-000296,Bowel,unknown,intact,False,False,1.0375140225949204,False
+ACH-000482,Lung,unknown,intact,False,False,1.0286447139911408,False
+ACH-001188,Peripheral Nervous System,intact,intact,False,False,1.0255504318478248,False
+ACH-000428,Kidney,unknown,intact,False,False,1.0163540232313388,False
+ACH-000952,Prostate,unknown,intact,False,False,1.015729656783575,False
+ACH-000648,Pleura,deleted,intact,False,False,1.0155094954719783,False
+ACH-001183,Bladder/Urinary Tract,deleted,intact,True,False,1.0142372487726505,False
+ACH-002799,Peripheral Nervous System,deleted,intact,True,False,1.0137398428070445,False
+ACH-000560,Esophagus/Stomach,unknown,lost,False,False,1.0118319928315755,False
+ACH-001558,Pleura,unknown,intact,False,False,1.0101727684489292,False
+ACH-001030,Bone,unknown,intact,False,False,1.0076966483738985,False
+ACH-000929,Lung,intact,intact,False,False,1.0058465143235973,False
+ACH-000040,CNS/Brain,deleted,intact,True,False,1.0025847537288823,False
+ACH-001786,Bowel,unknown,intact,False,False,1.000473877226464,False
+ACH-000912,Lung,intact,intact,False,False,0.9918564496822486,False
+ACH-000781,Lung,deleted,intact,True,False,0.9904684218557449,False
+ACH-001277,Soft Tissue,intact,intact,False,False,0.9895985586129887,False
+ACH-000014,Skin,deleted,intact,True,False,0.9873915456745326,False
+ACH-000133,Fibroblast,intact,lost,False,False,0.9870897367025295,False
+ACH-000319,Pleura,intact,intact,False,False,0.9862916590508244,False
+ACH-000827,Skin,intact,intact,False,False,0.9797289740035193,False
+ACH-001566,Skin,unknown,intact,False,False,0.9789679112648219,False
+ACH-000661,Skin,deleted,intact,False,False,0.9771383142210267,False
+ACH-000335,Pleura,deleted,intact,False,False,0.9730540182226334,False
+ACH-000950,Bowel,intact,intact,False,False,0.9727764750390573,False
+ACH-000826,Lung,intact,intact,False,False,0.9673469290421406,False
+ACH-001283,Bone,deleted,intact,True,False,0.9618652899327762,False
+ACH-000746,Esophagus/Stomach,intact,intact,False,False,0.9552114277842191,False
+ACH-000598,Lymphoid,unknown,intact,False,False,0.9542748939713862,False
+ACH-000302,Uterus,intact,intact,False,False,0.9535830188636489,False
+ACH-000822,Skin,deleted,intact,True,False,0.9528780871708856,False
+ACH-000863,CNS/Brain,unknown,intact,False,False,0.9507661603380928,False
+ACH-000398,Lymphoid,unknown,intact,False,False,0.9503740649328327,False
+ACH-001984,Skin,intact,intact,False,False,0.9494465788584653,False
+ACH-000193,Lymphoid,unknown,intact,False,False,0.9469472407881699,False
+ACH-000042,Pancreas,intact,intact,False,False,0.9459095750759369,False
+ACH-000171,Kidney,unknown,intact,False,False,0.9428640659880914,False
+ACH-000281,Pancreas,deleted,intact,True,False,0.9365571310629163,False
+ACH-002801,Peripheral Nervous System,deleted,intact,False,False,0.9331111410820169,False
+ACH-001419,Breast,unknown,intact,False,False,0.9280635819370411,False
+ACH-000989,Bowel,unknown,intact,False,False,0.9171884094384828,False
+ACH-000706,Lung,intact,intact,False,False,0.9171687873771804,False
+ACH-001622,CNS/Brain,deleted,intact,False,False,0.9156610235705598,False
+ACH-000117,Breast,intact,intact,False,False,0.9150490156935418,False
+ACH-001423,Kidney,unknown,intact,False,False,0.9126960822835195,False
+ACH-001318,Liver,intact,intact,False,False,0.9119680644601628,False
+ACH-001386,Lung,unknown,lost,False,False,0.9098956476013921,False
+ACH-001667,Soft Tissue,deleted,intact,True,False,0.9078327356454985,False
+ACH-000067,CNS/Brain,unknown,intact,False,False,0.9069055614088842,False
+ACH-000424,Bone,deleted,intact,True,False,0.9040810277615496,False
+ACH-000237,Ovary/Fallopian Tube,deleted,intact,True,False,0.8979972634750598,False
+ACH-002459,Skin,deleted,intact,True,False,0.8976489680778892,False
+ACH-000590,Lung,unknown,intact,False,False,0.8958231989189128,False
+ACH-000368,CNS/Brain,deleted,intact,True,False,0.8957642135356636,False
+ACH-002708,Soft Tissue,deleted,intact,True,False,0.8952413811457467,False
+ACH-002706,Esophagus/Stomach,intact,intact,False,False,0.8935455129610186,False
+ACH-001702,Soft Tissue,deleted,intact,True,False,0.8921447052481304,False
+ACH-000301,Myeloid,deleted,intact,False,False,0.8918560368267556,False
+ACH-000876,Breast,unknown,intact,False,False,0.8884447387272325,False
+ACH-000054,Soft Tissue,deleted,intact,True,False,0.8881347782728397,False
+ACH-000804,Peripheral Nervous System,intact,intact,False,False,0.8860276398811074,False
+ACH-000544,Esophagus/Stomach,deleted,intact,False,False,0.8849945961721598,False
+ACH-001328,Skin,unknown,intact,False,False,0.8818409930056209,False
+ACH-001557,Pleura,unknown,intact,False,False,0.8782239022076319,False
+ACH-000393,Liver,intact,lost,False,False,0.8767323558942194,False
+ACH-000221,Liver,intact,intact,False,False,0.8739001394510322,False
+ACH-001150,Bone,unknown,intact,False,False,0.8736376129277307,False
+ACH-000926,Bowel,unknown,intact,False,False,0.8735419985698515,False
+ACH-001038,Bone,deleted,intact,True,False,0.8686812747960251,False
+ACH-000291,Ovary/Fallopian Tube,intact,intact,False,False,0.8683730753582758,False
+ACH-000988,Uterus,intact,intact,False,False,0.8677536788982332,False
+ACH-001655,Uterus,unknown,intact,False,False,0.8652763139323862,False
+ACH-001239,Skin,deleted,intact,False,False,0.8629479647968404,False
+ACH-000639,Lung,intact,intact,False,False,0.8614672315137286,False
+ACH-002470,Bone,intact,intact,False,True,0.858282369933783,False
+ACH-000363,Lymphoid,intact,intact,False,False,0.858061018984019,False
+ACH-000351,Esophagus/Stomach,intact,intact,False,True,0.8574009576182104,False
+ACH-000148,Breast,deleted,intact,False,False,0.8564515781169195,False
+ACH-000724,Bladder/Urinary Tract,intact,intact,False,False,0.8490934645601014,False
+ACH-001393,Breast,intact,intact,False,False,0.8481803475569247,False
+ACH-000467,Bowel,unknown,intact,False,False,0.8451350655368514,False
+ACH-000862,Bladder/Urinary Tract,unknown,intact,False,False,0.844760714479347,False
+ACH-001610,CNS/Brain,deleted,intact,True,False,0.8442023869268989,False
+ACH-000455,CNS/Brain,deleted,intact,True,False,0.8424017832340497,False
+ACH-000977,Prostate,intact,intact,False,False,0.8351165678235734,False
+ACH-002038,Ovary/Fallopian Tube,deleted,intact,False,False,0.8315524806300081,False
+ACH-000699,Breast,deleted,intact,True,False,0.8249204871107754,False
+ACH-000571,CNS/Brain,unknown,intact,False,False,0.8214833030870559,False
+ACH-000136,Peripheral Nervous System,unknown,intact,False,False,0.8188638004796194,False
+ACH-000483,Liver,intact,intact,False,False,0.813663197650289,False
+ACH-000935,Bowel,intact,intact,False,False,0.8092261470037916,False
+ACH-000764,Esophagus/Stomach,intact,lost,False,False,0.8076470194491807,False
+ACH-001438,Testis,unknown,intact,False,False,0.8064259183740384,False
+ACH-001843,Biliary Tract,unknown,intact,False,False,0.8038532424288353,False
+ACH-000718,Lung,intact,intact,False,False,0.8012964848077104,False
+ACH-000908,Esophagus/Stomach,unknown,intact,False,False,0.8012682544487426,False
+ACH-000904,Lung,unknown,intact,False,False,0.7998356419247723,False
+ACH-000568,Breast,intact,intact,False,False,0.7872462067755959,False
+ACH-001842,Biliary Tract,unknown,intact,False,False,0.7857904210509481,False
+ACH-000649,Kidney,deleted,intact,False,False,0.7844856513660721,False
+ACH-000421,Bowel,intact,intact,False,False,0.7841988687330629,False
+ACH-000201,Kidney,intact,intact,False,False,0.7821548763413247,False
+ACH-000869,Lung,deleted,intact,False,False,0.7799667608431355,False
+ACH-000375,Kidney,intact,intact,False,False,0.779305413598705,False
+ACH-002460,Skin,deleted,intact,True,False,0.7767237982787156,False
+ACH-001151,Ovary/Fallopian Tube,deleted,intact,True,False,0.7750200630097517,False
+ACH-000132,Ovary/Fallopian Tube,deleted,intact,True,False,0.7726180941806579,False
+ACH-001048,Ovary/Fallopian Tube,unknown,intact,False,False,0.7684682174582254,False
+ACH-000742,Fibroblast,unknown,intact,False,False,0.7680448841895681,False
+ACH-002033,Pleura,deleted,intact,True,True,0.7675479520694198,False
+ACH-000342,Bowel,unknown,intact,False,False,0.7644510532903066,False
+ACH-000076,Myeloid,intact,intact,False,False,0.7633020031643372,False
+ACH-000223,Breast,intact,lost,False,False,0.7604140241088606,False
+ACH-000951,Lung,unknown,intact,False,False,0.7597370106463817,False
+ACH-000629,CNS/Brain,unknown,intact,False,False,0.7590838540822373,False
+ACH-000143,Lung,intact,intact,False,False,0.7589850947188951,False
+ACH-000189,Kidney,deleted,intact,False,False,0.7585707554028295,False
+ACH-003265,Soft Tissue,unknown,intact,False,False,0.7562000306287703,False
+ACH-001391,Breast,unknown,intact,False,False,0.7556414061919837,False
+ACH-000487,Myeloid,deleted,intact,True,False,0.7551498957779665,False
+ACH-000856,Breast,intact,intact,False,False,0.7550876800239632,False
+ACH-000219,Skin,deleted,intact,False,False,0.7532455787085972,False
+ACH-000240,Fibroblast,unknown,intact,False,False,0.7516069184323193,False
+ACH-000570,CNS/Brain,deleted,intact,True,False,0.7427175648379583,False
+ACH-000874,Lymphoid,deleted,intact,True,False,0.7415010513185184,False
+ACH-000613,Bone,unknown,intact,False,False,0.7402847437920939,False
+ACH-000790,Lung,intact,intact,False,False,0.7338082734999438,False
+ACH-001650,Cervix,unknown,lost,False,False,0.7313552390365228,False
+ACH-001414,Bladder/Urinary Tract,unknown,intact,False,False,0.7279895261537279,False
+ACH-002486,Ovary/Fallopian Tube,deleted,intact,False,False,0.7250051254329039,False
+ACH-000247,Esophagus/Stomach,intact,intact,False,False,0.7238404109125306,False
+ACH-002070,CNS/Brain,deleted,intact,False,False,0.7192338038410211,False
+ACH-001418,Ovary/Fallopian Tube,unknown,intact,False,False,0.717343660834564,False
+ACH-000087,Bone,intact,intact,False,False,0.7146650836223253,False
+ACH-000909,Uterus,unknown,intact,False,False,0.7126854491696677,False
+ACH-000694,Esophagus/Stomach,deleted,intact,True,False,0.7105753281131526,False
+ACH-002001,Skin,deleted,intact,False,False,0.7104131070087086,False
+ACH-000911,Esophagus/Stomach,intact,intact,False,False,0.7056854946578169,False
+ACH-001374,Ovary/Fallopian Tube,unknown,intact,False,False,0.701352004982432,False
+ACH-000099,Peripheral Nervous System,intact,intact,False,False,0.7001299673696942,False
+ACH-000566,Bladder/Urinary Tract,unknown,intact,False,False,0.6999357383293172,False
+ACH-001356,Thyroid,unknown,intact,False,False,0.6980293817838787,False
+ACH-002458,Skin,deleted,intact,True,False,0.6965105166115992,False
+ACH-000543,CNS/Brain,unknown,intact,False,False,0.6947532167162698,False
+ACH-001982,Skin,deleted,intact,True,False,0.6904650159280381,False
+ACH-000434,Lung,unknown,intact,False,False,0.6859077486055278,False
+ACH-001034,Bone,unknown,intact,False,False,0.6787234371584955,False
+ACH-000123,Ovary/Fallopian Tube,intact,intact,False,False,0.6688502833387721,False
+ACH-000844,Lung,intact,intact,False,False,0.6656849377412553,False
+ACH-002509,Skin,unknown,intact,False,False,0.6651167714311251,False
+ACH-001385,Head and Neck,intact,intact,False,False,0.663816769802319,False
+ACH-000934,Breast,intact,intact,False,False,0.6601499985196319,False
+ACH-000925,Lung,unknown,intact,False,False,0.6577955260199124,False
+ACH-000146,Myeloid,deleted,intact,True,False,0.6548631856109017,False
+ACH-001974,Skin,deleted,intact,True,False,0.6544660488588541,False
+ACH-000259,Peripheral Nervous System,intact,intact,False,False,0.6522106213989123,False
+ACH-000272,Kidney,deleted,intact,False,False,0.651994025531171,False
+ACH-002065,Peripheral Nervous System,deleted,intact,True,False,0.6511362747157461,False
+ACH-000027,CNS/Brain,unknown,intact,False,False,0.6496427613593037,False
+ACH-000796,Ovary/Fallopian Tube,intact,intact,False,False,0.648701475751603,False
+ACH-000074,Myeloid,intact,intact,False,False,0.6451502812688656,False
+ACH-001369,Ovary/Fallopian Tube,unknown,intact,False,False,0.6417578740592715,False
+ACH-000270,Pancreas,intact,intact,False,False,0.6393398916615614,False
+ACH-000968,Skin,intact,intact,False,False,0.6351381411057749,False
+ACH-001411,Bladder/Urinary Tract,unknown,intact,False,False,0.6320284627200115,False
+ACH-000078,Peripheral Nervous System,intact,intact,False,False,0.6240094451592211,False
+ACH-000390,Lung,deleted,intact,True,False,0.6190565685139757,False
+ACH-000359,Bone,deleted,intact,True,False,0.6164905292722012,False
+ACH-001819,Breast,unknown,intact,False,False,0.6151818514793577,False
+ACH-001750,Soft Tissue,deleted,intact,False,False,0.6134868702159746,False
+ACH-000850,Fibroblast,unknown,intact,False,False,0.6110945336162003,False
+ACH-002925,Eye,intact,intact,False,False,0.6071501968862449,False
+ACH-001384,Thyroid,unknown,intact,False,False,0.606935916015311,False
+ACH-001403,Ovary/Fallopian Tube,unknown,intact,False,False,0.6044384762559518,False
+ACH-000945,Lung,intact,intact,False,False,0.6039713828121589,False
+ACH-000358,Lung,intact,lost,False,False,0.6030330533352755,False
+ACH-000411,Kidney,deleted,intact,False,False,0.6014842861489316,False
+ACH-000607,Kidney,intact,intact,False,False,0.598461994390439,False
+ACH-000563,Lung,unknown,intact,False,False,0.5974740897495991,False
+ACH-000149,Peripheral Nervous System,unknown,intact,False,False,0.5947173356790628,False
+ACH-000387,Myeloid,intact,intact,False,False,0.5898851854707263,False
+ACH-000416,Lung,deleted,intact,True,False,0.5887135263295635,False
+ACH-002522,Lung,deleted,intact,True,False,0.5831629210769573,False
+ACH-000435,Uterus,intact,intact,False,False,0.5830224269645771,False
+ACH-000638,Lung,unknown,intact,False,False,0.5810718660977036,False
+ACH-001700,Head and Neck,intact,intact,False,False,0.5803893814082568,False
+ACH-000870,Lung,intact,lost,False,False,0.5777217127017438,False
+ACH-000328,CNS/Brain,unknown,intact,False,False,0.5759182834848464,False
+ACH-001699,Head and Neck,deleted,intact,False,False,0.5709913905207903,False
+ACH-000419,Lymphoid,unknown,intact,False,False,0.5694947139996196,False
+ACH-001113,Lung,unknown,intact,False,False,0.5660481163666508,False
+ACH-001416,Bladder/Urinary Tract,unknown,intact,False,False,0.5625438961833467,False
+ACH-001427,Bone,unknown,intact,False,False,0.5624899267844747,False
+ACH-000041,Bone,intact,intact,False,False,0.5608472190336121,False
+ACH-000927,Breast,intact,intact,False,False,0.5563627356224815,False
+ACH-000385,Kidney,deleted,intact,False,False,0.5555211891049705,False
+ACH-000677,Lung,unknown,intact,False,False,0.5547195933984459,False
+ACH-000931,Skin,unknown,intact,False,False,0.5534616035270935,False
+ACH-000779,Lung,unknown,intact,False,False,0.5508230873825819,False
+ACH-000806,Lymphoid,unknown,intact,False,False,0.5441471037062973,False
+ACH-001533,Lymphoid,intact,intact,False,False,0.5403196487704931,False
+ACH-000531,Fibroblast,unknown,intact,False,False,0.5266373758839864,False
+ACH-000119,Fibroblast,unknown,intact,False,False,0.5199407150948196,False
+ACH-001517,Uterus,unknown,intact,False,False,0.51866253085947,False
+ACH-000025,CNS/Brain,deleted,intact,True,False,0.508430307102656,False
+ACH-003433,Pancreas,unknown,intact,False,False,0.5007251929074152,False
+ACH-001350,Thyroid,intact,intact,False,False,0.49137233171897376,False
+ACH-000120,Peripheral Nervous System,intact,intact,False,False,0.491280443174653,False
+ACH-001814,Bone,intact,lost,False,False,0.4891739646606241,False
+ACH-000814,Skin,intact,intact,False,False,0.4886397385720141,False
+ACH-001988,Skin,intact,intact,False,False,0.48733426446452954,False
+ACH-000921,Lung,intact,intact,False,False,0.4866983722533486,False
+ACH-000819,CNS/Brain,deleted,intact,True,False,0.4810011738336528,False
+ACH-001683,Breast,intact,intact,False,False,0.47596615983822943,False
+ACH-000135,Fibroblast,unknown,intact,False,False,0.4661637222113556,False
+ACH-000343,Lung,intact,intact,False,False,0.4598814050004203,False
+ACH-002924,Eye,intact,intact,False,False,0.45971124263584273,False
+ACH-001029,Bone,intact,intact,False,False,0.45850542091581825,False
+ACH-001961,Biliary Tract,unknown,intact,False,False,0.45376478554353505,False
+ACH-001791,Soft Tissue,intact,intact,False,False,0.44068923275902616,False
+ACH-001609,CNS/Brain,deleted,intact,True,False,0.4400277315337361,False
+ACH-000502,Pancreas,deleted,intact,True,False,0.4396792075903361,False
+ACH-000137,CNS/Brain,intact,intact,False,False,0.433389464125413,False
+ACH-002080,Peripheral Nervous System,intact,intact,False,False,0.43241044773190734,False
+ACH-000585,Lung,intact,intact,False,False,0.42692923141291317,False
+ACH-001555,Pleura,unknown,intact,False,False,0.4255209534389067,False
+ACH-001278,Ovary/Fallopian Tube,intact,intact,False,False,0.42430644268121687,False
+ACH-000954,Uterus,intact,intact,False,False,0.4239533940094182,False
+ACH-000257,Lung,intact,intact,False,False,0.4236667716628111,False
+ACH-000985,Bowel,intact,lost,False,False,0.4158824220449058,False
+ACH-001028,CNS/Brain,unknown,intact,False,False,0.41459369806254553,False
+ACH-000046,Kidney,deleted,intact,True,False,0.4133457253051287,False
+ACH-000023,Pancreas,intact,intact,False,False,0.41300367924411996,False
+ACH-000589,Lung,deleted,intact,True,False,0.41249023064442114,False
+ACH-000312,Peripheral Nervous System,intact,intact,False,False,0.40964508511460374,False
+ACH-000741,Bladder/Urinary Tract,unknown,intact,False,False,0.4038180186133089,False
+ACH-000833,Soft Tissue,intact,intact,False,False,0.3947939725909848,False
+ACH-000037,Soft Tissue,deleted,intact,True,False,0.3938265943081867,False
+ACH-000106,Lymphoid,unknown,intact,False,False,0.39364268210612124,False
+ACH-000445,CNS/Brain,deleted,intact,True,False,0.3918538766393489,False
+ACH-000618,Head and Neck,deleted,intact,True,False,0.39118120883704277,False
+ACH-002544,Esophagus/Stomach,intact,intact,False,False,0.38938813488819235,False
+ACH-001068,Lymphoid,intact,intact,False,False,0.3833327917833914,False
+ACH-000679,Esophagus/Stomach,intact,intact,False,False,0.38014627614554175,False
+ACH-000446,Peripheral Nervous System,unknown,intact,False,False,0.37491979450290924,False
+ACH-003451,Kidney,unknown,intact,False,False,0.3731659085343747,False
+ACH-000537,Liver,intact,intact,False,False,0.37229690540261173,False
+ACH-002025,Bowel,intact,intact,False,False,0.36949148458071646,False
+ACH-000910,Breast,intact,intact,False,False,0.3591261672018423,False
+ACH-001338,Peripheral Nervous System,intact,intact,False,False,0.35754624448526506,False
+ACH-000577,Liver,unknown,intact,False,False,0.3555153524914467,False
+ACH-001332,Head and Neck,unknown,intact,False,False,0.35538235231563564,False
+ACH-001704,Skin,intact,intact,False,False,0.3539296208967925,False
+ACH-000616,Esophagus/Stomach,intact,intact,False,False,0.34707969825841334,False
+ACH-001522,Skin,unknown,intact,False,False,0.3461649536002692,False
+ACH-002046,Uterus,intact,lost,False,False,0.34536717541283246,False
+ACH-000879,Uterus,intact,intact,False,False,0.3410499749800098,False
+ACH-000853,Lung,intact,intact,False,True,0.33916146673582426,False
+ACH-000134,Fibroblast,unknown,intact,False,False,0.3376494222925106,False
+ACH-001172,CNS/Brain,unknown,intact,False,False,0.3358047476409671,False
+ACH-000086,Pleura,deleted,intact,True,False,0.3340502072357512,False
+ACH-000469,CNS/Brain,deleted,intact,True,False,0.33270314395048806,False
+ACH-000314,Lung,intact,intact,False,False,0.32997663924718457,False
+ACH-000691,Breast,intact,intact,False,False,0.3270771591912087,False
+ACH-000184,Fibroblast,unknown,intact,False,False,0.3266563011665853,False
+ACH-000965,Uterus,intact,intact,False,False,0.3245176274621133,False
+ACH-000050,Lymphoid,intact,intact,False,False,0.32429531762560615,False
+ACH-003267,Soft Tissue,unknown,intact,False,False,0.3225338503779427,False
+ACH-001549,Lung,unknown,lost,False,False,0.322444566829148,False
+ACH-002039,Pancreas,deleted,intact,True,False,0.3165561173096525,False
+ACH-000672,Lung,unknown,intact,False,False,0.31622765660356267,False
+ACH-000303,Esophagus/Stomach,unknown,intact,False,False,0.31609885855478126,False
+ACH-002003,Skin,deleted,intact,False,False,0.3147363072615103,False
+ACH-000551,Myeloid,deleted,intact,True,False,0.30626114531445925,False
+ACH-001300,Peripheral Nervous System,intact,intact,False,False,0.30463942767282814,False
+ACH-002780,Bone,intact,intact,False,False,0.30122176432244807,False
+ACH-000083,Fibroblast,unknown,intact,False,False,0.30080489448778064,False
+ACH-000783,Breast,intact,intact,False,False,0.2985144641763014,False
+ACH-001970,Skin,unknown,intact,False,False,0.2964538543111481,False
+ACH-000188,Head and Neck,deleted,intact,True,False,0.29228944739228946,False
+ACH-000480,Liver,intact,intact,False,False,0.28586929757496105,False
+ACH-000539,Fibroblast,unknown,intact,False,False,0.285172812285208,False
+ACH-001949,Skin,intact,intact,False,False,0.28314927693343417,False
+ACH-000797,Fibroblast,unknown,intact,False,False,0.2817606163862067,False
+ACH-003176,Bone,intact,intact,False,False,0.2740333318559145,False
+ACH-002005,Skin,intact,intact,False,False,0.2702579949525365,False
+ACH-000199,Fibroblast,unknown,intact,False,False,0.2696527809674498,False
+ACH-000750,Skin,deleted,intact,True,False,0.2640296674351925,False
+ACH-000970,Bowel,unknown,intact,False,False,0.2639567537570988,False
+ACH-002798,Skin,intact,intact,False,False,0.25954563911087997,False
+ACH-001567,Skin,unknown,intact,False,False,0.25494391371396086,False
+ACH-001192,Bone,deleted,intact,True,False,0.24557181427373342,False
+ACH-001648,Prostate,unknown,intact,False,False,0.2452469595462743,False
+ACH-000451,Lung,unknown,intact,False,False,0.24186751120011918,False
+ACH-000662,Lung,intact,intact,False,False,0.2399204863816844,False
+ACH-002013,Eye,intact,intact,False,False,0.23940023634633023,False
+ACH-001864,Biliary Tract,unknown,intact,False,False,0.2383733114439226,False
+ACH-003456,Skin,unknown,intact,False,False,0.23323219709444593,False
+ACH-000334,Lymphoid,intact,intact,False,False,0.23257353016688787,False
+ACH-000812,Skin,unknown,intact,False,False,0.2319928202921302,False
+ACH-001563,Skin,unknown,intact,False,False,0.22884131603500668,False
+ACH-000633,Esophagus/Stomach,intact,intact,False,False,0.22876384668267435,False
+ACH-000391,Bone,intact,intact,False,False,0.21878232902669942,False
+ACH-000885,Ovary/Fallopian Tube,unknown,intact,False,False,0.21603736323750505,False
+ACH-001528,Thyroid,deleted,intact,True,False,0.2150264717137138,False
+ACH-000974,Uterus,intact,intact,False,False,0.21491132499352295,False
+ACH-001839,Biliary Tract,unknown,intact,False,False,0.21464465810458355,False
+ACH-001990,Skin,intact,lost,False,False,0.21227060291756072,False
+ACH-003473,Soft Tissue,unknown,intact,False,False,0.21153625615326743,False
+ACH-000232,CNS/Brain,deleted,intact,True,False,0.20576288331101877,False
+ACH-001701,Head and Neck,deleted,intact,True,False,0.20019626635689813,False
+ACH-000082,Bone,intact,intact,False,False,0.1975449051005551,False
+ACH-003472,Thyroid,unknown,intact,False,False,0.1944716065079436,False
+ACH-002711,Head and Neck,deleted,intact,True,False,0.1938127061479773,False
+ACH-002066,Peripheral Nervous System,intact,intact,False,False,0.19122269782999707,False
+ACH-000175,Fibroblast,unknown,intact,False,False,0.18381824614643,False
+ACH-000820,Bowel,intact,intact,False,False,0.1837278125241925,False
+ACH-000749,Lung,intact,lost,False,False,0.1834728884524257,False
+ACH-000206,Lymphoid,intact,intact,False,False,0.18177826694404486,False
+ACH-001399,Bowel,unknown,intact,False,False,0.1808741406471353,False
+ACH-000115,Prostate,unknown,intact,False,False,0.1781431975530804,False
+ACH-000063,Fibroblast,unknown,intact,False,False,0.1767204627878909,False
+ACH-000666,Lung,intact,intact,False,False,0.17190637035306877,False
+ACH-000479,CNS/Brain,deleted,intact,False,False,0.16664202755177238,False
+ACH-001861,Biliary Tract,unknown,intact,False,False,0.16319218891585385,False
+ACH-000756,CNS/Brain,intact,lost,False,False,0.1628717425537196,False
+ACH-001959,Biliary Tract,unknown,intact,False,False,0.15596024207874448,False
+ACH-002927,Eye,intact,intact,False,False,0.15564873589594183,False
+ACH-001677,Lymphoid,intact,lost,False,False,0.1526186615819175,False
+ACH-001625,Head and Neck,unknown,intact,False,False,0.14942364208011039,False
+ACH-001519,Bone,intact,intact,False,False,0.14787876817418855,False
+ACH-000300,Kidney,unknown,intact,False,False,0.1468855693335957,False
+ACH-000366,Peripheral Nervous System,intact,intact,False,False,0.14530377096828329,False
+ACH-002926,Eye,intact,intact,False,False,0.14416913314923185,False
+ACH-001098,Pancreas,unknown,intact,False,False,0.14310432936835316,False
+ACH-000072,Myeloid,unknown,intact,False,False,0.141116839044783,False
+ACH-000529,Fibroblast,unknown,intact,False,False,0.1389007098695652,False
+ACH-000122,Lymphoid,unknown,intact,False,False,0.13447204170538418,False
+ACH-001389,Breast,unknown,intact,False,False,0.1277304634275893,False
+ACH-000576,Lymphoid,intact,intact,False,False,0.12484616879441446,False
+ACH-000538,Bowel,intact,intact,False,False,0.12344880362565536,False
+ACH-000230,Fibroblast,unknown,intact,False,False,0.12332591069101775,False
+ACH-000165,Fibroblast,unknown,intact,False,False,0.12301133130235475,False
+ACH-000996,Uterus,intact,lost,False,False,0.12283351832862266,False
+ACH-000180,Fibroblast,unknown,intact,False,False,0.12106740297642424,False
+ACH-003464,Soft Tissue,unknown,intact,False,False,0.11946188896564935,False
+ACH-001992,Pleura,deleted,intact,True,False,0.118319371423794,False
+ACH-001368,Esophagus/Stomach,unknown,intact,False,False,0.1123483205054609,False
+ACH-000767,Lung,intact,lost,False,False,0.10848973670909712,False
+ACH-001980,Skin,deleted,intact,True,False,0.10769103759145748,False
+ACH-000401,Skin,deleted,intact,False,False,0.10647773845415931,False
+ACH-000690,Lung,unknown,intact,False,False,0.10592870445613256,False
+ACH-002693,Peripheral Nervous System,intact,intact,False,False,0.1052633908166494,False
+ACH-002790,Soft Tissue,intact,intact,False,False,0.10439530091605083,False
+ACH-000852,Lung,intact,intact,False,False,0.10204041286324428,False
+ACH-001562,Pleura,deleted,intact,False,False,0.10192047528216674,False
+ACH-000295,Myeloid,deleted,intact,True,False,0.10018205977741856,False
+ACH-000367,Pleura,intact,intact,False,False,0.09788307423630183,False
+ACH-002409,CNS/Brain,unknown,intact,False,False,0.09423205807984525,False
+ACH-003438,CNS/Brain,unknown,intact,False,False,0.08201051770453627,False
+ACH-001306,Thyroid,intact,intact,False,False,0.07536294118974451,False
+ACH-000007,Bowel,intact,intact,False,False,0.07436664589155861,False
+ACH-001366,Peripheral Nervous System,intact,intact,False,False,0.07348757658572425,False
+ACH-000614,Skin,deleted,intact,False,False,0.07322244406750222,False
+ACH-002405,Skin,unknown,intact,False,False,0.0704876487855011,False
+ACH-002501,Soft Tissue,intact,intact,False,False,0.06711488780543218,False
+ACH-000255,Esophagus/Stomach,unknown,intact,False,False,0.061293388396180926,False
+ACH-000511,Lung,intact,intact,False,False,0.058963189328771315,False
+ACH-000933,Pancreas,unknown,intact,False,False,0.05634683962037701,False
+ACH-000294,Myeloid,unknown,intact,False,False,0.04802374990542102,False
+ACH-001388,Breast,unknown,intact,False,False,0.04532074774204231,False
+ACH-000722,Bowel,unknown,intact,False,False,0.04479399082399571,False
+ACH-002499,Breast,intact,intact,False,False,0.043876329210341014,False
+ACH-000423,Skin,unknown,intact,False,False,0.035761379829211015,False
+ACH-000207,Head and Neck,deleted,intact,False,False,0.03557793449159147,False
+ACH-002438,Kidney,intact,intact,False,False,0.03513853243509718,False
+ACH-001349,CNS/Brain,intact,intact,False,False,0.034859654020716446,False
+ACH-000030,Lung,intact,intact,False,False,0.03468759137016342,False
+ACH-000125,Fibroblast,unknown,intact,False,False,0.03210237374073671,False
+ACH-001200,Kidney,intact,intact,False,False,0.02509160954698382,False
+ACH-000249,Bowel,intact,intact,False,False,0.02283943259179877,False
+ACH-000505,Soft Tissue,deleted,intact,True,False,0.022454024056289157,False
+ACH-000214,Fibroblast,unknown,intact,False,False,0.020530759351704064,False
+ACH-002539,Bowel,intact,intact,False,False,0.015885674386851067,False
+ACH-000615,Skin,unknown,intact,False,False,0.014757500245396793,False
+ACH-001279,Ovary/Fallopian Tube,intact,intact,False,False,0.01466614611758843,False
+ACH-000340,Fibroblast,unknown,intact,False,False,0.01262408835662912,False
+ACH-000194,Fibroblast,unknown,intact,False,False,0.010656042128444662,False
+ACH-000956,Prostate,intact,intact,False,False,0.009630549513213876,False
+ACH-000185,Fibroblast,unknown,intact,False,False,0.007664524276509543,False
+ACH-000403,Bowel,intact,intact,False,False,0.006750469227428946,False
+ACH-000913,Uterus,intact,lost,False,False,0.0032642192432419392,False
+ACH-001688,Kidney,unknown,intact,False,False,0.0004909103749584087,False
+ACH-001737,Lymphoid,deleted,lost,True,False,-0.0027529308646188078,False
+ACH-000468,Pancreas,deleted,intact,True,False,-0.0041597936067607755,False
+ACH-000260,Peripheral Nervous System,intact,intact,False,False,-0.006913754689756829,False
+ACH-000917,Esophagus/Stomach,intact,intact,False,False,-0.00721734268241192,False
+ACH-000907,Kidney,intact,intact,False,False,-0.023740259340753855,False
+ACH-001598,Adrenal Gland,intact,lost,False,False,-0.026398245056778125,False
+ACH-000422,Liver,intact,intact,False,False,-0.028213047110075107,False
+ACH-000787,Lung,unknown,intact,False,False,-0.028905128629525212,False
+ACH-001603,Peripheral Nervous System,unknown,intact,False,False,-0.03107621772451097,False
+ACH-000871,Lung,intact,lost,False,False,-0.031619758728831604,False
+ACH-000967,Bowel,intact,intact,False,False,-0.03388672218447508,False
+ACH-003468,Thyroid,unknown,intact,False,False,-0.03484241461690751,False
+ACH-001334,Cervix,intact,intact,False,False,-0.03553766490140797,False
+ACH-000703,Lung,intact,lost,False,False,-0.03554769500097876,False
+ACH-001696,Head and Neck,intact,intact,False,False,-0.036659786230687275,False
+ACH-000088,Fibroblast,unknown,intact,False,False,-0.037315760316032814,False
+ACH-000033,Lung,unknown,intact,False,False,-0.04585597241756845,False
+ACH-001836,Biliary Tract,unknown,intact,False,False,-0.04695674254829851,False
+ACH-002040,Vulva/Vagina,intact,intact,False,False,-0.05138631235261358,False
+ACH-003101,Lymphoid,deleted,lost,False,False,-0.05264944147009554,False
+ACH-000987,Skin,unknown,intact,False,False,-0.05304673281540773,False
+ACH-000186,Lung,unknown,intact,False,False,-0.05757405085358103,False
+ACH-000623,CNS/Brain,deleted,intact,True,False,-0.059240078744792424,False
+ACH-000254,Head and Neck,unknown,intact,False,False,-0.06669776482203882,False
+ACH-000336,Myeloid,intact,intact,False,False,-0.06729243619537473,False
+ACH-000015,Lung,intact,intact,False,False,-0.06969270965119234,False
+ACH-000438,Lung,intact,lost,False,False,-0.07053424587939938,False
+ACH-001395,Breast,intact,intact,False,False,-0.07064698743733942,False
+ACH-000495,Kidney,unknown,intact,False,False,-0.07348555072954827,False
+ACH-003459,Skin,unknown,lost,False,False,-0.07730360417532775,False
+ACH-001618,Myeloid,intact,intact,False,True,-0.08097371818076327,False
+ACH-000697,Lymphoid,deleted,intact,True,False,-0.0840875076495764,False
+ACH-000229,Fibroblast,unknown,intact,False,False,-0.08415099370451883,False
+ACH-000043,Fibroblast,unknown,intact,False,False,-0.08511351567501113,False
+ACH-000684,Kidney,deleted,intact,False,False,-0.08580680183835354,False
+ACH-001275,Bone,intact,intact,False,False,-0.08601550811110364,False
+ACH-002178,Bone,intact,intact,False,False,-0.09112034575863592,False
+ACH-001016,CNS/Brain,unknown,intact,False,False,-0.09438657930194982,False
+ACH-001041,Skin,unknown,intact,False,False,-0.09824109234961126,False
+ACH-000418,Bone,unknown,intact,False,False,-0.09854925342251963,False
+ACH-003158,Muscle,unknown,intact,False,False,-0.1009846873346789,False
+ACH-001396,Breast,unknown,intact,False,False,-0.10234379359839826,False
+ACH-001975,Skin,intact,intact,False,False,-0.10276966496629418,False
+ACH-003071,Lung,intact,lost,False,False,-0.10817077499793304,False
+ACH-000641,Myeloid,deleted,intact,True,False,-0.11075998969220668,False
+ACH-001295,Eye,intact,lost,False,False,-0.11184340735458576,False
+ACH-000055,CNS/Brain,unknown,intact,False,False,-0.11359213456091366,False
+ACH-001709,Lymphoid,intact,intact,False,False,-0.1275718536549587,False
+ACH-000771,Head and Neck,intact,intact,False,False,-0.1305919423090967,False
+ACH-002419,Uterus,unknown,intact,False,False,-0.1306459325305223,False
+ACH-001759,Soft Tissue,unknown,intact,False,False,-0.13260067049086594,False
+ACH-001274,Soft Tissue,deleted,intact,True,False,-0.13504962096389628,False
+ACH-001401,Adrenal Gland,intact,intact,False,False,-0.13583548609949736,False
+ACH-000860,Lung,unknown,intact,False,False,-0.13811033695014152,False
+ACH-000729,Lung,intact,lost,False,False,-0.13814792843703416,False
+ACH-000643,Breast,intact,lost,False,False,-0.13838312126894448,False
+ACH-000058,Thyroid,unknown,intact,False,False,-0.13924586624136925,False
+ACH-000341,Peripheral Nervous System,intact,intact,False,False,-0.14333873739703074,False
+ACH-000138,Pancreas,unknown,intact,False,False,-0.14637801142458073,False
+ACH-001678,Lymphoid,unknown,intact,False,False,-0.14779538473280374,False
+ACH-000542,Ovary/Fallopian Tube,deleted,intact,True,False,-0.14939252398169311,False
+ACH-000357,Lymphoid,unknown,intact,False,False,-0.15236237780205486,False
+ACH-003227,Bone,deleted,intact,True,False,-0.1550823832786754,False
+ACH-000784,Esophagus/Stomach,deleted,intact,True,False,-0.15811718715982837,False
+ACH-000941,Uterus,intact,intact,False,False,-0.16497308415826162,False
+ACH-001765,Soft Tissue,intact,intact,False,False,-0.1729969898329788,False
+ACH-001817,Bone,intact,intact,False,False,-0.17492249433569457,False
+ACH-002511,Skin,intact,intact,False,False,-0.1779237549423346,False
+ACH-000464,CNS/Brain,deleted,intact,True,False,-0.17802809174718615,False
+ACH-001510,Head and Neck,unknown,intact,False,False,-0.185514235677669,False
+ACH-002018,Eye,intact,intact,False,False,-0.18768840185074748,False
+ACH-001511,Head and Neck,unknown,intact,False,False,-0.18884943823210198,False
+ACH-001863,Biliary Tract,intact,intact,False,False,-0.19325911138961882,False
+ACH-000090,Prostate,intact,intact,False,False,-0.19507056589297167,False
+ACH-002084,Skin,intact,intact,False,False,-0.19854217207425617,False
+ACH-000864,Uterus,unknown,lost,False,False,-0.19917330128442434,False
+ACH-000131,Fibroblast,unknown,intact,False,False,-0.20789150992418737,False
+ACH-000798,Bowel,unknown,intact,False,False,-0.21104974889903816,False
+ACH-002921,Breast,intact,intact,False,False,-0.21132215686631872,False
+ACH-001985,Skin,intact,intact,False,False,-0.21139731310747506,False
+ACH-001449,Lymphoid,unknown,intact,False,False,-0.21238202217261049,False
+ACH-000306,Fibroblast,unknown,intact,False,False,-0.2177099753887734,False
+ACH-000765,Skin,unknown,intact,False,False,-0.2198589332708749,False
+ACH-001986,Skin,intact,intact,False,False,-0.22313405156905627,False
+ACH-000029,Lung,intact,intact,False,False,-0.23569661605633296,False
+ACH-000748,Bone,intact,intact,False,False,-0.23591433839609433,False
+ACH-001687,Kidney,unknown,intact,False,False,-0.2396846478331116,False
+ACH-001560,Pleura,deleted,intact,True,False,-0.24055474372751906,False
+ACH-001649,Prostate,intact,intact,False,False,-0.24361228477209024,False
+ACH-003437,Esophagus/Stomach,unknown,intact,False,False,-0.24644624730300912,False
+ACH-001691,Head and Neck,deleted,intact,False,False,-0.25118135101178174,False
+ACH-000279,Bone,intact,intact,False,False,-0.25184756264240404,False
+ACH-000946,Uterus,intact,intact,False,False,-0.25243047747941016,False
+ACH-000405,Lymphoid,intact,intact,False,False,-0.2530188005139541,False
+ACH-003119,Lung,intact,lost,False,False,-0.2552400505515986,False
+ACH-000792,Kidney,deleted,intact,True,False,-0.2561319526967414,False
+ACH-000606,Head and Neck,unknown,intact,False,False,-0.256423638024446,False
+ACH-000521,Lung,intact,intact,False,False,-0.256945445352009,False
+ACH-000251,Lung,intact,intact,False,False,-0.25764195736709605,False
+ACH-003268,Soft Tissue,unknown,intact,False,False,-0.2631083933169055,False
+ACH-001556,Pleura,unknown,intact,False,False,-0.26437445839654816,False
+ACH-000579,Skin,intact,intact,False,False,-0.2675730991895041,False
+ACH-000895,Bowel,unknown,intact,False,False,-0.2676048160262452,False
+ACH-000263,Myeloid,intact,intact,False,False,-0.27248573717737484,False
+ACH-000383,Esophagus/Stomach,intact,intact,False,False,-0.2751304115309716,False
+ACH-000769,Lung,intact,intact,False,False,-0.27581289035477363,False
+ACH-001987,Skin,deleted,intact,True,False,-0.2761210912350387,False
+ACH-001570,Skin,unknown,intact,False,False,-0.28150457540938134,False
+ACH-001537,Biliary Tract,unknown,intact,False,False,-0.28558937372015714,False
+ACH-002052,Lung,intact,lost,False,False,-0.288785326993098,False
+ACH-002014,Eye,intact,intact,False,False,-0.29490324533585477,False
+ACH-000198,Myeloid,deleted,intact,True,False,-0.297092560420821,False
+ACH-000845,Lung,intact,intact,False,False,-0.3031535918051641,False
+ACH-000976,Biliary Tract,intact,intact,False,False,-0.308036623562034,False
+ACH-002784,Soft Tissue,deleted,intact,True,False,-0.310358444513934,False
+ACH-000709,Kidney,intact,intact,False,False,-0.31336035113280075,False
+ACH-002035,Lung,intact,intact,False,False,-0.3173806812397458,False
+ACH-001532,Kidney,unknown,intact,False,False,-0.3189021528286312,False
+ACH-001525,Cervix,unknown,intact,False,False,-0.3212883765565906,False
+ACH-001493,Lymphoid,unknown,intact,False,False,-0.32846401757250854,False
+ACH-002500,Lymphoid,deleted,intact,True,False,-0.33179887810652287,False
+ACH-000224,Fibroblast,unknown,intact,False,False,-0.33358022427608863,False
+ACH-000667,Lung,intact,lost,False,False,-0.33420779204110307,False
+ACH-000689,Soft Tissue,unknown,intact,False,False,-0.3346703198650639,False
+ACH-000525,Lung,intact,lost,False,False,-0.33547573368946826,False
+ACH-000794,Head and Neck,unknown,intact,False,False,-0.33577599739510744,False
+ACH-001353,Pancreas,unknown,intact,False,False,-0.3378089258098944,False
+ACH-001642,Lymphoid,intact,intact,False,True,-0.3405817320016423,False
+ACH-000676,Skin,intact,intact,False,False,-0.34177841305709833,False
+ACH-002722,Soft Tissue,intact,intact,False,False,-0.34441509924841995,False
+ACH-000489,Bowel,unknown,intact,False,False,-0.34612455642076206,False
+ACH-002844,Soft Tissue,unknown,intact,False,False,-0.34846975767108246,False
+ACH-001307,Thyroid,intact,intact,False,False,-0.3501896555837887,False
+ACH-001333,Cervix,intact,lost,False,False,-0.3503056409533023,False
+ACH-000413,Fibroblast,unknown,intact,False,False,-0.3510417802976101,False
+ACH-001715,Bone,deleted,intact,True,False,-0.3540787695866374,False
+ACH-002023,Ampulla of Vater,intact,intact,False,False,-0.3542991847012634,False
+ACH-000686,Liver,unknown,intact,False,False,-0.3569462141602846,False
+ACH-000476,Liver,intact,intact,False,False,-0.35902822430542336,False
+ACH-002792,Soft Tissue,intact,intact,False,False,-0.35998671808471683,False
+ACH-000107,Pancreas,unknown,intact,False,False,-0.3677317665580383,False
+ACH-003145,Embryonal,unknown,intact,False,False,-0.37315931110170003,False
+ACH-000048,Ovary/Fallopian Tube,intact,intact,False,False,-0.374521463762997,False
+ACH-001751,Soft Tissue,unknown,intact,False,False,-0.38011770696612324,False
+ACH-000726,Esophagus/Stomach,unknown,intact,False,False,-0.38122334710216066,False
+ACH-001456,Bowel,unknown,intact,False,False,-0.38668295200308705,False
+ACH-000753,Bladder/Urinary Tract,intact,lost,False,False,-0.3888154706702194,False
+ACH-000821,Lymphoid,unknown,intact,False,False,-0.3931420904001902,False
+ACH-000857,Breast,intact,lost,False,False,-0.39577994761706814,False
+ACH-001539,Lymphoid,unknown,intact,False,False,-0.4016013720495737,False
+ACH-001760,Soft Tissue,unknown,intact,False,False,-0.4019587898325594,False
+ACH-002435,Kidney,intact,intact,False,False,-0.4020167164212947,False
+ACH-000825,Lung,unknown,intact,False,False,-0.40221424228869723,False
+ACH-001794,Soft Tissue,unknown,intact,False,False,-0.40227032644536664,False
+ACH-003149,Muscle,unknown,intact,False,False,-0.4034693987605548,False
+ACH-001972,Skin,intact,intact,False,False,-0.42058547965785903,False
+ACH-000840,Lung,intact,intact,False,False,-0.4243800787226708,False
+ACH-000659,Lung,intact,lost,False,False,-0.42451999256824013,False
+ACH-000475,Liver,intact,intact,False,False,-0.42646774286800826,False
+ACH-000284,Fibroblast,unknown,intact,False,False,-0.42696625321599435,False
+ACH-003152,Lung,unknown,intact,False,False,-0.4282223227838781,False
+ACH-002017,Eye,intact,intact,False,False,-0.43044922354921833,False
+ACH-003426,Esophagus/Stomach,unknown,intact,False,False,-0.4309910058241681,False
+ACH-002510,Skin,deleted,intact,True,False,-0.4310676275523124,False
+ACH-001520,Lymphoid,unknown,intact,False,False,-0.43193183502030924,False
+ACH-000154,Fibroblast,unknown,intact,False,False,-0.43384169147668256,False
+ACH-003177,Soft Tissue,deleted,intact,True,False,-0.4373091725928784,False
+ACH-001458,Bowel,unknown,intact,False,False,-0.4376635684879764,False
+ACH-000396,Bladder/Urinary Tract,unknown,lost,False,False,-0.44165663061858207,False
+ACH-000526,Fibroblast,unknown,intact,False,False,-0.4428845341416655,False
+ACH-001554,Eye,unknown,intact,False,False,-0.4457211157651401,False
+ACH-001664,Esophagus/Stomach,unknown,intact,False,False,-0.44707643324062185,False
+ACH-001561,Pleura,unknown,intact,False,False,-0.4487657780055754,False
+ACH-001354,Peripheral Nervous System,intact,intact,False,False,-0.4526834980966571,False
+ACH-001708,Lymphoid,unknown,intact,False,False,-0.4559023262473221,False
+ACH-000404,Skin,unknown,intact,False,False,-0.4564412757759971,False
+ACH-001542,Head and Neck,unknown,intact,False,False,-0.4568562299101202,False
+ACH-000515,Lung,intact,lost,False,False,-0.4669039957442228,False
+ACH-000524,Ovary/Fallopian Tube,intact,intact,False,False,-0.46996193710958506,False
+ACH-000512,Lymphoid,unknown,intact,False,False,-0.4713857424061183,False
+ACH-002800,Peripheral Nervous System,intact,intact,False,False,-0.4723928926287718,False
+ACH-000264,Lung,intact,intact,False,False,-0.4797854968669797,False
+ACH-000205,Pancreas,unknown,intact,False,False,-0.4887677836729395,False
+ACH-002532,Bowel,intact,intact,False,False,-0.4926641891515112,False
+ACH-000006,Myeloid,unknown,intact,False,False,-0.49426137614514065,False
+ACH-000575,Lung,unknown,intact,False,False,-0.49444594533921626,False
+ACH-002045,Head and Neck,intact,intact,False,False,-0.4973415197940053,False
+ACH-000273,CNS/Brain,intact,lost,False,False,-0.49789773193662157,False
+ACH-001695,Head and Neck,intact,intact,False,False,-0.49941871081416833,False
+ACH-002523,Liver,intact,intact,False,False,-0.5032263428444386,False
+ACH-003061,Lung,intact,lost,False,False,-0.5120712952390003,False
+ACH-000980,Lung,unknown,lost,False,False,-0.5133542489139892,False
+ACH-000732,Head and Neck,intact,intact,False,False,-0.5219544711336351,False
+ACH-001977,Pleura,deleted,intact,True,False,-0.5231079098312623,False
+ACH-000652,Pancreas,intact,intact,False,False,-0.5232750593664847,False
+ACH-000238,Head and Neck,intact,intact,False,False,-0.5241112869722722,False
+ACH-000085,Pancreas,intact,intact,False,False,-0.5321951453763535,False
+ACH-003150,CNS/Brain,unknown,intact,False,False,-0.53579107063862,False
+ACH-000177,Prostate,unknown,intact,False,False,-0.5366098634052776,False
+ACH-000519,Lymphoid,unknown,intact,False,False,-0.5372004258797416,False
+ACH-000060,Pancreas,intact,intact,False,False,-0.5425670330986714,False
+ACH-000872,Lung,intact,intact,False,False,-0.5440288102427021,False
+ACH-001627,Prostate,unknown,intact,False,False,-0.5463572341778827,False
+ACH-001346,Head and Neck,unknown,intact,False,False,-0.5486482072072759,False
+ACH-000815,Lymphoid,unknown,intact,False,False,-0.549080861321164,False
+ACH-001339,Skin,unknown,intact,False,False,-0.5505646724583817,False
+ACH-001807,Soft Tissue,unknown,intact,False,False,-0.5560581085723568,False
+ACH-000039,Bone,intact,lost,False,False,-0.5618461794373139,False
+ACH-000266,Pancreas,unknown,intact,False,False,-0.5635980797091604,False
+ACH-001705,Breast,intact,intact,False,False,-0.5657766735955992,False
+ACH-001500,Esophagus/Stomach,unknown,intact,False,False,-0.5675518513200805,False
+ACH-000838,Lymphoid,intact,intact,False,False,-0.5681102273638686,False
+ACH-002142,Bone,intact,lost,False,False,-0.5728499228847395,False
+ACH-000022,Pancreas,intact,intact,False,False,-0.5729951045011586,False
+ACH-001628,Ovary/Fallopian Tube,unknown,intact,False,False,-0.574941612476365,False
+ACH-000630,Head and Neck,intact,intact,False,False,-0.5760630165162035,False
+ACH-000846,Head and Neck,intact,intact,False,False,-0.5948664849883398,False
+ACH-000668,Breast,intact,intact,False,False,-0.596813874168346,False
+ACH-000394,Lung,intact,lost,False,False,-0.5993077403032456,False
+ACH-003065,CNS/Brain,intact,intact,False,False,-0.6047025116929287,False
+ACH-003471,Thyroid,unknown,intact,False,False,-0.6062066746689247,False
+ACH-003221,Fibroblast,intact,intact,False,False,-0.6067069469095454,False
+ACH-000842,Bowel,intact,intact,False,False,-0.6069412348981693,False
+ACH-000924,Lung,intact,intact,False,False,-0.6081202619535214,False
+ACH-003156,Lung,unknown,intact,False,False,-0.6084029398121322,False
+ACH-001059,Soft Tissue,intact,intact,False,False,-0.6127049843840197,False
+ACH-000708,Bowel,unknown,intact,False,False,-0.6127404248058401,False
+ACH-002010,Eye,intact,intact,False,False,-0.6142329237256622,False
+ACH-002681,CNS/Brain,deleted,intact,True,False,-0.6185832804126661,False
+ACH-000644,Skin,intact,intact,False,False,-0.6230940249566899,False
+ACH-001513,Cervix,unknown,intact,False,False,-0.6323849032841153,False
+ACH-000277,Breast,intact,intact,False,False,-0.6329287350908506,False
+ACH-000835,Soft Tissue,intact,intact,False,False,-0.6340921954835138,False
+ACH-000540,Fibroblast,unknown,intact,False,False,-0.6346668225913241,False
+ACH-001270,Soft Tissue,unknown,intact,False,False,-0.6369739638731726,False
+ACH-000642,Breast,unknown,intact,False,False,-0.6401757544495565,False
+ACH-001492,Lymphoid,deleted,intact,True,False,-0.6439048662255189,False
+ACH-001548,Peripheral Nervous System,intact,intact,False,False,-0.6479880601467465,False
+ACH-000443,Ovary/Fallopian Tube,unknown,intact,False,False,-0.6487947032333271,False
+ACH-000012,Lung,intact,intact,False,False,-0.6513245455772827,False
+ACH-000297,Lung,intact,intact,False,False,-0.6559777159751526,False
+ACH-000036,CNS/Brain,deleted,intact,False,False,-0.657593111592156,False
+ACH-000261,Lung,intact,intact,False,False,-0.6651306434643043,False
+ACH-000978,Uterus,intact,intact,False,False,-0.6713668850436563,False
+ACH-000034,Myeloid,unknown,intact,False,False,-0.6718835006145596,False
+ACH-000608,Ovary/Fallopian Tube,intact,intact,False,False,-0.6739861649872008,False
+ACH-000079,Fibroblast,unknown,intact,False,False,-0.6745610766205893,False
+ACH-002654,Bowel,intact,intact,False,False,-0.6748180574926257,False
+ACH-000313,Kidney,intact,intact,False,False,-0.6804299755022428,False
+ACH-001441,Eye,intact,intact,False,False,-0.6846208245434562,False
+ACH-000094,Pancreas,unknown,intact,False,False,-0.6920690879916236,False
+ACH-000734,Liver,intact,intact,False,False,-0.6929285236009606,False
+ACH-001515,Cervix,unknown,intact,False,False,-0.7047974286748568,False
+ACH-000408,Esophagus/Stomach,deleted,intact,False,False,-0.7213953402993016,False
+ACH-001035,Bone,unknown,intact,False,False,-0.7237157386536737,False
+ACH-000916,Lung,unknown,intact,False,False,-0.7253029121583447,False
+ACH-000147,Breast,intact,intact,False,False,-0.7283558144377713,False
+ACH-000685,Pancreas,unknown,intact,False,False,-0.7414993624517215,False
+ACH-003157,Lung,unknown,intact,False,False,-0.7498120603624265,False
+ACH-000427,Esophagus/Stomach,intact,intact,False,False,-0.7500962192540683,False
+ACH-000507,Esophagus/Stomach,intact,intact,False,False,-0.7514447381067004,False
+ACH-002047,Uterus,deleted,intact,False,False,-0.7516458092556357,False
+ACH-002936,Soft Tissue,intact,intact,False,False,-0.7550028179467705,False
+ACH-001207,Fibroblast,unknown,intact,False,False,-0.7630986021933422,False
+ACH-001322,Soft Tissue,intact,intact,False,False,-0.7632583125217616,False
+ACH-000168,Myeloid,deleted,intact,True,False,-0.7684252725029799,False
+ACH-003153,Lung,unknown,intact,False,False,-0.7716036819832138,False
+ACH-000241,Myeloid,unknown,intact,False,False,-0.7741388124664357,False
+ACH-000288,Breast,intact,lost,False,False,-0.7788556878987272,False
+ACH-001142,CNS/Brain,unknown,intact,False,False,-0.7887301898429827,False
+ACH-002015,Eye,intact,intact,False,False,-0.7899148399124585,False
+ACH-000712,Lung,intact,intact,False,False,-0.7921322615695001,False
+ACH-001032,Bone,unknown,intact,False,False,-0.795114885024387,False
+ACH-000220,Lymphoid,unknown,intact,False,False,-0.7970371049412266,False
+ACH-000016,Kidney,unknown,intact,False,False,-0.8029161383383037,False
+ACH-001196,Soft Tissue,intact,intact,False,False,-0.8078188259165475,False
+ACH-001461,Bowel,intact,intact,False,False,-0.8132497261062757,False
+ACH-001991,Ovary/Fallopian Tube,unknown,intact,False,False,-0.8133811621635287,False
+ACH-001608,CNS/Brain,deleted,intact,True,False,-0.8155372094762021,False
+ACH-000182,Ampulla of Vater,intact,intact,False,False,-0.8166611548079842,False
+ACH-001481,Peripheral Nervous System,intact,intact,False,False,-0.8219871663346994,False
+ACH-002283,Peripheral Nervous System,intact,lost,False,False,-0.8247630951597064,False
+ACH-001379,Pancreas,unknown,intact,False,False,-0.8262828961898864,False
+ACH-000915,Skin,intact,intact,False,False,-0.8263704150544631,False
+ACH-000513,Kidney,unknown,intact,False,False,-0.8285671803002822,False
+ACH-000355,Lung,intact,lost,False,False,-0.8304125407017116,False
+ACH-000948,Esophagus/Stomach,intact,intact,False,False,-0.8370021069536565,False
+ACH-002687,Eye,intact,intact,False,False,-0.8410719684101415,False
+ACH-000906,Ovary/Fallopian Tube,intact,intact,False,False,-0.8429142973846904,False
+ACH-001793,Soft Tissue,intact,intact,False,False,-0.8437027745854258,False
+ACH-001758,Soft Tissue,unknown,intact,False,False,-0.8519126220156812,False
+ACH-000407,Uterus,intact,intact,False,False,-0.8559103574865322,False
+ACH-001422,Prostate,intact,intact,False,False,-0.8569628985674771,False
+ACH-000960,Lymphoid,unknown,intact,False,False,-0.8631048613389898,False
+ACH-003138,CNS/Brain,unknown,intact,False,False,-0.8643234111590312,False
+ACH-000810,Skin,intact,intact,False,False,-0.865194063733885,False
+ACH-000051,Soft Tissue,unknown,intact,False,False,-0.8658762395449905,False
+ACH-001521,Skin,unknown,intact,False,False,-0.8685185739332407,False
+ACH-000080,Myeloid,intact,intact,False,False,-0.8689917543365389,False
+ACH-001453,Prostate,unknown,intact,False,False,-0.8755664406324184,False
+ACH-000548,Head and Neck,intact,intact,False,False,-0.8761918729568156,False
+ACH-001795,Soft Tissue,unknown,intact,False,False,-0.8785214634315378,False
+ACH-002669,Bowel,intact,intact,False,False,-0.8969018752009051,False
+ACH-002020,Cervix,intact,intact,False,False,-0.8978403614769893,False
+ACH-000456,Thyroid,intact,intact,False,False,-0.897971213700194,False
+ACH-002016,Eye,intact,intact,False,False,-0.9046387382255558,False
+ACH-000492,Lymphoid,deleted,intact,True,False,-0.9057539419845981,False
+ACH-001508,Head and Neck,intact,intact,False,False,-0.909552702898617,False
+ACH-000898,Esophagus/Stomach,intact,intact,False,False,-0.9104777715341221,False
+ACH-000453,Lymphoid,unknown,intact,False,False,-0.9114295550421276,False
+ACH-000561,Esophagus/Stomach,unknown,intact,False,False,-0.9146308184554108,False
+ACH-000936,Ovary/Fallopian Tube,intact,intact,False,False,-0.9156975907493634,False
+ACH-002538,Bowel,intact,intact,False,False,-0.9166866842077968,False
+ACH-001380,Pancreas,unknown,intact,False,False,-0.9175669004596714,False
+ACH-000362,Myeloid,deleted,intact,False,False,-0.9332187091431532,False
+ACH-000716,Thyroid,intact,intact,False,False,-0.9409597246419292,False
+ACH-000801,Skin,intact,intact,False,False,-0.9409927763364117,False
+ACH-000979,Prostate,intact,lost,False,False,-0.945044528316661,False
+ACH-003111,Soft Tissue,intact,intact,False,False,-0.9467781592617039,False
+ACH-000829,Lymphoid,intact,intact,False,False,-0.9528742996854425,False
+ACH-000018,Bladder/Urinary Tract,intact,intact,False,False,-0.9584007431550993,False
+ACH-001574,Myeloid,deleted,intact,False,False,-0.9591292258292872,False
+ACH-000095,CNS/Brain,intact,intact,False,False,-0.9641006347682115,False
+ACH-000949,Esophagus/Stomach,unknown,intact,False,False,-0.9676129908265226,False
+ACH-000071,Fibroblast,unknown,intact,False,False,-0.9676401049913879,False
+ACH-000491,Bowel,unknown,intact,False,False,-0.9688295065489593,False
+ACH-000370,CNS/Brain,intact,lost,False,False,-0.9690121446689348,False
+ACH-000760,CNS/Brain,intact,intact,False,False,-0.9696320588230212,False
+ACH-003143,Kidney,unknown,intact,False,False,-0.9733328179459428,False
+ACH-000518,Head and Neck,unknown,intact,False,False,-0.9773487303669912,False
+ACH-002932,Bowel,unknown,intact,False,False,-0.9776415442174446,False
+ACH-001953,Skin,intact,intact,False,False,-0.9778438337301666,False
+ACH-001697,Head and Neck,deleted,intact,True,False,-0.9825169881275726,False
+ACH-000986,Bowel,intact,intact,False,False,-0.9845965641127337,False
+ACH-000128,CNS/Brain,intact,lost,False,False,-0.9902988841217168,False
+ACH-000292,Lung,intact,intact,False,False,-0.9934955710039273,False
+ACH-001428,Bone,intact,intact,False,False,-0.994911839664983,False
+ACH-002680,CNS/Brain,deleted,intact,True,False,-0.9955432982863894,False
+ACH-000436,Lymphoid,unknown,intact,False,False,-0.9986496936385665,False
+ACH-000187,Lung,intact,lost,False,False,-1.0054154820620016,False
+ACH-002648,Uterus,intact,intact,False,False,-1.0101720942190404,False
+ACH-001459,Bowel,unknown,intact,False,False,-1.0129185999903594,False
+ACH-001443,Thyroid,unknown,intact,False,False,-1.0130267682753924,False
+ACH-000388,Lymphoid,unknown,intact,False,False,-1.013570051592975,False
+ACH-000725,Breast,intact,intact,False,False,-1.0173933391887684,False
+ACH-002664,Bowel,intact,intact,False,False,-1.0197004814814556,False
+ACH-000412,Bowel,unknown,intact,False,False,-1.024254074353494,False
+ACH-000851,Lung,unknown,intact,False,False,-1.024354597074028,False
+ACH-002843,Soft Tissue,intact,intact,False,False,-1.0244877611009786,False
+ACH-002659,Bowel,intact,intact,False,False,-1.0247667202204696,False
+ACH-000382,Lung,intact,intact,False,False,-1.0283739094843845,False
+ACH-000841,Lung,intact,lost,False,False,-1.0285325321876995,False
+ACH-001119,Lymphoid,intact,intact,False,False,-1.0359924491806867,False
+ACH-001053,CNS/Brain,intact,intact,False,False,-1.036667292111582,False
+ACH-001994,Biliary Tract,intact,intact,False,False,-1.037409756280037,False
+ACH-002794,Soft Tissue,intact,intact,False,True,-1.0389689672402234,False
+ACH-000710,Bowel,unknown,intact,False,False,-1.0395927323964367,False
+ACH-000528,Lung,intact,intact,False,False,-1.0437661582983184,False
+ACH-002050,Other,intact,intact,False,False,-1.0478624538917019,False
+ACH-000918,Lymphoid,unknown,intact,False,False,-1.0514505005362267,False
+ACH-002431,Peripheral Nervous System,unknown,intact,False,False,-1.052095225750525,False
+ACH-000506,Lung,intact,lost,False,False,-1.0527984346892223,False
+ACH-000253,Bowel,intact,intact,False,False,-1.0548053483241486,False
+ACH-000565,Bowel,unknown,intact,False,False,-1.057178953653034,False
+ACH-000532,Bowel,intact,intact,False,False,-1.066647904940173,False
+ACH-000392,Lung,unknown,intact,False,False,-1.0807869330334832,False
+ACH-000510,Lung,intact,intact,False,False,-1.0878835890027647,False
+ACH-000632,Skin,intact,intact,False,False,-1.0910427334055872,False
+ACH-002290,Myeloid,deleted,intact,True,False,-1.0943768920318875,False
+ACH-000651,Bowel,intact,intact,False,False,-1.095183313387038,False
+ACH-000599,Pancreas,intact,intact,False,False,-1.0957140513193189,False
+ACH-000235,Pancreas,intact,intact,False,False,-1.0981303124466808,False
+ACH-002667,Bowel,intact,intact,False,False,-1.0981707742473998,False
+ACH-001460,Bowel,unknown,intact,False,False,-1.1045924884221259,False
+ACH-002922,Peripheral Nervous System,intact,intact,False,False,-1.1077117355632276,False
+ACH-000991,Bowel,unknown,intact,False,False,-1.1125300081335492,False
+ACH-001568,Skin,unknown,intact,False,False,-1.1153489974277118,False
+ACH-002710,Peripheral Nervous System,intact,intact,False,False,-1.1168940115409074,False
+ACH-001645,Skin,unknown,intact,False,False,-1.120275580746298,False
+ACH-000005,Myeloid,deleted,intact,True,False,-1.1246347241148271,False
+ACH-001046,Lung,intact,intact,False,False,-1.1251288325009008,False
+ACH-000062,Lung,intact,intact,False,False,-1.128161827084948,False
+ACH-001745,Soft Tissue,intact,intact,False,False,-1.1285421006898915,False
+ACH-001036,Myeloid,deleted,intact,True,False,-1.130816081589599,False
+ACH-002937,Kidney,unknown,intact,False,False,-1.1311178103254054,False
+ACH-001184,Soft Tissue,intact,intact,False,False,-1.1346567970752555,False
+ACH-000995,Lymphoid,unknown,intact,False,False,-1.151758624805506,False
+ACH-003457,Skin,unknown,intact,False,False,-1.1613860505885092,False
+ACH-001360,Cervix,unknown,intact,False,False,-1.1661083021036014,False
+ACH-001756,Soft Tissue,unknown,intact,False,False,-1.1723474772829943,False
+ACH-003137,CNS/Brain,unknown,intact,False,False,-1.1750959662377465,False
+ACH-002401,Breast,intact,intact,False,False,-1.1766735321472916,False
+ACH-002778,Bone,intact,intact,False,False,-1.1827960056688733,False
+ACH-001367,Peripheral Nervous System,unknown,intact,False,False,-1.1843168335556278,False
+ACH-003159,Hair,unknown,intact,False,False,-1.1852063820144945,False
+ACH-001335,Cervix,unknown,intact,False,False,-1.1885402417461584,False
+ACH-003160,Hair,unknown,intact,False,False,-1.1926775248791575,False
+ACH-000316,Liver,intact,intact,False,False,-1.1932553335176643,False
+ACH-002069,Bone,deleted,intact,True,False,-1.19368964514746,False
+ACH-000773,Lymphoid,intact,intact,False,False,-1.1951788108155195,False
+ACH-001382,Pancreas,unknown,intact,False,False,-1.1981597784834042,False
+ACH-002676,Myeloid,deleted,intact,False,False,-1.2028909855725352,False
+ACH-000594,Lung,intact,lost,False,False,-1.213499398857674,False
+ACH-000105,Lymphoid,unknown,intact,False,False,-1.2264334911711101,False
+ACH-000940,Uterus,intact,intact,False,False,-1.2342514239952818,False
+ACH-000493,Liver,intact,intact,False,False,-1.2386414714717389,False
+ACH-001435,Testis,intact,intact,False,False,-1.2506622433677945,False
+ACH-000151,Lymphoid,deleted,intact,True,False,-1.259122933352616,False
+ACH-000004,Myeloid,deleted,intact,True,False,-1.2632080144394144,False
+ACH-001818,Bone,intact,intact,False,False,-1.2706387732707938,False
+ACH-002043,Head and Neck,intact,intact,False,False,-1.2771073914352349,False
+ACH-000715,Head and Neck,unknown,intact,False,False,-1.283830173671665,False
+ACH-001498,Lymphoid,unknown,intact,False,False,-1.2938565054738502,False
+ACH-000920,Myeloid,unknown,intact,False,False,-1.3054261498359239,False
+ACH-000141,Biliary Tract,intact,intact,False,False,-1.3078229183997832,False
+ACH-002077,Lung,intact,lost,False,False,-1.309617288110195,False
+ACH-001693,Head and Neck,intact,intact,False,False,-1.3211372613668697,False
+ACH-001841,Biliary Tract,unknown,intact,False,False,-1.3317296271374486,False
+ACH-002019,Cervix,intact,intact,False,False,-1.3351816406764945,False
+ACH-001336,Cervix,intact,intact,False,False,-1.3352000089723959,False
+ACH-001656,Myeloid,intact,intact,False,False,-1.3389918588635454,False
+ACH-001641,Head and Neck,intact,intact,False,False,-1.341458443880204,False
+ACH-000021,Lung,intact,intact,False,False,-1.3478410201632234,False
+ACH-002942,Soft Tissue,unknown,intact,False,False,-1.351643476961883,False
+ACH-000637,Esophagus/Stomach,intact,intact,False,False,-1.3626576786902533,False
+ACH-000500,Head and Neck,intact,intact,False,False,-1.3678458685210997,False
+ACH-000520,Ovary/Fallopian Tube,deleted,intact,False,False,-1.3735524428828496,False
+ACH-002787,Soft Tissue,intact,intact,False,False,-1.3755301332024137,False
+ACH-001999,Pancreas,unknown,intact,False,False,-1.3759713212933504,False
+ACH-001518,Uterus,unknown,intact,False,False,-1.3804111861455346,False
+ACH-001804,Soft Tissue,intact,intact,False,False,-1.3906900450552557,False
+ACH-001433,Soft Tissue,intact,intact,False,False,-1.3984985850224092,False
+ACH-000720,Bladder/Urinary Tract,intact,lost,False,False,-1.3992477775481447,False
+ACH-000466,Esophagus/Stomach,intact,intact,False,False,-1.411346987104142,False
+ACH-003184,Soft Tissue,intact,lost,False,False,-1.4190436112880973,False
+ACH-000903,Thyroid,intact,intact,False,False,-1.43863433253734,False
+ACH-000145,Soft Tissue,intact,intact,False,False,-1.4457458626007436,False
+ACH-000369,Myeloid,unknown,intact,False,False,-1.44780090110735,False
+ACH-000698,Lung,intact,intact,False,False,-1.4483563038697742,False
+ACH-001834,Biliary Tract,unknown,intact,False,False,-1.4533912601575727,False
+ACH-000752,Lung,intact,lost,False,False,-1.4634038420455282,False
+ACH-001799,Soft Tissue,intact,intact,False,False,-1.464496120573711,False
+ACH-001802,Soft Tissue,intact,intact,False,False,-1.4650340130270152,False
+ACH-001392,Breast,unknown,intact,False,False,-1.4663884510710858,False
+ACH-003283,Fibroblast,intact,intact,False,False,-1.4693585169970336,False
+ACH-003226,Bone,intact,intact,False,False,-1.4740103323279992,False
+ACH-001145,Ovary/Fallopian Tube,unknown,intact,False,False,-1.4743158778200904,False
+ACH-000754,Lymphoid,intact,intact,False,False,-1.479934780103045,False
+ACH-001484,Lymphoid,unknown,intact,False,False,-1.480202945752949,False
+ACH-000127,Bladder/Urinary Tract,intact,intact,False,False,-1.481039027272664,False
+ACH-002041,Thyroid,intact,intact,False,False,-1.4814823523266702,False
+ACH-001096,Soft Tissue,intact,intact,False,False,-1.4893852563406973,False
+ACH-002662,Bowel,intact,intact,False,False,-1.4917479270154006,False
+ACH-002660,Bowel,intact,intact,False,False,-1.4964029947321666,False
+ACH-002170,Lung,intact,lost,False,False,-1.4997894511824246,False
+ACH-000962,Ovary/Fallopian Tube,unknown,intact,False,False,-1.5035424924876981,False
+ACH-000373,Myeloid,intact,intact,False,False,-1.5048023582777166,False
+ACH-000494,Ovary/Fallopian Tube,intact,intact,False,False,-1.5069902387049177,False
+ACH-001626,Head and Neck,unknown,intact,False,False,-1.508683396331942,False
+ACH-000191,Thyroid,intact,intact,False,False,-1.5184690961545972,False
+ACH-000339,Lung,unknown,intact,False,False,-1.5194413081952933,False
+ACH-001019,Skin,intact,intact,False,False,-1.519550758399551,False
+ACH-003269,Soft Tissue,unknown,intact,False,False,-1.5271383820484998,False
+ACH-001712,Bone,intact,intact,False,False,-1.5277232891568946,False
+ACH-002651,Myeloid,intact,intact,False,False,-1.528216375057608,False
+ACH-000695,Lung,unknown,lost,False,False,-1.5290745580740632,False
+ACH-002042,Head and Neck,intact,intact,False,False,-1.5322718866459617,False
+ACH-000298,Lung,intact,lost,False,False,-1.5358751530001562,False
+ACH-000429,Kidney,deleted,intact,False,False,-1.54039994785744,False
+ACH-000884,Skin,unknown,intact,False,False,-1.5501671260764949,False
+ACH-002399,Breast,intact,intact,False,False,-1.5562576242562183,False
+ACH-000670,Lung,intact,intact,False,False,-1.5638353868815207,False
+ACH-001674,Peripheral Nervous System,intact,intact,False,False,-1.5657957128250617,False
+ACH-002467,Eye,unknown,intact,False,False,-1.5781152841046016,False
+ACH-001086,Cervix,unknown,intact,False,False,-1.58990529363371,False
+ACH-000847,Esophagus/Stomach,intact,intact,False,False,-1.5936003615573393,False
+ACH-003161,Pancreas,unknown,intact,False,False,-1.5956771639944218,False
+ACH-000559,Lung,intact,lost,False,False,-1.5995352351536598,False
+ACH-000953,Lymphoid,deleted,intact,True,False,-1.5999035304924967,False
+ACH-000777,Esophagus/Stomach,intact,intact,False,False,-1.6012777120378223,False
+ACH-002806,CNS/Brain,intact,intact,False,False,-1.6040290094456875,False
+ACH-001344,Peripheral Nervous System,intact,intact,False,False,-1.6060667309693786,False
+ACH-001973,Skin,unknown,intact,False,False,-1.6075190659723273,False
+ACH-002471,Bone,intact,lost,False,False,-1.608888639676376,False
+ACH-001846,Biliary Tract,unknown,intact,False,False,-1.613299792945742,False
+ACH-001611,CNS/Brain,intact,intact,False,False,-1.6199652385728134,False
+ACH-001289,CNS/Brain,unknown,intact,False,False,-1.6204992371629867,False
+ACH-000839,Bladder/Urinary Tract,intact,intact,False,False,-1.6244826553204277,False
+ACH-000552,Bowel,intact,intact,False,False,-1.6311764157376614,False
+ACH-001653,Esophagus/Stomach,unknown,intact,False,False,-1.6407728535206094,False
+ACH-000683,Bowel,intact,intact,False,False,-1.6438314410448274,False
+ACH-000069,Lymphoid,unknown,intact,False,False,-1.6574293603278485,False
+ACH-002490,Lung,intact,lost,False,False,-1.6915367296572152,False
+ACH-000490,Cervix,intact,intact,False,False,-1.7056625212664975,False
+ACH-000484,Kidney,intact,intact,False,False,-1.7106115520761294,False
+ACH-002543,Bowel,intact,intact,False,False,-1.7183515704174004,False
+ACH-000545,Bladder/Urinary Tract,intact,intact,False,False,-1.7184923936279444,False
+ACH-000964,Lymphoid,deleted,intact,True,False,-1.7305844209420778,False
+ACH-000541,Lymphoid,intact,intact,False,False,-1.7405098680785258,False
+ACH-000743,Lung,unknown,lost,False,False,-1.7434427642146273,False
+ACH-000843,Lung,intact,intact,False,False,-1.7452390561716478,False
+ACH-001201,CNS/Brain,intact,intact,False,False,-1.7543623673819315,False
+ACH-001686,Lymphoid,unknown,intact,False,False,-1.7567072893089966,False
+ACH-000735,Head and Neck,intact,intact,False,False,-1.759173222346577,False
+ACH-001540,Soft Tissue,unknown,intact,False,False,-1.7681143298554416,False
+ACH-001111,Lymphoid,intact,intact,False,False,-1.7787330517561322,False
+ACH-003284,Fibroblast,intact,intact,False,False,-1.7843403963280264,False
+ACH-001692,Head and Neck,unknown,intact,False,False,-1.7860566808255927,False
+ACH-001852,Biliary Tract,unknown,intact,False,False,-1.7926720908372744,False
+ACH-003125,Soft Tissue,intact,intact,False,False,-1.7934180568034286,False
+ACH-002055,Lymphoid,intact,intact,False,False,-1.794083188827964,False
+ACH-001054,CNS/Brain,intact,intact,False,False,-1.799314919153788,False
+ACH-000348,Skin,intact,intact,False,False,-1.8032902187678972,False
+ACH-000556,Cervix,unknown,intact,False,False,-1.8111756097537466,False
+ACH-000045,Myeloid,intact,intact,False,False,-1.8180446771758088,False
+ACH-003135,CNS/Brain,unknown,intact,False,False,-1.8299954101678462,False
+ACH-000325,Esophagus/Stomach,intact,intact,False,False,-1.8458411661933192,False
+ACH-003120,Lung,intact,lost,False,False,-1.8499259891587332,False
+ACH-000077,Lymphoid,intact,intact,False,False,-1.8564607516679559,False
+ACH-000680,Bowel,intact,intact,False,False,-1.876916883479975,False
+ACH-002703,Esophagus/Stomach,intact,intact,False,False,-1.884115747310038,False
+ACH-000546,Head and Neck,unknown,intact,False,False,-1.884117863288183,False
+ACH-000064,Lung,unknown,intact,False,False,-1.886645945372735,False
+ACH-001684,Myeloid,intact,intact,False,False,-1.8940239638069234,False
+ACH-000747,Lung,intact,intact,False,False,-1.8968129107009548,False
+ACH-003474,Head and Neck,unknown,intact,False,False,-1.9073410157829764,False
+ACH-001134,Lymphoid,intact,intact,False,False,-1.9114360192997681,False
+ACH-000395,Lung,intact,intact,False,False,-1.9123255283206726,False
+ACH-000101,Lymphoid,deleted,intact,True,False,-1.913605739803777,False
+ACH-002024,Bowel,intact,lost,False,False,-1.9174066956806297,False
+ACH-001828,Lymphoid,intact,intact,False,False,-1.9204157854441473,False
+ACH-001652,Cervix,unknown,intact,False,False,-1.932611647559459,False
+ACH-000714,Lymphoid,intact,intact,False,False,-1.9347128175271817,False
+ACH-001020,CNS/Brain,intact,intact,False,False,-1.9478724235630587,False
+ACH-000858,Lung,intact,intact,False,False,-1.9495931534129214,False
+ACH-000836,Head and Neck,intact,intact,False,False,-1.9498172241000344,False
+ACH-000178,Pancreas,unknown,intact,False,False,-1.9534349930368315,False
+ACH-001707,Lymphoid,intact,intact,False,False,-1.9608972079063227,False
+ACH-001636,Lymphoid,intact,intact,False,False,-1.963744655976557,False
+ACH-002643,Lymphoid,deleted,intact,True,False,-1.9694355043476222,False
+ACH-001194,Kidney,unknown,intact,False,False,-1.9740053328763796,False
+ACH-000222,Pancreas,intact,intact,False,False,-1.9805585903624765,False
+ACH-003475,Head and Neck,unknown,intact,False,False,-1.9822106243589825,False
+ACH-001485,Lymphoid,unknown,intact,False,False,-1.9884277252189504,False
+ACH-003154,Lung,unknown,intact,False,False,-1.9888595322161948,False
+ACH-002672,Pancreas,intact,intact,False,False,-2.0003738093929595,False
+ACH-002946,Myeloid,intact,intact,False,False,-2.0079077324954993,False
+ACH-000758,Esophagus/Stomach,intact,lost,False,False,-2.019085852818188,False
+ACH-000832,Head and Neck,intact,intact,False,False,-2.0201133542226324,False
+ACH-000347,Pancreas,intact,intact,False,False,-2.0439553124767476,False
+ACH-002462,Eye,unknown,intact,False,False,-2.0470913118601555,False
+ACH-001489,Lung,intact,lost,False,False,-2.0516770359692247,False
+ACH-002475,Myeloid,intact,intact,False,False,-2.0617553876723904,False
+ACH-001163,Kidney,unknown,intact,False,False,-2.06461512632183,False
+ACH-001647,Myeloid,deleted,intact,True,False,-2.07509965864928,False
+ACH-001400,Vulva/Vagina,intact,intact,False,False,-2.085307522462396,False
+ACH-000938,Lymphoid,deleted,intact,True,False,-2.0859783900711735,False
+ACH-000969,Bowel,intact,intact,False,False,-2.086649927805424,False
+ACH-000937,Lymphoid,deleted,intact,True,False,-2.090139034427146,False
+ACH-000020,Lymphoid,unknown,intact,False,False,-2.092546466926639,False
+ACH-000723,Head and Neck,unknown,intact,False,False,-2.0969109201215352,False
+ACH-000603,Lung,unknown,intact,False,False,-2.1017835272781884,False
+ACH-000108,Pancreas,intact,intact,False,False,-2.118272042435265,False
+ACH-000049,Kidney,unknown,intact,False,False,-2.125568960984907,False
+ACH-000692,Head and Neck,unknown,intact,False,False,-2.126731739849614,False
+ACH-003266,Soft Tissue,unknown,intact,False,False,-2.126827962968947,False
+ACH-002464,Eye,intact,intact,False,False,-2.1334118478894846,False
+ACH-001410,Bladder/Urinary Tract,unknown,intact,False,False,-2.133988280259125,False
+ACH-001740,Soft Tissue,intact,intact,False,False,-2.1375487360997645,False
+ACH-001445,Head and Neck,intact,intact,False,False,-2.1403777548008334,False
+ACH-003465,Head and Neck,unknown,intact,False,False,-2.1445898951250797,False
+ACH-001442,Skin,intact,intact,False,False,-2.1455812732655595,False
+ACH-000682,Head and Neck,intact,intact,False,False,-2.1476376493786287,False
+ACH-000056,Lymphoid,unknown,intact,False,False,-2.1674864576683444,False
+ACH-001497,Esophagus/Stomach,unknown,intact,False,False,-2.169033728538185,False
+ACH-000059,Lymphoid,deleted,intact,True,False,-2.17942619571278,False
+ACH-001850,Biliary Tract,unknown,intact,False,False,-2.186392069822197,False
+ACH-000557,Myeloid,intact,intact,False,False,-2.1892415849838627,False
+ACH-000226,Lymphoid,intact,intact,False,False,-2.1900598862990206,False
+ACH-000740,Head and Neck,intact,intact,False,False,-2.1912656884906063,False
+ACH-003067,CNS/Brain,intact,intact,False,False,-2.1929165988755708,False
+ACH-002466,Eye,unknown,intact,False,False,-2.211481786660465,False
+ACH-000130,Lymphoid,unknown,intact,False,False,-2.221689316671648,False
+ACH-001232,CNS/Brain,intact,intact,False,False,-2.229270045231684,False
+ACH-002029,Head and Neck,intact,intact,False,False,-2.231805223222306,False
+ACH-000458,Skin,unknown,intact,False,False,-2.232491045331683,False
+ACH-002665,Bowel,intact,intact,False,False,-2.2349635781114614,False
+ACH-001607,Biliary Tract,unknown,intact,False,False,-2.2671040045575426,False
+ACH-003273,Myeloid,deleted,intact,True,False,-2.2673070852198536,False
+ACH-003148,CNS/Brain,unknown,intact,False,False,-2.28691535291944,False
+ACH-000112,Myeloid,unknown,intact,False,False,-2.2934498575375044,False
+ACH-000156,Lymphoid,unknown,intact,False,False,-2.294732261092493,False
+ACH-001509,Head and Neck,intact,intact,False,False,-2.3064573705628373,False
+ACH-000778,Head and Neck,intact,intact,False,False,-2.307494140894877,False
+ACH-000809,Esophagus/Stomach,intact,intact,False,False,-2.3122253163614905,False
+ACH-001619,Biliary Tract,intact,lost,False,False,-2.312240295586158,False
+ACH-000386,Myeloid,unknown,intact,False,False,-2.330107298392747,False
+ACH-000780,Lung,intact,lost,False,False,-2.3342656503547143,False
+ACH-001523,Skin,unknown,intact,False,False,-2.3463919603142696,False
+ACH-000470,Bowel,intact,intact,False,False,-2.3593811108502605,False
+ACH-000245,Lymphoid,unknown,intact,False,False,-2.3737029843701385,False
+ACH-000091,Ovary/Fallopian Tube,intact,intact,False,False,-2.3881622391943136,False
+ACH-000653,Lymphoid,intact,intact,False,False,-2.3892643667519127,False
+ACH-000321,Myeloid,unknown,intact,False,False,-2.3908377481806475,False
+ACH-000660,Lymphoid,unknown,intact,False,False,-2.400726879061748,False
+ACH-001543,Head and Neck,intact,intact,False,False,-2.4020050879502217,False
+ACH-000800,Lung,intact,lost,False,False,-2.4256270176065344,False
+ACH-000462,Myeloid,unknown,intact,False,False,-2.431491539340088,False
+ACH-001147,Lymphoid,intact,intact,False,False,-2.432430314559311,False
+ACH-002465,Eye,intact,intact,False,False,-2.437443068537432,False
+ACH-001057,Lymphoid,deleted,intact,True,False,-2.4382486475575065,False
+ACH-001835,Biliary Tract,unknown,intact,False,False,-2.4466380734226307,False
+ACH-000113,Myeloid,intact,intact,False,False,-2.4480803846156856,False
+ACH-000432,Lymphoid,unknown,intact,False,False,-2.4665227110936576,False
+ACH-001347,Head and Neck,unknown,intact,False,False,-2.475227784134226,False
+ACH-001197,Lymphoid,intact,intact,False,False,-2.4756525722692637,False
+ACH-000157,Lymphoid,unknown,intact,False,False,-2.486686503268266,False
+ACH-000549,Head and Neck,unknown,intact,False,False,-2.4912265283240758,False
+ACH-001613,Myeloid,unknown,intact,False,False,-2.5086400282549306,False
+ACH-000179,Lung,intact,lost,False,False,-2.5120431113069444,False
+ACH-000360,Bowel,intact,intact,False,False,-2.5277961569861596,False
+ACH-000084,Myeloid,unknown,intact,False,False,-2.536478314019626,False
+ACH-001209,Lymphoid,deleted,intact,False,False,-2.540625373557197,False
+ACH-002695,Peripheral Nervous System,intact,intact,False,False,-2.540711792536256,False
+ACH-000508,Lung,intact,lost,False,False,-2.543985590142883,False
+ACH-002062,Lymphoid,intact,intact,False,False,-2.5498243413358384,False
+ACH-000140,Lymphoid,unknown,intact,False,False,-2.5537347293736192,False
+ACH-001960,Biliary Tract,unknown,intact,False,False,-2.564199189242764,False
+ACH-000702,Lymphoid,unknown,intact,False,False,-2.566667797319387,False
+ACH-000889,Lymphoid,intact,intact,False,False,-2.581745564551805,False
+ACH-000817,Lymphoid,intact,intact,False,False,-2.588543199504447,False
+ACH-000038,Lymphoid,unknown,intact,False,False,-2.603977939678548,False
+ACH-001651,Cervix,unknown,intact,False,False,-2.605851528674803,False
+ACH-000762,Head and Neck,intact,intact,False,False,-2.6276933922519365,False
+ACH-000402,Lymphoid,intact,intact,False,False,-2.629417344574688,False
+ACH-000410,Bone,intact,lost,False,False,-2.6378209732391578,False
+ACH-001997,Ampulla of Vater,unknown,intact,False,False,-2.64882606506558,False
+ACH-003139,Muscle,unknown,intact,False,False,-2.6488732722691215,False
+ACH-001100,Lymphoid,intact,intact,False,False,-2.651454970714115,False
+ACH-000498,Myeloid,intact,intact,False,False,-2.663454010524739,False
+ACH-001669,Lymphoid,intact,lost,False,False,-2.671463194133991,False
+ACH-000472,Head and Neck,unknown,intact,False,False,-2.6741730719549808,False
+ACH-000612,Lymphoid,intact,intact,False,False,-2.6760284285325393,False
+ACH-000202,Bowel,intact,intact,False,False,-2.6768397760621303,False
+ACH-000664,Lymphoid,intact,intact,False,False,-2.68486179581686,False
+ACH-000687,Lymphoid,unknown,intact,False,False,-2.6914354100764486,False
+ACH-000233,Lymphoid,intact,intact,False,False,-2.694366580235907,False
+ACH-000922,Lymphoid,intact,intact,False,False,-2.695317138617025,False
+ACH-000285,Lymphoid,unknown,intact,False,False,-2.6995388062023142,False
+ACH-000162,Lymphoid,unknown,intact,False,False,-2.701190435445121,False
+ACH-000567,Lymphoid,unknown,intact,False,False,-2.7060729035875513,False
+ACH-000225,Esophagus/Stomach,unknown,lost,False,False,-2.715597535828695,False
+ACH-000707,Lymphoid,unknown,intact,False,False,-2.720273421041475,False
+ACH-001496,Esophagus/Stomach,unknown,intact,False,False,-2.7330522334033986,False
+ACH-003142,Muscle,unknown,intact,False,False,-2.74875730259748,False
+ACH-001694,Head and Neck,intact,intact,False,False,-2.7539332353134696,False
+ACH-000371,Lymphoid,intact,intact,False,False,-2.75858658443366,False
+ACH-001703,Lymphoid,intact,intact,False,False,-2.7598945522330234,False
+ACH-000803,Lung,intact,lost,False,False,-2.7729639665959973,False
+ACH-001858,Biliary Tract,unknown,intact,False,False,-2.8010067128581024,False
+ACH-000944,Lymphoid,unknown,intact,False,False,-2.8197836825040987,False
+ACH-000523,Lung,intact,lost,False,False,-2.820123726154449,False
+ACH-000299,Myeloid,intact,intact,False,False,-2.827297591087148,False
+ACH-000586,Lung,intact,lost,False,False,-2.829138129386739,False
+ACH-000271,Lymphoid,unknown,intact,False,False,-2.8325390164333237,False
+ACH-000399,Lung,intact,lost,False,False,-2.8575573247889112,False
+ACH-001227,Head and Neck,intact,intact,False,False,-2.8709494815354426,False
+ACH-000346,Lymphoid,unknown,intact,False,False,-2.8739656389337775,False
+ACH-001402,Cervix,unknown,intact,False,False,-2.8775086875632514,False
+ACH-001857,Biliary Tract,unknown,intact,False,False,-2.8998253313361775,False
+ACH-000065,Myeloid,unknown,intact,False,False,-2.8999693518590783,False
+ACH-003141,Muscle,unknown,intact,False,False,-2.911851960678404,False
+ACH-000830,Lung,intact,intact,False,False,-2.9129740807884126,False
+ACH-000061,Lymphoid,intact,intact,False,False,-2.9193752474630323,False
+ACH-000514,Lung,intact,intact,False,False,-2.9259370414644743,False
+ACH-000053,Lymphoid,intact,intact,False,False,-2.9276851535507706,False
+ACH-002508,Skin,intact,intact,False,False,-2.962369087532122,False
+ACH-000081,Myeloid,unknown,intact,False,False,-2.9693840415583463,False
+ACH-000124,Lymphoid,unknown,intact,False,False,-3.0170211523990234,False
+ACH-000267,Lymphoid,unknown,intact,False,False,-3.022416701818246,False
+ACH-003103,Lymphoid,deleted,intact,True,False,-3.034344096634197,False
+ACH-002653,Myeloid,deleted,intact,True,False,-3.052085429285899,False
+ACH-001685,Lymphoid,intact,intact,False,False,-3.0542893891145146,False
+ACH-000983,Myeloid,intact,intact,False,False,-3.0575491704930533,False
+ACH-001132,Lymphoid,intact,intact,False,False,-3.0613460913148915,False
+ACH-000170,Prostate,unknown,intact,False,False,-3.0633300695849064,False
+ACH-001228,Head and Neck,intact,intact,False,False,-3.069339005747926,False
+ACH-001698,Head and Neck,unknown,intact,False,False,-3.0708072107516373,False
+ACH-000588,Lymphoid,intact,intact,False,False,-3.0741780034635626,False
+ACH-000315,Lymphoid,intact,intact,False,False,-3.0789527217765484,False
+ACH-000032,Lymphoid,unknown,intact,False,False,-3.0809131745643805,False
+ACH-000372,Lymphoid,deleted,intact,True,False,-3.086648577126164,False
+ACH-001524,Skin,unknown,intact,False,False,-3.0936774212921767,False
+ACH-002463,Eye,intact,intact,False,False,-3.0950224329108766,False
+ACH-000564,Lymphoid,unknown,intact,False,False,-3.1279270644975776,False
+ACH-003180,Soft Tissue,intact,intact,False,False,-3.157364451525871,False
+ACH-001516,Cervix,unknown,intact,False,False,-3.163692420116986,False
+ACH-001616,Lymphoid,unknown,intact,False,False,-3.1774856395510924,False
+ACH-000855,Esophagus/Stomach,intact,intact,False,False,-3.196925531285996,False
+ACH-002677,Lymphoid,intact,intact,False,False,-3.20168894818499,False
+ACH-001634,Lymphoid,unknown,intact,False,False,-3.2652313859049595,False
+ACH-000611,Lymphoid,unknown,intact,False,False,-3.2658011930252298,False
+ACH-003155,Liver,unknown,intact,False,False,-3.2695559690067983,False
+ACH-000728,Lymphoid,intact,intact,False,False,-3.269718936482832,False
+ACH-000923,Lymphoid,unknown,intact,False,False,-3.2775141208334966,False
+ACH-002478,Lymphoid,intact,intact,False,False,-3.290170742058301,False
+ACH-000654,Lymphoid,intact,intact,False,False,-3.35796577763617,False
+ACH-002060,Myeloid,deleted,intact,True,False,-3.358825890620342,False
+ACH-000981,Lymphoid,unknown,intact,False,False,-3.361110752909937,False
+ACH-000166,Myeloid,intact,intact,False,False,-3.3657188579043633,False
+ACH-000431,Lung,intact,intact,False,False,-3.366710075686269,False
+ACH-002404,Skin,unknown,intact,False,False,-3.3814717805490675,False
+ACH-000070,Lymphoid,intact,intact,False,False,-3.385711813265698,False
+ACH-000167,Lymphoid,intact,intact,False,False,-3.3878078240161518,False
+ACH-002214,Lymphoid,intact,intact,False,False,-3.404676276251252,False
+ACH-000602,Myeloid,intact,intact,False,False,-3.4061437250793767,False
+ACH-001450,Lymphoid,unknown,intact,False,False,-3.4177722220297815,False
+ACH-001993,Lymphoid,deleted,intact,True,False,-3.4313239116567242,False
+ACH-001451,Cervix,unknown,intact,False,False,-3.444307381502621,False
+ACH-000183,Lymphoid,intact,intact,False,False,-3.4773430913653995,False
+ACH-002668,Myeloid,intact,intact,False,False,-3.4825861181336184,False
+ACH-000218,Myeloid,unknown,intact,False,False,-3.491258736565114,False
+ACH-000751,Myeloid,unknown,intact,False,False,-3.4970325518046934,False
+ACH-000942,Lymphoid,unknown,intact,False,False,-3.5371135801163502,False
+ACH-001638,Lymphoid,unknown,intact,False,False,-3.572825316847195,False
+ACH-001679,Lymphoid,unknown,intact,False,False,-3.5759345963624916,False
+ACH-003099,Head and Neck,intact,intact,False,False,-3.580836994159211,False
+ACH-000287,Lymphoid,unknown,intact,False,False,-3.5900135789291223,False
+ACH-003463,Lymphoid,unknown,intact,False,False,-3.6134767344913348,False
+ACH-000656,Lymphoid,unknown,intact,False,False,-3.6201778183531834,False
+ACH-001148,Lymphoid,intact,intact,False,False,-3.6243513728352594,False
+ACH-000786,Lymphoid,unknown,intact,False,False,-3.641571664734195,False
+ACH-000329,CNS/Brain,intact,intact,False,False,-3.643711961837178,False
+ACH-000622,CNS/Brain,intact,intact,False,False,-3.659584673502496,False
+ACH-000583,Lymphoid,intact,intact,False,False,-3.6740305562615494,False
+ACH-000365,Lymphoid,intact,intact,False,False,-3.7012996026982092,False
+ACH-001538,Biliary Tract,unknown,intact,False,False,-3.7024499087119924,False
+ACH-001503,Lymphoid,intact,intact,False,False,-3.7096823151270577,False
+ACH-001617,Lymphoid,unknown,intact,False,False,-3.818214905150335,False
+ACH-002644,Myeloid,intact,intact,False,False,-3.8191902493553433,False
+ACH-003458,Skin,unknown,intact,False,False,-3.829262543113458,False
+ACH-001229,Head and Neck,unknown,intact,False,False,-3.8715473914420366,False
+ACH-001690,Head and Neck,unknown,intact,False,False,-3.887875465566788,False
+ACH-001310,Kidney,unknown,intact,False,False,-3.913420006291042,False
+ACH-001571,Lymphoid,intact,intact,False,False,-3.9403351534748485,False
+ACH-000338,Lymphoid,intact,intact,False,False,-3.94491127846497,False
+ACH-001577,Myeloid,intact,intact,False,False,-3.9548539425360514,False
+ACH-002059,Lymphoid,deleted,intact,True,False,-4.015929676250016,False
+ACH-000914,Lymphoid,intact,intact,False,False,-4.045643557738694,False
+ACH-000290,Lung,intact,lost,False,False,-4.132876754963817,False
+ACH-001854,Biliary Tract,unknown,intact,False,False,-4.167692704022356,False
+ACH-003106,Lymphoid,deleted,intact,False,False,-4.170594589630931,False
+ACH-002716,Myeloid,intact,intact,False,False,-4.195300248201923,False
+ACH-002051,Lung,intact,lost,False,False,-4.215367339470509,False
+ACH-001097,Lymphoid,intact,intact,False,False,-4.21959013910745,False
+ACH-001106,Lymphoid,intact,intact,False,False,-4.230747175775363,False
+ACH-000057,Lymphoid,unknown,intact,False,False,-4.286790125307047,False
+ACH-001060,Lymphoid,intact,intact,False,False,-4.294273788803937,False
+ACH-000197,Lymphoid,unknown,intact,False,False,-4.331466821680044,False
+ACH-000024,Lymphoid,intact,intact,False,False,-4.363916009979144,False
+ACH-000204,Lymphoid,intact,intact,False,False,-4.399323292297864,False
+ACH-000440,Lymphoid,intact,intact,False,False,-4.404412531035842,False
+ACH-001862,Ampulla of Vater,unknown,intact,False,False,-4.409403459011528,False
+ACH-000636,Lymphoid,unknown,intact,False,False,-4.4306136254824775,False
+ACH-000104,Lymphoid,intact,intact,False,False,-4.490426196286072,False
+ACH-003460,Lymphoid,unknown,intact,False,False,-4.515455541935529,False
+ACH-002675,Myeloid,intact,intact,False,False,-4.559013667384509,False
+ACH-002994,Myeloid,intact,intact,False,False,-4.561903878133438,False
+ACH-000406,Myeloid,intact,intact,False,False,-4.583926622961832,False
+ACH-001447,Lymphoid,intact,intact,False,False,-4.603699806157611,False
+ACH-000854,Lymphoid,unknown,intact,False,False,-4.751086754877578,False
+ACH-000770,Myeloid,intact,intact,False,False,-4.907438739533959,False
+ACH-000129,Cervix,intact,intact,False,False,-4.927301450306953,False
+ACH-002498,Lymphoid,intact,intact,False,False,-5.047228648771408,False
+ACH-001129,Myeloid,intact,intact,False,False,-5.1005153497822455,False
+ACH-003476,Esophagus/Stomach,unknown,intact,False,False,-5.122455977297085,False
+ACH-000782,Lymphoid,intact,intact,False,False,-5.198674280582844,False
+ACH-001573,Myeloid,intact,intact,False,False,-5.673364035489249,False
+ACH-000877,Lymphoid,unknown,intact,False,False,-5.698863684252043,False
+ACH-001064,Lymphoid,unknown,intact,False,False,-5.820810761298716,False
+ACH-001736,Lymphoid,intact,intact,False,False,-5.880562576941711,False
+ACH-003108,Lymphoid,intact,intact,False,False,-6.331183887585568,False
+ACH-001735,Lymphoid,intact,intact,False,False,-6.809949983928732,False
