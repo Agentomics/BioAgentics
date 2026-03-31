@@ -1,0 +1,43 @@
+======================================================================
+TSG Co-Alteration Dependency Interactions — Phase 1b Summary
+======================================================================
+
+Total patients: 11428
+Cancer types:   33
+Gene pairs:     55
+
+Per-gene alteration frequencies:
+  MTAP          908 (  7.9%)
+  ARID1A        641 (  5.6%)
+  SMARCA4        61 (  0.5%)
+  PIK3CA        911 (  8.0%)
+  PTEN          794 (  6.9%)
+  RB1           396 (  3.5%)
+  BRCA1_2       213 (  1.9%)
+  TP53         3650 ( 31.9%)
+  KEAP1          44 (  0.4%)
+  NF1           368 (  3.2%)
+  CDKN2A       1374 ( 12.0%)
+
+Top 15 co-alteration pairs (composite rank):
+Rank       Gene1       Gene2  Co-alt  %total  %smaller       OR    Fisher p          Tendency  Druggable
+----------------------------------------------------------------------------------------------------
+   1        MTAP      CDKN2A     891    7.80     98.1%  1089.14    0.00e+00     co-occurrence        Yes
+   2        TP53      CDKN2A     581    5.08     42.3%     1.67    9.58e-18     co-occurrence        Yes
+   3        MTAP        TP53     326    2.85     35.9%     1.21    8.42e-03     co-occurrence        Yes
+   4      PIK3CA        TP53     309    2.70     33.9%     1.10    1.83e-01     co-occurrence        Yes
+   5         RB1        TP53     245    2.14     61.9%     3.63    2.38e-35     co-occurrence        Yes
+   6        PTEN        TP53     220    1.93     27.7%     0.81    8.17e-03  mutual_exclusivity        Yes
+   7      ARID1A        PTEN     189    1.65     29.5%     7.04    3.38e-73     co-occurrence        Yes
+   8      ARID1A        TP53     183    1.60     28.6%     0.84    6.08e-02  mutual_exclusivity        Yes
+   9        TP53         NF1     154    1.35     41.9%     1.56    5.17e-05     co-occurrence        Yes
+  10      ARID1A      PIK3CA     149    1.30     23.2%     3.98    3.39e-35     co-occurrence        Yes
+  11      PIK3CA        PTEN     129    1.13     16.2%     2.44    9.65e-16     co-occurrence        Yes
+  12        PTEN      CDKN2A     113    0.99     14.2%     1.23    5.42e-02     co-occurrence        Yes
+  13     BRCA1_2        TP53     104    0.91     48.8%     2.06    2.40e-07     co-occurrence        Yes
+  14        MTAP        PTEN      87    0.76     11.0%     1.47    1.72e-03     co-occurrence        Yes
+  15      PIK3CA      CDKN2A      82    0.72      9.0%     0.71    2.91e-03  mutual_exclusivity        Yes
+
+Validation:
+  TP53+PTEN in top 5: FAIL
+  TP53+RB1 in top 5:  PASS
