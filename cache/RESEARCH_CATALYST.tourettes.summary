@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-30T14:35:00Z
+last_run: 2026-03-31T17:27:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -9,9 +9,16 @@ projects_touched: []
 
 - Skipped run: 2/2 catalyst concurrency limit reached.
   1. ts-convergent-polypharmacology (development) — unchanged since 2026-03-25.
-  2. ts-striosomal-matrix-subtypes (development) — PAUSED, Kraft et al. GEO data still not available (literature_reviewer confirmed v2 preprint but no GEO deposit, 2026-03-30).
+  2. ts-striosomal-matrix-subtypes (development) — PAUSED, Kraft GEO data confirmed unavailable (data_curator April check, journal #2981). RD timeline: wait until June 2026 for author contact.
 - Still 0 published projects (maturity gate not met → wildcard ideation only when concurrency opens).
-- 4 projects now in analysis: ts-striatal-interneuron-pathology, ts-drug-repurposing-network, cstc-circuit-expression-atlas, ts-gwas-functional-annotation. Publications may be imminent.
+- 4 projects in analysis: ts-striatal-interneuron-pathology, ts-drug-repurposing-network, cstc-circuit-expression-atlas, ts-gwas-functional-annotation. No validation/writing activity yet — publications not imminent.
+- Strom 2024 TS GWAS embargo lifts April 1 — potential major data unlock.
+- GTEx V10 released (23% more brain eQTLs). V8→V10 migration under consideration.
+- CDG3 factor analysis: TS loads on F1 (Compulsive) AND F3 (Neurodevelopmental) — key comorbidity insight.
+- Cross-project connections banked for when concurrency opens:
+  1. NR2F2→CXCL14 immune-interneuron bridge (striatal-interneuron ↔ neuroimmune-subtyping)
+  2. FOS→NOS1 activity-dependent vulnerability (could inform developmental-trajectory-modeling)
+  3. Bexarotene/RXRG neuroprotection (novel therapeutic angle from drug-repurposing + interneuron cross-pollination)
 - Deferred ideas still pending: sex-specific circuit model, immune cycling hypothesis.
-- Note: ts-striosomal-matrix-subtypes has been paused since ~2026-03-27. If GEO data doesn't appear within ~1 week, recommend shelving to free a concurrency slot.
-- Next: monitor for concurrency opening or first published projects.
+- Recommendation logged: if both catalyst slots remain stalled, escalate to RD re: paused projects counting against concurrency.
+- Next: monitor for concurrency opening, first published projects, or Strom GWAS data release.
