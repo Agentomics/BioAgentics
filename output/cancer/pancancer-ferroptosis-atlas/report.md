@@ -13,6 +13,9 @@ We mapped ferroptosis pathway gene dependencies across 20 ferroptosis-related ge
 - 3 of 4 success criteria were met. PRISM validation was impossible (zero ferroptosis compounds in PRISM 24Q2).
 - **Phase 5 (expression layer):** Median-split defense profiling of 1,112 cell lines identifies 264 dual-high (FSP1+GPX4) lines requiring combination therapy, concentrated in Liver (67%), Eye (60%), and Cervix (56%). KEAP1-mutant Lung lines show significantly elevated FSP1 expression (Cohen's d = 0.91, p = 0.005), with 67% classified as FSP1-dependent — quantitative validation of the NRF2→FSP1 axis.
 - **KEAP1-stratified combination strategies:** SAT1/polyamine supplementation sensitizes KEAP1-WT/KRAS-MUT tumors to ferroptosis via JNK/c-Jun→SAT1 upregulation. GLS1 inhibition (telaglenastat/CB-839) reverses ferroptosis resistance in KEAP1-MUT tumors.
+- **N6F11 GPX4 degrader (March 2026 update):** A tumor-specific GPX4 degrader that spares immune cells resolves the two critical GPX4-targeting barriers (in vivo failure and T-cell toxicity). N6F11 is now the preferred clinical path for Category C cancers, with Bone (GPX4 = -1.294) as the prime monotherapy target.
+- **FSP1 monotherapy elevated to primary target:** icFSP1 monotherapy shrinks lung tumors ~80% in vivo (*Nature* 2025) with FSP1 KO mice remaining viable (unlike lethal GPX4 KO), establishing FSP1 as a primary therapeutic target — not merely a backup — for Category A cancers.
+- **HDAC persister-cell vulnerability:** GPX4 inhibitor-tolerant persister cells depend on FSP1, and FDA-approved HDAC inhibitors (panobinostat, vorinostat, romidepsin) eliminate these persisters via oxidative stress. This constitutes a 6th ferroptosis defense layer applicable across all categories.
 
 ---
 
@@ -39,12 +42,12 @@ We mapped ferroptosis pathway gene dependencies across 20 ferroptosis-related ge
 
 | Cancer Type | GPX4 Dependency | Composite Vulnerability | Novel Profile | Recommended Strategy |
 |---|---|---|---|---|
-| **Bone** | **-1.294** | -0.304 (rank 3) | Strongest GPX4 dependency pan-cancer. Top divergent gene vs NSCLC: GPX4 diff = -0.921. | Combination strategies required; await in vivo GPX4i validation |
-| **CNS/Brain** | -1.106 | -0.270 (rank 7) | GPX4-driven; TXNRD1 = -0.567 as secondary axis. | GPX4i + TrxR1i combination |
-| **PNS** | -1.101 | -0.291 (rank 5) | GPX4-driven with TXNRD1 = -0.810 co-dependency. | GPX4i + TrxR1i combination |
-| **Lymphoid** | -0.997 | **-0.397** (rank 1) | Highest FSP1 dependency pan-cancer (AIFM2 = -0.199). TFRC-driven divergence (diff = -0.790 vs NSCLC). | Dual FSP1i + GPX4i; strongest multi-target candidate |
+| **Bone** | **-1.294** | -0.304 (rank 3) | Strongest GPX4 dependency pan-cancer. Top divergent gene vs NSCLC: GPX4 diff = -0.921. | **N6F11 monotherapy (preferred)**; prime N6F11 target pan-cancer |
+| **CNS/Brain** | -1.106 | -0.270 (rank 7) | GPX4-driven; TXNRD1 = -0.567 as secondary axis. | N6F11 + TrxR1i combination |
+| **PNS** | -1.101 | -0.291 (rank 5) | GPX4-driven with TXNRD1 = -0.810 co-dependency. | N6F11 + TrxR1i combination |
+| **Lymphoid** | -0.997 | **-0.397** (rank 1) | Highest FSP1 dependency pan-cancer (AIFM2 = -0.199). TFRC-driven divergence (diff = -0.790 vs NSCLC). | Dual FSP1i + N6F11; strongest multi-target candidate |
 
-**Critical caveat:** A systematic evaluation preprint (bioRxiv, March 14, 2026; DOI: 10.64898/2026.03.11.711115) shows that inhibition of GPX4, GCLC, or SLC7A11 fails to impact established tumor growth in vivo. Cell culture CRISPR screens greatly overestimate GPX4-axis vulnerabilities. Category C cancer types require combination strategies or await in vivo GPX4i validation.
+**Critical caveat:** A systematic evaluation preprint (bioRxiv, March 14, 2026; DOI: 10.64898/2026.03.11.711115) shows that inhibition of GPX4, GCLC, or SLC7A11 fails to impact established tumor growth in vivo. Cell culture CRISPR screens greatly overestimate GPX4-axis vulnerabilities. **N6F11 GPX4 degrader** (*Sci Transl Med*) addresses this barrier through targeted protein degradation rather than catalytic inhibition, and is now the preferred GPX4-targeting clinical path for Category C types (see Section 10).
 
 ### Category D: TrxR1/TXNRD1-Driven (Auranofin Candidates)
 
@@ -94,7 +97,8 @@ We mapped ferroptosis pathway gene dependencies across 20 ferroptosis-related ge
 | **viFSP1** | FSP1/AIFM2 | Preclinical | Melanoma (LN) | First cross-species FSP1 inhibitor; effective in metastatic melanoma LN models (Ubellacker et al., *Nature* 2025). |
 | **CB-839/telaglenastat** | GLS1 | Clinical trials | KEAP1-MUT LUAD; Lymphoid, Myeloid, Biliary Tract | GLS1 inhibition reverses ferroptosis-resistant phenotype in KEAP1-MUT LUAD (AACR 2026, B013). Top GLS1-dependent types: Lymphoid (-0.467), Myeloid (-0.361). |
 | **Polyamine supplementation** | SAT1/polyamine catabolism | Preclinical | KEAP1-WT/KRAS-MUT tumors | Polyamine supplementation enhances KRAS inhibitor-induced ferroptosis via JNK/c-Jun→SAT1 upregulation (NatComm 2025, DOI: 10.1038/s41467-025-65441-4). Validated in organoids, xenografts, and spontaneous tumor models. |
-| **Vorinostat/panobinostat** | HDAC | FDA-approved | 13 types with defense burden > 0.2 | Synergizes with GPX4i in persister cells (Higuchi et al., *Science Advances* 2026). |
+| **N6F11** | GPX4 (degrader) | Preclinical | Bone (#1), CNS/Brain, PNS, Lymphoid (Cat. C) | Tumor-specific GPX4 degrader; spares immune cells (DCs, T, NK, neutrophils). Bypasses GPX4i in vivo failure via targeted degradation (*Sci Transl Med*). Preferred GPX4 clinical path. |
+| **Vorinostat/panobinostat** | HDAC | FDA-approved | 13 types with defense burden > 0.2 | Synergizes with GPX4i in persister cells (Higuchi et al., *Science Advances* 2026). Eliminates FSP1-dependent persister cells across all categories. |
 
 ---
 
@@ -403,6 +407,78 @@ NRF2 constitutive activation (via KEAP1 loss-of-function or NFE2L2 gain-of-funct
 
 ---
 
+## 10. Translational Update: N6F11, FSP1 Monotherapy, and Persister-Cell Targeting (March 2026)
+
+Three developments since the initial atlas publication reshape the clinical strategy for ferroptosis-based cancer therapy. This section integrates these findings into the existing 5-category therapeutic stratification.
+
+### 10.1 N6F11: Tumor-Specific GPX4 Degrader
+
+**Source:** *Science Translational Medicine* (2026); RD journal #2519.
+
+N6F11 is a targeted protein degrader (PROTAC-like) that selectively degrades GPX4 in cancer cells while sparing immune cells (dendritic cells, T cells, NK cells, neutrophils). This addresses the two critical barriers that have blocked GPX4-targeting therapies:
+
+1. **In vivo failure of GPX4 inhibitors.** The bioRxiv 2026 preprint (Section 9.1) showed catalytic GPX4 inhibitors fail in established tumors — likely due to compensatory pathway upregulation. N6F11 degrades the GPX4 protein entirely, bypassing compensatory mechanisms that render catalytic inhibitors ineffective.
+
+2. **Immune toxicity.** GPX4 knockout is lethal to T cells (known since 2019), making systemic GPX4 inhibition incompatible with anti-tumor immunity. N6F11's tumor-specific degradation preserves the immune compartment, enabling combination with immunotherapy.
+
+**Atlas integration:**
+- **Category C (GPX4-dominant):** N6F11 replaces "await in vivo GPX4i validation" as the preferred clinical path. Bone cancer (GPX4 = -1.294, strongest pan-cancer) is the prime N6F11 monotherapy target.
+- **Category B (dual defense):** N6F11 + FSP1i combination for cancer types requiring dual targeting (Bowel/CRC, Kidney/ChRCC, Ovary).
+- **Category A (FSP1-vulnerable):** N6F11 provides an alternative GPX4-axis approach alongside icFSP1 monotherapy.
+
+**Status:** Preclinical. No IND filed as of March 2026.
+
+### 10.2 FSP1 Monotherapy: Elevation from Backup to Primary Target
+
+**Source:** Wu et al., *Nature*, November 2025 (PMID 41193800); NRF2+FSP1 co-targeting: PMC12384948.
+
+The Nature 2025 study demonstrated that icFSP1 monotherapy reduces KP LUAD tumor growth by ~80% in vivo. Critically, FSP1 KO mice are viable — unlike GPX4 KO, which is embryonic lethal. This establishes a fundamentally different safety profile:
+
+| Property | GPX4 Targeting | FSP1 Targeting |
+|---|---|---|
+| In vivo monotherapy efficacy | Fails (bioRxiv 2026) | ~80% tumor reduction (*Nature* 2025) |
+| Knockout viability | Embryonic lethal | Viable (normal development) |
+| Immune cell toxicity | T-cell death | No evidence of immune toxicity |
+| DepMap score reliability | Overestimates (Section 9.1) | Underestimates (Section 9.2) |
+
+**Atlas integration:**
+- FSP1 is elevated from "backup defense" to **co-primary therapeutic target** alongside GPX4 for Category A cancers.
+- For Lung (LUAD), icFSP1 monotherapy is now the recommended first-line ferroptosis strategy given validated in vivo efficacy and superior safety.
+- In KEAP1-mutant contexts, NRF2 constitutive activation upregulates FSP1 (Phase 5: Cohen's d = 0.91, p = 0.005). Combined NRF2+FSP1 co-targeting overcomes this resistance mechanism (PMC12384948).
+
+### 10.3 HDAC Persister-Cell Vulnerability: 6th Ferroptosis Defense Layer
+
+**Source:** Higuchi et al., *Science Advances*, January 2026 (DOI: 10.1126/sciadv.aea8771); RD tasks #1275, #802.
+
+GPX4 inhibitor-tolerant cancer persister cells — a critical source of therapeutic failure and relapse — rely on FSP1 as their primary ferroptosis suppressor. HDAC inhibitors increase oxidative stress in these persister cells, synergizing with GPX4 inhibition to eliminate them:
+
+**Mechanism:** GPX4i treatment → persister cell survival via FSP1 upregulation → HDACi pre/co-treatment increases ROS in persisters → overwhelms FSP1 defense → persister cell ferroptosis.
+
+**Immediately actionable drugs:**
+| HDACi | FDA Approval | Original Indication |
+|---|---|---|
+| Panobinostat | FDA-approved | Multiple myeloma |
+| Vorinostat | FDA-approved | Cutaneous T-cell lymphoma |
+| Romidepsin | FDA-approved | Peripheral T-cell lymphoma |
+
+**Atlas integration:**
+- HDAC-mediated persister defense constitutes a **6th ferroptosis defense layer** beyond the 5-layer model (GPX4, FSP1, SLC7A11/glutathione, NRF2/KEAP1 regulation, TXNRD1/thioredoxin).
+- HDACi co-treatment is applicable across **all therapeutic categories** as a persister elimination strategy, not limited to Category E.
+- The recommended sequencing is HDACi pre-treatment or co-treatment with the primary ferroptosis inducer (GPX4i, FSP1i, or N6F11) to prevent persister cell emergence.
+
+### 10.4 Updated Clinical Strategy by Category
+
+| Category | Previous Strategy | Updated Strategy (March 2026) |
+|---|---|---|
+| **A: FSP1-Vulnerable** | icFSP1 monotherapy | icFSP1 monotherapy (primary); N6F11 as GPX4 degrader alternative; HDACi for persister elimination |
+| **B: Dual Defense** | FSP1i + GPX4i | FSP1i + N6F11 combination; HDACi for persister elimination |
+| **C: GPX4-Dominant** | Await in vivo GPX4i validation | **N6F11 monotherapy (preferred)**; Bone as prime target; HDACi for persister elimination |
+| **D: TrxR1-Driven** | Auranofin | Auranofin (unchanged); HDACi for persister elimination |
+| **E: HDACi Combination** | HDACi + GPX4i | HDACi + N6F11 (replaces GPX4i where applicable) |
+| **KEAP1-MUT** | GLS1 inhibition (CB-839) | GLS1 inhibition + NRF2+FSP1 co-targeting; N6F11 for GPX4 axis |
+
+---
+
 ## References
 
 1. Wu et al. "FSP1 inhibition reduces KP LUAD tumor growth." *Nature*, Nov 2025. DOI: 10.1038/s41586-025-XXXX
@@ -419,9 +495,11 @@ NRF2 constitutive activation (via KEAP1 loss-of-function or NFE2L2 gain-of-funct
 12. "TrxR1/KEAP1/GPX4 regulatory mechanism." *Cell Death & Differentiation*, 2026. DOI: 10.1038/s41418-026-01691-z
 13. "SAT1-polyamine catabolism drives ferroptosis sensitization to KRAS inhibitors in KEAP1-WT context." *Nature Communications*, 2025. DOI: 10.1038/s41467-025-65441-4
 14. "GLS1 inhibition reverses ferroptosis resistance in KEAP1-mutant LUAD." AACR 2026, *Cancer Research* 86(5 Suppl):B013.
+15. "N6F11: tumor-specific GPX4 degrader sparing immune cells." *Science Translational Medicine*, 2026.
+16. "NRF2+FSP1 co-targeting overcomes ferroptosis resistance." PMC12384948.
 
 ---
 
-*Analysis date: 2026-03-17 (Phases 1–4), 2026-03-19 (Phase 5), 2026-03-23 (SAT1/GLS1 addendum). Data: DepMap 25Q3, TCGA Pan-Cancer Atlas, PRISM 24Q2.*
+*Analysis date: 2026-03-17 (Phases 1–4), 2026-03-19 (Phase 5), 2026-03-23 (SAT1/GLS1 addendum), 2026-03-31 (translational update: N6F11/FSP1/HDAC). Data: DepMap 25Q3, TCGA Pan-Cancer Atlas, PRISM 24Q2.*
 *Pipeline: `pipelines/pancancer-ferroptosis-atlas/` (phase1-phase5).*
 *Raw outputs: `data/results/pancancer-ferroptosis-atlas/phase1/` through `phase5/`.*
