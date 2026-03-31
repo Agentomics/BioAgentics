@@ -177,8 +177,11 @@ DE_NOVO_GENES: list[RareVariantGene] = [
         pathways=["notch_signaling", "glycosylation"],
         chromosome="12q12",
         references=["Zhan_2025_bioRxiv"],
-        notes="Glucoside xylosyltransferase 1. Modifies Notch receptor — a pathway "
-        "involved in neuronal differentiation. No TS-specific functional data.",
+        notes="Glucoside xylosyltransferase 1. Directly glycosylates Notch "
+        "receptors. PPI: GXYLT1↔NOTCH1 (score 0.712, experimental/database). "
+        "NOTCH1 is a Phase 3 bridge gene connecting to RBFOX1 (GWAS) and "
+        "ASH1L (chromatin remodeling). Connects to convergent pathways via "
+        "Notch signaling (neurodevelopment). No TS-specific functional data.",
     ),
     RareVariantGene(
         gene_symbol="CELSR3",
