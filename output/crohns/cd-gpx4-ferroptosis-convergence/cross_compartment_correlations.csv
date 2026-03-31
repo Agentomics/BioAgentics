@@ -1,0 +1,13 @@
+comparison,x,y,n_samples,spearman_rho,pvalue,significant,meets_criterion,FDR
+Epithelial GPX4 vs ILC3 ferroptosis score,epi_GPX4,ilc3_ferroptosis,23,0.05335968379446641,0.8089311975158358,False,False,0.9707174370190028
+Epithelial GPX4 vs ILC3 GPX4,epi_GPX4,ilc3_GPX4,23,-0.07608695652173912,0.7300554425086555,False,False,0.9707174370190028
+Epithelial GPX4 vs Fibrosis module score,epi_GPX4,fib_fibrosis_score,23,-0.11363636363636365,0.6056681466311388,False,False,0.9085022199467081
+Epithelial GPX4 vs Inflammatory module score,epi_GPX4,inf_inflammatory_score,23,-0.20948616600790515,0.33738951585344074,False,False,0.6593429731524086
+Epithelial ferroptosis vs Fibrosis module,epi_ferroptosis,fib_fibrosis_score,23,0.3567193675889328,0.09475100941564729,False,False,0.4998924015097893
+Epithelial ferroptosis vs Inflammatory module,epi_ferroptosis,inf_inflammatory_score,23,0.33498023715415026,0.11818082467219841,False,False,0.4998924015097893
+ILC3 ferroptosis vs Fibrosis module,ilc3_ferroptosis,fib_fibrosis_score,23,0.30138339920948615,0.16225571581325915,False,False,0.4998924015097893
+ILC3 ferroptosis vs Inflammatory module,ilc3_ferroptosis,inf_inflammatory_score,23,0.2984189723320158,0.1666308005032631,False,False,0.4998924015097893
+Epithelial GPX4 vs Fibroblast COL1A1,epi_GPX4,fib_COL1A1,23,-0.021744502764145426,0.9215521572239758,False,False,0.9821500334482506
+Epithelial GPX4 vs Fibroblast FAP,epi_GPX4,fib_FAP,23,-0.19023173650580577,0.38461673433890503,False,False,0.6593429731524086
+Epithelial GPX4 vs Inflammatory TNF,epi_GPX4,inf_TNF,23,0.004940711462450594,0.9821500334482505,False,False,0.9821500334482506
+Epithelial GPX4 vs Inflammatory IL1B,epi_GPX4,inf_IL1B,23,-0.25395256916996045,0.24228781093936383,False,False,0.5814907462544732

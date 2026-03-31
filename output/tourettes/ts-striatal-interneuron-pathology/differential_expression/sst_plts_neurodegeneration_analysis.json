@@ -1,0 +1,46 @@
+{
+  "task": 1581,
+  "analysis": "SST_PLTS neurodegeneration leading-edge gene extraction",
+  "source_enrichment": "KEGG_2021_Human: Pathways of neurodegeneration (padj=0.0147)",
+  "leading_edge_genes": [
+    "NOS1",
+    "UCHL1",
+    "PRNP",
+    "GRIA3",
+    "CALM2",
+    "CHRM3"
+  ],
+  "n_genes": 6,
+  "category_breakdown": {
+    "Nitrosative/oxidative stress": [
+      "NOS1"
+    ],
+    "Ubiquitin-proteasome / proteostasis": [
+      "UCHL1"
+    ],
+    "Protein aggregation / misfolding": [
+      "PRNP"
+    ],
+    "Excitotoxicity": [
+      "GRIA3"
+    ],
+    "Calcium signaling dysregulation": [
+      "CALM2",
+      "CHRM3"
+    ]
+  },
+  "category_counts": {
+    "Nitrosative/oxidative stress": 1,
+    "Ubiquitin-proteasome / proteostasis": 1,
+    "Protein aggregation / misfolding": 1,
+    "Excitotoxicity": 1,
+    "Calcium signaling dysregulation": 2
+  },
+  "key_finding": "NOT primarily mitochondrial (Complex I-V) or apoptotic (BCL2/caspases). Multi-pathway convergent vulnerability: calcium/excitotoxicity (3/6), protein quality control (2/6), nitrosative stress (1/6)",
+  "double_hit_model": {
+    "description": "FOS (activity-dependent TF, SST_PLTS master regulator) directly regulates NOS1 (strongest neurodegeneration gene, padj=5.4e-72). Activity burden amplifies nitrosative stress vulnerability.",
+    "tf": "FOS",
+    "target": "NOS1",
+    "implication": "During high-activity states (e.g. tic suppression), FOS activation \u2192 NOS1 upregulation \u2192 excess NO \u2192 mitochondrial Complex I inhibition + protein S-nitrosylation. Combined with calcium overload (CALM2/CHRM3/GRIA3) and stressed proteostasis (UCHL1/PRNP), creates convergent vulnerability."
+  }
+}
