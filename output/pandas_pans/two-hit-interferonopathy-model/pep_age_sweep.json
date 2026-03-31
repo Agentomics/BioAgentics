@@ -1,0 +1,47 @@
+{
+  "description": "Age-dependent PEP sweep: PEP decline lowers cGAS threshold, modeling PANDAS onset window",
+  "base_genotype": "trex1_het_pep_sweep",
+  "gas_dna": 0.5,
+  "sweep": [
+    {
+      "pep_level": 1.0,
+      "ifn_output": 0.4615,
+      "dna_threshold_50pct_ifn": 0.53
+    },
+    {
+      "pep_level": 0.9,
+      "ifn_output": 0.5204,
+      "dna_threshold_50pct_ifn": 0.49
+    },
+    {
+      "pep_level": 0.8,
+      "ifn_output": 0.5695,
+      "dna_threshold_50pct_ifn": 0.45
+    },
+    {
+      "pep_level": 0.7,
+      "ifn_output": 0.6088,
+      "dna_threshold_50pct_ifn": 0.42
+    },
+    {
+      "pep_level": 0.6,
+      "ifn_output": 0.6397,
+      "dna_threshold_50pct_ifn": 0.38
+    },
+    {
+      "pep_level": 0.5,
+      "ifn_output": 0.6635,
+      "dna_threshold_50pct_ifn": 0.35
+    },
+    {
+      "pep_level": 0.4,
+      "ifn_output": 0.6816,
+      "dna_threshold_50pct_ifn": 0.31
+    },
+    {
+      "pep_level": 0.3,
+      "ifn_output": 0.6954,
+      "dna_threshold_50pct_ifn": 0.27
+    }
+  ]
+}

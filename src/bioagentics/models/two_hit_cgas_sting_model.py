@@ -68,6 +68,8 @@ class GenotypeScenario:
     samhd1_activity: float  # 0.0 (null) to 1.0 (wild-type)
     ddr_activity: float = 1.0  # 0.0 (null) to 1.0 (wild-type); CUX1/USP45/PARP14
     mito_activity: float = 1.0  # 0.0 (null) to 1.0 (wild-type); PRKN/POLG
+    hif1a_activity: float = 1.0  # 0.0 (deficient) to 1.0 (normal); modulates STING threshold
+    pep_level: float = 1.0  # 0.0 (depleted) to 1.0 (normal); age-dependent cGAS inhibitor
     description: str = ""
 
 
@@ -150,6 +152,14 @@ DEFAULT_SCENARIOS: list[GenotypeScenario] = [
         mito_activity=0.3,
         description="Triple hit — TREX1 het + DDR + mito impaired (multi-axis vulnerability)",
     ),
+    GenotypeScenario(
+        name="metabolic_vulnerable",
+        trex1_activity=0.5,
+        samhd1_activity=1.0,
+        hif1a_activity=0.4,
+        pep_level=0.5,
+        description="Metabolic vulnerable — TREX1 het + low HIF-1a + low PEP (onset-prone)",
+    ),
 ]
 
 # GAS DNA exposure levels to simulate (normalized 0-1)
@@ -178,6 +188,8 @@ def simulate_pathway(
     samhd1_activity: float,
     ddr_activity: float = 1.0,
     mito_activity: float = 1.0,
+    hif1a_activity: float = 1.0,
+    pep_level: float = 1.0,
     cgas_k: float = 0.3,
     sting_k: float = 0.4,
     tbk1_k: float = 0.4,
@@ -192,14 +204,20 @@ def simulate_pathway(
       DDR failure (CUX1/USP45/PARP14) → unrepaired nuclear DNA leakage
       Mitochondrial impairment (PRKN/POLG) → mtDNA leakage
 
+    Metabolic modifiers:
+      HIF-1a deficiency → metabolic shift → lower STING activation threshold
+      PEP depletion (age-dependent) → reduced cGAS inhibition → lower cGAS threshold
+
     Args:
         gas_dna: GAS pathogen DNA exposure level (0-1).
         trex1_activity: TREX1 enzymatic activity (0=null, 1=WT).
         samhd1_activity: SAMHD1 enzymatic activity (0=null, 1=WT).
         ddr_activity: DDR gene activity (0=null, 1=WT). CUX1/USP45/PARP14.
         mito_activity: Mitochondrial gene activity (0=null, 1=WT). PRKN/POLG.
-        cgas_k: cGAS half-activation threshold.
-        sting_k: STING half-activation threshold.
+        hif1a_activity: HIF-1a activity (0=deficient, 1=normal). Low → STING sensitized.
+        pep_level: Phosphoenolpyruvate level (0=depleted, 1=normal). Low → cGAS sensitized.
+        cgas_k: cGAS half-activation threshold (before PEP modulation).
+        sting_k: STING half-activation threshold (before HIF-1a modulation).
         tbk1_k: TBK1 half-activation threshold.
         irf3_k: IRF3 half-activation threshold.
 
@@ -207,6 +225,14 @@ def simulate_pathway(
         PathwayState with all intermediate and output values.
     """
     state = PathwayState(gas_dna_input=gas_dna)
+
+    # Metabolic modifier: PEP inhibits cGAS; low PEP lowers cGAS threshold
+    # At pep=1.0: cgas_k unchanged; at pep=0.0: cgas_k drops to 30% of normal
+    effective_cgas_k = cgas_k * (0.3 + 0.7 * pep_level)
+
+    # Metabolic modifier: HIF-1a loss shifts glycolysis→OXPHOS, sensitizing STING
+    # At hif1a=1.0: sting_k unchanged; at hif1a=0.0: sting_k drops to 30% of normal
+    effective_sting_k = sting_k * (0.3 + 0.7 * hif1a_activity)
 
     # Cytosolic DNA accumulation depends on input and clearance
     # TREX1 degrades DNA directly; SAMHD1 restricts dNTP pools
@@ -222,13 +248,13 @@ def simulate_pathway(
     state.cytosolic_dna = max(0.0, min(1.0, state.cytosolic_dna))
 
     # cGAS detects cytosolic dsDNA via sigmoidal activation
-    state.cgas_activity = hill(state.cytosolic_dna, k=cgas_k)
+    state.cgas_activity = hill(state.cytosolic_dna, k=effective_cgas_k)
 
     # cGAS produces 2'3'-cGAMP (proportional to cGAS activity)
     state.cgamp_level = state.cgas_activity * 0.95
 
     # STING activation by cGAMP
-    state.sting_activity = hill(state.cgamp_level, k=sting_k)
+    state.sting_activity = hill(state.cgamp_level, k=effective_sting_k)
 
     # TBK1 phosphorylation by active STING
     state.tbk1_activity = hill(state.sting_activity, k=tbk1_k)
@@ -271,9 +297,10 @@ def run_genotype_simulations(
     }
 
     for scenario in scenarios:
-        logger.info("Simulating: %s (TREX1=%.1f, SAMHD1=%.1f, DDR=%.1f, MITO=%.1f)",
+        logger.info("Simulating: %s (TREX1=%.1f, SAMHD1=%.1f, DDR=%.1f, MITO=%.1f, HIF1A=%.1f, PEP=%.1f)",
                      scenario.name, scenario.trex1_activity, scenario.samhd1_activity,
-                     scenario.ddr_activity, scenario.mito_activity)
+                     scenario.ddr_activity, scenario.mito_activity,
+                     scenario.hif1a_activity, scenario.pep_level)
 
         scenario_data = {
             "description": scenario.description,
@@ -281,6 +308,8 @@ def run_genotype_simulations(
             "samhd1_activity": scenario.samhd1_activity,
             "ddr_activity": scenario.ddr_activity,
             "mito_activity": scenario.mito_activity,
+            "hif1a_activity": scenario.hif1a_activity,
+            "pep_level": scenario.pep_level,
             "exposure_results": [],
         }
 
@@ -291,6 +320,8 @@ def run_genotype_simulations(
                 samhd1_activity=scenario.samhd1_activity,
                 ddr_activity=scenario.ddr_activity,
                 mito_activity=scenario.mito_activity,
+                hif1a_activity=scenario.hif1a_activity,
+                pep_level=scenario.pep_level,
             )
             scenario_data["exposure_results"].append({
                 "gas_dna_input": round(dna, 3),
@@ -309,6 +340,8 @@ def run_genotype_simulations(
             samhd1_activity=scenario.samhd1_activity,
             ddr_activity=scenario.ddr_activity,
             mito_activity=scenario.mito_activity,
+            hif1a_activity=scenario.hif1a_activity,
+            pep_level=scenario.pep_level,
         )
         scenario_data["ifn_at_moderate_infection"] = round(moderate_state.ifn_output, 4)
 
@@ -316,6 +349,7 @@ def run_genotype_simulations(
         threshold = _find_ifn_threshold(
             scenario.trex1_activity, scenario.samhd1_activity,
             scenario.ddr_activity, scenario.mito_activity,
+            scenario.hif1a_activity, scenario.pep_level,
         )
         scenario_data["dna_threshold_50pct_ifn"] = round(threshold, 4) if threshold is not None else None
 
@@ -329,6 +363,8 @@ def _find_ifn_threshold(
     samhd1_activity: float,
     ddr_activity: float = 1.0,
     mito_activity: float = 1.0,
+    hif1a_activity: float = 1.0,
+    pep_level: float = 1.0,
     target_ifn: float = 0.5,
     resolution: int = 100,
 ) -> float | None:
@@ -338,6 +374,7 @@ def _find_ifn_threshold(
         state = simulate_pathway(
             dna, trex1_activity, samhd1_activity,
             ddr_activity=ddr_activity, mito_activity=mito_activity,
+            hif1a_activity=hif1a_activity, pep_level=pep_level,
         )
         if state.ifn_output >= target_ifn:
             return dna
@@ -366,6 +403,7 @@ def plot_ifn_response_curves(
         "ddr_impaired": "#3498DB",
         "mito_impaired": "#1ABC9C",
         "triple_hit": "#E91E63",
+        "metabolic_vulnerable": "#FF6F00",
     }
 
     for name, data in scenarios.items():
@@ -376,6 +414,10 @@ def plot_ifn_response_curves(
             parts.append(f"DDR={data['ddr_activity']}")
         if data.get("mito_activity", 1.0) != 1.0:
             parts.append(f"MITO={data['mito_activity']}")
+        if data.get("hif1a_activity", 1.0) != 1.0:
+            parts.append(f"HIF1A={data['hif1a_activity']}")
+        if data.get("pep_level", 1.0) != 1.0:
+            parts.append(f"PEP={data['pep_level']}")
         label = f"{name} ({', '.join(parts)})"
         ax.plot(dna_levels, ifn_values, marker="o", color=color, label=label, linewidth=2)
 
@@ -443,6 +485,91 @@ def plot_pathway_heatmap(
     logger.info("Saved pathway heatmap: %s", dest)
 
 
+def run_pep_age_sweep(
+    base_scenario: GenotypeScenario | None = None,
+    pep_levels: list[float] | None = None,
+    gas_dna: float = 0.5,
+) -> dict:
+    """Sweep PEP levels to model age-dependent onset window.
+
+    PEP (phosphoenolpyruvate) directly inhibits cGAS. Age-related PEP decline
+    explains the PANDAS developmental timing window (typically ages 3-12).
+
+    Returns dict with PEP sweep results showing IFN threshold shift.
+    """
+    if base_scenario is None:
+        base_scenario = GenotypeScenario(
+            name="trex1_het_pep_sweep",
+            trex1_activity=0.5,
+            samhd1_activity=1.0,
+            description="TREX1 het with PEP age sweep",
+        )
+    if pep_levels is None:
+        pep_levels = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3]
+
+    sweep_results = []
+    for pep in pep_levels:
+        state = simulate_pathway(
+            gas_dna=gas_dna,
+            trex1_activity=base_scenario.trex1_activity,
+            samhd1_activity=base_scenario.samhd1_activity,
+            ddr_activity=base_scenario.ddr_activity,
+            mito_activity=base_scenario.mito_activity,
+            hif1a_activity=base_scenario.hif1a_activity,
+            pep_level=pep,
+        )
+        threshold = _find_ifn_threshold(
+            base_scenario.trex1_activity, base_scenario.samhd1_activity,
+            base_scenario.ddr_activity, base_scenario.mito_activity,
+            base_scenario.hif1a_activity, pep,
+        )
+        sweep_results.append({
+            "pep_level": round(pep, 2),
+            "ifn_output": round(state.ifn_output, 4),
+            "dna_threshold_50pct_ifn": round(threshold, 4) if threshold is not None else None,
+        })
+
+    return {
+        "description": "Age-dependent PEP sweep: PEP decline lowers cGAS threshold, modeling PANDAS onset window",
+        "base_genotype": base_scenario.name,
+        "gas_dna": gas_dna,
+        "sweep": sweep_results,
+    }
+
+
+def plot_pep_age_sweep(sweep_data: dict, dest: Path) -> None:
+    """Plot IFN output and threshold vs PEP level."""
+    pep_levels = [r["pep_level"] for r in sweep_data["sweep"]]
+    ifn_values = [r["ifn_output"] for r in sweep_data["sweep"]]
+    thresholds = [r["dna_threshold_50pct_ifn"] for r in sweep_data["sweep"]]
+
+    fig, ax1 = plt.subplots(figsize=(8, 5))
+
+    ax1.plot(pep_levels, ifn_values, "o-", color="#E74C3C", linewidth=2, label="IFN output (DNA=0.5)")
+    ax1.set_xlabel("PEP Level (1.0=young, 0.3=age-depleted)", fontsize=11)
+    ax1.set_ylabel("IFN Output", fontsize=11, color="#E74C3C")
+    ax1.tick_params(axis="y", labelcolor="#E74C3C")
+    ax1.set_xlim(1.05, 0.25)
+
+    ax2 = ax1.twinx()
+    t_vals = [t if t is not None else 0.0 for t in thresholds]
+    ax2.plot(pep_levels, t_vals, "s--", color="#3498DB", linewidth=2, label="50% IFN threshold")
+    ax2.set_ylabel("DNA Threshold for 50% IFN", fontsize=11, color="#3498DB")
+    ax2.tick_params(axis="y", labelcolor="#3498DB")
+
+    ax1.set_title("Age-Dependent PEP Decline → PANDAS Onset Window", fontsize=13)
+    lines1, labels1 = ax1.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper right")
+    ax1.grid(alpha=0.3)
+    plt.tight_layout()
+
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(dest, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    logger.info("Saved PEP age sweep plot: %s", dest)
+
+
 def run_cgas_sting_model(dest_dir: Path | None = None) -> dict:
     """Run the full cGAS-STING pathway activation model.
 
@@ -461,9 +588,17 @@ def run_cgas_sting_model(dest_dir: Path | None = None) -> dict:
         json.dump(results, f, indent=2)
     logger.info("Saved pathway activation scores: %s", scores_path)
 
+    # Run age-dependent PEP sweep
+    pep_sweep = run_pep_age_sweep()
+    pep_path = dest_dir / "pep_age_sweep.json"
+    with open(pep_path, "w") as f:
+        json.dump(pep_sweep, f, indent=2)
+    logger.info("Saved PEP age sweep: %s", pep_path)
+
     # Generate visualizations
     plot_ifn_response_curves(results, dest_dir / "ifn_response_curves.png")
     plot_pathway_heatmap(results, dest_dir / "pathway_heatmap.png")
+    plot_pep_age_sweep(pep_sweep, dest_dir / "pep_age_sweep.png")
 
     # Log key findings
     logger.info("=== Key findings ===")

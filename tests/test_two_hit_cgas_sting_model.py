@@ -13,6 +13,7 @@ from bioagentics.models.two_hit_cgas_sting_model import (
     simulate_pathway,
     run_genotype_simulations,
     run_cgas_sting_model,
+    run_pep_age_sweep,
 )
 
 
@@ -113,11 +114,31 @@ class TestSimulatePathway:
     def test_output_bounded_with_all_impaired(self):
         """All outputs should stay in [0, 1] even with maximum impairment."""
         state = simulate_pathway(gas_dna=1.0, trex1_activity=0.0, samhd1_activity=0.0,
-                                 ddr_activity=0.0, mito_activity=0.0)
+                                 ddr_activity=0.0, mito_activity=0.0,
+                                 hif1a_activity=0.0, pep_level=0.0)
         for val in [state.cytosolic_dna, state.cgas_activity, state.cgamp_level,
                     state.sting_activity, state.tbk1_activity, state.irf3_activity,
                     state.ifn_output]:
             assert 0.0 <= val <= 1.0
+
+    def test_low_pep_increases_ifn(self):
+        """Low PEP (age-related) should increase IFN output by lowering cGAS threshold."""
+        normal_pep = simulate_pathway(gas_dna=0.5, trex1_activity=0.5, samhd1_activity=1.0, pep_level=1.0)
+        low_pep = simulate_pathway(gas_dna=0.5, trex1_activity=0.5, samhd1_activity=1.0, pep_level=0.3)
+        assert low_pep.ifn_output > normal_pep.ifn_output
+
+    def test_low_hif1a_increases_ifn(self):
+        """Low HIF-1a should increase IFN output by lowering STING threshold."""
+        normal_hif = simulate_pathway(gas_dna=0.5, trex1_activity=0.5, samhd1_activity=1.0, hif1a_activity=1.0)
+        low_hif = simulate_pathway(gas_dna=0.5, trex1_activity=0.5, samhd1_activity=1.0, hif1a_activity=0.3)
+        assert low_hif.ifn_output > normal_hif.ifn_output
+
+    def test_metabolic_modifiers_backward_compatible(self):
+        """Default hif1a=1.0 and pep=1.0 should not change existing results."""
+        old = simulate_pathway(gas_dna=0.5, trex1_activity=0.5, samhd1_activity=0.5)
+        new = simulate_pathway(gas_dna=0.5, trex1_activity=0.5, samhd1_activity=0.5,
+                               hif1a_activity=1.0, pep_level=1.0)
+        assert old.ifn_output == new.ifn_output
 
 
 class TestRunGenotypSimulations:
@@ -125,7 +146,7 @@ class TestRunGenotypSimulations:
         results = run_genotype_simulations()
         assert "scenarios" in results
         assert len(results["scenarios"]) == len(DEFAULT_SCENARIOS)
-        assert len(DEFAULT_SCENARIOS) == 10
+        assert len(DEFAULT_SCENARIOS) == 11
 
     def test_scenario_has_exposure_results(self):
         results = run_genotype_simulations()
@@ -153,12 +174,30 @@ class TestRunGenotypSimulations:
             assert wt_thresh > lof_thresh
 
 
+class TestPepAgeSweep:
+    def test_sweep_returns_expected_structure(self):
+        result = run_pep_age_sweep()
+        assert "sweep" in result
+        assert len(result["sweep"]) == 8
+        for entry in result["sweep"]:
+            assert "pep_level" in entry
+            assert "ifn_output" in entry
+
+    def test_ifn_increases_as_pep_decreases(self):
+        """IFN should increase as PEP declines (aging)."""
+        result = run_pep_age_sweep()
+        sweep = result["sweep"]
+        assert sweep[-1]["ifn_output"] > sweep[0]["ifn_output"]
+
+
 class TestRunModel:
     def test_creates_output_files(self, tmp_path):
         results = run_cgas_sting_model(dest_dir=tmp_path)
         assert (tmp_path / "pathway_activation_scores.json").exists()
         assert (tmp_path / "ifn_response_curves.png").exists()
         assert (tmp_path / "pathway_heatmap.png").exists()
+        assert (tmp_path / "pep_age_sweep.json").exists()
+        assert (tmp_path / "pep_age_sweep.png").exists()
 
     def test_json_output_valid(self, tmp_path):
         run_cgas_sting_model(dest_dir=tmp_path)

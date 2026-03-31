@@ -32,6 +32,8 @@
       "samhd1_activity": 1.0,
       "ddr_activity": 1.0,
       "mito_activity": 1.0,
+      "hif1a_activity": 1.0,
+      "pep_level": 1.0,
       "exposure_results": [
         {
           "gas_dna_input": 0.0,
@@ -106,6 +108,8 @@
       "samhd1_activity": 1.0,
       "ddr_activity": 1.0,
       "mito_activity": 1.0,
+      "hif1a_activity": 1.0,
+      "pep_level": 1.0,
       "exposure_results": [
         {
           "gas_dna_input": 0.0,
@@ -180,6 +184,8 @@
       "samhd1_activity": 0.5,
       "ddr_activity": 1.0,
       "mito_activity": 1.0,
+      "hif1a_activity": 1.0,
+      "pep_level": 1.0,
       "exposure_results": [
         {
           "gas_dna_input": 0.0,
@@ -254,6 +260,8 @@
       "samhd1_activity": 1.0,
       "ddr_activity": 1.0,
       "mito_activity": 1.0,
+      "hif1a_activity": 1.0,
+      "pep_level": 1.0,
       "exposure_results": [
         {
           "gas_dna_input": 0.0,
@@ -328,6 +336,8 @@
       "samhd1_activity": 0.1,
       "ddr_activity": 1.0,
       "mito_activity": 1.0,
+      "hif1a_activity": 1.0,
+      "pep_level": 1.0,
       "exposure_results": [
         {
           "gas_dna_input": 0.0,
@@ -402,6 +412,8 @@
       "samhd1_activity": 0.5,
       "ddr_activity": 1.0,
       "mito_activity": 1.0,
+      "hif1a_activity": 1.0,
+      "pep_level": 1.0,
       "exposure_results": [
         {
           "gas_dna_input": 0.0,
@@ -476,6 +488,8 @@
       "samhd1_activity": 0.1,
       "ddr_activity": 1.0,
       "mito_activity": 1.0,
+      "hif1a_activity": 1.0,
+      "pep_level": 1.0,
       "exposure_results": [
         {
           "gas_dna_input": 0.0,
@@ -550,6 +564,8 @@
       "samhd1_activity": 1.0,
       "ddr_activity": 0.3,
       "mito_activity": 1.0,
+      "hif1a_activity": 1.0,
+      "pep_level": 1.0,
       "exposure_results": [
         {
           "gas_dna_input": 0.0,
@@ -624,6 +640,8 @@
       "samhd1_activity": 1.0,
       "ddr_activity": 1.0,
       "mito_activity": 0.3,
+      "hif1a_activity": 1.0,
+      "pep_level": 1.0,
       "exposure_results": [
         {
           "gas_dna_input": 0.0,
@@ -698,6 +716,8 @@
       "samhd1_activity": 1.0,
       "ddr_activity": 0.3,
       "mito_activity": 0.3,
+      "hif1a_activity": 1.0,
+      "pep_level": 1.0,
       "exposure_results": [
         {
           "gas_dna_input": 0.0,
@@ -765,6 +785,82 @@
       ],
       "ifn_at_moderate_infection": 0.7152,
       "dna_threshold_50pct_ifn": 0.0
+    },
+    "metabolic_vulnerable": {
+      "description": "Metabolic vulnerable \u2014 TREX1 het + low HIF-1a + low PEP (onset-prone)",
+      "trex1_activity": 0.5,
+      "samhd1_activity": 1.0,
+      "ddr_activity": 1.0,
+      "mito_activity": 1.0,
+      "hif1a_activity": 0.4,
+      "pep_level": 0.5,
+      "exposure_results": [
+        {
+          "gas_dna_input": 0.0,
+          "cytosolic_dna": 0.0,
+          "cgas_activity": 0.0,
+          "sting_activity": 0.0,
+          "tbk1_activity": 0.0,
+          "irf3_activity": 0.0,
+          "ifn_output": 0.0
+        },
+        {
+          "gas_dna_input": 0.1,
+          "cytosolic_dna": 0.0415,
+          "cgas_activity": 0.0433,
+          "sting_activity": 0.0305,
+          "tbk1_activity": 0.0058,
+          "irf3_activity": 0.0001,
+          "ifn_output": 0.0001
+        },
+        {
+          "gas_dna_input": 0.2,
+          "cytosolic_dna": 0.083,
+          "cgas_activity": 0.1534,
+          "sting_activity": 0.2829,
+          "tbk1_activity": 0.3334,
+          "irf3_activity": 0.3078,
+          "ifn_output": 0.3078
+        },
+        {
+          "gas_dna_input": 0.3,
+          "cytosolic_dna": 0.1245,
+          "cgas_activity": 0.2896,
+          "sting_activity": 0.5844,
+          "tbk1_activity": 0.681,
+          "irf3_activity": 0.6497,
+          "ifn_output": 0.6497
+        },
+        {
+          "gas_dna_input": 0.5,
+          "cytosolic_dna": 0.2075,
+          "cgas_activity": 0.531,
+          "sting_activity": 0.8254,
+          "tbk1_activity": 0.8098,
+          "irf3_activity": 0.724,
+          "ifn_output": 0.724
+        },
+        {
+          "gas_dna_input": 0.7,
+          "cytosolic_dna": 0.2905,
+          "cgas_activity": 0.6894,
+          "sting_activity": 0.8885,
+          "tbk1_activity": 0.8315,
+          "irf3_activity": 0.7344,
+          "ifn_output": 0.7344
+        },
+        {
+          "gas_dna_input": 1.0,
+          "cytosolic_dna": 0.415,
+          "cgas_activity": 0.8191,
+          "sting_activity": 0.9184,
+          "tbk1_activity": 0.8405,
+          "irf3_activity": 0.7386,
+          "ifn_output": 0.7386
+        }
+      ],
+      "ifn_at_moderate_infection": 0.724,
+      "dna_threshold_50pct_ifn": 0.24
     }
   }
 }
