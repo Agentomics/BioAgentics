@@ -1,0 +1,200 @@
+{
+  "model": "logistic_regression_l1",
+  "auroc_mean": 1.0,
+  "auroc_std": 0.0,
+  "auprc_mean": 1.0,
+  "auprc_std": 0.0,
+  "sensitivity_mean": 1.0,
+  "sensitivity_std": 0.0,
+  "specificity_mean": 1.0,
+  "specificity_std": 0.0,
+  "best_Cs": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "fold_results": [
+    {
+      "fold": 0,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "best_C": 0.1,
+      "n_train": 240,
+      "n_test": 60,
+      "n_pos_test": 18
+    },
+    {
+      "fold": 1,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "best_C": 0.1,
+      "n_train": 240,
+      "n_test": 60,
+      "n_pos_test": 18
+    },
+    {
+      "fold": 2,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "best_C": 0.1,
+      "n_train": 240,
+      "n_test": 60,
+      "n_pos_test": 18
+    },
+    {
+      "fold": 3,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "best_C": 0.1,
+      "n_train": 240,
+      "n_test": 60,
+      "n_pos_test": 18
+    },
+    {
+      "fold": 4,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "best_C": 0.1,
+      "n_train": 240,
+      "n_test": 60,
+      "n_pos_test": 18
+    }
+  ],
+  "coef_importance": [
+    {
+      "feature": "fio2_roll_mean",
+      "coef": 1.3420373042853608
+    },
+    {
+      "feature": "creatinine_roll_mean",
+      "coef": 0.5058215838335288
+    },
+    {
+      "feature": "temperature_roll_mean",
+      "coef": 0.3008035610072235
+    },
+    {
+      "feature": "inr_roll_mean",
+      "coef": 0.22472496079380555
+    },
+    {
+      "feature": "ast_roll_std",
+      "coef": 0.16993474846260073
+    },
+    {
+      "feature": "bilirubin_total_roll_mean",
+      "coef": 0.1473352075510628
+    },
+    {
+      "feature": "lactate_roll_std",
+      "coef": 0.13836107678518092
+    },
+    {
+      "feature": "heart_rate_roll_mean",
+      "coef": 0.11297026975546029
+    },
+    {
+      "feature": "bilirubin_total_roll_std",
+      "coef": 0.09648407010896312
+    },
+    {
+      "feature": "fio2_roll_std",
+      "coef": 0.08860002402164754
+    },
+    {
+      "feature": "albumin_roll_mean",
+      "coef": -0.08513973749576043
+    },
+    {
+      "feature": "inr_roll_std",
+      "coef": 0.08141567890266613
+    },
+    {
+      "feature": "wbc_roll_mean",
+      "coef": 0.0809910405238918
+    },
+    {
+      "feature": "spo2_roll_mean",
+      "coef": -0.04165026505273532
+    },
+    {
+      "feature": "alt_roll_std",
+      "coef": 0.04013058207288496
+    },
+    {
+      "feature": "lactate_roll_mean",
+      "coef": 0.02118001685032241
+    },
+    {
+      "feature": "resp_rate_roll_mean",
+      "coef": 0.013107234297931739
+    },
+    {
+      "feature": "ast_roll_mean",
+      "coef": 0.009532081342650859
+    },
+    {
+      "feature": "heart_rate",
+      "coef": 0.0
+    },
+    {
+      "feature": "sbp",
+      "coef": 0.0
+    },
+    {
+      "feature": "map",
+      "coef": 0.0
+    },
+    {
+      "feature": "resp_rate",
+      "coef": 0.0
+    },
+    {
+      "feature": "spo2",
+      "coef": 0.0
+    },
+    {
+      "feature": "temperature",
+      "coef": 0.0
+    },
+    {
+      "feature": "wbc",
+      "coef": 0.0
+    },
+    {
+      "feature": "hemoglobin",
+      "coef": 0.0
+    },
+    {
+      "feature": "hematocrit",
+      "coef": 0.0
+    },
+    {
+      "feature": "platelets",
+      "coef": 0.0
+    },
+    {
+      "feature": "lactate",
+      "coef": 0.0
+    },
+    {
+      "feature": "creatinine",
+      "coef": 0.0
+    }
+  ],
+  "lookahead_hours": 6,
+  "n_samples": 300,
+  "n_positive": 90
+}

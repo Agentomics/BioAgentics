@@ -1,0 +1,26 @@
+{
+  "4": {
+    "auroc": 1.0,
+    "auprc": 1.0,
+    "sensitivity": 1.0,
+    "specificity": 1.0
+  },
+  "6": {
+    "auroc": 1.0,
+    "auprc": 1.0,
+    "sensitivity": 1.0,
+    "specificity": 1.0
+  },
+  "8": {
+    "auroc": 1.0,
+    "auprc": 1.0,
+    "sensitivity": 0.9555555555555555,
+    "specificity": 1.0
+  },
+  "12": {
+    "auroc": 0.47619047619047616,
+    "auprc": 0.2911706499064094,
+    "sensitivity": 0.03333333333333333,
+    "specificity": 0.9238095238095237
+  }
+}

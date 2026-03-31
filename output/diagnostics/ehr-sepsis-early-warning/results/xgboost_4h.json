@@ -1,0 +1,194 @@
+{
+  "model": "xgboost",
+  "auroc_mean": 0.9944444444444445,
+  "auroc_std": 0.011111111111111117,
+  "auprc_mean": 0.9922222222222222,
+  "auprc_std": 0.015555555555555545,
+  "fold_results": [
+    {
+      "fold": 0,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 1,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 2,
+      "auroc": 0.9722222222222222,
+      "auprc": 0.9611111111111111,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 3,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 4,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "temperature_roll_mean",
+      "importance": 1.0
+    },
+    {
+      "feature": "heart_rate",
+      "importance": 0.0
+    },
+    {
+      "feature": "sbp",
+      "importance": 0.0
+    },
+    {
+      "feature": "map",
+      "importance": 0.0
+    },
+    {
+      "feature": "resp_rate",
+      "importance": 0.0
+    },
+    {
+      "feature": "spo2",
+      "importance": 0.0
+    },
+    {
+      "feature": "temperature",
+      "importance": 0.0
+    },
+    {
+      "feature": "wbc",
+      "importance": 0.0
+    },
+    {
+      "feature": "hemoglobin",
+      "importance": 0.0
+    },
+    {
+      "feature": "hematocrit",
+      "importance": 0.0
+    },
+    {
+      "feature": "platelets",
+      "importance": 0.0
+    },
+    {
+      "feature": "lactate",
+      "importance": 0.0
+    },
+    {
+      "feature": "creatinine",
+      "importance": 0.0
+    },
+    {
+      "feature": "bun",
+      "importance": 0.0
+    },
+    {
+      "feature": "glucose",
+      "importance": 0.0
+    },
+    {
+      "feature": "sodium",
+      "importance": 0.0
+    },
+    {
+      "feature": "potassium",
+      "importance": 0.0
+    },
+    {
+      "feature": "chloride",
+      "importance": 0.0
+    },
+    {
+      "feature": "bicarbonate",
+      "importance": 0.0
+    },
+    {
+      "feature": "bilirubin_total",
+      "importance": 0.0
+    },
+    {
+      "feature": "alt",
+      "importance": 0.0
+    },
+    {
+      "feature": "ast",
+      "importance": 0.0
+    },
+    {
+      "feature": "albumin",
+      "importance": 0.0
+    },
+    {
+      "feature": "inr",
+      "importance": 0.0
+    },
+    {
+      "feature": "ptt",
+      "importance": 0.0
+    },
+    {
+      "feature": "pao2",
+      "importance": 0.0
+    },
+    {
+      "feature": "fio2",
+      "importance": 0.0
+    },
+    {
+      "feature": "heart_rate_delta_1h",
+      "importance": 0.0
+    },
+    {
+      "feature": "heart_rate_delta_6h",
+      "importance": 0.0
+    },
+    {
+      "feature": "heart_rate_delta_12h",
+      "importance": 0.0
+    }
+  ],
+  "lookahead_hours": 4,
+  "n_samples": 300,
+  "n_positive": 90
+}

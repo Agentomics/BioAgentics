@@ -1,0 +1,61 @@
+{
+  "uncalibrated": {
+    "ece": 0.007779998068126991,
+    "mce": 0.012754089478924091,
+    "calibration_curve": {
+      "fraction_of_positives": [
+        0.0,
+        1.0
+      ],
+      "mean_predicted_value": [
+        0.005648244606356809,
+        0.9872459105210764
+      ],
+      "n_bins_used": 2
+    }
+  },
+  "platt_scaling": {
+    "ece": 0.04947910528699355,
+    "mce": 0.10641926499845933,
+    "calibration_curve": {
+      "fraction_of_positives": [
+        0.0,
+        1.0,
+        1.0
+      ],
+      "mean_predicted_value": [
+        0.03535835752192582,
+        0.8935807350015407,
+        0.9183997849253072
+      ],
+      "n_bins_used": 3
+    }
+  },
+  "isotonic": {
+    "ece": 6.16961060046215e-05,
+    "mce": 8.286135874815541e-05,
+    "calibration_curve": {
+      "fraction_of_positives": [
+        0.0,
+        1.0
+      ],
+      "mean_predicted_value": [
+        8.286135874815541e-05,
+        0.9999876894837303
+      ],
+      "n_bins_used": 2
+    }
+  },
+  "conformal": {
+    "coverage": 0.9066666666666666,
+    "avg_set_size": 0.9066666666666666,
+    "false_alarm_reduction": 1.0,
+    "alpha": 0.1
+  },
+  "best_method": "isotonic",
+  "best_ece": 6.16961060046215e-05,
+  "best_mce": 8.286135874815541e-05,
+  "meets_ece_target": true,
+  "lookahead_hours": 6,
+  "n_samples": 300
+}

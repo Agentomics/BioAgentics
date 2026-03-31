@@ -1,0 +1,194 @@
+{
+  "model": "xgboost",
+  "auroc_mean": 1.0,
+  "auroc_std": 0.0,
+  "auprc_mean": 1.0,
+  "auprc_std": 1.4043333874306804e-16,
+  "fold_results": [
+    {
+      "fold": 0,
+      "auroc": 1.0,
+      "auprc": 1.0000000000000002,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 1,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 2,
+      "auroc": 1.0,
+      "auprc": 1.0000000000000002,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 3,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 4,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "fio2_roll_std",
+      "importance": 0.3482415974140167
+    },
+    {
+      "feature": "fio2_roll_mean",
+      "importance": 0.27186399698257446
+    },
+    {
+      "feature": "bilirubin_total_roll_std",
+      "importance": 0.0385565385222435
+    },
+    {
+      "feature": "creatinine",
+      "importance": 0.03361622244119644
+    },
+    {
+      "feature": "creatinine_roll_std",
+      "importance": 0.025467291474342346
+    },
+    {
+      "feature": "lactate_roll_mean",
+      "importance": 0.02048369124531746
+    },
+    {
+      "feature": "ast",
+      "importance": 0.020254453644156456
+    },
+    {
+      "feature": "creatinine_delta_12h",
+      "importance": 0.01988469809293747
+    },
+    {
+      "feature": "lactate",
+      "importance": 0.019743701443076134
+    },
+    {
+      "feature": "creatinine_delta_6h",
+      "importance": 0.01926906779408455
+    },
+    {
+      "feature": "creatinine_roll_slope",
+      "importance": 0.01878850907087326
+    },
+    {
+      "feature": "creatinine_roll_mean",
+      "importance": 0.017853641882538795
+    },
+    {
+      "feature": "bun",
+      "importance": 0.01514342613518238
+    },
+    {
+      "feature": "ast_roll_mean",
+      "importance": 0.014932677149772644
+    },
+    {
+      "feature": "inr_roll_std",
+      "importance": 0.009282258339226246
+    },
+    {
+      "feature": "temperature_roll_slope",
+      "importance": 0.008551610633730888
+    },
+    {
+      "feature": "fio2_roll_slope",
+      "importance": 0.008531792089343071
+    },
+    {
+      "feature": "alt_roll_std",
+      "importance": 0.008253846317529678
+    },
+    {
+      "feature": "lactate_roll_std",
+      "importance": 0.007539385464042425
+    },
+    {
+      "feature": "inr",
+      "importance": 0.0068238601088523865
+    },
+    {
+      "feature": "temperature_roll_mean",
+      "importance": 0.006761480122804642
+    },
+    {
+      "feature": "chloride_delta_12h",
+      "importance": 0.006183629855513573
+    },
+    {
+      "feature": "inr_roll_mean",
+      "importance": 0.005003907717764378
+    },
+    {
+      "feature": "bun_delta_12h",
+      "importance": 0.004812096245586872
+    },
+    {
+      "feature": "wbc_roll_mean",
+      "importance": 0.00444444315508008
+    },
+    {
+      "feature": "resp_rate_delta_1h",
+      "importance": 0.00414414145052433
+    },
+    {
+      "feature": "chloride",
+      "importance": 0.00328107294626534
+    },
+    {
+      "feature": "albumin",
+      "importance": 0.002977485302835703
+    },
+    {
+      "feature": "spo2_roll_std",
+      "importance": 0.0025557815097272396
+    },
+    {
+      "feature": "spo2_roll_slope",
+      "importance": 0.002518652705475688
+    }
+  ],
+  "lookahead_hours": 8,
+  "n_samples": 300,
+  "n_positive": 90
+}

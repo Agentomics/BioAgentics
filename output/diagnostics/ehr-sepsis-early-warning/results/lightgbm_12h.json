@@ -1,0 +1,194 @@
+{
+  "model": "lightgbm",
+  "auroc_mean": 0.5494708994708994,
+  "auroc_std": 0.05649619401208972,
+  "auprc_mean": 0.3627161574996926,
+  "auprc_std": 0.04557409545832256,
+  "fold_results": [
+    {
+      "fold": 0,
+      "auroc": 0.44841269841269843,
+      "auprc": 0.2801250950787033,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 5,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 1,
+      "auroc": 0.5264550264550265,
+      "auprc": 0.3685563222008952,
+      "best_params": {
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.01
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 2,
+      "auroc": 0.593915343915344,
+      "auprc": 0.4197503820891987,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 5,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 3,
+      "auroc": 0.5833333333333333,
+      "auprc": 0.36615875581942503,
+      "best_params": {
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.01
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 4,
+      "auroc": 0.5952380952380952,
+      "auprc": 0.37899023231024076,
+      "best_params": {
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.01
+      },
+      "n_train": 240,
+      "n_test": 60
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "inr",
+      "importance": 30.4
+    },
+    {
+      "feature": "bilirubin_total_delta_12h",
+      "importance": 29.4
+    },
+    {
+      "feature": "spo2_roll_mean",
+      "importance": 26.4
+    },
+    {
+      "feature": "bicarbonate_roll_std",
+      "importance": 23.2
+    },
+    {
+      "feature": "chloride_delta_12h",
+      "importance": 22.4
+    },
+    {
+      "feature": "creatinine_roll_slope",
+      "importance": 20.4
+    },
+    {
+      "feature": "ast_roll_slope",
+      "importance": 20.4
+    },
+    {
+      "feature": "inr_delta_12h",
+      "importance": 18.8
+    },
+    {
+      "feature": "ptt_roll_slope",
+      "importance": 17.8
+    },
+    {
+      "feature": "temperature_roll_std",
+      "importance": 17.4
+    },
+    {
+      "feature": "map_roll_slope",
+      "importance": 15.8
+    },
+    {
+      "feature": "albumin",
+      "importance": 14.8
+    },
+    {
+      "feature": "platelets_roll_slope",
+      "importance": 14.8
+    },
+    {
+      "feature": "sodium_roll_mean",
+      "importance": 12.4
+    },
+    {
+      "feature": "resp_rate_delta_6h",
+      "importance": 12.2
+    },
+    {
+      "feature": "bicarbonate_roll_mean",
+      "importance": 12.2
+    },
+    {
+      "feature": "creatinine_delta_12h",
+      "importance": 11.4
+    },
+    {
+      "feature": "bun_delta_12h",
+      "importance": 10.6
+    },
+    {
+      "feature": "chloride",
+      "importance": 9.8
+    },
+    {
+      "feature": "wbc_delta_6h",
+      "importance": 9.8
+    },
+    {
+      "feature": "wbc_roll_slope",
+      "importance": 9.6
+    },
+    {
+      "feature": "spo2_delta_6h",
+      "importance": 9.2
+    },
+    {
+      "feature": "spo2_delta_12h",
+      "importance": 8.8
+    },
+    {
+      "feature": "bilirubin_total_roll_std",
+      "importance": 8.8
+    },
+    {
+      "feature": "fio2_delta_12h",
+      "importance": 8.4
+    },
+    {
+      "feature": "lactate_roll_mean",
+      "importance": 7.8
+    },
+    {
+      "feature": "sodium_roll_slope",
+      "importance": 7.8
+    },
+    {
+      "feature": "inr_roll_slope",
+      "importance": 7.6
+    },
+    {
+      "feature": "ast",
+      "importance": 7.2
+    },
+    {
+      "feature": "map_delta_6h",
+      "importance": 7.2
+    }
+  ],
+  "lookahead_hours": 12,
+  "n_samples": 300,
+  "n_positive": 90
+}

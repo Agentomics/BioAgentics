@@ -1,0 +1,194 @@
+{
+  "model": "xgboost",
+  "auroc_mean": 0.5124338624338624,
+  "auroc_std": 0.06746083618433207,
+  "auprc_mean": 0.35655770855705615,
+  "auprc_std": 0.04769196553054616,
+  "fold_results": [
+    {
+      "fold": 0,
+      "auroc": 0.4378306878306878,
+      "auprc": 0.3614068608631009,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 5,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 1,
+      "auroc": 0.4298941798941799,
+      "auprc": 0.2664679230940913,
+      "best_params": {
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.01
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 2,
+      "auroc": 0.5529100529100529,
+      "auprc": 0.38559213021269345,
+      "best_params": {
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.01
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 3,
+      "auroc": 0.6018518518518519,
+      "auprc": 0.4047899897930839,
+      "best_params": {
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.01
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 4,
+      "auroc": 0.5396825396825397,
+      "auprc": 0.3645316388223109,
+      "best_params": {
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.01
+      },
+      "n_train": 240,
+      "n_test": 60
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "creatinine_delta_12h",
+      "importance": 0.013927867636084557
+    },
+    {
+      "feature": "lactate_roll_mean",
+      "importance": 0.013726018369197845
+    },
+    {
+      "feature": "ast_roll_slope",
+      "importance": 0.01356081385165453
+    },
+    {
+      "feature": "bicarbonate_roll_std",
+      "importance": 0.013333183713257313
+    },
+    {
+      "feature": "ast_delta_6h",
+      "importance": 0.013272588141262531
+    },
+    {
+      "feature": "inr_delta_12h",
+      "importance": 0.013067108578979969
+    },
+    {
+      "feature": "spo2",
+      "importance": 0.012884670868515968
+    },
+    {
+      "feature": "fio2_delta_12h",
+      "importance": 0.012838227674365044
+    },
+    {
+      "feature": "chloride_delta_12h",
+      "importance": 0.01244721282273531
+    },
+    {
+      "feature": "inr",
+      "importance": 0.012245291844010353
+    },
+    {
+      "feature": "heart_rate_roll_std",
+      "importance": 0.011899733915925026
+    },
+    {
+      "feature": "wbc_roll_mean",
+      "importance": 0.01187088806182146
+    },
+    {
+      "feature": "pao2",
+      "importance": 0.011511435732245445
+    },
+    {
+      "feature": "spo2_roll_mean",
+      "importance": 0.011357146315276623
+    },
+    {
+      "feature": "bicarbonate_delta_1h",
+      "importance": 0.011280962266027927
+    },
+    {
+      "feature": "temperature_roll_std",
+      "importance": 0.011144043877720833
+    },
+    {
+      "feature": "creatinine_roll_slope",
+      "importance": 0.011089347302913666
+    },
+    {
+      "feature": "bilirubin_total_roll_slope",
+      "importance": 0.011014169082045555
+    },
+    {
+      "feature": "spo2_delta_6h",
+      "importance": 0.010798819363117218
+    },
+    {
+      "feature": "bilirubin_total_delta_12h",
+      "importance": 0.010515986010432243
+    },
+    {
+      "feature": "spo2_delta_12h",
+      "importance": 0.010066097602248192
+    },
+    {
+      "feature": "resp_rate_delta_6h",
+      "importance": 0.009848480112850666
+    },
+    {
+      "feature": "bicarbonate_roll_mean",
+      "importance": 0.009713124483823776
+    },
+    {
+      "feature": "albumin_roll_mean",
+      "importance": 0.009694686159491539
+    },
+    {
+      "feature": "chloride",
+      "importance": 0.009683812037110329
+    },
+    {
+      "feature": "map_delta_6h",
+      "importance": 0.009571916423738003
+    },
+    {
+      "feature": "albumin_delta_1h",
+      "importance": 0.009405849501490593
+    },
+    {
+      "feature": "platelets_roll_mean",
+      "importance": 0.009359892457723618
+    },
+    {
+      "feature": "creatinine_delta_6h",
+      "importance": 0.009359371848404408
+    },
+    {
+      "feature": "hemoglobin_delta_6h",
+      "importance": 0.009117968380451202
+    }
+  ],
+  "lookahead_hours": 12,
+  "n_samples": 300,
+  "n_positive": 90
+}

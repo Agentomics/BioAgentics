@@ -1,0 +1,62 @@
+{
+  "model": "lstm",
+  "auroc_mean": 1.0,
+  "auroc_std": 0.0,
+  "auprc_mean": 1.0,
+  "auprc_std": 0.0,
+  "fold_results": [
+    {
+      "fold": 0,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "hidden_size": 32,
+        "num_layers": 1,
+        "dropout": 0.2
+      }
+    },
+    {
+      "fold": 1,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "hidden_size": 32,
+        "num_layers": 1,
+        "dropout": 0.2
+      }
+    },
+    {
+      "fold": 2,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "hidden_size": 32,
+        "num_layers": 1,
+        "dropout": 0.2
+      }
+    },
+    {
+      "fold": 3,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "hidden_size": 32,
+        "num_layers": 1,
+        "dropout": 0.2
+      }
+    },
+    {
+      "fold": 4,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "hidden_size": 32,
+        "num_layers": 1,
+        "dropout": 0.2
+      }
+    }
+  ],
+  "lookahead_hours": 4,
+  "n_samples": 300,
+  "n_positive": 90
+}

@@ -1,0 +1,18 @@
+{
+  "4": {
+    "target_met": true,
+    "false_alarm_ratio_at_80pct": 0.0
+  },
+  "6": {
+    "target_met": true,
+    "false_alarm_ratio_at_80pct": 0.0
+  },
+  "8": {
+    "target_met": true,
+    "false_alarm_ratio_at_80pct": 0.0
+  },
+  "12": {
+    "target_met": false,
+    "false_alarm_ratio_at_80pct": 2.452054794520548
+  }
+}

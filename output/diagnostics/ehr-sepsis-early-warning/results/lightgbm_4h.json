@@ -1,0 +1,194 @@
+{
+  "model": "lightgbm",
+  "auroc_mean": 0.9986772486772487,
+  "auroc_std": 0.0026455026455026957,
+  "auprc_mean": 0.996031746031746,
+  "auprc_std": 0.007936507936507953,
+  "fold_results": [
+    {
+      "fold": 0,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.01
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 1,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 2,
+      "auroc": 0.9933862433862433,
+      "auprc": 0.9801587301587301,
+      "best_params": {
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.01
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 3,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    },
+    {
+      "fold": 4,
+      "auroc": 1.0,
+      "auprc": 1.0,
+      "best_params": {
+        "n_estimators": 100,
+        "max_depth": 3,
+        "learning_rate": 0.1
+      },
+      "n_train": 240,
+      "n_test": 60
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "heart_rate",
+      "importance": 189.0
+    },
+    {
+      "feature": "temperature_roll_mean",
+      "importance": 140.0
+    },
+    {
+      "feature": "sbp",
+      "importance": 19.6
+    },
+    {
+      "feature": "sbp_delta_1h",
+      "importance": 7.2
+    },
+    {
+      "feature": "map",
+      "importance": 3.4
+    },
+    {
+      "feature": "sbp_delta_6h",
+      "importance": 2.8
+    },
+    {
+      "feature": "wbc_delta_1h",
+      "importance": 2.8
+    },
+    {
+      "feature": "heart_rate_delta_1h",
+      "importance": 2.0
+    },
+    {
+      "feature": "resp_rate",
+      "importance": 1.6
+    },
+    {
+      "feature": "map_delta_6h",
+      "importance": 1.6
+    },
+    {
+      "feature": "spo2",
+      "importance": 1.2
+    },
+    {
+      "feature": "map_delta_12h",
+      "importance": 1.2
+    },
+    {
+      "feature": "hemoglobin_delta_12h",
+      "importance": 1.2
+    },
+    {
+      "feature": "spo2_delta_12h",
+      "importance": 1.0
+    },
+    {
+      "feature": "hemoglobin_delta_6h",
+      "importance": 1.0
+    },
+    {
+      "feature": "wbc_missing",
+      "importance": 0.8
+    },
+    {
+      "feature": "wbc",
+      "importance": 0.6
+    },
+    {
+      "feature": "hematocrit_delta_6h",
+      "importance": 0.6
+    },
+    {
+      "feature": "sodium_delta_12h",
+      "importance": 0.6
+    },
+    {
+      "feature": "hematocrit_missing",
+      "importance": 0.6
+    },
+    {
+      "feature": "sodium_missing",
+      "importance": 0.6
+    },
+    {
+      "feature": "temperature",
+      "importance": 0.4
+    },
+    {
+      "feature": "heart_rate_delta_6h",
+      "importance": 0.4
+    },
+    {
+      "feature": "sbp_delta_12h",
+      "importance": 0.4
+    },
+    {
+      "feature": "resp_rate_delta_1h",
+      "importance": 0.4
+    },
+    {
+      "feature": "spo2_delta_6h",
+      "importance": 0.4
+    },
+    {
+      "feature": "hemoglobin_missing",
+      "importance": 0.4
+    },
+    {
+      "feature": "hematocrit",
+      "importance": 0.2
+    },
+    {
+      "feature": "platelets",
+      "importance": 0.2
+    },
+    {
+      "feature": "creatinine",
+      "importance": 0.2
+    }
+  ],
+  "lookahead_hours": 4,
+  "n_samples": 300,
+  "n_positive": 90
+}

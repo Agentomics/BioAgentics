@@ -1,0 +1,163 @@
+{
+  "run_info": {
+    "date": "2026-03-31",
+    "data_type": "synthetic",
+    "n_admissions": 300,
+    "sepsis_rate": 0.3,
+    "hours_per_admission": 48,
+    "seed": 42,
+    "elapsed_minutes": 4.7
+  },
+  "datasets": {
+    "4": {
+      "n_train": 240,
+      "n_test": 60,
+      "pos_train": 72,
+      "pos_test": 18,
+      "n_features": 234
+    },
+    "6": {
+      "n_train": 240,
+      "n_test": 60,
+      "pos_train": 72,
+      "pos_test": 18,
+      "n_features": 234
+    },
+    "8": {
+      "n_train": 240,
+      "n_test": 60,
+      "pos_train": 72,
+      "pos_test": 18,
+      "n_features": 234
+    },
+    "12": {
+      "n_train": 240,
+      "n_test": 60,
+      "pos_train": 72,
+      "pos_test": 18,
+      "n_features": 234
+    }
+  },
+  "results": {
+    "lr_4h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0
+    },
+    "lr_6h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0
+    },
+    "lr_8h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0,
+      "sensitivity": 0.9556,
+      "specificity": 1.0
+    },
+    "lr_12h": {
+      "auroc": 0.4762,
+      "auroc_std": 0.0476,
+      "auprc": 0.2912,
+      "sensitivity": 0.0333,
+      "specificity": 0.9238
+    },
+    "xgboost_4h": {
+      "auroc": 0.9944,
+      "auroc_std": 0.0111,
+      "auprc": 0.9922
+    },
+    "xgboost_6h": {
+      "auroc": 0.9944,
+      "auroc_std": 0.0111,
+      "auprc": 0.9922
+    },
+    "xgboost_8h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0
+    },
+    "xgboost_12h": {
+      "auroc": 0.5124,
+      "auroc_std": 0.0675,
+      "auprc": 0.3566
+    },
+    "lightgbm_4h": {
+      "auroc": 0.9987,
+      "auroc_std": 0.0026,
+      "auprc": 0.996
+    },
+    "lightgbm_6h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0
+    },
+    "lightgbm_8h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0
+    },
+    "lightgbm_12h": {
+      "auroc": 0.5495,
+      "auroc_std": 0.0565,
+      "auprc": 0.3627
+    },
+    "lstm_4h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0
+    },
+    "lstm_6h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0
+    },
+    "lstm_8h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0
+    },
+    "lstm_12h": {
+      "auroc": 0.5323,
+      "auroc_std": 0.034,
+      "auprc": 0.3623
+    },
+    "gru_4h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0
+    },
+    "gru_6h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0
+    },
+    "gru_8h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0
+    },
+    "gru_12h": {
+      "auroc": 0.4222,
+      "auroc_std": 0.0115,
+      "auprc": 0.295
+    },
+    "ensemble_6h": {
+      "auroc": 1.0,
+      "auroc_std": 0.0,
+      "auprc": 1.0,
+      "individual_aurocs": {
+        "lr": 1.0,
+        "xgboost": 0.9944,
+        "lightgbm": 1.0,
+        "lstm": 1.0,
+        "gru": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "threshold_analysis": [
+    {
+      "target_sensitivity": 0.8,
+      "threshold": 0.5435294685040658,
+      "achieved_sensitivity": 1.0,
+      "specificity": 1.0,
+      "fpr": 0.0,
+      "ppv": 1.0,
+      "false_alarm_ratio": 0.0,
+      "tp": 90,
+      "fp": 0,
+      "tn": 210,
+      "fn": 0,
+      "n_alarms": 90,
+      "n_true_alarms": 90
+    },
+    {
+      "target_sensitivity": 0.9,
+      "threshold": 0.5435294685040658,
+      "achieved_sensitivity": 1.0,
+      "specificity": 1.0,
+      "fpr": 0.0,
+      "ppv": 1.0,
+      "false_alarm_ratio": 0.0,
+      "tp": 90,
+      "fp": 0,
+      "tn": 210,
+      "fn": 0,
+      "n_alarms": 90,
+      "n_true_alarms": 90
+    },
+    {
+      "target_sensitivity": 0.95,
+      "threshold": 0.5435294685040658,
+      "achieved_sensitivity": 1.0,
+      "specificity": 1.0,
+      "fpr": 0.0,
+      "ppv": 1.0,
+      "false_alarm_ratio": 0.0,
+      "tp": 90,
+      "fp": 0,
+      "tn": 210,
+      "fn": 0,
+      "n_alarms": 90,
+      "n_true_alarms": 90
+    }
+  ],
+  "target_met": true,
+  "false_alarm_ratio_at_80pct": 0.0,
+  "n_samples": 300,
+  "n_positive": 90,
+  "prevalence": 0.3,
+  "lookahead_hours": 8,
+  "operating_table": [
+    {
+      "setting": "icu",
+      "description": "ICU: high sensitivity, tolerate more alarms",
+      "sensitivity_target": 0.95,
+      "threshold": 0.5435294685040658,
+      "achieved_sensitivity": 1.0,
+      "specificity": 1.0,
+      "ppv": 1.0,
+      "false_alarm_ratio": 0.0,
+      "false_alarms_per_patient_hour": 0.0,
+      "meets_composer_target": true,
+      "n_alarms": 90
+    },
+    {
+      "setting": "ward",
+      "description": "Ward: balanced sensitivity/specificity",
+      "sensitivity_target": 0.9,
+      "threshold": 0.5435294685040658,
+      "achieved_sensitivity": 1.0,
+      "specificity": 1.0,
+      "ppv": 1.0,
+      "false_alarm_ratio": 0.0,
+      "false_alarms_per_patient_hour": 0.0,
+      "meets_composer_target": true,
+      "n_alarms": 90
+    },
+    {
+      "setting": "ed",
+      "description": "ED: minimize alarm burden, higher threshold",
+      "sensitivity_target": 0.8,
+      "threshold": 0.5435294685040658,
+      "achieved_sensitivity": 1.0,
+      "specificity": 1.0,
+      "ppv": 1.0,
+      "false_alarm_ratio": 0.0,
+      "false_alarms_per_patient_hour": 0.0,
+      "meets_composer_target": true,
+      "n_alarms": 90
+    }
+  ],
+  "conformal_comparison": {
+    "standard": {
+      "false_alarms": 0,
+      "true_alarms": 90,
+      "false_alarm_ratio": 0.0,
+      "sensitivity": 1.0
+    },
+    "conformal": {
+      "false_alarms": 0,
+      "true_alarms": 67,
+      "coverage": 0.9066666666666666,
+      "avg_set_size": 0.9066666666666666
+    },
+    "false_alarm_reduction": 1.0,
+    "conformal_reduces_alarms": true
+  },
+  "subclinical_candidates": {
+    "total_false_positives": 0,
+    "high_confidence_fps": 0,
+    "fraction_high_confidence": 0.0,
+    "subclinical_candidate_indices": [],
+    "confidence_cutoff": 0.7,
+    "note": "Per COMPOSER: 62% of FPs had bacterial infections. High-confidence FPs may represent subclinical sepsis."
+  }
+}

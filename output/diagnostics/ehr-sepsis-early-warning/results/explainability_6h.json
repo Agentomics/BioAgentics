@@ -1,0 +1,2171 @@
+{
+  "feature_ranking": [
+    {
+      "feature": "fio2_roll_mean",
+      "mean_abs_shap": 4.753249168395996
+    },
+    {
+      "feature": "heart_rate",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sbp",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "map",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "resp_rate",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "spo2",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "temperature",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "wbc",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hematocrit",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "lactate",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "creatinine",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "glucose",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "alt",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ast",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "albumin",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "inr",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "pao2",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "fio2",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "heart_rate_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "heart_rate_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "heart_rate_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sbp_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sbp_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sbp_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "map_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "map_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "map_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "resp_rate_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "resp_rate_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "resp_rate_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "spo2_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "spo2_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "spo2_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "temperature_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "temperature_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "temperature_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "wbc_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "wbc_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "wbc_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hematocrit_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hematocrit_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hematocrit_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "lactate_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "lactate_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "lactate_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "creatinine_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "creatinine_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "creatinine_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "glucose_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "glucose_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "glucose_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "alt_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "alt_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "alt_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ast_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ast_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ast_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "albumin_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "albumin_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "albumin_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "inr_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "inr_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "inr_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "pao2_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "pao2_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "pao2_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "fio2_delta_1h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "fio2_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "fio2_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "heart_rate_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "heart_rate_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "heart_rate_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sbp_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sbp_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sbp_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "map_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "map_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "map_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "resp_rate_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "resp_rate_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "resp_rate_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "spo2_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "spo2_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "spo2_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "temperature_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "temperature_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "temperature_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "wbc_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "wbc_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "wbc_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hematocrit_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hematocrit_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hematocrit_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "lactate_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "lactate_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "lactate_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "creatinine_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "creatinine_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "creatinine_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "glucose_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "glucose_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "glucose_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "alt_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "alt_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "alt_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ast_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ast_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ast_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "albumin_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "albumin_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "albumin_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "inr_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "inr_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "inr_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "pao2_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "pao2_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "pao2_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "fio2_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "fio2_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "heart_rate_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "heart_rate_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sbp_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sbp_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "map_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "map_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "resp_rate_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "resp_rate_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "spo2_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "spo2_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "temperature_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "temperature_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "wbc_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "wbc_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hematocrit_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hematocrit_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "lactate_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "lactate_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "creatinine_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "creatinine_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "glucose_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "glucose_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "alt_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "alt_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ast_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ast_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "albumin_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "albumin_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "inr_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "inr_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "pao2_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "pao2_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "fio2_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "fio2_hours_since_obs",
+      "mean_abs_shap": 0.0
+    }
+  ],
+  "n_samples_explained": 300,
+  "stability": {
+    "n_folds": 5,
+    "rank_correlations": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "mean_rank_correlation": 1.0,
+    "stable_top_features": [
+      "fio2_roll_mean",
+      "heart_rate",
+      "hematocrit",
+      "hemoglobin",
+      "map",
+      "resp_rate",
+      "sbp",
+      "spo2",
+      "temperature",
+      "wbc"
+    ],
+    "n_stable_top": 10,
+    "overall_ranking": [
+      {
+        "feature": "fio2_roll_mean",
+        "mean_abs_shap": 4.512749671936035,
+        "std_abs_shap": 0.0056154727935791016
+      },
+      {
+        "feature": "heart_rate",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sbp",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "map",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "resp_rate",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "spo2",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "temperature",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "wbc",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hemoglobin",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hematocrit",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "platelets",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "lactate",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "creatinine",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bun",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "glucose",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sodium",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "potassium",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "chloride",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bicarbonate",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bilirubin_total",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "alt",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ast",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "albumin",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "inr",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ptt",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "pao2",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "fio2",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "heart_rate_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "heart_rate_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "heart_rate_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sbp_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sbp_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sbp_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "map_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "map_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "map_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "resp_rate_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "resp_rate_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "resp_rate_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "spo2_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "spo2_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "spo2_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "temperature_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "temperature_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "temperature_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "wbc_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "wbc_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "wbc_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hemoglobin_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hemoglobin_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hemoglobin_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hematocrit_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hematocrit_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hematocrit_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "platelets_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "platelets_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "platelets_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "lactate_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "lactate_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "lactate_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "creatinine_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "creatinine_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "creatinine_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bun_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bun_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bun_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "glucose_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "glucose_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "glucose_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sodium_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sodium_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sodium_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "potassium_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "potassium_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "potassium_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "chloride_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "chloride_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "chloride_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bicarbonate_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bicarbonate_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bicarbonate_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bilirubin_total_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bilirubin_total_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bilirubin_total_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "alt_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "alt_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "alt_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ast_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ast_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ast_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "albumin_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "albumin_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "albumin_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "inr_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "inr_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "inr_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ptt_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ptt_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ptt_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "pao2_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "pao2_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "pao2_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "fio2_delta_1h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "fio2_delta_6h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "fio2_delta_12h",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "heart_rate_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "heart_rate_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "heart_rate_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sbp_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sbp_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sbp_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "map_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "map_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "map_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "resp_rate_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "resp_rate_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "resp_rate_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "spo2_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "spo2_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "spo2_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "temperature_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "temperature_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "temperature_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "wbc_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "wbc_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "wbc_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hemoglobin_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hemoglobin_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hemoglobin_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hematocrit_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hematocrit_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hematocrit_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "platelets_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "platelets_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "platelets_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "lactate_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "lactate_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "lactate_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "creatinine_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "creatinine_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "creatinine_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bun_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bun_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bun_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "glucose_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "glucose_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "glucose_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sodium_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sodium_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sodium_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "potassium_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "potassium_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "potassium_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "chloride_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "chloride_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "chloride_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bicarbonate_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bicarbonate_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bicarbonate_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bilirubin_total_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bilirubin_total_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bilirubin_total_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "alt_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "alt_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "alt_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ast_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ast_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ast_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "albumin_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "albumin_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "albumin_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "inr_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "inr_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "inr_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ptt_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ptt_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ptt_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "pao2_roll_mean",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "pao2_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "pao2_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "fio2_roll_std",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "fio2_roll_slope",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "heart_rate_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "heart_rate_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sbp_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sbp_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "map_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "map_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "resp_rate_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "resp_rate_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "spo2_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "spo2_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "temperature_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "temperature_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "wbc_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "wbc_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hemoglobin_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hemoglobin_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hematocrit_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hematocrit_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "platelets_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "platelets_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "lactate_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "lactate_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "creatinine_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "creatinine_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bun_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bun_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "glucose_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "glucose_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sodium_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sodium_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "potassium_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "potassium_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "chloride_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "chloride_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bicarbonate_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bicarbonate_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bilirubin_total_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bilirubin_total_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "alt_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "alt_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ast_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ast_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "albumin_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "albumin_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "inr_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "inr_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ptt_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ptt_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "pao2_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "pao2_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "fio2_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "fio2_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      }
+    ],
+    "fold_top3": [
+      [
+        "fio2_roll_mean",
+        "heart_rate",
+        "sbp"
+      ],
+      [
+        "fio2_roll_mean",
+        "heart_rate",
+        "sbp"
+      ],
+      [
+        "fio2_roll_mean",
+        "heart_rate",
+        "sbp"
+      ],
+      [
+        "fio2_roll_mean",
+        "heart_rate",
+        "sbp"
+      ],
+      [
+        "fio2_roll_mean",
+        "heart_rate",
+        "sbp"
+      ]
+    ]
+  },
+  "n_features": 234,
+  "n_samples": 300
+}

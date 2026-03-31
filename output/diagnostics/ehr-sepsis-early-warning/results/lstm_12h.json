@@ -1,0 +1,62 @@
+{
+  "model": "lstm",
+  "auroc_mean": 0.5322751322751322,
+  "auroc_std": 0.03399856894479861,
+  "auprc_mean": 0.36225430402942765,
+  "auprc_std": 0.036286692753970326,
+  "fold_results": [
+    {
+      "fold": 0,
+      "auroc": 0.5277777777777778,
+      "auprc": 0.3067146012103976,
+      "best_params": {
+        "hidden_size": 32,
+        "num_layers": 1,
+        "dropout": 0.2
+      }
+    },
+    {
+      "fold": 1,
+      "auroc": 0.548941798941799,
+      "auprc": 0.36208299977425185,
+      "best_params": {
+        "hidden_size": 32,
+        "num_layers": 1,
+        "dropout": 0.2
+      }
+    },
+    {
+      "fold": 2,
+      "auroc": 0.4708994708994709,
+      "auprc": 0.35989976829446024,
+      "best_params": {
+        "hidden_size": 32,
+        "num_layers": 1,
+        "dropout": 0.2
+      }
+    },
+    {
+      "fold": 3,
+      "auroc": 0.5727513227513227,
+      "auprc": 0.36122393395360664,
+      "best_params": {
+        "hidden_size": 32,
+        "num_layers": 1,
+        "dropout": 0.2
+      }
+    },
+    {
+      "fold": 4,
+      "auroc": 0.541005291005291,
+      "auprc": 0.42135021691442176,
+      "best_params": {
+        "hidden_size": 32,
+        "num_layers": 1,
+        "dropout": 0.2
+      }
+    }
+  ],
+  "lookahead_hours": 12,
+  "n_samples": 300,
+  "n_positive": 90
+}

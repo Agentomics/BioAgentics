@@ -1,0 +1,85 @@
+{
+  "model": "stacking_ensemble",
+  "auroc_mean": 1.0,
+  "auroc_std": 0.0,
+  "auprc_mean": 1.0,
+  "auprc_std": 0.0,
+  "individual_aurocs": {
+    "lr": 1.0,
+    "xgboost": 0.9944444444444445,
+    "lightgbm": 1.0,
+    "lstm": 1.0,
+    "gru": 1.0
+  },
+  "fold_results": [
+    {
+      "fold": 0,
+      "ensemble_auroc": 1.0,
+      "ensemble_auprc": 1.0,
+      "individual": {
+        "lr": {
+          "auroc": 1.0
+        },
+        "xgboost": {
+          "auroc": 1.0
+        },
+        "lightgbm": {
+          "auroc": 1.0
+        },
+        "lstm": {
+          "auroc": 1.0
+        },
+        "gru": {
+          "auroc": 1.0
+        }
+      }
+    },
+    {
+      "fold": 1,
+      "ensemble_auroc": 1.0,
+      "ensemble_auprc": 1.0,
+      "individual": {
+        "lr": {
+          "auroc": 1.0
+        },
+        "xgboost": {
+          "auroc": 1.0
+        },
+        "lightgbm": {
+          "auroc": 1.0
+        },
+        "lstm": {
+          "auroc": 1.0
+        },
+        "gru": {
+          "auroc": 1.0
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "ensemble_auroc": 1.0,
+      "ensemble_auprc": 1.0,
+      "individual": {
+        "lr": {
+          "auroc": 1.0
+        },
+        "xgboost": {
+          "auroc": 0.9833333333333334
+        },
+        "lightgbm": {
+          "auroc": 1.0
+        },
+        "lstm": {
+          "auroc": 1.0
+        },
+        "gru": {
+          "auroc": 1.0
+        }
+      }
+    }
+  ],
+  "lookahead_hours": 6,
+  "n_samples": 300,
+  "n_positive": 90
+}

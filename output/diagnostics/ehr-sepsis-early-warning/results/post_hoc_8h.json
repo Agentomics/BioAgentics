@@ -1,0 +1,73 @@
+{
+  "uncalibrated": {
+    "ece": 0.01661918302655932,
+    "mce": 0.4564705314959342,
+    "calibration_curve": {
+      "fraction_of_positives": [
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_predicted_value": [
+        0.009542892239429246,
+        0.5435294685040658,
+        0.7416698667905903,
+        0.8458704379066557,
+        0.9819723004516194
+      ],
+      "n_bins_used": 5
+    }
+  },
+  "platt_scaling": {
+    "ece": 0.05328729747935722,
+    "mce": 0.5323780341002109,
+    "calibration_curve": {
+      "fraction_of_positives": [
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "mean_predicted_value": [
+        0.03803710845538972,
+        0.46762196589978905,
+        0.7414959755466203,
+        0.8679906036975253,
+        0.9252544019442273
+      ],
+      "n_bins_used": 5
+    }
+  },
+  "isotonic": {
+    "ece": 0.0010211288391938514,
+    "mce": 0.2892210153690947,
+    "calibration_curve": {
+      "fraction_of_positives": [
+        0.0,
+        1.0,
+        1.0
+      ],
+      "mean_predicted_value": [
+        8.15125542336222e-05,
+        0.7107789846309053,
+        1.0
+      ],
+      "n_bins_used": 3
+    }
+  },
+  "conformal": {
+    "coverage": 0.9066666666666666,
+    "avg_set_size": 0.9066666666666666,
+    "false_alarm_reduction": 1.0,
+    "alpha": 0.1
+  },
+  "best_method": "isotonic",
+  "best_ece": 0.0010211288391938514,
+  "best_mce": 0.2892210153690947,
+  "meets_ece_target": true,
+  "lookahead_hours": 8,
+  "n_samples": 300
+}

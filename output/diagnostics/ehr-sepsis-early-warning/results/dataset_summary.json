@@ -1,0 +1,30 @@
+{
+  "4": {
+    "n_train": 240,
+    "n_test": 60,
+    "pos_train": 72,
+    "pos_test": 18,
+    "n_features": 234
+  },
+  "6": {
+    "n_train": 240,
+    "n_test": 60,
+    "pos_train": 72,
+    "pos_test": 18,
+    "n_features": 234
+  },
+  "8": {
+    "n_train": 240,
+    "n_test": 60,
+    "pos_train": 72,
+    "pos_test": 18,
+    "n_features": 234
+  },
+  "12": {
+    "n_train": 240,
+    "n_test": 60,
+    "pos_train": 72,
+    "pos_test": 18,
+    "n_features": 234
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "age": {
+    "subgroup_metrics": {
+      "50-64": {
+        "auroc": 0.5420240137221269,
+        "auprc": 0.3713877038392324,
+        "sensitivity": 0.2727272727272727,
+        "specificity": 0.7735849056603774,
+        "ppv": 0.3333333333333333,
+        "n_samples": 75,
+        "n_positive": 22,
+        "prevalence": 0.29333333333333333
+      },
+      "65-79": {
+        "auroc": 0.44285714285714284,
+        "auprc": 0.27494651081889243,
+        "sensitivity": 0.38095238095238093,
+        "specificity": 0.58,
+        "ppv": 0.27586206896551724,
+        "n_samples": 71,
+        "n_positive": 21,
+        "prevalence": 0.29577464788732394
+      },
+      "80+": {
+        "auroc": 0.4408163265306122,
+        "auprc": 0.44729996913328507,
+        "sensitivity": 0.2857142857142857,
+        "specificity": 0.8285714285714286,
+        "ppv": 0.4,
+        "n_samples": 49,
+        "n_positive": 14,
+        "prevalence": 0.2857142857142857
+      },
+      "<50": {
+        "auroc": 0.5126262626262627,
+        "auprc": 0.34332592112547283,
+        "sensitivity": 0.3333333333333333,
+        "specificity": 0.75,
+        "ppv": 0.3793103448275862,
+        "n_samples": 105,
+        "n_positive": 33,
+        "prevalence": 0.3142857142857143
+      }
+    },
+    "disparity": {
+      "max_auroc_disparity": 0.10120768719151474,
+      "min_auroc_group": "80+",
+      "min_auroc_value": 0.4408163265306122,
+      "max_auroc_group": "50-64",
+      "max_auroc_value": 0.5420240137221269,
+      "meets_target": false,
+      "n_groups_evaluated": 4
+    },
+    "alarm_burden": {
+      "50-64": {
+        "n_samples": 75,
+        "true_positives": 6,
+        "false_positives": 12,
+        "false_negatives": 16,
+        "total_alarms": 18,
+        "false_alarm_rate": 0.22641509433962265,
+        "false_alarm_ratio": 2.0,
+        "alarm_rate": 0.24
+      },
+      "65-79": {
+        "n_samples": 71,
+        "true_positives": 8,
+        "false_positives": 21,
+        "false_negatives": 13,
+        "total_alarms": 29,
+        "false_alarm_rate": 0.42,
+        "false_alarm_ratio": 2.625,
+        "alarm_rate": 0.4084507042253521
+      },
+      "80+": {
+        "n_samples": 49,
+        "true_positives": 4,
+        "false_positives": 6,
+        "false_negatives": 10,
+        "total_alarms": 10,
+        "false_alarm_rate": 0.17142857142857143,
+        "false_alarm_ratio": 1.5,
+        "alarm_rate": 0.20408163265306123
+      },
+      "<50": {
+        "n_samples": 105,
+        "true_positives": 11,
+        "false_positives": 18,
+        "false_negatives": 22,
+        "total_alarms": 29,
+        "false_alarm_rate": 0.25,
+        "false_alarm_ratio": 1.6363636363636365,
+        "alarm_rate": 0.2761904761904762
+      }
+    },
+    "alarm_burden_disparity": {
+      "max_far_disparity": 0.24857142857142855,
+      "min_far_group": "80+",
+      "min_far_value": 0.17142857142857143,
+      "max_far_group": "65-79",
+      "max_far_value": 0.42,
+      "n_groups": 4
+    }
+  },
+  "sex": {
+    "subgroup_metrics": {
+      "0": {
+        "auroc": 0.5059496567505721,
+        "auprc": 0.3729249698947077,
+        "sensitivity": 0.3695652173913043,
+        "specificity": 0.7157894736842105,
+        "ppv": 0.38636363636363635,
+        "n_samples": 141,
+        "n_positive": 46,
+        "prevalence": 0.3262411347517731
+      },
+      "1": {
+        "auroc": 0.4932806324110672,
+        "auprc": 0.3290751050124795,
+        "sensitivity": 0.2727272727272727,
+        "specificity": 0.7391304347826086,
+        "ppv": 0.2857142857142857,
+        "n_samples": 159,
+        "n_positive": 44,
+        "prevalence": 0.27672955974842767
+      }
+    },
+    "disparity": {
+      "max_auroc_disparity": 0.012669024339504953,
+      "min_auroc_group": "1",
+      "min_auroc_value": 0.4932806324110672,
+      "max_auroc_group": "0",
+      "max_auroc_value": 0.5059496567505721,
+      "meets_target": true,
+      "n_groups_evaluated": 2
+    },
+    "alarm_burden": {
+      "0": {
+        "n_samples": 141,
+        "true_positives": 17,
+        "false_positives": 27,
+        "false_negatives": 29,
+        "total_alarms": 44,
+        "false_alarm_rate": 0.28421052631578947,
+        "false_alarm_ratio": 1.588235294117647,
+        "alarm_rate": 0.3120567375886525
+      },
+      "1": {
+        "n_samples": 159,
+        "true_positives": 12,
+        "false_positives": 30,
+        "false_negatives": 32,
+        "total_alarms": 42,
+        "false_alarm_rate": 0.2608695652173913,
+        "false_alarm_ratio": 2.5,
+        "alarm_rate": 0.2641509433962264
+      }
+    },
+    "alarm_burden_disparity": {
+      "max_far_disparity": 0.023340961098398172,
+      "min_far_group": "1",
+      "min_far_value": 0.2608695652173913,
+      "max_far_group": "0",
+      "max_far_value": 0.28421052631578947,
+      "n_groups": 2
+    }
+  },
+  "ethnicity": {
+    "subgroup_metrics": {
+      "asian": {
+        "auroc": 0.599128540305011,
+        "auprc": 0.36960387070920064,
+        "sensitivity": 0.5555555555555556,
+        "specificity": 0.6666666666666666,
+        "ppv": 0.37037037037037035,
+        "n_samples": 69,
+        "n_positive": 18,
+        "prevalence": 0.2608695652173913
+      },
+      "black": {
+        "auroc": 0.5111111111111111,
+        "auprc": 0.42301537437234726,
+        "sensitivity": 0.30434782608695654,
+        "specificity": 0.6888888888888889,
+        "ppv": 0.3333333333333333,
+        "n_samples": 68,
+        "n_positive": 23,
+        "prevalence": 0.3382352941176471
+      },
+      "hispanic": {
+        "auroc": 0.43586206896551727,
+        "auprc": 0.2846256552500771,
+        "sensitivity": 0.16,
+        "specificity": 0.7931034482758621,
+        "ppv": 0.25,
+        "n_samples": 83,
+        "n_positive": 25,
+        "prevalence": 0.30120481927710846
+      },
+      "white": {
+        "auroc": 0.4828869047619048,
+        "auprc": 0.3429488100514362,
+        "sensitivity": 0.3333333333333333,
+        "specificity": 0.75,
+        "ppv": 0.36363636363636365,
+        "n_samples": 80,
+        "n_positive": 24,
+        "prevalence": 0.3
+      }
+    },
+    "disparity": {
+      "max_auroc_disparity": 0.16326647133949368,
+      "min_auroc_group": "hispanic",
+      "min_auroc_value": 0.43586206896551727,
+      "max_auroc_group": "asian",
+      "max_auroc_value": 0.599128540305011,
+      "meets_target": false,
+      "n_groups_evaluated": 4
+    },
+    "alarm_burden": {
+      "asian": {
+        "n_samples": 69,
+        "true_positives": 10,
+        "false_positives": 17,
+        "false_negatives": 8,
+        "total_alarms": 27,
+        "false_alarm_rate": 0.3333333333333333,
+        "false_alarm_ratio": 1.7,
+        "alarm_rate": 0.391304347826087
+      },
+      "black": {
+        "n_samples": 68,
+        "true_positives": 7,
+        "false_positives": 14,
+        "false_negatives": 16,
+        "total_alarms": 21,
+        "false_alarm_rate": 0.3111111111111111,
+        "false_alarm_ratio": 2.0,
+        "alarm_rate": 0.3088235294117647
+      },
+      "hispanic": {
+        "n_samples": 83,
+        "true_positives": 4,
+        "false_positives": 12,
+        "false_negatives": 21,
+        "total_alarms": 16,
+        "false_alarm_rate": 0.20689655172413793,
+        "false_alarm_ratio": 3.0,
+        "alarm_rate": 0.1927710843373494
+      },
+      "white": {
+        "n_samples": 80,
+        "true_positives": 8,
+        "false_positives": 14,
+        "false_negatives": 16,
+        "total_alarms": 22,
+        "false_alarm_rate": 0.25,
+        "false_alarm_ratio": 1.75,
+        "alarm_rate": 0.275
+      }
+    },
+    "alarm_burden_disparity": {
+      "max_far_disparity": 0.1264367816091954,
+      "min_far_group": "hispanic",
+      "min_far_value": 0.20689655172413793,
+      "max_far_group": "asian",
+      "max_far_value": 0.3333333333333333,
+      "n_groups": 4
+    }
+  },
+  "overall_meets_target": false
+}

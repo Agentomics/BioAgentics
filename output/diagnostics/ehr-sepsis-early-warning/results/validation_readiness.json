@@ -1,0 +1,51 @@
+{
+  "temporal_validation": {
+    "module": "validation/temporal_validation.py",
+    "status": "ready_for_real_data",
+    "requires": [
+      "MIMIC-IV admissions with admit_time for temporal split"
+    ],
+    "synthetic_test": "N/A (needs admission timestamps for temporal split)",
+    "capabilities": [
+      "80/20 temporal split by admission date",
+      "Trains LR and GBM on training period",
+      "Evaluates on temporal holdout",
+      "ECE calibration on holdout",
+      "Fairness evaluation on holdout"
+    ],
+    "file_exists": true
+  },
+  "external_validation": {
+    "module": "validation/external_validation.py",
+    "status": "ready_for_real_data",
+    "requires": [
+      "eICU Collaborative Research Database v2.0",
+      "MIMIC-IV trained model artifacts"
+    ],
+    "synthetic_test": "N/A (needs eICU data with different schema)",
+    "capabilities": [
+      "eICU vital/lab column mapping to MIMIC-IV features",
+      "Per-center performance analysis",
+      "Cross-center AUROC/AUPRC evaluation",
+      "Generalization assessment across 208 US hospitals"
+    ],
+    "schema_mapping": {
+      "vitals": "heartrate\u2192heart_rate, systemicsystolic\u2192sbp, systemicmean\u2192map, respiration\u2192resp_rate, sao2\u2192spo2",
+      "labs": "WBC x 1000\u2192wbc, Hgb\u2192hemoglobin, creatinine\u2192creatinine, etc."
+    },
+    "file_exists": true
+  },
+  "explainability": {
+    "module": "validation/explainability.py",
+    "status": "verified_on_synthetic",
+    "capabilities": [
+      "SHAP TreeExplainer for GBM models",
+      "Feature importance stability across CV folds",
+      "Spearman rank correlation between folds",
+      "Cross-center SHAP comparison",
+      "Waterfall and beeswarm plot data generation",
+      "Memory-safe: max 500 samples per fold"
+    ],
+    "file_exists": true
+  }
+}

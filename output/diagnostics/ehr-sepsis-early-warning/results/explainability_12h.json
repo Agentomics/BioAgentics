@@ -1,0 +1,2160 @@
+{
+  "feature_ranking": [
+    {
+      "feature": "chloride_delta_12h",
+      "mean_abs_shap": 0.2303994745016098
+    },
+    {
+      "feature": "bicarbonate_roll_std",
+      "mean_abs_shap": 0.22005002200603485
+    },
+    {
+      "feature": "bilirubin_total_delta_12h",
+      "mean_abs_shap": 0.2055007517337799
+    },
+    {
+      "feature": "fio2_delta_12h",
+      "mean_abs_shap": 0.18961530923843384
+    },
+    {
+      "feature": "lactate_roll_mean",
+      "mean_abs_shap": 0.1832943558692932
+    },
+    {
+      "feature": "creatinine_roll_slope",
+      "mean_abs_shap": 0.17854055762290955
+    },
+    {
+      "feature": "resp_rate_delta_6h",
+      "mean_abs_shap": 0.1718904674053192
+    },
+    {
+      "feature": "inr",
+      "mean_abs_shap": 0.17171691358089447
+    },
+    {
+      "feature": "inr_delta_12h",
+      "mean_abs_shap": 0.16816319525241852
+    },
+    {
+      "feature": "albumin",
+      "mean_abs_shap": 0.15972045063972473
+    },
+    {
+      "feature": "temperature_roll_std",
+      "mean_abs_shap": 0.15213622152805328
+    },
+    {
+      "feature": "bun_roll_mean",
+      "mean_abs_shap": 0.14796766638755798
+    },
+    {
+      "feature": "spo2_roll_mean",
+      "mean_abs_shap": 0.14643391966819763
+    },
+    {
+      "feature": "sodium_roll_slope",
+      "mean_abs_shap": 0.13406094908714294
+    },
+    {
+      "feature": "ast_roll_slope",
+      "mean_abs_shap": 0.12884177267551422
+    },
+    {
+      "feature": "ast_delta_6h",
+      "mean_abs_shap": 0.12798956036567688
+    },
+    {
+      "feature": "bicarbonate_roll_mean",
+      "mean_abs_shap": 0.12726987898349762
+    },
+    {
+      "feature": "bun_delta_12h",
+      "mean_abs_shap": 0.11966613680124283
+    },
+    {
+      "feature": "pao2_roll_std",
+      "mean_abs_shap": 0.1006791964173317
+    },
+    {
+      "feature": "heart_rate_roll_std",
+      "mean_abs_shap": 0.08737687766551971
+    },
+    {
+      "feature": "chloride",
+      "mean_abs_shap": 0.08572369068861008
+    },
+    {
+      "feature": "spo2_delta_1h",
+      "mean_abs_shap": 0.0856749564409256
+    },
+    {
+      "feature": "ptt_roll_slope",
+      "mean_abs_shap": 0.08369434624910355
+    },
+    {
+      "feature": "wbc_roll_slope",
+      "mean_abs_shap": 0.08246596902608871
+    },
+    {
+      "feature": "platelets_roll_mean",
+      "mean_abs_shap": 0.08097454905509949
+    },
+    {
+      "feature": "map_roll_slope",
+      "mean_abs_shap": 0.080884650349617
+    },
+    {
+      "feature": "sodium_roll_mean",
+      "mean_abs_shap": 0.07928237318992615
+    },
+    {
+      "feature": "platelets_roll_slope",
+      "mean_abs_shap": 0.07851748168468475
+    },
+    {
+      "feature": "inr_roll_slope",
+      "mean_abs_shap": 0.07645440101623535
+    },
+    {
+      "feature": "chloride_roll_slope",
+      "mean_abs_shap": 0.07452713698148727
+    },
+    {
+      "feature": "creatinine_delta_6h",
+      "mean_abs_shap": 0.0633605346083641
+    },
+    {
+      "feature": "alt_roll_slope",
+      "mean_abs_shap": 0.06062685698270798
+    },
+    {
+      "feature": "spo2_delta_12h",
+      "mean_abs_shap": 0.06014985218644142
+    },
+    {
+      "feature": "temperature",
+      "mean_abs_shap": 0.05969797074794769
+    },
+    {
+      "feature": "ptt_delta_1h",
+      "mean_abs_shap": 0.058767352253198624
+    },
+    {
+      "feature": "map_roll_std",
+      "mean_abs_shap": 0.05423802509903908
+    },
+    {
+      "feature": "sodium_delta_12h",
+      "mean_abs_shap": 0.052343301475048065
+    },
+    {
+      "feature": "bilirubin_total_roll_std",
+      "mean_abs_shap": 0.05118544399738312
+    },
+    {
+      "feature": "wbc_roll_mean",
+      "mean_abs_shap": 0.050762757658958435
+    },
+    {
+      "feature": "spo2_roll_slope",
+      "mean_abs_shap": 0.05056151747703552
+    },
+    {
+      "feature": "spo2",
+      "mean_abs_shap": 0.04978101700544357
+    },
+    {
+      "feature": "bicarbonate_delta_1h",
+      "mean_abs_shap": 0.04776611179113388
+    },
+    {
+      "feature": "resp_rate_delta_12h",
+      "mean_abs_shap": 0.04731442779302597
+    },
+    {
+      "feature": "platelets",
+      "mean_abs_shap": 0.045716430991888046
+    },
+    {
+      "feature": "potassium_roll_std",
+      "mean_abs_shap": 0.04488573968410492
+    },
+    {
+      "feature": "ast_roll_mean",
+      "mean_abs_shap": 0.04401614889502525
+    },
+    {
+      "feature": "wbc_delta_6h",
+      "mean_abs_shap": 0.04377543553709984
+    },
+    {
+      "feature": "sbp_roll_slope",
+      "mean_abs_shap": 0.04289955645799637
+    },
+    {
+      "feature": "hematocrit",
+      "mean_abs_shap": 0.042760737240314484
+    },
+    {
+      "feature": "bilirubin_total_roll_slope",
+      "mean_abs_shap": 0.04251674562692642
+    },
+    {
+      "feature": "ast",
+      "mean_abs_shap": 0.04229496791958809
+    },
+    {
+      "feature": "platelets_delta_6h",
+      "mean_abs_shap": 0.04201436787843704
+    },
+    {
+      "feature": "ptt_delta_6h",
+      "mean_abs_shap": 0.04115677997469902
+    },
+    {
+      "feature": "temperature_delta_6h",
+      "mean_abs_shap": 0.040870264172554016
+    },
+    {
+      "feature": "map_delta_6h",
+      "mean_abs_shap": 0.04080132395029068
+    },
+    {
+      "feature": "platelets_delta_1h",
+      "mean_abs_shap": 0.03986985981464386
+    },
+    {
+      "feature": "fio2",
+      "mean_abs_shap": 0.039748162031173706
+    },
+    {
+      "feature": "pao2_roll_slope",
+      "mean_abs_shap": 0.03796862065792084
+    },
+    {
+      "feature": "creatinine_roll_mean",
+      "mean_abs_shap": 0.03790516033768654
+    },
+    {
+      "feature": "spo2_delta_6h",
+      "mean_abs_shap": 0.03614656999707222
+    },
+    {
+      "feature": "resp_rate_roll_mean",
+      "mean_abs_shap": 0.036099884659051895
+    },
+    {
+      "feature": "alt_roll_std",
+      "mean_abs_shap": 0.03592762351036072
+    },
+    {
+      "feature": "albumin_delta_6h",
+      "mean_abs_shap": 0.032868485897779465
+    },
+    {
+      "feature": "fio2_delta_6h",
+      "mean_abs_shap": 0.03149061277508736
+    },
+    {
+      "feature": "chloride_delta_1h",
+      "mean_abs_shap": 0.031444210559129715
+    },
+    {
+      "feature": "sbp_roll_mean",
+      "mean_abs_shap": 0.031307946890592575
+    },
+    {
+      "feature": "bilirubin_total_delta_6h",
+      "mean_abs_shap": 0.03047228790819645
+    },
+    {
+      "feature": "bun_roll_std",
+      "mean_abs_shap": 0.02997881919145584
+    },
+    {
+      "feature": "temperature_roll_slope",
+      "mean_abs_shap": 0.02874724008142948
+    },
+    {
+      "feature": "sbp_roll_std",
+      "mean_abs_shap": 0.02702374756336212
+    },
+    {
+      "feature": "temperature_roll_mean",
+      "mean_abs_shap": 0.02659052610397339
+    },
+    {
+      "feature": "wbc_roll_std",
+      "mean_abs_shap": 0.02598283626139164
+    },
+    {
+      "feature": "heart_rate",
+      "mean_abs_shap": 0.02566620148718357
+    },
+    {
+      "feature": "pao2",
+      "mean_abs_shap": 0.024859383702278137
+    },
+    {
+      "feature": "hematocrit_roll_std",
+      "mean_abs_shap": 0.02405867911875248
+    },
+    {
+      "feature": "resp_rate_roll_slope",
+      "mean_abs_shap": 0.02324926108121872
+    },
+    {
+      "feature": "glucose_delta_6h",
+      "mean_abs_shap": 0.023123787716031075
+    },
+    {
+      "feature": "inr_delta_1h",
+      "mean_abs_shap": 0.022731773555278778
+    },
+    {
+      "feature": "map_roll_mean",
+      "mean_abs_shap": 0.022418130189180374
+    },
+    {
+      "feature": "sbp",
+      "mean_abs_shap": 0.019948642700910568
+    },
+    {
+      "feature": "inr_roll_std",
+      "mean_abs_shap": 0.019290629774332047
+    },
+    {
+      "feature": "albumin_delta_1h",
+      "mean_abs_shap": 0.018868248909711838
+    },
+    {
+      "feature": "inr_delta_6h",
+      "mean_abs_shap": 0.01865808106958866
+    },
+    {
+      "feature": "bilirubin_total",
+      "mean_abs_shap": 0.018542610108852386
+    },
+    {
+      "feature": "bicarbonate",
+      "mean_abs_shap": 0.018523400649428368
+    },
+    {
+      "feature": "ptt_roll_mean",
+      "mean_abs_shap": 0.017864875495433807
+    },
+    {
+      "feature": "sbp_delta_6h",
+      "mean_abs_shap": 0.01766825281083584
+    },
+    {
+      "feature": "potassium_delta_6h",
+      "mean_abs_shap": 0.017594115808606148
+    },
+    {
+      "feature": "hemoglobin",
+      "mean_abs_shap": 0.017579009756445885
+    },
+    {
+      "feature": "hemoglobin_roll_mean",
+      "mean_abs_shap": 0.01753879152238369
+    },
+    {
+      "feature": "ptt",
+      "mean_abs_shap": 0.016619781032204628
+    },
+    {
+      "feature": "hematocrit_roll_mean",
+      "mean_abs_shap": 0.016193699091672897
+    },
+    {
+      "feature": "ptt_roll_std",
+      "mean_abs_shap": 0.01619013026356697
+    },
+    {
+      "feature": "fio2_roll_slope",
+      "mean_abs_shap": 0.015930961817502975
+    },
+    {
+      "feature": "chloride_roll_mean",
+      "mean_abs_shap": 0.015796709805727005
+    },
+    {
+      "feature": "sodium_delta_1h",
+      "mean_abs_shap": 0.015700506046414375
+    },
+    {
+      "feature": "albumin_roll_slope",
+      "mean_abs_shap": 0.015292414464056492
+    },
+    {
+      "feature": "heart_rate_roll_slope",
+      "mean_abs_shap": 0.015183077193796635
+    },
+    {
+      "feature": "pao2_roll_mean",
+      "mean_abs_shap": 0.015150724910199642
+    },
+    {
+      "feature": "hematocrit_roll_slope",
+      "mean_abs_shap": 0.014758400619029999
+    },
+    {
+      "feature": "bun_delta_1h",
+      "mean_abs_shap": 0.01463511772453785
+    },
+    {
+      "feature": "potassium_delta_1h",
+      "mean_abs_shap": 0.014596291817724705
+    },
+    {
+      "feature": "pao2_delta_1h",
+      "mean_abs_shap": 0.014541381038725376
+    },
+    {
+      "feature": "bicarbonate_roll_slope",
+      "mean_abs_shap": 0.01437901146709919
+    },
+    {
+      "feature": "hematocrit_delta_1h",
+      "mean_abs_shap": 0.013935098424553871
+    },
+    {
+      "feature": "ast_delta_1h",
+      "mean_abs_shap": 0.01363292895257473
+    },
+    {
+      "feature": "creatinine_delta_1h",
+      "mean_abs_shap": 0.013280828483402729
+    },
+    {
+      "feature": "creatinine_delta_12h",
+      "mean_abs_shap": 0.013250271789729595
+    },
+    {
+      "feature": "resp_rate_delta_1h",
+      "mean_abs_shap": 0.01277000829577446
+    },
+    {
+      "feature": "potassium_roll_slope",
+      "mean_abs_shap": 0.012462863698601723
+    },
+    {
+      "feature": "lactate_delta_12h",
+      "mean_abs_shap": 0.011840416118502617
+    },
+    {
+      "feature": "albumin_roll_mean",
+      "mean_abs_shap": 0.011809716001152992
+    },
+    {
+      "feature": "bun_roll_slope",
+      "mean_abs_shap": 0.011805563233792782
+    },
+    {
+      "feature": "sbp_delta_12h",
+      "mean_abs_shap": 0.011754726059734821
+    },
+    {
+      "feature": "bilirubin_total_delta_1h",
+      "mean_abs_shap": 0.011668874882161617
+    },
+    {
+      "feature": "glucose_delta_12h",
+      "mean_abs_shap": 0.01146119274199009
+    },
+    {
+      "feature": "temperature_delta_12h",
+      "mean_abs_shap": 0.011313442140817642
+    },
+    {
+      "feature": "map_delta_1h",
+      "mean_abs_shap": 0.01075348537415266
+    },
+    {
+      "feature": "glucose_delta_1h",
+      "mean_abs_shap": 0.010746074840426445
+    },
+    {
+      "feature": "chloride_roll_std",
+      "mean_abs_shap": 0.010718652978539467
+    },
+    {
+      "feature": "glucose_roll_slope",
+      "mean_abs_shap": 0.01068669743835926
+    },
+    {
+      "feature": "inr_roll_mean",
+      "mean_abs_shap": 0.010647917166352272
+    },
+    {
+      "feature": "resp_rate_roll_std",
+      "mean_abs_shap": 0.009873850271105766
+    },
+    {
+      "feature": "resp_rate",
+      "mean_abs_shap": 0.00969215203076601
+    },
+    {
+      "feature": "albumin_roll_std",
+      "mean_abs_shap": 0.00951303169131279
+    },
+    {
+      "feature": "potassium_roll_mean",
+      "mean_abs_shap": 0.009266238659620285
+    },
+    {
+      "feature": "lactate_delta_6h",
+      "mean_abs_shap": 0.00925534125417471
+    },
+    {
+      "feature": "wbc",
+      "mean_abs_shap": 0.009065685793757439
+    },
+    {
+      "feature": "hemoglobin_delta_1h",
+      "mean_abs_shap": 0.008472269400954247
+    },
+    {
+      "feature": "heart_rate_delta_1h",
+      "mean_abs_shap": 0.007871842011809349
+    },
+    {
+      "feature": "heart_rate_delta_6h",
+      "mean_abs_shap": 0.007696905173361301
+    },
+    {
+      "feature": "heart_rate_delta_12h",
+      "mean_abs_shap": 0.007658669259399176
+    },
+    {
+      "feature": "ast_roll_std",
+      "mean_abs_shap": 0.007457910571247339
+    },
+    {
+      "feature": "map",
+      "mean_abs_shap": 0.00743531621992588
+    },
+    {
+      "feature": "bun",
+      "mean_abs_shap": 0.007204628083854914
+    },
+    {
+      "feature": "glucose_roll_std",
+      "mean_abs_shap": 0.007131638471037149
+    },
+    {
+      "feature": "pao2_delta_6h",
+      "mean_abs_shap": 0.007003833539783955
+    },
+    {
+      "feature": "sodium_delta_6h",
+      "mean_abs_shap": 0.007003725506365299
+    },
+    {
+      "feature": "lactate_roll_slope",
+      "mean_abs_shap": 0.006884497590363026
+    },
+    {
+      "feature": "map_delta_12h",
+      "mean_abs_shap": 0.006805966608226299
+    },
+    {
+      "feature": "lactate_roll_std",
+      "mean_abs_shap": 0.0067229364067316055
+    },
+    {
+      "feature": "sbp_delta_1h",
+      "mean_abs_shap": 0.00628802552819252
+    },
+    {
+      "feature": "alt",
+      "mean_abs_shap": 0.0061868056654930115
+    },
+    {
+      "feature": "creatinine_roll_std",
+      "mean_abs_shap": 0.006013307720422745
+    },
+    {
+      "feature": "ast_delta_12h",
+      "mean_abs_shap": 0.005929794628173113
+    },
+    {
+      "feature": "ast_missing",
+      "mean_abs_shap": 0.005407104268670082
+    },
+    {
+      "feature": "lactate",
+      "mean_abs_shap": 0.005245487671345472
+    },
+    {
+      "feature": "fio2_roll_std",
+      "mean_abs_shap": 0.005205766763538122
+    },
+    {
+      "feature": "fio2_roll_mean",
+      "mean_abs_shap": 0.005205119028687477
+    },
+    {
+      "feature": "alt_delta_6h",
+      "mean_abs_shap": 0.004990095738321543
+    },
+    {
+      "feature": "bicarbonate_delta_6h",
+      "mean_abs_shap": 0.004526006989181042
+    },
+    {
+      "feature": "temperature_delta_1h",
+      "mean_abs_shap": 0.0043882220052182674
+    },
+    {
+      "feature": "albumin_delta_12h",
+      "mean_abs_shap": 0.004349225200712681
+    },
+    {
+      "feature": "alt_roll_mean",
+      "mean_abs_shap": 0.00407925620675087
+    },
+    {
+      "feature": "sodium",
+      "mean_abs_shap": 0.003985668998211622
+    },
+    {
+      "feature": "wbc_delta_1h",
+      "mean_abs_shap": 0.003787422087043524
+    },
+    {
+      "feature": "hemoglobin_delta_12h",
+      "mean_abs_shap": 0.0037510478869080544
+    },
+    {
+      "feature": "spo2_roll_std",
+      "mean_abs_shap": 0.003690814133733511
+    },
+    {
+      "feature": "hemoglobin_roll_std",
+      "mean_abs_shap": 0.003600162221118808
+    },
+    {
+      "feature": "alt_delta_12h",
+      "mean_abs_shap": 0.0035203055012971163
+    },
+    {
+      "feature": "heart_rate_roll_mean",
+      "mean_abs_shap": 0.003451176453381777
+    },
+    {
+      "feature": "fio2_delta_1h",
+      "mean_abs_shap": 0.0032254732213914394
+    },
+    {
+      "feature": "creatinine",
+      "mean_abs_shap": 0.0029751656111329794
+    },
+    {
+      "feature": "hematocrit_delta_6h",
+      "mean_abs_shap": 0.002432408044114709
+    },
+    {
+      "feature": "platelets_roll_std",
+      "mean_abs_shap": 0.002336229430511594
+    },
+    {
+      "feature": "hemoglobin_delta_6h",
+      "mean_abs_shap": 0.002330778632313013
+    },
+    {
+      "feature": "glucose",
+      "mean_abs_shap": 0.002302662469446659
+    },
+    {
+      "feature": "potassium",
+      "mean_abs_shap": 0.002075488679111004
+    },
+    {
+      "feature": "hematocrit_delta_12h",
+      "mean_abs_shap": 0.0019548945128917694
+    },
+    {
+      "feature": "lactate_delta_1h",
+      "mean_abs_shap": 0.001754601951688528
+    },
+    {
+      "feature": "glucose_roll_mean",
+      "mean_abs_shap": 0.0014218053547665477
+    },
+    {
+      "feature": "alt_delta_1h",
+      "mean_abs_shap": 0.0013428684324026108
+    },
+    {
+      "feature": "pao2_delta_12h",
+      "mean_abs_shap": 0.0009390167542733252
+    },
+    {
+      "feature": "wbc_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride_delta_6h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt_delta_12h",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin_roll_slope",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium_roll_std",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total_roll_mean",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "heart_rate_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "heart_rate_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sbp_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sbp_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "map_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "map_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "resp_rate_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "resp_rate_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "spo2_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "spo2_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "temperature_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "temperature_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "wbc_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "wbc_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hemoglobin_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hematocrit_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "hematocrit_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "platelets_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "lactate_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "lactate_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "creatinine_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "creatinine_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bun_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "glucose_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "glucose_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "sodium_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "potassium_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "chloride_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bicarbonate_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "bilirubin_total_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "alt_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "alt_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ast_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "albumin_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "albumin_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "inr_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "inr_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "ptt_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "pao2_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "pao2_hours_since_obs",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "fio2_missing",
+      "mean_abs_shap": 0.0
+    },
+    {
+      "feature": "fio2_hours_since_obs",
+      "mean_abs_shap": 0.0
+    }
+  ],
+  "n_samples_explained": 300,
+  "stability": {
+    "n_folds": 5,
+    "rank_correlations": [
+      0.6428322902252226,
+      0.6543277864801015,
+      0.6297549222761534,
+      0.6682677381061092,
+      0.6831433260983076,
+      0.6587465376069158,
+      0.6964707590221243,
+      0.6458105921716553,
+      0.6617885265132094,
+      0.7272324972078421
+    ],
+    "mean_rank_correlation": 0.666837497570764,
+    "stable_top_features": [],
+    "n_stable_top": 0,
+    "overall_ranking": [
+      {
+        "feature": "bilirubin_total_delta_12h",
+        "mean_abs_shap": 0.17802508175373077,
+        "std_abs_shap": 0.09329245984554291
+      },
+      {
+        "feature": "inr",
+        "mean_abs_shap": 0.1704556941986084,
+        "std_abs_shap": 0.134796142578125
+      },
+      {
+        "feature": "bicarbonate_roll_std",
+        "mean_abs_shap": 0.15841887891292572,
+        "std_abs_shap": 0.10665927082300186
+      },
+      {
+        "feature": "resp_rate_delta_6h",
+        "mean_abs_shap": 0.14469127357006073,
+        "std_abs_shap": 0.09703569859266281
+      },
+      {
+        "feature": "ast_roll_slope",
+        "mean_abs_shap": 0.14286521077156067,
+        "std_abs_shap": 0.051025696098804474
+      },
+      {
+        "feature": "lactate_roll_mean",
+        "mean_abs_shap": 0.14126960933208466,
+        "std_abs_shap": 0.0893339216709137
+      },
+      {
+        "feature": "chloride_delta_12h",
+        "mean_abs_shap": 0.13978365063667297,
+        "std_abs_shap": 0.07385564595460892
+      },
+      {
+        "feature": "bicarbonate_roll_mean",
+        "mean_abs_shap": 0.13796868920326233,
+        "std_abs_shap": 0.14004024863243103
+      },
+      {
+        "feature": "albumin",
+        "mean_abs_shap": 0.11846329271793365,
+        "std_abs_shap": 0.11603482067584991
+      },
+      {
+        "feature": "map_roll_slope",
+        "mean_abs_shap": 0.11843255907297134,
+        "std_abs_shap": 0.07219549268484116
+      },
+      {
+        "feature": "temperature_roll_std",
+        "mean_abs_shap": 0.11704272031784058,
+        "std_abs_shap": 0.07703696191310883
+      },
+      {
+        "feature": "inr_delta_12h",
+        "mean_abs_shap": 0.11180134862661362,
+        "std_abs_shap": 0.07804104685783386
+      },
+      {
+        "feature": "creatinine_roll_slope",
+        "mean_abs_shap": 0.10985144227743149,
+        "std_abs_shap": 0.0645633265376091
+      },
+      {
+        "feature": "spo2_roll_mean",
+        "mean_abs_shap": 0.10867337137460709,
+        "std_abs_shap": 0.04774802550673485
+      },
+      {
+        "feature": "bun_delta_12h",
+        "mean_abs_shap": 0.10344994068145752,
+        "std_abs_shap": 0.12526150047779083
+      },
+      {
+        "feature": "sodium_roll_mean",
+        "mean_abs_shap": 0.09569303691387177,
+        "std_abs_shap": 0.043949369341135025
+      },
+      {
+        "feature": "sodium_roll_slope",
+        "mean_abs_shap": 0.0931229293346405,
+        "std_abs_shap": 0.04704324156045914
+      },
+      {
+        "feature": "wbc_roll_slope",
+        "mean_abs_shap": 0.09032472223043442,
+        "std_abs_shap": 0.06531617045402527
+      },
+      {
+        "feature": "heart_rate_roll_std",
+        "mean_abs_shap": 0.08724572509527206,
+        "std_abs_shap": 0.06044777110219002
+      },
+      {
+        "feature": "pao2_roll_std",
+        "mean_abs_shap": 0.0844828337430954,
+        "std_abs_shap": 0.06121078133583069
+      },
+      {
+        "feature": "spo2_delta_6h",
+        "mean_abs_shap": 0.08388909697532654,
+        "std_abs_shap": 0.08819897472858429
+      },
+      {
+        "feature": "platelets_roll_mean",
+        "mean_abs_shap": 0.08333306759595871,
+        "std_abs_shap": 0.11116939038038254
+      },
+      {
+        "feature": "ast",
+        "mean_abs_shap": 0.0791938453912735,
+        "std_abs_shap": 0.061422791332006454
+      },
+      {
+        "feature": "bun_roll_mean",
+        "mean_abs_shap": 0.0760173425078392,
+        "std_abs_shap": 0.04846837371587753
+      },
+      {
+        "feature": "fio2_delta_12h",
+        "mean_abs_shap": 0.07496704906225204,
+        "std_abs_shap": 0.0643603503704071
+      },
+      {
+        "feature": "platelets_roll_slope",
+        "mean_abs_shap": 0.07395794242620468,
+        "std_abs_shap": 0.051159266382455826
+      },
+      {
+        "feature": "wbc_roll_mean",
+        "mean_abs_shap": 0.07088171690702438,
+        "std_abs_shap": 0.07448665797710419
+      },
+      {
+        "feature": "bilirubin_total_roll_std",
+        "mean_abs_shap": 0.0699327364563942,
+        "std_abs_shap": 0.0706159695982933
+      },
+      {
+        "feature": "spo2_roll_std",
+        "mean_abs_shap": 0.06738157570362091,
+        "std_abs_shap": 0.08629089593887329
+      },
+      {
+        "feature": "inr_roll_slope",
+        "mean_abs_shap": 0.06691647320985794,
+        "std_abs_shap": 0.04876980558037758
+      },
+      {
+        "feature": "chloride_delta_1h",
+        "mean_abs_shap": 0.06672822684049606,
+        "std_abs_shap": 0.056851185858249664
+      },
+      {
+        "feature": "platelets_delta_6h",
+        "mean_abs_shap": 0.06655384600162506,
+        "std_abs_shap": 0.04898899421095848
+      },
+      {
+        "feature": "ptt_roll_slope",
+        "mean_abs_shap": 0.06632455438375473,
+        "std_abs_shap": 0.03132643550634384
+      },
+      {
+        "feature": "inr_delta_1h",
+        "mean_abs_shap": 0.06565437465906143,
+        "std_abs_shap": 0.07163339108228683
+      },
+      {
+        "feature": "hematocrit",
+        "mean_abs_shap": 0.06461089104413986,
+        "std_abs_shap": 0.07068922370672226
+      },
+      {
+        "feature": "ast_delta_6h",
+        "mean_abs_shap": 0.0640367716550827,
+        "std_abs_shap": 0.05299396812915802
+      },
+      {
+        "feature": "creatinine_delta_12h",
+        "mean_abs_shap": 0.05912892147898674,
+        "std_abs_shap": 0.031497523188591
+      },
+      {
+        "feature": "wbc_delta_6h",
+        "mean_abs_shap": 0.058597177267074585,
+        "std_abs_shap": 0.06498296558856964
+      },
+      {
+        "feature": "potassium_roll_std",
+        "mean_abs_shap": 0.05792900174856186,
+        "std_abs_shap": 0.032334234565496445
+      },
+      {
+        "feature": "wbc_roll_std",
+        "mean_abs_shap": 0.056604135781526566,
+        "std_abs_shap": 0.037147436290979385
+      },
+      {
+        "feature": "resp_rate_roll_mean",
+        "mean_abs_shap": 0.0554274320602417,
+        "std_abs_shap": 0.03555067628622055
+      },
+      {
+        "feature": "resp_rate_roll_std",
+        "mean_abs_shap": 0.05424647778272629,
+        "std_abs_shap": 0.061055123805999756
+      },
+      {
+        "feature": "creatinine_delta_6h",
+        "mean_abs_shap": 0.05267981439828873,
+        "std_abs_shap": 0.03735381364822388
+      },
+      {
+        "feature": "chloride_roll_slope",
+        "mean_abs_shap": 0.050295211374759674,
+        "std_abs_shap": 0.030583813786506653
+      },
+      {
+        "feature": "creatinine_roll_mean",
+        "mean_abs_shap": 0.050280213356018066,
+        "std_abs_shap": 0.018042026087641716
+      },
+      {
+        "feature": "spo2_delta_1h",
+        "mean_abs_shap": 0.05027497559785843,
+        "std_abs_shap": 0.06258585304021835
+      },
+      {
+        "feature": "spo2_delta_12h",
+        "mean_abs_shap": 0.049666184931993484,
+        "std_abs_shap": 0.029138363897800446
+      },
+      {
+        "feature": "inr_roll_std",
+        "mean_abs_shap": 0.0485854372382164,
+        "std_abs_shap": 0.037041448056697845
+      },
+      {
+        "feature": "bicarbonate",
+        "mean_abs_shap": 0.04769634082913399,
+        "std_abs_shap": 0.03861376270651817
+      },
+      {
+        "feature": "platelets_roll_std",
+        "mean_abs_shap": 0.04703240096569061,
+        "std_abs_shap": 0.07763225585222244
+      },
+      {
+        "feature": "pao2",
+        "mean_abs_shap": 0.046744734048843384,
+        "std_abs_shap": 0.01618216000497341
+      },
+      {
+        "feature": "fio2",
+        "mean_abs_shap": 0.045112598687410355,
+        "std_abs_shap": 0.06666573882102966
+      },
+      {
+        "feature": "spo2",
+        "mean_abs_shap": 0.04477987065911293,
+        "std_abs_shap": 0.025113649666309357
+      },
+      {
+        "feature": "bun_roll_slope",
+        "mean_abs_shap": 0.04405588656663895,
+        "std_abs_shap": 0.0629202276468277
+      },
+      {
+        "feature": "chloride",
+        "mean_abs_shap": 0.0439181923866272,
+        "std_abs_shap": 0.014671477489173412
+      },
+      {
+        "feature": "platelets",
+        "mean_abs_shap": 0.042451560497283936,
+        "std_abs_shap": 0.02573656290769577
+      },
+      {
+        "feature": "temperature",
+        "mean_abs_shap": 0.04148747771978378,
+        "std_abs_shap": 0.036216896027326584
+      },
+      {
+        "feature": "ast_roll_mean",
+        "mean_abs_shap": 0.04056219384074211,
+        "std_abs_shap": 0.02355620637536049
+      },
+      {
+        "feature": "map_delta_6h",
+        "mean_abs_shap": 0.03960440680384636,
+        "std_abs_shap": 0.03735610097646713
+      },
+      {
+        "feature": "pao2_roll_slope",
+        "mean_abs_shap": 0.03914175555109978,
+        "std_abs_shap": 0.03628876805305481
+      },
+      {
+        "feature": "heart_rate_roll_slope",
+        "mean_abs_shap": 0.03894655406475067,
+        "std_abs_shap": 0.05066445842385292
+      },
+      {
+        "feature": "albumin_delta_1h",
+        "mean_abs_shap": 0.03824809938669205,
+        "std_abs_shap": 0.02567424066364765
+      },
+      {
+        "feature": "temperature_roll_slope",
+        "mean_abs_shap": 0.037155140191316605,
+        "std_abs_shap": 0.0465351827442646
+      },
+      {
+        "feature": "hematocrit_roll_mean",
+        "mean_abs_shap": 0.03663016855716705,
+        "std_abs_shap": 0.03130437806248665
+      },
+      {
+        "feature": "wbc",
+        "mean_abs_shap": 0.03605244308710098,
+        "std_abs_shap": 0.03802943229675293
+      },
+      {
+        "feature": "glucose_roll_std",
+        "mean_abs_shap": 0.03551642224192619,
+        "std_abs_shap": 0.025295650586485863
+      },
+      {
+        "feature": "hematocrit_roll_std",
+        "mean_abs_shap": 0.03335316851735115,
+        "std_abs_shap": 0.01232192013412714
+      },
+      {
+        "feature": "ptt_roll_mean",
+        "mean_abs_shap": 0.03334404528141022,
+        "std_abs_shap": 0.025712156668305397
+      },
+      {
+        "feature": "glucose_roll_mean",
+        "mean_abs_shap": 0.031948912888765335,
+        "std_abs_shap": 0.03381846845149994
+      },
+      {
+        "feature": "fio2_delta_1h",
+        "mean_abs_shap": 0.031760457903146744,
+        "std_abs_shap": 0.030005648732185364
+      },
+      {
+        "feature": "sodium_delta_12h",
+        "mean_abs_shap": 0.030929069966077805,
+        "std_abs_shap": 0.03283562883734703
+      },
+      {
+        "feature": "alt_roll_std",
+        "mean_abs_shap": 0.030659615993499756,
+        "std_abs_shap": 0.010924160480499268
+      },
+      {
+        "feature": "map_roll_std",
+        "mean_abs_shap": 0.03048679232597351,
+        "std_abs_shap": 0.015423684380948544
+      },
+      {
+        "feature": "glucose_delta_6h",
+        "mean_abs_shap": 0.03042924962937832,
+        "std_abs_shap": 0.03718574345111847
+      },
+      {
+        "feature": "bun_delta_6h",
+        "mean_abs_shap": 0.02951708808541298,
+        "std_abs_shap": 0.03185677528381348
+      },
+      {
+        "feature": "lactate_roll_std",
+        "mean_abs_shap": 0.028951704502105713,
+        "std_abs_shap": 0.020684339106082916
+      },
+      {
+        "feature": "bilirubin_total_delta_6h",
+        "mean_abs_shap": 0.028606314212083817,
+        "std_abs_shap": 0.018452171236276627
+      },
+      {
+        "feature": "heart_rate",
+        "mean_abs_shap": 0.028179621323943138,
+        "std_abs_shap": 0.04022769629955292
+      },
+      {
+        "feature": "bun_roll_std",
+        "mean_abs_shap": 0.027164068073034286,
+        "std_abs_shap": 0.009933051653206348
+      },
+      {
+        "feature": "temperature_roll_mean",
+        "mean_abs_shap": 0.02687828615307808,
+        "std_abs_shap": 0.019762227311730385
+      },
+      {
+        "feature": "pao2_roll_mean",
+        "mean_abs_shap": 0.026838958263397217,
+        "std_abs_shap": 0.018828392028808594
+      },
+      {
+        "feature": "platelets_delta_1h",
+        "mean_abs_shap": 0.026793992146849632,
+        "std_abs_shap": 0.027690861374139786
+      },
+      {
+        "feature": "fio2_roll_mean",
+        "mean_abs_shap": 0.026554381474852562,
+        "std_abs_shap": 0.024368086829781532
+      },
+      {
+        "feature": "sbp",
+        "mean_abs_shap": 0.026201436296105385,
+        "std_abs_shap": 0.017707491293549538
+      },
+      {
+        "feature": "bicarbonate_roll_slope",
+        "mean_abs_shap": 0.025637224316596985,
+        "std_abs_shap": 0.02096668630838394
+      },
+      {
+        "feature": "map_roll_mean",
+        "mean_abs_shap": 0.025214556604623795,
+        "std_abs_shap": 0.017417510971426964
+      },
+      {
+        "feature": "bun_delta_1h",
+        "mean_abs_shap": 0.02507929876446724,
+        "std_abs_shap": 0.02798600308597088
+      },
+      {
+        "feature": "chloride_delta_6h",
+        "mean_abs_shap": 0.024206481873989105,
+        "std_abs_shap": 0.024987734854221344
+      },
+      {
+        "feature": "bun",
+        "mean_abs_shap": 0.023957297205924988,
+        "std_abs_shap": 0.025101089850068092
+      },
+      {
+        "feature": "sbp_roll_mean",
+        "mean_abs_shap": 0.023790065199136734,
+        "std_abs_shap": 0.02036653272807598
+      },
+      {
+        "feature": "bilirubin_total_roll_mean",
+        "mean_abs_shap": 0.023580104112625122,
+        "std_abs_shap": 0.026748912408947945
+      },
+      {
+        "feature": "ptt_delta_6h",
+        "mean_abs_shap": 0.023000355809926987,
+        "std_abs_shap": 0.03216050937771797
+      },
+      {
+        "feature": "hemoglobin_delta_6h",
+        "mean_abs_shap": 0.022741395980119705,
+        "std_abs_shap": 0.0161365307867527
+      },
+      {
+        "feature": "bicarbonate_delta_6h",
+        "mean_abs_shap": 0.022359540686011314,
+        "std_abs_shap": 0.02702989988029003
+      },
+      {
+        "feature": "hematocrit_delta_1h",
+        "mean_abs_shap": 0.02234826423227787,
+        "std_abs_shap": 0.030920498073101044
+      },
+      {
+        "feature": "alt_roll_slope",
+        "mean_abs_shap": 0.022344470024108887,
+        "std_abs_shap": 0.01941726543009281
+      },
+      {
+        "feature": "sbp_roll_std",
+        "mean_abs_shap": 0.021598437801003456,
+        "std_abs_shap": 0.02098027803003788
+      },
+      {
+        "feature": "temperature_delta_12h",
+        "mean_abs_shap": 0.02144480310380459,
+        "std_abs_shap": 0.01665453612804413
+      },
+      {
+        "feature": "bicarbonate_delta_1h",
+        "mean_abs_shap": 0.021263644099235535,
+        "std_abs_shap": 0.01181771419942379
+      },
+      {
+        "feature": "resp_rate",
+        "mean_abs_shap": 0.020913593471050262,
+        "std_abs_shap": 0.02648787759244442
+      },
+      {
+        "feature": "creatinine_delta_1h",
+        "mean_abs_shap": 0.020892933011054993,
+        "std_abs_shap": 0.024775797501206398
+      },
+      {
+        "feature": "temperature_delta_1h",
+        "mean_abs_shap": 0.020690592005848885,
+        "std_abs_shap": 0.012573448941111565
+      },
+      {
+        "feature": "heart_rate_delta_6h",
+        "mean_abs_shap": 0.020252060145139694,
+        "std_abs_shap": 0.009540088474750519
+      },
+      {
+        "feature": "potassium_roll_slope",
+        "mean_abs_shap": 0.02007428929209709,
+        "std_abs_shap": 0.009708925150334835
+      },
+      {
+        "feature": "resp_rate_delta_12h",
+        "mean_abs_shap": 0.019946184009313583,
+        "std_abs_shap": 0.011465944349765778
+      },
+      {
+        "feature": "lactate",
+        "mean_abs_shap": 0.019904164597392082,
+        "std_abs_shap": 0.01184388343244791
+      },
+      {
+        "feature": "heart_rate_roll_mean",
+        "mean_abs_shap": 0.019872140139341354,
+        "std_abs_shap": 0.01738247461616993
+      },
+      {
+        "feature": "ast_delta_1h",
+        "mean_abs_shap": 0.01977444626390934,
+        "std_abs_shap": 0.018037211149930954
+      },
+      {
+        "feature": "sodium_delta_1h",
+        "mean_abs_shap": 0.01923806592822075,
+        "std_abs_shap": 0.01628689095377922
+      },
+      {
+        "feature": "wbc_delta_1h",
+        "mean_abs_shap": 0.01902150735259056,
+        "std_abs_shap": 0.017344854772090912
+      },
+      {
+        "feature": "creatinine_roll_std",
+        "mean_abs_shap": 0.01847107708454132,
+        "std_abs_shap": 0.010702867992222309
+      },
+      {
+        "feature": "sbp_delta_6h",
+        "mean_abs_shap": 0.01829109713435173,
+        "std_abs_shap": 0.017318081110715866
+      },
+      {
+        "feature": "resp_rate_roll_slope",
+        "mean_abs_shap": 0.01818162575364113,
+        "std_abs_shap": 0.014413940720260143
+      },
+      {
+        "feature": "sodium_delta_6h",
+        "mean_abs_shap": 0.018112709745764732,
+        "std_abs_shap": 0.016664955765008926
+      },
+      {
+        "feature": "hemoglobin_roll_slope",
+        "mean_abs_shap": 0.017723029479384422,
+        "std_abs_shap": 0.011607816442847252
+      },
+      {
+        "feature": "alt_roll_mean",
+        "mean_abs_shap": 0.017649661749601364,
+        "std_abs_shap": 0.01024689245969057
+      },
+      {
+        "feature": "fio2_roll_slope",
+        "mean_abs_shap": 0.017634525895118713,
+        "std_abs_shap": 0.016855301335453987
+      },
+      {
+        "feature": "spo2_roll_slope",
+        "mean_abs_shap": 0.017341379076242447,
+        "std_abs_shap": 0.017158083617687225
+      },
+      {
+        "feature": "heart_rate_delta_12h",
+        "mean_abs_shap": 0.017117364332079887,
+        "std_abs_shap": 0.01227522548288107
+      },
+      {
+        "feature": "ast_roll_std",
+        "mean_abs_shap": 0.016909325495362282,
+        "std_abs_shap": 0.01535147987306118
+      },
+      {
+        "feature": "pao2_delta_1h",
+        "mean_abs_shap": 0.01690533198416233,
+        "std_abs_shap": 0.010918449610471725
+      },
+      {
+        "feature": "chloride_roll_std",
+        "mean_abs_shap": 0.016687806695699692,
+        "std_abs_shap": 0.013792237266898155
+      },
+      {
+        "feature": "heart_rate_delta_1h",
+        "mean_abs_shap": 0.016677800565958023,
+        "std_abs_shap": 0.013211168348789215
+      },
+      {
+        "feature": "fio2_roll_std",
+        "mean_abs_shap": 0.016671475023031235,
+        "std_abs_shap": 0.011312766931951046
+      },
+      {
+        "feature": "albumin_roll_std",
+        "mean_abs_shap": 0.0164756141602993,
+        "std_abs_shap": 0.015396746806800365
+      },
+      {
+        "feature": "alt",
+        "mean_abs_shap": 0.016452502459287643,
+        "std_abs_shap": 0.00967956893146038
+      },
+      {
+        "feature": "platelets_delta_12h",
+        "mean_abs_shap": 0.016271278262138367,
+        "std_abs_shap": 0.013037379831075668
+      },
+      {
+        "feature": "potassium_roll_mean",
+        "mean_abs_shap": 0.016175221651792526,
+        "std_abs_shap": 0.002952566370368004
+      },
+      {
+        "feature": "sbp_delta_12h",
+        "mean_abs_shap": 0.015571936964988708,
+        "std_abs_shap": 0.01775195263326168
+      },
+      {
+        "feature": "albumin_roll_slope",
+        "mean_abs_shap": 0.015336841344833374,
+        "std_abs_shap": 0.010464477352797985
+      },
+      {
+        "feature": "sbp_delta_1h",
+        "mean_abs_shap": 0.015258276835083961,
+        "std_abs_shap": 0.011625520884990692
+      },
+      {
+        "feature": "resp_rate_delta_1h",
+        "mean_abs_shap": 0.014702333137392998,
+        "std_abs_shap": 0.012938889674842358
+      },
+      {
+        "feature": "bilirubin_total_roll_slope",
+        "mean_abs_shap": 0.014696361497044563,
+        "std_abs_shap": 0.005122525151818991
+      },
+      {
+        "feature": "glucose_delta_1h",
+        "mean_abs_shap": 0.01464357040822506,
+        "std_abs_shap": 0.011116435751318932
+      },
+      {
+        "feature": "ptt_roll_std",
+        "mean_abs_shap": 0.014295460656285286,
+        "std_abs_shap": 0.008558612316846848
+      },
+      {
+        "feature": "chloride_roll_mean",
+        "mean_abs_shap": 0.014293268322944641,
+        "std_abs_shap": 0.008190657943487167
+      },
+      {
+        "feature": "inr_roll_mean",
+        "mean_abs_shap": 0.013917949981987476,
+        "std_abs_shap": 0.009144444949924946
+      },
+      {
+        "feature": "lactate_delta_1h",
+        "mean_abs_shap": 0.013414256274700165,
+        "std_abs_shap": 0.01191763300448656
+      },
+      {
+        "feature": "glucose_missing",
+        "mean_abs_shap": 0.013225719332695007,
+        "std_abs_shap": 0.01155537087470293
+      },
+      {
+        "feature": "hematocrit_roll_slope",
+        "mean_abs_shap": 0.013003681786358356,
+        "std_abs_shap": 0.0095340795814991
+      },
+      {
+        "feature": "hemoglobin_roll_mean",
+        "mean_abs_shap": 0.012790977954864502,
+        "std_abs_shap": 0.012367911636829376
+      },
+      {
+        "feature": "ptt_delta_1h",
+        "mean_abs_shap": 0.012595447711646557,
+        "std_abs_shap": 0.007977663539350033
+      },
+      {
+        "feature": "lactate_delta_12h",
+        "mean_abs_shap": 0.012281342409551144,
+        "std_abs_shap": 0.0028608913999050856
+      },
+      {
+        "feature": "temperature_delta_6h",
+        "mean_abs_shap": 0.011926418170332909,
+        "std_abs_shap": 0.019159704446792603
+      },
+      {
+        "feature": "inr_delta_6h",
+        "mean_abs_shap": 0.010466729290783405,
+        "std_abs_shap": 0.0021837439853698015
+      },
+      {
+        "feature": "sodium_roll_std",
+        "mean_abs_shap": 0.01041786652058363,
+        "std_abs_shap": 0.007189227268099785
+      },
+      {
+        "feature": "albumin_roll_mean",
+        "mean_abs_shap": 0.010275403037667274,
+        "std_abs_shap": 0.006204480770975351
+      },
+      {
+        "feature": "sbp_roll_slope",
+        "mean_abs_shap": 0.00991545245051384,
+        "std_abs_shap": 0.005950287450104952
+      },
+      {
+        "feature": "creatinine",
+        "mean_abs_shap": 0.009820150211453438,
+        "std_abs_shap": 0.005627908743917942
+      },
+      {
+        "feature": "bilirubin_total",
+        "mean_abs_shap": 0.009779579937458038,
+        "std_abs_shap": 0.006842299364507198
+      },
+      {
+        "feature": "hemoglobin",
+        "mean_abs_shap": 0.00962968822568655,
+        "std_abs_shap": 0.007377592846751213
+      },
+      {
+        "feature": "map_delta_1h",
+        "mean_abs_shap": 0.009409978985786438,
+        "std_abs_shap": 0.008656817488372326
+      },
+      {
+        "feature": "bilirubin_total_delta_1h",
+        "mean_abs_shap": 0.009246693924069405,
+        "std_abs_shap": 0.008295905776321888
+      },
+      {
+        "feature": "pao2_delta_6h",
+        "mean_abs_shap": 0.008953052572906017,
+        "std_abs_shap": 0.0068570030853152275
+      },
+      {
+        "feature": "wbc_delta_12h",
+        "mean_abs_shap": 0.008811664767563343,
+        "std_abs_shap": 0.010831150226294994
+      },
+      {
+        "feature": "lactate_roll_slope",
+        "mean_abs_shap": 0.00878346897661686,
+        "std_abs_shap": 0.007560469210147858
+      },
+      {
+        "feature": "albumin_delta_12h",
+        "mean_abs_shap": 0.008701720274984837,
+        "std_abs_shap": 0.005147622432559729
+      },
+      {
+        "feature": "potassium_delta_1h",
+        "mean_abs_shap": 0.008297734893858433,
+        "std_abs_shap": 0.0044312733225524426
+      },
+      {
+        "feature": "glucose",
+        "mean_abs_shap": 0.007839955389499664,
+        "std_abs_shap": 0.005359272472560406
+      },
+      {
+        "feature": "potassium",
+        "mean_abs_shap": 0.0077796331606805325,
+        "std_abs_shap": 0.006317649967968464
+      },
+      {
+        "feature": "hematocrit_delta_12h",
+        "mean_abs_shap": 0.0076471478678286076,
+        "std_abs_shap": 0.004276674706488848
+      },
+      {
+        "feature": "glucose_delta_12h",
+        "mean_abs_shap": 0.007510143332183361,
+        "std_abs_shap": 0.010390356183052063
+      },
+      {
+        "feature": "sodium",
+        "mean_abs_shap": 0.0071010529063642025,
+        "std_abs_shap": 0.004996296018362045
+      },
+      {
+        "feature": "hemoglobin_roll_std",
+        "mean_abs_shap": 0.007071245461702347,
+        "std_abs_shap": 0.008710208348929882
+      },
+      {
+        "feature": "ast_delta_12h",
+        "mean_abs_shap": 0.006908087525516748,
+        "std_abs_shap": 0.008919048123061657
+      },
+      {
+        "feature": "glucose_roll_slope",
+        "mean_abs_shap": 0.006647834088653326,
+        "std_abs_shap": 0.003351616906002164
+      },
+      {
+        "feature": "lactate_delta_6h",
+        "mean_abs_shap": 0.0065286471508443356,
+        "std_abs_shap": 0.006593308411538601
+      },
+      {
+        "feature": "potassium_delta_12h",
+        "mean_abs_shap": 0.006385983433574438,
+        "std_abs_shap": 0.006844362709671259
+      },
+      {
+        "feature": "potassium_delta_6h",
+        "mean_abs_shap": 0.006353178061544895,
+        "std_abs_shap": 0.007079807575792074
+      },
+      {
+        "feature": "hemoglobin_delta_1h",
+        "mean_abs_shap": 0.0059617445804178715,
+        "std_abs_shap": 0.0057512675411999226
+      },
+      {
+        "feature": "ptt",
+        "mean_abs_shap": 0.005878995172679424,
+        "std_abs_shap": 0.003090037265792489
+      },
+      {
+        "feature": "albumin_delta_6h",
+        "mean_abs_shap": 0.005823143757879734,
+        "std_abs_shap": 0.003990525845438242
+      },
+      {
+        "feature": "fio2_delta_6h",
+        "mean_abs_shap": 0.005797108635306358,
+        "std_abs_shap": 0.00592588959261775
+      },
+      {
+        "feature": "map",
+        "mean_abs_shap": 0.005503532476723194,
+        "std_abs_shap": 0.0040516178123652935
+      },
+      {
+        "feature": "pao2_delta_12h",
+        "mean_abs_shap": 0.005233083851635456,
+        "std_abs_shap": 0.0065579479560256
+      },
+      {
+        "feature": "hematocrit_delta_6h",
+        "mean_abs_shap": 0.005153418984264135,
+        "std_abs_shap": 0.0045856027863919735
+      },
+      {
+        "feature": "alt_delta_12h",
+        "mean_abs_shap": 0.004972179885953665,
+        "std_abs_shap": 0.005105097312480211
+      },
+      {
+        "feature": "sodium_missing",
+        "mean_abs_shap": 0.0042581502348184586,
+        "std_abs_shap": 0.008516299538314342
+      },
+      {
+        "feature": "alt_delta_1h",
+        "mean_abs_shap": 0.0041289133951067924,
+        "std_abs_shap": 0.0056705898605287075
+      },
+      {
+        "feature": "hemoglobin_delta_12h",
+        "mean_abs_shap": 0.003843609942123294,
+        "std_abs_shap": 0.0034327886532992125
+      },
+      {
+        "feature": "alt_delta_6h",
+        "mean_abs_shap": 0.0036309449933469296,
+        "std_abs_shap": 0.0022967257536947727
+      },
+      {
+        "feature": "map_delta_12h",
+        "mean_abs_shap": 0.002763385185971856,
+        "std_abs_shap": 0.002160392003133893
+      },
+      {
+        "feature": "ptt_delta_12h",
+        "mean_abs_shap": 0.0024844969157129526,
+        "std_abs_shap": 0.002213626867160201
+      },
+      {
+        "feature": "ast_missing",
+        "mean_abs_shap": 0.0010011057602241635,
+        "std_abs_shap": 0.002002211520448327
+      },
+      {
+        "feature": "bicarbonate_delta_12h",
+        "mean_abs_shap": 0.000733502849470824,
+        "std_abs_shap": 0.0009328930173069239
+      },
+      {
+        "feature": "alt_missing",
+        "mean_abs_shap": 0.00042870501056313515,
+        "std_abs_shap": 0.0008574100211262703
+      },
+      {
+        "feature": "heart_rate_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "heart_rate_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sbp_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sbp_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "map_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "map_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "resp_rate_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "resp_rate_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "spo2_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "spo2_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "temperature_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "temperature_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "wbc_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "wbc_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hemoglobin_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hemoglobin_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hematocrit_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "hematocrit_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "platelets_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "platelets_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "lactate_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "lactate_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "creatinine_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "creatinine_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bun_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bun_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "glucose_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "sodium_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "potassium_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "potassium_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "chloride_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "chloride_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bicarbonate_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bicarbonate_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bilirubin_total_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "bilirubin_total_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "alt_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ast_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "albumin_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "albumin_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "inr_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "inr_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ptt_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "ptt_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "pao2_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "pao2_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "fio2_missing",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      },
+      {
+        "feature": "fio2_hours_since_obs",
+        "mean_abs_shap": 0.0,
+        "std_abs_shap": 0.0
+      }
+    ],
+    "fold_top3": [
+      [
+        "albumin",
+        "platelets_roll_mean",
+        "temperature_roll_std"
+      ],
+      [
+        "bilirubin_total_delta_12h",
+        "spo2_delta_6h",
+        "spo2_roll_std"
+      ],
+      [
+        "bicarbonate_roll_mean",
+        "lactate_roll_mean",
+        "bilirubin_total_delta_12h"
+      ],
+      [
+        "bicarbonate_roll_std",
+        "bun_delta_12h",
+        "resp_rate_delta_6h"
+      ],
+      [
+        "inr",
+        "creatinine_roll_slope",
+        "chloride_delta_12h"
+      ]
+    ]
+  },
+  "n_features": 234,
+  "n_samples": 300
+}
