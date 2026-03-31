@@ -1,15 +1,18 @@
 ---
-last_run: 2026-03-23T11:38:00Z
-tasks_completed: []
-tasks_blocked: [1034]
+last_run: 2026-03-31T12:27:00Z
+tasks_completed: [1608, 1609, 1610, 1611, 1701]
+tasks_blocked: []
 projects_touched: [two-hit-interferonopathy-model]
 ---
 
 ## Context
 
-- Task #1034 (compound genotyping classifier) set to blocked: per_patient_variants.csv does not exist, entire dependency chain stalled
-- Data curator #1033 blocked (Vettiatil 2026 paywalled), human task #1194 cancelled (user declined)
-- All completed modules: two_hit_cgas_sting_model.py (#1035), two_hit_isg_scorer.py (#1036), two_hit_therapeutic_model.py (#1037, #1193 SN-011)
-- 4 inhibitors in panel: H-151, RU.521, C-178, SN-011. 22 tests passing.
-- No pending or actionable tasks remain — project blocked until data access resolved
-- Recommended alternatives journaled: simulated gnomAD data, different WES/WGS cohort, or theoretical reframing
+- All 5 pending tasks completed this run. 71 tests passing across 3 modules.
+- #1608: Expanded cGAS-STING model with ddr_activity (CUX1/USP45/PARP14, leakage 0.3) and mito_activity (PRKN/POLG, leakage 0.25). 3 new scenarios: ddr_impaired, mito_impaired, triple_hit.
+- #1609: Added metabolic modifiers hif1a_activity (STING threshold) and pep_level (cGAS threshold, age-dependent). metabolic_vulnerable scenario + PEP age sweep output.
+- #1610: Created two_hit_temporal_dynamics.py modeling episodic→chronic transition. WT never chronic, trex1_het at episode 5, compound_het at 2, LOF at 1.
+- #1611: Added baricitinib and ruxolitinib JAK inhibitors (FDA-approved) to therapeutic model. copa_like profile. 6 inhibitors total.
+- #1701: Added complement_activation = ifn_output * 0.6 to pathway model. mg_like_samhd1 and mg_like_acquired validation scenarios. 13 total scenarios.
+- Previous blocker: #1034 (per_patient_variants.csv) still blocked but bypassed by new tasks focusing on model extensions.
+- Completed modules: two_hit_cgas_sting_model.py, two_hit_isg_scorer.py, two_hit_therapeutic_model.py, two_hit_temporal_dynamics.py
+- No pending or actionable tasks remain for this project.
