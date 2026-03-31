@@ -1,16 +1,16 @@
 ---
-last_run: 2026-03-26T04:45:00Z
-tasks_completed: [1430]
+last_run: 2026-03-31T15:41:00Z
+tasks_completed: [1626]
 tasks_blocked: []
 projects_touched: [wrn-msi-pancancer-atlas]
 ---
 
 ## Context
 
-- wrn-msi-pancancer-atlas: Wrote comprehensive research report (365 lines) at reports/cancer/wrn-msi-pancancer-atlas.md
-- Report covers all 6 phases: MSI/MMR classifier, WRN effect sizes, genome-wide screen, DDR drug validation, TCGA integration, resistance-aware deployment
-- Prominently flagged POOLED_ESTIMATE limitation (15/18 types use pan-cancer pooled d=-2.833)
-- Documented TP53-GOF attenuation, novel hits (PELO, RPL22L1, DHX9), DNA-PKi convergence, and three-drug sequencing framework
-- Updated project record: findings_content, plain_summary, impact_score=high, novelty_summary, blind_spots
-- Committed as bf05bd9, task #1430 set to done
+- wrn-msi-pancancer-atlas: Added section 3.7 "Clinical Landscape & Concordance" to reports/cancer/wrn-msi-pancancer-atlas.md
+- Section covers: VVD-214 Phase 1 ORR (~12.5%), HRO-761 and NDI-219216 status, pembrolizumab per-tumor-type benchmarks, DepMap-clinical concordance table
+- Key insight: no correlation between IO response and WRN dependency across tumor types — complementary mechanisms
+- Updated project findings_content with finding #7 (clinical concordance)
+- Committed as c1a00bf, task #1626 set to done, journal #2904 logged
+- Previous work: task #1430 wrote the original 365-line report (committed bf05bd9)
 - No remaining tasks for this project
