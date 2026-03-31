@@ -420,10 +420,13 @@ CANDIDATE_GENES: list[RareVariantGene] = [
         chromosome="1p36.23",
         references=["Saia_2026_Frontiers_Psychiatry"],
         notes="Atrophin-2 nuclear receptor corepressor. VUS in pediatric TS "
-        "cohort. Interacts with NR2F2-family nuclear receptors — potential "
-        "cross-project link to striatal interneuron GRN (NR2F2 is CR "
-        "interneuron master regulator). RERE mutations cause 1p36 deletion-"
-        "like neurodevelopmental syndrome.",
+        "cohort. Interacts with NR2F2-family nuclear receptors. "
+        "CROSS-PROJECT: Links rare variant genetics to ts-striatal-interneuron-"
+        "pathology GRN finding — NR2F2 identified as CR interneuron master "
+        "regulator in single-cell analysis. RERE→NR2F2 corepression is a "
+        "convergence point between rare variant and single-cell projects. "
+        "RERE mutations cause 1p36 deletion-like neurodevelopmental syndrome. "
+        "PPI: RERE↔NR2F1 (coexpression, score 0.478). Ref: RD journal #2513.",
     ),
 ]
 
