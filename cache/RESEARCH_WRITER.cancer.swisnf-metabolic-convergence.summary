@@ -1,0 +1,15 @@
+---
+last_run: 2026-03-31T11:29:00Z
+tasks_completed: [1621]
+tasks_blocked: []
+projects_touched: [swisnf-metabolic-convergence]
+---
+
+## Context
+
+- swisnf-metabolic-convergence: Wrote comprehensive research report at reports/cancer/swisnf-metabolic-convergence.md (264 lines). Updated project dashboard with findings_content, plain_summary, impact_score=high, novelty_summary, blind_spots.
+- Task #1621 (FHD-286+KRAS preprint reference): Completed. Included bioRxiv 2026.02.27.708377v1 in discussion section as external validation, not scope expansion, per RD directive.
+- Report covers: 104 convergent metabolic genes, OXPHOS dominant (34 genes, FDR=2.56e-13), HMGCR/statin falsified, GSH/eprenetapopt falsified, IACS-010759 PRISM validation (SMARCA4 d=-0.36, p=0.007), metformin as repurposing candidate.
+- Key caveats documented: ~40% FP rate in convergent set, ovarian cancer dominance, TCGA limited to lung, IACS-010759 tissue confounding, no wet-lab validation.
+- Project status remains "analysis" — awaiting formal validation scientist review before advancing to documentation/published.
+- No further research_writer tasks pending for this project.
