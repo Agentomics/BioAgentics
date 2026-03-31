@@ -1,0 +1,57 @@
+{
+  "phase": "3.1",
+  "description": "Epithelial reserve score for stricture progression in RISK cohort (GSE93624)",
+  "dataset": "GSE93624 (RISK cohort)",
+  "n_cd_patients": 210,
+  "n_progressors": 27,
+  "genes_available": [
+    "CPO",
+    "GAS1",
+    "CASP6",
+    "SNX3"
+  ],
+  "genes_missing": [
+    "PGC",
+    "BPIFB1"
+  ],
+  "cv_results": {
+    "reserve_score": {
+      "cv_mean_auc": 0.4918,
+      "cv_std_auc": 0.1431,
+      "cv_median_auc": 0.5093,
+      "cv_95ci": [
+        0.2051,
+        0.713
+      ],
+      "full_data_auc": 0.5622,
+      "coef": -0.1327,
+      "n_folds": 100
+    },
+    "fibrosis_score": {
+      "cv_mean_auc": 0.6415,
+      "cv_std_auc": 0.103,
+      "cv_median_auc": 0.631,
+      "cv_95ci": [
+        0.4422,
+        0.8156
+      ],
+      "full_data_auc": 0.6418,
+      "coef": 0.4654,
+      "n_folds": 100
+    }
+  },
+  "interaction_model_auc": 0.6648,
+  "reserve_fibrosis_correlation": {
+    "spearman_r": -0.0032,
+    "p_value": 0.963577
+  },
+  "success_criterion": {
+    "test": "reserve score associated with progression (p<0.05)",
+    "met": false,
+    "p_value": 0.508644
+  },
+  "comparison_to_existing": {
+    "existing_cpa3_emt_auc": 0.608,
+    "reserve_cv_auc": 0.4918
+  }
+}
