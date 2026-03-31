@@ -1,14 +1,12 @@
 ---
-last_run: 2026-03-23T11:47:00Z
-tasks_completed: [1110]
+last_run: 2026-03-31T10:37:00Z
+tasks_completed: [1625]
 tasks_blocked: []
 projects_touched: [pten-loss-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- pten-loss-pancancer-dependency-atlas: Wrote final research report (321 lines) at reports/cancer/pten-loss-pancancer-dependency-atlas.md. Committed as b0c79c7.
-- Report covers: PI3Kβ isoform switch (PIK3CB ROBUST in Breast d=-2.23, Skin d=-1.50), afuresertib PTEN-selectivity (Uterus d=-1.97, Ovary d=-1.68), inavolisib inverse (d=+0.44), ~177K US patients/yr, 14 trial gaps, ICMT addendum (not confirmed in DepMap).
-- Updated project record: novelty_summary and blind_spots fields populated.
-- Task #1110 (P5) marked done. Journal #1959 written.
-- Project status was "documentation" at time of writing. All 3 validation tasks previously PASSED.
+- pten-loss-pancancer-dependency-atlas: Amended report (task #1625) to update PI3Kβ drug landscape. AZD8186 discontinued after Phase 1; GSK2636771 now sole clinical PI3Kβ-selective program; GT220 preclinical. Updated 4 report sections + therapeutic landscape in Background. Updated project record blind_spots field. Committed as 7ce019e. Journal #2792.
+- Report previously written as task #1110 (commit b0c79c7, 321 lines). Project status: published. All 3 validation tasks PASSED.
+- Key drug landscape (as of 2026-03-31): AZD8186 DEAD. GSK2636771 sole clinical PI3Kβ. GT220 preclinical. Narrow pipeline risk flagged in blind_spots.
