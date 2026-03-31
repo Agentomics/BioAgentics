@@ -1,0 +1,61 @@
+{
+  "phase": "2.3",
+  "description": "Correlation of deconvolved epithelial proportion with bulk gene expression",
+  "n_samples": 83,
+  "correlations": {
+    "PGC_expr": {
+      "spearman_r": 0.1335,
+      "p_value": 0.228831
+    },
+    "BPIFB1_expr": {
+      "spearman_r": 0.0596,
+      "p_value": 0.592408
+    },
+    "CPO_expr": {
+      "spearman_r": 0.2286,
+      "p_value": 0.037651
+    },
+    "GAS1_expr": {
+      "spearman_r": -0.3617,
+      "p_value": 0.00078
+    },
+    "CASP6_expr": {
+      "spearman_r": 0.2382,
+      "p_value": 0.030151
+    },
+    "SNX3_expr": {
+      "spearman_r": -0.3821,
+      "p_value": 0.000365
+    },
+    "reserve_score": {
+      "spearman_r": 0.1772,
+      "p_value": 0.109066
+    },
+    "goblet_proportion_vs_PGC_expr": {
+      "spearman_r": 0.3625,
+      "p_value": 0.000758
+    },
+    "goblet_proportion_vs_BPIFB1_expr": {
+      "spearman_r": -0.0649,
+      "p_value": 0.559798
+    },
+    "goblet_proportion_vs_CPO_expr": {
+      "spearman_r": 0.1874,
+      "p_value": 0.089763
+    },
+    "goblet_proportion_vs_GAS1_expr": {
+      "spearman_r": 0.465,
+      "p_value": 9e-06
+    },
+    "goblet_proportion_vs_CASP6_expr": {
+      "spearman_r": 0.5728,
+      "p_value": 0.0
+    },
+    "goblet_proportion_vs_SNX3_expr": {
+      "spearman_r": 0.6026,
+      "p_value": 0.0
+    }
+  },
+  "pgc_proxy_criterion_met": false,
+  "bpifb1_proxy_criterion_met": false
+}
