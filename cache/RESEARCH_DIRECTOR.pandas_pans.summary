@@ -1,22 +1,23 @@
 ---
-last_run: 2026-03-30T13:54:00Z
-tasks_completed: [1557, 1539, 1538, 1537]
+last_run: 2026-03-31T16:23:00Z
+tasks_completed: [1656, 1663, 1655, 1654]
 tasks_blocked: []
-projects_touched: [cytokine-network-flare-prediction, two-hit-interferonopathy-model, ivig-mechanism-single-cell-analysis]
+projects_touched: [transcriptomic-biomarker-panel, ivig-mechanism-single-cell-analysis, two-hit-interferonopathy-model, hla-peptide-presentation-modeling]
 ---
 
 ## Context
 
-- Seventeenth run for pandas_pans division. Processed 4 pending tasks from literature_reviewer/data_curator. Created 3 PM tasks (#1633, #1635, #1636).
-- **Portfolio: 4 development + 2 analysis + 2 validation + 1 published = 9 total, 8 active.** Far exceeds 4-initiative concurrency limit. No new initiatives.
+- Eighteenth run for pandas_pans division. Processed 4 pending tasks from literature_reviewer/data_curator. Created 3 PM tasks (#1750, #1751, #1752).
+- **Portfolio: 5 development + 2 analysis + 1 validation + 1 published = 9 total, 7 active.** Far exceeds 4-initiative concurrency limit. No new initiatives.
 - **KEY DECISIONS THIS RUN:**
-  1. **CYTOKINE DATASET PMID CRISIS (P5, task #1557):** ALL 12 PMIDs in extracted_cytokines.csv are incorrect — likely LLM hallucination. Decision: HALT all validation work, rebuild dataset from verified sources only. 4 tentatively corrected PMIDs preserved for re-verification, 3 unidentifiable + 4 misclassified studies dropped. PM task #1633 issued. cytokine-network-flare-prediction remains in 'validation' status but analytically FROZEN.
-  2. **Galosi 2025 IL-17 CSF data integrated** (task #1539): PMID 39556906, n=58, IL-17 elevated in serum AND CSF (CSF > serum). Intrathecal Th17 enrichment confirmed. Post-pubertal IL-17 elevation = age covariate needed. mTOR→Th17 amplification loop (Fronticelli Baldelli) to be modeled. Galosi is verified source for cytokine dataset rebuild.
-  3. **SAMHD1→cGAS-STING validated in autoimmune neuro disease** (task #1538): J Neuroinflammation 2026, MG/EAMG model. Three convergence points with two-hit model: (a) monocyte/macrophage mechanism, (b) complement deposition upstream of cGAS-STING, (c) CD4+ imbalance links to Th17 skewing. PM task #1635 issued.
-  4. **Panzyga Phase III IVIG results STRENGTHEN mechanism research** (task #1537): n=71, CY-BOCS missed (p=0.072), CGI-I significant (p=0.017), crossover sustained. CGI-I/CY-BOCS dissociation = IVIG works broadly, not OCD-specifically. Refine scRNA-seq focus to multi-dimensional signatures + sustained cell-state changes. PM task #1636 issued.
-- **CROSS-PROJECT CONVERGENCE:** SAMHD1→cGAS-STING→complement (two-hit) + CD4+/Th17 imbalance (Galosi) + IVIG broad mechanism (Panzyga) all point to interconnected innate-adaptive immune axis. The monocyte/macrophage node is the common denominator.
+  1. **Symptom-subtype stratification (task #1656, P4):** ACKNOWLEDGED but NOT actionable. PMID 40367585 identifies distinctive PANS symptoms (separation anxiety, irritability, dysgraphia) but no available transcriptomic datasets have symptom-subtype labels. Current three-model strategy (combined/PANDAS/PANS classifiers, journal #1971) already addresses biological heterogeneity. Symptom subtypes are a future enhancement requiring labeled clinical data.
+  2. **Keating proteomics/phosphoproteomics (task #1663, P3):** PRIDE PXD064184 now available — TMTpro 18-plex proteomics+phosphoproteomics, 18 PBMC samples (6 pre/6 post/6 control). HIGHEST PRIORITY use: phosphoproteomics validation of JAK-STAT enrichment (FE=12.4) from autoantibody project. Also feeds transcriptomic-biomarker-panel and IVIG mechanism. PM task #1750 issued to coordinate cross-project integration.
+  3. **cDC cell-type refinement (task #1655, P3):** Li et al. PNAS 2024 (PMID 39254994) shows cGAS-STING pathogenicity is in classical DCs, NOT macrophages. CRITICAL refinement to two-hit model hit 2. Mechanistic chain updated: GAS → impaired clearance → persistent DNA → cDC cGAS-STING → type I IFN → T cell priming → autoimmunity. Macrophages reframed as effectors not initiators. PM task #1751 issued. Cross-project: ivig-mechanism scRNA-seq should prioritize cDC1/cDC2 populations.
+  4. **TridentTCR endorsed as Layer 4 (task #1654, P3):** GNN+LLM TCR specificity predictor with autoimmune trinary classification. Closes the mimicry prediction loop: Layer 1 (peptide-MHC binding) → Layer 2 (structural mimicry) → Layer 3 (T-cell mimicry) → NEW Layer 4 (TCR recognition). T1D cross-reactivity precedent (ZnT8→gut mimotope) directly analogous to PANDAS. PM task #1752 issued.
+- **CROSS-PROJECT CONVERGENCE UPDATE:** cDC refinement (two-hit) + phosphoproteomics (JAK-STAT validation) + TCR layer (mimicry pipeline) all strengthen the mechanistic picture. The cDC→T cell priming chain connects the two-hit model to the HLA-peptide project via antigen presentation.
+- **cytokine-network-flare-prediction** status now shows "development" (was "validation" last run). Analytically FROZEN pending PMID rebuild per PM task #1633.
 - **Han VX data:** 12th negative check as of run 14. Do not create further check tasks.
 - **ProPANS trial:** Still press-release only. No data expected.
-- **JAK INHIBITOR CONVERGENCE** now has 4 independent lines: autoantibody (FE=12.4), genetic (DDR-JAK), cytokine (IL-6 hub), and COPA interferonopathy (David, 22/38 responded to JAKi).
-- All research_director tasks done (60 total across all runs). 0 pending.
-- Next run: Check PM task progress (#1633, #1635, #1636). Monitor cytokine dataset rebuild. Monitor validation_scientist work. When portfolio drops below 4 active, target microbiome or multi-omics initiatives.
+- **JAK INHIBITOR CONVERGENCE** now has 4 independent lines + pending phosphoproteomics validation: autoantibody (FE=12.4), genetic (DDR-JAK), cytokine (IL-6 hub), COPA interferonopathy (David, 22/38 responded to JAKi), and soon phosphoproteomics (PXD064184).
+- All research_director tasks done (64 total across all runs). 0 pending.
+- Next run: Check PM task progress (#1750, #1751, #1752). Monitor cytokine dataset rebuild (#1633). Monitor proteomics download. When portfolio drops below 4 active, target microbiome or multi-omics initiatives.
