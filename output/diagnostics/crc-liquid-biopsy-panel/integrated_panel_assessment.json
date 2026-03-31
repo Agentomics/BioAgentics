@@ -1,0 +1,144 @@
+{
+  "assessment_date": "2026-03-31",
+  "analyst": "analyst",
+  "division": "diagnostics",
+  "project": "crc-liquid-biopsy-panel",
+  "title": "Integrated Panel Assessment — Post-Developer Corrections",
+  "summary": "Developer completed all three requested tasks (#1336 LASSO cost fix, #1337 bootstrap validation, #1338 CpG-gene mapping). Key revision: methylation AUC drops from 0.979 (leaked) to 0.882 (corrected LOO-CV). Protein panel also improved from AUC 0.871 to 0.896 via LR optimization. Two-tier architecture simulates 93.2% sensitivity but at 77.4% specificity — below 95% target. All methylation results remain constrained by n=24; external validation cohort is the critical blocker.",
+
+  "architecture_comparison_revised": {
+    "A_protein_only": {
+      "auc": 0.896,
+      "auc_ci95": [0.786, 1.006],
+      "sens_at_95spec": 0.577,
+      "sens_at_95spec_std": 0.209,
+      "cost_usd": 105,
+      "n_samples": 121,
+      "method": "LR, nested 5-fold CV",
+      "validation_rigor": "HIGH",
+      "change_from_prior": "AUC +0.025 (LR alone beats ensemble), sens@95spec +0.100",
+      "markers": ["MMP9", "CXCL8", "S100A4", "TIMP1", "SEPT9", "ERBB2", "SPP1"]
+    },
+    "B_methylation_only": {
+      "auc": 0.882,
+      "auc_ci95_bootstrap": [0.721, 1.0],
+      "sens_at_95spec": 0.75,
+      "sens_at_95spec_ci_bootstrap": [0.462, 1.0],
+      "cost_usd": 60,
+      "n_samples": 24,
+      "method": "LogisticRegressionCV, LOO-CV with feature selection inside each fold",
+      "validation_rigor": "LOW — n=24, wide CIs, MODERATE overfitting (AUC dropped 0.097 from leaked version)",
+      "change_from_prior": "AUC -0.097 (corrected from 0.979 leaked), sens@95spec -0.083 (from 0.833)",
+      "permutation_p": 0.0,
+      "note": "Signal is real (p<0.001) but magnitude uncertain due to n=24"
+    },
+    "C_two_tier_reflex": {
+      "sensitivity": 0.932,
+      "sensitivity_simulation_mean": 0.927,
+      "sensitivity_simulation_std": 0.019,
+      "specificity": 0.774,
+      "effective_cost_usd": 134,
+      "pct_avoiding_tier2": 0.512,
+      "method": "Protein tier 1 [0.139, 0.899] + simulated methylation reflex (binormal, AUC=0.882)",
+      "validation_rigor": "LOW — tier 2 is simulated, not actual paired data",
+      "change_from_prior": "Updated with corrected methylation AUC. Sensitivity stable, specificity dropped.",
+      "note": "Does NOT meet 95% specificity target. Would require paired protein+methylation dataset to validate."
+    }
+  },
+
+  "project_targets_assessment": {
+    "sensitivity_ge_70_at_spec_95": {
+      "status": "NOT MET (validated)",
+      "best_validated": "Protein LR: 57.7% sens@95spec (n=121, nested CV)",
+      "best_unvalidated": "Methylation: 75% sens@95spec (n=24, corrected LOO-CV, CI 46.2-100%)",
+      "note": "Methylation CIs include values both above and below 70% target — cannot confirm."
+    },
+    "combined_auc_gt_single_by_5pct": {
+      "status": "PARTIALLY MET",
+      "two_tier_vs_protein": "Two-tier sens 93.2% >> protein 57.7%, but spec 77.4% << 95% target",
+      "note": "Two-tier uses simulated methylation, not paired data"
+    },
+    "cost_lt_200": {
+      "status": "MET",
+      "protein_only": 105,
+      "methylation_only": 60,
+      "two_tier_effective": 134
+    },
+    "validation_within_5pct": {
+      "status": "BLOCKED — no independent validation cohort available"
+    }
+  },
+
+  "stability_analysis": {
+    "n_stable_cpgs": 3,
+    "n_candidate_cpgs": 298,
+    "stable_features": ["cg26449787 (95.8%)", "cg25927227/SFRP1 (71.6%)", "cg12840719 (68.2%)"],
+    "interpretation": "Only 1% of candidates are robustly selected across 500 subsamples. The methylation signal concentrates in very few loci. A 3-CpG classifier achieves AUC 1.0 (LOO, n=24) but this is almost certainly overfit — 3 features separating 12 from 12 samples.",
+    "clinical_concern": "Extreme feature concentration increases fragility. If any stable CpG fails in a new population, the panel collapses."
+  },
+
+  "cpg_gene_biology": {
+    "genes_represented": ["SFRP1", "SEPT9", "EYA4", "SFRP2", "TWIST1", "ZNF304", "TFPI2"],
+    "n_of_21_cmcd": 7,
+    "key_missing_genes": ["BMP3 (Cologuard)", "NDRG4 (Cologuard)", "SDC2", "APC", "CDKN2A", "RASSF1"],
+    "interpretation": "The Wnt pathway is well represented (SFRP1, SFRP2) along with established CRC methylation markers (SEPT9, TWIST1, EYA4). Missing BMP3/NDRG4 may reflect platform coverage of GSE149282 rather than biology. SEPT9 is the only FDA-approved blood-based CRC methylation marker."
+  },
+
+  "protein_optimization_results": {
+    "best_classifier": "Logistic Regression (raw features)",
+    "auc": 0.896,
+    "sens_at_95spec": 0.577,
+    "n_markers": 7,
+    "least_important_marker": "TIMP1 (RFE rank 2)",
+    "feature_engineering_impact": "Negligible — log transforms, interactions, and polynomial terms do not improve over raw features",
+    "note": "6-marker panel without TIMP1 achieves near-identical AUC (0.896 vs 0.896)"
+  },
+
+  "critical_issues": [
+    {
+      "issue": "Methylation n=24 remains unreliable",
+      "severity": "HIGH",
+      "detail": "Bootstrap CI for sens@95spec spans [46.2%, 100%]. Cannot distinguish 'adequate' from 'useless' with this sample size. OOB bootstrap gives AUC 1.0 uniformly, which is a small-sample artifact, not validation.",
+      "blocker": "Independent cfDNA methylation validation cohort n>=100 (former task #1340)"
+    },
+    {
+      "issue": "Two-tier architecture uses simulated methylation",
+      "severity": "MEDIUM",
+      "detail": "Binormal simulation matching AUC 0.882 is not equivalent to actual paired predictions. Correlation structure between protein and methylation biomarkers is unknown.",
+      "blocker": "Paired protein+methylation dataset from same patients"
+    },
+    {
+      "issue": "Stability selection 3-CpG perfect AUC is likely overfit",
+      "severity": "MEDIUM",
+      "detail": "3 features perfectly separating 12/12 samples in LOO is expected by chance when features are pre-selected for stability. This is NOT independent validation.",
+      "action": "Do not report 3-CpG AUC 1.0 as a real performance estimate"
+    },
+    {
+      "issue": "Cost sensitivity LASSO AUC 1.0 is training performance",
+      "severity": "MEDIUM",
+      "detail": "All LASSO panels show AUC 1.0 on the n=24 dataset. This reflects the small sample, not true discriminative ability. Cannot use for architecture selection.",
+      "action": "Use corrected LOO-CV (AUC 0.882) as the honest methylation performance estimate"
+    },
+    {
+      "issue": "crc-liquid-biopsy-panel not in active database",
+      "severity": "LOW",
+      "detail": "Project exists in archive/db.sqlite at 'planning' status but not in active db.sqlite. Tasks cannot be created until project is re-registered.",
+      "action": "Flag for project_manager or dispatcher to re-register project"
+    }
+  ],
+
+  "recommended_next_steps": [
+    "1. CRITICAL: Acquire independent cfDNA methylation validation cohort (n>=100 CRC + 100 control). Without this, methylation results remain preliminary.",
+    "2. Re-register crc-liquid-biopsy-panel in active database (project_manager task).",
+    "3. Run paired protein+methylation analysis if validation cohort includes both modalities.",
+    "4. Consider SEPT9 methylation as standalone marker — it is FDA-approved (Epi proColon) and present in our selection. Direct comparison to our panel would establish added value.",
+    "5. Protein panel is ready for advancement: AUC 0.896, 57.7% sens@95spec is honest and reproducible, though below 70% target.",
+    "6. Investigate why BMP3/NDRG4 are missing from GSE149282 — platform limitation vs biological absence in cfDNA."
+  ],
+
+  "honest_state_of_evidence": {
+    "what_we_know": "A 7-protein panel achieves AUC 0.896 (nested CV, n=121). cfDNA methylation shows corrected AUC 0.882 (LOO, n=24) with moderate overfitting. Two-tier reflex testing could theoretically reach 93% sensitivity at 77% specificity.",
+    "what_we_dont_know": "Whether methylation performance holds in an independent cohort. Whether protein and methylation are truly complementary (no paired data). Whether 3 stable CpGs are sufficient or an artifact of n=24.",
+    "what_would_change_our_mind": "An independent cfDNA methylation cohort (n>=100) showing AUC >0.85 would validate the methylation arm. A paired cohort showing the two-tier architecture maintains >90% sensitivity at >90% specificity would be a significant finding."
+  }
+}
