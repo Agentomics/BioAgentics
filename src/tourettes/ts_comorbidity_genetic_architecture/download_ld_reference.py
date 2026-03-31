@@ -45,7 +45,7 @@ DOWNLOADS = [
         "name": "1000G Phase 3 plink files",
         "url": f"{ZENODO_BASE}/1000G_Phase3_plinkfiles.tgz",
         "filename": "1000G_Phase3_plinkfiles.tgz",
-        "extract_dir": "1000G_Phase3_plinkfiles",
+        "extract_dir": "1000G_EUR_Phase3_plink",
         "description": "Reference genotypes for LD clumping in PRS",
     },
     {
@@ -53,6 +53,7 @@ DOWNLOADS = [
         "url": f"{ZENODO_BASE}/1000G_Phase3_baselineLD_v2.2_ldscores.tgz",
         "filename": "1000G_Phase3_baselineLD_v2.2_ldscores.tgz",
         "extract_dir": "baselineLD_v2.2",
+        "flat_archive": True,
         "description": "Functional annotation categories for S-LDSC partitioned heritability (v2.2)",
     },
     {
@@ -147,7 +148,13 @@ def download_all(data_dir: Path | None = None, skip_existing: bool = True) -> di
         logger.info("%s MD5: %s", item["filename"], md5)
 
         if extract_dir is not None:
-            _extract_archive(file_path, data_dir)
+            if item.get("flat_archive"):
+                # Archive has no top-level directory; extract into subdirectory
+                extract_path = data_dir / extract_dir
+                extract_path.mkdir(parents=True, exist_ok=True)
+                _extract_archive(file_path, extract_path)
+            else:
+                _extract_archive(file_path, data_dir)
             # Remove archive after successful extraction to save disk space
             file_path.unlink()
             logger.info("Removed archive %s after extraction", file_path.name)
