@@ -84,6 +84,7 @@ class PathwayState:
     tbk1_activity: float = 0.0
     irf3_activity: float = 0.0
     ifn_output: float = 0.0
+    complement_activation: float = 0.0  # IFN-driven complement upregulation
 
 
 # Default genotype scenarios to simulate
@@ -159,6 +160,18 @@ DEFAULT_SCENARIOS: list[GenotypeScenario] = [
         hif1a_activity=0.4,
         pep_level=0.5,
         description="Metabolic vulnerable — TREX1 het + low HIF-1a + low PEP (onset-prone)",
+    ),
+    GenotypeScenario(
+        name="mg_like_samhd1",
+        trex1_activity=1.0,
+        samhd1_activity=0.3,
+        description="MG-like SAMHD1 genetic variant — cross-disease validation (AGS + MG)",
+    ),
+    GenotypeScenario(
+        name="mg_like_acquired",
+        trex1_activity=1.0,
+        samhd1_activity=0.5,
+        description="MG-like acquired SAMHD1 downregulation — milder phenotype",
     ),
 ]
 
@@ -265,6 +278,11 @@ def simulate_pathway(
     # Type I IFN output (IFN-β transcription driven by active IRF3)
     state.ifn_output = state.irf3_activity
 
+    # Complement activation: IFN drives complement upregulation
+    # Based on MG/EAMG findings: SAMHD1 loss → cGAS-STING → complement deposition
+    COMPLEMENT_COUPLING = 0.6
+    state.complement_activation = state.ifn_output * COMPLEMENT_COUPLING
+
     return state
 
 
@@ -331,6 +349,7 @@ def run_genotype_simulations(
                 "tbk1_activity": round(state.tbk1_activity, 4),
                 "irf3_activity": round(state.irf3_activity, 4),
                 "ifn_output": round(state.ifn_output, 4),
+                "complement_activation": round(state.complement_activation, 4),
             })
 
         # Summary: IFN output at moderate infection (0.5 DNA exposure)
@@ -446,8 +465,8 @@ def plot_pathway_heatmap(
     """Heatmap of pathway node activation across genotype scenarios."""
     scenarios = results["scenarios"]
     nodes = ["cytosolic_dna", "cgas_activity", "sting_activity",
-             "tbk1_activity", "irf3_activity", "ifn_output"]
-    node_labels = ["Cytosolic DNA", "cGAS", "STING", "TBK1", "IRF3", "IFN-β"]
+             "tbk1_activity", "irf3_activity", "ifn_output", "complement_activation"]
+    node_labels = ["Cytosolic DNA", "cGAS", "STING", "TBK1", "IRF3", "IFN-β", "Complement"]
 
     # Find the exposure result closest to dna_exposure
     dna_levels = results["dna_exposure_levels"]

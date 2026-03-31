@@ -61,7 +61,7 @@ class TestRunTemporalSimulations:
     def test_returns_all_default_scenarios(self):
         results = run_temporal_simulations()
         assert "trajectories" in results
-        assert len(results["trajectories"]) == 11
+        assert len(results["trajectories"]) == 13
 
     def test_metadata_present(self):
         results = run_temporal_simulations()

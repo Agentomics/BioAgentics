@@ -70,7 +70,7 @@ class TestSimulatePathway:
         state = simulate_pathway(gas_dna=1.0, trex1_activity=0.0, samhd1_activity=0.0)
         for val in [state.cytosolic_dna, state.cgas_activity, state.cgamp_level,
                     state.sting_activity, state.tbk1_activity, state.irf3_activity,
-                    state.ifn_output]:
+                    state.ifn_output, state.complement_activation]:
             assert 0.0 <= val <= 1.0
 
     def test_ddr_impairment_increases_cytosolic_dna(self):
@@ -140,13 +140,33 @@ class TestSimulatePathway:
                                hif1a_activity=1.0, pep_level=1.0)
         assert old.ifn_output == new.ifn_output
 
+    def test_complement_proportional_to_ifn(self):
+        """Complement activation should be proportional to IFN output."""
+        state = simulate_pathway(gas_dna=0.5, trex1_activity=0.1, samhd1_activity=0.1)
+        assert state.complement_activation == state.ifn_output * 0.6
+
+    def test_complement_zero_when_no_ifn(self):
+        """No IFN → no complement activation."""
+        state = simulate_pathway(gas_dna=0.0, trex1_activity=1.0, samhd1_activity=1.0)
+        assert state.complement_activation == 0.0
+
+    def test_complement_bounded(self):
+        """Complement activation should be in [0, 0.6] (max = IFN=1.0 * 0.6)."""
+        state = simulate_pathway(gas_dna=1.0, trex1_activity=0.0, samhd1_activity=0.0)
+        assert 0.0 <= state.complement_activation <= 0.6
+
+    def test_mg_like_samhd1_complement(self):
+        """MG-like SAMHD1 variant should produce complement activation at moderate infection."""
+        state = simulate_pathway(gas_dna=0.5, trex1_activity=1.0, samhd1_activity=0.3)
+        assert state.complement_activation > 0
+
 
 class TestRunGenotypSimulations:
     def test_returns_all_scenarios(self):
         results = run_genotype_simulations()
         assert "scenarios" in results
         assert len(results["scenarios"]) == len(DEFAULT_SCENARIOS)
-        assert len(DEFAULT_SCENARIOS) == 11
+        assert len(DEFAULT_SCENARIOS) == 13
 
     def test_scenario_has_exposure_results(self):
         results = run_genotype_simulations()
