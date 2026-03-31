@@ -1,15 +1,20 @@
 ---
-last_run: 2026-03-27T06:34:39Z
-tasks_completed: [1385]
+last_run: 2026-03-31T15:31:00Z
+tasks_completed: [1632]
 tasks_blocked: []
 projects_touched: [keap1-nrf2-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- **Project status:** analysis (advanced from development this run)
-- All developer tasks done: #1189-1191 (Phases 1-3), #1305-1306 (Phase 4 PRISM)
-- Created 4 analyst tasks: #1490 (Phase 1-2 SL interpretation), #1491 (Phase 3 co-mutation + SLC33A1/SUCO/TAPT1 cross-ref), #1492 (Phase 4 PRISM + DRP-104 integration), #1493 (clinical prioritization synthesis)
-- PM task #1385 (ER-resident SL targets + DRP-104) routed into analyst tasks #1491 and #1492, marked done
-- Key findings entering analysis: UXS1/pyrimidine axis has strong transcriptional evidence (r=-0.445), ATR axis pharmacologically null, broad drug resistance phenotype, DRP-104 Phase 2 enrolling
-- Next: await all 4 analyst tasks (#1490-1493) completion, then advance to validation
+- **Project status:** validation (advanced from analysis this run)
+- All analyst tasks done: #1490-1493 (Phases 1-4 interpretation)
+- RD review task #1618 done — approved advancement to validation
+- PM task #1632 (advance to validation) completed: status updated, labels added (validation-ready, biomarker)
+- Created 3 validation_scientist tasks:
+  - #1733: ER-vulnerability cluster (SUCO d=-0.82, SLC33A1 d=-0.72) — cross-validated by independent CRISPR screen
+  - #1734: NRF2 activity score biomarker (r=-0.445 with UXS1) — robustness, lineage confounding, clinical feasibility
+  - #1735: UXS1/pyrimidine axis + DHODH inhibitor + ATR null + E3 ligase non-replication + DRP-104
+- Key status: 2/5 success criteria met, 3 novel SL targets (vs 10 target), broad drug resistance (0/6790 PRISM hits)
+- RD task #1646 (VVD-065 molecular glue evaluation) pending — assigned to RD, not PM action needed
+- Next: await all 3 validation_scientist tasks (#1733-1735) completion, then advance to documentation
