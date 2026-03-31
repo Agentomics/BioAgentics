@@ -1,0 +1,227 @@
+{
+  "phase": "2.4",
+  "description": "FAE burden vs epithelial reserve hypothesis comparison",
+  "fae_genes": [
+    "GP2",
+    "CCL20",
+    "TNFAIP2",
+    "MARCKSL1"
+  ],
+  "reserve_genes": [
+    "PGC",
+    "BPIFB1",
+    "CPO",
+    "GAS1",
+    "CASP6",
+    "SNX3"
+  ],
+  "h1_reserve_loso_cv": {
+    "overall_auc": 0.5581,
+    "auc_95ci": [
+      0.4367,
+      0.6792
+    ],
+    "per_study": [
+      {
+        "held_out_study": "GSE16879",
+        "n_test": 37,
+        "auc": 0.6706,
+        "coef": -0.7917
+      },
+      {
+        "held_out_study": "GSE12251",
+        "n_test": 23,
+        "auc": 0.7348,
+        "coef": -0.6913
+      },
+      {
+        "held_out_study": "GSE73661",
+        "n_test": 23,
+        "auc": 0.3583,
+        "coef": -1.343
+      }
+    ]
+  },
+  "h2_fae_identity_loso_cv": {
+    "overall_auc": 0.3767,
+    "auc_95ci": [
+      0.2619,
+      0.5018
+    ],
+    "per_study": [
+      {
+        "held_out_study": "GSE16879",
+        "n_test": 37,
+        "auc": 0.3706,
+        "coef": 0.701
+      },
+      {
+        "held_out_study": "GSE12251",
+        "n_test": 23,
+        "auc": 0.6136,
+        "coef": 0.0725
+      },
+      {
+        "held_out_study": "GSE73661",
+        "n_test": 23,
+        "auc": 0.3167,
+        "coef": -0.2659
+      }
+    ]
+  },
+  "combined_loso_cv": {
+    "overall_auc": 0.4913,
+    "auc_95ci": [
+      0.3625,
+      0.6189
+    ],
+    "per_study": [
+      {
+        "held_out_study": "GSE16879",
+        "n_test": 37,
+        "auc": 0.5294
+      },
+      {
+        "held_out_study": "GSE12251",
+        "n_test": 23,
+        "auc": 0.7424
+      },
+      {
+        "held_out_study": "GSE73661",
+        "n_test": 23,
+        "auc": 0.2917
+      }
+    ]
+  },
+  "delta_auc_fae_minus_reserve": -0.1814,
+  "verdict": "H1 (Reserve)",
+  "region_analysis": {
+    "region_counts": {
+      "GSE12251_colon": 23,
+      "GSE16879_colon": 19,
+      "GSE16879_ileum": 18,
+      "GSE73661_colon": 23
+    },
+    "ileum_analysis": {
+      "n": 18,
+      "fae_burden_score": {
+        "resp_mean": -0.229,
+        "non_resp_mean": 0.0683,
+        "diff": -0.2973,
+        "t_p": 0.156791,
+        "mwu_p": 0.172814,
+        "n_resp": 8,
+        "n_non_resp": 10
+      },
+      "reserve_score": {
+        "resp_mean": 0.1825,
+        "non_resp_mean": 0.3468,
+        "diff": -0.1644,
+        "t_p": 0.437086,
+        "mwu_p": 0.828557,
+        "n_resp": 8,
+        "n_non_resp": 10
+      }
+    },
+    "colon_analysis": {
+      "n": 65,
+      "fae_burden_score": {
+        "resp_mean": 0.0866,
+        "non_resp_mean": -0.0491,
+        "diff": 0.1358,
+        "t_p": 0.220013,
+        "mwu_p": 0.200772,
+        "n_resp": 32,
+        "n_non_resp": 33
+      },
+      "reserve_score": {
+        "resp_mean": -0.1948,
+        "non_resp_mean": 0.0396,
+        "diff": -0.2343,
+        "t_p": 0.015609,
+        "mwu_p": 0.051348,
+        "n_resp": 32,
+        "n_non_resp": 33
+      }
+    }
+  },
+  "gene_correlations": {
+    "GP2_vs_PGC": {
+      "spearman_r": 0.116,
+      "p_value": 0.296511
+    },
+    "GP2_vs_BPIFB1": {
+      "spearman_r": 0.1777,
+      "p_value": 0.108087
+    },
+    "GP2_vs_CPO": {
+      "spearman_r": 0.3685,
+      "p_value": 0.000609
+    },
+    "GP2_vs_GAS1": {
+      "spearman_r": -0.2543,
+      "p_value": 0.020338
+    },
+    "CCL20_vs_PGC": {
+      "spearman_r": 0.078,
+      "p_value": 0.483132
+    },
+    "CCL20_vs_BPIFB1": {
+      "spearman_r": 0.0247,
+      "p_value": 0.8244
+    },
+    "CCL20_vs_CPO": {
+      "spearman_r": 0.0457,
+      "p_value": 0.681795
+    },
+    "CCL20_vs_GAS1": {
+      "spearman_r": -0.3099,
+      "p_value": 0.004364
+    },
+    "TNFAIP2_vs_PGC": {
+      "spearman_r": 0.0996,
+      "p_value": 0.370535
+    },
+    "TNFAIP2_vs_BPIFB1": {
+      "spearman_r": 0.092,
+      "p_value": 0.40822
+    },
+    "TNFAIP2_vs_CPO": {
+      "spearman_r": -0.121,
+      "p_value": 0.275792
+    },
+    "TNFAIP2_vs_GAS1": {
+      "spearman_r": 0.6257,
+      "p_value": 0.0
+    },
+    "MARCKSL1_vs_PGC": {
+      "spearman_r": -0.2369,
+      "p_value": 0.03104
+    },
+    "MARCKSL1_vs_BPIFB1": {
+      "spearman_r": -0.1601,
+      "p_value": 0.14822
+    },
+    "MARCKSL1_vs_CPO": {
+      "spearman_r": -0.2445,
+      "p_value": 0.025883
+    },
+    "MARCKSL1_vs_GAS1": {
+      "spearman_r": -0.1424,
+      "p_value": 0.199151
+    }
+  },
+  "tissue_composition": {
+    "GSE16879": {
+      "colon": 19,
+      "ileum": 18
+    },
+    "GSE12251": {
+      "colon": 23
+    },
+    "GSE73661": {
+      "colon": 23
+    }
+  },
+  "key_finding_gse73661": "All colonic biopsies \u2014 FAE (ileum-specific) pathway irrelevant here. Direction reversal in Phase 1 NOT explained by FAE dominance; must reflect colonic-specific biology where reserve genes have different significance."
+}
