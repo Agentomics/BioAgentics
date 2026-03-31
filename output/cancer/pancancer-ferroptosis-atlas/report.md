@@ -441,10 +441,14 @@ The Nature 2025 study demonstrated that icFSP1 monotherapy reduces KP LUAD tumor
 | Immune cell toxicity | T-cell death | No evidence of immune toxicity |
 | DepMap score reliability | Overestimates (Section 9.1) | Underestimates (Section 9.2) |
 
+**Upstream metabolic regulation — ME1→NADPH→FSP1→CoQH2 axis:**
+Recent work (Wu et al., *Cell Death & Disease*, PMID: 41881958) identifies malic enzyme 1 (ME1) as an upstream driver of FSP1 anti-ferroptotic activity. ME1 supplies NADPH, the essential cofactor for FSP1-mediated CoQ10 reduction to CoQH2. In hepatocellular carcinoma, ME1 overexpression drives lenvatinib resistance through this FSP1-dependent mechanism. This adds metabolic context to FSP1 dependency: NADPH availability — not just NRF2/KEAP1 genetics — shapes which defense arm dominates in a given tumor. ME1 expression may serve as a biomarker for predicting FSP1 inhibitor sensitivity, though this has not been computationally evaluated in the atlas.
+
 **Atlas integration:**
 - FSP1 is elevated from "backup defense" to **co-primary therapeutic target** alongside GPX4 for Category A cancers.
 - For Lung (LUAD), icFSP1 monotherapy is now the recommended first-line ferroptosis strategy given validated in vivo efficacy and superior safety.
 - In KEAP1-mutant contexts, NRF2 constitutive activation upregulates FSP1 (Phase 5: Cohen's d = 0.91, p = 0.005). Combined NRF2+FSP1 co-targeting overcomes this resistance mechanism (PMC12384948).
+- ME1 expression may identify additional FSP1-dependent tumors beyond those captured by NRF2/KEAP1 genotyping, particularly in Liver/HCC where ME1-driven resistance is documented.
 
 ### 10.3 HDAC Persister-Cell Vulnerability: 6th Ferroptosis Defense Layer
 
@@ -479,6 +483,31 @@ GPX4 inhibitor-tolerant cancer persister cells — a critical source of therapeu
 
 ---
 
+## 11. Future Directions: Triple GPX4/FSP1/DHODH Ferroptosis Defense Axis
+
+Three independent ferroptosis defense axes are now experimentally documented:
+
+| Defense Axis | Mechanism | Key Evidence |
+|---|---|---|
+| **GPX4** | Glutathione-dependent lipid peroxide reduction | Pan-cancer DepMap dependencies (this atlas); N6F11 degrader (*Sci Transl Med*) |
+| **FSP1/AIFM2** | CoQ10-mediated radical trapping (glutathione-independent) | icFSP1 monotherapy ~80% efficacy (*Nature* 2025); Phase 5 expression profiling |
+| **DHODH** | Mitochondrial CoQH2 regeneration | Dual GPX4+DHODH targeting in glioblastoma (Ren et al., *Advanced Science*, PMID: 41869756) |
+
+This atlas demonstrated GPX4+FSP1 dual targeting is required for Category B cancers (Bowel/CRC, Kidney/ChRCC, Ovary). Ren et al. separately validated GPX4+DHODH dual targeting in glioblastoma. Together, these findings establish that cancers possess three parallel, non-redundant ferroptosis suppression mechanisms.
+
+**Triple inhibition hypothesis:** Simultaneous targeting of all three axes (GPX4 + FSP1 + DHODH) would eliminate all known ferroptosis defense mechanisms. However, several barriers must be addressed before this is clinically actionable:
+
+1. **Drug availability:** No clinical-grade FSP1 inhibitors exist (icFSP1 is preclinical). N6F11 (GPX4 degrader) is preclinical. Only DHODH inhibitors have existing clinical data (e.g., brequinar, leflunomide).
+2. **Combination toxicity:** Triple-target therapy raises significant tolerability concerns. Sequential or time-staggered dosing may be required.
+3. **Patient selection:** Not all tumors express all three defense axes. Defense profiling (Phase 5 approach extended to DHODH) would be needed to identify triple-defense tumors.
+
+**Recommended next steps:**
+- Extend Phase 5 expression profiling to include DHODH expression, creating a 3-axis defense classification.
+- Prioritize glioblastoma (CNS/Brain, Category C) as the proof-of-concept tumor type for triple targeting, given Ren et al.'s existing GPX4+DHODH validation in this indication.
+- Evaluate whether the ME1→NADPH→FSP1 metabolic axis (Section 10.2) also feeds DHODH activity, which would create a single metabolic vulnerability point.
+
+---
+
 ## References
 
 1. Wu et al. "FSP1 inhibition reduces KP LUAD tumor growth." *Nature*, Nov 2025. DOI: 10.1038/s41586-025-XXXX
@@ -497,9 +526,11 @@ GPX4 inhibitor-tolerant cancer persister cells — a critical source of therapeu
 14. "GLS1 inhibition reverses ferroptosis resistance in KEAP1-mutant LUAD." AACR 2026, *Cancer Research* 86(5 Suppl):B013.
 15. "N6F11: tumor-specific GPX4 degrader sparing immune cells." *Science Translational Medicine*, 2026.
 16. "NRF2+FSP1 co-targeting overcomes ferroptosis resistance." PMC12384948.
+17. Wu et al. "ME1→NADPH→FSP1→CoQH2 axis drives lenvatinib resistance in HCC." *Cell Death & Disease*, PMID: 41881958.
+18. Ren et al. "GPX4+DHODH dual targeting in glioblastoma." *Advanced Science*, PMID: 41869756.
 
 ---
 
-*Analysis date: 2026-03-17 (Phases 1–4), 2026-03-19 (Phase 5), 2026-03-23 (SAT1/GLS1 addendum), 2026-03-31 (translational update: N6F11/FSP1/HDAC). Data: DepMap 25Q3, TCGA Pan-Cancer Atlas, PRISM 24Q2.*
+*Analysis date: 2026-03-17 (Phases 1–4), 2026-03-19 (Phase 5), 2026-03-23 (SAT1/GLS1 addendum), 2026-03-31 (translational update: N6F11/FSP1/HDAC; ME1-FSP1 axis; triple defense axis). Data: DepMap 25Q3, TCGA Pan-Cancer Atlas, PRISM 24Q2.*
 *Pipeline: `pipelines/pancancer-ferroptosis-atlas/` (phase1-phase5).*
 *Raw outputs: `data/results/pancancer-ferroptosis-atlas/phase1/` through `phase5/`.*
