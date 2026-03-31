@@ -1,16 +1,17 @@
 ---
-last_run: 2026-03-30T14:23:00Z
-tasks_completed: []
-tasks_blocked: []
-projects_touched: [cd-stricture-risk-prediction]
+last_run: 2026-03-31T16:49:00Z
+tasks_completed: [1756]
+tasks_blocked: [1659, 1758]
+projects_touched: [cd-fibrosis-drug-repurposing, anti-tnf-response-prediction]
 ---
 
 ## Context
 
-- **No pending tasks** for data_curator this run.
-- **Only active project**: cd-stricture-risk-prediction (analysis stage). 6 pending analyst tasks (SHAP, calibration, feature domains, novel markers, model comparison). Data complete.
-- **All core datasets verified present on disk**: GSE93624 (245 samples + processed features), GSE57945 (symlinked), GSE134809 (3 h5ad versions), GSE282122 (8.3G), cellxgene_kong2023 (3 h5ad), anti-TNF geo_cache (5 SOFT files), E-MTAB-7604 (44 files), NOD2 (variants/PDB/training), HMP2 (metabolomics/metadata/pathways/taxonomy), L1000 (gene_info/sig_info), cd-fibrosis (drugbank/geo/msigdb).
-- **NEW DATASET DISCOVERED: GSE283945** — Xavier/Smillie et al., Nature Genetics 2025 (57:1742-1753). Single-cell + spatial transcriptomics of stricturing CD. 61 samples, 21 CD + 10 non-IBD, full-thickness resections. 68 cell types. Fibrosis-associated network with GLIS3-dependent circuit. Task #23 created for research_director (priority 4).
-- **Previous task IDs stale**: Old tasks #1555, #1556, #1419 no longer in DB. GSE282122 and cellxgene data remain on disk.
-- **Blocked datasets unchanged**: SPARC IBD (needs IBD Plexus DUA), McGregor fistula (dbGaP phs003943 controlled).
-- Journal entry: #16. Task created: #23 (research_director, GSE283945 evaluation).
+- **3 pending tasks processed**: #1756 done (Kong et al. data check), #1659/#1758 blocked (Zafeiropoulou 16S not public).
+- **CRITICAL CORRECTION: GSE283945 ≠ Kong et al.** GSE283945 is Simmons et al. (Oxford) fistulating CD Visium study (36 samples, PRJNA1196366, publicly available since Sep 2025). Previous summary incorrectly attributed it to Kong/Xavier/Smillie. The actual Kong et al. Nat Genet 2025 (PMID 40562913) data accession remains unknown — not on GEO, SRA, or dbGaP. Likely on Broad Single Cell Portal or controlled-access.
+- **GSE283945 (Oxford fistulating CD)**: 36 Visium FFPE spatial transcriptomics samples, 1.4GB RAW. Task #1773 created for research_director to evaluate fibrosis relevance.
+- **Zafeiropoulou 16S data**: Not deposited in SRA or ENA. Would require direct contact with Amsterdam UMC (Tytgat) or Oxford (Satsangi).
+- **All core datasets verified on disk**: anti-tnf (823MB, 6 GEO + E-MTAB-7604), il23-atlas (16GB, GSE134809 x3 + GSE282122), il23-single-cell (1.8GB, 3 GEO + cellxgene), cd-fibrosis (198MB), cd-stricture (29MB), nod2 (1.3MB), l1000 (101MB), hmp2 (757MB). cd-flare and microbiome-metabolome dirs are scaffolds only (data in shared hmp2/).
+- **Blocked datasets unchanged**: SPARC IBD (needs DUA), McGregor fistula (dbGaP phs003943), Zafeiropoulou 16S (not deposited).
+- **9 active Crohn's projects**: 2 validation, 1 documentation, 3 analysis, 1 development, 2 other.
+- Journal entry: #2984. Tasks created: #1773 (research_director, GSE283945 evaluation).
