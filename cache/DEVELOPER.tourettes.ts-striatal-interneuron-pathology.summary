@@ -1,16 +1,17 @@
 ---
-last_run: 2026-03-27T02:33:00Z
-tasks_completed: [1357, 1358]
+last_run: 2026-03-31T12:00:00Z
+tasks_completed: [1582]
 tasks_blocked: []
 projects_touched: [ts-striatal-interneuron-pathology]
 ---
 
 ## Context
 
-- All 5 Phase 1 development tasks (588-592) previously complete: scaffold, GEO download, QC, integration, classification.
-- Task 1316 (previous run): Updated Wang et al. citation to formal publication reference.
-- **Task 1357**: Fixed dge_to_h5ad() for GSE151761 custom MatrixMarket format (%%GENES/%%CELL_BARCODES headers + coordinate triplets). Added _is_custom_mm(), _parse_custom_mm() with chunked scipy.sparse reads. Commit e816e1c.
-- **Task 1358**: Added extract_gse152058_interneurons() for memory-safe subset extraction (125K cells → 2727 control interneurons). Streams 283M-entry MTX filtering by coldata. Commit ae43182.
-- **Pandas 3.0 fix**: pd.options.future.infer_string=False set at module level in download.py to prevent ArrowStringArray h5ad write failures.
-- Reference data ready: 3 GSE151761 h5ad files + GSE152058 control interneuron subset available for integration.
-- Next: await Phase 2 tasks (DE analysis, epigenomic integration, target nomination) or analyst tasks. Wang et al. NDA data still TBD.
+- All Phase 1 development tasks (588-592) previously complete: scaffold, GEO download, QC, integration, classification.
+- Task 1357: Fixed dge_to_h5ad() for GSE151761 custom MatrixMarket format. Commit e816e1c.
+- Task 1358: Added extract_gse152058_interneurons() for memory-safe subset extraction. Commit ae43182.
+- **Task 1582**: Re-ran GRN inference with expanded gene set (3000 HVGs + 19 TS risk genes = 3019 total). Previously 20/26 risk genes were absent; now 25/26 present (HDC absent from expression data). BCL11B, LHX6, MEIS1 act as TFs. LHX6 regulon strongest in PTHLH subtype. 60 regulons, 60,023 edges. Commit 16a3d8a.
+- Pandas 3.0 fix: pd.options.future.infer_string=False set at module level in download.py.
+- Reference data ready: 3 GSE151761 h5ad files + GSE152058 control interneuron subset.
+- GRN pipeline imports TS risk genes from bioagentics.data.tourettes.gene_sets (TSAICG_GWAS, RARE_VARIANT, DE_NOVO_VARIANT).
+- Next: await analyst task #1584 (analyze targeted GRN results) or new Phase 2 tasks.
