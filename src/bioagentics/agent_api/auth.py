@@ -5,15 +5,7 @@ from fastapi import Depends, Header, HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from bioagentics.agent_api.database import SessionLocal, api_keys
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+from bioagentics.agent_api.database import api_keys, get_db
 
 
 def require_auth(

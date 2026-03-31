@@ -5,18 +5,10 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from bioagentics.agent_api.auth import require_auth
-from bioagentics.agent_api.database import SessionLocal, journal
+from bioagentics.agent_api.database import get_db, journal
 from bioagentics.agent_api.models import JournalCreate, JournalEntry, JournalList
 
 router = APIRouter(prefix="/journal", tags=["journal"])
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @router.post("", status_code=201, response_model=JournalEntry, dependencies=[Depends(require_auth)])

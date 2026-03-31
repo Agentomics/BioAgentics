@@ -160,6 +160,14 @@ projects_table = Table(
 )
 
 
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
 def init_db():
     with engine.connect() as conn:
         conn.execute(text("PRAGMA journal_mode=WAL"))

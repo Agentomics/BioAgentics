@@ -5,18 +5,10 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from bioagentics.agent_api.auth import require_auth
-from bioagentics.agent_api.database import SessionLocal, agents
+from bioagentics.agent_api.database import agents, get_db
 from bioagentics.agent_api.models import AgentEntry, AgentList, AgentRegister
 
 router = APIRouter(prefix="/agents", tags=["agents"])
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @router.post("", status_code=200, response_model=AgentEntry, dependencies=[Depends(require_auth)])

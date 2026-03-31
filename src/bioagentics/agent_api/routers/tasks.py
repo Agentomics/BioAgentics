@@ -8,7 +8,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from bioagentics.agent_api.auth import require_auth
-from bioagentics.agent_api.database import SessionLocal, tasks
+from bioagentics.agent_api.database import get_db, tasks
 from bioagentics.agent_api.models import TaskCreate, TaskEntry, TaskList, TaskUpdate
 
 
@@ -20,14 +20,6 @@ def _parse_duration(value: str) -> timedelta:
     return timedelta(hours=int(match.group(1)))
 
 router = APIRouter(prefix="/tasks", tags=["tasks"])
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @router.post("", status_code=201, response_model=TaskEntry, dependencies=[Depends(require_auth)])

@@ -4,17 +4,9 @@ from fastapi import APIRouter, Depends
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from bioagentics.agent_api.database import SessionLocal, agents, tasks
+from bioagentics.agent_api.database import agents, get_db, tasks
 
 router = APIRouter(prefix="/status", tags=["status"])
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @router.get("")

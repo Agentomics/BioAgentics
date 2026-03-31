@@ -5,18 +5,10 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from bioagentics.agent_api.auth import require_auth
-from bioagentics.agent_api.database import SessionLocal, runs
+from bioagentics.agent_api.database import get_db, runs
 from bioagentics.agent_api.models import RunCreate, RunEntry, RunList, RunUpdate
 
 router = APIRouter(prefix="/runs", tags=["runs"])
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @router.post("", status_code=201, response_model=RunEntry, dependencies=[Depends(require_auth)])

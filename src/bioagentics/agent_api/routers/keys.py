@@ -3,18 +3,10 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from bioagentics.agent_api.auth import generate_key, require_auth
-from bioagentics.agent_api.database import SessionLocal, api_keys
+from bioagentics.agent_api.database import api_keys, get_db
 from bioagentics.agent_api.models import ApiKeyCreate, ApiKeyEntry, ApiKeyList
 
 router = APIRouter(prefix="/keys", tags=["keys"])
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @router.get("", response_model=ApiKeyList, dependencies=[Depends(require_auth)])
