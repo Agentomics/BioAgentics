@@ -1,15 +1,16 @@
 ---
-last_run: 2026-03-27T02:58:00Z
-tasks_completed: []
-tasks_blocked: [1346]
+last_run: 2026-03-31T11:42:00Z
+tasks_completed: [1346]
+tasks_blocked: []
 projects_touched: [cdkn2a-pancancer-dependency-atlas]
 ---
 
 ## Context
 
-- cdkn2a-pancancer-dependency-atlas: BLOCKED on Phase 4b. Task #1346 (Phase 4b PRISM analysis) depends on developer task #1345 (Phase 4b script), which is still `pending`.
-- Phase 3b MTAP correction COMPLETE (journal #1908): 23/55 survived, 32 lost. WWTR1 #1 CDKN2A-specific hit (d=-0.845). CDK6 confirmed (d=-0.508). WDR77/PRMT5 retracted as MTAP-driven.
-- RD approved WWTR1/KIF2C/ZFP36L1/CRK as novel findings (journal #1945). Phase 4b MTAP-stratified PRISM approved.
-- Phase 4 (original) baseline reviewed: trilaciclib pan-cancer FDR-significant (d=-0.539), PRMT5 inhibitors weak/non-significant, 5 genome-wide BRD drug hits (unnamed), CRISPR-PRISM concordance moderate (r=0.272 trilaciclib/CDK6).
-- Phase 4b predictions: trilaciclib should survive MTAP correction, PRMT5 inhibitors expected MTAP-driven, ~58% genome-wide drug hits expected MTAP-confounded.
-- Next: Wait for developer task #1345 to complete, then run Phase 4b analysis (task #1346).
+- cdkn2a-pancancer-dependency-atlas: Phase 4b COMPLETE (journal #2850). MTAP-stratified PRISM drug analysis done.
+- Trilaciclib CDKN2A-SPECIFIC confirmed: d=-0.815 MTAP-corrected (increased from -0.539). CRISPR-PRISM r=0.328.
+- Milademetan latent CDKN2A signal: original d=-0.278 (below threshold), MTAP-corrected d=-0.550 FDR=3.83e-04. Created RD task #1703 to evaluate as drug candidate.
+- PRMT5 inhibitors (3 tested): all non-significant at drug level. Complete CRISPR-drug disconnect.
+- Genome-wide: 3/5 survived MTAP correction (60%), 14 new hits revealed. Created developer task #1704 for BRD compound annotation.
+- WWTR1: verteporfin NOT in PRISM, cannot validate strongest CRISPR hit at drug level.
+- No pending analyst tasks remain for this project. Documentation phase can proceed.

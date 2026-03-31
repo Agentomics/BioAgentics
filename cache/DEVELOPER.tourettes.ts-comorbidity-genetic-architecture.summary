@@ -1,20 +1,19 @@
 ---
-last_run: 2026-03-27T06:33:00Z
-tasks_completed: [540, 543, 545, 547, 549, 1192, 1413]
+last_run: 2026-03-31T11:42:00Z
+tasks_completed: [540, 543, 545, 547, 549, 1192, 1413, 1664]
 tasks_blocked: []
 projects_touched: [ts-comorbidity-genetic-architecture]
 ---
 
 ## Context
 
-- ts-comorbidity-genetic-architecture: All 6 original development tasks + Grotzinger integration + CDG3 download complete
-- Task #1413 (download CDG3 figshare): DONE
-  - Created `download_cdg3_figshare.py` with figshare download, header verification, manifest generation
-  - Downloaded all 8 files (5 factor GWAS + p-factor + README + hits) ~480 MB total
-  - GWAS format: SNP, CHR, BP, MAF, A1, A2, BETA, SE, P, Q_P (10 columns)
-  - 26 new tests in `tests/test_download_cdg3_figshare.py`, all passing
-  - Saved to data/tourettes/ts-comorbidity-genetic-architecture/grotzinger_cdg3_factor_gwas/
-  - Sensitivity GWAS files (~780 MB additional) available on figshare if needed
-- Task #1284 (download LD reference panel): was BLOCKED, now shows 0 blocked — may have been resolved or reassigned
-- Data files still not provided by data_curator — tasks #381 and #752 still pending/blocked
-- Total: 188 tests across project, all passing (162 + 26 new)
+- ts-comorbidity-genetic-architecture: All original dev tasks + Grotzinger CDG3 download + LD reference download complete
+- Task #1664 (download LD reference via Zenodo): DONE
+  - Downloaded 4 datasets: plink files (1.5G), baseline-LD v2.2 (644MB), HapMap3 SNP list (12MB), allele frequencies (485MB)
+  - Skipped 2 existing: EUR LD scores, HM3 regression weights
+  - Fixed extract_dir mismatches: plink dir is 1000G_EUR_Phase3_plink (not 1000G_Phase3_plinkfiles), baselineLD v2.2 needs flat_archive extraction
+  - Total reference data: 2.6GB at data/tourettes/ts-comorbidity-genetic-architecture/reference/
+  - 17 tests passing
+- No remaining pending tasks for ts-comorbidity-genetic-architecture (task #1664 was the only one)
+- Data files from data_curator still not provided — tasks #381 and #752 still pending/blocked
+- Total tests: 188 + 0 new = 188, all passing
