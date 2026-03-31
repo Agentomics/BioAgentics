@@ -1,0 +1,5 @@
+metric,spearman_rho,pvalue,consistent_with_hypothesis
+innate_proportion,-0.283596837944664,0.18973853053259213,True
+th17_proportion,0.24011857707509882,0.2697694551873358,True
+adaptive_proportion,-0.024703557312252968,0.9109154893296205,False
+innate_adaptive_ratio,-0.09387351778656126,0.6700798788152733,True

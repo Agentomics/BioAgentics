@@ -1,0 +1,29 @@
+{
+  "task": 1583,
+  "analysis": "NR2F2 regulon targets vs TSAICG GWAS loci cross-reference",
+  "result": "NEGATIVE \u2014 no direct overlap, but test is uninformative due to HVG limitation",
+  "nr2f2_regulon": {
+    "n_targets": 50,
+    "subtype": "CR",
+    "kruskal_h": 8930.8,
+    "kruskal_p": 0.0,
+    "notable_targets": {
+      "CALB2": "Calretinin \u2014 CR interneuron identity marker (novel NR2F2\u2192CALB2 link from Task 1313)",
+      "CNR1": "Cannabinoid receptor 1 \u2014 major endocannabinoid target, neuropsychiatric risk gene",
+      "NR2E1": "TLX nuclear receptor \u2014 neural stem cell proliferation, neuropsychiatric risk",
+      "LYPD1": "Lynx1 family \u2014 nicotinic receptor modulator, cortical interneuron marker",
+      "CXCL14": "Chemokine \u2014 interneuron-expressed, neuroimmune signaling"
+    }
+  },
+  "gwas_overlap": {
+    "overlap_count": 0,
+    "tsaicg_gwas_genes": 19,
+    "comprehensive_risk_genes": 35,
+    "reason_uninformative": "GRN was built on 3,000 HVGs only. Zero GWAS/risk genes are among HVGs, so they cannot appear as regulon targets. This affects ALL regulons, not just NR2F2. The Fisher's exact test is structurally impossible to yield a positive result.",
+    "resolution": "Requires Task 1582 (developer: targeted GRN with HVGs + TS risk genes) \u2192 Task 1584 (analyst: analyze targeted GRN)"
+  },
+  "cnr1_finding": {
+    "description": "NR2F2 directly regulates CNR1 (cannabinoid receptor 1) in CR interneurons. CNR1 is a major drug target (e.g., rimonabant) with neuropsychiatric relevance. While CNR1 is not in the current TSAICG GWAS gene list, it is implicated in schizophrenia, anxiety, and basal ganglia function.",
+    "therapeutic_relevance": "Endocannabinoid system modulation in CR interneurons via NR2F2\u2192CNR1 axis could be relevant to TS circuit dysfunction"
+  }
+}
