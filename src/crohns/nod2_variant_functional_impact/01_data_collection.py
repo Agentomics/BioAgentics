@@ -33,7 +33,9 @@ def add_domain_location(df):
     from bioagentics.data.nod2.varmeter2 import _parse_protein_change
 
     def _get_domain(hgvs_p):
-        if not hgvs_p or str(hgvs_p) == "nan":
+        import pandas as pd
+
+        if not hgvs_p or pd.isna(hgvs_p):
             return ""
         parsed = _parse_protein_change(str(hgvs_p))
         if parsed:
