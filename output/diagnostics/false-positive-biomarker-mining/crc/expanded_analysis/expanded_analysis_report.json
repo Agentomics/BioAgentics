@@ -1,0 +1,442 @@
+{
+  "task": "#1466",
+  "description": "Expanded CRC FP analysis with lower thresholds + bootstrap CIs",
+  "n_samples": 121,
+  "n_positive": 59,
+  "n_negative": 62,
+  "features": [
+    "prot_MMP9",
+    "prot_CXCL8",
+    "prot_S100A4",
+    "prot_TIMP1",
+    "prot_SEPT9",
+    "prot_ERBB2",
+    "prot_SPP1"
+  ],
+  "thresholds_tested": [
+    0.8,
+    0.85,
+    0.9,
+    0.95
+  ],
+  "bootstrap_iterations": 1000,
+  "permutation_iterations": 1000,
+  "results": [
+    {
+      "specificity": 0.8,
+      "specificity_actual": 0.79,
+      "sensitivity": 0.797,
+      "n_fp": 13,
+      "n_tn": 49,
+      "pattern_coherent": true,
+      "pattern_matches": "6/6",
+      "permutation_all_p": 0.0,
+      "permutation_remodeling_p": 0.0,
+      "features": [
+        {
+          "feature": "prot_MMP9",
+          "d_observed": 0.308,
+          "ci_95": [
+            -0.452,
+            1.029
+          ],
+          "t_pvalue": 0.4007,
+          "fp_mean": 3632.334,
+          "tn_mean": 3037.053,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_CXCL8",
+          "d_observed": -1.665,
+          "ci_95": [
+            -2.227,
+            -1.214
+          ],
+          "t_pvalue": 0.0,
+          "fp_mean": 289.9,
+          "tn_mean": 883.967,
+          "expected_direction": "negative",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_S100A4",
+          "d_observed": 0.771,
+          "ci_95": [
+            0.121,
+            1.475
+          ],
+          "t_pvalue": 0.0366,
+          "fp_mean": 37577.1,
+          "tn_mean": 33958.159,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_TIMP1",
+          "d_observed": 0.829,
+          "ci_95": [
+            0.411,
+            1.368
+          ],
+          "t_pvalue": 0.0357,
+          "fp_mean": 8181.064,
+          "tn_mean": 6346.845,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_SEPT9",
+          "d_observed": 1.241,
+          "ci_95": [
+            0.729,
+            1.977
+          ],
+          "t_pvalue": 0.0012,
+          "fp_mean": 24811.615,
+          "tn_mean": 20222.871,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_ERBB2",
+          "d_observed": -0.392,
+          "ci_95": [
+            -0.872,
+            0.157
+          ],
+          "t_pvalue": 0.1343,
+          "fp_mean": 12.501,
+          "tn_mean": 16.639,
+          "expected_direction": "unknown",
+          "matches_pattern": null
+        },
+        {
+          "feature": "prot_SPP1",
+          "d_observed": -0.327,
+          "ci_95": [
+            -1.271,
+            0.304
+          ],
+          "t_pvalue": 0.3404,
+          "fp_mean": 8.489,
+          "tn_mean": 13.234,
+          "expected_direction": "negative",
+          "matches_pattern": true
+        }
+      ]
+    },
+    {
+      "specificity": 0.85,
+      "specificity_actual": 0.839,
+      "sensitivity": 0.712,
+      "n_fp": 10,
+      "n_tn": 52,
+      "pattern_coherent": true,
+      "pattern_matches": "6/6",
+      "permutation_all_p": 0.0,
+      "permutation_remodeling_p": 0.0,
+      "features": [
+        {
+          "feature": "prot_MMP9",
+          "d_observed": 0.531,
+          "ci_95": [
+            -0.221,
+            1.405
+          ],
+          "t_pvalue": 0.2238,
+          "fp_mean": 4049.95,
+          "tn_mean": 2991.085,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_CXCL8",
+          "d_observed": -1.748,
+          "ci_95": [
+            -2.231,
+            -1.387
+          ],
+          "t_pvalue": 0.0,
+          "fp_mean": 253.544,
+          "tn_mean": 856.686,
+          "expected_direction": "negative",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_S100A4",
+          "d_observed": 0.585,
+          "ci_95": [
+            -0.159,
+            1.395
+          ],
+          "t_pvalue": 0.1579,
+          "fp_mean": 37135.7,
+          "tn_mean": 34251.829,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_TIMP1",
+          "d_observed": 0.81,
+          "ci_95": [
+            0.291,
+            1.391
+          ],
+          "t_pvalue": 0.0825,
+          "fp_mean": 8365.956,
+          "tn_mean": 6417.109,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_SEPT9",
+          "d_observed": 1.025,
+          "ci_95": [
+            0.505,
+            1.728
+          ],
+          "t_pvalue": 0.0098,
+          "fp_mean": 24369.95,
+          "tn_mean": 20572.542,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_ERBB2",
+          "d_observed": -0.384,
+          "ci_95": [
+            -0.847,
+            0.094
+          ],
+          "t_pvalue": 0.1471,
+          "fp_mean": 12.501,
+          "tn_mean": 16.4,
+          "expected_direction": "unknown",
+          "matches_pattern": null
+        },
+        {
+          "feature": "prot_SPP1",
+          "d_observed": -0.46,
+          "ci_95": [
+            -1.359,
+            0.257
+          ],
+          "t_pvalue": 0.2279,
+          "fp_mean": 6.819,
+          "tn_mean": 13.282,
+          "expected_direction": "negative",
+          "matches_pattern": true
+        }
+      ]
+    },
+    {
+      "specificity": 0.9,
+      "specificity_actual": 0.887,
+      "sensitivity": 0.678,
+      "n_fp": 7,
+      "n_tn": 55,
+      "pattern_coherent": true,
+      "pattern_matches": "6/6",
+      "permutation_all_p": 0.0,
+      "permutation_remodeling_p": 0.0,
+      "features": [
+        {
+          "feature": "prot_MMP9",
+          "d_observed": 0.683,
+          "ci_95": [
+            -0.281,
+            2.001
+          ],
+          "t_pvalue": 0.2259,
+          "fp_mean": 4461.988,
+          "tn_mean": 2996.4,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_CXCL8",
+          "d_observed": -1.577,
+          "ci_95": [
+            -2.108,
+            -1.191
+          ],
+          "t_pvalue": 0.0,
+          "fp_mean": 266.15,
+          "tn_mean": 822.183,
+          "expected_direction": "negative",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_S100A4",
+          "d_observed": 0.958,
+          "ci_95": [
+            0.22,
+            1.908
+          ],
+          "t_pvalue": 0.0713,
+          "fp_mean": 38722.143,
+          "tn_mean": 34207.22,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_TIMP1",
+          "d_observed": 0.889,
+          "ci_95": [
+            0.198,
+            1.766
+          ],
+          "t_pvalue": 0.1392,
+          "fp_mean": 8843.119,
+          "tn_mean": 6462.68,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_SEPT9",
+          "d_observed": 1.054,
+          "ci_95": [
+            0.322,
+            2.149
+          ],
+          "t_pvalue": 0.0407,
+          "fp_mean": 24822.786,
+          "tn_mean": 20722.04,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_ERBB2",
+          "d_observed": -0.297,
+          "ci_95": [
+            -0.794,
+            0.256
+          ],
+          "t_pvalue": 0.3032,
+          "fp_mean": 13.16,
+          "tn_mean": 16.104,
+          "expected_direction": "unknown",
+          "matches_pattern": null
+        },
+        {
+          "feature": "prot_SPP1",
+          "d_observed": -0.26,
+          "ci_95": [
+            -1.333,
+            0.573
+          ],
+          "t_pvalue": 0.5895,
+          "fp_mean": 8.736,
+          "tn_mean": 12.685,
+          "expected_direction": "negative",
+          "matches_pattern": true
+        }
+      ]
+    },
+    {
+      "specificity": 0.95,
+      "specificity_actual": 0.935,
+      "sensitivity": 0.542,
+      "n_fp": 4,
+      "n_tn": 58,
+      "pattern_coherent": true,
+      "pattern_matches": "6/6",
+      "permutation_all_p": 0.0,
+      "permutation_remodeling_p": 0.0,
+      "features": [
+        {
+          "feature": "prot_MMP9",
+          "d_observed": 0.687,
+          "ci_95": [
+            -0.608,
+            2.319
+          ],
+          "t_pvalue": 0.39,
+          "fp_mean": 4513.858,
+          "tn_mean": 3068.629,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_CXCL8",
+          "d_observed": -1.583,
+          "ci_95": [
+            -2.021,
+            -1.245
+          ],
+          "t_pvalue": 0.0,
+          "fp_mean": 241.37,
+          "tn_mean": 795.131,
+          "expected_direction": "negative",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_S100A4",
+          "d_observed": 1.257,
+          "ci_95": [
+            0.249,
+            3.733
+          ],
+          "t_pvalue": 0.1507,
+          "fp_mean": 40752.45,
+          "tn_mean": 34300.729,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_TIMP1",
+          "d_observed": 1.347,
+          "ci_95": [
+            0.397,
+            3.316
+          ],
+          "t_pvalue": 0.1704,
+          "fp_mean": 10413.33,
+          "tn_mean": 6477.516,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_SEPT9",
+          "d_observed": 1.085,
+          "ci_95": [
+            0.003,
+            2.772
+          ],
+          "t_pvalue": 0.1608,
+          "fp_mean": 25299.25,
+          "tn_mean": 20901.288,
+          "expected_direction": "positive",
+          "matches_pattern": true
+        },
+        {
+          "feature": "prot_ERBB2",
+          "d_observed": -0.547,
+          "ci_95": [
+            -1.117,
+            -0.018
+          ],
+          "t_pvalue": 0.1408,
+          "fp_mean": 10.899,
+          "tn_mean": 16.107,
+          "expected_direction": "unknown",
+          "matches_pattern": null
+        },
+        {
+          "feature": "prot_SPP1",
+          "d_observed": -1.065,
+          "ci_95": [
+            -1.369,
+            -0.821
+          ],
+          "t_pvalue": 0.0,
+          "fp_mean": 2.058,
+          "tn_mean": 12.941,
+          "expected_direction": "negative",
+          "matches_pattern": true
+        }
+      ]
+    }
+  ]
+}

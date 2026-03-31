@@ -1,0 +1,92 @@
+{
+  "MTAP+CDKN2A": {
+    "gene_a": "MTAP",
+    "gene_b": "CDKN2A",
+    "n_double": 206,
+    "n_sl_tested": 4,
+    "n_sig_uncorrected": 4,
+    "n_sig_fdr": 4,
+    "n_synergistic": 1,
+    "n_antagonistic": 3
+  },
+  "MTAP+TP53": {
+    "gene_a": "MTAP",
+    "gene_b": "TP53",
+    "n_double": 135,
+    "n_sl_tested": 4,
+    "n_sig_uncorrected": 4,
+    "n_sig_fdr": 4,
+    "n_synergistic": 2,
+    "n_antagonistic": 2
+  },
+  "RB1+TP53": {
+    "gene_a": "RB1",
+    "gene_b": "TP53",
+    "n_double": 80,
+    "n_sl_tested": 50,
+    "n_sig_uncorrected": 32,
+    "n_sig_fdr": 31,
+    "n_synergistic": 15,
+    "n_antagonistic": 16
+  },
+  "ARID1A+PTEN": {
+    "gene_a": "ARID1A",
+    "gene_b": "PTEN",
+    "n_double": 37,
+    "n_sl_tested": 1,
+    "n_sig_uncorrected": 0,
+    "n_sig_fdr": 0,
+    "n_synergistic": 0,
+    "n_antagonistic": 0
+  },
+  "ARID1A+TP53": {
+    "gene_a": "ARID1A",
+    "gene_b": "TP53",
+    "n_double": 80,
+    "n_sl_tested": 1,
+    "n_sig_uncorrected": 0,
+    "n_sig_fdr": 0,
+    "n_synergistic": 0,
+    "n_antagonistic": 0
+  },
+  "TP53+NF1": {
+    "gene_a": "TP53",
+    "gene_b": "NF1",
+    "n_double": 69,
+    "n_sl_tested": 1,
+    "n_sig_uncorrected": 1,
+    "n_sig_fdr": 1,
+    "n_synergistic": 1,
+    "n_antagonistic": 0
+  },
+  "ARID1A+PIK3CA": {
+    "gene_a": "ARID1A",
+    "gene_b": "PIK3CA",
+    "n_double": 34,
+    "n_sl_tested": 1,
+    "n_sig_uncorrected": 0,
+    "n_sig_fdr": 0,
+    "n_synergistic": 0,
+    "n_antagonistic": 0
+  },
+  "PTEN+RB1": {
+    "gene_a": "PTEN",
+    "gene_b": "RB1",
+    "n_double": 29,
+    "n_sl_tested": 50,
+    "n_sig_uncorrected": 14,
+    "n_sig_fdr": 7,
+    "n_synergistic": 2,
+    "n_antagonistic": 5
+  },
+  "TP53+RB1": {
+    "gene_a": "TP53",
+    "gene_b": "RB1",
+    "n_double": 80,
+    "n_sl_tested": 50,
+    "n_sig_uncorrected": 32,
+    "n_sig_fdr": 31,
+    "n_synergistic": 15,
+    "n_antagonistic": 16
+  }
+}

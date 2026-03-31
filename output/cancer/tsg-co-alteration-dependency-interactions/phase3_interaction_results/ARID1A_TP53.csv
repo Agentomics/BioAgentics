@@ -1,0 +1,2 @@
+dep_gene,n_double,n_a_only,n_b_only,n_wt,mean_double,mean_a_only,mean_b_only,mean_wt,d_main_a,d_main_b,p_main_a,p_main_b,interaction_d,interaction_delta,p_interaction,p_kruskal,classification,from_atlas_a,from_atlas_b,fdr_interaction,fdr_classification
+HDC,80,45,738,323,-0.03747275189595754,-0.013782052923913655,-0.004368806541491432,-0.038161023768683806,-0.0788,0.1525,0.5614967283408978,0.02560286297681776,-0.3155,-0.0575,0.22594855944809678,0.06694508716159417,additive,True,False,0.225949,additive

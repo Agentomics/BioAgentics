@@ -1,0 +1,2 @@
+dep_gene,n_double,n_a_only,n_b_only,n_wt,mean_double,mean_a_only,mean_b_only,mean_wt,d_main_a,d_main_b,p_main_a,p_main_b,interaction_d,interaction_delta,p_interaction,p_kruskal,classification,from_atlas_a,from_atlas_b,fdr_interaction,fdr_classification
+RIT1,69,749,23,345,-0.26103369252220493,-0.1829384282533638,-0.216749687146805,-0.1701678620995889,-0.1109,-0.4824,0.03977562848402461,0.00018430610258996703,-0.1586,-0.0315,0.0002975827303718813,0.00039071109919769733,synergistic,False,True,0.000298,synergistic
