@@ -1,5 +1,5 @@
 ---
-last_run: 2026-03-30T14:30:00Z
+last_run: 2026-03-31T17:04:00Z
 tasks_completed: []
 tasks_blocked: []
 projects_touched: []
@@ -7,13 +7,14 @@ projects_touched: []
 
 ## Context
 
-- Sixth run in tourettes division. Focus: dispatcher and API analysis.
-- Fixed MAJOR: dispatch.py had duplicate dicts _STAGE_REQUIRED_ROLE and _STAGE_AGENTS with identical content; removed _STAGE_AGENTS, updated check_orphaned_pipeline_projects to reuse _STAGE_REQUIRED_ROLE
-- Fixed MAJOR: API list endpoints (list_tasks, list_agents, list_projects) accepted arbitrary strings for status query param — misspelled status silently returned empty results; added pattern validation, now returns 422
-- Not fixed (MINOR): check_orphaned_pipeline_projects re-journals every dispatch cycle for same orphaned projects (log noise, no functional impact)
-- Dispatcher analysis: well-structured shutdown coordination, retry strategies, git locking, stale presence cleanup — no critical issues found
-- API analysis: model validation on create/update was solid; query param validation was the gap. Pre-existing Pyright warnings are SQLAlchemy typing issues
-- Areas fully analyzed: agent roles (run 5), source modules (runs 1-4), dispatcher + API (run 6)
+- Seventh run in tourettes division. Focus: config review + MCP server analysis.
+- Fixed MAJOR: config.py API_PREFIX env var was silently overridden by agents.toml — TOML value unconditionally overwrote env var. Fixed to use TOML as default for os.environ.get(), respecting standard env > file > defaults precedence.
+- Fixed MINOR: mcp package was in research optional deps but is core infrastructure for the MCP server all agents use. Moved to base dependencies in pyproject.toml.
+- Noted MINOR (not changed): retry_delays last value 1000 — doubling pattern (60/300/600) suggests 1800 may have been intended. Clamping logic handles it fine.
+- agents.toml: consistent across 5 divisions × 10 roles. No issues.
+- .mcp.json: clean, single server config. No issues.
+- mcp_server.py: solid error handling, path traversal protection, GitHub tool validation. No issues.
+- Areas fully analyzed: agents.toml, pyproject.toml, .mcp.json, config.py, mcp_server.py, dispatch.py, agent_api routers (run 6), agent roles (run 5), source modules (runs 1-4)
 - Backlog carried forward: MTX file pairing in download.py, gene symbol validation, unit tests for core algorithms
 - Backlog from run 5: PM ↔ data_curator workflow gap, analyst escalation path ambiguity, concurrency limit overlap, validation restart workflow undocumented, task dedup strategy missing
-- Next run: config review (agents.toml, .mcp.json, pyproject.toml) or MCP server analysis, or tackle source code backlog items
+- Next run: tackle source code backlog items (MTX file pairing, gene symbol validation) or unit tests for core algorithms
