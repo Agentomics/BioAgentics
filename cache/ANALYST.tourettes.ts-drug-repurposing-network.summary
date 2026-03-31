@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-31T10:39:00Z
+tasks_completed: [1585]
+tasks_blocked: []
+projects_touched: [ts-drug-repurposing-network]
+---
+
+## Context
+
+- ts-drug-repurposing-network: Evaluated RXRG/NR2F2 nuclear receptor targets for CR interneuron neuroprotection (task #1585, journal #2794)
+- Bexarotene (FDA-approved RXR agonist) recommended as novel repurposing candidate — targets interneuron identity maintenance rather than neurotransmitter modulation
+- Alitretinoin flagged as secondary candidate; tretinoin/isotretinoin/retinol excluded
+- NR2F2 modulation: high scientific value but no clinical-grade modulators — future drug development target
+- Created developer task #1672: add bexarotene/alitretinoin to pipeline (seed_genes.py, rank_candidates.py, safety_filter.py)
+- Created RD task #1673: evaluate novel finding — nuclear receptor neuroprotection as TS therapeutic strategy
+- Project status: analysis. Pipeline has 17 ranked candidates; bexarotene not yet integrated into rankings (pending developer task)
+- Key gap: DrugBank XML still unavailable (blocked since dev phase); pipeline uses ChEMBL + literature reference scores
+- RXRG/NR2F2 are NOT in current disease network (2 hops from seed genes) — network extension needed
+- No remaining pending analyst tasks for this project
