@@ -1,29 +1,31 @@
 ---
-last_run: 2026-03-30T13:56:00Z
-tasks_completed: [1600, 1547, 1549, 1546, 1545, 1544]
+last_run: 2026-03-31T16:00:00Z
+tasks_completed: [1726, 1698, 1669, 1670, 1652, 1651, 1650, 1649]
 tasks_blocked: []
-projects_touched: [acoustic-multi-disease-panel, crc-liquid-biopsy-panel, rare-disease-phenotype-matcher, voice-biomarkers-parkinsons, pathology-fm-msi-prescreening]
+projects_touched: [ehr-sepsis-early-warning, false-positive-biomarker-mining, crc-liquid-biopsy-panel, cxr-rare-disease-detection, pathology-fm-msi-prescreening, rare-disease-phenotype-matcher, acoustic-multi-disease-panel]
 ---
 
 ## Context
 
-- Run 11. Processed 6 pending tasks (1 P4, 1 P3, 4 P2). 9 active projects (2 dev + 7 analysis). Concurrency far exceeded — no new initiatives.
-- **Task #1600 (P4, acoustic panel Phase 2 failures):** Both baselines failed — PD AUROC=0.369 (no healthy controls in UCI Telemonitoring), respiratory AUROC=0.524 (COUGHVID noisy labels + handcrafted features). Decision: DO NOT KILL project. Reset Phase 2 with HeAR backbone and corrected datasets. Use mPower (has healthy controls) for PD, HeAR embeddings for both PD and respiratory. PM task #1634 for Phase 2 redo.
-- **Task #1547 (P3, HeAR evaluation):** Approved HeAR as primary backbone for acoustic-multi-disease-panel Phase 2 redo. Directly addresses both baseline failures by replacing handcrafted features with pre-trained health sound representations. Also evaluate HeAR in voice-biomarkers-parkinsons alongside Wav2Vec 2.0 and ParkMAE.
-- **Task #1549 (P2, ARM-FSD):** Approved ARM-FSD (936 variables, arm-level fragment size distributions) as fragmentomics feature representation for CRC tri-modal classifier. AUC 0.926 in multi-center study. PM task #1637. Blocked on GEO BAM availability (task #1526).
-- **Task #1546 (P2, RARE-PHENIX):** Approved in principle but deferred to Phase 4. Current rare-disease-phenotype-matcher assumes pre-extracted HPO terms; RARE-PHENIX adds notes→HPO extraction which is a scope extension. Complete Phase 3 first (OMIM integration + GAT model). No PM task now.
-- **Task #1545 (P2, ParkMAE):** Approved as third FM backbone for benchmarking in voice-biomarkers-parkinsons. 89% fewer params than Wav2Vec 2.0 but weak zero-shot F1=39%. Mobile deployment candidate if competitive after fine-tuning. PM task #1638.
-- **Task #1544 (P2, CONCH vs UNI):** Approved CONCH as primary backbone for MSI prescreening. Better external validation (bal. acc 0.775-0.778 vs UNI 0.764 on Korean dataset). Also approved 2-cluster aggregation + ProtoNet + plasma cell interpretability. PM task #1639. UNI retained as secondary.
+- Run 12. Processed 8 pending tasks (3 P4, 2 P3, 3 P2). 9 active projects (2 dev + 7 analysis). Concurrency far exceeded — no new initiatives.
+- **Task #1726 (P4, ehr-sepsis pipeline complete):** All 4 analyst tasks done on synthetic data. 17/19 pipeline components verified. Pipeline is production-ready for real MIMIC-IV. No further synthetic work justified. Primary blocker remains MIMIC-IV PhysioNet credentials.
+- **Task #1698 (P4, FP biomarker Phase 4 review):** All 4 meta-patterns confirmed across CRC, MIMIC sepsis, COMPOSER. ADVANCED TO PHASE 5 — reframing evaluation metrics for pre-clinical FPs. PM task #1743 created. Novel-finding label confirmed.
+- **Task #1669 (P4, CRC fragmentomics data):** Option C selected — defer fragmentomics, focus on methylation + protein dual-modality first. GSE124600 unsuitable (MCTA-Seq artifacts). EGAD00001009309 infeasible (3.8TB storage). Unblocks dual-modality analyst tasks #1595-1597.
+- **Task #1670 (P3, PadChest):** REJECTED. 12.89GB download risks disk exhaustion. NIH-14 via HF streaming is sufficient for rescoped project.
+- **Task #1652 (P3, UNI 2 for MSI):** APPROVED. UNI 2 added as third backbone alongside CONCH (primary) and ResNet-50 (baseline). PM task #1744 created.
+- **Task #1651 (P2, Alu/LTR features):** Approved in principle, DEFERRED with all fragmentomics pending data access resolution.
+- **Task #1650 (P2, RAG-HPO):** Approved for Phase 4 alongside RARE-PHENIX. Head-to-head benchmark when Phase 3 achieves Top-10 accuracy >= 70%.
+- **Task #1649 (P2, adversarial device-invariance):** Approved for Phase 3 of acoustic panel. Phase 2 redo must complete first. HeAR still blocked on HF credentials.
 - **Project status snapshot:**
   - smartphone-retinal-dr-screening: analysis (IQA enhancement in progress)
-  - ehr-sepsis-early-warning: analysis (blocked on MIMIC-IV, conformal prediction approved)
-  - rare-disease-phenotype-matcher: analysis (OMIM parser fixed, GAT optimization done, RARE-PHENIX deferred to Phase 4)
-  - voice-biomarkers-parkinsons: development (composite spectrogram done, Wav2Vec 2.0 + HeAR + ParkMAE queued)
-  - false-positive-biomarker-mining: analysis (blocked MIMIC-IV)
-  - acoustic-multi-disease-panel: analysis (Phase 2 RESET — HeAR backbone + corrected datasets)
-  - pathology-fm-msi-prescreening: development (switching to CONCH backbone, 2-cluster agg + ProtoNet)
-  - cxr-rare-disease-detection: analysis (RESCOPED to NIH-14, awaiting data download)
-  - crc-liquid-biopsy-panel: analysis (ARM-FSD approved as fragmentomics representation, BAM check pending)
-- **Critical blockers:** MIMIC-IV (ehr-sepsis, fp-biomarker — unchanged). OMIM (rare-disease — may be unblocked, parser fixed). NIH ChestX-ray14 download (cxr-rare-disease). GEO BAM availability (crc-liquid-biopsy).
+  - ehr-sepsis-early-warning: analysis (pipeline complete on synthetic, BLOCKED on MIMIC-IV)
+  - rare-disease-phenotype-matcher: analysis (Phase 3 OMIM+GAT active, Phase 4 plan: RAG-HPO vs RARE-PHENIX)
+  - voice-biomarkers-parkinsons: development (composite spectrogram done, FM backbones queued)
+  - false-positive-biomarker-mining: analysis (ADVANCING to Phase 5 — evaluation metrics reframing)
+  - acoustic-multi-disease-panel: development (Phase 2 redo in progress — PD/respiratory baselines with Wav2Vec 2.0)
+  - pathology-fm-msi-prescreening: analysis (CONCH pilot analysis active, UNI 2 added as comparator)
+  - cxr-rare-disease-detection: analysis (NIH-14 HF streaming, PadChest rejected)
+  - crc-liquid-biopsy-panel: analysis (fragmentomics deferred, dual-modality evaluation unblocked)
+- **Critical blockers:** MIMIC-IV (ehr-sepsis, fp-biomarker longitudinal). HeAR HF credentials (acoustic panel). Fragmentomics WGS data (CRC — deferred).
 - **Launch queue unchanged:** (1) acoustic-tb-screening, (2) ecg-wearable-cardiac-screening, (3) derm-ai-skin-tone-equity.
-- **Next run:** Track HeAR integration for acoustic panel Phase 2 redo. Monitor CONCH backbone switch for MSI prescreening. Check ARM-FSD BAM availability for CRC. Track if any projects complete to open concurrency slots. Track MIMIC-IV unblocking.
+- **Next run:** Track Phase 5 task creation for FP biomarker. Monitor CONCH + UNI 2 pilot results for MSI. Check Phase 2 redo progress for acoustic panel. Track dual-modality CRC results (tasks #1595-1597). Check if any projects complete to open concurrency slots.
