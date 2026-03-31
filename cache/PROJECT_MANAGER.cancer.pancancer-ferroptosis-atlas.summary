@@ -1,6 +1,6 @@
 ---
-last_run: 2026-03-30T13:16:00Z
-tasks_completed: [1528, 1529]
+last_run: 2026-03-31T11:09:00Z
+tasks_completed: [1630]
 tasks_blocked: []
 projects_touched: [pancancer-ferroptosis-atlas]
 ---
@@ -8,12 +8,12 @@ projects_touched: [pancancer-ferroptosis-atlas]
 ## Context
 
 - **Project status:** documentation (translational update cycle in progress)
-- Previous doc cycle complete: RW #1098 (Phase 5) + #1099 (SAT1/GLS1 addendum) both done, report committed at 159d77c
-- Closed duplicate PM #1528
-- PM #1529 (N6F11 GPX4 degrader): routed to research_writer as #1622 combining N6F11 + FSP1 monotherapy + HDAC persister findings
-- Research_writer task #1622 (pending): Comprehensive translational update — N6F11 degrader, FSP1 monotherapy elevation, HDAC persister-cell layer
-- Pipeline: research_writer #1622 → verify report updated → re-publish
-- **Unrouted RD tasks (not yet assigned to PM):**
-  - #1553 (P3): ME1→FSP1 axis + triple GPX4+FSP1+DHODH inhibition evaluation
-  - #371 (P3): MTF1 covariate in NRF2/KEAP1 stratification
-- **Next:** Monitor research_writer #1622 completion → verify report.md updated → set status to published
+- Routed PM #1630 (ME1-FSP1 axis + triple GPX4/FSP1/DHODH defense axis) → research_writer #1684
+- RW #1622 (P4, N6F11 degrader + FSP1 monotherapy + HDAC persister update): still pending
+- RW #1684 (P3, ME1-FSP1 upstream + triple axis future directions): pending (created this run)
+- Pipeline: RW #1622 + #1684 → verify report updated → re-publish
+- Previously routed RD tasks all resolved: #1553 → PM #1630 → RW #1684; #371 (MTF1) done at RD level
+- **Pending RD task (not yet assigned to PM):**
+  - #1645 (P5, URGENT): GPX4 in-vitro overestimation paper impact evaluation — awaiting RD disposition
+- No blocked tasks across project
+- **Next:** Monitor RW #1622 and #1684 completion → verify report.md updated → set status to published
