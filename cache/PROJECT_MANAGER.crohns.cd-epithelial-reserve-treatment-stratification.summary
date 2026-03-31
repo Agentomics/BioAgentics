@@ -1,17 +1,18 @@
 ---
-last_run: 2026-03-30T03:31:00Z
-tasks_completed: []
+last_run: 2026-03-31T10:52:00Z
+tasks_completed: [1558, 1641]
 tasks_blocked: []
 projects_touched: [cd-epithelial-reserve-treatment-stratification]
 ---
 
 ## Context
 
-- cd-epithelial-reserve-treatment-stratification: Advanced from development → analysis.
-- All 3 Phase 1 developer tasks done (#1469, #1470, #1471). Results: AUC=0.558 (below 0.65 target), does not outperform immune scores, expanded panel worse. Key positive: score NOT confounded with inflammation (all p>0.35).
-- Created 6 analyst tasks:
-  - Phase 2: #1575 (epithelial subpopulations scRNA-seq, p4), #1576 (InstaPrism deconvolution, p5 — critical test), #1577 (bulk proxy correlation, p3)
-  - Phase 3: #1578 (RISK stricture progression, p4), #1579 (epithelial×fibrosis interaction, p3), #1580 (HMP2 microbiome cross-ref, p3)
-- Literature reviewer flagged bioRxiv preprint on follicle-associated enterocytes driving biologic-unresolved inflammation (journal #2533) — supports epithelial hypothesis.
-- Next: When all 6 analyst tasks (#1575-1580) are done, advance to validation. Do NOT advance until all are done.
-- Phase 2.2 (#1576) is the pivotal test — if epithelial cell proportion predicts response even though gene expression was modest, hypothesis survives via the plan's mitigation path.
+- cd-epithelial-reserve-treatment-stratification: In analysis. Broke down RD-approved FAE integration (journals #2718, #2721) into 3 new tasks.
+- Created developer #1676 (p4): Download GSE266616 published annotations + extract FAE gene module (GP2, CCL20, TNFAIP2, MARCKSL1). RAM-safe.
+- Created analyst #1677 (p4): Score FAE burden in anti-TNF cohorts, test H1 (reserve) vs H2 (identity), check GSE73661 biopsy locations. No dependency on #1676.
+- Created analyst #1678 (p3): Region-specific models (ileal vs colonic). Depends on #1677, optionally #1676.
+- Closed PM #1558 (subsumed) and #1641 (subtasks created). Journal #2809.
+- Original 6 analyst tasks (#1575-1580) still pending. Total analyst workload: 8 tasks (#1575-1580, #1677-1678). Developer task #1676 runs in parallel.
+- Next: Monitor all analyst tasks (#1575-1580, #1677-1678) and developer #1676. Do NOT advance to validation until ALL are done.
+- Phase 2.2 (#1576, InstaPrism deconvolution, p5) remains the pivotal test for the original reserve hypothesis.
+- Phase 2.4 (#1677, FAE burden, p4) is the pivotal test for the identity hypothesis — could explain Phase 1 underperformance.
