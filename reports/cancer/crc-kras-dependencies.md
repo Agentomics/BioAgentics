@@ -1,6 +1,6 @@
 # CRC KRAS Allele-Specific Dependency Atlas
 
-**Date:** March 17, 2026
+**Date:** March 17, 2026 (updated March 31, 2026 — clinical landscape revision)
 **Project:** crc-kras-dependencies
 **Status:** Documentation
 **Data sources:** DepMap 25Q3, PRISM Repurposing 24Q2, TCGA COAD/READ
@@ -20,7 +20,7 @@ This atlas systematically characterizes KRAS allele-specific genetic dependencie
 - **Near-significant MSI-H interaction:** Within KRAS-mutant lines, MSI-H status associates with differential dependency on GEMIN5 (FDR = 0.11, d = 2.53) and AAMP (FDR = 0.11, d = -2.32) — the most promising sub-significant finding.
 - **G12V-specific co-mutation pattern:** TCGA reveals significantly lower APC co-mutation in KRAS G12V CRC (73.5% vs 83.5% overall, p = 0.047, OR = 0.44), a novel allele-specific signal not widely reported.
 - **KRAS-mutant CRC has worse PFS:** Borderline significant progression-free survival disadvantage (logrank p = 0.035) with G13D (median PFS 28.2 months) and G12C (33.0 months) showing the shortest PFS.
-- **Therapeutic strategy matrix:** Comprehensive allele-specific treatment framework incorporating allele-selective (sotorasib, zoldonrasib, RMC-5127), pan-KRAS (ERAS-4001), and pan-RAS (ERAS-0015, elironrasib) inhibitors for an estimated 68,850 annual US KRAS-mutant CRC patients.
+- **Therapeutic strategy matrix:** Comprehensive allele-specific treatment framework incorporating allele-selective (sotorasib, zoldonrasib, VS-7375, RMC-5127), pan-KRAS (ERAS-4001), and pan-RAS (ERAS-0015, elironrasib) inhibitors for an estimated 68,850 annual US KRAS-mutant CRC patients. EGFR feedback reactivation is the dominant CRC-specific resistance mechanism, making KRAS+anti-EGFR combination rationally required for G12D. MRTX1133 (G12D) has been terminated; VS-7375's dual ON/OFF mechanism may be especially relevant in CRC where EGFR drives rapid RAS cycling.
 
 ---
 
@@ -46,9 +46,9 @@ Colorectal cancer (CRC) is diagnosed in approximately 153,000 US patients annual
 
 The KRAS inhibitor landscape is rapidly expanding in 2026:
 
-- **Allele-specific agents:** Sotorasib (G12C, approved), zoldonrasib/RMC-9805 (G12D, FDA BTD January 2026, ORR 61% in NSCLC), MRTX1133 (G12D, Phase 1/2 enrolling CRC), RMC-5127 (G12V, Phase 1, first patient January 2026)
-- **Pan-KRAS agents:** ERAS-4001 (Phase 1 BOREALIS-1, spares HRAS/NRAS, data H2 2026)
-- **Pan-RAS agents:** ERAS-0015 (Phase 1, confirmed PRs at 8 mg QD, 8-21x higher CypA affinity vs elironrasib), elironrasib (FDA BTD, ORR 40%/DCR 80% in CRC G12C), daraxonrasib (Phase 1/2)
+- **Allele-specific agents:** Sotorasib (G12C, approved), zoldonrasib/RMC-9805 (G12D, FDA BTD January 2026, ORR 61% in NSCLC), VS-7375 (G12D, dual ON/OFF mechanism, Phase 1/2a enrolling CRC with cetuximab), RMC-5127 (G12V, Phase 1, first patient January 2026). Note: MRTX1133 (G12D) was terminated due to suboptimal PK.
+- **Pan-KRAS agents:** ERAS-4001 (Phase 1 BOREALIS-1, IND cleared, spares HRAS/NRAS, mono data H2 2026)
+- **Pan-RAS agents:** ERAS-0015 (Phase 1 AURORAS-1, 2 confirmed PRs at 8 mg QD, 8-21x higher CypA affinity vs elironrasib, mono data H1 2026), elironrasib (FDA BTD, ORR 40%/DCR 80% in CRC G12C), daraxonrasib (Phase 1/2)
 
 No systematic analysis has compared allele-specific dependencies across CRC KRAS variants in DepMap 25Q3. This atlas fills that gap by providing allele frequency data, co-mutation patterns, dependency profiles, drug sensitivity screening, and a therapeutic strategy framework for the emerging era of KRAS-targeted CRC therapy.
 
@@ -249,17 +249,23 @@ G13D and G12C show the shortest median PFS, consistent with more aggressive biol
 
 | Tier | Mechanism | Agents | Allele Coverage |
 |------|-----------|--------|----------------|
-| **Allele-specific** | Selective covalent or non-covalent binding | Sotorasib (G12C), zoldonrasib (G12D), MRTX1133 (G12D), RMC-5127 (G12V) | Single allele |
+| **Allele-specific** | Selective covalent or non-covalent binding | Sotorasib (G12C), zoldonrasib (G12D), VS-7375 (G12D, dual ON/OFF), RMC-5127 (G12V) | Single allele |
 | **Pan-KRAS** | Covers KRAS G12X + amplifications, spares HRAS/NRAS | ERAS-4001 (Phase 1) | All KRAS alleles |
 | **Pan-RAS** | Molecular glue or broad RAS inhibition | ERAS-0015, elironrasib, daraxonrasib | All RAS isoforms |
 
 #### 6.2 Per-Allele Clinical Landscape
 
 **KRAS G12D** (~18,314 US cases/year — largest unmet need)
-- Zoldonrasib: FDA BTD (NSCLC), ORR 61% NSCLC at 1200 mg QD. CRC expansion enrolling; expect lower ORR due to EGFR feedback reactivation
-- MRTX1133: Phase 1/2 enrolling CRC (NCT05737706)
-- VS-7375: Dual ON/OFF G12D inhibitor, preclinical superiority to zoldonrasib (1 nM pERK reduction vs 30 nM). Phase 1/2a with cetuximab combo enrolling CRC
-- Key biology: CRC G12D shows intrinsic resistance to KRAS G12D monotherapy via EGFR reactivation. Combination with cetuximab is rationally required
+
+Four clinical programs now cover G12D CRC patients, spanning allele-selective, pan-KRAS, and pan-RAS mechanisms:
+
+- **Zoldonrasib (RMC-9805):** FDA BTD for NSCLC (January 2026), ORR 61% at 1200 mg QD. CRC expansion enrolling in Phase 1 (RMC-9805-001) but no CRC-specific efficacy data yet. Expect lower CRC ORR due to EGFR feedback reactivation. Combo with daraxonrasib (pan-RAS) is feasible.
+- **VS-7375 (Verastem):** Dual ON/OFF G12D inhibitor with 30x potency advantage over zoldonrasib (1 nM vs 30 nM pERK IC50). Phase 1/2a enrolling CRC with cetuximab combo (AACR 2026 Abstract PR007). The dual ON/OFF mechanism is especially relevant in CRC: EGFR feedback drives rapid RAS cycling between GTP-bound (ON) and GDP-bound (OFF) states, and agents inhibiting only one state lose efficacy as the other accumulates. VS-7375 traps KRAS G12D in both states, potentially overcoming this CRC-specific resistance. Interim clinical safety/efficacy update expected H1 2026.
+- **ERAS-0015 (Erasca, pan-RAS):** Molecular glue degrader covering all KRAS alleles. AURORAS-1 Phase 1 shows 2 confirmed PRs at doses as low as 8 mg QD across multiple tumor types and RAS mutations. 8-21x higher CypA binding affinity and ~5x greater RAS inhibition potency vs elironrasib (RMC-6236). Monotherapy data expected H1 2026 (imminent catalyst). CypA overexpression in CRC tumors may confer tumor-selective drug accumulation.
+- **ERAS-4001 (Erasca, pan-KRAS):** IND cleared. BOREALIS-1 Phase 1 dose escalation advancing. Single-digit nM IC50s against both GTP- and GDP-bound KRAS. Spares HRAS/NRAS for better therapeutic window than pan-RAS agents. Monotherapy data expected H2 2026. US Patent 12,552,813 (February 2026, protection to 2043).
+- **MRTX1133 (discontinued):** Mirati/BMS terminated Phase 1/2 (NCT05737706) due to suboptimal PK. This narrows the G12D-selective allele-specific field to zoldonrasib and VS-7375.
+
+*EGFR feedback resistance — the CRC-specific challenge:* EGFR reactivation is the dominant resistance mechanism to KRAS G12D monotherapy in CRC, distinct from NSCLC where KRAS inhibitor monotherapy achieves higher response rates. Preclinical validation of KRAS+anti-EGFR combinations is robust: MRTX1133+cetuximab demonstrated synergy in CRC models (Anticancer Res 43:4341), and VS-7375+cetuximab is actively enrolling CRC patients. Combination with cetuximab (or panitumumab) is rationally required for KRAS G12D CRC, mirroring the sotorasib+panitumumab paradigm established for G12C.
 
 **KRAS G12V** (~15,491 US cases/year)
 - RMC-5127: First G12V-selective inhibitor. Phase 1 (NCT07349537), first patient January 2026. Mono, combo with daraxonrasib, and combo with cetuximab arms include CRC
@@ -317,7 +323,7 @@ This analysis provides the most comprehensive publicly available characterizatio
 
 CRC and NSCLC have divergent KRAS allele landscapes: G12D dominates CRC (26.6%) while G12C dominates NSCLC (21%). This has direct clinical implications:
 - The approved KRAS-targeted CRC regimen (sotorasib + panitumumab) addresses only 6.4% of KRAS-mutant CRC patients
-- CRC shows intrinsic resistance to KRAS G12D monotherapy via EGFR feedback reactivation, requiring combination approaches
+- CRC shows intrinsic resistance to KRAS G12D monotherapy via EGFR feedback reactivation, requiring combination approaches (e.g., VS-7375+cetuximab, zoldonrasib+anti-EGFR). MRTX1133 termination narrows the G12D-selective field.
 - G13D is enriched in CRC (16.5%) relative to NSCLC and has no allele-specific inhibitor in development
 
 ### Key Biological Signals
@@ -346,7 +352,7 @@ Despite the power limitations, several biologically plausible signals emerged:
 
 1. **Pan-cancer KRAS allele pooling.** Combining CRC with PDAC and NSCLC G12D/G13D/G12V lines would boost per-allele N from 6-8 to 30-50+, dramatically improving power for allele-specific discovery.
 2. **Expanded MSI interaction analysis.** The GEMIN5/AAMP near-significant results (FDR = 0.11) warrant investigation in larger MSI-H datasets and functional validation.
-3. **Track clinical data releases.** ERAS-0015 H1 2026 monotherapy data, zoldonrasib CRC expansion cohort data, and VS-7375 interim safety/efficacy will provide clinical validation opportunities.
+3. **Track clinical data releases.** ERAS-0015 H1 2026 monotherapy data (imminent), VS-7375 H1 2026 interim safety/efficacy, zoldonrasib CRC expansion cohort data, and ERAS-4001 H2 2026 monotherapy data will provide clinical validation opportunities. MRTX1133 termination makes VS-7375 and pan-RAS data especially critical for G12D CRC.
 4. **KRAS allele × MTAP deletion co-occurrence.** ~15% of CRC harbor MTAP loss; different KRAS alleles may have different MTAP co-deletion rates, affecting dual-targeting (ERAS-0015 + vopimetostat) patient selection.
 5. **G12V APC co-mutation validation.** Replicate the lower APC co-mutation finding (p = 0.047) in independent cohorts (e.g., AACR GENIE, MSK-IMPACT).
 6. **DepMap 26Q1 integration.** Additional CRC cell lines in future DepMap releases would directly increase per-allele power.
@@ -370,3 +376,6 @@ Despite the power limitations, several biologically plausible signals emerged:
 13. CodeBreaK 101 sotorasib + panitumumab + FOLFIRI. ASCO 2025. DOI: 10.1200/JCO.2025.43.16_suppl.3506.
 14. Elironrasib CRC G12C data. Revolution Medicines.
 15. CodeBreaK 301 Phase 3. JCO TPS326.
+16. MRTX1133 Phase 1/2 termination. Mirati/BMS. ClinicalTrials.gov NCT05737706.
+17. Erasca FY2025 Q4 business update — ERAS-0015 worldwide rights, ERAS-4001 BOREALIS-1 advancing. GlobeNewsWire, March 12, 2026.
+18. MRTX1133 + cetuximab synergy in CRC models. Anticancer Res 43:4341.
