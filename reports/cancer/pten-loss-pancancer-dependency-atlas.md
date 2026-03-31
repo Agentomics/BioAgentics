@@ -6,6 +6,7 @@
 **Data Sources:** DepMap 25Q3 (CRISPRGeneEffect, PortalOmicsCNGeneLog2, OmicsSomaticMutations, OmicsExpressionTPMLogp1), PRISM 24Q2, TCGA PanCancer Atlas, ACS 2024 incidence
 **Pipeline:** `src/cancer/pten_loss_pancancer_dependency_atlas/01–05*.py`
 **Validation Status:** APPROVED — all 3 validation tasks PASSED (journal #1485, #1487, #1488, #1489). ICMT addendum reviewed (journal #1929): not confirmed in DepMap, likely underpowered.
+**Amendment (2026-03-31):** Updated PI3Kβ drug landscape — AZD8186 discontinued after Phase 1; GSK2636771 sole remaining clinical PI3Kβ-selective program; GT220 preclinical.
 
 ---
 
@@ -23,7 +24,7 @@ The genome-wide screen (18,435 genes × 9 cancer types) yielded zero novel non-P
 
 1. **Genome-wide screen is underpowered.** With 5–34 PTEN-lost lines per cancer type, BH correction over 18,435 genes requires extreme raw p-values. Zero genes passed genome-wide significance. The PIK3CB positive control — which has d = −2.23 in breast — achieves only FDR = 0.10 in the genome-wide context (n_lost = 10). The null result for novel non-PI3K dependencies reflects statistical power, not biological absence.
 
-2. **Key drugs missing from PRISM.** Capivasertib (FDA-approved AKT inhibitor), ipatasertib, alpelisib, AZD8186, GSK2636771, and GT220 (PI3Kβ-selective agents) are absent from PRISM 24Q2. The most clinically relevant drugs for PTEN-lost cancers could not be tested pharmacologically.
+2. **Key drugs missing from PRISM.** Capivasertib (FDA-approved AKT inhibitor), ipatasertib, alpelisib, GSK2636771 (the sole remaining clinical PI3Kβ-selective inhibitor), and GT220 (preclinical PI3Kβ-selective) are absent from PRISM 24Q2. AZD8186 (AstraZeneca PI3Kβ-selective) was discontinued after Phase 1. The most clinically relevant drugs for PTEN-lost cancers could not be tested pharmacologically.
 
 3. **Prostate cancer is critically underrepresented.** Only 3 PTEN-lost prostate lines exist in DepMap, versus ~57,660 estimated US patients/year (20% PTEN-loss prevalence). Prostate did not qualify for powered analysis despite being a top clinical priority.
 
@@ -46,7 +47,9 @@ A critical but underappreciated consequence of PTEN loss is the PI3K isoform swi
 - **Alpelisib** (Novartis): PI3Kα-selective, approved for PIK3CA-mutant breast cancer — does not directly address PTEN loss.
 - **Inavolisib** (Genentech): PI3Kα-selective mutant degrader, approved October 2024 for PIK3CA-mutant breast cancer. Our data shows PTEN-lost cells are *less* sensitive, consistent with the isoform switch.
 - **GT220** (PI3Kβ-selective): Phase 1/preclinical, specifically designed for PTEN-null tumors — the first isoform-selective agent targeting the node most robustly dependent on PTEN loss.
-- **Key gap:** No PI3Kβ-selective inhibitor is approved. AKT inhibitors show promise but have modest single-agent efficacy. Combination strategies and cancer-type-specific prioritization are urgently needed.
+- **AZD8186** (AstraZeneca): PI3Kβ-selective inhibitor — **discontinued** after Phase 1 (insufficient clinical activity).
+- **GSK2636771** (GlaxoSmithKline): PI3Kβ-selective inhibitor, Phase 1/2 — now the **sole remaining clinical PI3Kβ-selective program**.
+- **Key gap:** No PI3Kβ-selective inhibitor is approved. AZD8186's discontinuation leaves GSK2636771 as the only clinical-stage PI3Kβ agent, with GT220 in preclinical development. AKT inhibitors show promise but have modest single-agent efficacy. Combination strategies and cancer-type-specific prioritization are urgently needed.
 
 **Cross-project context:** This atlas complements the PIK3CA allele-specific dependency atlas. Both address PI3K pathway dependencies but through opposite genetic mechanisms: PIK3CA mutation constitutively activates p110α (creating PIK3CA oncogene addiction), while PTEN loss constitutively activates p110β (creating PIK3CB dependency). Together, they define the full PI3K pathway vulnerability landscape.
 
@@ -261,7 +264,7 @@ The largest unmet needs by patient volume are melanoma (~12,000/yr with PTEN los
 
 The central finding of this atlas is convergent CRISPR and pharmacological evidence for the p110α→p110β isoform switch in PTEN-null cancers. This is not a new biological concept — Wee et al. (2008) and Ni et al. (2012) demonstrated PI3Kβ dependency in PTEN-null models — but our analysis provides the first pan-cancer, large-scale validation using unbiased functional genomic data. The effect is massive in breast cancer (d = −2.23) and melanoma (d = −1.50), and the inverse PIK3CA finding provides an elegant internal control: the same genetic event (PTEN loss) simultaneously increases dependency on one PI3K isoform and decreases dependency on another.
 
-The pharmacological mirror is equally compelling. Afuresertib (AKT inhibitor, downstream of both PI3K isoforms) shows PTEN selectivity, while inavolisib (PI3Kα-selective) shows inverse selectivity. This has immediate clinical implications: PI3Kα-selective agents like inavolisib and alpelisib, while effective for PIK3CA-mutant cancers, are not optimal — and may be counterproductive — for PTEN-lost tumors. The rational therapeutic strategy is PI3Kβ-selective inhibition (AZD8186, GSK2636771, GT220) or downstream AKT inhibition (capivasertib, afuresertib).
+The pharmacological mirror is equally compelling. Afuresertib (AKT inhibitor, downstream of both PI3K isoforms) shows PTEN selectivity, while inavolisib (PI3Kα-selective) shows inverse selectivity. This has immediate clinical implications: PI3Kα-selective agents like inavolisib and alpelisib, while effective for PIK3CA-mutant cancers, are not optimal — and may be counterproductive — for PTEN-lost tumors. The rational therapeutic strategy is PI3Kβ-selective inhibition or downstream AKT inhibition (capivasertib, afuresertib). With AZD8186 discontinued after Phase 1, GSK2636771 is the sole remaining clinical PI3Kβ-selective program, and GT220 (Geode Therapeutics/Dana-Farber) is advancing through preclinical development. The narrow PI3Kβ pipeline underscores the urgency of prioritizing GSK2636771 expansion and accelerating GT220.
 
 ### Cancer-Type Heterogeneity
 
@@ -283,7 +286,7 @@ A recent publication (PMID 41507994) identified ICMT as a synthetic lethal targe
 
 2. **DepMap cell lines do not perfectly represent clinical tumors.** Thyroid is heavily overrepresented (DepMap 16% vs TCGA 1% PTEN loss), breast is moderately overrepresented (13.5% vs 6%). Prostate, the second-largest PTEN-loss patient population, is essentially absent.
 
-3. **Drug screen coverage is incomplete.** The most clinically relevant agents — capivasertib, PI3Kβ-selective inhibitors (AZD8186, GSK2636771, GT220), and combination regimens — are not in PRISM 24Q2. Afuresertib is the only testable AKT inhibitor with on-target concordance.
+3. **Drug screen coverage is incomplete.** The most clinically relevant agents — capivasertib, PI3Kβ-selective inhibitors (GSK2636771, GT220; AZD8186 now discontinued), and combination regimens — are not in PRISM 24Q2. Afuresertib is the only testable AKT inhibitor with on-target concordance.
 
 4. **CRISPR knockout ≠ pharmacological inhibition.** Complete gene loss (CRISPR) is more severe than partial enzymatic inhibition (drugs). Effect sizes from CRISPR may overestimate clinical drug responses.
 
@@ -293,7 +296,7 @@ A recent publication (PMID 41507994) identified ICMT as a synthetic lethal targe
 
 ## Next Steps
 
-1. **PI3Kβ-selective inhibitor trials in melanoma.** Melanoma is the highest-priority trial gap: ROBUST PIK3CB dependency (d = −1.50), ~12,000 US patients/year with PTEN loss, afuresertib sensitivity trending (d = −0.99), and zero active PTEN-targeted trials. GT220 or AZD8186 basket trials should include a melanoma cohort.
+1. **PI3Kβ-selective inhibitor trials in melanoma.** Melanoma is the highest-priority trial gap: ROBUST PIK3CB dependency (d = −1.50), ~12,000 US patients/year with PTEN loss, afuresertib sensitivity trending (d = −0.99), and zero active PTEN-targeted trials. GSK2636771 expansion cohorts and GT220 basket trials should include a melanoma arm as the highest-priority indication.
 
 2. **Expanded DepMap representation.** Prostate cancer (3 PTEN-lost lines vs ~57,660 patients/year) and bladder cancer (not qualifying, ~8,300 patients/year) need more PTEN-lost cell lines to power dependency analyses in these clinically important cancer types.
 
