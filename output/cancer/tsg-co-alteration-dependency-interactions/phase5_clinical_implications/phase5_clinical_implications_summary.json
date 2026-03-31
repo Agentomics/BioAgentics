@@ -1,0 +1,37 @@
+{
+  "total_pairs": 15,
+  "synergistic": 4,
+  "antagonistic": 4,
+  "mixed": 1,
+  "additive": 6,
+  "both_druggable": 15,
+  "with_emergent_deps": 13,
+  "with_contraindications": 7,
+  "top_priority_pairs": [
+    {
+      "pair": "ARID1A+PTEN",
+      "priority_score": 10,
+      "interaction_type": "synergistic"
+    },
+    {
+      "pair": "MTAP+TP53",
+      "priority_score": 9,
+      "interaction_type": "mixed"
+    },
+    {
+      "pair": "PTEN+TP53",
+      "priority_score": 9,
+      "interaction_type": "synergistic"
+    },
+    {
+      "pair": "TP53+PTEN",
+      "priority_score": 9,
+      "interaction_type": "synergistic"
+    },
+    {
+      "pair": "TP53+NF1",
+      "priority_score": 8,
+      "interaction_type": "synergistic"
+    }
+  ]
+}
