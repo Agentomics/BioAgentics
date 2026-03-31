@@ -29,6 +29,20 @@
         "efficacy": 0.92,
         "description": "High-potency STING inhibitor (IC50 ~100 nM); no cytotoxicity unlike H-151; demonstrated CNS efficacy in TREX1-deficient AGS mouse models mitigating neurological impairment",
         "clinical_stage": "Preclinical (in vivo AGS model efficacy demonstrated)"
+      },
+      {
+        "name": "baricitinib",
+        "target": "jak",
+        "efficacy": 0.75,
+        "description": "JAK1/JAK2 inhibitor; blocks JAK/STAT \u2192 IFN gene transcription downstream of STING; 22/38 COPA/STING patients responded (David et al. PMID 41395910)",
+        "clinical_stage": "FDA-approved (RA, COVID-19)"
+      },
+      {
+        "name": "ruxolitinib",
+        "target": "jak",
+        "efficacy": 0.7,
+        "description": "JAK1/JAK2 inhibitor; blocks IFN gene transcription; used in STING-associated interferonopathies",
+        "clinical_stage": "FDA-approved (myelofibrosis, polycythemia vera)"
       }
     ]
   },
@@ -74,10 +88,27 @@
           "inhibited_ifn": 0.0,
           "ifn_reduction": 0.0,
           "pct_reduction": 0.0
+        },
+        {
+          "inhibitor": "baricitinib",
+          "target": "jak",
+          "baseline_ifn": 0.0,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.0,
+          "pct_reduction": 0.0
+        },
+        {
+          "inhibitor": "ruxolitinib",
+          "target": "jak",
+          "baseline_ifn": 0.0,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.0,
+          "pct_reduction": 0.0
         }
       ],
       "best_single_inhibitor": "H-151",
       "preferred_sting_inhibitor": null,
+      "best_jak_inhibitor": "baricitinib",
       "recommended_therapy": "complement_replacement",
       "rationale": "Lectin complement deficiency primary driver; IFN pathway near normal"
     },
@@ -122,12 +153,29 @@
           "inhibited_ifn": 0.0012,
           "ifn_reduction": 0.6722,
           "pct_reduction": 99.8
+        },
+        {
+          "inhibitor": "baricitinib",
+          "target": "jak",
+          "baseline_ifn": 0.6734,
+          "inhibited_ifn": 0.1142,
+          "ifn_reduction": 0.5593,
+          "pct_reduction": 83.0
+        },
+        {
+          "inhibitor": "ruxolitinib",
+          "target": "jak",
+          "baseline_ifn": 0.6734,
+          "inhibited_ifn": 0.125,
+          "ifn_reduction": 0.5485,
+          "pct_reduction": 81.4
         }
       ],
       "best_single_inhibitor": "RU.521",
       "preferred_sting_inhibitor": "SN-011",
+      "best_jak_inhibitor": "baricitinib",
       "recommended_therapy": "RU.521",
-      "rationale": "RU.521 (cgas inhibitor) reduces IFN by 100%; SN-011 is preferred STING inhibitor for DDR/cGAS-STING profiles due to superior potency (IC50 ~100 nM), no cytotoxicity, and demonstrated CNS efficacy in TREX1-deficient models"
+      "rationale": "RU.521 (cgas inhibitor) reduces IFN by 100%; SN-011 is preferred STING inhibitor for DDR/cGAS-STING profiles due to superior potency (IC50 ~100 nM), no cytotoxicity, and demonstrated CNS efficacy in TREX1-deficient models. FDA-approved alternative: baricitinib (JAK inhibitor, 83% IFN reduction) \u2014 clinically available while STING-specific inhibitors remain preclinical"
     },
     {
       "profile": "two_hit_mild",
@@ -170,12 +218,29 @@
           "inhibited_ifn": 0.0001,
           "ifn_reduction": 0.5835,
           "pct_reduction": 100.0
+        },
+        {
+          "inhibitor": "baricitinib",
+          "target": "jak",
+          "baseline_ifn": 0.5836,
+          "inhibited_ifn": 0.0805,
+          "ifn_reduction": 0.5031,
+          "pct_reduction": 86.2
+        },
+        {
+          "inhibitor": "ruxolitinib",
+          "target": "jak",
+          "baseline_ifn": 0.5836,
+          "inhibited_ifn": 0.0885,
+          "ifn_reduction": 0.4951,
+          "pct_reduction": 84.8
         }
       ],
       "best_single_inhibitor": "RU.521",
       "preferred_sting_inhibitor": "SN-011",
+      "best_jak_inhibitor": "baricitinib",
       "recommended_therapy": "combined: complement replacement + RU.521",
-      "rationale": "Dual targeting: lectin complement replacement for pathogen clearance, RU.521 (cgas inhibitor) for IFN control (100% reduction); SN-011 is preferred STING inhibitor for DDR/cGAS-STING profiles due to superior potency (IC50 ~100 nM), no cytotoxicity, and demonstrated CNS efficacy in TREX1-deficient models"
+      "rationale": "Dual targeting: lectin complement replacement for pathogen clearance, RU.521 (cgas inhibitor) for IFN control (100% reduction); SN-011 is preferred STING inhibitor for DDR/cGAS-STING profiles due to superior potency (IC50 ~100 nM), no cytotoxicity, and demonstrated CNS efficacy in TREX1-deficient models. FDA-approved alternative: baricitinib (JAK inhibitor, 86% IFN reduction) \u2014 clinically available while STING-specific inhibitors remain preclinical"
     },
     {
       "profile": "two_hit_severe",
@@ -218,12 +283,94 @@
           "inhibited_ifn": 0.0046,
           "ifn_reduction": 0.6949,
           "pct_reduction": 99.3
+        },
+        {
+          "inhibitor": "baricitinib",
+          "target": "jak",
+          "baseline_ifn": 0.6994,
+          "inhibited_ifn": 0.127,
+          "ifn_reduction": 0.5725,
+          "pct_reduction": 81.8
+        },
+        {
+          "inhibitor": "ruxolitinib",
+          "target": "jak",
+          "baseline_ifn": 0.6994,
+          "inhibited_ifn": 0.1388,
+          "ifn_reduction": 0.5607,
+          "pct_reduction": 80.2
         }
       ],
       "best_single_inhibitor": "RU.521",
       "preferred_sting_inhibitor": "SN-011",
+      "best_jak_inhibitor": "baricitinib",
       "recommended_therapy": "combined: complement replacement + RU.521",
-      "rationale": "Dual targeting: lectin complement replacement for pathogen clearance, RU.521 (cgas inhibitor) for IFN control (100% reduction); SN-011 is preferred STING inhibitor for DDR/cGAS-STING profiles due to superior potency (IC50 ~100 nM), no cytotoxicity, and demonstrated CNS efficacy in TREX1-deficient models"
+      "rationale": "Dual targeting: lectin complement replacement for pathogen clearance, RU.521 (cgas inhibitor) for IFN control (100% reduction); SN-011 is preferred STING inhibitor for DDR/cGAS-STING profiles due to superior potency (IC50 ~100 nM), no cytotoxicity, and demonstrated CNS efficacy in TREX1-deficient models. FDA-approved alternative: baricitinib (JAK inhibitor, 82% IFN reduction) \u2014 clinically available while STING-specific inhibitors remain preclinical"
+    },
+    {
+      "profile": "copa_like",
+      "description": "COPA-like phenotype: mild TREX1/SAMHD1 impairment (STING gain-of-function analog)",
+      "genotype": {
+        "trex1_activity": 0.7,
+        "samhd1_activity": 0.7,
+        "lectin_complement_deficient": false
+      },
+      "baseline_ifn": 0.341,
+      "inhibitor_results": [
+        {
+          "inhibitor": "H-151",
+          "target": "sting",
+          "baseline_ifn": 0.341,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.341,
+          "pct_reduction": 100.0
+        },
+        {
+          "inhibitor": "RU.521",
+          "target": "cgas",
+          "baseline_ifn": 0.341,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.341,
+          "pct_reduction": 100.0
+        },
+        {
+          "inhibitor": "C-178",
+          "target": "sting",
+          "baseline_ifn": 0.341,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.341,
+          "pct_reduction": 100.0
+        },
+        {
+          "inhibitor": "SN-011",
+          "target": "sting",
+          "baseline_ifn": 0.341,
+          "inhibited_ifn": 0.0,
+          "ifn_reduction": 0.341,
+          "pct_reduction": 100.0
+        },
+        {
+          "inhibitor": "baricitinib",
+          "target": "jak",
+          "baseline_ifn": 0.341,
+          "inhibited_ifn": 0.0313,
+          "ifn_reduction": 0.3097,
+          "pct_reduction": 90.8
+        },
+        {
+          "inhibitor": "ruxolitinib",
+          "target": "jak",
+          "baseline_ifn": 0.341,
+          "inhibited_ifn": 0.0346,
+          "ifn_reduction": 0.3064,
+          "pct_reduction": 89.9
+        }
+      ],
+      "best_single_inhibitor": "H-151",
+      "preferred_sting_inhibitor": "SN-011",
+      "best_jak_inhibitor": "baricitinib",
+      "recommended_therapy": "H-151",
+      "rationale": "H-151 (sting inhibitor) reduces IFN by 100%; SN-011 is preferred STING inhibitor for DDR/cGAS-STING profiles due to superior potency (IC50 ~100 nM), no cytotoxicity, and demonstrated CNS efficacy in TREX1-deficient models. FDA-approved alternative: baricitinib (JAK inhibitor, 91% IFN reduction) \u2014 clinically available while STING-specific inhibitors remain preclinical"
     }
   ]
 }

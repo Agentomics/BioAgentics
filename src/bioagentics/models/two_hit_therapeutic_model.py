@@ -5,12 +5,18 @@ across different genotype scenarios. Predicts which patients (by genotype
 compound hit profile) would benefit most from:
   - STING inhibition (SN-011 preferred, H-151, C-178)
   - cGAS inhibition (RU.521)
+  - JAK inhibition (baricitinib, ruxolitinib — FDA-approved)
   - Complement replacement (for lectin complement deficiency)
   - Combined therapy
 
 SN-011 is the preferred STING inhibitor for DDR-variant PANS profiles based
 on superior efficacy (~IC50 100 nM), no cytotoxicity (unlike H-151), and
 demonstrated CNS efficacy in TREX1-deficient AGS mouse models.
+
+JAK inhibitors (baricitinib, ruxolitinib) are FDA-approved and provide a
+clinically available alternative when STING-specific inhibitors are still
+preclinical. Based on David et al. (PMID 41395910): 22/38 COPA/STING
+interferonopathy patients responded to JAK inhibitors.
 
 Uses the cGAS-STING pathway model from two_hit_cgas_sting_model.py as
 the simulation engine.
@@ -83,6 +89,27 @@ INHIBITORS = [
         ),
         clinical_stage="Preclinical (in vivo AGS model efficacy demonstrated)",
     ),
+    Inhibitor(
+        name="baricitinib",
+        target="jak",
+        efficacy=0.75,
+        description=(
+            "JAK1/JAK2 inhibitor; blocks JAK/STAT → IFN gene transcription "
+            "downstream of STING; 22/38 COPA/STING patients responded "
+            "(David et al. PMID 41395910)"
+        ),
+        clinical_stage="FDA-approved (RA, COVID-19)",
+    ),
+    Inhibitor(
+        name="ruxolitinib",
+        target="jak",
+        efficacy=0.70,
+        description=(
+            "JAK1/JAK2 inhibitor; blocks IFN gene transcription; "
+            "used in STING-associated interferonopathies"
+        ),
+        clinical_stage="FDA-approved (myelofibrosis, polycythemia vera)",
+    ),
 ]
 
 # Compound genotype profiles for therapeutic prediction
@@ -119,6 +146,14 @@ COMPOUND_PROFILES = [
         "lectin_complement_deficient": True,
         "recommended_therapy": "combined_aggressive",
     },
+    {
+        "name": "copa_like",
+        "description": "COPA-like phenotype: mild TREX1/SAMHD1 impairment (STING gain-of-function analog)",
+        "trex1_activity": 0.7,
+        "samhd1_activity": 0.7,
+        "lectin_complement_deficient": False,
+        "recommended_therapy": "jak_inhibition",
+    },
 ]
 
 
@@ -154,6 +189,14 @@ def simulate_inhibitor_effect(
         inhibited = simulate_pathway(
             gas_dna, trex1_activity, samhd1_activity,
             cgas_k=inhibited_cgas_k,
+        )
+    elif inhibitor.target == "jak":
+        # JAK inhibitor: blocks JAK/STAT → IFN gene transcription downstream of IRF3
+        # Increase irf3_k threshold (harder to produce IFN output)
+        inhibited_irf3_k = 0.5 + (inhibitor.efficacy * 2.0)
+        inhibited = simulate_pathway(
+            gas_dna, trex1_activity, samhd1_activity,
+            irf3_k=inhibited_irf3_k,
         )
     else:
         inhibited = baseline
@@ -202,9 +245,13 @@ def predict_therapy(
     # Find best single inhibitor overall
     best_inh = max(inhibitor_results, key=lambda r: r["ifn_reduction"])
 
-    # Find best STING-class inhibitor separately
+    # Find best STING-class inhibitor separately (prefer SN-011 at equal reduction)
     sting_results = [r for r in inhibitor_results if r["target"] == "sting"]
-    best_sting = max(sting_results, key=lambda r: r["ifn_reduction"]) if sting_results else None
+    best_sting = max(sting_results, key=lambda r: (r["ifn_reduction"], r["inhibitor"] == "SN-011")) if sting_results else None
+
+    # Find best JAK-class inhibitor separately
+    jak_results = [r for r in inhibitor_results if r["target"] == "jak"]
+    best_jak = max(jak_results, key=lambda r: r["ifn_reduction"]) if jak_results else None
 
     # Determine therapy recommendation
     baseline = simulate_pathway(gas_dna, trex1, samhd1)
@@ -220,13 +267,22 @@ def predict_therapy(
             "demonstrated CNS efficacy in TREX1-deficient models"
         )
 
+    # Note FDA-approved JAK alternative
+    jak_note = ""
+    if best_jak and needs_ifn_control:
+        jak_note = (
+            f". FDA-approved alternative: {best_jak['inhibitor']} (JAK inhibitor, "
+            f"{best_jak['pct_reduction']:.0f}% IFN reduction) — clinically available "
+            f"while STING-specific inhibitors remain preclinical"
+        )
+
     if lectin_def and needs_ifn_control:
         therapy = "combined: complement replacement + " + best_inh["inhibitor"]
         rationale = (
             f"Dual targeting: lectin complement replacement for pathogen clearance, "
             f"{best_inh['inhibitor']} ({best_inh['target']} inhibitor) for IFN control "
             f"({best_inh['pct_reduction']:.0f}% reduction)"
-            f"{preferred_note}"
+            f"{preferred_note}{jak_note}"
         )
     elif lectin_def and not needs_ifn_control:
         therapy = "complement_replacement"
@@ -236,7 +292,7 @@ def predict_therapy(
         rationale = (
             f"{best_inh['inhibitor']} ({best_inh['target']} inhibitor) reduces IFN by "
             f"{best_inh['pct_reduction']:.0f}%"
-            f"{preferred_note}"
+            f"{preferred_note}{jak_note}"
         )
     else:
         therapy = "monitoring"
@@ -254,6 +310,7 @@ def predict_therapy(
         "inhibitor_results": inhibitor_results,
         "best_single_inhibitor": best_inh["inhibitor"],
         "preferred_sting_inhibitor": best_sting["inhibitor"] if best_sting and has_ddr_cgas_sting else None,
+        "best_jak_inhibitor": best_jak["inhibitor"] if best_jak else None,
         "recommended_therapy": therapy,
         "rationale": rationale,
     }
@@ -335,7 +392,7 @@ def plot_therapeutic_comparison(
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-    colors = ["#E74C3C", "#3498DB", "#F39C12", "#2ECC71"]
+    colors = ["#E74C3C", "#3498DB", "#F39C12", "#2ECC71", "#9B59B6", "#1ABC9C"]
 
     # Left: IFN reduction by inhibitor
     ax1 = axes[0]

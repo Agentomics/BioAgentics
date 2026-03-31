@@ -16,8 +16,8 @@ from bioagentics.models.two_hit_therapeutic_model import (
 
 class TestInhibitorPanel:
     def test_inhibitor_count(self):
-        """INHIBITORS list includes all 4 inhibitors (H-151, RU.521, C-178, SN-011)."""
-        assert len(INHIBITORS) == 4
+        """INHIBITORS list includes all 6 inhibitors."""
+        assert len(INHIBITORS) == 6
 
     def test_sn011_in_panel(self):
         names = [inh.name for inh in INHIBITORS]
@@ -32,6 +32,18 @@ class TestInhibitorPanel:
         sting_inhibitors = [inh for inh in INHIBITORS if inh.target == "sting"]
         best = max(sting_inhibitors, key=lambda i: i.efficacy)
         assert best.name == "SN-011"
+
+    def test_jak_inhibitors_present(self):
+        """Panel includes baricitinib and ruxolitinib JAK inhibitors."""
+        names = [inh.name for inh in INHIBITORS]
+        assert "baricitinib" in names
+        assert "ruxolitinib" in names
+
+    def test_jak_inhibitors_target(self):
+        jak_inhs = [inh for inh in INHIBITORS if inh.target == "jak"]
+        assert len(jak_inhs) == 2
+        for inh in jak_inhs:
+            assert inh.clinical_stage.startswith("FDA-approved")
 
 
 class TestSimulateInhibitorEffect:
@@ -81,6 +93,21 @@ class TestSimulateInhibitorEffect:
         r_sn011 = simulate_inhibitor_effect(0.1, 0.1, 0.5, sn011)
         assert r_sn011["ifn_reduction"] >= r_h151["ifn_reduction"]
 
+    def test_jak_inhibitor_reduces_ifn(self):
+        """JAK inhibitors should reduce IFN output."""
+        baricitinib = next(inh for inh in INHIBITORS if inh.name == "baricitinib")
+        result = simulate_inhibitor_effect(0.1, 0.1, 0.5, baricitinib)
+        assert result["inhibited_ifn"] < result["baseline_ifn"]
+        assert result["pct_reduction"] > 0
+
+    def test_baricitinib_higher_efficacy_than_ruxolitinib(self):
+        """Baricitinib (0.75) should reduce more than ruxolitinib (0.70)."""
+        bar = next(inh for inh in INHIBITORS if inh.name == "baricitinib")
+        rux = next(inh for inh in INHIBITORS if inh.name == "ruxolitinib")
+        r_bar = simulate_inhibitor_effect(0.1, 0.1, 0.5, bar)
+        r_rux = simulate_inhibitor_effect(0.1, 0.1, 0.5, rux)
+        assert r_bar["ifn_reduction"] >= r_rux["ifn_reduction"]
+
 
 class TestPredictTherapy:
     def test_lectin_only_recommends_complement(self):
@@ -125,6 +152,24 @@ class TestPredictTherapy:
             if profile["trex1_activity"] < 0.8 or profile["samhd1_activity"] < 0.8:
                 pred = predict_therapy(profile)
                 assert "SN-011" in pred["rationale"]
+
+    def test_copa_like_profile_exists(self):
+        """copa_like profile should be in COMPOUND_PROFILES."""
+        names = [p["name"] for p in COMPOUND_PROFILES]
+        assert "copa_like" in names
+
+    def test_prediction_has_best_jak(self):
+        """Predictions should include best_jak_inhibitor field."""
+        pred = predict_therapy(COMPOUND_PROFILES[1])
+        assert "best_jak_inhibitor" in pred
+        assert pred["best_jak_inhibitor"] == "baricitinib"
+
+    def test_jak_mentioned_in_rationale_when_needed(self):
+        """Profiles needing IFN control should mention FDA-approved JAK alternative."""
+        for profile in COMPOUND_PROFILES:
+            pred = predict_therapy(profile)
+            if pred["baseline_ifn"] > 0.3:
+                assert "FDA-approved" in pred["rationale"]
 
 
 class TestRunPipeline:
