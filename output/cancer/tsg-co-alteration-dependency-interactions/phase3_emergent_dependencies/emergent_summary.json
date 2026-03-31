@@ -1,0 +1,137 @@
+{
+  "MTAP+CDKN2A": {
+    "gene_a": "MTAP",
+    "gene_b": "CDKN2A",
+    "n_double": 206,
+    "n_genomewide_hits": 6,
+    "n_novel_emergent": 3,
+    "n_known_a": 4,
+    "n_known_b": 0
+  },
+  "TP53+CDKN2A": {
+    "gene_a": "TP53",
+    "gene_b": "CDKN2A",
+    "n_double": 300,
+    "n_genomewide_hits": 5,
+    "n_novel_emergent": 5,
+    "n_known_a": 0,
+    "n_known_b": 0
+  },
+  "MTAP+TP53": {
+    "gene_a": "MTAP",
+    "gene_b": "TP53",
+    "n_double": 135,
+    "n_genomewide_hits": 16,
+    "n_novel_emergent": 13,
+    "n_known_a": 4,
+    "n_known_b": 0
+  },
+  "PIK3CA+TP53": {
+    "gene_a": "PIK3CA",
+    "gene_b": "TP53",
+    "n_double": 69,
+    "n_genomewide_hits": 9,
+    "n_novel_emergent": 9,
+    "n_known_a": 0,
+    "n_known_b": 0
+  },
+  "RB1+TP53": {
+    "gene_a": "RB1",
+    "gene_b": "TP53",
+    "n_double": 80,
+    "n_genomewide_hits": 47,
+    "n_novel_emergent": 44,
+    "n_known_a": 200,
+    "n_known_b": 0
+  },
+  "PTEN+TP53": {
+    "gene_a": "PTEN",
+    "gene_b": "TP53",
+    "n_double": 107,
+    "n_genomewide_hits": 17,
+    "n_novel_emergent": 14,
+    "n_known_a": 200,
+    "n_known_b": 0
+  },
+  "ARID1A+PTEN": {
+    "gene_a": "ARID1A",
+    "gene_b": "PTEN",
+    "n_double": 37,
+    "n_genomewide_hits": 420,
+    "n_novel_emergent": 402,
+    "n_known_a": 200,
+    "n_known_b": 200
+  },
+  "ARID1A+TP53": {
+    "gene_a": "ARID1A",
+    "gene_b": "TP53",
+    "n_double": 80,
+    "n_genomewide_hits": 6,
+    "n_novel_emergent": 5,
+    "n_known_a": 200,
+    "n_known_b": 0
+  },
+  "TP53+NF1": {
+    "gene_a": "TP53",
+    "gene_b": "NF1",
+    "n_double": 69,
+    "n_genomewide_hits": 2,
+    "n_novel_emergent": 2,
+    "n_known_a": 0,
+    "n_known_b": 1
+  },
+  "ARID1A+PIK3CA": {
+    "gene_a": "ARID1A",
+    "gene_b": "PIK3CA",
+    "n_double": 34,
+    "n_genomewide_hits": 25,
+    "n_novel_emergent": 24,
+    "n_known_a": 200,
+    "n_known_b": 0
+  },
+  "PTEN+RB1": {
+    "gene_a": "PTEN",
+    "gene_b": "RB1",
+    "n_double": 29,
+    "n_genomewide_hits": 8,
+    "n_novel_emergent": 7,
+    "n_known_a": 200,
+    "n_known_b": 200
+  },
+  "TP53+PTEN": {
+    "gene_a": "TP53",
+    "gene_b": "PTEN",
+    "n_double": 107,
+    "n_genomewide_hits": 17,
+    "n_novel_emergent": 14,
+    "n_known_a": 0,
+    "n_known_b": 200
+  },
+  "TP53+BRCA1": {
+    "gene_a": "TP53",
+    "gene_b": "BRCA1",
+    "n_double": 22,
+    "n_genomewide_hits": 0,
+    "n_novel_emergent": 0,
+    "n_known_a": 0,
+    "n_known_b": 200
+  },
+  "TP53+BRCA2": {
+    "gene_a": "TP53",
+    "gene_b": "BRCA2",
+    "n_double": 30,
+    "n_genomewide_hits": 0,
+    "n_novel_emergent": 0,
+    "n_known_a": 0,
+    "n_known_b": 200
+  },
+  "TP53+RB1": {
+    "gene_a": "TP53",
+    "gene_b": "RB1",
+    "n_double": 80,
+    "n_genomewide_hits": 47,
+    "n_novel_emergent": 44,
+    "n_known_a": 0,
+    "n_known_b": 200
+  }
+}
