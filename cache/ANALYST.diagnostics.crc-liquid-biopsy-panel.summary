@@ -1,17 +1,21 @@
 ---
-last_run: 2026-03-25T02:17:00Z
-tasks_completed: [1291, 1293]
+last_run: 2026-03-31T12:00:00Z
+tasks_completed: []
 tasks_blocked: []
 projects_touched: [crc-liquid-biopsy-panel]
 ---
 
 ## Context
 
-- crc-liquid-biopsy-panel: Completed panel architecture comparison and threshold impact assessment.
-- Task 1291 (panel architecture): Three architectures compared. Protein-only (nested CV, n=121): AUC 0.871, sens@95spec 47.7%, $105. Methylation-only (LOO-CV, n=24): AUC 0.979, sens@95spec 83.3% — HIGH overfitting risk, CI [58.3%-100%]. Combined: AUC 0.900, sens@95spec 62.7% — worse than protein at 95% spec (operating point paradox).
-- Task 1293 (threshold lowering): 69.5% sensitivity claim is training performance, not validated. Recomputed: 54.2% from predictions, 47.7% from nested CV. Protein panel identical at both thresholds. LASSO excludes methylation due to 15x cost overpenalty ($75/CpG vs correct $5/CpG).
-- Created developer tasks: #1336 (fix LASSO cost weight), #1337 (bootstrap validation for methylation), #1338 (CpG-to-gene mapping).
-- Created data_curator task: #1340 (find independent cfDNA methylation validation cohort n>=100).
-- Created research_director task: #1339 (review >80% sensitivity finding with overfitting caveat).
-- Key outputs: panel_architecture_comparison.json, threshold_impact_analysis.json in output/diagnostics/crc-liquid-biopsy-panel/.
-- No pending analyst tasks remain. Next: wait for developer bootstrap validation (#1337) and corrected LASSO (#1336), then re-evaluate. Methylation validation cohort (#1340) is the critical blocker for advancing methylation architecture.
+- crc-liquid-biopsy-panel: Completed integrated assessment after developer delivered all three requested corrections.
+- Project was missing from active db.sqlite (only in archive). Re-registered at 'analysis' status.
+- **Methylation corrected**: AUC 0.979→0.882 (proper LOO-CV, feature selection inside folds, n=24). Bootstrap CI [0.721, 1.0]. MODERATE overfitting confirmed.
+- **Protein improved**: AUC 0.871→0.896 (LR alone beats ensemble), sens@95spec 47.7%→57.7% (nested CV, n=121). Best validated result.
+- **Two-tier reflex**: sens 93.2%, spec 77.4%, cost $134. Uses simulated methylation (binormal AUC=0.882), not paired data. Fails 95% spec target.
+- **Stability selection**: Only 3/298 CpGs stable (cg26449787 95.8%, cg25927227/SFRP1 71.6%, cg12840719 68.2%). 3-CpG AUC 1.0 is overfit on n=24.
+- **LASSO cost fix**: At corrected $5/CpG, methylation dominates. 12-CpG panel $60. All show AUC 1.0 = training performance.
+- **CpG-gene mapping**: 7/21 cMCD genes (SFRP1, SEPT9, EYA4, SFRP2, TWIST1, ZNF304, TFPI2). Missing BMP3, NDRG4 (Cologuard targets).
+- Created tasks: #24 (research_director review), #25 (data_curator find cfDNA validation cohort n>=100).
+- Key output: integrated_panel_assessment.json in output/diagnostics/crc-liquid-biopsy-panel/.
+- **Critical blocker**: Independent cfDNA methylation validation cohort (n>=100). Without it, methylation results are preliminary.
+- No pending analyst tasks remain. Next: wait for validation cohort (#25) and research_director guidance (#24). Protein panel is ready for advancement at honest performance.
