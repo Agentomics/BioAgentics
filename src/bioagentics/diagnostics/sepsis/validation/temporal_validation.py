@@ -79,7 +79,7 @@ def _train_lr(
     X_te = scaler.transform(imp.transform(X_test))
 
     lr = LogisticRegression(
-        C=0.1, l1_ratio=1.0, solver="saga",
+        C=0.1, penalty="l1", solver="saga",
         max_iter=2000, random_state=RANDOM_STATE,
     )
     lr.fit(X_tr, y_train)
