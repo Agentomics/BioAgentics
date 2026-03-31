@@ -24,30 +24,40 @@
     "gene_b": "TP53",
     "n_double": 80,
     "n_sl_tested": 50,
-    "n_sig_uncorrected": 32,
-    "n_sig_fdr": 31,
-    "n_synergistic": 15,
-    "n_antagonistic": 16
+    "n_sig_uncorrected": 5,
+    "n_sig_fdr": 2,
+    "n_synergistic": 0,
+    "n_antagonistic": 2
+  },
+  "PTEN+TP53": {
+    "gene_a": "PTEN",
+    "gene_b": "TP53",
+    "n_double": 107,
+    "n_sl_tested": 50,
+    "n_sig_uncorrected": 9,
+    "n_sig_fdr": 2,
+    "n_synergistic": 2,
+    "n_antagonistic": 0
   },
   "ARID1A+PTEN": {
     "gene_a": "ARID1A",
     "gene_b": "PTEN",
     "n_double": 37,
-    "n_sl_tested": 1,
-    "n_sig_uncorrected": 0,
-    "n_sig_fdr": 0,
-    "n_synergistic": 0,
-    "n_antagonistic": 0
+    "n_sl_tested": 99,
+    "n_sig_uncorrected": 23,
+    "n_sig_fdr": 15,
+    "n_synergistic": 10,
+    "n_antagonistic": 5
   },
   "ARID1A+TP53": {
     "gene_a": "ARID1A",
     "gene_b": "TP53",
     "n_double": 80,
-    "n_sl_tested": 1,
-    "n_sig_uncorrected": 0,
-    "n_sig_fdr": 0,
-    "n_synergistic": 0,
-    "n_antagonistic": 0
+    "n_sl_tested": 50,
+    "n_sig_uncorrected": 5,
+    "n_sig_fdr": 3,
+    "n_synergistic": 1,
+    "n_antagonistic": 2
   },
   "TP53+NF1": {
     "gene_a": "TP53",
@@ -63,8 +73,8 @@
     "gene_a": "ARID1A",
     "gene_b": "PIK3CA",
     "n_double": 34,
-    "n_sl_tested": 1,
-    "n_sig_uncorrected": 0,
+    "n_sl_tested": 50,
+    "n_sig_uncorrected": 5,
     "n_sig_fdr": 0,
     "n_synergistic": 0,
     "n_antagonistic": 0
@@ -73,20 +83,50 @@
     "gene_a": "PTEN",
     "gene_b": "RB1",
     "n_double": 29,
+    "n_sl_tested": 100,
+    "n_sig_uncorrected": 5,
+    "n_sig_fdr": 0,
+    "n_synergistic": 0,
+    "n_antagonistic": 0
+  },
+  "TP53+PTEN": {
+    "gene_a": "TP53",
+    "gene_b": "PTEN",
+    "n_double": 107,
     "n_sl_tested": 50,
-    "n_sig_uncorrected": 14,
-    "n_sig_fdr": 7,
+    "n_sig_uncorrected": 9,
+    "n_sig_fdr": 2,
     "n_synergistic": 2,
-    "n_antagonistic": 5
+    "n_antagonistic": 0
+  },
+  "TP53+BRCA1": {
+    "gene_a": "TP53",
+    "gene_b": "BRCA1",
+    "n_double": 22,
+    "n_sl_tested": 50,
+    "n_sig_uncorrected": 0,
+    "n_sig_fdr": 0,
+    "n_synergistic": 0,
+    "n_antagonistic": 0
+  },
+  "TP53+BRCA2": {
+    "gene_a": "TP53",
+    "gene_b": "BRCA2",
+    "n_double": 30,
+    "n_sl_tested": 50,
+    "n_sig_uncorrected": 2,
+    "n_sig_fdr": 0,
+    "n_synergistic": 0,
+    "n_antagonistic": 0
   },
   "TP53+RB1": {
     "gene_a": "TP53",
     "gene_b": "RB1",
     "n_double": 80,
     "n_sl_tested": 50,
-    "n_sig_uncorrected": 32,
-    "n_sig_fdr": 31,
-    "n_synergistic": 15,
-    "n_antagonistic": 16
+    "n_sig_uncorrected": 5,
+    "n_sig_fdr": 2,
+    "n_synergistic": 0,
+    "n_antagonistic": 2
   }
 }
