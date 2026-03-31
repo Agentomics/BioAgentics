@@ -1,0 +1,39 @@
+{
+  "n_genes_tested": 19141,
+  "n_grouped_cell_types": 9,
+  "n_subtypes": 25,
+  "grouped_top_hit": {
+    "cell_type": "DC",
+    "p_value": 0.018114470347595932,
+    "fdr": 0.1630302331283634
+  },
+  "subtype_top_hit": {
+    "cell_type": "Plasmablasts",
+    "p_value": 5.221514988503607e-05,
+    "fdr": 0.0013053787471259018
+  },
+  "n_grouped_nominal_sig": 1,
+  "n_grouped_fdr_sig": 0,
+  "n_subtype_nominal_sig": 3,
+  "n_subtype_fdr_sig": 1,
+  "priority_cell_types": {
+    "Th17": {
+      "beta": -0.03241743586148626,
+      "t_stat": -0.6484656896036474,
+      "p_value": 0.7416541550595739,
+      "fdr": 0.9232230599280071
+    },
+    "NK": {
+      "beta": 0.004264679163716463,
+      "t_stat": 0.1599021840029071,
+      "p_value": 0.4364799201856127,
+      "fdr": 0.8596298681501627
+    },
+    "CD4_T": {
+      "beta": -0.008796566427860326,
+      "t_stat": -0.18424040708564346,
+      "p_value": 0.5730865787667752,
+      "fdr": 0.8596298681501627
+    }
+  }
+}
