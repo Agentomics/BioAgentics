@@ -3,23 +3,24 @@
 from __future__ import annotations
 
 import gzip
+import importlib
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import pytest
 
-from crohns.cd_flare_longitudinal_prediction.download_data import (
-    RAW_FILES,
-    _build_sample_map,
-    _map_samples,
-    _read_tsv_gz,
-    _strip_sample_suffix,
-    _transform_hbi,
-    _transform_metadata,
-    _transform_pathways,
-    _transform_species,
-)
+# Module filename starts with a digit, so use importlib
+_dl = importlib.import_module("crohns.cd_flare_longitudinal_prediction.00_download_data")
+RAW_FILES = _dl.RAW_FILES
+_build_sample_map = _dl._build_sample_map
+_map_samples = _dl._map_samples
+_read_tsv_gz = _dl._read_tsv_gz
+_strip_sample_suffix = _dl._strip_sample_suffix
+_transform_hbi = _dl._transform_hbi
+_transform_metadata = _dl._transform_metadata
+_transform_pathways = _dl._transform_pathways
+_transform_species = _dl._transform_species
 
 
 # ---------------------------------------------------------------------------
