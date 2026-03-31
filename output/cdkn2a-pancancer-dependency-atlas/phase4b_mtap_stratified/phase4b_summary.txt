@@ -25,9 +25,21 @@ GENOME-WIDE DRUG SCREEN RESULTS:
   New after correction: 14
 
 SURVIVED (genuinely CDKN2A-specific):
-  BRD:BRD-K00003412-300-01-9: d=-0.815, FDR=5.440e-04
-  BRD:BRD-K51313569-003-03-3: d=-0.758, FDR=1.900e-02
-  BRD:BRD-K88554883-001-03-2: d=-0.661, FDR=2.838e-02
+  TRILACICLIB (CDK inhibitor): d=-0.815, FDR=5.440e-04
+  PALBOCICLIB (CDK4/6 inhibitor): d=-0.758, FDR=1.900e-02
+  ON123300 (CDK4/NUAK1/PDGFRB inhibitor): d=-0.661, FDR=2.838e-02
+
+NEW HITS AFTER MTAP CORRECTION (14 drugs, grouped by MOA):
+  CDK pathway (0): [all 3 CDK inhibitors are in survived category above]
+  MDM2 inhibitors (3): SAR405838 (d=-0.808), IDASANUTLIN (d=-0.817), AMG-232 (d=-0.783)
+  Glucocorticoids (2): BECLOMETHASONE (d=-0.824), METHYLPREDNISOLONE (d=-0.767)
+  Antifolate (1): PEMETREXED (d=-0.692)
+  PI3K/mTOR (1): PF-04691502 (d=-0.636)
+  Other (7): ACIVICIN, DEFEROXAMINE, RAMELTEON, VESNARINONE, VARESPLADIB, NIFENAZONE, SARDOMOZIDE
+
+KEY FINDING: 3 MDM2 inhibitors emerged as CDKN2A-specific after MTAP correction.
+  CDKN2A loss -> loss of p14ARF -> loss of MDM2 sequestration -> MDM2 hyperactivity
+  MDM2i may restore p53 tumor suppression in CDKN2A-deleted/p53-WT tumors.
 
 WWTR1/HIPPO PATHWAY DRUGS IN PRISM:
   Aleglitazar
