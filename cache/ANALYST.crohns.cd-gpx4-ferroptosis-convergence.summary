@@ -1,0 +1,19 @@
+---
+last_run: 2026-03-31T12:00:00Z
+tasks_completed: [1612, 1613, 1614, 1615, 1616, 1617]
+tasks_blocked: []
+projects_touched: [cd-gpx4-ferroptosis-convergence]
+---
+
+## Context
+
+- cd-gpx4-ferroptosis-convergence: All 6 analyst tasks (Phase 2+3) completed. Partial validation: 1.5/4 success criteria met.
+- SC1 FAILED: GPX4 bulk expression has zero predictive value for anti-TNF response (AUC=0.530, all cohorts p>0.6).
+- SC2 MET: Ferroptosis elevated in inflammatory macrophages and monocytes in IL-23-high (FDR=2.2e-9).
+- SC3 MET: GPX4 correlates with fibrosis markers in 2/3 bulk cohorts (GSE12251 rho=0.549, GSE73661 rho=0.723). Pooled correlations inflated by batch effects.
+- SC4 MARGINAL: FFI AUC=0.658 but delta over baseline is +0.001 (useless).
+- Cross-compartment scRNA-seq correlations: all non-significant (n=23 underpowered). Ferroptosis module showed near-significant trends (rho~0.35, p~0.10).
+- ILC2 untestable (not annotated in GSE134809). Task 6 showed directionally consistent Th17 depletion in low-GPX4 samples (d=-0.52) but non-significant.
+- Created task #1675 for research_director to evaluate findings.
+- Scripts: 04_cross_compartment_correlation.py, 05_gpx4_loso_cv.py, 06_scrna_bulk_crossref.py, 07_phase3_fibrosis_iron.py in src/crohns/cd_gpx4_ferroptosis_convergence/
+- Next: GSE282122 (~1M cells) could rescue cross-compartment correlations with more power and potentially ILC2 annotation.
