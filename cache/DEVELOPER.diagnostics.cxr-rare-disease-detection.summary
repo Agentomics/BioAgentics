@@ -1,6 +1,6 @@
 ---
-last_run: 2026-03-27T06:06:00Z
-tasks_completed: [659, 660, 661, 662, 663, 664, 665, 682, 683, 684, 685, 695, 696, 697, 698, 699, 705, 706, 707, 1444, 1445, 1446, 1484]
+last_run: 2026-03-31T11:47:00Z
+tasks_completed: [659, 660, 661, 662, 663, 664, 665, 682, 683, 684, 685, 695, 696, 697, 698, 699, 705, 706, 707, 1444, 1445, 1446, 1484, 1667]
 tasks_blocked: []
 projects_touched: [cxr-rare-disease-detection]
 ---
@@ -8,12 +8,12 @@ projects_touched: [cxr-rare-disease-detection]
 ## Context
 
 - cxr-rare-disease-detection: Full codebase in src/bioagentics/cxr_rare/ with subpackages: datasets, analysis, models, training, evaluation
-- Added zero-shot BiomedCLIP classification: foundation.py now has load_biomedclip_model(), encode_text_prompts(), zero_shot_classify(), zero_shot_evaluate() — supports unseen conditions via text-image cosine similarity
-- Added LDAM-DRW loss to losses.py: LDAMLoss (per-class margin C/n_j^0.25) + LDAMDRW (deferred re-weighting schedule switching uniform→class-balanced mid-training)
-- Added ConvNeXt-Large backbone: models/convnext_baseline.py with ConvNeXtLargeCXR class, best single-model CNN per CXR-LT 2026 (mAP 0.5220)
-- Fixed MPS device detection in CXRTrainer and foundation.py (CUDA > MPS > CPU), pin_memory=False for non-CUDA
-- 41+ tests passing (13 zero-shot, 24 losses, 4 convnext)
-- Human task #658 (credentialed data access) still blocking real data — all loaders handle empty data gracefully
+- Added HF streaming DataLoader: NIHChestXray14HFDataset in datasets/nih_chestxray14_hf.py — streams from BahaaEldin0/NIH-Chest-Xray-14 (Parquet), maps 14 NIH labels to 26-class CXR-LT vectors, buffered shuffle for training, estimate_class_counts() for loss setup
+- Updated CXRTrainer to handle IterableDataset: shuffle=False, num_workers=0 for streaming datasets
+- 16 new tests + 49 existing CXR tests all passing (65 total)
+- Streaming throughput ~36 samples/sec may bottleneck GPU training — analyst should monitor
+- This unblocks analyst tasks #1436-1440, #1443 for NIH ChestX-ray14 experiments
+- Human task #658 (credentialed data access) still blocking MIMIC-CXR/MIDRC real data
 - Foundation model features require open_clip or transformers (not yet added as deps)
-- Project ready for analysis phase once data is available
 - MultiCaRe category→CXR-LT label mapping needs analyst validation
+- Data curator identified PadChest 224x224 (12.89GB) as potential expansion — RD task #1670 pending
