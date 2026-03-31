@@ -41,6 +41,7 @@ RARE_VARIANT_GENES = [
     "PPP5C", "EXOC1", "GXYLT1", "CELSR3", "ASH1L",
     "SLC6A1", "KMT2C", "SMARCA2", "NDE1", "NTAN1",
     "COMT", "TBX1", "OPRK1", "FN1", "CNTNAP2",
+    "BRPF1", "CACNA1D", "PNKD", "PTEN", "RERE",
 ]
 
 GWAS_GENES = [
@@ -109,18 +110,27 @@ CURATED_PATHWAYS: list[Pathway] = [
     # ── Chromatin / epigenetic regulation ──
     Pathway(
         "GO:0006325", "chromatin organization", "GO_BP",
-        ["ASH1L", "KMT2C", "SMARCA2", "MEF2C"],
+        ["ASH1L", "KMT2C", "SMARCA2", "BRPF1", "MEF2C"],
         680,
     ),
     Pathway(
         "GO:0016570", "histone modification", "GO_BP",
-        ["ASH1L", "KMT2C", "SMARCA2"],
+        ["ASH1L", "KMT2C", "SMARCA2", "BRPF1"],
         450,
     ),
     Pathway(
         "R-HSA-3247509", "chromatin modifying enzymes", "Reactome",
-        ["ASH1L", "KMT2C", "SMARCA2"],
+        ["ASH1L", "KMT2C", "SMARCA2", "BRPF1"],
         350,
+    ),
+    # ── Chromatin remodeling convergent pathway (3 independent complexes) ──
+    Pathway(
+        "CONVERGENT:chromatin_remodeling",
+        "chromatin remodeling (3 independent complexes)",
+        "convergent",
+        ["BRPF1", "KMT2C", "SMARCA2", "ASH1L"],
+        350,
+        cstc_relevant=True,
     ),
     # ── Dopamine / catecholamine signaling ──
     Pathway(
@@ -201,10 +211,10 @@ CURATED_PATHWAYS: list[Pathway] = [
         ["NDE1", "NR2F1", "MEF2C", "CELSR3", "ASH1L"],
         320, cstc_relevant=True,
     ),
-    # ── Calcium signaling ──
+    # ── Calcium signaling / ion channel ──
     Pathway(
         "hsa04020", "calcium signaling pathway", "KEGG",
-        ["CADPS2", "OPRD1", "MEF2C"],
+        ["CADPS2", "OPRD1", "MEF2C", "CACNA1D"],
         240,
     ),
     # ── RNA splicing regulation ──

@@ -1,0 +1,1132 @@
+{
+  "metadata": {
+    "model_type": "episodic-to-chronic temporal dynamics",
+    "chronicity_threshold": 0.6,
+    "num_episodes": 12,
+    "description": "Models PANDAS episodic\u2192chronic transition via cumulative cGAS-STING activation across repeated GAS infection episodes"
+  },
+  "trajectories": {
+    "wild_type": {
+      "description": "Normal TREX1 and SAMHD1 \u2014 full DNA clearance",
+      "episodes_to_chronicity": null,
+      "episodes": [
+        {
+          "episode": 1,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.0006,
+          "is_chronic": false
+        },
+        {
+          "episode": 2,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.0008,
+          "is_chronic": false
+        },
+        {
+          "episode": 3,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.001,
+          "is_chronic": false
+        },
+        {
+          "episode": 4,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.0012,
+          "is_chronic": false
+        },
+        {
+          "episode": 5,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.0014,
+          "is_chronic": false
+        },
+        {
+          "episode": 6,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.0017,
+          "is_chronic": false
+        },
+        {
+          "episode": 7,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.0019,
+          "is_chronic": false
+        },
+        {
+          "episode": 8,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.0021,
+          "is_chronic": false
+        },
+        {
+          "episode": 9,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.0023,
+          "is_chronic": false
+        },
+        {
+          "episode": 10,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.0025,
+          "is_chronic": false
+        },
+        {
+          "episode": 11,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.0027,
+          "is_chronic": false
+        },
+        {
+          "episode": 12,
+          "peak_sting": 0.0083,
+          "peak_ifn": 0.0,
+          "residual_sting": 0.0004,
+          "cumulative_baseline": 0.0029,
+          "is_chronic": false
+        }
+      ]
+    },
+    "trex1_het": {
+      "description": "Heterozygous TREX1 LOF \u2014 partial DNA clearance (carrier)",
+      "episodes_to_chronicity": 5,
+      "episodes": [
+        {
+          "episode": 1,
+          "peak_sting": 0.4841,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.1852,
+          "cumulative_baseline": 0.2778,
+          "is_chronic": false
+        },
+        {
+          "episode": 2,
+          "peak_sting": 0.4841,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.1852,
+          "cumulative_baseline": 0.3704,
+          "is_chronic": false
+        },
+        {
+          "episode": 3,
+          "peak_sting": 0.4841,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.1852,
+          "cumulative_baseline": 0.463,
+          "is_chronic": false
+        },
+        {
+          "episode": 4,
+          "peak_sting": 0.4841,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.1852,
+          "cumulative_baseline": 0.5555,
+          "is_chronic": false
+        },
+        {
+          "episode": 5,
+          "peak_sting": 0.5555,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.2125,
+          "cumulative_baseline": 0.6618,
+          "is_chronic": true
+        },
+        {
+          "episode": 6,
+          "peak_sting": 0.6618,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.2531,
+          "cumulative_baseline": 0.7884,
+          "is_chronic": true
+        },
+        {
+          "episode": 7,
+          "peak_sting": 0.7884,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.3015,
+          "cumulative_baseline": 0.9391,
+          "is_chronic": true
+        },
+        {
+          "episode": 8,
+          "peak_sting": 0.9391,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.3592,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 9,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.3825,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 10,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.3825,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 11,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.3825,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 12,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.5855,
+          "residual_sting": 0.3825,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        }
+      ]
+    },
+    "samhd1_het": {
+      "description": "Heterozygous SAMHD1 LOF \u2014 partial dNTP restriction",
+      "episodes_to_chronicity": null,
+      "episodes": [
+        {
+          "episode": 1,
+          "peak_sting": 0.1559,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.03,
+          "cumulative_baseline": 0.045,
+          "is_chronic": false
+        },
+        {
+          "episode": 2,
+          "peak_sting": 0.1559,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.03,
+          "cumulative_baseline": 0.06,
+          "is_chronic": false
+        },
+        {
+          "episode": 3,
+          "peak_sting": 0.1559,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.03,
+          "cumulative_baseline": 0.075,
+          "is_chronic": false
+        },
+        {
+          "episode": 4,
+          "peak_sting": 0.1559,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.03,
+          "cumulative_baseline": 0.09,
+          "is_chronic": false
+        },
+        {
+          "episode": 5,
+          "peak_sting": 0.1559,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.03,
+          "cumulative_baseline": 0.105,
+          "is_chronic": false
+        },
+        {
+          "episode": 6,
+          "peak_sting": 0.1559,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.03,
+          "cumulative_baseline": 0.12,
+          "is_chronic": false
+        },
+        {
+          "episode": 7,
+          "peak_sting": 0.1559,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.03,
+          "cumulative_baseline": 0.135,
+          "is_chronic": false
+        },
+        {
+          "episode": 8,
+          "peak_sting": 0.1559,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.03,
+          "cumulative_baseline": 0.15,
+          "is_chronic": false
+        },
+        {
+          "episode": 9,
+          "peak_sting": 0.1559,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.03,
+          "cumulative_baseline": 0.165,
+          "is_chronic": false
+        },
+        {
+          "episode": 10,
+          "peak_sting": 0.165,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.0318,
+          "cumulative_baseline": 0.1809,
+          "is_chronic": false
+        },
+        {
+          "episode": 11,
+          "peak_sting": 0.1809,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.0348,
+          "cumulative_baseline": 0.1983,
+          "is_chronic": false
+        },
+        {
+          "episode": 12,
+          "peak_sting": 0.1983,
+          "peak_ifn": 0.065,
+          "residual_sting": 0.0382,
+          "cumulative_baseline": 0.2174,
+          "is_chronic": false
+        }
+      ]
+    },
+    "trex1_lof": {
+      "description": "TREX1 LOF (hypomorphic) \u2014 severely reduced DNA clearance",
+      "episodes_to_chronicity": 1,
+      "episodes": [
+        {
+          "episode": 1,
+          "peak_sting": 0.6981,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.4527,
+          "cumulative_baseline": 0.6791,
+          "is_chronic": true
+        },
+        {
+          "episode": 2,
+          "peak_sting": 0.6981,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.4527,
+          "cumulative_baseline": 0.9054,
+          "is_chronic": true
+        },
+        {
+          "episode": 3,
+          "peak_sting": 0.9054,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.5872,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 4,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.6485,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 5,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.6485,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 6,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.6485,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 7,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.6485,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 8,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.6485,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 9,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.6485,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 10,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.6485,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 11,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.6485,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 12,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6939,
+          "residual_sting": 0.6485,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        }
+      ]
+    },
+    "samhd1_lof": {
+      "description": "SAMHD1 LOF (hypomorphic) \u2014 severely reduced dNTP restriction",
+      "episodes_to_chronicity": 8,
+      "episodes": [
+        {
+          "episode": 1,
+          "peak_sting": 0.3661,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.1122,
+          "cumulative_baseline": 0.1683,
+          "is_chronic": false
+        },
+        {
+          "episode": 2,
+          "peak_sting": 0.3661,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.1122,
+          "cumulative_baseline": 0.2244,
+          "is_chronic": false
+        },
+        {
+          "episode": 3,
+          "peak_sting": 0.3661,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.1122,
+          "cumulative_baseline": 0.2805,
+          "is_chronic": false
+        },
+        {
+          "episode": 4,
+          "peak_sting": 0.3661,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.1122,
+          "cumulative_baseline": 0.3367,
+          "is_chronic": false
+        },
+        {
+          "episode": 5,
+          "peak_sting": 0.3661,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.1122,
+          "cumulative_baseline": 0.3928,
+          "is_chronic": false
+        },
+        {
+          "episode": 6,
+          "peak_sting": 0.3928,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.1204,
+          "cumulative_baseline": 0.453,
+          "is_chronic": false
+        },
+        {
+          "episode": 7,
+          "peak_sting": 0.453,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.1388,
+          "cumulative_baseline": 0.5224,
+          "is_chronic": false
+        },
+        {
+          "episode": 8,
+          "peak_sting": 0.5224,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.1601,
+          "cumulative_baseline": 0.6024,
+          "is_chronic": true
+        },
+        {
+          "episode": 9,
+          "peak_sting": 0.6024,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.1846,
+          "cumulative_baseline": 0.6948,
+          "is_chronic": true
+        },
+        {
+          "episode": 10,
+          "peak_sting": 0.6948,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.2129,
+          "cumulative_baseline": 0.8012,
+          "is_chronic": true
+        },
+        {
+          "episode": 11,
+          "peak_sting": 0.8012,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.2456,
+          "cumulative_baseline": 0.924,
+          "is_chronic": true
+        },
+        {
+          "episode": 12,
+          "peak_sting": 0.924,
+          "peak_ifn": 0.4539,
+          "residual_sting": 0.2832,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        }
+      ]
+    },
+    "compound_het": {
+      "description": "Compound heterozygous \u2014 both partially impaired (PANS two-hit)",
+      "episodes_to_chronicity": 2,
+      "episodes": [
+        {
+          "episode": 1,
+          "peak_sting": 0.6284,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.3299,
+          "cumulative_baseline": 0.4948,
+          "is_chronic": false
+        },
+        {
+          "episode": 2,
+          "peak_sting": 0.6284,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.3299,
+          "cumulative_baseline": 0.6598,
+          "is_chronic": true
+        },
+        {
+          "episode": 3,
+          "peak_sting": 0.6598,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.3464,
+          "cumulative_baseline": 0.833,
+          "is_chronic": true
+        },
+        {
+          "episode": 4,
+          "peak_sting": 0.833,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.4373,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 5,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.525,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 6,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.525,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 7,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.525,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 8,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.525,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 9,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.525,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 10,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.525,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 11,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.525,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 12,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.6695,
+          "residual_sting": 0.525,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        }
+      ]
+    },
+    "compound_lof": {
+      "description": "Compound LOF \u2014 both severely impaired (AGS-like)",
+      "episodes_to_chronicity": 1,
+      "episodes": [
+        {
+          "episode": 1,
+          "peak_sting": 0.7689,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.5383,
+          "cumulative_baseline": 0.8074,
+          "is_chronic": true
+        },
+        {
+          "episode": 2,
+          "peak_sting": 0.8074,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.5652,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 3,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.7,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 4,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.7,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 5,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.7,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 6,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.7,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 7,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.7,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 8,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.7,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 9,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.7,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 10,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.7,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 11,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.7,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 12,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7124,
+          "residual_sting": 0.7,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        }
+      ]
+    },
+    "ddr_impaired": {
+      "description": "DDR impaired (CUX1/USP45/PARP14) \u2014 nuclear DNA leakage into cytosol",
+      "episodes_to_chronicity": null,
+      "episodes": [
+        {
+          "episode": 1,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.0955,
+          "is_chronic": false
+        },
+        {
+          "episode": 2,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.1273,
+          "is_chronic": false
+        },
+        {
+          "episode": 3,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.1591,
+          "is_chronic": false
+        },
+        {
+          "episode": 4,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.191,
+          "is_chronic": false
+        },
+        {
+          "episode": 5,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.2228,
+          "is_chronic": false
+        },
+        {
+          "episode": 6,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.2546,
+          "is_chronic": false
+        },
+        {
+          "episode": 7,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.2864,
+          "is_chronic": false
+        },
+        {
+          "episode": 8,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.3183,
+          "is_chronic": false
+        },
+        {
+          "episode": 9,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.3501,
+          "is_chronic": false
+        },
+        {
+          "episode": 10,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.3819,
+          "is_chronic": false
+        },
+        {
+          "episode": 11,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.4137,
+          "is_chronic": false
+        },
+        {
+          "episode": 12,
+          "peak_sting": 0.5304,
+          "peak_ifn": 0.6191,
+          "residual_sting": 0.0637,
+          "cumulative_baseline": 0.4456,
+          "is_chronic": false
+        }
+      ]
+    },
+    "mito_impaired": {
+      "description": "Mitochondrial impaired (PRKN/POLG) \u2014 mtDNA leakage into cytosol",
+      "episodes_to_chronicity": null,
+      "episodes": [
+        {
+          "episode": 1,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.0809,
+          "is_chronic": false
+        },
+        {
+          "episode": 2,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.1078,
+          "is_chronic": false
+        },
+        {
+          "episode": 3,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.1348,
+          "is_chronic": false
+        },
+        {
+          "episode": 4,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.1617,
+          "is_chronic": false
+        },
+        {
+          "episode": 5,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.1887,
+          "is_chronic": false
+        },
+        {
+          "episode": 6,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.2156,
+          "is_chronic": false
+        },
+        {
+          "episode": 7,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.2426,
+          "is_chronic": false
+        },
+        {
+          "episode": 8,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.2695,
+          "is_chronic": false
+        },
+        {
+          "episode": 9,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.2965,
+          "is_chronic": false
+        },
+        {
+          "episode": 10,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.3235,
+          "is_chronic": false
+        },
+        {
+          "episode": 11,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.3504,
+          "is_chronic": false
+        },
+        {
+          "episode": 12,
+          "peak_sting": 0.4492,
+          "peak_ifn": 0.5545,
+          "residual_sting": 0.0539,
+          "cumulative_baseline": 0.3774,
+          "is_chronic": false
+        }
+      ]
+    },
+    "triple_hit": {
+      "description": "Triple hit \u2014 TREX1 het + DDR + mito impaired (multi-axis vulnerability)",
+      "episodes_to_chronicity": 1,
+      "episodes": [
+        {
+          "episode": 1,
+          "peak_sting": 0.7902,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.4129,
+          "cumulative_baseline": 0.6193,
+          "is_chronic": true
+        },
+        {
+          "episode": 2,
+          "peak_sting": 0.7902,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.4129,
+          "cumulative_baseline": 0.8257,
+          "is_chronic": true
+        },
+        {
+          "episode": 3,
+          "peak_sting": 0.8257,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.4314,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 4,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.5225,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 5,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.5225,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 6,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.5225,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 7,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.5225,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 8,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.5225,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 9,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.5225,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 10,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.5225,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 11,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.5225,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 12,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7171,
+          "residual_sting": 0.5225,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        }
+      ]
+    },
+    "metabolic_vulnerable": {
+      "description": "Metabolic vulnerable \u2014 TREX1 het + low HIF-1a + low PEP (onset-prone)",
+      "episodes_to_chronicity": 2,
+      "episodes": [
+        {
+          "episode": 1,
+          "peak_sting": 0.8656,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3311,
+          "cumulative_baseline": 0.4967,
+          "is_chronic": false
+        },
+        {
+          "episode": 2,
+          "peak_sting": 0.8656,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3311,
+          "cumulative_baseline": 0.6622,
+          "is_chronic": true
+        },
+        {
+          "episode": 3,
+          "peak_sting": 0.8656,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3311,
+          "cumulative_baseline": 0.8278,
+          "is_chronic": true
+        },
+        {
+          "episode": 4,
+          "peak_sting": 0.8656,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3311,
+          "cumulative_baseline": 0.9933,
+          "is_chronic": true
+        },
+        {
+          "episode": 5,
+          "peak_sting": 0.9933,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3799,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 6,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3825,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 7,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3825,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 8,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3825,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 9,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3825,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 10,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3825,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 11,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3825,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        },
+        {
+          "episode": 12,
+          "peak_sting": 1.0,
+          "peak_ifn": 0.7309,
+          "residual_sting": 0.3825,
+          "cumulative_baseline": 1.0,
+          "is_chronic": true
+        }
+      ]
+    }
+  }
+}

@@ -17,7 +17,7 @@ Data sources:
 - Paschou et al. (Mol Psychiatry 2014): CNTN6
 - Chen et al. (Science Advances 2025): WWC1 W88C functional validation
 - Zhan et al. (bioRxiv 2025): 1,466 trio exome study (PPP5C, EXOC1, GXYLT1)
-- Clinical exome study (Frontiers Psychiatry 2026): 80 pediatric TS patients
+- Saia et al. (Frontiers Psychiatry 2026): 80 pediatric TS patients clinical exome
 - TSAICG GWAS (2019/2024): genes with both rare and common variant support
 
 Output: data/results/ts-rare-variant-convergence/phase1/rare_variant_genes.{json,csv}
@@ -211,20 +211,38 @@ DE_NOVO_GENES: list[RareVariantGene] = [
     ),
 ]
 
-# ── Clinical exome study genes (Frontiers Psychiatry 2026) ──
+# ── Clinical exome study genes (Saia et al., Frontiers Psychiatry 2026) ──
 
 CLINICAL_EXOME_GENES: list[RareVariantGene] = [
+    RareVariantGene(
+        gene_symbol="BRPF1",
+        evidence_types=["case_report"],
+        evidence_strength="moderate",
+        variant_types=["lof", "missense"],
+        pathways=["chromatin_remodeling", "histone_acetylation", "transcription_regulation"],
+        chromosome="3p25.3",
+        references=["Saia_2026_Frontiers_Psychiatry"],
+        notes="Bromodomain and PHD finger containing 1. Scaffold of MOZ/MORF "
+        "histone acetyltransferase complex (KAT6A/KAT6B). ACMG high-confidence "
+        "in pediatric TS cohort. Mutations cause intellectual disability with "
+        "dysmorphic features. Third independent chromatin remodeling complex "
+        "implicated in TS (with KMT2C→COMPASS and SMARCA2→SWI/SNF).",
+    ),
     RareVariantGene(
         gene_symbol="SLC6A1",
         evidence_types=["case_report"],
         evidence_strength="moderate",
         variant_types=["missense"],
-        pathways=["gaba_transport", "synaptic_transmission", "inhibitory_signaling"],
+        pathways=["gaba_transport", "gaba_glutamate_balance", "synaptic_transmission",
+                  "inhibitory_signaling"],
         chromosome="3p25.3",
-        references=["Clinical_exome_2026_Frontiers_Psychiatry"],
-        notes="GABA transporter 1 (GAT-1). ACMG-classified potentially causative "
-        "variant in pediatric TS cohort. Synaptic gene — fits dual genetic "
-        "model (rare variant subgroup with higher tic severity).",
+        references=["Saia_2026_Frontiers_Psychiatry"],
+        notes="GABA transporter 1 (GAT-1). ACMG potentially causative in "
+        "pediatric TS cohort. Primary GABA reuptake transporter at GABAergic "
+        "synapses — directly regulates GABA-glutamate balance in striatal "
+        "circuits. Maps to GABAergic/inhibitory signaling convergent pathway. "
+        "Synaptic gene — fits dual genetic model (rare variant subgroup with "
+        "higher tic severity).",
     ),
     RareVariantGene(
         gene_symbol="KMT2C",
@@ -233,10 +251,11 @@ CLINICAL_EXOME_GENES: list[RareVariantGene] = [
         variant_types=["lof", "missense"],
         pathways=["chromatin_remodeling", "histone_methylation", "transcription_regulation"],
         chromosome="7q36.1",
-        references=["Clinical_exome_2026_Frontiers_Psychiatry"],
+        references=["Saia_2026_Frontiers_Psychiatry"],
         notes="Histone-lysine methyltransferase 2C (MLL3). ACMG potentially causative "
-        "in TS. Chromatin remodeling gene — known NDD gene in Kleefstra "
-        "syndrome spectrum.",
+        "in TS. COMPASS histone methyltransferase complex. Chromatin remodeling "
+        "gene — known NDD gene in Kleefstra syndrome spectrum. Confirmed "
+        "expressed in striatal interneurons (Task 1310).",
     ),
     RareVariantGene(
         gene_symbol="SMARCA2",
@@ -245,10 +264,25 @@ CLINICAL_EXOME_GENES: list[RareVariantGene] = [
         variant_types=["missense"],
         pathways=["chromatin_remodeling", "swi_snf_complex", "transcription_regulation"],
         chromosome="9p24.3",
-        references=["Clinical_exome_2026_Frontiers_Psychiatry"],
+        references=["Saia_2026_Frontiers_Psychiatry"],
         notes="SWI/SNF chromatin remodeling complex ATPase. ACMG potentially causative "
         "in TS. Mutations cause Nicolaides-Baraitser syndrome (intellectual "
-        "disability + behavioral features).",
+        "disability + behavioral features). Confirmed expressed in striatal "
+        "interneurons (Task 1310).",
+    ),
+    RareVariantGene(
+        gene_symbol="CACNA1D",
+        evidence_types=["case_report"],
+        evidence_strength="moderate",
+        variant_types=["missense"],
+        pathways=["calcium_signaling", "ion_channel", "neuronal_excitability"],
+        chromosome="3p21.1",
+        references=["Saia_2026_Frontiers_Psychiatry"],
+        notes="L-type voltage-gated calcium channel (Cav1.3). ACMG potentially "
+        "causative in pediatric TS cohort. Expressed in striatal medium spiny "
+        "neurons and pacemaker cells. Gain-of-function variants cause PASNA "
+        "(primary aldosteronism, seizures, neurological abnormalities). Ion "
+        "channel gene relevant to basal ganglia excitability.",
     ),
 ]
 
@@ -349,6 +383,47 @@ CANDIDATE_GENES: list[RareVariantGene] = [
         notes="Contactin-associated protein-like 2. Disrupted in TS families and "
         "also implicated in autism, language disorders. Neurexin superfamily "
         "member involved in axon-glial interactions.",
+    ),
+    RareVariantGene(
+        gene_symbol="PNKD",
+        evidence_types=["case_report"],
+        evidence_strength="suggestive",
+        variant_types=["missense"],
+        pathways=["movement_disorder", "synaptic_vesicle_regulation"],
+        chromosome="2q35",
+        references=["Saia_2026_Frontiers_Psychiatry"],
+        notes="Paroxysmal nonkinesigenic dyskinesia protein (MR-1). VUS in "
+        "pediatric TS cohort. Mutations cause paroxysmal movement disorder — "
+        "phenotypic overlap with tic disorders. Regulates synaptic vesicle "
+        "release. Limited TS-specific evidence.",
+    ),
+    RareVariantGene(
+        gene_symbol="PTEN",
+        evidence_types=["case_report"],
+        evidence_strength="suggestive",
+        variant_types=["missense"],
+        pathways=["pi3k_akt_signaling", "neuronal_growth", "synaptic_plasticity"],
+        chromosome="10q23.31",
+        references=["Saia_2026_Frontiers_Psychiatry"],
+        notes="Phosphatase and tensin homolog. VUS in pediatric TS cohort. "
+        "PI3K/AKT/mTOR pathway modulator involved in neuronal growth and "
+        "synaptic plasticity. PTEN hamartoma tumor syndrome includes "
+        "neurodevelopmental features including ASD. VUS-level TS evidence.",
+    ),
+    RareVariantGene(
+        gene_symbol="RERE",
+        evidence_types=["case_report"],
+        evidence_strength="suggestive",
+        variant_types=["missense"],
+        pathways=["transcription_regulation", "nuclear_receptor_signaling",
+                  "neurodevelopment"],
+        chromosome="1p36.23",
+        references=["Saia_2026_Frontiers_Psychiatry"],
+        notes="Atrophin-2 nuclear receptor corepressor. VUS in pediatric TS "
+        "cohort. Interacts with NR2F2-family nuclear receptors — potential "
+        "cross-project link to striatal interneuron GRN (NR2F2 is CR "
+        "interneuron master regulator). RERE mutations cause 1p36 deletion-"
+        "like neurodevelopmental syndrome.",
     ),
 ]
 
