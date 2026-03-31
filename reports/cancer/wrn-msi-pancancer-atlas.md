@@ -281,6 +281,49 @@ NHEJ pathway genes at baseline (Phase 3 cross-reference): PPM1D/WIP1 (d = -0.292
 
 *Pooled estimate. See Caveats section 1.
 
+### 3.7 Clinical Landscape & Concordance
+
+Three WRN inhibitors are in clinical development, each with a distinct mechanism. Early clinical data now permit a preliminary comparison between our computational dependency predictions and observed clinical signals.
+
+#### WRN Inhibitor Clinical Programs
+
+| Compound | Mechanism | Trial (NCT) | Phase | Clinical Status (as of March 2026) |
+|---|---|---|---|---|
+| RO7589831 (VVD-214) | Covalent allosteric (C727) | NCT06004245 | 1 | 4 PRs in 32 evaluable MSI-H pts (**ORR ~12.5%**); reported at AACR 2025. Dose optimization ongoing. |
+| HRO-761 | Non-covalent allosteric | NCT05838768 | 1/1b | Monotherapy + combination arms (irinotecan, tislelizumab). Data maturing. |
+| NDI-219216 | Non-covalent (distinct site) | NCT06898450 | 1/2 | Part A dose escalation complete (Dec 2025). No DLTs, no MTD reached, >24h WRN target engagement. No efficacy data yet. |
+
+**VVD-214 Phase 1 context:** The ~12.5% ORR in a dose-escalation cohort should not be compared directly with DepMap effect sizes, which measure genetic dependency magnitude (not drug response rates). An ORR of 12.5% in an unselected-dose Phase 1 is consistent with a valid target under sub-optimal dosing; Phase 2 expansion at the recommended dose will be the definitive clinical readout. Notably, the VVD-214 trial enrolls primarily colorectal and endometrial MSI-H patients — the two tumor types with lineage-specific DepMap data in this atlas.
+
+#### Pembrolizumab MSI-H Benchmarks (Immunotherapy Comparator)
+
+Pembrolizumab (anti-PD-1) is the current standard-of-care for MSI-H/dMMR cancers. Per-tumor-type ORR from KEYNOTE trials provides the essential benchmark for contextualizing both WRN inhibitor clinical data and our DepMap dependency predictions.
+
+| Cancer Type | Pembro ORR (MSI-H) | Source | WRN d | WRN d Source | Est. MSI-H pts/yr |
+|---|---|---|---|---|---|
+| UCEC | 57.1% | KEYNOTE-158 | -1.086 | lineage-specific | 20,974 |
+| STAD | 45.8% | KEYNOTE-158 | -2.833 | pooled | 5,297 |
+| COADREAD | 43.8% | KEYNOTE-164/177 | -2.844 | lineage-specific | 23,532 |
+| CHOL | 40.9% | KEYNOTE-158 | -2.833 | pooled | 342 |
+| OV | 33.3% | KEYNOTE-158 | -2.833 | pooled | 39 |
+| PAAD | 18.2% | KEYNOTE-158 | -2.833 | pooled | 398 |
+
+**Observation:** There is no straightforward correlation between pembrolizumab ORR and DepMap WRN dependency. UCEC has the highest IO response (57.1%) but the weakest lineage-specific WRN dependency (d = -1.086). Conversely, COADREAD has the strongest WRN dependency (d = -2.844) but only moderate IO response (43.8%). This suggests WRN dependency and IO sensitivity are driven by different biology — WRN dependency reflects microsatellite-driven replication stress, while IO response reflects neoantigen burden and immune microenvironment.
+
+**Clinical implication:** WRN inhibitors and immunotherapy may be complementary rather than redundant. Tumor types with low IO response but strong predicted WRN dependency (e.g., PAAD with 18.2% pembrolizumab ORR) represent the clearest unmet need for WRN-targeted therapy.
+
+#### DepMap-Clinical Concordance Analysis
+
+| Signal | Computational Prediction (This Atlas) | Clinical Evidence | Concordance |
+|---|---|---|---|
+| WRN SL in MSI-H | ROBUST (d = -2.844 Bowel, -1.086 Uterus) | VVD-214: 4/32 PRs in MSI-H (~12.5% ORR, Phase 1 dose escalation) | **Consistent** — clinical responses observed; ORR expected to improve at optimized dose |
+| Bowel > Uterus WRN dependency | d = -2.844 vs d = -1.086 (2.6-fold difference) | Not yet testable — tumor-type-specific response data not reported from Phase 1 | Pending |
+| DNA-PKi combination potential | AZD-7648 MSI-H selective (d = -0.526, FDR = 0.018) + resistance preprint convergence | AZD-7648 in Phase 1/2 (NCT03907969) for advanced cancers; no MSI-H-specific combo data yet | **Pending validation** — mechanism supported, clinical data awaited |
+| TP53-GOF attenuation | d = -0.556 (p = 0.026) WT vs mutant within MSI-H | No published clinical stratification by TP53 status in WRN inhibitor trials | **Testable** — recommend TP53 stratification in trial analysis |
+| Trial enrollment gap | 13/18 MSI-H tumor types lack WRN trial enrollment | VVD-214 and HRO-761 enroll primarily CRC, endometrial, gastric, ovarian | **Confirmed** — DLBC, PAAD, SKCM, BRCA, BLCA, and others remain unenrolled |
+
+**Summary of concordance:** The early clinical landscape is broadly consistent with atlas predictions. Clinical responses to VVD-214 confirm WRN as a tractable MSI-H target. The key untested predictions — lineage-specific effect size variation, TP53 as a response modifier, and DNA-PKi combination benefit — represent high-priority translational hypotheses that current and planned trials can address. The 13-tumor-type enrollment gap identified in this atlas highlights a significant opportunity for trial expansion.
+
 ---
 
 ## 4. Discussion
