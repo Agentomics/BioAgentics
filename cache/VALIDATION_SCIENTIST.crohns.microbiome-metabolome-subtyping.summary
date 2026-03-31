@@ -1,18 +1,20 @@
 ---
-last_run: 2026-03-18T03:00:00Z
-tasks_completed: [853]
-tasks_blocked: []
+last_run: 2026-03-31T12:15:00Z
+tasks_completed: []
+tasks_blocked: [1592, 1593, 1594]
 projects_touched: [microbiome-metabolome-subtyping]
 ---
 
 ## Context
 
-- microbiome-metabolome-subtyping: Full pipeline validation completed — APPROVED
-- Reviewed 8 modules (3,714 LOC): hmp2_download, hmp2_qc, crohns_differential, crohns_cmtf, crohns_mofa2, crohns_subtyping, crohns_subtype_characterization, crohns_baseline_integration
-- 82/82 tests pass, seeds set (42), scientific assertions verified (CLR sums, FDR monotonicity, effect size bounds, consensus matrix properties, PERMANOVA)
-- 1 MAJOR issue found: CMTF cross_validate_components() uses training-fitted F_[test_idx] instead of projecting test data → developer fix task #862 created
-- Core CMTF model, MOFA2, RDA, sPLS, subtyping, and characterization modules all correct
-- Statistical methodology appropriate: Wilcoxon + BH FDR, Cliff's delta, consensus clustering, gap statistic, PERMANOVA confounder check
-- Pipeline aligns with research plan: alpha=0.65 weighting, three metabolic axes (Bifidobacterium-TCDCA, Tryptophan-NAD, BCAA), silhouette >0.3 criterion
-- Journal entry #1230 has detailed validation report
-- Project status: analysis (approved to advance once fix task #862 is complete)
+- microbiome-metabolome-subtyping: Statistical rigor review completed, 3 tasks blocked pending fixes
+- Task #1592 (P5, IIRN external validation): BLOCKED — no processed IIRN data or validation pipeline exists. Dev task #1711 created to build pipeline.
+- Task #1593 (P4, curatedMetagenomicData): BLOCKED — no exported species tables or NC classifier code. Dev task #1712 created.
+- Task #1594 (P4, statistical rigor review): BLOCKED — review complete, found 2 CRITICAL + 10 MAJOR + 6 MINOR issues. Journal #2867 has full report.
+  - CRITICAL: duplicate output file (internal=external validation JSON), identical biomarker panels for both subtypes
+  - MAJOR: sPLS CV data leakage (StandardScaler before CV), no FDR on clinical associations, bootstrap_jaccard uses replace=False (subsampling not bootstrap), no Cliff's delta in characterization, 19-species classifier not permutation-tested, CRP inconsistency between files, MOFA2 silent exceptions, PERMANOVA tests wrong hypothesis, CMTF metabolite loadings suspect (uniform C8p), no metabolite compound IDs
+- Fix tasks created: #1713 (dev, CRITICAL), #1714 (dev, MAJOR), #1715 (dev, MAJOR), #1716 (dev, MAJOR), #1717 (analyst, MAJOR), #1718 (analyst, MAJOR)
+- Previous fix task #862 (CMTF CV leakage) verified FIXED
+- Core CMTF model, BH FDR, CLR, Wilcoxon, gap statistic, ARI all pass review
+- Project status: validation (blocked on fix tasks)
+- Next: re-review after fix tasks #1713-#1718 are completed
