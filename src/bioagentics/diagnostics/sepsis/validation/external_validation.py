@@ -162,7 +162,12 @@ def train_on_source(
     """
     imp = SimpleImputer(strategy="median")
     scaler = StandardScaler()
-    X_clean = scaler.fit_transform(imp.fit_transform(X_train))
+    X_imp_lr = imp.fit_transform(X_train)
+    # Drop columns still all-NaN after imputation (prevents NaN in scaler/LR)
+    nan_cols_lr = np.isnan(X_imp_lr).all(axis=0)
+    if nan_cols_lr.any():
+        X_imp_lr = X_imp_lr[:, ~nan_cols_lr]
+    X_clean = scaler.fit_transform(X_imp_lr)
 
     lr = LogisticRegression(
         C=0.1, penalty="l1", solver="saga",
@@ -195,6 +200,7 @@ def train_on_source(
         "imputer_lr": imp,
         "scaler_lr": scaler,
         "imputer_gbm": imp_gbm,
+        "nan_cols_lr": nan_cols_lr,
     }
 
 
@@ -218,9 +224,11 @@ def evaluate_external(
     results = {}
 
     # LR
-    X_lr = trained["scaler_lr"].transform(
-        trained["imputer_lr"].transform(X_external)
-    )
+    X_lr = trained["imputer_lr"].transform(X_external)
+    nan_cols_lr = trained.get("nan_cols_lr")
+    if nan_cols_lr is not None and nan_cols_lr.any():
+        X_lr = X_lr[:, ~nan_cols_lr]
+    X_lr = trained["scaler_lr"].transform(X_lr)
     lr_probs = trained["lr"].predict_proba(X_lr)[:, 1]
     results["logistic_regression"] = _compute_metrics(y_external, lr_probs)
 

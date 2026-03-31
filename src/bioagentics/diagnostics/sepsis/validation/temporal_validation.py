@@ -75,8 +75,15 @@ def _train_lr(
     """Train L1-regularized LR and return test probabilities."""
     imp = SimpleImputer(strategy="median")
     scaler = StandardScaler()
-    X_tr = scaler.fit_transform(imp.fit_transform(X_train))
-    X_te = scaler.transform(imp.transform(X_test))
+    X_tr = imp.fit_transform(X_train)
+    X_te = imp.transform(X_test)
+    # Drop columns still all-NaN after imputation (prevents NaN in scaler/LR)
+    nan_cols = np.isnan(X_tr).all(axis=0)
+    if nan_cols.any():
+        X_tr = X_tr[:, ~nan_cols]
+        X_te = X_te[:, ~nan_cols]
+    X_tr = scaler.fit_transform(X_tr)
+    X_te = scaler.transform(X_te)
 
     lr = LogisticRegression(
         C=0.1, penalty="l1", solver="saga",

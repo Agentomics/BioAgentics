@@ -400,8 +400,13 @@ def run_conformal(
             y = np.concatenate([data["y_train"], data["y_test"]])
 
             imp = SimpleImputer(strategy="median")
+            X_imp = imp.fit_transform(X)
+            # Drop columns still all-NaN after imputation (prevents NaN in scaler/LR)
+            nan_cols = np.isnan(X_imp).all(axis=0)
+            if nan_cols.any():
+                X_imp = X_imp[:, ~nan_cols]
             scaler = StandardScaler()
-            X_clean = scaler.fit_transform(imp.fit_transform(X))
+            X_clean = scaler.fit_transform(X_imp)
 
             cv = StratifiedKFold(
                 n_splits=OUTER_CV_FOLDS, shuffle=True, random_state=RANDOM_STATE
